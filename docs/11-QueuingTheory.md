@@ -52,14 +52,10 @@ involve a single line that is served by a set of servers.
 Figure \@ref(fig:SingleQueue) illustrates the major components of a
 queueing system with a single queue feeding into a set of servers.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/AppQueueing/fig1SingleQueue} 
-
-}
-
-\caption{Example single queue system}(\#fig:SingleQueue)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig1SingleQueue.png" alt="Example single queue system" width="75%" height="75%" />
+<p class="caption">(\#fig:SingleQueue)Example single queue system</p>
+</div>
 
 In queueing theory the term customer is used as a generic term to
 describe the entities that flow and receive service. A resource is a
@@ -165,14 +161,10 @@ variables are independent. Thus, the G/G/5 represents a queue with an
 arrival process having any general distribution, a general distribution
 for the service times, and 5 servers. Figure \@ref(fig:CommonQueueing) illustrates some of the common queueing systems as denoted by Kendall's notation.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppQueueing/fig2CommonQueueing} 
-
-}
-
-\caption{Illustrating some common queueing situations}(\#fig:CommonQueueing)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig2CommonQueueing.png" alt="Illustrating some common queueing situations" width="85%" height="85%" />
+<p class="caption">(\#fig:CommonQueueing)Illustrating some common queueing situations</p>
+</div>
 
 There are a number of quantities that form the basis for measuring the
 performance of queueing systems:
@@ -227,14 +219,10 @@ expected number in the queue and the expected waiting time in the queue.
 To understand these relationships, consider Figure \@ref(fig:NumInQPath) which illustrates the sample path for the
 number of customers in the queue over a period of time.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppQueueing/fig3NumInQPath} 
-
-}
-
-\caption{Sample path for the number of customers in a queue}(\#fig:NumInQPath)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig3NumInQPath.png" alt="Sample path for the number of customers in a queue" width="70%" height="70%" />
+<p class="caption">(\#fig:NumInQPath)Sample path for the number of customers in a queue</p>
+</div>
 
 Let $A_i; i = 1 \ldots n$ represent the time that the $i^{th}$ customer
 enters the queue, $D_i; i = 1 \ldots n$ represent the time that the
@@ -557,14 +545,10 @@ can be in are 0 and 1. The rate of transition from state 0 to state 1 is
 the rate that an arrival occurs and the state of transition from state 1
 to state 0 is the service rate.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.25\linewidth,height=0.25\textheight]{./figures2/AppQueueing/fig4TwoStates} 
-
-}
-
-\caption{Two state rate transition diagram}(\#fig:TwoStates)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig4TwoStates.png" alt="Two state rate transition diagram" width="25%" height="25%" />
+<p class="caption">(\#fig:TwoStates)Two state rate transition diagram</p>
+</div>
 
 The rate of transition into state 0 can be thought of as the rate that
 probability flows from state 1 to state 0 times the chance of being in
@@ -588,14 +572,10 @@ system represents an increase in the number of customers and a departure
 from the system represents a decrease in the number of customers in the
 system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppQueueing/fig5GeneralStateDiagram} 
-
-}
-
-\caption{General rate transition diagram for any number of states}(\#fig:GeneralStateDiagram)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig5GeneralStateDiagram.png" alt="General rate transition diagram for any number of states" width="85%" height="85%" />
+<p class="caption">(\#fig:GeneralStateDiagram)General rate transition diagram for any number of states</p>
+</div>
 
 Figure \@ref(fig:GeneralStateDiagram) illustrates a general state transition
 diagram for this system. Let $N$ be the number of customers in the
@@ -746,14 +726,12 @@ types of queueing systems.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exDTP"><strong>(\#exm:exDTP) </strong></span>Customers arrive at a one window drive through pharmacy according to a Poisson distribution
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exDTP"><strong>(\#exm:exDTP) </strong></span>Customers arrive at a one window drive through pharmacy according to a Poisson distribution
 with a mean of 10 per hour. The service time per customer is exponential
 with a mean of 5 minutes. There are 3 spaces in front of the window,
 including that for the car being served. Other arriving cars can wait
 outside these 3 spaces. The pharmacy is interested in answering the
-following questions:
-\EndKnitrBlock{example}
+following questions:</div>\EndKnitrBlock{example}
 
 1.  What is the probability that an arriving customer can enter one of
     the 3 spaces in front of the window?
@@ -864,14 +842,12 @@ The following example models self-service copiers.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exSSC"><strong>(\#exm:exSSC) </strong></span>The Student Union Copy
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exSSC"><strong>(\#exm:exSSC) </strong></span>The Student Union Copy
 center is considering the installation of self-service copiers. They
 predict that the arrivals will be Poisson with a rate of 30 per hour and
 that the time spent copying is exponentially distributed with a mean of
 1.75 minutes. They would like the chance that 4 or more people in the
-copy center to be less than 5%. How many copiers should they install?
-\EndKnitrBlock{example}
+copy center to be less than 5%. How many copiers should they install?</div>\EndKnitrBlock{example}
 
 *** 
 
@@ -905,23 +881,15 @@ Table \@ref(tab:SSCResults).
   Table: (\#tab:SSCResults)Results for Example \@ref(exm:exSSC), $c=1, 2, 3, 4$
 :::
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig6QTSSpreadsheet.png" alt="QTSPlus M/M/c spreadsheet results" width="60%" height="60%" />
+<p class="caption">(\#fig:QTSSpreadsheet)QTSPlus M/M/c spreadsheet results</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppQueueing/fig6QTSSpreadsheet} 
-
-}
-
-\caption{QTSPlus M/M/c spreadsheet results}(\#fig:QTSSpreadsheet)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/AppQueueing/fig7QTSResults} 
-
-}
-
-\caption{QTSPlus M/M/c state probability results }(\#fig:QTSResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig7QTSResults.png" alt="QTSPlus M/M/c state probability results " width="50%" height="50%" />
+<p class="caption">(\#fig:QTSResults)QTSPlus M/M/c state probability results </p>
+</div>
 
 \FloatBarrier
 
@@ -962,14 +930,12 @@ of call service centers and help support lines.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exSQSR"><strong>(\#exm:exSQSR) </strong></span>The Student Union Copy center is considering the installation of self-service copiers.
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exSQSR"><strong>(\#exm:exSQSR) </strong></span>The Student Union Copy center is considering the installation of self-service copiers.
 They predict that the arrivals will be Poisson with a rate of 30 per
 hour and that the time spent copying is exponentially distributed with a
 mean of 1.75 minutes. Find the least number of servers such that the
 probability that an arriving customer waits is less than or equal to
-0.10.
-\EndKnitrBlock{example}
+0.10.</div>\EndKnitrBlock{example}
 
 *** 
 
@@ -989,14 +955,10 @@ that the probability of wait will be less than 10%. The square root
 staffing rule has been shown to be quite a robust approximation and can
 be useful in many design settings involving staffing.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/AppQueueing/fig8SqrtStaffingRule} 
-
-}
-
-\caption{Spreadsheet for square root staffing rule}(\#fig:SqrtStaffingRule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig8SqrtStaffingRule.png" alt="Spreadsheet for square root staffing rule" width="75%" height="75%" />
+<p class="caption">(\#fig:SqrtStaffingRule)Spreadsheet for square root staffing rule</p>
+</div>
 
 The previous examples have had infinite system capacity.  The next section presents examples of finite capacity queueing systems.
 
@@ -1009,9 +971,7 @@ systems.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exFBQ"><strong>(\#exm:exFBQ) </strong></span>A single machine is connected to a conveyor system.  The conveyor causes parts to arrive to the machine at a rate of 1 part per minute according to a Poisson distribution.  There is a finite buffer of size 5 in front of the machine.  The machine's processing time is considered to be exponentially distributed with a mean rate of 1.2 parts per minute.  Any parts that arrive on the conveyor when the buffer is full are carried to other machines that are not part of this analysis.  What are the expected system time and the expected number of parts at the machining center?
-\EndKnitrBlock{example}
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exFBQ"><strong>(\#exm:exFBQ) </strong></span>A single machine is connected to a conveyor system.  The conveyor causes parts to arrive to the machine at a rate of 1 part per minute according to a Poisson distribution.  There is a finite buffer of size 5 in front of the machine.  The machine's processing time is considered to be exponentially distributed with a mean rate of 1.2 parts per minute.  Any parts that arrive on the conveyor when the buffer is full are carried to other machines that are not part of this analysis.  What are the expected system time and the expected number of parts at the machining center?</div>\EndKnitrBlock{example}
 
 *** 
 
@@ -1032,22 +992,16 @@ that are turned away from the system because it is full. According to
 Figure \@ref(fig:MM1KResults), the expected number of turned away because
 the system is full is about 0.077 per minute (or about 4.62 per hour).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppQueueing/fig9MM1KResults} 
-
-}
-
-\caption{Results for finite buffer M/M/1/6 queue}(\#fig:MM1KResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig9MM1KResults.png" alt="Results for finite buffer M/M/1/6 queue" width="70%" height="70%" />
+<p class="caption">(\#fig:MM1KResults)Results for finite buffer M/M/1/6 queue</p>
+</div>
 
 Let's take a look at modeling a situation that we experience everyday, parking lots.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exPL"><strong>(\#exm:exPL) </strong></span>The university has a row of 10 parking meter based spaces across from the engineering school.  During the peak hours students arrive to the parking lot at a rate of 40 per hour according to a Poisson distribution and the students use the parking space for approximately 60 minutes exponentially distributed.  If all the parking spaces are taken, it can be assumed that an arriving student does not wait (goes somewhere else to park).  Suppose that the meters cost $w$ = \$0.03 per minute, i.e. \$2 per hour.  How much income does the university potentially lose during peak hours on average because the parking spaces are full?
-\EndKnitrBlock{example}
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exPL"><strong>(\#exm:exPL) </strong></span>The university has a row of 10 parking meter based spaces across from the engineering school.  During the peak hours students arrive to the parking lot at a rate of 40 per hour according to a Poisson distribution and the students use the parking space for approximately 60 minutes exponentially distributed.  If all the parking spaces are taken, it can be assumed that an arriving student does not wait (goes somewhere else to park).  Suppose that the meters cost $w$ = \$0.03 per minute, i.e. \$2 per hour.  How much income does the university potentially lose during peak hours on average because the parking spaces are full?</div>\EndKnitrBlock{example}
 
 *** 
 
@@ -1080,14 +1034,10 @@ software. In the figure the arrival rate of 40 per hour and the mean
 service time of 1 hours is entered. The number of parking spaces, 10, is
 the size of the system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppQueueing/fig10MMccResults} 
-
-}
-
-\caption{Parking lot results for M/M/10/10 system}(\#fig:MMccResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig10MMccResults.png" alt="Parking lot results for M/M/10/10 system" width="70%" height="70%" />
+<p class="caption">(\#fig:MMccResults)Parking lot results for M/M/10/10 system</p>
+</div>
 
 Thus according to Figure \@ref(fig:MMccResults), the university is losing about \$2
 $\times$ 30.3 = \$60.6 per hour because the metered lot is full during peak hours.
@@ -1143,14 +1093,10 @@ rate, $\lambda$. Thus, the total rate of arrivals to the system is
 $5\lambda$. This rate goes down as more machines breakdown. When all the
 machines are broken down, the arrival rate to the system will be zero.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppQueueing/fig11MachineInterference} 
-
-}
-
-\caption{System involving machine interference}(\#fig:MachineInterference)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig11MachineInterference.png" alt="System involving machine interference" width="70%" height="70%" />
+<p class="caption">(\#fig:MachineInterference)System involving machine interference</p>
+</div>
 
 Notice also that the service rate from state 1 to state 0 is $\mu$. When
 one machine is in the system, the operator works at rate $\mu$. Note
@@ -1167,8 +1113,7 @@ example of this system.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exMIM"><strong>(\#exm:exMIM) </strong></span>Suppose a manufacturing
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exMIM"><strong>(\#exm:exMIM) </strong></span>Suppose a manufacturing
 system contains 5 machines, each subject to randomly occurring
 breakdowns. A machine runs for an amount of time that is an exponential
 random variable with a mean of 10 hours before breaking down. At present
@@ -1182,8 +1127,7 @@ operators required to tend to the machines in order to minimize down
 time in a cost effective manner is desired. Assume that it costs the
 system \$60 per hour for each machine that is broken down. Each operator
 is paid \$15 per hour regardless of whether they are repairing a machine
-or not.
-\EndKnitrBlock{example}
+or not.</div>\EndKnitrBlock{example}
 
 *** 
 
@@ -1225,14 +1169,10 @@ server with 5 machines. Note that the software requests the time between
 arrivals, $1/lambda$ and the mean service time, $1/\mu$, rather than
 $\lambda$ and $\mu$.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppQueueing/fig12MIMResults} 
-
-}
-
-\caption{Modeling the machine interference problem in QTSPlus}(\#fig:MIMResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppQueueing/fig12MIMResults.png" alt="Modeling the machine interference problem in QTSPlus" width="80%" height="80%" />
+<p class="caption">(\#fig:MIMResults)Modeling the machine interference problem in QTSPlus</p>
+</div>
 
 
 ::: {#tab:MIMResults}
@@ -1600,33 +1540,27 @@ the problems via simulation.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP1"><strong>(\#exr:chQTP1) </strong></span>*True* or *False*: In a queueing system with random arrivals and random
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP1"><strong>(\#exr:chQTP1) </strong></span>*True* or *False*: In a queueing system with random arrivals and random
 service times, the performance will be best if the arrival rate is equal
-to the service rate because then there will not be any queueing.
-\EndKnitrBlock{exercise}
+to the service rate because then there will not be any queueing.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP2"><strong>(\#exr:chQTP2) </strong></span>The Burger Joint in the UA food court uses an average of 10,000 pounds of potatoes
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP2"><strong>(\#exr:chQTP2) </strong></span>The Burger Joint in the UA food court uses an average of 10,000 pounds of potatoes
 per week. The average number of pounds of potatoes on hand is 5,000. On
 average, how long do potatoes stay in the restaurant before being used?
-What queuing concept is use to solve this problem?
-\EndKnitrBlock{exercise}
+What queuing concept is use to solve this problem?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP3"><strong>(\#exr:chQTP3) </strong></span>Consider a single pump gas station
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP3"><strong>(\#exr:chQTP3) </strong></span>Consider a single pump gas station
 where the arrival process is Poisson with a mean time between arrivals
 of 10 minutes. The service time is exponentially distributed with a mean
 of 6 minutes. Specify the appropriate queueing model needed to solve the
 problem using Kendall's notation. Specify the parameters of the model
 and what you would compute to solve the problem. Be as specific as
 possible by specifying the equation needed. Then, compute the desired
-quantities.
-\EndKnitrBlock{exercise}
+quantities.</div>\EndKnitrBlock{exercise}
 
 a. What is the probability that you have to
 wait for service?
@@ -1639,8 +1573,7 @@ line to get a pump?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP4"><strong>(\#exr:chQTP4) </strong></span>uppose an operator has been
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP4"><strong>(\#exr:chQTP4) </strong></span>uppose an operator has been
 assigned to the responsibility of maintaining 3 machines. For each
 machine the probability distribution of the running time before a
 breakdown is exponentially distributed with a mean of 9 hours. The
@@ -1648,8 +1581,7 @@ repair time also has an exponential distribution with a mean of 2 hours.
 Specify the appropriate queueing model needed to solve the problem using
 Kendall's notation. Specify the parameters of the model and what you
 would compute to solve the problem. Be as specific as possible by
-specifying the equation needed. Then, compute the desired quantities.
-\EndKnitrBlock{exercise}
+specifying the equation needed. Then, compute the desired quantities.</div>\EndKnitrBlock{exercise}
 
 a. What is the probability that the operator is idle?
 
@@ -1659,8 +1591,7 @@ c. What is the expected number of machines that are not running?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP5"><strong>(\#exr:chQTP5) </strong></span>SuperFastCopy wants to install
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP5"><strong>(\#exr:chQTP5) </strong></span>SuperFastCopy wants to install
 self-service copiers, but cannot decide whether to put in one or two
 machines. They predict that arrivals will be Poisson with a rate of 30
 per hour, and the time spent copying is exponentially distributed with a
@@ -1682,25 +1613,21 @@ minute according to an exponential distribution.
 What is the probability that a passenger will have to wait before being
 screened? On average, how many passengers are waiting in line to enter
 the checkpoint? On average, how long will a passenger spend at the
-checkpoint?
-\EndKnitrBlock{exercise}
+checkpoint?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP6"><strong>(\#exr:chQTP6) </strong></span>Two machines are being considered
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP6"><strong>(\#exr:chQTP6) </strong></span>Two machines are being considered
 for processing a job within a factory. The first machine has an
 exponentially distributed processing time with a mean of 10 minutes. For
 the second machine the vendor has indicated that the mean processing
 time is 10 minutes but with a standard deviation of 6 minutes. Using
 queueing theory, which machine is better in terms of the average waiting
-time of the jobs?
-\EndKnitrBlock{exercise}
+time of the jobs?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP7"><strong>(\#exr:chQTP7) </strong></span>Customers arrive at a one-window
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP7"><strong>(\#exr:chQTP7) </strong></span>Customers arrive at a one-window
 drive in bank according to a Poisson distribution with a mean of 10 per
 hour. The service time for each customer is exponentially distributed
 with a mean of 5 minutes. There are 3 spaces in front of the window
@@ -1709,8 +1636,7 @@ outside these 3 spaces. Specify the appropriate queueing model needed to
 solve the problem using Kendall's notation. Specify the parameters of
 the model and what you would compute to solve the problem. Be as
 specific as possible by specifying the equation needed. Then, compute
-the desired quantities.
-\EndKnitrBlock{exercise}
+the desired quantities.</div>\EndKnitrBlock{exercise}
 
 a. What is the probability that an arriving customer can enter one of the 3 spaces in front of the window?
 
@@ -1723,11 +1649,9 @@ at least one open space must be greater than 20\%.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP8"><strong>(\#exr:chQTP8) </strong></span>Joe Rose is a student at Big State U. He does odd jobs to supplement his income. Job requests come every 5 days on the average, but the time between requests is exponentially
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP8"><strong>(\#exr:chQTP8) </strong></span>Joe Rose is a student at Big State U. He does odd jobs to supplement his income. Job requests come every 5 days on the average, but the time between requests is exponentially
 distributed. The time for completing a job is also exponentially
-distributed with a mean of 4 days.
-\EndKnitrBlock{exercise}
+distributed with a mean of 4 days.</div>\EndKnitrBlock{exercise}
 
 a. What would you compute to find the chance that Joe will not have any jobs to work on?
 
@@ -1735,8 +1659,7 @@ b. What would you compute to find the average value of the waiting jobs if Joe g
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP9"><strong>(\#exr:chQTP9) </strong></span>The manager of a bank must determine how many tellers should be
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP9"><strong>(\#exr:chQTP9) </strong></span>The manager of a bank must determine how many tellers should be
 available. For every minute a customer stands in line, the manager
 believes that a delay cost of 5 cents is incurred. An average of 15
 customers per hour arrive at the bank. On the average, it takes a teller
@@ -1748,13 +1671,11 @@ What is the minimum number of tellers that should be available in order
 for the system to be stable (i.e. not have an infinite queue)? If the
 system has 3 tellers, what is the probability that there will be no one
 in the bank? What is the expected total cost of the system per hour,
-when there are 2 tellers?
-\EndKnitrBlock{exercise}
+when there are 2 tellers?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP10"><strong>(\#exr:chQTP10) </strong></span>You have been hired to analyze the needs for loading dock facilities at
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP10"><strong>(\#exr:chQTP10) </strong></span>You have been hired to analyze the needs for loading dock facilities at
 a trucking terminal. The present terminal has 4 docks on the main
 building. Any trucks that arrive when all docks are full are assigned to
 a secondary terminal, which a short distance away from the main
@@ -1776,19 +1697,16 @@ the model and its parameters. State what you would do to determine the
 required number of docks so that at least 80\% of the arriving trucks can
 be served for the first proposal. Note you do not have to compute
 anything. What model should you use to analyze the 2nd proposal? State
-the model and its parameters.
-\EndKnitrBlock{exercise}
+the model and its parameters.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP11"><strong>(\#exr:chQTP11) </strong></span>Sly's convenience store operates a
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP11"><strong>(\#exr:chQTP11) </strong></span>Sly's convenience store operates a
 two-pump gas station. The lane leading to the pumps can house at most
 five cars, including those being serviced. Arriving cars go elsewhere if
 the lane is full. The distribution of the arriving cars is Poisson with
 a mean of 20 per hour. The time to fill up and pay for the purchase is
-exponentially distributed with a mean of 6 minutes.
-\EndKnitrBlock{exercise}
+exponentially distributed with a mean of 6 minutes.</div>\EndKnitrBlock{exercise}
 
 a. Specify using queueing notation, exactly
 what you would compute to find the percentage of cars that will seek
@@ -1798,8 +1716,7 @@ b. Specify using queueing notation, exactly what you would compute to find the u
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP12"><strong>(\#exr:chQTP12) </strong></span>An airline ticket office has two
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP12"><strong>(\#exr:chQTP12) </strong></span>An airline ticket office has two
 ticket agents answering incoming phone calls for flight reservations. In
 addition, two callers can be put on hold until one of the agents is
 available to take the call. If all four phone lines (both agent lines
@@ -1808,8 +1725,7 @@ and it is assumed that the call goes to another ticket office and that
 the business is lost. The calls and attempted calls occur randomly (i.e.
 according to Poisson process) at a mean rate of 15 per hour. The length
 of a telephone conversation has an exponential distribution with a mean
-of 4 minutes.
-\EndKnitrBlock{exercise}
+of 4 minutes.</div>\EndKnitrBlock{exercise}
 a. Specify using queueing notation, exactly
 what you would compute to find the probability of losing a potential
 customer?
@@ -1820,14 +1736,12 @@ immediately but will be able to wait on a hold line?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP13"><strong>(\#exr:chQTP13) </strong></span>SuperFastCopy has three identical
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP13"><strong>(\#exr:chQTP13) </strong></span>SuperFastCopy has three identical
 copying machines. When a machine is being used, the time until it breaks
 down has an exponential distribution with a mean of 2 weeks. A repair
 person is kept on call to repair the machines. The repair time for a
 machine has an exponential distribution with a mean of 0.5 week. The
-downtime cost for each copying machine is \$100 per week.
-\EndKnitrBlock{exercise}
+downtime cost for each copying machine is \$100 per week.</div>\EndKnitrBlock{exercise}
 a. Let the state of the system be the number
 of machines not working, Construct a state transition diagram for this
 queueing system.
@@ -1837,8 +1751,7 @@ performance measures to compute the expected downtime cost per week.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP14"><strong>(\#exr:chQTP14) </strong></span>NWH Cardiac Care Unit (CCU) has
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP14"><strong>(\#exr:chQTP14) </strong></span>NWH Cardiac Care Unit (CCU) has
 5 beds, which are virtually always occupied by patients who have just
 undergone major heart surgery. Two registered nurses (RNs) are on duty
 in the CCU in each of the three 8 hour shifts. About every two hours
@@ -1846,8 +1759,7 @@ following an exponential distribution, one of the patients requires a
 nurse's attention. The RN will then spend an average of 30 minutes
 (exponentially distributed) assisting the patient and updating medical
 records regarding the problem and care provided. 
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 a. What would you compute to find the
 average number of patients being attended by the nurses?
 
@@ -1857,8 +1769,7 @@ arrive?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP15"><strong>(\#exr:chQTP15) </strong></span>HJ Bunt, Transport Company maintains a large fleet of refrigerated
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP15"><strong>(\#exr:chQTP15) </strong></span>HJ Bunt, Transport Company maintains a large fleet of refrigerated
 trailers. For the purposes of this problem assume that the number of
 refrigerated trailers is conceptually infinite. The trailers require
 service on an irregular basis in the company owned and operated service
@@ -1874,21 +1785,18 @@ one 1 mechanic in the company shop.
 Specify using Kendall's notation the correct queueing model for this
 situation including the appropriate parameters. What would you compute
 to determine the expected number of repairs that are outsourced per
-week?
-\EndKnitrBlock{exercise}
+week?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP16"><strong>(\#exr:chQTP16) </strong></span>Rick is a manager of a small
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP16"><strong>(\#exr:chQTP16) </strong></span>Rick is a manager of a small
 barber shop at Big State U. He hires one barber. Rick is also a barber
 and he works only when he has more than one customer in the shop.
 Customers arrive randomly at a rate of 3 per hour. Rick takes 15 minutes
 on the average for a hair cut, but his employee takes 10 minutes. Assume
 that the cutting time distributions are exponentially distributed.
 Assume that there are only 2 chairs available with no waiting room in
-the shop.
-\EndKnitrBlock{exercise}
+the shop.</div>\EndKnitrBlock{exercise}
 a. Let the state of the system be the
 number of customers in the shop, Construct a state transition diagram
 for this queueing system.
@@ -1901,14 +1809,12 @@ d. What is the steady-state mean number of customers in the shop?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:chQTP17"><strong>(\#exr:chQTP17) </strong></span>Using the supplied data set, draw the sample path for the state
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:chQTP17"><strong>(\#exr:chQTP17) </strong></span>Using the supplied data set, draw the sample path for the state
 variable, $N(t)$. Give a formula for estimating the time average number
 in the system, $N(t)$, and then use the data to compute the time average
 number in the system over the range from 0 to 25. Assume that the value
 of $N(t$ is the value of the state variable just after time $t$.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -------- --- --- --- ---- ---- ---- ---- ---- ----
     $t$     0   2   4   5    7    10   12   15   20 

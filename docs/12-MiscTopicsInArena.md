@@ -12,23 +12,15 @@ use hyper-links to important information. In fact, as can be seen in
 Figure \@ref(fig:ch4ArenaHelp), Arena has an overview of the modeling process
 as part of the help system.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4ArenaHelp.png" alt="Arena help system" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4ArenaHelp)Arena help system</p>
+</div>
 
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4ArenaHelp} 
-
-}
-
-\caption{Arena help system}(\#fig:ch4ArenaHelp)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch4ArenaFolders} 
-
-}
-
-\caption{Arena folder structure}(\#fig:ch4ArenaFolders)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4ArenaFolders.png" alt="Arena folder structure" width="60%" height="60%" />
+<p class="caption">(\#fig:ch4ArenaFolders)Arena folder structure</p>
+</div>
 
 The example files are especially useful for getting a feel for what is
 possible with Arena . This text uses a number of Arena's example models (as per Figure \@ref(fig:ch4ArenaFolders)) to
@@ -68,14 +60,10 @@ The section will review the pharmacy model of Chapter \@ref(ch2) in order to pro
 *mod* (model) file and the *exp* (experiment) file. The files can be
 viewed using the Window menu (Figure \@ref(fig:ch4fig67), within the Arena Environment.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/AppMiscArenaTopics/ch4fig67} 
-
-}
-
-\caption{Run SIMAN view menu}(\#fig:ch4fig67)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig67.png" alt="Run SIMAN view menu" width="40%" height="40%" />
+<p class="caption">(\#fig:ch4fig67)Run SIMAN view menu</p>
+</div>
 
 The *mod* file contains the SIMAN representation for the flow chart
 modules that were laid out in the model window. The *exp* file contains
@@ -227,14 +215,10 @@ exponential distribution with a mean of six minutes to be used as the
 time of the event associated with the creation of an entity from this
 CREATE module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch4fig68} 
-
-}
-
-\caption{CREATE module dialog}(\#fig:ch4fig68)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig68.png" alt="CREATE module dialog" width="55%" height="55%" />
+<p class="caption">(\#fig:ch4fig68)CREATE module dialog</p>
+</div>
 
 The careful reader should have the natural question, "What if there are
 ties?\" In other words, what if there are two or more CREATE modules
@@ -264,23 +248,15 @@ this text; however, in this section concentrates on using Arena's Run
 Controller. Arena's Run Controller is found on the Run menu as shown in
 Figure \@ref(fig:ch4fig69).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig69.png" alt="Invoking the Run Controller" width="55%" height="55%" />
+<p class="caption">(\#fig:ch4fig69)Invoking the Run Controller</p>
+</div>
 
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch4fig69} 
-
-}
-
-\caption{Invoking the Run Controller}(\#fig:ch4fig69)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch4fig70} 
-
-}
-
-\caption{Arena Environment with Run Controller invoked}(\#fig:ch4fig70)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig70.png" alt="Arena Environment with Run Controller invoked" width="85%" height="85%" />
+<p class="caption">(\#fig:ch4fig70)Arena Environment with Run Controller invoked</p>
+</div>
 
 Figure \@ref(fig:ch4fig70) illustrates how the Arena Environment
 appears after the run controller has been invoked on the original
@@ -291,14 +267,10 @@ controller. Go to Help and in the index search type in "Command-Driven
 Run Controller Introduction\". You should see a screen that looks
 something like that shown in Figure \@ref(fig:ch4fig71).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch4fig71} 
-
-}
-
-\caption{Getting help for the Run Controller}(\#fig:ch4fig71)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig71.png" alt="Getting help for the Run Controller" width="85%" height="85%" />
+<p class="caption">(\#fig:ch4fig71)Getting help for the Run Controller</p>
+</div>
 
 The Run Controller allows the system to be executed in a debugging mode.
 With the run controller, you can set trace options, watch variables and
@@ -309,14 +281,10 @@ list of commands for the run controller as shown in Figure \@ref(fig:ch4fig72). 
 detailed instructions on how to use the command within the run
 controller environment.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppMiscArenaTopics/ch4fig72} 
-
-}
-
-\caption{The Run Controller commands}(\#fig:ch4fig72)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig72.png" alt="The Run Controller commands" width="65%" height="65%" />
+<p class="caption">(\#fig:ch4fig72)The Run Controller commands</p>
+</div>
 
 In what follows, some simple commands will be used to examine the drive
 through pharmacy model. Open the pharmacy model within and then open up
@@ -338,14 +306,10 @@ the prompt (in Figure \@ref(fig:ch4fig73)) or select the command from the drop d
 then press return to enter the command. You can also press the toggle
 trace button.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig73} 
-
-}
-
-\caption{Using commands in the Run Controller}(\#fig:ch4fig73)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig73.png" alt="Using commands in the Run Controller" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig73)Using commands in the Run Controller</p>
+</div>
 
 Now select the 'VCR-like run button for single stepping through the
 model. The button is indicated in
@@ -359,28 +323,20 @@ output indicates the SIMAN statement that will be executed on the *next*
 step. Then, when the step executes the trace results are given and the
 next statement to execute is indicated.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig74} 
-
-}
-
-\caption{Run Controller output window after 2 steps}(\#fig:ch4fig74)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig74.png" alt="Run Controller output window after 2 steps" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig74)Run Controller output window after 2 steps</p>
+</div>
 
 If you press the single step button twice, you will see that ASSIGN
 statements are executed and that the current entity is about to execute
 a QUEUE statement. After seven steps, the run controller output should
 appear as shown in Figure \@ref(fig:ch4fig75).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig75} 
-
-}
-
-\caption{Run Controller output window after 7 steps}(\#fig:ch4fig75)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig75.png" alt="Run Controller output window after 7 steps" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig75)Run Controller output window after 7 steps</p>
+</div>
 
 From this trace output, it is apparent that the entity was sent directly
 to the SEIZE block from the QUEUE block where it seized 1 unit of the
@@ -405,14 +361,10 @@ scheduled. The "current events chain\" represents the entities that are
 scheduled to occur at the current time. The "future events heap\"
 represents those entities that are scheduled in the future.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig76} 
-
-}
-
-\caption{VIEW CALENDAR output}(\#fig:ch4fig76)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig76.png" alt="VIEW CALENDAR output" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig76)VIEW CALENDAR output</p>
+</div>
 
 This output indicates that no other entities are scheduled for the
 current time and that Entity 2 is scheduled to activate at time
@@ -438,14 +390,10 @@ queue. Carefully type in `SET WATCH NQ(Get Medicine.Queue) = = 2` at the
 run controller prompt and hit return. Your run controller should look
 like Figure \@ref(fig:ch4fig77).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig77} 
-
-}
-
-\caption{Setting a WATCH on a variable}(\#fig:ch4fig77)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig77.png" alt="Setting a WATCH on a variable" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig77)Setting a WATCH on a variable</p>
+</div>
 
 If you type `GO` at the run controller prompt, will run until the watch
 condition is met, see Figure \@ref(fig:ch4fig78). The VIEW QUEUE command will show all
@@ -453,23 +401,15 @@ the entities in all the queues, see Figure \@ref(fig:ch4fig79). You can also sel
 only certain entities. See the Arena's help for how to specialize the
 commands.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig78.png" alt="Output after WATCH condition break" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig78)Output after WATCH condition break</p>
+</div>
 
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig78} 
-
-}
-
-\caption{Output after WATCH condition break}(\#fig:ch4fig78)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig79} 
-
-}
-
-\caption{Output after VIEW QUEUE}(\#fig:ch4fig79)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig79.png" alt="Output after VIEW QUEUE" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig79)Output after VIEW QUEUE</p>
+</div>
 
 Arena also has a debugging bar within the run command controller that can be
 accessed from the Run $>$ Run Control $>$ Breakpoints menu, see
@@ -482,14 +422,10 @@ the debug bar is similar to many debuggers. The help system has a
 discussion on how to use the tabs within the debug bar. You can find out
 more by searching for *Debug Bar* in Arena's help system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch4fig80} 
-
-}
-
-\caption{Debug window within the Run Controller}(\#fig:ch4fig80)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch4fig80.png" alt="Debug window within the Run Controller" width="90%" height="90%" />
+<p class="caption">(\#fig:ch4fig80)Debug window within the Run Controller</p>
+</div>
 
 There are many commands that you can try to use during your debugging.
 Only a few commands have been discussed here. What do you think the
@@ -562,14 +498,10 @@ In this case, a new database file for the model will be created when it
 is run. This approach creates a new database for each simulation
 execution.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch7fig12} 
-
-}
-
-\caption{Run Setup statistical collection options}(\#fig:Appch7fig12)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig12.png" alt="Run Setup statistical collection options" width="55%" height="55%" />
+<p class="caption">(\#fig:Appch7fig12)Run Setup statistical collection options</p>
+</div>
 
 The second approach is to use the Projects Parameters panel within the
 Run $>$ Setup menu dialog as illustrated in Figure \@ref(fig:Appch7fig12). The Project Title field identifies a
@@ -627,14 +559,10 @@ statistic types of interest are DSTAT (time-based), TALLY
 (captured at end of replication), and FREQUENCY (tabulates percentage of
 time spent in defined categories).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch7fig22} 
-
-}
-
-\caption{Definition table field design}(\#fig:Appch7fig22)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig22.png" alt="Definition table field design" width="90%" height="90%" />
+<p class="caption">(\#fig:Appch7fig22)Definition table field design</p>
+</div>
 
 The Statistic table holds the statistical values for the within
 replication statistics as shown in
@@ -643,23 +571,15 @@ field called `DefintitionID`. This field is a database foreign key to
 the Definition table. With this field you can relate the two tables
 together and get the name and type of statistic.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig23.png" alt="Statistic table field" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig23)Statistic table field</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig23} 
-
-}
-
-\caption{Statistic table field}(\#fig:Appch7fig23)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig24} 
-
-}
-
-\caption{Accessing statistics information}(\#fig:Appch7fig24)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig24.png" alt="Accessing statistics information" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig24)Accessing statistics information</p>
+</div>
 
 To explore these tables, you will work with the database called
 *DB-Stat-Example.mdb*. This file was produced by running the
@@ -670,14 +590,10 @@ then open the table called Definition. Select the desired row, e.g. row
 as shown in Figure \@ref(fig:Appch7fig24). Then, select the Statistic table and
 press the OK button as shown in the figure.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig25} 
-
-}
-
-\caption{Replication statistics for make and inspect time}(\#fig:Appch7fig25)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig25.png" alt="Replication statistics for make and inspect time" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig25)Replication statistics for make and inspect time</p>
+</div>
 
 Figure \@ref(fig:Appch7fig25) shows the result of inserting the linked
 data sheet and selecting the "+\" sign for the statistic named "Record
@@ -691,40 +607,28 @@ statistical package such as R. For those familiar with writing queries,
 this same information can be extracted by writing the query as shown in
 Figure \@ref(fig:Appch7fig26).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig26} 
-
-}
-
-\caption{Query to access replication statistics}(\#fig:Appch7fig26)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig26.png" alt="Query to access replication statistics" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig26)Query to access replication statistics</p>
+</div>
 
 To summarize the statistics across the replications, you can write a
 group by query as shown in Figure \@ref(fig:Appch7fig27).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig27} 
-
-}
-
-\caption{Query to summarize replication statistics}(\#fig:Appch7fig27)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig27.png" alt="Query to summarize replication statistics" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig27)Query to summarize replication statistics</p>
+</div>
 
 In the original LOTR Ring Maker, Inc. model, an OUTPUT statistic was
 defined to collect the time that the simulation ended. The OUTPUT
 statistic values collected at the end of each replication are saved in
 the Output table as shown in Figure \@ref(fig:Appch7fig28).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch7fig28} 
-
-}
-
-\caption{Output table field design}(\#fig:Appch7fig28)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig28.png" alt="Output table field design" width="80%" height="80%" />
+<p class="caption">(\#fig:Appch7fig28)Output table field design</p>
+</div>
 
 To see the collected values for a specific defined statistic, you can
 again use the Definition table. Open up the Definition table and scroll
@@ -741,14 +645,10 @@ within the Reports database. If you are an experienced Microsoft Access
 user you can then form custom queries, reports, charts, etc. for your
 simulation results.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppMiscArenaTopics/ch7fig29} 
-
-}
-
-\caption{Expanded data sheet view for OUTPUT statistics}(\#fig:Appch7fig29)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch7fig29.png" alt="Expanded data sheet view for OUTPUT statistics" width="65%" height="65%" />
+<p class="caption">(\#fig:Appch7fig29)Expanded data sheet view for OUTPUT statistics</p>
+</div>
 
 \FloatBarrier
 
@@ -782,14 +682,10 @@ to a database.
 In this example, the SMART file, *Smarts162.doe*, is used to show how to
 read from a text file. Open up the file named *Smarts162Revised.doe*.  Figure \@ref(fig:ch10fig46) provides an overview of the model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch10fig46} 
-
-}
-
-\caption{Smarts 162 Model}(\#fig:ch10fig46)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig46.png" alt="Smarts 162 Model" width="90%" height="90%" />
+<p class="caption">(\#fig:ch10fig46)Smarts 162 Model</p>
+</div>
 
 In this model, entities arrive according to a Poisson process, the type
 of entity and thus the resulting path through the processing is
@@ -802,14 +698,10 @@ attributes (`myType`, `myStation1PT`, `myStation2PT`) are read in. The
 `myType` attribute is tested in the DECIDE module and the attributes
 `myStation1PT` and `myStation2PT` are used in the PROCESS modules.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.35\linewidth,height=0.35\textheight]{./figures2/AppMiscArenaTopics/ch10fig47} 
-
-}
-
-\caption{Sample processing times is simdat.txt}(\#fig:ch10fig47)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig47.png" alt="Sample processing times is simdat.txt" width="35%" height="35%" />
+<p class="caption">(\#fig:ch10fig47)Sample processing times is simdat.txt</p>
+</div>
 
 In Figure \@ref(fig:ch10fig49), the end of file action specifies what to do with the entity when the end
 of the file is reached. The Error option can be used if an unexpected
@@ -840,23 +732,15 @@ The rest of the model is straightforward. In this case, the values from
 the file are read into the attributes of an entity. The values of an
 array can also be read in using this technique.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig48.png" alt="READWRITE module for simdat.txt" width="55%" height="55%" />
+<p class="caption">(\#fig:ch10fig48)READWRITE module for simdat.txt</p>
+</div>
 
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch10fig48} 
-
-}
-
-\caption{READWRITE module for simdat.txt}(\#fig:ch10fig48)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch10fig49} 
-
-}
-
-\caption{FILE module for Smarts162Revised.doe}(\#fig:ch10fig49)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig49.png" alt="FILE module for Smarts162Revised.doe" width="55%" height="55%" />
+<p class="caption">(\#fig:ch10fig49)FILE module for Smarts162Revised.doe</p>
+</div>
 
 \FloatBarrier
 
@@ -867,14 +751,10 @@ array. The CREATE module creates a single entity and the ASSIGN module
 initializes the array index. Then, iterative looping is performed using
 a DECIDE module as previously discussed in Chapter \@ref(ch4).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch10fig50} 
-
-}
-
-\caption{Smarts164.doe reading in a 2-D array}(\#fig:ch10fig50)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig50.png" alt="Smarts164.doe reading in a 2-D array" width="90%" height="90%" />
+<p class="caption">(\#fig:ch10fig50)Smarts164.doe reading in a 2-D array</p>
+</div>
 
 In this particular example, the entity delays for 10 minutes before
 looping to read in the next values for the array. The assignments for
@@ -883,14 +763,10 @@ two WHILE-ENDWHILE loops could allow for reading in the size of the
 array. You would first read in the number of rows and columns and then
 loop through each row/column combination.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig51} 
-
-}
-
-\caption{READWRITE assignments module using arrays}(\#fig:ch10fig51)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig51.png" alt="READWRITE assignments module using arrays" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig51)READWRITE assignments module using arrays</p>
+</div>
 
 \FloatBarrier
 
@@ -901,14 +777,10 @@ these will often suffice. For more user friendly input of the data to
 files, you can read from Excel files. Smarts file 185, Figure \@ref(fig:ch10fig52), shows how to read
 in values from an Excel named range.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch10fig52} 
-
-}
-
-\caption{Smarts185.doe reading from an Excel named range}(\#fig:ch10fig52)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig52.png" alt="Smarts185.doe reading from an Excel named range" width="90%" height="90%" />
+<p class="caption">(\#fig:ch10fig52)Smarts185.doe reading from an Excel named range</p>
+</div>
 
 In order to read or write to an Excel named range, the named range must
 already be defined within the spreadsheet. Open up the Excel file
@@ -921,14 +793,10 @@ any way that facilitates the understanding of your data input
 requirements and then name the cells required for input. The named
 ranges are then accessible through the FILE module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch10fig53} 
-
-}
-
-\caption{Checking the named range in Excel}(\#fig:ch10fig53)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig53.png" alt="Checking the named range in Excel" width="80%" height="80%" />
+<p class="caption">(\#fig:ch10fig53)Checking the named range in Excel</p>
+</div>
 
 In this example, the processing times are distributed according to a
 triangular distribution. The named spreadsheet cells hold the parameters
@@ -945,14 +813,10 @@ modules in the top level create logic to read in each of the rows
 associated with the processing times. In the bottom create logic, each
 new entity reads in a new row from the named range.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch10fig54} 
-
-}
-
-\caption{Data sheet view of FILE module}(\#fig:ch10fig54)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig54.png" alt="Data sheet view of FILE module" width="90%" height="90%" />
+<p class="caption">(\#fig:ch10fig54)Data sheet view of FILE module</p>
+</div>
 
 After setting up the spreadsheet and defining the named ranges within
 Excel, you must then a file with the named range. This is accomplished
@@ -963,14 +827,10 @@ to add a new row and fill in *AccessType*, Operating System File Name,
 End of File Action, and Initialize Option the same as in the previous
 row. Then, click on the define Recordsets row button.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig55} 
-
-}
-
-\caption{Defining the recordset for the FILE module}(\#fig:ch10fig55)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig55.png" alt="Defining the recordset for the FILE module" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig55)Defining the recordset for the FILE module</p>
+</div>
 
 You will see a dialog box similar to
 Figure \@ref(fig:ch10fig55). is smart enough to connect to Excel
@@ -984,14 +844,10 @@ try this with the ProcessingTime named range, you will see a view of the
 data similar to that shown in Figure \@ref(fig:ch10fig56). As you can see, it is very simple
 to define a named range and connect to it.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig56} 
-
-}
-
-\caption{Viewing the ProcessingTime named range}(\#fig:ch10fig56)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig56.png" alt="Viewing the ProcessingTime named range" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig56)Viewing the ProcessingTime named range</p>
+</div>
 
 Now, you have to indicate how to use the named range within the
 READWRITE module. Open up the READWRITE module, see
@@ -1004,14 +860,10 @@ can also use these procedures to write to Excel named ranges and to
 Access using active data objects (ADO). See for example SMARTS files 189
 and 190.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig57} 
-
-}
-
-\caption{READWRITE module using named range}(\#fig:ch10fig57)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig57.png" alt="READWRITE module using named range" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig57)READWRITE module using named range</p>
+</div>
 
 Making the simulation file driven takes special planning on how to
 organize the model to take advantage of the data input. Using sets and
@@ -1050,14 +902,10 @@ This example involves the use of Microsoft Access, if you do not have
 Access then just follow along with the text. In addition, the creation
 of the database show in Figure \@ref(fig:ch10fig58) will not be discussed. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppMiscArenaTopics/ch10fig58} 
-
-}
-
-\caption{PharmacyDB Access Database}(\#fig:ch10fig58)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig58.png" alt="PharmacyDB Access Database" width="65%" height="65%" />
+<p class="caption">(\#fig:ch10fig58)PharmacyDB Access Database</p>
+</div>
 
 The database has two tables: one to hold the inputs and one to hold the output across
 simulation replications. Each row in the table *InputTable* has three
@@ -1074,14 +922,10 @@ three columns. The first column is the replication number, the second
 column will hold the average waiting time in the queue and the third
 column will hold the half-width reported from .
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig59} 
-
-}
-
-\caption{Read and write logic for Access example}(\#fig:ch10fig59)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig59.png" alt="Read and write logic for Access example" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig59)Read and write logic for Access example</p>
+</div>
 
 Open up the *PharmacyModelRWv1.doe* file and examine the VARIABLE
 module. Notice that variables have been defined to hold the mean time
@@ -1100,14 +944,10 @@ Excel named ranges operate. Figure \@ref(fig:ch10fig60) shows the basic setup in
 data sheet view. Opening up the recordset rows allows you to define the
 tables as recordsets. You should define the recordsets as indicated in the figure.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch10fig60} 
-
-}
-
-\caption{Read and write logic for Access example}(\#fig:ch10fig60)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig60.png" alt="Read and write logic for Access example" width="80%" height="80%" />
+<p class="caption">(\#fig:ch10fig60)Read and write logic for Access example</p>
+</div>
 
 The two READWRITE modules are quite simple. In the first READWRITE
 module (Figure \@ref(fig:ch10fig61)), the variables `RepNum`, `MTBA`, and `MST` are assigned values from
@@ -1116,23 +956,15 @@ for the run. The second READWRITE module (Figure \@ref(fig:ch10fig62)) writes ou
 `RepNum` and uses the functions `TAVG()` and `THALF()` to get the values
 of the statistics associated with the waiting time in queue.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig61.png" alt="READWRITE assignments in first READWRITE module" width="55%" height="55%" />
+<p class="caption">(\#fig:ch10fig61)READWRITE assignments in first READWRITE module</p>
+</div>
 
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch10fig61} 
-
-}
-
-\caption{READWRITE assignments in first READWRITE module}(\#fig:ch10fig61)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig62} 
-
-}
-
-\caption{READWRITE assignments in second READWRITE module}(\#fig:ch10fig62)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig62.png" alt="READWRITE assignments in second READWRITE module" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig62)READWRITE assignments in second READWRITE module</p>
+</div>
 
 Now, the setup of the replications must be considered. In this model, at
 the beginning of each replication the parameters will be read in. Since
@@ -1141,14 +973,10 @@ will be set to 3 so that all rows are read in. In addition, the run
 length is set to 1000 hours and the base time unit to minutes, as shown
 in Figure \@ref(fig:ch10fig63).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig63} 
-
-}
-
-\caption{Run setup parameters for the database example}(\#fig:ch10fig63)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig63.png" alt="Run setup parameters for the database example" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig63)Run setup parameters for the database example</p>
+</div>
 
 Only one final module is left to edit. Open up the DELAY module. See Figure \@ref(fig:ch10fig64). The
 entity entering this module should delay for the length of the
@@ -1157,14 +985,10 @@ length of the simulation *in base time units*. Thus, the entity should
 delay for `TFIN` units. Make sure that the units match the base time
 units specified in the Run Setup dialog.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig64} 
-
-}
-
-\caption{Delaying for the length of the replication}(\#fig:ch10fig64)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig64.png" alt="Delaying for the length of the replication" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig64)Delaying for the length of the replication</p>
+</div>
 
 After the entity delays for `TFIN` time units, it enters the READWRITE
 module where it writes out the values of the statistics at that time.
@@ -1172,28 +996,20 @@ After running the model, you can open up the Microsoft Access database
 and view the *OutputTable* table. You should see the results for each of
 the three replications.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig65} 
-
-}
-
-\caption{Output within the Access database}(\#fig:ch10fig65)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig65.png" alt="Output within the Access database" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig65)Output within the Access database</p>
+</div>
 
 Suppose now you wanted to replicate each run involving the parameter
 settings 3 times. All you would need to do would be to set up your
 Access input table as shown in Figure \@ref(fig:ch10fig65) and change the number of replications
 to 9 in the Run Setup dialog.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.3\linewidth,height=0.3\textheight]{./figures2/AppMiscArenaTopics/ch10fig66} 
-
-}
-
-\caption{Making repeated replications}(\#fig:ch10fig66)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig66.png" alt="Making repeated replications" width="30%" height="30%" />
+<p class="caption">(\#fig:ch10fig66)Making repeated replications</p>
+</div>
 
 This same approach can be easily repeated for larger models. This allows
 you to specify a set of experiments, say according to an experimental
@@ -1344,37 +1160,25 @@ In order to write a subroutine to handle the *RunBegin* event, you must
 use the VBA Editor. Within the environment use the Tools $>$ Macro $>$
 Show Visual Basic Editor menu option (as shown in Figure \@ref(fig:ch10fig67)).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppMiscArenaTopics/ch10fig67} 
-
-}
-
-\caption{Showing the Visual Basic editor}(\#fig:ch10fig67)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig67.png" alt="Showing the Visual Basic editor" width="60%" height="60%" />
+<p class="caption">(\#fig:ch10fig67)Showing the Visual Basic editor</p>
+</div>
 
 This will open the VBA Editor as shown in Figure \@ref(fig:ch10fig68). If you double click on the
 *ThisDocument* item in the VBA projects tree as illustrated in
 Figure \@ref(fig:ch10fig68), you will open up a VBA module that is
 specifically associated with the current model.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig68.png" alt="Showing the Visual Basic editor" width="80%" height="80%" />
+<p class="caption">(\#fig:ch10fig68)Showing the Visual Basic editor</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch10fig68} 
-
-}
-
-\caption{Showing the Visual Basic editor}(\#fig:ch10fig68)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig69} 
-
-}
-
-\caption{Showing the VBA Events for Arena}(\#fig:ch10fig69)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig69.png" alt="Showing the VBA Events for Arena" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig69)Showing the VBA Events for Arena</p>
+</div>
 
 A number of VBA events (Figure \@ref(fig:ch10fig69)) have already been defined for the model. Let's
 insert an event routine to handle the *RunBegin* event. Place your
@@ -1413,14 +1217,10 @@ that the subroutine is called at the proper time. You will quite
 naturally want to put more useful code within your VBA event
 subroutines.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig70} 
-
-}
-
-\caption{Message Box for RunBegin example}(\#fig:ch10fig70)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig70.png" alt="Message Box for RunBegin example" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig70)Message Box for RunBegin example</p>
+</div>
 
 A number of similar VBA event subroutines have been defined with similar
 message boxes. Go back to the Environment and press the run button on
@@ -1509,14 +1309,10 @@ this example is to illustrate VBA, the model is a simple single server
 queuing system as illustrated in Figure \@ref(fig:ch10fig71). The model consists of CREATE, ASSIGN,
 PROCESS, VBA, and DISPOSE modules.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig71} 
-
-}
-
-\caption{Simple VBA example model}(\#fig:ch10fig71)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig71.png" alt="Simple VBA example model" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig71)Simple VBA example model</p>
+</div>
 
 The VBA block is found on the Blocks panel. To attach the Blocks panel,
 you can right-click in the Basic Process Panel area and select Attach,
@@ -1587,14 +1383,10 @@ also display some information. Thus, the forms to be used in the example
 need to be developed. Use Insert $>$ UserForm to create two forms called
 `Interact` and `UserForm1` as shown in Figure \@ref(fig:ch10fig72).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/AppMiscArenaTopics/ch10fig72} 
-
-}
-
-\caption{Building the Interact form}(\#fig:ch10fig72)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig72.png" alt="Building the Interact form" width="90%" height="90%" />
+<p class="caption">(\#fig:ch10fig72)Building the Interact form</p>
+</div>
 
 Use the show toolbox button to show the VBA controls toolbox. Then, you
 can select the desired control and place your cursor on the form at the
@@ -1605,23 +1397,15 @@ Toolbox). The name of a form can be changed in the Misc $>$ (Name)
 property as shown in Figure \@ref(fig:ch10fig74). Now that the forms have been built, the
 controls on the forms can be referenced within other VBA modules.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig73.png" alt="VBA UserForm1" width="45%" height="45%" />
+<p class="caption">(\#fig:ch10fig73)VBA UserForm1</p>
+</div>
 
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/AppMiscArenaTopics/ch10fig73} 
-
-}
-
-\caption{VBA UserForm1}(\#fig:ch10fig73)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/AppMiscArenaTopics/ch10fig74} 
-
-}
-
-\caption{Properties Window}(\#fig:ch10fig74)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig74.png" alt="Properties Window" width="50%" height="50%" />
+<p class="caption">(\#fig:ch10fig74)Properties Window</p>
+</div>
 
 Before looking at the code for this situation, we need to understand how
 to interchange data between the model and the VBA code. This will be
@@ -2160,14 +1944,10 @@ refer to the *Smarts019.doe* file for the details of the various dialog
 boxes. To implement the resource costing, you must specify the RESOURCE
 costs as per Figure \@ref(fig:ch10fig15).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig15} 
-
-}
-
-\caption{Specifying resource costs}(\#fig:ch10fig15)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig15.png" alt="Specifying resource costs" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig15)Specifying resource costs</p>
+</div>
 
 On the Run Setup dialog make sure that the Costing check box is enabled
 on the Project Parameters tab. This will ensure that the statistical
@@ -2176,14 +1956,10 @@ summary across all resources and allow you to drill down to get specific
 cost information for each resource for each category (busy, idle, and
 usage) as shown in Figure \@ref(fig:ch10fig16).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig16} 
-
-}
-
-\caption{Resource cost summary}(\#fig:ch10fig16)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig16.png" alt="Resource cost summary" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig16)Resource cost summary</p>
+</div>
 
 Table \@ref(tab:ResCosts) and Table \@ref(tab:BandICost) indicate how the costs are tabulated from
 Arena's statistical reports for the resources. In
@@ -2237,32 +2013,20 @@ Figure \@ref(fig:ch10fig19), Arena also tabulates costs for the
 entities. Let's take a look at another example to examine how entity
 costs are tabulated.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig17.png" alt="Smart049.doe with resources based on schedule" width="80%" height="80%" />
+<p class="caption">(\#fig:ch10fig17)Smart049.doe with resources based on schedule</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/AppMiscArenaTopics/ch10fig17} 
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig18.png" alt="Schedule for Smarts049.doe" width="65%" height="65%" />
+<p class="caption">(\#fig:ch10fig18)Schedule for Smarts049.doe</p>
+</div>
 
-}
-
-\caption{Smart049.doe with resources based on schedule}(\#fig:ch10fig17)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppMiscArenaTopics/ch10fig18} 
-
-}
-
-\caption{Schedule for Smarts049.doe}(\#fig:ch10fig18)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/AppMiscArenaTopics/ch10fig19} 
-
-}
-
-\caption{Summary costs for resoruces following a schedule}(\#fig:ch10fig19)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig19.png" alt="Summary costs for resoruces following a schedule" width="85%" height="85%" />
+<p class="caption">(\#fig:ch10fig19)Summary costs for resoruces following a schedule</p>
+</div>
 
 \FloatBarrier
 
@@ -2334,14 +2098,10 @@ costs automatically for you. Don't forget the golden rule of computing:
 need to *carefully* specify the cost elements within the *entire* model.
 Let's take a closer look at how tabulates the costs.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppMiscArenaTopics/ch10fig21} 
-
-}
-
-\caption{ENTITY Module Costing Terms for Smarts047.doe}(\#fig:ch10fig21)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig21.png" alt="ENTITY Module Costing Terms for Smarts047.doe" width="55%" height="55%" />
+<p class="caption">(\#fig:ch10fig21)ENTITY Module Costing Terms for Smarts047.doe</p>
+</div>
 
 Entity cost modeling begins by specifying the cost rates for the types
 of entities in the ENTITY module. In addition, to get a meaningful
@@ -2415,27 +2175,19 @@ in Figure \@ref(fig:ch10fig20), Figure \@ref(fig:ch10fig21), and
 Figure \@ref(fig:ch10fig22) illustrates how to allocate the value
 added time within the contract addendum process.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/AppMiscArenaTopics/ch10fig20} 
-
-}
-
-\caption{Resource Costs for Smarts047.doe}(\#fig:ch10fig20)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig20.png" alt="Resource Costs for Smarts047.doe" width="75%" height="75%" />
+<p class="caption">(\#fig:ch10fig20)Resource Costs for Smarts047.doe</p>
+</div>
 
 By running this model with 1 entity, you can more easily see how the
 value added costs are tabulated. If you run the model, the value added
 cost for 1 entity is about \$19.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppMiscArenaTopics/ch10fig22} 
-
-}
-
-\caption{Allocating the value added time}(\#fig:ch10fig22)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig22.png" alt="Allocating the value added time" width="65%" height="65%" />
+<p class="caption">(\#fig:ch10fig22)Allocating the value added time</p>
+</div>
 
 Figure \@ref(fig:ch10fig23) indicates that the value added
 processing time for the contract at the addendum process was 55.4317
@@ -2465,14 +2217,10 @@ done for each contract entity for every value added activity experienced
 by the entity. In the case of the single entity, the total cost of
 \$19.16 for the addendum and notary activities is shown in Table \@ref(tab:EntityCost).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/AppMiscArenaTopics/ch10fig23} 
-
-}
-
-\caption{Processing time}(\#fig:ch10fig23)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/AppMiscArenaTopics/ch10fig23.png" alt="Processing time" width="50%" height="50%" />
+<p class="caption">(\#fig:ch10fig23)Processing time</p>
+</div>
 
 \FloatBarrier
 

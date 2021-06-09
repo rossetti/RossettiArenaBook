@@ -114,14 +114,10 @@ worker may be busy moving a part between stations.
 Figure \@ref(fig:ch7fig1) illustrates the new situation for the test
 and repair shop involving the use of workers.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch7/ch7fig1} 
-
-}
-
-\caption{Test and repair shop with workers providing the movement}(\#fig:ch7fig1)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig1.jpg" alt="Test and repair shop with workers providing the movement"  />
+<p class="caption">(\#fig:ch7fig1)Test and repair shop with workers providing the movement</p>
+</div>
 
 Since workers are required for the processing of parts at the stations
 and they might have to perform the movement of parts between stations,
@@ -145,14 +141,10 @@ individually. In particular, the other resources marked TW2 and TW3
 should technically have seize and release arrows associated with them
 for the testing activity at a particular station.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig2} 
-
-}
-
-\caption{Activity diagram for revised test and repair situation}(\#fig:ch7fig2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig2.jpg" alt="Activity diagram for revised test and repair situation" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig2)Activity diagram for revised test and repair situation</p>
+</div>
 
 It should be clear from the figure that three sets of resources will be
 required in this model. A resource set should be defined for the
@@ -244,14 +236,10 @@ having a single resource with capacity 3 to three resources each with
 capacity 1. This will enable all eight workers represented as resources
 to be placed in an overall worker(resource)set.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig3} 
-
-}
-
-\caption{Resources for test and repair shop}(\#fig:ch7fig3)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig3.jpg" alt="Resources for test and repair shop" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig3)Resources for test and repair shop</p>
+</div>
 
 Use the SET module on the Basic Process panel to define each of the
 three sets required for this problem.
@@ -263,14 +251,10 @@ them as shown. Recall that for the preferred resource selection rule,
 the order of the resources matters. The cyclical rule is used in this
 model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig4} 
-
-}
-
-\caption{Resource sets for test and repair shop}(\#fig:ch7fig4)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig4.jpg" alt="Resource sets for test and repair shop" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig4)Resource sets for test and repair shop</p>
+</div>
 
 Now that the new resources and their sets have been defined, you need to
 update each of the PROCESS modules in order to ensure that the
@@ -288,14 +272,10 @@ along with the model building process, you should update each of the
 PROCESS modules as described. The completed model is found in the file
 *RepairShopResourceConstrained.doe* that accompanies this chapter.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig5} 
-
-}
-
-\caption{Seizing with the diagnostic process}(\#fig:ch7fig5)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig5.jpg" alt="Seizing with the diagnostic process" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig5)Seizing with the diagnostic process</p>
+</div>
 
 Now the ENTER and LEAVE modules can be specified. The STATION modules
 associated with the 3 testing stations and the repair station will be
@@ -307,14 +287,10 @@ station. Delete the ROUTE module associated with the diagnostic station
 and drag a LEAVE module into its place. Then fill out the LEAVE module
 as shown in Figure \@ref(fig:ch7fig6).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig6} 
-
-}
-
-\caption{LEAVE module for test and repair shop}(\#fig:ch7fig6)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig6.jpg" alt="LEAVE module for test and repair shop" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig6)LEAVE module for test and repair shop</p>
+</div>
 
 When you first open the LEAVE module, it will not look as shown in the
 figure. As can be seen in the figure, it is divided into three
@@ -351,14 +327,10 @@ Figure \@ref(fig:ch7fig6). You should make sure to change the name
 of the modules after the cut/paste operation, since no two modules can
 have the same name.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch7/ch7fig7} 
-
-}
-
-\caption{ENTER module for test and repair shop}(\#fig:ch7fig7)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig7.jpg" alt="ENTER module for test and repair shop" width="65%" height="65%" />
+<p class="caption">(\#fig:ch7fig7)ENTER module for test and repair shop</p>
+</div>
 
 Now, the ENTER module can be specified. The ENTER module for test
 station 1 is given in Figure \@ref(fig:ch7fig7). Again, the ENTER module allows a
@@ -387,14 +359,10 @@ contract specification has been reduced by about 10% (from 82.51% in
 Chapter  \@ref(ch4) to 72.04% in this example). This is due to the increase in the average
 system time.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig8} 
-
-}
-
-\caption{Probability of meeting the contract requirements}(\#fig:ch7fig8)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig8.jpg" alt="Probability of meeting the contract requirements" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig8)Probability of meeting the contract requirements</p>
+</div>
 
 As can be seen in
 Figure \@ref(fig:ch7fig9), the time spent waiting in the
@@ -403,23 +371,15 @@ there are 4 queues, this time has added significantly to the system time
 of the parts. In Figure \@ref(fig:ch7fig10), the utilization of the resources is
 relatively high (near 90% in most cases).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig9.jpg" alt="Queue statistics for test and repair shop with resource constrained transfer" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig9)Queue statistics for test and repair shop with resource constrained transfer</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig9} 
-
-}
-
-\caption{Queue statistics for test and repair shop with resource constrained transfer}(\#fig:ch7fig9)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig10} 
-
-}
-
-\caption{Utilization statistics for test and repair shop with resource constrained transfer}(\#fig:ch7fig10)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig10.jpg" alt="Utilization statistics for test and repair shop with resource constrained transfer" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig10)Utilization statistics for test and repair shop with resource constrained transfer</p>
+</div>
 
 Because of the increased risk of not meeting the contract specifications
 for the system modeled with the more realistic use of workers to
@@ -455,14 +415,10 @@ toolbar. Notice that in the figure, the toolbar has been detached. The
 two key buttons that will be used are the Station Marker button and the
 Route connector button.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig11} 
-
-}
-
-\caption{Final animation for resource constrained transfer}(\#fig:ch7fig11)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig11.jpg" alt="Final animation for resource constrained transfer" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig11)Final animation for resource constrained transfer</p>
+</div>
 
 An overview of how to create this animation starting from the file
 *RepairShopResourceConstrainedTransfer.doe* is as follows:
@@ -537,14 +493,10 @@ visualizing the flow through the station. Station markers and
 connections will have to be placed for all the connections indicated in
 Table \@ref(tab:FromToTable).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig12} 
-
-}
-
-\caption{Station markers and route connections}(\#fig:ch7fig12)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig12.jpg" alt="Station markers and route connections" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig12)Station markers and route connections</p>
+</div>
 
 If you miss a connection, you just will not see the part moving between
 the associated stations. To connect existing station markers, click on
@@ -712,14 +664,10 @@ transporter is freed. As shown in the figure, conceptually, the HALT and
 ACTIVATE modules affect whether or not the transporter is available to
 be requested/allocated.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig13} 
-
-}
-
-\caption{Activity diagram for general transporter case}(\#fig:ch7fig13)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig13.jpg" alt="Activity diagram for general transporter case" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig13)Activity diagram for general transporter case</p>
+</div>
 
 The activity diagram in Figure \@ref(fig:ch7fig13) represents very well how the test
 and repair system will need to operate with transporters. The next
@@ -789,14 +737,10 @@ distance set must be given a name so that the name can be referenced by
 the TRANSPORTER module. Now, the transporters for the model can be
 defined using the TRANSPORTER module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig14} 
-
-}
-
-\caption{DISTANCE module for general transporter case}(\#fig:ch7fig14)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig14.jpg" alt="DISTANCE module for general transporter case" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig14)DISTANCE module for general transporter case</p>
+</div>
 
 The TRANSPORTER module, see Figure \@ref(fig:ch7fig15), allows the transporter to be
 given a name and various other attributes. The TRANSPORTER module
@@ -813,14 +757,10 @@ initial position specifies where the transporter will be located at the
 beginning of the replication. In this case, the workers will start
 active at the diagnostics station.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig15} 
-
-}
-
-\caption{TRANSPORTER module for general transporter case}(\#fig:ch7fig15)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig15.jpg" alt="TRANSPORTER module for general transporter case" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig15)TRANSPORTER module for general transporter case</p>
+</div>
 
 Now that the data modules are defined, let's take a look at the overall
 model. Figure \@ref(fig:ch7fig16) shows the overall test and repair model
@@ -829,14 +769,10 @@ model open you should notice the new blue colored modules. These are
 from the Advanced Transfer panel and have replaced the LEAVE modules
 from the previous model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig16} 
-
-}
-
-\caption{Overall test and repair model with transporters}(\#fig:ch7fig16)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig16.jpg" alt="Overall test and repair model with transporters" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig16)Overall test and repair model with transporters</p>
+</div>
 
 The other change from the previous model involves the updating of the
 ENTER modules. The ENTER module change is very straight forward. You
@@ -846,14 +782,10 @@ Figure \@ref(fig:ch7fig17) illustrates the changes to the ENTER
 module for entering test station 1. By default the transporter unit that
 the entity currently has is freed.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig17} 
-
-}
-
-\caption{ENTER module with free transporter option}(\#fig:ch7fig17)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig17.jpg" alt="ENTER module with free transporter option" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig17)ENTER module with free transporter option</p>
+</div>
 
 The changes to the LEAVE module are not as simple. Because a random
 velocity value is needed whenever the worker begins moving, the LEAVE
@@ -862,14 +794,10 @@ for the transporter as defined in the TRANSPORTER module. Since the
 default velocity in the TRANSPORTER module must be a real number (not an
 expression), the REQUEST and TRANSPORT modules are used in this example.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch7/ch7fig18} 
-
-}
-
-\caption{REQUEST module}(\#fig:ch7fig18)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig18.jpg" alt="REQUEST module" width="50%" height="50%" />
+<p class="caption">(\#fig:ch7fig18)REQUEST module</p>
+</div>
 
 Figure \@ref(fig:ch7fig18) shows the REQUEST module for the
 example. In the REQUEST module, you must specify which transporter to
@@ -931,14 +859,10 @@ transporter is not available the entity waits in queue. This module gets
 the transporter to the entity. Now you have to use the transporter to
 transport the entity using the TRANSPORT module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig19} 
-
-}
-
-\caption{TRANSPORT module}(\#fig:ch7fig19)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig19.jpg" alt="TRANSPORT module" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig19)TRANSPORT module</p>
+</div>
 
 Figure \@ref(fig:ch7fig19) shows the TRANSPORT module for the
 test and repair example. The TRANSPORT module is very similar to the
@@ -962,14 +886,10 @@ this is checked, and the Transporters check-box is checked on the
 Project Parameters tab on the Run Setup dialog, then the number busy and
 utilization of the transporters will be reported automatically.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig20} 
-
-}
-
-\caption{Transporter statistics}(\#fig:ch7fig20)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig20.jpg" alt="Transporter statistics" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig20)Transporter statistics</p>
+</div>
 
 As can be seen in Figure \@ref(fig:ch7fig20), the utilization of the three
 transporters is very low. Less than three workers a probably need for
@@ -1016,23 +936,15 @@ follows:
     for defining a resource animation picture as shown in
     Figure \@ref(fig:ch7fig22).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig21.jpg" alt="Placing the distance animation elements" width="65%" height="65%" />
+<p class="caption">(\#fig:ch7fig21)Placing the distance animation elements</p>
+</div>
 
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch7/ch7fig21} 
-
-}
-
-\caption{Placing the distance animation elements}(\#fig:ch7fig21)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch7/ch7fig22} 
-
-}
-
-\caption{Defining the transporter picture}(\#fig:ch7fig22)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig22.jpg" alt="Defining the transporter picture" width="65%" height="65%" />
+<p class="caption">(\#fig:ch7fig22)Defining the transporter picture</p>
+</div>
 
 Now the animation involving the transporters is complete. If you run the
 model with animation turned on, you will see that there is only about 1
@@ -1172,14 +1084,10 @@ Figure \@ref(fig:ch7fig23) illustrates the idea of modeling a conveyor
 as a set of contiguous cells representing the space on the conveyor. One
 way to think of this is like an escalator with each cell being a step.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch7/ch7fig23} 
-
-}
-
-\caption{A conveyor conceptualized as a set of contiguous cells}(\#fig:ch7fig23)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig23.jpg" alt="A conveyor conceptualized as a set of contiguous cells"  />
+<p class="caption">(\#fig:ch7fig23)A conveyor conceptualized as a set of contiguous cells</p>
+</div>
 
 In the figure, if each cell represents 1 foot and the total length of
 the conveyor is 15 feet, then there will be 15 cells. The cell size of
@@ -1289,14 +1197,10 @@ step" it needs the next cell. As it crosses over to the next cell it
 releases the previous cell that it occupied. It is as if the entity's
 "step size" is 1 cell at a time.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig24} 
-
-}
-
-\caption{Different entity sizes on a conveyor}(\#fig:ch7fig24)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig24.jpg" alt="Different entity sizes on a conveyor" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig24)Different entity sizes on a conveyor</p>
+</div>
 
 Figure \@ref(fig:ch7fig25) illustrates an approximate
 activity flow diagram for an entity using a non-accumulating conveyor.
@@ -1315,14 +1219,10 @@ conveyor modeling clearly depends upon the number of cells and the size
 of the entity. Thus, the activity diagram would actually vary by the
 size of the entity (number of cells required).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig25} 
-
-}
-
-\caption{Activity diagram for non-accumulating conveyor}(\#fig:ch7fig25)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig25.jpg" alt="Activity diagram for non-accumulating conveyor" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig25)Activity diagram for non-accumulating conveyor</p>
+</div>
 
 The larger the number of cells to model a segment of a conveyor the more
 slowly the model will execute; however, a larger number of cells allows
@@ -1359,14 +1259,10 @@ the distances from each station going in clockwise order are as follows:
 
 -   Test station 3 to diagnostics, 30 feet
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig26} 
-
-}
-
-\caption{Test and repair shop with conveyors}(\#fig:ch7fig26)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig26.jpg" alt="Test and repair shop with conveyors" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig26)Test and repair shop with conveyors</p>
+</div>
 
 Assume that the conveyor's velocity is 10 feet per minute. These figures
 have been provided in this example; however, in modeling a real system,
@@ -1400,14 +1296,10 @@ follows:
 4.  Save your file. The completed model can be found in the file
     *RepairShopWithConveyorsWithNoAnimation.doe*.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig27} 
-
-}
-
-\caption{Array for part sizes}(\#fig:ch7fig27)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig27.jpg" alt="Array for part sizes" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig27)Array for part sizes</p>
+</div>
 
 Now, you are ready to define the conveyor and its segments. You will
 first define the segments for the conveyor, then the conveyor itself.
@@ -1418,14 +1310,10 @@ station associated with the first segment of the conveyor. Since this is
 a loop conveyor, the beginning station is arbitrary. The diagnostic
 station is used here since this is where the parts enter the system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig28} 
-
-}
-
-\caption{SEGMENT module for test and repair conveyor}(\#fig:ch7fig28)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig28.jpg" alt="SEGMENT module for test and repair conveyor" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig28)SEGMENT module for test and repair conveyor</p>
+</div>
 
 Then, the next station and the distance to the next station are given
 for each part of the conveyor. Notice that the distances have been added
@@ -1438,14 +1326,10 @@ associated the conveyor with a segment use the Segment Name drop down
 box. The next decision is the type of conveyor. In this case, a
 non-accumulating conveyor should be used.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig29} 
-
-}
-
-\caption{CONVEYOR module for test and repair example}(\#fig:ch7fig29)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig29.jpg" alt="CONVEYOR module for test and repair example" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig29)CONVEYOR module for test and repair example</p>
+</div>
 
 The velocity of the conveyor is 10 feet per minute. Now, the cell size
 and the maximum cells occupied text-boxes must be completed. The cell
@@ -1476,14 +1360,10 @@ the size can be used in the LEAVE module. You can do this with the
 "Assign Test Plan\" ASSIGN module as shown in
 Figure \@ref(fig:ch7fig30).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig30} 
-
-}
-
-\caption{Assigning the size of the parts}(\#fig:ch7fig30)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig30.jpg" alt="Assigning the size of the parts" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig30)Assigning the size of the parts</p>
+</div>
 
 The LEAVE modules must be updated to use the conveyor to transfer out
 and to indicate the number of cells required by the entity. This is done
@@ -1492,28 +1372,20 @@ Each of the other LEAVE modules for the other stations should be updated
 in a similar fashion. Now, you must update the ENTER module so that the
 entity can exit the conveyor after arriving to the desired station.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig31} 
-
-}
-
-\caption{LEAVE module for test and repair example}(\#fig:ch7fig31)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig31.jpg" alt="LEAVE module for test and repair example" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig31)LEAVE module for test and repair example</p>
+</div>
 
 In Figure \@ref(fig:ch7fig32), the Exit Conveyor option is used when
 transferring into the Test 1 Station. In both of the ENTER and LEAVE
 modules, the option of delaying the entity is available. This can be
 used to represent a loading or an unloading time for the conveyor.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig32} 
-
-}
-
-\caption{ENTER module for test station 1}(\#fig:ch7fig32)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig32.jpg" alt="ENTER module for test station 1" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig32)ENTER module for test station 1</p>
+</div>
 
 With the conveyor statistics check-box clicked, the conveyor statistics
 will appear on the summary reports. See Figure \@ref(fig:ch7fig33). The utilization is calculated for
@@ -1528,14 +1400,10 @@ this example may make it difficult to justify the use of conveyors for
 the test and repair shop. Ultimately, the decision would come down to a
 cost/benefit analysis.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig33} 
-
-}
-
-\caption{Statistics for test and repair shop with conveyors}(\#fig:ch7fig33)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig33.jpg" alt="Statistics for test and repair shop with conveyors" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig33)Statistics for test and repair shop with conveyors</p>
+</div>
 
 \FloatBarrier
 
@@ -1548,23 +1416,15 @@ pictures for each type of plan. This is illustrated in
 Figure \@ref(fig:ch7fig34) and Figure \@ref(fig:ch7fig35). The assignment to the Entity.Picture
 attribute is shown in Figure \@ref(fig:ch7fig39).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig34.jpg" alt="Enity pictures for test plans" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig34)Enity pictures for test plans</p>
+</div>
 
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig34} 
-
-}
-
-\caption{Enity pictures for test plans}(\#fig:ch7fig34)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig35} 
-
-}
-
-\caption{Picture set for test plans}(\#fig:ch7fig35)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig35.jpg" alt="Picture set for test plans" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig35)Picture set for test plans</p>
+</div>
 
 To update the previous transporter animation, perform the following
 steps.
@@ -1583,14 +1443,10 @@ steps.
     shown in Figure \@ref(fig:ch7fig36). It works very much like the
     route and distance animation dialog.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch7/ch7fig36} 
-
-}
-
-\caption{Segment animation dialog}(\#fig:ch7fig36)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig36.jpg" alt="Segment animation dialog" width="50%" height="50%" />
+<p class="caption">(\#fig:ch7fig36)Segment animation dialog</p>
+</div>
 
 After the segments have been laid down, you might want to place some
 lines to represent the conveyors. This was done in
@@ -1674,28 +1530,20 @@ required while moving will be larger than that required when
 accumulating. This will allow spacing between the entities when moving
 and allow them to get closer to each other when accumulating.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch7/ch7fig37} 
-
-}
-
-\caption{Accumulating conveyor dialog}(\#fig:ch7fig37)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig37.jpg" alt="Accumulating conveyor dialog" width="55%" height="55%" />
+<p class="caption">(\#fig:ch7fig37)Accumulating conveyor dialog</p>
+</div>
 
 The test and repair example barely required non-accumulating conveyors.
 Thus, to illustrate accumulating conveyors, a SMART file,
 *(Smarts101.doe)*, will be used. See Figure \@ref(fig:ch7fig38). The SMART files can be found within the
 folder within your Arena installation.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig38} 
-
-}
-
-\caption{Arena Smarts101.doe model for accumulating conveyors}(\#fig:ch7fig38)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig38.jpg" alt="Arena Smarts101.doe model for accumulating conveyors" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig38)Arena Smarts101.doe model for accumulating conveyors</p>
+</div>
 
 In this example, there is 1 segment for the conveyor of length 10, which
 (while not specified in the model) can be assumed to be in meters. The
@@ -1730,14 +1578,10 @@ accesses the unloading dock's conveyor rides the length of the conveyor
 and then attempts to get on the main conveyor. After it has accessed the
 main conveyor, the entity exits its current unloading dock conveyor.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig39} 
-
-}
-
-\caption{Transferring between conveyors}(\#fig:ch7fig39)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig39.jpg" alt="Transferring between conveyors" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig39)Transferring between conveyors</p>
+</div>
 
 Arena has two SMART files that illustrate these concepts. Let's first take a
 look at *Smarts107.doe*. Figure \@ref(fig:ch7fig39) illustrates the overall model.
@@ -1755,14 +1599,10 @@ of this, it is very natural to model this situation with accumulating
 conveyors. The feeder conveyors will back up as entities try to get on
 the main conveyor.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig40} 
-
-}
-
-\caption{One conveyor merging into another}(\#fig:ch7fig40)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig40.jpg" alt="One conveyor merging into another" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig40)One conveyor merging into another</p>
+</div>
 
 A similar example, Figure \@ref(fig:ch7fig40), involves the merging of one conveyor onto anther
 conveyor as in SMART file, *Smarts110.doe*. In this example, there are
@@ -1783,14 +1623,10 @@ entities coming from Entry B to potentially wait for space on the main
 conveyor. This basic idea can be expanded to any number of feeder
 conveyors along a longer main conveyor.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig41} 
-
-}
-
-\caption{Simple alternating conveyor}(\#fig:ch7fig41)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig41.jpg" alt="Simple alternating conveyor" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig41)Simple alternating conveyor</p>
+</div>
 
 Diverging conveyors are often used in system that sort items. The items
 come in on one main conveyor and are transferred to any number of other
@@ -1829,14 +1665,10 @@ stops to do the insertion. These types of situations can be easily
 modeled in by not exiting the conveyor while undergoing a PROCESS
 module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig42} 
-
-}
-
-\caption{Processing while on a conveyor}(\#fig:ch7fig42)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig42.jpg" alt="Processing while on a conveyor" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig42)Processing while on a conveyor</p>
+</div>
 
 Arena's SMART file, *Smarts103.doe*, contains an example of this type of
 modeling. In this example, as shown in
@@ -1881,14 +1713,10 @@ chapter in the file called
 model and watch the animation, you will see much more parts on the
 conveyor because of the re-circulation.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig43} 
-
-}
-
-\caption{Test and repair shop with recirculating conveyor}(\#fig:ch7fig43)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig43.jpg" alt="Test and repair shop with recirculating conveyor" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig43)Test and repair shop with recirculating conveyor</p>
+</div>
 
 There are still a number of issues related to conveyor modeling that
 have not discussed, especially the use of the specialized variables
@@ -1929,14 +1757,10 @@ is divided into a network of links and intersections. This is called the
 vehicle's path network.  Figure \@ref(fig:ch7fig44) illustrates the major concepts in
 guided vehicle modeling: networks, links, intersections, and stations.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig44} 
-
-}
-
-\caption{Relational diagram for guided vehicle networks}(\#fig:ch7fig44)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig44.jpg" alt="Relational diagram for guided vehicle networks" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig44)Relational diagram for guided vehicle networks</p>
+</div>
 
 A link is a connection between two points in a network. Every link has a
 beginning intersection and an ending intersection. The link represents
@@ -1954,14 +1778,10 @@ many people present, you may want the velocity of the transporter to
 automatically be reduced. Figure \@ref(fig:ch7fig45) illustrates a simple three link
 network.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig45} 
-
-}
-
-\caption{Example three link network}(\#fig:ch7fig45)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig45.jpg" alt="Example three link network" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig45)Example three link network</p>
+</div>
 
 In the figure, Link 1 is bidirectional with a beginning intersection
 label I1 and an ending intersection labeled `I2`. Link 1 consists of 4
@@ -1998,14 +1818,10 @@ with many stations. Transporters within a guided path network can be
 sent to specific stations, intersections, or zones. Only the use of
 stations will be illustrated here.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch7/ch7fig46} 
-
-}
-
-\caption{NETWORK module for guided path modeling}(\#fig:ch7fig46)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig46.jpg" alt="NETWORK module for guided path modeling" width="45%" height="45%" />
+<p class="caption">(\#fig:ch7fig46)NETWORK module for guided path modeling</p>
+</div>
 
 The new constructs that are to be discussed include the NETWORK and
 NETWORK LINK modules on the Advanced Transfer template. The NETWORK
@@ -2021,14 +1837,10 @@ Figure \@ref(fig:ch7fig47) illustrates the NETWORK LINK module.
 Notice that the spreadsheet view of the module makes editing multiple
 links relatively easy.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig47} 
-
-}
-
-\caption{NETWORK LINK module}(\#fig:ch7fig47)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig47.jpg" alt="NETWORK LINK module" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig47)NETWORK LINK module</p>
+</div>
 
 Now, let's take a look at a simple example. In this example, parts
 arrive to an entry station every 25 minutes, where they wait for one of
@@ -2039,14 +1851,10 @@ shown in Figure \@ref(fig:ch7fig48). There are seven intersections and seven
 links in this example. The distances between the intersections are shown
 in the figure.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig48} 
-
-}
-
-\caption{Layout for simple AGV example}(\#fig:ch7fig48)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig48.jpg" alt="Layout for simple AGV example" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig48)Layout for simple AGV example</p>
+</div>
 
 In modeling this situation, you need to make a number of decisions
 regarding transporter characteristics, the division of space along the
@@ -2059,14 +1867,10 @@ Figure \@ref(fig:ch7fig49) shows the TRANSPORTER module for using
 guided path transporters. When the "Guided" type is selected, additional
 options become available.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch7/ch7fig49} 
-
-}
-
-\caption{TRANSPORTER module for simple AGV example}(\#fig:ch7fig49)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig49.jpg" alt="TRANSPORTER module for simple AGV example" width="60%" height="60%" />
+<p class="caption">(\#fig:ch7fig49)TRANSPORTER module for simple AGV example</p>
+</div>
 
 Because transporters take space on the path, the choice of initial
 position can be important. A transporter can be placed at a station that
@@ -2120,14 +1924,10 @@ working with a real AGV system, these factors can be discerned from the
 specification of the vehicle and the physical requirements of the
 system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch7/ch7fig50} 
-
-}
-
-\caption{Illustrating zone control}(\#fig:ch7fig50)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig50.jpg" alt="Illustrating zone control" width="85%" height="85%" />
+<p class="caption">(\#fig:ch7fig50)Illustrating zone control</p>
+</div>
 
 To understand why the direction of travel and spurs are important, you
 need to understand how the transporters move from zone to zone and the
@@ -2238,14 +2038,10 @@ Because it is so easy to get in deadlock situations with bidirectional
 links, you should think carefully about their use when using them within
 your models.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch7/ch7fig51} 
-
-}
-
-\caption{Animating guided path transporters}(\#fig:ch7fig51)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig51.jpg" alt="Animating guided path transporters" width="90%" height="90%" />
+<p class="caption">(\#fig:ch7fig51)Animating guided path transporters</p>
+</div>
 
 The animation of guided path transporters is very similar to regular
 transporters. On the Animation Transfer toolbar the Network Link button
@@ -2326,8 +2122,7 @@ Thus, in the next chapter, we will apply a full range of modeling constructs to 
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P1"><strong>(\#exr:ch7P1) </strong></span>Suppose a service facility
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P1"><strong>(\#exr:ch7P1) </strong></span>Suppose a service facility
 consists of two stations in series (tandem), each with its own FIFO
 queue. Each station consists of a queue and a single server. A customer
 completing service at station 1 proceeds to station 2, while a customer
@@ -2337,8 +2132,7 @@ variables with a mean of 1 minute. Service times of customers at station
 1 are exponential random variables with a mean of 0.7 minute, and at
 station 2 are exponential random variables with mean 0.9 minute. Assume that the travel time between the two stations must be modeled. The travel time is distributed according to
 a triangular distribution with parameters (1, 2, 4) minutes.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 a. Model the system assuming that the worker from the first station moves the parts to the second station. The movement of the part should be given priority if there is another part
 waiting to be processed at the first station.
 
@@ -2349,8 +2143,7 @@ exactly 20000 minutes with a warm up period of 5000 minutes.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P2"><strong>(\#exr:ch7P2) </strong></span>Reconsider part (b) of Exercise \@ref(exr:ch7P1).
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P2"><strong>(\#exr:ch7P2) </strong></span>Reconsider part (b) of Exercise \@ref(exr:ch7P1).
 Instead of immediately moving the part, the transport worker waits until
 a batch of 5 parts has been produced at the first station. When this
 occurs, the worker moves the batch of parts to the second station. The
@@ -2358,13 +2151,11 @@ parts are still processed individually at the second station. From your
 model, estimate the total system time for the parts, the utilization of
 the workers, and the average number of parts waiting for the workers.
 Run the simulation for exactly 20000 minutes with a warm up period of
-5000 minutes.
-\EndKnitrBlock{exercise}
+5000 minutes.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P3"><strong>(\#exr:ch7P3) </strong></span>Redo Exercise \@ref(exr:ch4P250) using resource constrained transfer. Assume that there
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P3"><strong>(\#exr:ch7P3) </strong></span>Redo Exercise \@ref(exr:ch4P250) using resource constrained transfer. Assume that there
 are 2 workers at the diagnostic station, 1 worker per testing station,
 and 3 workers at the repair station. Thus, there are a total of 8
 workers in the system. Furthermore, assume that any of these 8 workers
@@ -2376,48 +2167,39 @@ the movement. Assume that parts waiting for processing at a station will
 be given priority over parts that require movement between stations.
 Build a simulation model that can assist the company in assessing the
 risks associated with the new contract under this resource constrained
-situation.
-\EndKnitrBlock{exercise}
+situation.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P4"><strong>(\#exr:ch7P4) </strong></span>Redo Exercise \@ref(exr:ch4P260) assuming that there is a pool of 3 workers that
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P4"><strong>(\#exr:ch7P4) </strong></span>Redo Exercise \@ref(exr:ch4P260) assuming that there is a pool of 3 workers that
 perform the transport between the stations. Assume that the transport
 time is triangularly distributed with parameters (2, 4, 6) all in
 minutes. Make an assessment for the company for the appropriate number
-of workers to have in the transport worker pool.
-\EndKnitrBlock{exercise}
+of workers to have in the transport worker pool.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P5"><strong>(\#exr:ch7P5) </strong></span>Redo Exercise \@ref(exr:ch5P170) assuming that there is a pool of 3 workers that
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P5"><strong>(\#exr:ch7P5) </strong></span>Redo Exercise \@ref(exr:ch5P170) assuming that there is a pool of 3 workers that
 perform the transport between the stations. Assume that the transport
 time is triangularly distributed with parameters (2, 4, 6) all in
 minutes. Make an assessment for the company for the appropriate number
-of workers to have in the transport worker pool.
-\EndKnitrBlock{exercise}
+of workers to have in the transport worker pool.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P6"><strong>(\#exr:ch7P6) </strong></span>In Section \@ref(ch7:TRTransporters) the test and repair system was analyzed with 3
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P6"><strong>(\#exr:ch7P6) </strong></span>In Section \@ref(ch7:TRTransporters) the test and repair system was analyzed with 3
 transporters. Re-analyzed this situation and recommend an appropriate
-number of transport workers.
-\EndKnitrBlock{exercise}
+number of transport workers.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P7"><strong>(\#exr:ch7P7) </strong></span>Reconsider part (b) of Exercise \@ref(exr:ch7P1)
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P7"><strong>(\#exr:ch7P7) </strong></span>Reconsider part (b) of Exercise \@ref(exr:ch7P1)
 Instead of modeling the problem with a resource, the problem should be
 modeled with a transporter. Assume that there is 1 transporter (fork
 truck) that must move the parts between the two stations. The distance
 between the two stations is 100 meters and the fork truck's velocity
 between the stations is triangularly distributed with parameters (25,
-50, 60) in meters per minute.
-\EndKnitrBlock{exercise}
+50, 60) in meters per minute.</div>\EndKnitrBlock{exercise}
 a.  Model the system and estimate the total
 system time for the parts, the utilization of the workers, and the
 average number of parts waiting for the fork truck. Run the simulation
@@ -2432,13 +2214,11 @@ this situation.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P8"><strong>(\#exr:ch7P8) </strong></span>Reconsider Exercise \@ref(exr:ch7P4). The distances between the four stations (in feet)
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P8"><strong>(\#exr:ch7P8) </strong></span>Reconsider Exercise \@ref(exr:ch7P4). The distances between the four stations (in feet)
 are given in the following table. After the parts finish the processing
 at the last station of their sequence they are transported to an exit
 station, where they begin their shipping process.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -- --------- ----- ---- ---- ---- ------
       Station    A    B    C    D    Exit
@@ -2458,15 +2238,13 @@ bottlenecks in the system.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P9"><strong>(\#exr:ch7P9) </strong></span>Reconsider the Test and Repair
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P9"><strong>(\#exr:ch7P9) </strong></span>Reconsider the Test and Repair
 example from Section \@ref(ch7:TRTransporters) In this problem, the workers have a home base that
 they return to whenever there are no more waiting requests rather than
 idling at their last drop off point. The home base is located at the
 center of the shop. The distances from each station to the home base are
 given in as follows.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -- ------------- ------------- -------- -------- -------- -------- -----------
         Station     Diagnostics   Test 1   Test 2   Test 3   Repair   Home base
@@ -2487,12 +2265,10 @@ specifications based on this new design.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P10"><strong>(\#exr:ch7P10) </strong></span>Reconsider Exercise \@ref(exr:kanban) with transporters to move the parts between the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P10"><strong>(\#exr:ch7P10) </strong></span>Reconsider Exercise \@ref(exr:kanban) with transporters to move the parts between the
 stations. The stations are arranged sequentially in a flow line with 25
 meters between each station, with the distances provided as follows:
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -- --------- ---- ---- ---- ------
       Station   1    2    3    Exit
@@ -2514,8 +2290,7 @@ throughput of the system.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P11"><strong>(\#exr:ch7P11) </strong></span>Three independent conveyors
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P11"><strong>(\#exr:ch7P11) </strong></span>Three independent conveyors
 deliver 1 foot parts to a warehouse. Once inside the warehouse, the
 conveyors merge onto one main conveyor to take the parts to shipping.
 Parts arriving on conveyor 1 follow a Poisson process with a rate of 6
@@ -2530,13 +2305,11 @@ long and is an accumulating conveyor operating at a speed of 25 feet per
 minute. Consider the parts as being disposed after they reach the end of
 the main conveyor. Simulate this system for 480 minutes and estimate the
 accessing times and the average number of parts waiting for the
-conveyors.
-\EndKnitrBlock{exercise}
+conveyors.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P12"><strong>(\#exr:ch7P12) </strong></span> Reconsider Exercise \@ref(exr:kanban) with conveyors to move the parts between the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P12"><strong>(\#exr:ch7P12) </strong></span> Reconsider Exercise \@ref(exr:kanban) with conveyors to move the parts between the
 stations. Suppose that a single non-accumulating conveyor of length 75
 meters, with 25 meter segments between each of the stations is used in
 the system. When a part is needed by a downstream station, it is loaded
@@ -2545,25 +2318,18 @@ seconds, uniformly distributed. The speed of the conveyor is 5 meters
 per minute. If a part is produced and the downstream station requires
 the part, it is loaded onto the conveyor. By using the run parameters of
 Exercise \@ref(exr:kanban), estimate the effect of the conveyors on the
-throughput of the system.
-\EndKnitrBlock{exercise}
+throughput of the system.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P13"><strong>(\#exr:ch7P13) </strong></span>This problem considers the use
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P13"><strong>(\#exr:ch7P13) </strong></span>This problem considers the use
 of AGVs for the Test and Repair System of this chapter. The layout of
-the proposed system is given in Figure \@ref(fig:ch7fig52) with all measurements in meters.
-\EndKnitrBlock{exercise}
+the proposed system is given in Figure \@ref(fig:ch7fig52) with all measurements in meters.</div>\EndKnitrBlock{exercise}
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch7/ch7fig52} 
-
-}
-
-\caption{Proposed system layout}(\#fig:ch7fig52)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig52.jpg" alt="Proposed system layout" width="70%" height="70%" />
+<p class="caption">(\#fig:ch7fig52)Proposed system layout</p>
+</div>
 
 There is only 1 AGV in this system. It is 1 meter in length and moves at
 a velocity of 30 meters per minute. Its home base is at the dead end of
@@ -2582,13 +2348,11 @@ enough that you could simulate your design.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P14"><strong>(\#exr:ch7P14) </strong></span>*(This problem is based on an example on page 223 of [@pegden1995introduction]. Used with permission)*
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P14"><strong>(\#exr:ch7P14) </strong></span>*(This problem is based on an example on page 223 of [@pegden1995introduction]. Used with permission)*
 Reconsider Excercise \@ref(exr:ch5P180) with the use of transporters. Assume that all parts are
 transferred by using two fork trucks that travel at an average speed of
 150 feet per minute. The distances (in feet) between the stations are
-provided in the table below.
-\EndKnitrBlock{exercise}
+provided in the table below.</div>\EndKnitrBlock{exercise}
 
                  Enter   Workstation   Paint   New Paint   Pack   Exit
   ------------- ------- ------------- ------- ----------- ------ ------
@@ -2613,8 +2377,7 @@ the transport and queuing within the system.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P15"><strong>(\#exr:ch7P15) </strong></span>*(This problem is based on an example on page 381 of [@pegden1995introduction]. Used with permission)*.
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P15"><strong>(\#exr:ch7P15) </strong></span>*(This problem is based on an example on page 381 of [@pegden1995introduction]. Used with permission)*.
 Reconsider Exercise \@ref(exr:ch7P14) with the use of AGVs. There are now 3 AGVs
 that travel at a speed of 100 feet per minute to transport the parts
 within the system.
@@ -2634,17 +2397,12 @@ vehicles should be along Link 11. Each vehicle is 10 feet in length or 1
 zone. The release at start form of zone control should be used.
 
 The guided path network for the AGVs is given in Figure \@ref(fig:ch7fig53):
+</div>\EndKnitrBlock{exercise}
 
-\EndKnitrBlock{exercise}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch7/ch7fig53} 
-
-}
-
-\caption{AGV system layout}(\#fig:ch7fig53)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch7/ch7fig53.jpg" alt="AGV system layout" width="80%" height="80%" />
+<p class="caption">(\#fig:ch7fig53)AGV system layout</p>
+</div>
 
 Analyze this system to determine any potential bottleneck operations.
 Report on the average flow times of the parts as a whole and
@@ -2656,8 +2414,7 @@ the transport and queuing within the system.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch7P16"><strong>(\#exr:ch7P16) </strong></span>A single automatic guided
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch7P16"><strong>(\#exr:ch7P16) </strong></span>A single automatic guided
 vehicle (AGV) is used to pick up finished parts from three machines and
 drop them off at a store room. The AGV is designed to carry 5 totes.
 Each tote can hold up to 10 parts. The machines produce individual parts
@@ -2665,8 +2422,7 @@ according to a Poisson process with the rates indicated in the table
 below. The machines are designed to directly drop the parts into a tote.
 When a tote is full, it is released down a gravity conveyor to the AGV
 loading area. It takes 2 seconds for the tote to move along the conveyor
-to the machine's loading area.
-\EndKnitrBlock{exercise}
+to the machine's loading area.</div>\EndKnitrBlock{exercise}
 
   Station      Production Rate    Tote Loading Time     Travel distance to next station
   ----------- ----------------- ---------------------- ---------------------------------
