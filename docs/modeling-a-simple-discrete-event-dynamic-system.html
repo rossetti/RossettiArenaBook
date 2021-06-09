@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.6 Modeling a Simple Discrete-Event Dynamic System | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.6 Modeling a Simple Discrete-Event Dynamic System | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.6 Modeling a Simple Discrete-Event Dynamic System | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch2-ProcessModeling.html"/>
+<link rel="next" href="ch2-PM-Extension.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modeling-a-simple-discrete-event-dynamic-system" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Modeling a Simple Discrete-Event Dynamic System</h2>
+<p>This section presents how to model a system in which the state changes
+at discrete events in time as discussed in the previous section.</p>
+<div id="ch2:DriveThruPharmacy" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> A Drive through Pharmacy</h3>
+<p>This example considers a small pharmacy that has a single line for
+waiting customers and only one pharmacist. Assume that customers arrive
+at a drive through pharmacy window according to a Poisson distribution
+with a mean of 10 per hour. The time that it takes the pharmacist to
+serve the customer is random and data has indicated that the time is
+well modeled with an exponential distribution with a mean of 3 minutes.
+Customers who arrive to the pharmacy are served in the order of arrival
+and enough space is available within the parking area of the adjacent
+grocery store to accommodate any waiting customers.</p>
+<p>The drive through pharmacy system can be conceptualized as a single
+server waiting line system, where the server is the pharmacist. An
+idealized representation of this system is shown in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:DriveThru">2.28</a>. If the pharmacist is busy serving a
+customer, then additional customers will wait in line. In such a
+situation, management might be interested in how long customers wait in
+line, before being served by the pharmacist. In addition, management
+might want to predict if the number of waiting cars will be large.
+Finally, they might want to estimate the utilization of the pharmacist
+in order to ensure that the pharmacist is not too busy.</p>
+<div class="figure" style="text-align: center"><span id="fig:DriveThru"></span>
+<img src="figures2/ch2/fig26DriveThruPharmacy.png" alt="Simple drive through pharmacy" width="80%" height="80%" />
+<p class="caption">
+Figure 2.28: Simple drive through pharmacy
+</p>
+</div>
+</div>
+<div id="ch2:ModelingThePharmacy" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Modeling the System</h3>
+<p>Process modeling is predicated on modeling the process flow of "entities" through a
+system. Thus, the first question to ask is: <em>What is the system</em>? In
+this situation, the system is the pharmacist and the potential customers
+as idealized in Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:DriveThru">2.28</a>. Now you should consider the entities of
+the system. An entity is a conceptual thing of importance that flows
+through a system potentially using the resources of the system.
+Therefore, one of the first questions to ask when developing an model
+is: <em>What are the entities</em>? In this situation, the entities are the
+customers that need to use the pharmacy. This is because customers are
+discrete things that enter the system, flow through the system, and then
+depart the system.</p>
+<p>Since entities often use things as they flow through the system, a
+natural question is to ask: <em>What are the resources that are used by the
+entities</em>? A resource is something that is used by the entities and that
+may constrain the flow of the entities within the system. Another way to
+think of resources is to think of the things that provide service in the
+system. In this situation, the entities “use” the pharmacist in order to
+get their medicine. Thus, the pharmacist can be modeled as a resource.</p>
+<p>Since we are modeling the process flows of the entities
+through a system, it is natural to ask: <em>What are the process flows</em>? In
+answering this question, it is conceptually useful to pretend that you
+are an entity and to ask: <em>What to I do</em>? In this situation, you can
+pretend that you are a pharmacy customer. <em>What does a customer do</em>?
+Arrive, get served, and leave. As you can see, initial modeling involves
+identifying the elements of the system and what those elements do. The
+next step in building a simulation model is to enhance your conceptual
+understanding of the system through conceptual modeling. For this simple
+system, very useful conceptual model has already been given in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:DriveThru">2.28</a>. As you proceed through this text, you will
+learn other conceptual model building techniques. From the conceptual
+modeling, you might proceed to more logical modeling in preparation for
+using . A useful logical modeling tool is to develop pseudo-code for the
+situation. Here is some potential pseudo-code for this situation.</p>
+<ul>
+<li><p>Create customers according to Poisson arrival process</p></li>
+<li><p>Process the customers through the pharmacy</p></li>
+<li><p>Dispose of the customers as they leave the system</p></li>
+</ul>
+<p>The pseudo-code represents the logical flow of an entity (customer)
+through the drive through pharmacy: Arrive (create), get served
+(process), leave (dispose).</p>
+<p>Another useful conceptual modeling tool is the <em>activity diagram</em>. An
+<em>activity</em> is an operation that takes time to complete. An activity is
+associated with the state of an object over an interval of time.
+Activities are defined by the occurrence of two events which represent
+the activity’s beginning time and ending time and mark the entrance and
+exit of the state associated with the activity. An activity diagram is a
+pictorial representation of the process (steps of activities) for an
+entity and its interaction with resources while within the system. If
+the entity is a temporary entity (i.e. it flows through the system) the
+activity diagram is called an activity flow diagram. If the entity is
+permanent (i.e. it remains in the system throughout its life) the
+activity diagram is called an activity cycle diagram. The notation of an
+activity diagram is very simple, and can be augmented as needed to
+explain additional concepts:</p>
+<dl>
+<dt>Queues</dt>
+<dd><p>shown as a circle with queue labeled inside</p>
+</dd>
+<dt>Activities</dt>
+<dd><p>shown as a rectangle with appropriate label inside</p>
+</dd>
+<dt>Resources</dt>
+<dd><p>shown as small circles with resource labeled inside</p>
+</dd>
+<dt>Lines/arcs</dt>
+<dd><p>indicating flow (precedence ordering) for engagement of entities in
+activities or for obtaining resources. Dotted lines are used to
+indicate the seizing and releasing of resources.</p>
+</dd>
+<dt>zigzag lines</dt>
+<dd><p>indicate the creation or destruction of entities</p>
+</dd>
+</dl>
+<p>Activity diagrams are especially useful for illustrating how entities
+interact with resources. Activity diagrams are easy to build by hand and
+serve as a useful communication mechanism. Since they have a simple set
+of symbols, it is easy to use an activity diagram to communicate with
+people who have little simulation background. Activity diagrams are an
+excellent mechanism to document your conceptual model of the system
+before building the model in .</p>
+<div class="figure" style="text-align: center"><span id="fig:ActivityDiagram"></span>
+<img src="figures2/ch2/fig27ActivityDiagram.png" alt="Activity diagram for drive through pharmacy" width="60%" height="60%" />
+<p class="caption">
+Figure 2.29: Activity diagram for drive through pharmacy
+</p>
+</div>
+<p>Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:ActivityDiagram">2.29</a> shows the activity diagram for the
+pharmacy situation. This diagram was built using Visio software and the
+drawing is available with the supplemental files for this chapter. You
+can use this drawing to copy and paste from, in order to form other
+activity diagrams, but I recommend just drawing activity diagrams free-hand.</p>
+<p>An activity diagram describes the life of an entity within
+the system. The zigzag lines at the top of the diagram indicate the
+creation of an entity. While not necessary, the diagram has been
+augmented with like pseudo-code to represent the CREATE statement.
+Consider following the life of the customer through the pharmacy.
+Following the direction of the arrows, the customers are first created
+and then enter the queue. Notice that the diagram clearly shows that
+there is a queue for the drive-through customers. You should think of
+the entity flowing through the diagram. As it flows through the queue,
+the customer attempts to start an activity. In this case, the activity
+requires a resource. The pharmacist is shown as a resource (circle) next
+to the rectangle that represents the service activity.</p>
+<p>The customer requires the resource in order to start its service
+activity. This is indicated by the dashed arrow from the pharmacist
+(resource) to the top of the service activity rectangle. If the customer
+does not get the resource, they wait in the queue. Once they receive the
+number of units of the resource requested, they proceed with the
+activity. The activity represents a delay of time and in this case the
+resource is used throughout the delay. After the activity is completed,
+the customer releases the pharmacist (resource). This is indicated by
+another dashed arrow, with the direction indicating that the resource is
+"being put back" or released. After the customer completes its service
+activity, the customer leaves the system. This is indicated with the
+zigzag lines going to no-where and augmented with the keyword DISPOSE.
+The dashed arrows of a typical activity diagram have also been augmented
+with the like pseudo-code of SEIZE and RELEASE. The conceptual model of
+this system can be summarized as follows:</p>
+<dl>
+<dt>System</dt>
+<dd><p>The system has a pharmacist that acts as a resource, customers that
+act as entities, and a queue to hold the waiting customers. The
+state of the system includes the number of customers in the system,
+in the queue, and in service.</p>
+</dd>
+<dt>Events</dt>
+<dd><p>Arrivals of customers to the system, which occur within an
+inter-event time that is exponentially distributed with a mean of 6
+minutes.</p>
+</dd>
+<dt>Activities</dt>
+<dd><p>The service time of the customers are exponentially distributed with
+a mean of 3 minutes.</p>
+</dd>
+<dt>Conditional delays</dt>
+<dd><p>A conditional delay occurs when an entity has to wait for a
+condition to occur in order to proceed. In this system, the customer
+may have to wait in a queue until the pharmacist becomes available.</p>
+</dd>
+</dl>
+<p>With an activity diagram and pseudo-code such as this available to
+represent a solid conceptual understanding of the system, you can begin
+the model development process.</p>
+<div class="figure" style="text-align: center"><span id="fig:DriveThruOverview"></span>
+<img src="figures2/ch2/fig28OverviewDriveThruArenaModel.png" alt="Overview of pharmacy model" width="80%" height="80%" />
+<p class="caption">
+Figure 2.30: Overview of pharmacy model
+</p>
+</div>
+</div>
+<div id="ch2:PM:Implementation" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Pharmacy Model Implementation</h3>
+<p>Now, you are ready to implement the conceptual model. If you
+haven’t already done so, open up the Arena Environment. Using the Basic
+Process Panel template, drag the CREATE, PROCESS, and DISPOSE modules
+into the model window and make sure that they are connected as shown in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:DriveThruOverview">2.30</a>. In order to drag and drop the modules,
+simply select the module within the Basic Process template and drag the
+module into the model window, letting go of the mouse when you have
+positioned the module in the desired location. If the module within the
+model window is highlighted (selected), the next dragged module will
+automatically be connected. If you placed the modules and they weren’t
+automatically connected, then you can use the connect toolbar icon.
+Select the icon and then select the “from" module near the connection
+exit point and then holding the mouse button down drag to form a
+connection line to the entry point of the”to" module. The names of the
+modules will not match what is shown in the figure. You will name the
+modules as you fill out their dialog boxes.</p>
+</div>
+<div id="ch2:PM:Arrivals" class="section level3" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> Specify the Arrival Process</h3>
+<p>Within Arena nothing happens unless entities enter the model. This is done
+through the use of the CREATE module. Actually, this statement is not quite true and not quite false. You don’t necessarily have to have a CREATE module in the model to get things to happen, but this requires the use of advanced techniques that are beyond the scope of this book. In the current example, pharmacy
+customers arrive according to a Poisson process with a mean of <span class="math inline">\(\lambda\)</span>
+= 10 per hour. According to probability theory, this implies that the
+time between arrivals is exponentially distributed with a mean of
+(<span class="math inline">\(1/\lambda\)</span>). Thus, for this situation, the mean time between arrivals is 6 minutes.</p>
+<p><span class="math display" id="eq:rateConversion">\[\begin{equation}
+\frac{1}{\lambda} = \frac{\text{1 hour}}{\text{10 customers}} \times \frac{\text{60 minutes}}{\text{1 hour}} = \frac{\text{6 minutes}}{\text{customer}}
+\tag{2.6}
+\end{equation}\]</span></p>
+
+<div class="rmdwarning">
+<strong>Do not make the mistake of using the arrival rate within the CREATE module</strong> The CREATE module uses the time between arrivals. Convert your arrival rate to the time between arrivals as shown in Equation <a href="modeling-a-simple-discrete-event-dynamic-system.html#eq:rateConversion">(2.6)</a>.
+</div>
+<p>Open up the CREATE module (by double clicking on it) and fill it in as
+shown in Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMCreateModule">2.31</a>. The distribution for the “Time Between
+Arrivals” is by default Exponential, Random (expo) in the figure. In
+this instance, the “Value" textbox refers to the mean time between
+arrivals.”Entities per Arrival" specifies how many customers arrive at
+each arrival. Since more than one customer does not arrive at a time,
+the value is set to 1. “Max Arrivals” specifies the total number of
+arrival events that will occur for the CREATE module. This is set at the
+default “Infinite” since a fixed number of customers to arrive is not
+specified for this example. The “First Creation” specifies the time of
+the first arrival event. Technically, the time to the first event for a
+Poisson arrival process is exponentially distributed. Hence, expo(6) has
+been used with the appropriate mean time, where expo(<em>mean</em>) is a
+function within that generates random variables according to the
+exponential distribution function with the supplied mean.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMCreateModule"></span>
+<img src="figures2/ch2/fig29PMCreateModule.png" alt="Pharmacy model CREATE module" width="60%" height="60%" />
+<p class="caption">
+Figure 2.31: Pharmacy model CREATE module
+</p>
+</div>
+<p>Make sure that you specify the units for time as minutes and be sure to
+press OK; otherwise, your work within the module will be lost. In
+addition, as you build models you never know what could go wrong;
+therefore, you should save your models often as you proceed through the
+model building process. Take the opportunity to save your model before
+proceeding.</p>
+<p>Before proceeding there is one last thing that you should do related to
+the entities. Since the customers drive cars, you will change the
+picture associated with the customer entity that was defined in the
+CREATE module. To do this you will use the ENTITY module within the
+Basic Process panel. The ENTITY module is a data module. A data module
+cannot be dragged and dropped into the model window. Data modules
+require the model builder to enter information in either the spreadsheet
+window or in a dialog box. To see the dialog box, select the row from
+the spreadsheet view, right-click and choose the edit via dialog option.
+You will use the spreadsheet view here. Select the ENTITY module in the
+Basic Process panel and use the corresponding spreadsheet view to select
+the picture for the entity as shown in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMEntityModule">2.32</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMEntityModule"></span>
+<img src="figures2/ch2/fig30PMEntityModule.png" alt="Pharmacy model ENTITY module" width="80%" height="80%" />
+<p class="caption">
+Figure 2.32: Pharmacy model ENTITY module
+</p>
+</div>
+</div>
+<div id="ch2:PM:Resources" class="section level3" number="2.6.5">
+<h3><span class="header-section-number">2.6.5</span> Specifying the Resources</h3>
+<p>Go to the Basic Process Panel and select the RESOURCE module. This
+module is also a data module. As you selected the RESOURCE module, the
+data sheet window (Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMResourceDM">2.33</a>) should have changed to reflect this selection.
+Double-click on the row in the spreadsheet module for the RESOURCE
+module to add a resource to the model.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMResourceDM"></span>
+<img src="figures2/ch2/fig31PMResourceDM.png" alt="RESOURCE module in data sheet view" width="75%" height="75%" />
+<p class="caption">
+Figure 2.33: RESOURCE module in data sheet view
+</p>
+</div>
+<p>After the resource row has been added, select the row and right-click.
+This will bring up a context menu. From this context menu, select edit
+via dialog box. Make the resulting dialog box look like
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMResourceDB">2.34</a> You can also type in the same
+information that you typed in the dialog box from within the spreadsheet
+view. This defines a resource that can be used in the model. The
+resource’s name is Pharmacist and it has a capacity of one. Now, you
+have to indicate how the customers will use this resource within a
+process.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMResourceDB"></span>
+<img src="figures2/ch2/fig32PMResourceDialog.png" alt="RESOURCE dialog box" width="45%" height="45%" />
+<p class="caption">
+Figure 2.34: RESOURCE dialog box
+</p>
+</div>
+</div>
+<div id="ch2:PM:Process" class="section level3" number="2.6.6">
+<h3><span class="header-section-number">2.6.6</span> Specify the Process</h3>
+<p>A process can be thought of as a set of activities experienced by an
+entity. There are two basic ways in which processing can occur: resource
+constrained and resource unconstrained. In the current situation,
+because there is only one pharmacist and the customer will need to wait
+if the pharmacist is busy, the situation is resource constrained. A
+PROCESS module provides for the basic modeling of processes within an
+model. You specify this within a PROCESS module by having the entity
+<em>seize</em> the resource for the specified usage time. After the usage time
+has elapsed, you specify that the resource is <em>released</em>. The basic
+pseudo-code can now be modified to capture this concept as illustrated
+in the following pseudo-code.</p>
+<pre><code>CREATE customers with EXPO(6) time between arrivals
+SEIZE 1 pharmacist 
+DELAY for EXPO(3) minutes 
+RELEASE 1 pharmacist
+DISPOSE customer</code></pre>
+<p>Open up the PROCESS module and fill it out as indicated in
+Figure <a href="#fig:ch4ProcessModule" reference-type="ref" reference="fig:ch4ProcessModule">1.23</a>. Change the “Action” drop down dialog
+box to the (Seize, Delay, Release) option. Use the “Add” button within the
+“Resources” area to indicate which resources the customer will use. In
+the pop up Resources dialog, indicate the name of the resource and the
+number of units desired by the customer. Within the “Delay Type” area,
+choose Expression as the type of delay and type in expo(3) as the
+expression. This indicates that the delay, which represents the service
+time, will be randomly distributed according to an exponential
+distribution with a mean of 3 minutes. Make sure to change the units
+accordingly. When a PROCESS module uses the (Seize, Delay, Release) option, Arena automatically translates this to individual SEIZE, DELAY, and RELEASE modules, just like outlined in the pseudo-code. These modules (SEIZE, DELAY, RELEASE) are executed individually as the entities experience the process. It is very useful to understand what happens when these modules are executed.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMProcessModule"></span>
+<img src="figures2/ch2/fig34PMProcessModule.png" alt="PROCESS module seize, delay, release option" width="65%" height="65%" />
+<p class="caption">
+Figure 2.35: PROCESS module seize, delay, release option
+</p>
+</div>
+<p>When an entity seizes a resource, the number of units available of the resource’s capacity is (automatically) checked against the amount of units requested by the entity. There is a global variable (function) defined for each resource called, NR(<code>Resource ID</code>), that returns the number of units of the resource that have been allocated to entity requests. For example, suppose a resource called, <code>rBankTeller</code>, has <em>capacity</em>, 3, and one of the 3 units (tellers) has already been allocated to a customer for use. That is, one of the tellers is currently serving a customer. In this case, NR(<code>rBankTeller</code>), will have the value 1. There is also a global variable (function) called MR(<code>Resource ID</code>) that holds the number of units of capacity defined for the resource. In this example, MR(<code>rBankTeller</code>) has the value 3. In the drive through pharmacy example the value of MR() is 1. Again, MR() holds the current <em>capacity</em> of the resource. Obviously, resources can have capacity value of various amounts.</p>
+<p>The number of available units of the resource is always the difference, MR(<code>Resource ID</code>) - NR(<code>Resource ID</code>). In this bank example, the value of MR(<code>rBankTeller</code>) - NR(<code>rBankTeller</code>) is currently 2 (3 - 1 = 2) because a customer is in service. Thus, an arriving customer that wants one teller will not have to wait in the queue associated with the SEIZE module and will be immediately allocated one of the available tellers. The value of NR(<code>rBankTeller</code>) will be incremented by 1 unit and the number of available units, MR(<code>rBankTeller</code>) - NR(<code>rBankTeller</code>), will decrease by 1. If an entity requests more than the current number of available units of the resource, the entity will be <em>automatically</em> placed in the queue associated with the SEIZE module.</p>
+<p>The units of a resource that have been allocated to an entity by a successful SEIZE will remain allocated to that entity until those units are released via a RELEASE module. An entity can release 1 or more units of the allocated resource when executing a RELEASE module. When an entity executes a RELEASE module the allocated units of the resource are given back to the resource and NR(<code>Resource ID</code>) is <em>decremented</em> by the amount released. When the units of the resource are released, the queue associated with the seize (with the highest seize priority) is checked to see if any entities are waiting and if so, those entities are processed to check if their number of units requested of the resource can be allocated. The processing of the queue is based on the queue processing rule (e.g. FIFO (first in, first out), LIFO (last in, first out), random, and priority ranking).</p>
+<p>Suppose that a resource has capacity of 1 unit. If there are 2 processes
+(or seizes) that seize the same resource and entities are waiting in
+separate queues, the entity that activated the seize with the highest
+priority will get the resource first. If both seize requests have the
+same priority, then the entity that activated its seize first will go
+first (first come first served). The priority field for the seize
+controls the priority of the seize. It can be anything that evaluates to
+a number. A resource is considered busy if <em>at least 1 unit</em> of its
+capacity has been allocated. A resource is considered idle when <em>all</em>
+units are idle and the resource is not failed or inactive. The failed and inactive states of resources are discussed in Section <a href="ch6-AdvResModeling.html#ch6:AdvResModeling">6.2</a>.</p>
+
+<div class="rmdnote">
+<p>A common misunderstanding by novice modelers is to think that they must continually check MR(<code>Resource ID</code>) - NR(<code>Resource ID</code>) to see if the resource is available. Do not think this way. The purpose of the SEIZE and RELEASE constructs is to manage the allocation and deallocation of resource units. While there can be legitimate reasons for using the values of NR(<code>Resource ID</code>) and MR(<code>Resource ID</code>) within a model, you should not make the mistake of polling resources for availability. The resource allocation process is done automatically using SEIZE and RELEASE. If you do not like how the resource units are being allocated, then you should use more advanced concepts as discussed in Chapter <a href="ch6.html#ch6">6</a>.</p>
+</div>
+<p>Now we are ready to specify how to execute the pharmacy model.</p>
+</div>
+<div id="ch2:PM:RunParameters" class="section level3" number="2.6.7">
+<h3><span class="header-section-number">2.6.7</span> Specify Run Parameters</h3>
+<p>Let’s assume that the pharmacy is open 24 hours a day, 7 days a week. In
+other words, it is always open. In addition, assume that the arrival
+process does not vary with respect to time. Finally, assume that
+management is interested in understanding the long term behavior of this
+system in terms of the average waiting time of customers, the average
+number of customers, and the utilization of the pharmacist. This kind of simulation is called an infinite horizon simulation and will be discussed in more detail in Chapter <a href="ch5.html#ch5">5</a>.</p>
+<p>To simulate this situation over time, you must specify how long to run
+the model. Ideally, since management is interested in long run
+performance, you should run the model for an infinite amount of time to
+get long term performance; however, you probably don’t want to wait that
+long! For the sake of simplicity, assume that 10,000 hours of operation
+is long enough. Within the environment, go to the Run menu item and
+choose Setup. After the Setup dialog box appears, select the Replication
+parameters tab and fill it out as shown in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMRunParameters">2.36</a>. The <em>Replication Length</em> text box
+specifies how long the simulation will run. Notice that the base time
+units were changed to minutes. This ensures that information reported by
+the model is converted to minutes in the output reports.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMRunParameters"></span>
+<img src="figures2/ch2/fig35PMRunParameters.png" alt="Run setup replication parameters tab" width="60%" height="60%" />
+<p class="caption">
+Figure 2.36: Run setup replication parameters tab
+</p>
+</div>
+<p>The fully completed model is available within this chapter’s files as file, <em>PharmacyModel.doe</em>.</p>
+<p>Now, the model is ready to be executed. You can use the Run menu to do
+this or you can use the convenient "VCR" like run toolbar (Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMRunToolbar">2.37</a>). The Run
+button causes the simulation to run until the stopping condition is met.
+The Fast Forward button runs the simulation without animation until the
+stopping condition is met. The Pause button suspends the simulation run.
+The Start Over button stops the run and starts the simulation again. The
+Stop button causes the simulation to stop. The animation slider causes
+the animation to slow down (to the left) or speed up (to the right).</p>
+<div class="figure" style="text-align: center"><span id="fig:PMRunToolbar"></span>
+<img src="figures2/ch2/fig36PMRunToolbar.png" alt="Run toolbar" width="50%" height="50%" />
+<p class="caption">
+Figure 2.37: Run toolbar
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:PMBatchRun"></span>
+<img src="figures2/ch2/fig37PMBatchRun.png" alt="Batch run no animation option" width="45%" height="45%" />
+<p class="caption">
+Figure 2.38: Batch run no animation option
+</p>
+</div>
+<p>When you run the model, you will see the animation related to the
+customers waiting in line. Because the length of this run is very long,
+you should use the fast forward button on the "VCR" run toolbar to
+execute the model to completion without the animation. Instead of using
+the fast forward button, you can significantly speed up the execution of
+your model by running the model in batch mode without animation. To do
+this, you can use the Run menu as shown in
+Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMBatchRun">2.38</a> and then when you use the VCR Run button
+the model will run much faster without animation.</p>
+</div>
+<div id="ch2:PM:Results" class="section level3" number="2.6.8">
+<h3><span class="header-section-number">2.6.8</span> Analyze the Results</h3>
+<p>After running the model, you will see a dialog (Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMRunCompletion">2.39</a>) indicating that the
+simulation run is completed and that the simulation results are ready.
+Answer yes to open up the report viewer.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMRunCompletion"></span>
+<img src="figures2/ch2/fig38PMRunCompletion.png" alt="Run completion dialog" width="35%" height="35%" />
+<p class="caption">
+Figure 2.39: Run completion dialog
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:PMResults"></span>
+<img src="figures2/ch2/fig39PMResults.png" alt="Results for pharmacy model" width="90%" height="90%" />
+<p class="caption">
+Figure 2.40: Results for pharmacy model
+</p>
+</div>
+<p>In the reports preview area, you can drill down to see the statistics
+that you need. Go ahead and do this so that you have the report window
+as indicated in Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMResults">2.40</a>. The reports indicate that customers wait
+about 3 minutes on average in the line. reports the average of the
+waiting times in the queue as well as the associated 95% confidence
+interval half-width. In addition, reports the minimum and maximum of the
+observed values. These results indicate that the maximum a customer
+waited to get service was 16 minutes. The utilization of the pharmacist
+is about 50%. This means that about 50% of the time the pharmacist was
+busy. For this type of system, this is probably not a bad utilization,
+considering that the pharmacist probably has other in-store duties. The
+reports also indicate that there was less than one customer on average
+waiting for service. Using the Reports panel in the Project Bar you can
+also select specific reports.</p>
+<p>also produces a text-based version of these reports in the directory
+associated with the model. Within the Windows File Explorer, select the
+<em>modelname.out</em> file, see
+Figure <a href="#fig:ch4Files" reference-type="ref" reference="fig:ch4Files">1.30</a>. This file can be read with any text editor
+such as Notepad, see Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMTextResults">2.41</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:PMTextResults"></span>
+<img src="figures2/ch2/fig41PMTextResults.png" alt="Text file summary results" width="90%" height="90%" />
+<p class="caption">
+Figure 2.41: Text file summary results
+</p>
+</div>
+<p>Also as indicated in Figure <a href="modeling-a-simple-discrete-event-dynamic-system.html#fig:PMWindowsExplorer">2.42</a>, Arena generates additional files when you run the
+model. The <em>modelname.accdb</em> file is a Microsoft Access database that
+holds the information displayed by the report writer. The <em>modelname.p</em>
+file is generated when the model is checked or run. If you have errors
+or warnings when you check your model, the error file will also show up
+in the directory of your <em>modelname.doe</em> file</p>
+<div class="figure" style="text-align: center"><span id="fig:PMWindowsExplorer"></span>
+<img src="figures2/ch2/fig40PMWidowsExplorer.png" alt="Files generated when running Arena" width="60%" height="60%" />
+<p class="caption">
+Figure 2.42: Files generated when running Arena
+</p>
+</div>
+<p>This single server waiting line system is a very common situation in
+practice. In fact, this exact situation has been studied mathematically
+through a branch of operations research called queuing theory. As will
+be covered in Appendix <a href="app-qtAndInvT.html#app:qtAndInvT">C</a> for specific modeling situations, formulas for the
+long term performance of queuing systems can be derived. This particular
+pharmacy model happens to be an example of an M/M/1 queuing model. The
+first M stands for Markov arrivals, the second M stands for Markov
+service times, and the 1 represents a single server. Markov was a famous
+mathematician who examined the exponential distribution and its
+properties. According to queuing theory, the expected number of customer
+in queue, <span class="math inline">\(L_q\)</span>, for the M/M/1 model is:</p>
+<p><span class="math display" id="eq:mm1">\[\begin{equation}
+\begin{aligned}
+L_q &amp; = \dfrac{\rho^2}{1 - \rho} \\
+\rho &amp; = \lambda/\mu \\
+\lambda &amp; = \text{arrival rate to queue} \\
+\mu &amp; = \text{service rate}
+\end{aligned}
+\tag{2.7}
+\end{equation}\]</span></p>
+<p>In addition, the expected waiting time in queue is given by
+<span class="math inline">\(W_q = L_q/\lambda\)</span>. In the pharmacy model, <span class="math inline">\(\lambda\)</span> = 1/6, i.e. 1
+customer every 6 minutes on average, and <span class="math inline">\(\mu\)</span> = 1/3, i.e. 1 customer
+every 3 minutes on average. The quantity, <span class="math inline">\(\rho\)</span>, is called the
+utilization of the server. Using these values in the formulas for <span class="math inline">\(L_q\)</span>
+and <span class="math inline">\(W_q\)</span> results in:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\rho &amp; = 0.5 \\
+L_q  &amp; = \dfrac{0.5 \times 0.5}{1 - 0.5} = 0.5  \\
+W_q &amp; = \dfrac{0.5}{1/6} = 3 \: \text{minutes}
+\end{aligned}
+\]</span></p>
+<p>In comparing these analytical results with the simulation results, you
+can see that they match to within statistical error. Later in this text,
+the analytical treatment of queues and the simulation of queues will be
+developed. These analytical results are available for this special case
+because the arrival and service distributions are exponential; however,
+simple analytical results are not available for many common
+distributions, e.g. lognormal. With simulation, you can easily estimate
+the above quantities as well as many other performance measures of
+interest for wide ranging queuing situations. For example, through
+simulation you can easily estimate the chance that there are 3 or more
+cars waiting.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch2-ProcessModeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch2-PM-Extension.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/02-Chapter2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

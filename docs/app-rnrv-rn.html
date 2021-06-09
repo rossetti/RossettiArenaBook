@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A.1 Pseudo Random Numbers | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A.1 Pseudo Random Numbers | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A.1 Pseudo Random Numbers | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-rnrv.html"/>
+<link rel="next" href="app-rnrv-rvs.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app:rnrv:rn" class="section level2" number="9.1">
+<h2><span class="header-section-number">A.1</span> Pseudo Random Numbers</h2>
+<p>This section indicates how uniformly distributed random numbers over
+the range from 0 to 1 are obtained within simulation programs. While
+commercial simulation packages provide substantial capabilities for
+generating random numbers, we still need to understand how this process
+works for the following reasons:</p>
+<ol style="list-style-type: decimal">
+<li><p>The random numbers within a simulation experiment might need to be
+controlled in order to take advantage of them to improve decision
+making.</p></li>
+<li><p>In some situations, the commercial package does not have ready made
+functions for generating the desired random variables. In these
+situations, you will have to implement an algorithm to generate the random variates.</p></li>
+</ol>
+<p>In addition, simulation is much broader than just using a commercial
+package. You can perform simulation in any computer language and spreadsheets. The
+informed modeler should know how the key inputs to simulation models are
+generated.</p>
+<p>In simulation, large amount of cheap (easily computed) random numbers
+are required. In general, consider how random numbers might be obtained:</p>
+<ol style="list-style-type: decimal">
+<li><p>Dice, coins, colored balls</p></li>
+<li><p>Specially designed electronic equipment</p></li>
+<li><p>Algorithms</p></li>
+</ol>
+<p>Clearly, within the context of computer simulation, it might be best to
+rely on algorithms; however, if an algorithm is used to generate the
+random numbers then they will not be truly random. For this reason, the
+random numbers that are used in computer simulation are called <em>pseudo
+random</em>.</p>
+<hr />
+
+<div class="definition">
+<span id="def:PRN" class="definition"><strong>Definition A.1  (Pseudo-Random Numbers)  </strong></span>A sequence of pseudo-random numbers, <span class="math inline">\(U_{i}\)</span>, is a deterministic sequence of numbers in <span class="math inline">\((0,1)\)</span> having the same relevant statistical properties as a sequence of truly
+random <span class="math inline">\(U(0,1)\)</span> numbers.(<span class="citation">(<a href="#ref-ripley1987stochastic" role="doc-biblioref">Ripley 1987</a>)</span>)
+</div>
+<hr />
+<p>A set of statistical tests are performed on the pseudo-random numbers
+generated from algorithms in order to indicate that their properties are
+not significantly different from a true set of <span class="math inline">\(U(0,1)\)</span> random numbers.
+The <em>algorithms</em> that produce pseudo-random numbers are called <em>random number generators</em>. In addition to passing a battery of statistical tests, the random
+number generators need to be fast and they need to be able to reproduce
+a sequence of numbers if and when necessary.</p>
+<p>The following section discusses random number generation methods. The
+approach will be practical, with just enough theory to motivate future
+study of this area and to allow you to understand the important
+implications of random number generation. A more rigorous treatment of
+random number and random variable generation can be found such texts as
+<span class="citation">(<a href="#ref-fishman2006first" role="doc-biblioref">Fishman 2006</a>)</span> and <span class="citation">(<a href="#ref-devroye1986nonuniform" role="doc-biblioref">Devroye 1986</a>)</span>.</p>
+<div id="app:rnrv:rngs" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">A.1.1</span> Random Number Generators</h3>
+<p>Over the history of scientific computing, there have been a wide variety
+of techniques and algorithms proposed and used for generating
+pseudo-random numbers. A common technique that has been used (and is
+still in use) within a number of simulation environments is discussed in
+this text. Some new types of generators that have been recently adopted
+within many simulation environments, especially the one used within the
+<a href="https://rossetti.git-pages.uark.edu/jslbookdownbook/">JSL</a> and Arena, will also be briefly discussed.</p>
+<p>A linear congruential generator (LCG) is a recursive algorithm for
+producing a sequence of pseudo random numbers. Each new pseudo random
+number from the algorithm depends on the previous pseudo random number.
+Thus, a starting value called the <em>seed</em> is required. Given the value of
+the seed, the rest of the sequence of pseudo random numbers can be
+completely determined by the algorithm. The basic definition of an LCG
+is as follows</p>
+<hr />
+
+<div class="definition">
+<p><span id="def:LCG" class="definition"><strong>Definition A.2  (Linear Congruential Generator)  </strong></span>A LCG defines a sequence of
+integers, <span class="math inline">\(R_{0}, R_{1}, \ldots\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(m-1\)</span> according to the
+following recursive relationship:</p>
+<p><span class="math display">\[
+R_{i+1} = \left(a R_{i} + c\right)\bmod m %) %\left(m\right)
+\]</span></p>
+<p>where <span class="math inline">\(R_{0}\)</span> is called the seed of the sequence, <span class="math inline">\(a\)</span> is called the
+constant multiplier, <span class="math inline">\(c\)</span> is called the increment, and <span class="math inline">\(m\)</span> is called the
+modulus. <span class="math inline">\(\left(m, a, c, R_{0}\right)\)</span> are integers with <span class="math inline">\(a &gt; 0\)</span>,
+<span class="math inline">\(c \geq 0\)</span>, <span class="math inline">\(m &gt; a\)</span>, <span class="math inline">\(m &gt; c\)</span>, <span class="math inline">\(m &gt; R_{0}\)</span>, and <span class="math inline">\(0 \leq R_{i} \leq m-1\)</span>.</p>
+<p>To compute a corresponding pseudo-random uniform number, we use</p>
+<span class="math display">\[
+U_{i} = \frac{R_{i}}{m}
+\]</span>
+</div>
+<hr />
+<p>Notice that an LCG defines a sequence of integers and subsequently a
+sequence of real (rational) numbers that can be considered pseudo random
+numbers. Remember that pseudo random numbers are those that can “fool” a
+battery of statistical tests. The choice of the seed, constant
+multiplier, increment, and modulus, i.e. the parameters of the LCG, will
+determine the properties of the sequences produced by the generator.
+With properly chosen parameters, an LCG can be made to produce pseudo
+random numbers. To make this concrete, let’s look at a simple example of
+an LCG.</p>
+<hr />
+
+<div class="example">
+<span id="exm:SimpleLCG" class="example"><strong>Example A.1  (Simple LCG Example)  </strong></span>Consider an LCG
+with the following parameters <span class="math inline">\((m = 8\)</span>, <span class="math inline">\(a = 5\)</span>, <span class="math inline">\(c = 1\)</span>, <span class="math inline">\(R_{0} = 5)\)</span>. Compute
+the first nine values for <span class="math inline">\(R_{i}\)</span> and <span class="math inline">\(U_{i}\)</span> from the defined
+sequence.
+</div>
+<hr />
+<p>Let’s first remember how to compute using the <span class="math inline">\(\bmod\)</span> operator. The
+<span class="math inline">\(\bmod\)</span> operator is defined as:</p>
+<p><span class="math display">\[
+z = y \bmod m = y - m \left \lfloor \dfrac{y}{m} \right \rfloor
+\]</span></p>
+<p>where <span class="math inline">\(\lfloor x \rfloor\)</span> is the floor operator, which returns the
+greatest integer that is less than or equal to <span class="math inline">\(x\)</span>. For example,</p>
+<p><span class="math display">\[\begin{equation}
+\begin{split}
+z &amp; = 17 \bmod 3 \\
+  &amp; = 17 - 3 \left \lfloor \frac{17}{3} \right \rfloor \\
+  &amp; = 17 - 3 \lfloor 5.\overline{66} \rfloor \\
+  &amp; = 17 - 3 \times 5 = 2
+\end{split}
+\end{equation}\]</span></p>
+<p>Thus, the <span class="math inline">\(\bmod\)</span> operator returns the integer remainder (including zero) when <span class="math inline">\(y \geq m\)</span> and <span class="math inline">\(y\)</span> when <span class="math inline">\(y &lt; m\)</span>. For example,
+<span class="math inline">\(z = 6 \bmod 9 = 6 - 9 \left\lfloor \frac{6}{9} \right\rfloor = 6 - 9 \times 0 = 6\)</span>.</p>
+<p>Using the parameters of the LCG, the pseudo-random numbers are:</p>
+<p><span class="math display">\[
+\begin{split}
+  {R_1} &amp; = (5{R_0} + 1)\bmod 8 = 26\bmod 8 = 2 \Rightarrow {U_1} = 0.25  \\
+  {R_2} &amp; =  (5{R_1} + 1)\bmod 8 = 11\bmod 8 = 3 \Rightarrow {U_2} = 0.375  \\
+  {R_3} &amp; =  (5{R_2} + 1)\bmod 8 = 16\bmod 8 = 0 \Rightarrow {U_3} = 0.0  \\
+  {R_4} &amp; =  (5{R_3} + 1)\bmod 8 = 1\bmod 8 = 1 \Rightarrow {U_4} = 0.125  \\
+  {R_5} &amp; =  6 \Rightarrow {U_5} = 0.75 \\
+  {R_6} &amp; =  7 \Rightarrow {U_6} = 0.875 \\
+  {R_7} &amp; =  4 \Rightarrow {U_7} = 0.5 \\
+  {R_8} &amp; =  5 \Rightarrow {U_8} = 0.625 \\
+  {R_9} &amp; =  2 \Rightarrow {U_9} = 0.25
+\end{split}
+\]</span></p>
+<p>In the previous example, the <span class="math inline">\(U_{i}\)</span> are simple fractions involving
+<span class="math inline">\(m = 8\)</span>. Certainly, this sequence does not appear very random. The
+<span class="math inline">\(U_{i}\)</span> can only take on rational values in the range,
+<span class="math inline">\(0,\tfrac{1}{m}, \tfrac{2}{m}, \tfrac{3}{m}, \ldots, \tfrac{(m-1)}{m}\)</span>
+since <span class="math inline">\(0 \leq R_{i} \leq m-1\)</span>. This implies that if <span class="math inline">\(m\)</span> is small there
+will be gaps on the interval <span class="math inline">\(\left[0,1\right)\)</span>, and if <span class="math inline">\(m\)</span> is large
+then the <span class="math inline">\(U_{i}\)</span> will be more densely distributed on <span class="math inline">\(\left[0,1\right)\)</span>.</p>
+<p>Notice that if a sequence generates the same value as a previously
+generated value then the sequence will repeat or cycle. An important
+property of a LCG is that it has a long cycle, as close to length <span class="math inline">\(m\)</span> as
+possible. The length of the cycle is called the <em>period</em> of the LCG.
+Ideally the period of the LCG is equal to <span class="math inline">\(m\)</span>. If this occurs, the LCG
+is said to achieve its full period. As can be seen in the example, the
+LCG is full period. Until recently, most computers were 32 bit machines
+and thus a common value for <span class="math inline">\(m\)</span> is <span class="math inline">\(2^{31} - 1 = 2,147,483,647\)</span>, which
+represents the largest integer number on a 32 bit computer using 2’s
+complement integer arithmetic. This choice of <span class="math inline">\(m\)</span> also happens to be a
+prime number, which leads to special properties.</p>
+<p>A proper choice of the parameters of the LCG will allow desirable pseudo
+random number properties to be obtained. The following result due to
+<span class="citation">(<a href="#ref-hull1962random" role="doc-biblioref">Hull and Dobell 1962</a>)</span>, see also <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>, indicates how to check
+if a LCG will have the largest possible cycle.</p>
+<hr />
+
+<div class="theorem">
+<span id="thm:LCGThm" class="theorem"><strong>Theorem A.1  (LCG Theorem)  </strong></span>An LCG has full period if and only if the following three conditions hold: (1) The only positive integer that (exactly) divides both <span class="math inline">\(m\)</span> and <span class="math inline">\(c\)</span> is 1 (i.e. <span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> have no common factors other than 1), (2) If <span class="math inline">\(q\)</span> is a prime number that divides <span class="math inline">\(m\)</span> then <span class="math inline">\(q\)</span> should divide <span class="math inline">\((a-1)\)</span>. (i.e. <span class="math inline">\((a-1)\)</span> is a multiple of every prime number that divides <span class="math inline">\(m\)</span>), and (3) If 4 divides <span class="math inline">\(m\)</span>, then 4 should divide <span class="math inline">\((a-1)\)</span>. (i.e. <span class="math inline">\((a-1)\)</span> is a multiple of 4 if <span class="math inline">\(m\)</span> is a multiple of 4)
+</div>
+<hr />
+<p>Now, let’s apply this theorem to the example LCG and check whether or
+not it should obtain full period. To apply the theorem, you must check if each of the three conditions
+holds for the generator.</p>
+<ul>
+<li><p>Condition 1: <span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> have no common factors other than 1.<br />
+The factors of <span class="math inline">\(m=8\)</span> are <span class="math inline">\((1, 2, 4, 8)\)</span>, since <span class="math inline">\(c=1\)</span> (with factor 1)
+condition 1 is true.</p></li>
+<li><p>Condition 2: <span class="math inline">\((a-1)\)</span> is a multiple of every prime number that
+divides <span class="math inline">\(m\)</span>. The first few prime numbers are (1, 2, 3, 5, 7). The
+prime numbers, <span class="math inline">\(q\)</span>, that divide <span class="math inline">\(m=8\)</span> are <span class="math inline">\((q =1, 2)\)</span>. Since <span class="math inline">\(a=5\)</span>
+and <span class="math inline">\((a-1)=4\)</span>, clearly <span class="math inline">\(q = 1\)</span> divides <span class="math inline">\(4\)</span> and <span class="math inline">\(q = 2\)</span> divides <span class="math inline">\(4\)</span>.
+Thus, condition 2 is true.</p></li>
+<li><p>Condition 3: If <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>, then <span class="math inline">\(4\)</span> should divide <span class="math inline">\((a-1)\)</span>.<br />
+Since <span class="math inline">\(m=8\)</span>, clearly <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>. Also, <span class="math inline">\(4\)</span> divides <span class="math inline">\((a-1)= 4\)</span>.
+Thus, condition 3 holds.</p></li>
+</ul>
+<p>Since all three conditions hold, the LCG achieves full period.</p>
+
+<div class="rmdnote">
+The theorem only tells us when a specification of <span class="math inline">\((a, c, m)\)</span> will obtain full period. In case (3), it does not tell us anything about what happens if <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, If <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>, and we pick <span class="math inline">\(a\)</span> so that it divides <span class="math inline">\((a-1)\)</span> then the condition will be met. If <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, then the theorem really does not tell us one way or the other whether the LCG obtains full period.
+</div>
+<p>There are some simplifying conditions, see <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>,
+which allow for easier application of the theorem. For <span class="math inline">\(m = 2^{b}\)</span>, (<span class="math inline">\(m\)</span>
+a power of 2) and <span class="math inline">\(c\)</span> not equal to 0, the longest possible period is <span class="math inline">\(m\)</span>
+and can be achieved provided that <span class="math inline">\(c\)</span> is chosen so that the greatest
+common factor of <span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> is 1 and <span class="math inline">\(a=4k+1\)</span> where <span class="math inline">\(k\)</span> is an integer.
+The previous example LCG satisfies this situation.</p>
+<p>For <span class="math inline">\(m = 2^{b}\)</span> and <span class="math inline">\(c = 0\)</span>, the longest possible period is <span class="math inline">\((m/4)\)</span> and
+can be achieved provided that the initial seed, <span class="math inline">\(R_{0}\)</span> is odd and
+<span class="math inline">\(a=8k + 3\)</span> or <span class="math inline">\(a=8k + 5\)</span> where <span class="math inline">\(k = 0, 1, 2,\cdots\)</span>.</p>
+<p>The case of <span class="math inline">\(m\)</span> a prime number and <span class="math inline">\(c = 0\)</span>, defines a special case of
+the LCG called a <em>prime modulus multiplicative linear congruential
+generator</em> (PMMLCG). For this case, the longest possible period is <span class="math inline">\(m-1\)</span>
+and can be achieved if the smallest integer, <span class="math inline">\(k\)</span>, such that <span class="math inline">\(a^{k} -1\)</span>
+is divisible by <span class="math inline">\(m\)</span> is <span class="math inline">\(m-1\)</span>.</p>
+<p>Thirty-Two bit computers have been very common for over 20 years. In
+addition, <span class="math inline">\(2^{31} - 1\)</span> = <span class="math inline">\(2,147,483,647\)</span> is a prime number. Because of
+this, <span class="math inline">\(2^{31} - 1\)</span> has been the choice for <span class="math inline">\(m\)</span> with <span class="math inline">\(c=0\)</span>. Two common
+values for the multiplier, <span class="math inline">\(a\)</span>, have been:</p>
+<p><span class="math display">\[
+\begin{split}
+a &amp; = 630,360,016\\
+a &amp; = 16,807\\
+\end{split}
+\]</span></p>
+<p>The latter of which was used within many simulation packages for a number of years. Notice that for PMMLCG’s the full period cannot be achieved (because <span class="math inline">\(c=0\)</span>), but
+with the proper selection of the multiplier, the next best period length
+of <span class="math inline">\(m-1\)</span> can be obtained. In addition, for this case
+<span class="math inline">\(R_{0} \in \lbrace 1, 2,\ldots , m-1\rbrace\)</span> and thus <span class="math inline">\(U_{i} \in (0,1)\)</span>.
+The limitation of <span class="math inline">\(U_{i} \in (0,1)\)</span> is very useful when generating
+random variables from various probability distributions, since <span class="math inline">\(0\)</span>
+cannot be realized. When using an LCG, you must supply a starting seed
+as an initial value for the algorithm. This seed determines the sequence
+that will come out of the generator when it is called within software.
+Since generators cycle, you can think of the sequence as a big circular
+list as indicated in Figure <a href="app-rnrv-rn.html#fig:LCGCycle">A.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:LCGCycle"></span>
+<img src="figures2/AppRNRV/LCGCycle.png" alt="Sequence for Simple LCG Example" width="50%" />
+<p class="caption">
+Figure A.1: Sequence for Simple LCG Example
+</p>
+</div>
+<p>Starting with seed <span class="math inline">\(R_{0} = 5\)</span>, you get a sequence
+<span class="math inline">\(\{2, 3, 0, 1, 6, 7, 4, 5\}\)</span>. Starting with seed, <span class="math inline">\(R_{0}=1\)</span>, you get the
+sequence <span class="math inline">\(\{6, 7, 4, 5, 2, 3, 0, 1\}\)</span>. Notice that these two sequences
+overlap with each other, but that the first half <span class="math inline">\(\{2, 3, 0, 1\}\)</span> and
+the second half <span class="math inline">\(\{6, 7, 4, 5\}\)</span> of the sequence do not overlap. If you
+only use 4 random numbers from each of these two <em>subsequences</em> then the
+numbers will not overlap. This leads to the definition of a stream:</p>
+<hr />
+
+<div class="definition">
+<span id="def:unnamed-chunk-1" class="definition"><strong>Definition A.3  (Stream)  </strong></span>The subsequence of random numbers generated from a given seed is called a
+random number stream.
+</div>
+<hr />
+<p>You can take the sequence produced by the random number generator and
+divide it up into subsequences by associating certain seeds with
+streams. You can call the first subsequence stream 1 and the second
+subsequence stream 2, and so forth. Each stream can be further divided
+into subsequences or sub-streams of non-overlapping random numbers.</p>
+<p>In this simple example, it is easy to remember that stream 1 is defined
+by seed, <span class="math inline">\(R_{0} = 5\)</span>, but when <span class="math inline">\(m\)</span> is large, the seeds will be large
+integer numbers, e.g. <span class="math inline">\(R_{0} = 123098345\)</span>. It is difficult to remember
+such large numbers. Rather than remember this huge integer, an
+assignment of stream numbers to seeds is made. Then, the sequence can be
+reference by its stream number. Naturally, if you are going to associate
+seeds with streams you would want to divide the entire sequence so that
+the number of non-overlapping random numbers in each stream is quite
+large. This ensures that as a particular stream is used that there is
+very little chance of continuing into the next stream. Clearly, you want
+<span class="math inline">\(m\)</span> to be as large as possible and to have many streams that contain as
+large as possible number of non-overlapping random numbers. With today’s
+modern computers even <span class="math inline">\(m\)</span> is <span class="math inline">\(2^{31} - 1 = 2,147,483,647\)</span> is not very
+big. For large simulations, you can easily run through all these random
+numbers.</p>
+<p>Random number generators in computer simulation languages come with a
+default set of streams that divide the “circle” up into independent sets
+of random numbers. The streams are only independent if you do not use up
+all the random numbers within the subsequence. These streams allow the
+randomness associated with a simulation to be controlled. During the
+simulation, you can associate a specific stream with specific random
+processes in the model. This has the advantage of allowing you to check
+if the random numbers are causing significant differences in the
+outputs. In addition, this allows the random numbers used across
+alternative simulations to be better synchronized.</p>
+<p>Now a common question for beginners using random number generators can
+be answered. That is, <em>If the simulation is using random numbers, why to
+I get the same results each time I run my program?</em> The corollary to
+this question is, <em>If I want to get different random results each time I
+run my program, how do I do it?</em> The answer to the first question is
+that the underlying random number generator is starting with the same
+seed each time you run your program. Thus, your program will use the
+same pseudo random numbers today as it did yesterday and the day before,
+etc. The answer to the corollary question is that you must tell the
+random number generator to use a different seed (or alternatively a
+different stream) if you want different invocations of the program to
+produce different results. The latter is not necessarily a desirable
+goal. For example, when developing your simulation programs, it is
+desirable to have repeatable results so that you can know that your
+program is working correctly. Unfortunately, many novices have heard
+about using the computer clock to “randomly” set the seed for a
+simulation program. This is a <em>bad</em> idea and very much not recommended
+in our context. This idea is more appropriate within a gaming
+simulation, in order to allow the human gamer to experience different
+random sequences.</p>
+<p>Given current computing power, the previously discussed PMMLCGs are
+insufficient since it is likely that all the 2 billion or so of the
+random numbers would be used in performing serious simulation studies.
+Thus, a new generation of random number generators was developed that
+have extremely long periods. The random number generator described in
+<span class="citation"><a href="#ref-ecuyer2002an" role="doc-biblioref">L’Ecuyer, Simard, and Kelton</a> (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> is one example of such a generator. It is based on the
+combination of two multiple recursive generators resulting in a period
+of approximately <span class="math inline">\(3.1 \times 10^{57}\)</span>. This is the same generator that
+is now used in many commercial simulation packages. The generator as
+defined in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> is:</p>
+<p><span class="math display">\[
+\begin{split}
+R_{1,i}&amp;=(1,403,580 R_{1,i-2} - 810,728 R_{1,i-3})[\bmod (2^{32}-209)]\\
+R_{2,i}&amp;=(527,612R_{2,i-1} - 1,370,589 R_{2,i-3})[\bmod (2^{32}-22,853)]\\
+Y_i &amp;=(R_{1,i}-R_{2,i})[\bmod(2^{32}-209)]\\
+U_i&amp;=\frac{Y_i}{2^{32}-209}
+\end{split}
+\]</span>
+The generator takes as its initial seed a vector of six initial values
+<span class="math inline">\((R_{1,0}, R_{1,1}, R_{1,2}, R_{2,0}, R_{2,1}, R_{2,2})\)</span>. The first
+initially generated value, <span class="math inline">\(U_{i}\)</span>, will start at index <span class="math inline">\(3\)</span>. To produce five pseudo random numbers using this generator we need an initial seed vector, such as:
+<span class="math display">\[\lbrace R_{1,0}, R_{1,1}, R_{1,2}, R_{2,0}, R_{2,1}, R_{2,2} \rbrace = \lbrace 12345, 12345, 12345, 12345, 12345, 12345\rbrace\]</span></p>
+<p>Using the recursive equations, the resulting random numbers are as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">i=3</th>
+<th align="center">i=4</th>
+<th align="center">i=5</th>
+<th align="center">i=6</th>
+<th align="center">i=7</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i-3}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">3023790853</td>
+<td align="center">3023790853</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{1,i-2}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">3023790853</td>
+<td align="center">3023790853</td>
+<td align="center">3385359573</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i-1}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">3023790853</td>
+<td align="center">3023790853</td>
+<td align="center">3385359573</td>
+<td align="center">1322208174</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i-3}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">2478282264</td>
+<td align="center">1655725443</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{2,i-2}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">12345</td>
+<td align="center">2478282264</td>
+<td align="center">1655725443</td>
+<td align="center">2057415812</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i-1}=\)</span></td>
+<td align="center">12345</td>
+<td align="center">2478282264</td>
+<td align="center">1655725443</td>
+<td align="center">2057415812</td>
+<td align="center">2070190165</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i}=\)</span></td>
+<td align="center">3023790853</td>
+<td align="center">3023790853</td>
+<td align="center">3385359573</td>
+<td align="center">1322208174</td>
+<td align="center">2930192941</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i}=\)</span></td>
+<td align="center">2478282264</td>
+<td align="center">1655725443</td>
+<td align="center">2057415812</td>
+<td align="center">2070190165</td>
+<td align="center">1978299747</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_i=\)</span></td>
+<td align="center">545508589</td>
+<td align="center">1368065410</td>
+<td align="center">1327943761</td>
+<td align="center">3546985096</td>
+<td align="center">951893194</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(U_i=\)</span></td>
+<td align="center">0.127011122076</td>
+<td align="center">0.318527565471</td>
+<td align="center">0.309186015655</td>
+<td align="center">0.82584686312</td>
+<td align="center">0.221629915834</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>While it is beyond the scope of this text to explore the theoretical
+underpinnings of this generator, it is important to note that the use of
+this new generator is conceptually similar to that which has already
+been described. The generator allows multiple independent streams to be
+defined along with sub-streams.</p>
+
+<div class="rmdnote">
+A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the <em>seed</em>. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams. This facilitates the control of the use of pseudo-random numbers when performing experiments.
+</div>
+<p>The fantastic thing about this generator is the sheer size of the
+period. Based on their analysis, <span class="citation"><a href="#ref-ecuyer2002an" role="doc-biblioref">L’Ecuyer, Simard, and Kelton</a> (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> state that it will be
+“approximately 219 years into the future before average desktop
+computers will have the capability to exhaust the cycle of the
+(generator) in a year of continuous computing.” In addition to the
+period length, the generator has an enormous number of streams,
+approximately <span class="math inline">\(1.8 \times 10^{19}\)</span> with stream lengths of
+<span class="math inline">\(1.7 \times 10^{38}\)</span> and sub-streams of length <span class="math inline">\(7.6 \times 10^{22}\)</span>
+numbering at <span class="math inline">\(2.3 \times 10^{15}\)</span> per stream. Clearly, with these
+properties, you do not have to worry about overlapping random numbers
+when performing simulation experiments. The generator was subjected to a
+rigorous battery of statistical tests and is known to have excellent
+statistical properties. The subject of modeling and testing different distributions is deferred to a separate part of this book.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
+</div>
+<div id="ref-devroye1986nonuniform" class="csl-entry">
+Devroye, L. 1986. <em>Non-Uniform Random Variate Generation</em>. New York: Springer-Verlag.
+</div>
+<div id="ref-fishman2006first" class="csl-entry">
+———. 2006. <em>A First Course in Monte Carlo</em>. Thomson Brooks/Cole.
+</div>
+<div id="ref-hull1962random" class="csl-entry">
+Hull, T. E., and A. R. Dobell. 1962. <span>“Random Number Generators.”</span> <em>SIAM Review</em> 4: 230–54.
+</div>
+<div id="ref-ecuyer2002an" class="csl-entry">
+L’Ecuyer, P., R. Simard, and W. D. Kelton. 2002. <span>“An Object-Oriented Random Number Package with Many Long Streams and Substreams.”</span> <em>Operations Research</em> 50: 1073–75.
+</div>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
+</div>
+<div id="ref-ripley1987stochastic" class="csl-entry">
+Ripley, B. D. 1987. <em>Stochastic Simulation</em>. John Wiley &amp; Sons Inc.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-rnrv.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-rnrv-rvs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/09-AppRNRV.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

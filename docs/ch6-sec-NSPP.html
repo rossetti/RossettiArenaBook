@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Non-stationary Processes | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Non-stationary Processes | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Non-stationary Processes | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch6.html"/>
+<link rel="next" href="ch6-AdvResModeling.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch6:sec:NSPP" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Non-stationary Processes</h2>
+<p>If a process does not depend on time, it is said to be stationary. When
+a process depends on time, it is said to be non-stationary. The more
+formal definitions of stationary/non-stationary are avoided in the
+discussion that follows.</p>
+<p>There are many ways in which you can model non-stationary (time varying)
+processes in your simulation models. Many of these ways depend entirely
+on the system being studied and through that study appropriate modeling
+methods will become apparent. For example, suppose that workers
+performing a task learn how to more efficiently perform the task every
+time that they repeat the task. The task time will depend on the time
+(number of previously performed tasks). For this situation, you might
+use a learning curve model as a basis for changing the task times as the
+number of repetitions of the task increases.</p>
+<p>As another example, suppose the worker’s availability depends on a
+schedule, such as having a 30-minute break after accumulating so much
+time. In this situation, the system’s resources are dependent on time.
+Modeling this situation is described later in this chapter.</p>
+<p>Let’s suppose that the following situation needs to be modeled. Workers
+are assigned a shift of 8 hours and have a quota to fill. Do you think
+that it is possible that their service times would, on average, be less
+during the latter part of the shift? Sure. They might work faster in
+order to meet their quota during the latter part of the shift. If you
+did not suspect this phenomenon and performed a time study on the
+workers in the morning and fit a distribution to these data, you would
+be developing a distribution for the service times during the morning.
+If you applied this distribution to the entire shift, then you may have
+a problem matching your simulation throughput numbers to the real
+throughput.</p>
+<p>As you can see, if you suspect that a non-stationary process is
+involved, then it is critical that you also record the time that the
+observation was made. The time series plot that was discussed for input
+modeling helps in assessing non-stationary behavior; however, it only
+plots the order in which the data were collected. If you collect 25
+observations of the service time every morning, you might not observe
+non-stationary behavior. To observe non-stationary behavior it is
+important to collect observations across periods of time.</p>
+<p>One way to better plan your observations is to randomize when you will
+take the observations. Work sampling methods often require this. The day
+is divided into intervals of time and the intervals randomly selected in
+which to record an activity. By comparing the behavior of the data
+across the intervals, you can begin to assess whether time matters in
+the modeling as demonstrated in Section <a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit">B.3.1</a>. Even if
+you do not divide time into logical intervals, it is good practice to
+record the date and time for each of the observations that you make so that
+the observations can later be placed into logical intervals. As you may
+now be thinking, modeling a non-stationary process will take a lot of
+care and more observations than a stationary process.</p>
+<p>A very common non-stationary process that you have probably experienced
+is a non- stationary arrival process. In a non-stationary arrival
+process, the arrival process to the system will vary by time (e.g., by
+hour of the day). Because the arrival process is a key input to the
+system, the system will thus become non-stationary. For example, in the
+drive-through pharmacy example, the arrival of customers occurred
+according to a Poisson process with mean rate <span class="math inline">\(\lambda\)</span> per hour.</p>
+<p>As a reminder, <span class="math inline">\(\lambda\)</span> represents the mean arrival rate or the
+expected number of customers per unit time. Suppose that the expected
+arrival rate is five per hour. This does not mean that the pharmacy will
+get five customers every hour, but rather that on average five customers
+will arrive every hour. Some hours will get more than five customers and
+other hours will get less. The implication for the pharmacy is that they
+should expect about five per hour (every hour of the day) regardless of
+the time of day. Is this realistic? It could be, but it is more likely
+that the mean number of arriving customers will vary by time of day. For
+example, would you expect to get five customers per hour from 4 a.m. to
+5 a.m., from 12 noon to 1 p.m., from 4 p.m. to 6 p.m.? Probably not! A
+system like the pharmacy will have peaks and valleys associated with the
+arrival of customers. Thus, the mean arrival rate of the customers may
+vary with the time of day. That is, <span class="math inline">\(\lambda\)</span> is really a function of
+time, <span class="math inline">\(\lambda(t)\)</span>.</p>
+<p>To more realistically model the arrival process to the pharmacy, you
+need to model a non-stationary arrival process. Let’s think about how
+data might be collected in order to model a non-stationary arrival
+process. First, as in the previous service time example, you need to
+think about dividing the day into logical periods of time. A pilot study
+may help in assessing how to divide time, or you might simply pick a
+convenient time division such as hours. You know that the CREATE module
+requires a distribution that represents the time between arrivals.
+Ideally, you should collect the time of every arrival, <span class="math inline">\(T_i\)</span>, throughout
+the day. Then, you can take the difference among consecutive arrivals,
+<span class="math inline">\(T_i - T_{i-1}\)</span> and fit a distribution to the inter-arrival times.
+Looking at the <span class="math inline">\(T_i\)</span> over time may help to assess whether you need
+different distributions for different time periods during the day.
+Suppose that you do collect the observations and find that three
+different distributions are reasonable models given the following data:</p>
+<ul>
+<li><p>Exponential, <span class="math inline">\(E[X] = 60\)</span>, for midnight to 8 a.m.</p></li>
+<li><p>Lognormal, <span class="math inline">\(E[X] = 12\)</span>, <span class="math inline">\(Var[X] = 4\)</span>, for 8 a.m. to 4 p.m.</p></li>
+<li><p>Triangular, min = 10; mode = 16; max = 20, for 4 p.m. to midnight</p></li>
+</ul>
+<p>One simple method for implementing this situation is to CREATE a logical
+entity that selects the appropriate distribution for the current time.
+In other words, schedule a logical entity to arrive at midnight so that
+the time between arrival distribution can be set to exponential,
+schedule an entity to arrive at 8 a.m. to switch to lognormal, and
+schedule an entity to arrive at 4 p.m. to switch to triangular. This can easily be accomplished by holding the distributions within an arrayed expression and using a clock entity to determine which period of time is active and indexing into the arrayed expression accordingly. Clearly, this varies the arrival process in a time-varying manner. There is
+nothing wrong with this modeling approach if it works well for the
+situation. In taking such an approach, you need a lot of data. Not only
+do you need to record the time of every arrival, but you need enough
+arrivals in order to adequately fit distributions to the time between
+events for various time periods. This may or may not be feasible in
+practice.</p>
+<p>Often in modeling arrival processes, you cannot readily collect the
+actual times of the arrivals. If you can, you should try, but sometimes
+you just cannot. Instead, you are limited to a count of the number of
+arrivals in intervals of time. For example, a computer system records
+the number of people arriving every hour but not their individual
+arrival times. This is not uncommon since it is much easier to store
+summary counts than it is to store all individual arrival times. Suppose
+that you had count data as shown in Table <a href="ch6-sec-NSPP.html#tab:ExArrivalCounts">6.1</a>.</p>
+<div id="tab:ExArrivalCounts">
+<table>
+<caption><span id="tab:ExArrivalCounts">Table 6.1: </span> Example arrival counts</caption>
+<thead>
+<tr class="header">
+<th align="center">Interval</th>
+<th align="center">Mon</th>
+<th align="center">Tue</th>
+<th align="center">Wed</th>
+<th align="center">Thurs</th>
+<th align="center">Fri</th>
+<th align="center">Sat</th>
+<th align="center">Sun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">12 am – 6 am</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">6 am - 9 am</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">7</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">9 am - 12 pm</td>
+<td align="center">10</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">12 pm - 2 pm</td>
+<td align="center">24</td>
+<td align="center">25</td>
+<td align="center">22</td>
+<td align="center">19</td>
+<td align="center">26</td>
+<td align="center">27</td>
+<td align="center">20</td>
+</tr>
+<tr class="odd">
+<td align="center">2 pm - 5 pm</td>
+<td align="center">10</td>
+<td align="center">16</td>
+<td align="center">14</td>
+<td align="center">16</td>
+<td align="center">13</td>
+<td align="center">16</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="center">5 pm - 8 pm</td>
+<td align="center">30</td>
+<td align="center">36</td>
+<td align="center">26</td>
+<td align="center">35</td>
+<td align="center">33</td>
+<td align="center">32</td>
+<td align="center">18</td>
+</tr>
+<tr class="odd">
+<td align="center">8 pm - 12 am</td>
+<td align="center">14</td>
+<td align="center">12</td>
+<td align="center">8</td>
+<td align="center">13</td>
+<td align="center">12</td>
+<td align="center">15</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, how the data are grouped into intervals will affect how the
+data can be modeled. Grouping is part of the modeling process. Let’s
+accept these groups as appropriate for this situation. Looking at the
+intervals, you see that more arrivals tend to occur from 12 pm to 2 pm
+and from 5 pm to 8 pm. As discussed in
+Section <a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit">B.3.1</a>, we could
+test for this non-stationary behavior and check if the counts depend on
+the time of day. It is pretty clear that this is the case for this
+situation. Perhaps this corresponds to when people who visit the
+pharmacy can get off of work. Clearly, this is a non-stationary
+situation. What kinds of models can be used for this type of count data?</p>
+<p>A simple and often reasonable approach to this situation is to check
+whether the number of arrivals in <em>each</em> interval occurs according to a
+Poisson distribution. If so, then you know that the time between
+arrivals in an interval is exponential. When you can divide time so that
+the number of events in the intervals is Poisson (with different mean
+rates), then you can use a non-stationary or non-homogeneous Poisson
+process as the arrival process.</p>
+<p>Consider the first interval to be 12 am to 6 am; to check if the counts
+are Poisson in this interval, there are seven data points (one for every
+day of the week for the given period). This is not a lot of data to use to perform
+a chi-square goodness-of-fit test for the Poisson distribution. So, to
+do a better job at modeling the situation, many more days of data are
+needed. The next question is: Are all the days the same? It looks like
+Sunday may be a little different than the rest of the days. In
+particular, the counts on Sunday appear to be a little less on average
+than the other days of the week. In this situation, you should also
+check whether the day of the week matters to the counts. As we
+illustrated in Section <a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit">B.3.1</a>, one method of doing this is to perform a contingency table test.</p>
+<p>Let’s assume for simplicity that there is not enough evidence to suggest
+that the days are different and that the count data in each interval is
+well modeled with a Poisson distribution. In this situation, you can
+proceed with using a non-stationary Poisson process. From the data you
+can calculate the average arrival rate for each interval and the rate
+per hour for each interval as shown in
+Table <a href="ch6-sec-NSPP.html#tab:MeanArrivalRates">6.2</a>. In the table, 2.14 is the average of the
+counts across the days for the interval 12 am to 6 pm. In the rate per
+hour column, the interval rate has been converted to an hourly basis by
+dividing the rate for the interval by the number of hours in the
+interval. Figure <a href="ch6-sec-NSPP.html#fig:NSArrivals">6.1</a> illustrates the time-varying
+behavior of the mean arrival rates over the course of a day.</p>
+<div id="tab:MeanArrivalRates">
+<table>
+<caption><span id="tab:MeanArrivalRates">Table 6.2: </span> Mean arrival rates for each time interval</caption>
+<thead>
+<tr class="header">
+<th align="center">Interval</th>
+<th align="center">Avg.</th>
+<th align="center">Length (hrs)</th>
+<th align="center">Rate per hour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">12 am – 6 am</td>
+<td align="center">2.14</td>
+<td align="center">6</td>
+<td align="center">0.36</td>
+</tr>
+<tr class="even">
+<td align="center">6 am - 9 am</td>
+<td align="center">6.0</td>
+<td align="center">3</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="odd">
+<td align="center">9 am - 12 pm</td>
+<td align="center">7.43</td>
+<td align="center">3</td>
+<td align="center">2.48</td>
+</tr>
+<tr class="even">
+<td align="center">12 pm - 2 pm</td>
+<td align="center">23.29</td>
+<td align="center">2</td>
+<td align="center">11.645</td>
+</tr>
+<tr class="odd">
+<td align="center">2 pm - 5 pm</td>
+<td align="center">14.29</td>
+<td align="center">3</td>
+<td align="center">4.76</td>
+</tr>
+<tr class="even">
+<td align="center">5 pm - 8 pm</td>
+<td align="center">30.0</td>
+<td align="center">3</td>
+<td align="center">10</td>
+</tr>
+<tr class="odd">
+<td align="center">8 pm - 12 am</td>
+<td align="center">12.0</td>
+<td align="center">4</td>
+<td align="center">3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:NSArrivals"></span>
+<img src="figures2/ch6/ch6NSArrivals.png" alt="Arrival rate per hour for time intervals" width="70%" height="70%" />
+<p class="caption">
+Figure 6.1: Arrival rate per hour for time intervals
+</p>
+</div>
+<p>The two major methods by which a non-stationary Poisson process can be
+generated are thinning and rate inversion. Both methods will be briefly
+discussed; however, the interested reader is referred to
+<span class="citation">(<a href="#ref-leemis2006discreteevent" role="doc-biblioref">L. M. Leemis and Park 2006</a>)</span> or <span class="citation">(<a href="#ref-ross1997introduction" role="doc-biblioref">Ross 1997</a>)</span> for more of the
+theory underlying these methods. Before these methods are discussed, it
+is important to point out that the naive method of using different
+Poisson processes for each interval and subsequently different
+exponential distributions to represent the inter-arrival times could be
+used to model this situation by switching the distributions as
+previously discussed. However, the switching method is not technically
+correct for generating a non-stationary Poisson process. This is because
+it will not generate a non-stationary Poisson process with the correct
+probabilistic underpinnings. Thus, if you are going to model a process
+with a non-stationary Poisson process, you should use either thinning or
+rate inversion to be technically correct.</p>
+<div id="thinning-method" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Thinning Method</h3>
+<p>For the thinning method, a stationary Poisson process with a constant
+rate,<span class="math inline">\(\lambda^{*}\)</span>, and arrival times, <span class="math inline">\(t_{i}^{*}\)</span>, is first generated,
+and then potential arrivals, <span class="math inline">\(t_{i}^{*}\)</span>, are rejected with probability:</p>
+<p><span class="math display">\[p_r = 1 - \frac{\lambda(t_{i}^{*})}{\lambda^{*}}\]</span></p>
+<p>where <span class="math inline">\(\lambda(t)\)</span> is the mean arrival rate as a function of time.
+Often, <span class="math inline">\(\lambda^{*}\)</span> is set as the maximum arrival rate over the time
+horizon, such as:</p>
+<p><span class="math display">\[\lambda^{*} = \max\limits_{t} \lbrace \lambda(t) \rbrace\]</span></p>
+<p>In the example, <span class="math inline">\(\lambda^{*}\)</span> would be the mean of the 5 pm to 8 pm
+interval, <span class="math inline">\(\lambda^{*} = 11.645\)</span>. The following pseudo-code for
+implementing the thinning method creates entities at the maximum rate
+and thins them according to which period is currently active.</p>
+<div class="line-block">CREATE entities, mean time between arrivals, EXPO(<span class="math inline">\(1/\lambda^{*}\)</span>)<br />
+DECIDE with chance, <span class="math inline">\(1 - \frac{\lambda(t_{i}^{*})}{\lambda^{*}}\)</span><br />
+ IF accepted THEN<br />
+   Go to Label B<br />
+ ELSE<br />
+   DISPOSE<br />
+ END IF<br />
+END DECIDE<br />
+B: enter model and use arrival</div>
+<p>An array stores each arrival rate for the intervals, and a variable is used to
+hold the maximum arrival rate over the time horizon. To implement the
+arrival rate function, the code creates a logical entity that keeps
+track of the current interval as a variable that can be used to index
+the array of arrival rates. If the simulation lasts past the time
+horizon of the arrival rate function, then the variable that keeps track
+of the interval should be reset to start counting from the first period.</p>
+<div class="line-block">CREATE 1 logical entity<br />
+A: ASSIGN vPeriod = vPeriod + 1<br />
+DECIDED IF vPeriod &lt; vNumPeriods THEN<br />
+ DELAY for period length<br />
+ELSE<br />
+ vPeriod = 0<br />
+END DECIDE<br />
+GO TO Label A:</div>
+<p>One of the exercises in this chapter requires implementing the thinning
+algorithm in . The theoretical basis for why thinning works can be found
+in <span class="citation">(<a href="#ref-ross1997introduction" role="doc-biblioref">Ross 1997</a>)</span>.</p>
+</div>
+<div id="rate-inversion-method" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Rate Inversion Method</h3>
+<p>The second method for generating a non-stationary Poisson process is
+through the rate inversion algorithm. In this method, a <span class="math inline">\(\lambda = 1\)</span>
+Poisson process is generated, and the inverse of the mean arrival rate
+function is used to re-scale the times of arrival to the appropriate
+scale. This section does not discuss the theory behind this algorithm.
+Instead, see <span class="citation">(<a href="#ref-leemis2006discreteevent" role="doc-biblioref">L. M. Leemis and Park 2006</a>)</span> for further details of the
+theory, fitting, and the implementation of this method in simulation.
+This method is available for piece-wise constant-rate functions in by
+using an Arrivals Schedule associated with a CREATE module. Let’s see
+how to implement the example using an Arrivals Schedule.</p>
+<p>The following is available in the file <em>PharmacyModelNSPP.doe</em> that
+accompanies this chapter. The first step in implementing a
+non-stationary Poisson process in is to define the intervals and compute
+the rates per hour as per Table <a href="ch6-sec-NSPP.html#tab:MeanArrivalRates">6.2</a>. It is extremely important to have the rates on a per hour basis. The SCHEDULE module is a data module on the
+Basic Process panel.</p>
+<div class="figure" style="text-align: center"><span id="fig:ScheduleDataModule"></span>
+<img src="figures2/ch6/ch6ScheduleDataModule.png" alt="SCHEDULE data module" width="60%" height="60%" />
+<p class="caption">
+Figure 6.2: SCHEDULE data module
+</p>
+</div>
+<p>Figure <a href="ch6-sec-NSPP.html#fig:ScheduleDataModule">6.2</a> illustrates where to find the SCHEDULE in
+the Basic Process panel. To use the SCHEDULE module, double-click on the
+data module area to add a new schedule. Schedules can be of type
+Capacity, Arrival, and Other. Right-clicking on the row and using Edit
+via Dialog will give you the SCHEDULE dialog window. The text boxes for
+the SCHEDULE dialog follow:</p>
+<dl>
+<dt>Format Type</dt>
+<dd><p>Schedules can be defined as a collection of value, duration pairs
+(Duration) or they can be defined using the calendar editor. The
+calendar editor allows for the input of a complex schedule that can
+be best described by a Gregorian calendar (i.e., days, months,
+etc.).</p>
+</dd>
+<dt>Type</dt>
+<dd><p>Capacity refers to time varying schedules for resources. Arrival
+refers to non- stationary Poisson arrivals. Other can be used to
+represent other types of time delayed schedules.</p>
+</dd>
+<dt>Time Units</dt>
+<dd><p>This field represents how the time units for the durations will be
+interpreted. The field only refers to the durations, not the arrival
+rates.</p>
+</dd>
+<dt>Scale Factor</dt>
+<dd><p>This field can be used to easily change all the values in the
+duration value pairs.</p>
+</dd>
+<dt>Durations</dt>
+<dd><p>The length of time of the interval for the associated value. Once
+all the durations have been executed, the schedule will repeat
+unless the last duration is left infinite.</p>
+</dd>
+<dt>Value</dt>
+<dd><p>This field represents either the capacity to be used for the
+resource or the arrival rate (in entities per hour), depending on
+which type of schedule was specified.</p>
+</dd>
+<dt>Name</dt>
+<dd><p>Name of the module.</p>
+</dd>
+</dl>
+<p>The SCHEDULE module offers a number of ways in which to enter the
+information required for the schedule. The most straightforward method
+is to enter each value and duration pair using the Add button on the
+dialog box. You will be prompted for each pair. In this case, the
+arrival rate (per hour) and the duration that the arrival rate will last
+should be entered. The completed dialog entries are shown in
+Figure <a href="ch6-sec-NSPP.html#fig:ScheduleDialog">6.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ScheduleDialog"></span>
+<img src="figures2/ch6/ch6ScheduleDialog.png" alt="SCHEDULE dialog" width="45%" height="45%" />
+<p class="caption">
+Figure 6.3: SCHEDULE dialog
+</p>
+</div>
+<p>Note that the arrival rates are given per hour. Not entering the arrival
+rates per hour is a common error in using this module. Even if you
+specify the time units of the dialog as minutes, <em>the arrival rates must
+be per hour</em>. The time units only refer to the duration values. The duration
+values can also be entered using a spreadsheet like view.</p>
+<p>Once the schedule has been defined, the last step is to indicate in the
+CREATE module that it should use the SCHEDULE. This is shown in
+Figure <a href="ch6-sec-NSPP.html#fig:CREATEwithSchedule">6.4</a> where the Time Between Arrivals Type
+has been specified as Schedule with the appropriate Schedule Name. The
+schedule as in Figure <a href="ch6-sec-NSPP.html#fig:ScheduleDialog">6.3</a> shows that the duration values add up to 24 hours so that a full day’s worth of arrival rates are specified. If you
+simulate the system for more than one day, what will happen on the
+second day? Because the schedule has a duration, value pair for each
+interval, the schedule will repeat after the last duration occurs. If
+the schedule is specified with an infinite last duration, the value
+specified will be used for the rest of the simulation and the schedule
+will not repeat.</p>
+<div class="figure" style="text-align: center"><span id="fig:CREATEwithSchedule"></span>
+<img src="figures2/ch6/ch6CREATEwithSchedule.png" alt="CREATE module with schedule type" width="60%" height="60%" />
+<p class="caption">
+Figure 6.4: CREATE module with schedule type
+</p>
+</div>
+<p>As indicated in this limited example, it is relatively easy to model a
+non-stationary Poisson arrival process within Arena. If the arrival process to
+the system is non-stationary, then it is probably a good idea to vary
+the resources available in they system according to the arrival pattern.
+The next section discusses how to extend the modeling of resources to
+include time varying behavior as well as the ability to fail at random
+points in time.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-leemis2006discreteevent" class="csl-entry">
+Leemis, L. M., and S. K. Park. 2006. <em>Discrete-Event Simulation: A First Course</em>. Prentice-Hall.
+</div>
+<div id="ref-ross1997introduction" class="csl-entry">
+Ross, S. 1997. <em>Introduction to Probability Models</em>. 6th ed. Academic Press.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch6-AdvResModeling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/06-Chapter6.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>D.3 Programming Concepts within Arena | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="D.3 Programming Concepts within Arena | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="D.3 Programming Concepts within Arena | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-ArenaMisc-RunController.html"/>
+<link rel="next" href="app-ArenaMisc-ArenaCosting.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app:ArenaMisc:Prog" class="section level2" number="12.3">
+<h2><span class="header-section-number">D.3</span> Programming Concepts within Arena</h2>
+<p>Within Arena , programming support comes in two forms: laying down flow chart
+modules and computer language integration (e.g. VBA, C, etc.). This
+section presents some common programming issues that are helpful to
+understand when trying to get the most out of your models. First, we
+will examine how Arena stores the output from a simulation run. Then, the
+discussion involving input and output started in
+Chapter <a href="ch4.html#ch4">4</a> will be
+continued. Finally, the use of Visual Basic for Applications (VBA)
+within the environment will be introduced.</p>
+<div id="app:ArenaMisc:Prog:MsAccess" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">D.3.1</span> Using the Generated Access File</h3>
+<p>Each time the simulation experiment is executed writes the statistical
+information collected during the run to a Microsoft Access database that
+has the same name as the model file. This database is what is used by
+the Crystal Reports report generator. You can also access this database
+and extract the statistical information yourself. This is useful if you
+need to post process the statistical information in a statistical
+package.</p>
+<p>This section demonstrates how to extract information from this database.
+The intention is to make you aware of this database and to give you
+enough information so that you can use the database for some simple data
+extraction. There is detailed information concerning the Reports
+Database within the Help system. You should search under <em>The Report Database</em>. We will be reusing the LOTR example model from Chapter <a href="ch4.html#ch4">4</a> within this section to illustrate these concepts.</p>
+<p>When you create and run a model, e.g. <em>yourmodel.doe</em>, running the model
+will create a corresponding Microsoft Access file called
+<em>yourmodel.mdb</em>. Each time the model is run, the statistical information
+from the simulation is written to the database. If you change the input
+parameters to your model (without doing anything else), and then re-run
+the model, that model’s results are written to the database. Any
+previous data will be over written. There are two basic ways to save
+information from multiple simulation runs. The first is to simply rename
+the database file to a different name before rerunning the simulation.
+In this case, a new database file for the model will be created when it
+is run. This approach creates a new database for each simulation
+execution.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig12"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig12.png" alt="Run Setup statistical collection options" width="55%" height="55%" />
+<p class="caption">
+Figure D.17: Run Setup statistical collection options
+</p>
+</div>
+<p>The second approach is to use the Projects Parameters panel within the
+Run <span class="math inline">\(&gt;\)</span> Setup menu dialog as illustrated in Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig12">D.17</a>. The Project Title field identifies a
+particular project. This field is used by the database to identify a
+given project’s results. If this name is not changed when the simulation
+is rerun then the results are overwritten for the named project. Thus,
+by changing this name before each experiment, the database will contain
+the information for each experiment accessible by this project name. Now
+let’s take a look at the type of information that is stored within the
+database.</p>
+<p>The Arena Reports database consists of a number of tables and queries. A table
+is a set of records with each row in the table having a unique
+identifier called its primary key and a set of fields (columns) that
+hold information about the current record. A query is a database
+instruction for extracting particular information from a table or a set
+of related tables.</p>
+<p>The help system describes in detail the structure of the database. For
+accessing statistical information there are a few key tables:</p>
+<dl>
+<dt>Definition</dt>
+<dd><p>Holds the name of the statistical item from within the model, its
+type (e.g. DSTAT, TALLY, FREQ, etc.) and information about its
+collection and reporting.</p>
+</dd>
+<dt>Statistic</dt>
+<dd><p>The summary within replication results for a given statistic on a
+given replication</p>
+</dd>
+<dt>Count</dt>
+<dd><p>The ending value for a RECORD module designated as Count for a given
+replication.</p>
+</dd>
+<dt>Frequency</dt>
+<dd><p>The ending values for tabulated frequency statistics by replication</p>
+</dd>
+<dt>Output</dt>
+<dd><p>The value of a defined OUTPUT statistic for each replication.</p>
+</dd>
+</dl>
+<p>The Definition table with the Statistic table can be used to access the
+replication information. Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig22">D.18</a> illustrates the fields within the
+Definition table. The important fields in the Definition table are ID,
+Name, and <code>DefinitionTypeID.</code> The ID is the primary key of the table,
+Name represents the name to appear on the report that was assigned
+within the model for the statistic, <code>DefinitionTypeID</code> indicates the
+type of statistical element. For the purposes of this section, the
+statistic types of interest are DSTAT (time-based), TALLY
+(observation-based), COUNTER (RECORD with count option), OUTPUT
+(captured at end of replication), and FREQUENCY (tabulates percentage of
+time spent in defined categories).</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig22"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig22.png" alt="Definition table field design" width="90%" height="90%" />
+<p class="caption">
+Figure D.18: Definition table field design
+</p>
+</div>
+<p>The Statistic table holds the statistical values for the within
+replication statistics as shown in
+Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig23">D.19</a>. Notice that the Statistic table has a
+field called <code>DefintitionID</code>. This field is a database foreign key to
+the Definition table. With this field you can relate the two tables
+together and get the name and type of statistic.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig23"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig23.png" alt="Statistic table field" width="80%" height="80%" />
+<p class="caption">
+Figure D.19: Statistic table field
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig24"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig24.png" alt="Accessing statistics information" width="80%" height="80%" />
+<p class="caption">
+Figure D.20: Accessing statistics information
+</p>
+</div>
+<p>To explore these tables, you will work with the database called
+<em>DB-Stat-Example.mdb</em>. This file was produced by running the
+<em>LOTRExample.doe</em> with 56 replications and renaming the created
+database file. If you have Microsoft Access then open the database and
+then open the table called Definition. Select the desired row, e.g. row
+8, and use Insert <span class="math inline">\(&gt;\)</span> Subdatasheet to get the Insert Subdatasheet dialog
+as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig24">D.20</a>. Then, select the Statistic table and
+press the OK button as shown in the figure.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig25"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig25.png" alt="Replication statistics for make and inspect time" width="80%" height="80%" />
+<p class="caption">
+Figure D.21: Replication statistics for make and inspect time
+</p>
+</div>
+<p>Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig25">D.21</a> shows the result of inserting the linked
+data sheet and selecting the “+" sign for the statistic named”Record
+Make and Inspect Time". You should right-click on the <code>ReplicationID</code>
+field and sort the subdatasheet by increasing replication number. From
+this table, you can readily assess the replication statistics. For
+example, the <code>AvgObs</code> column refers to the ending average across all the
+observations recorded during each replication. From this you can easily
+cut and paste any required information into a spreadsheet or a
+statistical package such as R. For those familiar with writing queries,
+this same information can be extracted by writing the query as shown in
+Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig26">D.22</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig26"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig26.png" alt="Query to access replication statistics" width="80%" height="80%" />
+<p class="caption">
+Figure D.22: Query to access replication statistics
+</p>
+</div>
+<p>To summarize the statistics across the replications, you can write a
+group by query as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig27">D.23</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig27"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig27.png" alt="Query to summarize replication statistics" width="80%" height="80%" />
+<p class="caption">
+Figure D.23: Query to summarize replication statistics
+</p>
+</div>
+<p>In the original LOTR Ring Maker, Inc. model, an OUTPUT statistic was
+defined to collect the time that the simulation ended. The OUTPUT
+statistic values collected at the end of each replication are saved in
+the Output table as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig28">D.24</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig28"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig28.png" alt="Output table field design" width="80%" height="80%" />
+<p class="caption">
+Figure D.24: Output table field design
+</p>
+</div>
+<p>To see the collected values for a specific defined statistic, you can
+again use the Definition table. Open up the Definition table and scroll
+down to the row 48 which is the “TimeToMakeOrderStat” statistic. Select
+the row and using the Insert <span class="math inline">\(&gt;\)</span> Subdatasheet dialog, insert the Output
+statistic table as the subsheet. You should see the subsheet as shown in
+Figure <a href="app-ArenaMisc-Prog.html#fig:Appch7fig29">D.25</a>. These same basic techniques can be used
+to examine information on the COUNTERS and FREQUENCY statistics that
+have been defined in the model. If you name each run with a different
+Project Name, then you can do queries across projects. Thus, after you
+have completed your simulation analysis you do not need to rerun your
+model, you can simply access the statistics that were collected from
+within the Reports database. If you are an experienced Microsoft Access
+user you can then form custom queries, reports, charts, etc. for your
+simulation results.</p>
+<div class="figure" style="text-align: center"><span id="fig:Appch7fig29"></span>
+<img src="figures2/AppMiscArenaTopics/ch7fig29.png" alt="Expanded data sheet view for OUTPUT statistics" width="65%" height="65%" />
+<p class="caption">
+Figure D.25: Expanded data sheet view for OUTPUT statistics
+</p>
+</div>
+</div>
+<div id="app:ArenaMisc:Prog:Files" class="section level3" number="12.3.2">
+<h3><span class="header-section-number">D.3.2</span> Working with Files, Excel, and Access</h3>
+<p>As discussed in Chapter <a href="ch2.html#ch2">2</a>, Arena allows the user to directly read from or write to
+files within a model during a simulation run by using the READWRITE
+Module located on the Advanced Process panel. Using this module, the
+user can read from the keyboard, read from a file, write to the screen,
+or write to a file. When reading from or writing to a file, the user
+must define an File Name and an optionally a file format. The File Name
+is the internal name (within the model) for the external file defined by
+the operating system. The internal file name is defined with the FILE
+data module. Using the FILE data module the user can specify the name
+and path to the external file. The file format can be specified either
+in the FILE data module or in the READWRITE module to override the
+specification given in the FILE data module. The format can be free
+format, a valid C or FORTRAN format, WKS for Lotus spreadsheets,
+Microsoft Excel, Microsoft Access, and ActiveX Data Objects Access
+types. In order for the READWRITE module to operate, an entity must pass
+through the module. Thus, as demonstrated in
+Chapter <a href="ch2.html#ch2">2</a>, it is
+typical to create a logic entity at the appropriate time of the
+simulation to read from or write to a file. This section presents
+examples of the use of the READWRITE module. Then, the pharmacy model is
+extended to read parameters from a database and write statistical output
+to a database.</p>
+<div id="app:ArenaMisc:Prog:TextFiles" class="section level4" number="12.3.2.1">
+<h4><span class="header-section-number">D.3.2.1</span> Reading from a Text File</h4>
+<p>In this example, the SMART file, <em>Smarts162.doe</em>, is used to show how to
+read from a text file. Open up the file named <em>Smarts162Revised.doe</em>. Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig46">D.26</a> provides an overview of the model.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig46"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig46.png" alt="Smarts 162 Model" width="90%" height="90%" />
+<p class="caption">
+Figure D.26: Smarts 162 Model
+</p>
+</div>
+<p>In this model, entities arrive according to a Poisson process, the type
+of entity and thus the resulting path through the processing is
+determined via the values within the <em>simdat.txt</em> file. The first number
+in the file is the type (1 or 2). Then, the following two numbers are
+the station 1 and station 2 processing times, as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig47">D.27</a>. In
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig48">D.28</a>, the READWRITE module reads directly from
+the SIMDAT file using a free format. Each time a read occurs, the
+attributes (<code>myType</code>, <code>myStation1PT</code>, <code>myStation2PT</code>) are read in. The
+<code>myType</code> attribute is tested in the DECIDE module and the attributes
+<code>myStation1PT</code> and <code>myStation2PT</code> are used in the PROCESS modules.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig47"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig47.png" alt="Sample processing times is simdat.txt" width="35%" height="35%" />
+<p class="caption">
+Figure D.27: Sample processing times is simdat.txt
+</p>
+</div>
+<p>In Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig49">D.29</a>, the end of file action specifies what to do with the entity when the end
+of the file is reached. The Error option can be used if an unexpected
+EOF condition occurs. The Dispose option may be used to dispose of the
+entity, close the file or ADO recordset and stop reading from the file.
+The Rewind option may be used so that every time you reach an EOF, you
+start reading the file or recordset again from Record 1. Finally, the
+Ignore option can be used if you expect an EOF and want to determine
+your own action (such as reading another file). With the Ignore option
+when the EOF is reached, all variables read within the READWRITE module
+will be set to 0. The READWRITE module can be followed with a DECIDE
+module to ensure that if all values are 0, the desired action is taken.
+The comment character is useful to embed lines within the file that are
+skipped. These lines can add columns headers, comments, etc. to the file
+for easier readability of the file. Suppose the comment character was a
+“;” then</p>
+<pre><code>; This would be a comment followed by a header comment
+;  Num Servers\ \ Arrival Rate
+1 10</code></pre>
+<p>The <em>Initialize</em> option indicates what should do at the beginning of a
+replication. The file can stay at the current position (Hold), be
+rewound to the beginning of the file (Rewind), or the file can be closed
+(Close).</p>
+<p>The rest of the model is straightforward. In this case, the values from
+the file are read into the attributes of an entity. The values of an
+array can also be read in using this technique.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig48"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig48.png" alt="READWRITE module for simdat.txt" width="55%" height="55%" />
+<p class="caption">
+Figure D.28: READWRITE module for simdat.txt
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig49"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig49.png" alt="FILE module for Smarts162Revised.doe" width="55%" height="55%" />
+<p class="caption">
+Figure D.29: FILE module for Smarts162Revised.doe
+</p>
+</div>
+</div>
+<div id="app:ArenaMisc:Prog:2DArray" class="section level4" number="12.3.2.2">
+<h4><span class="header-section-number">D.3.2.2</span> Reading a Two Dimensional Array</h4>
+<p>Smarts file, <em>Smarts164.doe</em>, Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig50">D.30</a>, shows how to read into a two-dimensional
+array. The CREATE module creates a single entity and the ASSIGN module
+initializes the array index. Then, iterative looping is performed using
+a DECIDE module as previously discussed in Chapter <a href="ch4.html#ch4">4</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig50"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig50.png" alt="Smarts164.doe reading in a 2-D array" width="90%" height="90%" />
+<p class="caption">
+Figure D.30: Smarts164.doe reading in a 2-D array
+</p>
+</div>
+<p>In this particular example, the entity delays for 10 minutes before
+looping to read in the next values for the array. The assignments for
+the READWRITE module are show in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig51">D.31</a>. You can easily see how the use of
+two WHILE-ENDWHILE loops could allow for reading in the size of the
+array. You would first read in the number of rows and columns and then
+loop through each row/column combination.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig51"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig51.png" alt="READWRITE assignments module using arrays" width="60%" height="60%" />
+<p class="caption">
+Figure D.31: READWRITE assignments module using arrays
+</p>
+</div>
+</div>
+<div id="app:ArenaMisc:Prog:ExcelNamedRange" class="section level4" number="12.3.2.3">
+<h4><span class="header-section-number">D.3.2.3</span> Reading from an Excel Named Range</h4>
+<p>So far the examples have focused on text files and for simple models
+these will often suffice. For more user friendly input of the data to
+files, you can read from Excel files. Smarts file 185, Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig52">D.32</a>, shows how to read
+in values from an Excel named range.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig52"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig52.png" alt="Smarts185.doe reading from an Excel named range" width="90%" height="90%" />
+<p class="caption">
+Figure D.32: Smarts185.doe reading from an Excel named range
+</p>
+</div>
+<p>In order to read or write to an Excel named range, the named range must
+already be defined within the spreadsheet. Open up the Excel file
+<em>Smarts185.xls</em>. Select cells <code>C5:E6</code> and look in the upper left hand
+corner of the Excel input bar. You will see the named range. By
+selecting any cells within Excel you can name them by typing the name
+into the named range box as indicated in
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig53">D.33</a>. You can organize your spreadsheet in
+any way that facilitates the understanding of your data input
+requirements and then name the cells required for input. The named
+ranges are then accessible through the FILE module.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig53"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig53.png" alt="Checking the named range in Excel" width="80%" height="80%" />
+<p class="caption">
+Figure D.33: Checking the named range in Excel
+</p>
+</div>
+<p>In this example, the processing times are distributed according to a
+triangular distribution. The named spreadsheet cells hold the parameters
+of the triangular distribution (min, mode, max) for each of the two
+PROCESS modules. An EXPRESSION module was used to define expressions
+with the variables to be read in indicating the parameter values. The
+order quantities are how much the customer has ordered. The lower CREATE
+module creates 50 arriving customers, where the order quantity is read
+and then used in the processing times. In the use of named ranges,
+essentially the execution of each READWRITE module causes a new row to
+be read. Thus, as indicated in
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig52">D.32</a> there are two back to back READWRITE
+modules in the top level create logic to read in each of the rows
+associated with the processing times. In the bottom create logic, each
+new entity reads in a new row from the named range.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig54"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig54.png" alt="Data sheet view of FILE module" width="90%" height="90%" />
+<p class="caption">
+Figure D.34: Data sheet view of FILE module
+</p>
+</div>
+<p>After setting up the spreadsheet and defining the named ranges within
+Excel, you must then a file with the named range. This is accomplished
+through the use of the FILE module. Select the FILE module within
+<em>Smarts185.doe</em>. The FILE module, Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig54">D.34</a>, is already defined for you, but the
+steps will be indicated here. In the spreadsheet data view, double-click
+to add a new row and fill in <em>AccessType</em>, Operating System File Name,
+End of File Action, and Initialize Option the same as in the previous
+row. Then, click on the define Recordsets row button.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig55"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig55.png" alt="Defining the recordset for the FILE module" width="85%" height="85%" />
+<p class="caption">
+Figure D.35: Defining the recordset for the FILE module
+</p>
+</div>
+<p>You will see a dialog box similar to
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig55">D.35</a>. is smart enough to connect to Excel
+and to populate the Named Range text box with the named ranges that you
+defined for your spreadsheet. You need only select your desired named
+ranges and click on Add/Update. This will add the named range as a
+record set in the Recordsets in file area. You should add both named
+ranges as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig56">D.36</a>. Once you select a named range you
+can also view the data in the range by selecting the View button. If you
+try this with the ProcessingTime named range, you will see a view of the
+data similar to that shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig56">D.36</a>. As you can see, it is very simple
+to define a named range and connect to it.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig56"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig56.png" alt="Viewing the ProcessingTime named range" width="85%" height="85%" />
+<p class="caption">
+Figure D.36: Viewing the ProcessingTime named range
+</p>
+</div>
+<p>Now, you have to indicate how to use the named range within the
+READWRITE module. Open up the READWRITE module, see
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig57">D.37</a>, for reading the processing time 1
+parameters. After selecting read from file and the associated file name,
+will automatically recognize the file as a named range based Excel file.
+You can then choose the recordset that you want to read from and then
+the module works essentially as it did in our text file examples. You
+can also use these procedures to write to Excel named ranges and to
+Access using active data objects (ADO). See for example SMARTS files 189
+and 190.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig57"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig57.png" alt="READWRITE module using named range" width="60%" height="60%" />
+<p class="caption">
+Figure D.37: READWRITE module using named range
+</p>
+</div>
+<p>Making the simulation file driven takes special planning on how to
+organize the model to take advantage of the data input. Using sets and
+arrays appropriately is often necessary when making a model file driven.
+Here are some ideas for using files:</p>
+<ul>
+<li><p>Reading in the parameters of distributions</p></li>
+<li><p>Reading in model parameters (e.g. reorder points, order quantities,
+etc.)</p></li>
+<li><p>Reading in specified sequences for entities to follow. Define a set
+of sequences and read in the index into the set for the entity to
+follow. You can then define different sequences based on a file.</p></li>
+<li><p>Reading in different expressions to be used. Define a set of
+expressions and read in the index into the set to select the
+appropriate expression.</p></li>
+<li><p>Reading in a number of entities to create, then create them using a
+SEPARATE module.</p></li>
+<li><p>Creating entities and assigning their attributes based on a file</p></li>
+<li><p>Reading in each entity from a file to create a trace driven
+simulation</p></li>
+</ul>
+</div>
+<div id="app:ArenaMisc:Prog:Access" class="section level4" number="12.3.2.4">
+<h4><span class="header-section-number">D.3.2.4</span> Reading Model Variables from Microsoft Access</h4>
+<p>This example uses the pharmacy model and augments it to allow the
+parameters of the simulation to be read in from a database. In addition,
+the simulation will write out statistical data at the end of each run.
+This example involves the use of Microsoft Access, if you do not have
+Access then just follow along with the text. In addition, the creation
+of the database show in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig58">D.38</a> will not be discussed.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig58"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig58.png" alt="PharmacyDB Access Database" width="65%" height="65%" />
+<p class="caption">
+Figure D.38: PharmacyDB Access Database
+</p>
+</div>
+<p>The database has two tables: one to hold the inputs and one to hold the output across
+simulation replications. Each row in the table <em>InputTable</em> has three
+fields. The first field indicates the current replication, the second
+field indicates the mean time between arrivals for that experiment and
+the last field indicates the mean service time for the experiment. This
+example will only have a total of 3 replications; however, each
+replication is <em>not</em> going to be the same. At the beginning of each
+replication, the parameters for the replication will be read in and then
+the replication will be executed. At the end of the replication, some of
+the statistics related to the simulation will be written out to the
+table called <em>OuputTable</em>. For simplicity, this table also only has
+three columns. The first column is the replication number, the second
+column will hold the average waiting time in the queue and the third
+column will hold the half-width reported from .</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig59"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig59.png" alt="Read and write logic for Access example" width="85%" height="85%" />
+<p class="caption">
+Figure D.39: Read and write logic for Access example
+</p>
+</div>
+<p>Open up the <em>PharmacyModelRWv1.doe</em> file and examine the VARIABLE
+module. Notice that variables have been defined to hold the mean time
+between arrivals and the mean service time. Also, you should look at the
+CREATE and PROCESS modules to see how the variables are being used. The
+logic to read in the parameters at the beginning of each replication and
+to write the statistics at the end of the replication must now be
+implemented. The logic will be quite simple as indicated in
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig59">D.39</a>. An entity should be created at time
+zero, read the parameters from the database, delay for the length of the
+simulation, and then write out the data.</p>
+<p>You should lay down the modules indicated in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig59">D.39</a>. Now, the FILE module must be defined.
+The process for using Access as a data source is very similar to the way
+Excel named ranges operate. Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig60">D.40</a> shows the basic setup in the
+data sheet view. Opening up the recordset rows allows you to define the
+tables as recordsets. You should define the recordsets as indicated in the figure.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig60"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig60.png" alt="Read and write logic for Access example" width="80%" height="80%" />
+<p class="caption">
+Figure D.40: Read and write logic for Access example
+</p>
+</div>
+<p>The two READWRITE modules are quite simple. In the first READWRITE
+module (Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig61">D.41</a>), the variables <code>RepNum</code>, <code>MTBA</code>, and <code>MST</code> are assigned values from
+the file. This will occur at time zero and thereby set the parameters
+for the run. The second READWRITE module (Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig62">D.42</a>) writes out the value of the
+<code>RepNum</code> and uses the functions <code>TAVG()</code> and <code>THALF()</code> to get the values
+of the statistics associated with the waiting time in queue.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig61"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig61.png" alt="READWRITE assignments in first READWRITE module" width="55%" height="55%" />
+<p class="caption">
+Figure D.41: READWRITE assignments in first READWRITE module
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig62"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig62.png" alt="READWRITE assignments in second READWRITE module" width="85%" height="85%" />
+<p class="caption">
+Figure D.42: READWRITE assignments in second READWRITE module
+</p>
+</div>
+<p>Now, the setup of the replications must be considered. In this model, at
+the beginning of each replication the parameters will be read in. Since
+there are 3 rows in the database input table, the number of replications
+will be set to 3 so that all rows are read in. In addition, the run
+length is set to 1000 hours and the base time unit to minutes, as shown
+in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig63">D.43</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig63"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig63.png" alt="Run setup parameters for the database example" width="60%" height="60%" />
+<p class="caption">
+Figure D.43: Run setup parameters for the database example
+</p>
+</div>
+<p>Only one final module is left to edit. Open up the DELAY module. See Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig64">D.44</a>. The
+entity entering this module should delay for the length of the
+simulation. has a special purpose variable called <code>TFIN</code> which holds the
+length of the simulation <em>in base time units</em>. Thus, the entity should
+delay for <code>TFIN</code> units. Make sure that the units match the base time
+units specified in the Run Setup dialog.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig64"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig64.png" alt="Delaying for the length of the replication" width="60%" height="60%" />
+<p class="caption">
+Figure D.44: Delaying for the length of the replication
+</p>
+</div>
+<p>After the entity delays for <code>TFIN</code> time units, it enters the READWRITE
+module where it writes out the values of the statistics at that time.
+After running the model, you can open up the Microsoft Access database
+and view the <em>OutputTable</em> table. You should see the results for each of
+the three replications.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig65"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig65.png" alt="Output within the Access database" width="60%" height="60%" />
+<p class="caption">
+Figure D.45: Output within the Access database
+</p>
+</div>
+<p>Suppose now you wanted to replicate each run involving the parameter
+settings 3 times. All you would need to do would be to set up your
+Access input table as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig65">D.45</a> and change the number of replications
+to 9 in the Run Setup dialog.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig66"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig66.png" alt="Making repeated replications" width="30%" height="30%" />
+<p class="caption">
+Figure D.46: Making repeated replications
+</p>
+</div>
+<p>This same approach can be easily repeated for larger models. This allows
+you to specify a set of experiments, say according to an experimental
+design plan, execute the experiments and easily capture the output
+responses to a database. Then, you can use any of your favorite
+statistical analysis tools to analyze your experiments. I have found
+that for very large experiments where I want fine grained control over
+the inputs and outputs that the approach outlined here works quite
+nicely.</p>
+</div>
+</div>
+<div id="app:ArenaMisc:Prog:VBA" class="section level3" number="12.3.3">
+<h3><span class="header-section-number">D.3.3</span> Using Visual Basic for Applications</h3>
+<p>This section discusses the relationship between and Visual Basic for
+Applications (VBA). VBA is Microsoft’s macro language for applications
+built on top of the Windows operating system. As its name implies, VBA
+is based on the visual basic (VB) language. VBA is a full featured
+language that has all the aspects of modern computer languages include
+the ability to create objects with properties and methods. A full
+discussion of VBA is beyond the scope of this text. For an introduction
+to VBA for people interested in modeling, you might refer to
+<span class="citation">(<a href="#ref-albright2001vba" role="doc-biblioref">Albright 2001</a>)</span>.</p>
+<p>The section assumes that the reader has some familiarity with VBA or is,
+at the very least, relatively computer language literate. This topic is
+relatively advanced and typical usage of often does not require the user
+to delve into VBA. The interaction between and VBA will be illustrated
+through a discussion of the VBA block and the use of Arena’s user
+defined function. Through VBA, also has the ability to create models
+(e.g. lay down modules, fill dialogs, etc) via Arena’s VBA automation
+model. This advanced topic is not discussed in this text, but extensive
+help is available on the topic via the on-line help system.</p>
+<p>To understand the connection between and VBA, you must understand the
+user event oriented nature of VBA. Do not confuse the user interaction
+events discussed in this section with discrete events that occur within
+a simulation. Visual basic was developed as an augmentation of the BASIC
+computer language to facilitate the development of visual user
+interfaces. User interface interaction is inherently event driven. That
+is, the user causes various events to occur (e.g. move the mouse, clicks
+a button, etc.) that the user interface must handle. To build a program
+that interacts significantly with the user involves writing code to
+react to specific events. This paradigm is quite useful, and as VB
+became more accepted, the event-driven model of computing was expanded
+beyond that of directly interacting with the user. Additional non-user
+interaction events can be defined and can be called at specific places
+within the execution of the program. The programmer can then place code
+to be called at those specific times in order to affect the actions of
+the program. is integrated with VBA through a VBA event model.</p>
+<p>There are a number of VBA events that are predefined within Arena’s VBA
+interaction model. The following key VBA events will be called
+automatically if an event routine is defined for these events in VBA
+within .</p>
+<dl>
+<dt>DocumentOpen, DocumentSave</dt>
+<dd><p>These events are called when the model is opened or saved. The SIMAN
+object is not available, but the object can be used. The SIMAN
+object will be discussed within some examples.</p>
+</dd>
+<dt>RunBegin</dt>
+<dd><p>This event is called prior to the model being checked. When the
+model is checked, the underlying SIMAN code is compiled and
+translated to executable machine code. You can place code within the
+RunBegin event to add or change modules with VBA automation so that
+the changes get complied into the model. The SIMAN object is not
+available, but the object can be used. This event occurs
+automatically when the user invokes a simulation run. The object
+will not be discussed in this text, but plenty of help is available
+within the help system.</p>
+</dd>
+<dt>RunBeginSimulation</dt>
+<dd><p>This event is called prior to starting the simulation (i.e. before
+the first replication). This is a perfect location to set data that
+will be used by the model during all replications. The SIMAN object
+is active when this event is fired and remains active until after
+RunEndSimulation fires. Because the simulation is executing, changes
+using the object via automation are not permissible.</p>
+</dd>
+<dt>RunBeginReplication</dt>
+<dd><p>This event is called prior to the start of each replication.</p>
+</dd>
+<dt>OnClearStatistics</dt>
+<dd><p>This event is called if the clear statistics option has been
+selected in run setup. This event occurs prior to each replication
+and at the designated warm up time if a warm up period has been
+supplied.</p>
+</dd>
+<dt>RunEndReplication</dt>
+<dd><p>This event is called at the end of each replication. It represents a
+perfect location for capturing replication statistical data. It is
+only called if the replication completes naturally with no
+interruption from errors or the user.</p>
+</dd>
+<dt>RunEndSimulation</dt>
+<dd><p>This event is called after all replications are completed (i.e.
+after the last replication). It represents a perfect place to close
+files and get across replication statistical information.</p>
+</dd>
+<dt>RunPause, RunRestart, RunResume, RunStep, RunFastForward, RunBreak</dt>
+<dd><p>These events occur when the user interacts with Arena’s run control
+(e.g. pauses the simulation via the pause button on the VCR
+control). These events are useful for prompting the user for input.</p>
+</dd>
+<dt>RunEnd</dt>
+<dd><p>This event is called after RunEndSimulation and after the run has
+been ended. The SIMAN object is no longer active in this event.</p>
+</dd>
+<dt>OnKeystroke, OnFileRead, OnFileWrite, OnFileClose</dt>
+<dd><p>These events are fired by the SIMAN runtime engine if the named
+event occurs.</p>
+</dd>
+<dt>UserFunction, UserRule</dt>
+<dd><p>The UserFunction event is fired when the UF function is used within
+the model. The UserRule event is fired when the UR function is
+called within the model.</p>
+</dd>
+<dt>SimanError</dt>
+<dd><p>This event is called if SIMAN encounters an error or warning. The
+modeler can use this event to trap SIMAN related errors.</p>
+</dd>
+</dl>
+<p>A VBA event is defined, if a subroutine is written that corresponds to
+the VBA event naming convention within the <em>ThisDocument</em> module
+accessed through the VBA editor. In VBA, a file that holds code is
+called a module. This should not be confused with an module.</p>
+<div id="app:ArenaMisc:Prog:UsingVBA" class="section level4" number="12.3.3.1">
+<h4><span class="header-section-number">D.3.3.1</span> Using VBA</h4>
+<p>Let us take a look at how to write a VBA event for responding to the
+<em>RunBegin</em> event. The file, <em>VBAEvents.doe</em> that is available with this
+chapter, should be opened. The model is a simple CREATE, PROCESS,
+DISPOSE combination to create entities and have a model to illustrate
+VBA. The specifics of the model are not critical to the discussion here.
+In order to write a subroutine to handle the <em>RunBegin</em> event, you must
+use the VBA Editor. Within the environment use the Tools <span class="math inline">\(&gt;\)</span> Macro <span class="math inline">\(&gt;\)</span>
+Show Visual Basic Editor menu option (as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig67">D.47</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig67"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig67.png" alt="Showing the Visual Basic editor" width="60%" height="60%" />
+<p class="caption">
+Figure D.47: Showing the Visual Basic editor
+</p>
+</div>
+<p>This will open the VBA Editor as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig68">D.48</a>. If you double click on the
+<em>ThisDocument</em> item in the VBA projects tree as illustrated in
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig68">D.48</a>, you will open up a VBA module that is
+specifically associated with the current model.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig68"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig68.png" alt="Showing the Visual Basic editor" width="80%" height="80%" />
+<p class="caption">
+Figure D.48: Showing the Visual Basic editor
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig69"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig69.png" alt="Showing the VBA Events for Arena" width="85%" height="85%" />
+<p class="caption">
+Figure D.49: Showing the VBA Events for Arena
+</p>
+</div>
+<p>A number of VBA events (Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig69">D.49</a>) have already been defined for the model. Let’s
+insert an event routine to handle the <em>RunBegin</em> event. Place your
+cursor on a line within the <em>ThisDocument</em> module and go to the event
+drop down box called (General). Within this drop down box, select Model
+Logic. Now go to the adjacent drop down box that lists the available VBA
+events. Clicking on this drop down list will reveal all the possible VBA
+events that are available, as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig69">D.49</a>. The event routines that have already
+been written are in bold. As can be seen the <em>OnClearStatistics</em> event
+is indicating that it has been written and this can be confirmed by
+looking at the code associated with the <em>ThisDocument</em> module. At the
+end of the list is the <em>RunBegin</em> event. Select the <em>RunBegin</em> event and
+an event routine will automatically be placed within the <em>ThisDocument</em>
+module at your current cursor location.</p>
+<p>The event procedure has a very special naming convention so that it can
+be properly called when the VBA integration mechanism needs to call it
+during the execution of the model. The code will be very simple, it will
+just open up a message box that indicates that the <em>RunBegin VBA</em> event
+has occurred. The code to open up a message box when the event procedure
+fires is as follows:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb140-1"><a href="app-ArenaMisc-Prog.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub ModelLogic_RunBegin<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb140-2"><a href="app-ArenaMisc-Prog.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="app-ArenaMisc-Prog.html#cb140-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">MsgBox</span> <span class="st">&quot;RunBegin&quot;</span></span>
+<span id="cb140-4"><a href="app-ArenaMisc-Prog.html#cb140-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-5"><a href="app-ArenaMisc-Prog.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<p>The use of the <em>MsgBox</em> function in this example is just to illustrate
+that the subroutine is called at the proper time. You will quite
+naturally want to put more useful code within your VBA event
+subroutines.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig70"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig70.png" alt="Message Box for RunBegin example" width="85%" height="85%" />
+<p class="caption">
+Figure D.50: Message Box for RunBegin example
+</p>
+</div>
+<p>A number of similar VBA event subroutines have been defined with similar
+message boxes. Go back to the Environment and press the run button on
+the run control toolbar. As the model executes a series of message boxes
+will open up. After each message box appears, press okay and continue
+through the run. As you can see, the code in the VBA event routines is
+executed when fires the corresponding event. The use of the message box
+here is a bit annoying, but clearly indicates where in the sequence of
+the run that the event occurs.</p>
+<p>The Smart files are a good source of examples related to VBA. The
+following models are located in the Smarts folder within your main
+folder (e.g., Program Files <span class="math inline">\(&gt;\)</span> Rockwell Software <span class="math inline">\(&gt;\)</span> Smarts).</p>
+<ul>
+<li><p>Smarts 001: VBA—VariableArray Value</p></li>
+<li><p>Smarts 016: Displaying a Userform</p></li>
+<li><p>Smarts 017: Interacting with Variables</p></li>
+<li><p>Smarts 024: Placing Modules and Filling in Data</p></li>
+<li><p>Smarts 028: Userform Interaction</p></li>
+<li><p>Smarts 081: Using a Shape Object</p></li>
+<li><p>Smarts 083: Ending a Model Run</p></li>
+<li><p>Smarts 086: Creating and Editing Resource Pictures</p></li>
+<li><p>Smarts 090: Manipulating a Module’s Repeat Groups</p></li>
+<li><p>Smarts 091: Creating Nested Submodels Via VBA</p></li>
+<li><p>Smarts 098: Manipulating Named Views</p></li>
+<li><p>Smarts 099: Populating a Module’s Repeat Group</p></li>
+<li><p>Smarts 100: Reading in Data from Excel</p></li>
+<li><p>Smarts 109: Accessing Information</p></li>
+<li><p>Smarts 121: Deleting a Module</p></li>
+<li><p>Smarts 132: Executing Module Data Transfer</p></li>
+<li><p>Smarts 142: VBA Submodels</p></li>
+<li><p>Smarts 143: VBA—Animation Status Variables</p></li>
+<li><p>Smarts 155: Changing and Editing Global Pictures</p></li>
+<li><p>Smarts 156: Grouping Objects</p></li>
+<li><p>Smarts 159: Changing an Entity Attribute</p></li>
+<li><p>Smarts 161: User Function</p></li>
+<li><p>Smarts 166: Inserting Entities into a Queue</p></li>
+<li><p>Smarts 167: Changing an Entity Picture</p></li>
+<li><p>Smarts 174: Reading/Writing Excel Using VBA Module</p></li>
+<li><p>Smarts 175: VBA Builds and Runs a Model</p></li>
+<li><p>Smarts 176: Manipulating Arrays</p></li>
+<li><p>Smarts 179: Playing Multimedia Files Within a Model</p></li>
+<li><p>Smarts 182: Changing Model Data Interactively</p></li>
+</ul>
+<p>The Smarts files 001, 024, 090, 099, and 109 are especially
+illuminating. In the next section, the UserFunction event and the VBA
+block are illustrated.</p>
+</div>
+<div id="app:ArenaMisc:Prog:UDF" class="section level4" number="12.3.3.2">
+<h4><span class="header-section-number">D.3.3.2</span> The VBA Module and User Defined Functions</h4>
+<p>This section presents how to 1) use a user form to set the value of a
+variable, 2) call a user defined function which uses the value of an
+attribute to compute a quantity, and 3) use a VBA block to display
+information at a particular point in the model. Since the purpose of
+this example is to illustrate VBA, the model is a simple single server
+queuing system as illustrated in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig71">D.51</a>. The model consists of CREATE, ASSIGN,
+PROCESS, VBA, and DISPOSE modules.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig71"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig71.png" alt="Simple VBA example model" width="85%" height="85%" />
+<p class="caption">
+Figure D.51: Simple VBA example model
+</p>
+</div>
+<p>The VBA block is found on the Blocks panel. To attach the Blocks panel,
+you can right-click in the Basic Process Panel area and select Attach,
+and then find the <em>Blocks.tpo</em> file. Now you are ready to lay down the
+modules as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig71">D.51</a>. The information for each module is
+given as follows:</p>
+<ul>
+<li><p>CREATE: Choose Random(expo) with mean time between arrivals of 1
+hour and set the maximum number of entities to 5.</p></li>
+<li><p>ASSIGN: Use and attribute called <code>myPT</code> and assign a U(10,20) random
+number to it via the UNIF(10,20) function.</p></li>
+<li><p>PROCESS: Use the SEIZE, DELAY, RELEASE option. Define a resource and
+seize 1 unit of the resource. In the Delay Type area, choose
+Expression and type in UF(1) for the expression.</p></li>
+<li><p>Using the VARIABLE data module to define a variable called
+<code>vPTFactor</code> and initialize it with the value 1.0.</p></li>
+</ul>
+<p>No editing is necessary for the VBA block and the DISPOSE module. If you
+have any difficulty completing these steps you can look at the module
+dialogues in the file called <em>VBAExample.doe</em>.</p>
+<p>Now you are ready to enter the world of VBA. Using Alt-F11, open the VBA
+Editor. Double-click on the <em>ThisDocument</em> object and enter the code as
+shown in the following code. If you don’t want to retype this
+code, then you can access it in the file <em>VBAExample.doe</em>.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb141-1"><a href="app-ArenaMisc-Prog.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Option</span> Explicit</span>
+<span id="cb141-2"><a href="app-ArenaMisc-Prog.html#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-3"><a href="app-ArenaMisc-Prog.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Declare global object variables to refer</span>
+<span id="cb141-4"><a href="app-ArenaMisc-Prog.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> to the Model and SIMAN objects</span>
+<span id="cb141-5"><a href="app-ArenaMisc-Prog.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Public allows them to be accessed anywhere in this module</span>
+<span id="cb141-6"><a href="app-ArenaMisc-Prog.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> or any other vba module</span>
+<span id="cb141-7"><a href="app-ArenaMisc-Prog.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> gModelObj As Model</span>
+<span id="cb141-8"><a href="app-ArenaMisc-Prog.html#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> gSIMANObj As SIMAN</span>
+<span id="cb141-9"><a href="app-ArenaMisc-Prog.html#cb141-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-10"><a href="app-ArenaMisc-Prog.html#cb141-10" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Variables can be accessed via their uniquely assigned</span>
+<span id="cb141-11"><a href="app-ArenaMisc-Prog.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> symbol number. An integer variable is needed to hold the index</span>
+<span id="cb141-12"><a href="app-ArenaMisc-Prog.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> It is declared public here so it can be used throughout this module</span>
+<span id="cb141-13"><a href="app-ArenaMisc-Prog.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> and other vba modules</span>
+<span id="cb141-14"><a href="app-ArenaMisc-Prog.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> vPTFactorIndex As Integer</span>
+<span id="cb141-15"><a href="app-ArenaMisc-Prog.html#cb141-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-16"><a href="app-ArenaMisc-Prog.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Index for the myPT attribute</span>
+<span id="cb141-17"><a href="app-ArenaMisc-Prog.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> It is declared private here so it can be used throughout this module</span>
+<span id="cb141-18"><a href="app-ArenaMisc-Prog.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> myPTIndex As Integer</span></code></pre></div>
+<p>Let’s walk through what this code means. The two public variables
+<code>gModelObj</code> and <code>gSIMANObj</code> are object reference variables of type Model
+and SIMAN respectively. These variables allow access to the properties
+and methods of these two objects once the object references have been
+set. The Model object is part of Arena’s VBA Object model and allows
+access to the features of the Model as a whole. The details of Arena’s
+Object model can be found within the help system by searching on
+<em>Automation Programmer’s Reference</em>. The SIMAN object is created after
+the simulation has been complied and essentially gives access to the
+underlying simulation engine. The variables <code>vPTFactorIndex</code> and
+<code>myPTIndex</code> will be used to index into SIMAN to access the variable
+<code>vPTFactor</code> and the attribute <code>myPT.</code></p>
+<p>This example will use VBA forms to get some input from the user and to
+also display some information. Thus, the forms to be used in the example
+need to be developed. Use Insert <span class="math inline">\(&gt;\)</span> UserForm to create two forms called
+<code>Interact</code> and <code>UserForm1</code> as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig72">D.52</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig72"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig72.png" alt="Building the Interact form" width="90%" height="90%" />
+<p class="caption">
+Figure D.52: Building the Interact form
+</p>
+</div>
+<p>Use the show toolbox button to show the VBA controls toolbox. Then, you
+can select the desired control and place your cursor on the form at the
+desired location to complete the action. Build the forms as shown in the
+Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig72">D.52</a> and Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig73">D.53</a>. To place the labels used in the forms,
+use the label control (right next to the textbox control on the
+Toolbox). The name of a form can be changed in the Misc <span class="math inline">\(&gt;\)</span> (Name)
+property as shown in Figure <a href="app-ArenaMisc-Prog.html#fig:ch10fig74">D.54</a>. Now that the forms have been built, the
+controls on the forms can be referenced within other VBA modules.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig73"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig73.png" alt="VBA UserForm1" width="45%" height="45%" />
+<p class="caption">
+Figure D.53: VBA UserForm1
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch10fig74"></span>
+<img src="figures2/AppMiscArenaTopics/ch10fig74.png" alt="Properties Window" width="50%" height="50%" />
+<p class="caption">
+Figure D.54: Properties Window
+</p>
+</div>
+<p>Before looking at the code for this situation, we need to understand how
+to interchange data between the model and the VBA code. This will be
+accomplished using the SIMAN object within the VBA environment. When a
+model is complied each element of the model is numbered. This is called
+the symbol number. The method, <code>SymbolNumber(element name)</code>, on the
+SIMAN object will return the index symbol number that can be used as an
+identifier for the named element. To find information on the SIMAN
+object search the help system on SIMAN Object (Automation). There are
+<em>many</em> properties and methods associated with the SIMAN Object. The
+documentation states the following concerning the <code>SymbolNumber</code> method.</p>
+<blockquote>
+<p><strong><em>SymbolNumber Method</em></strong></p>
+<p><strong>Syntax</strong> <em>SymbolNumber (symbolString As String, index1 As Long,
+index2 As Long) As Long</em></p>
+<p><strong>Description</strong> All defined simulation elements have a unique number.
+For those constructs that have names, this function may be used to
+return the number corresponding to the construct name. For example,
+many of the methods in the SIMAN Object require an argument like
+<em>resourceNumber</em> or <em>variableNumber</em>, etc. to identify the specific
+element. Since it is more common to know the name rather than the
+number of the item, <em>SymbolNumber(“MyElementName”)</em> is often used for
+the <em>elementNumber</em> type argument.</p>
+</blockquote>
+<p>As indicated in the documentation, an important part of utilizing the
+SIMAN object’s other methods is to have access to an element’s unique
+symbol number. The symbol number is an integer and is then used as an
+index into other method calls to identify the element of interest.
+According to the help system the <code>VariableArrayValue</code> property can be
+used either to get or to set the value associated with the variable
+identified by the index number.</p>
+<blockquote>
+<p><strong><em>VariableArrayValue Read/Write Property</em></strong></p>
+<p><strong>Syntax</strong> <em>VariableArrayValue (variableNumber As Long) As Double</em></p>
+<p><strong>Description</strong> Gets/Sets the value of the variable, where
+<em>variableNumber</em> is the instance number of the variable as listed in
+the VARIABLES Element. For more information on working with variables
+in automation, please see making variable assignments.</p>
+</blockquote>
+<p>Now we are ready to look at the code.
+The VBA code shows the
+<em>RunBeginSimulation</em> event. When the user executes the simulation, the
+<em>RunBeginSimulation</em> event is fired. The first two lines of the routine
+set the object references to the Model object and to the SIMAN object in
+order to store the values in the global variables that were previously
+defined for the VB module. The SIMAN object can then be accessed through
+the variable <code>gSIMANObj</code> to get the indexes of the attribute and
+variable <code>myPT</code> and <code>vPTFactor.</code> In the exhibit, after the indexes to
+the <code>myPT</code> and <code>vPTFactor</code> are found, the SIMAN object is used to access
+the <code>VariableArrayValue</code> property. In this code, the value of the
+variable is accessed and then assigned to the value of the <em>TextBox1</em>
+control on the <code>Interact</code> form. Then, the Interact form is told to show
+itself and the focus is set to the text box, <em>TextBox1</em>, on the form for
+user entry.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="app-ArenaMisc-Prog.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub ModelLogic_RunBeginSimulation<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb142-2"><a href="app-ArenaMisc-Prog.html#cb142-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set object references</span>
+<span id="cb142-3"><a href="app-ArenaMisc-Prog.html#cb142-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Set</span> gModelObj = ThisDocument.Model</span>
+<span id="cb142-4"><a href="app-ArenaMisc-Prog.html#cb142-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Set</span> gSIMANObj = ThisDocument.Model.SIMAN</span>
+<span id="cb142-5"><a href="app-ArenaMisc-Prog.html#cb142-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-6"><a href="app-ArenaMisc-Prog.html#cb142-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Get the index to the symbol number</span>
+<span id="cb142-7"><a href="app-ArenaMisc-Prog.html#cb142-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> if the symbol does not exist there will be an error,</span>
+<span id="cb142-8"><a href="app-ArenaMisc-Prog.html#cb142-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> There is no error handling in this example</span>
+<span id="cb142-9"><a href="app-ArenaMisc-Prog.html#cb142-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The SymbolNumber method of the SIMAN object returns</span>
+<span id="cb142-10"><a href="app-ArenaMisc-Prog.html#cb142-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> the index associated with the named symbol</span>
+<span id="cb142-11"><a href="app-ArenaMisc-Prog.html#cb142-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-12"><a href="app-ArenaMisc-Prog.html#cb142-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the index for the myPT attribute</span>
+<span id="cb142-13"><a href="app-ArenaMisc-Prog.html#cb142-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">myPTIndex</span> = gSIMANObj.SymbolNumber<span class="er">(</span><span class="st">&quot;myPT&quot;</span><span class="kw">)</span></span>
+<span id="cb142-14"><a href="app-ArenaMisc-Prog.html#cb142-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-15"><a href="app-ArenaMisc-Prog.html#cb142-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the index for the vPTFactor variable</span>
+<span id="cb142-16"><a href="app-ArenaMisc-Prog.html#cb142-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vPTFactorIndex</span> = gSIMANObj.SymbolNumber<span class="er">(</span><span class="st">&quot;vPTFactor&quot;</span><span class="kw">)</span></span>
+<span id="cb142-17"><a href="app-ArenaMisc-Prog.html#cb142-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-18"><a href="app-ArenaMisc-Prog.html#cb142-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set the current value of the textbox to the</span>
+<span id="cb142-19"><a href="app-ArenaMisc-Prog.html#cb142-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> current value of the vPT variable in Arena</span>
+<span id="cb142-20"><a href="app-ArenaMisc-Prog.html#cb142-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The VariableArrayValue method of the SIMAN object</span>
+<span id="cb142-21"><a href="app-ArenaMisc-Prog.html#cb142-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> returns the value of the variable associated with the index</span>
+<span id="cb142-22"><a href="app-ArenaMisc-Prog.html#cb142-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.TextBox1.value</span> =         </span>
+<span id="cb142-23"><a href="app-ArenaMisc-Prog.html#cb142-23" aria-hidden="true" tabindex="-1"></a>              <span class="ex">gSIMANObj.VariableArrayValue</span><span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
+<span id="cb142-24"><a href="app-ArenaMisc-Prog.html#cb142-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-25"><a href="app-ArenaMisc-Prog.html#cb142-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Display the user form</span>
+<span id="cb142-26"><a href="app-ArenaMisc-Prog.html#cb142-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.Show</span></span>
+<span id="cb142-27"><a href="app-ArenaMisc-Prog.html#cb142-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Set the focus to the textbox</span>
+<span id="cb142-28"><a href="app-ArenaMisc-Prog.html#cb142-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.TextBox1.SetFocus</span></span>
+<span id="cb142-29"><a href="app-ArenaMisc-Prog.html#cb142-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-30"><a href="app-ArenaMisc-Prog.html#cb142-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The code for setting the variable<span class="st">&#39;s value is   </span></span>
+<span id="cb142-31"><a href="app-ArenaMisc-Prog.html#cb142-31" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;&#39; in the OK button user form code</span></span>
+<span id="cb142-32"><a href="app-ArenaMisc-Prog.html#cb142-32" aria-hidden="true" tabindex="-1"></a><span class="st">End Sub</span></span></code></pre></div>
+<p>When the <code>Interact</code> form is displayed, the text box will show the current
+value of the variable. The user can then enter a new value in the text
+box and press the OK button. Since the user interacted with the OK
+button, the button press event within the VBA form code can be used to
+change the value of the variable within to what was entered by the user.</p>
+<p>To enter the code to react to the button press, go to the Interact form
+and select the OK button on the form. Right-click on the button and from
+the context menu, select View Code. This will open up the form’s module
+and create a VBA event to react to the button click.</p>
+<p>The code provided next shows the use of the <code>VariableArrayValue</code>
+property to assign the value entered into the textbox to the <code>vPTFactor</code>
+variable. To access a public variable within the <code>ThisDocument</code> module,
+you precede the variable with <code>ThisDocument</code>. (e.g.
+<code>ThisDocument.gSIMANObj</code>). Once the value of the text box has been
+assigned to the variable, the form is hidden and input focus is given
+back to the model via the <code>ThisDocument.gModelObj.Activate</code> method.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb143-1"><a href="app-ArenaMisc-Prog.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub CommandButton2_Click<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb143-2"><a href="app-ArenaMisc-Prog.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> when the user clicks the ok button</span>
+<span id="cb143-3"><a href="app-ArenaMisc-Prog.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Set the current value of vPT to the value</span>
+<span id="cb143-4"><a href="app-ArenaMisc-Prog.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> currently in the textbox</span>
+<span id="cb143-5"><a href="app-ArenaMisc-Prog.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> uses the global variable vPTFactorIndex</span>
+<span id="cb143-6"><a href="app-ArenaMisc-Prog.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined in module ThisDocument</span>
+<span id="cb143-7"><a href="app-ArenaMisc-Prog.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> uses the global variable for the SIMAN object</span>
+<span id="cb143-8"><a href="app-ArenaMisc-Prog.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined in ThisDocument</span>
+<span id="cb143-9"><a href="app-ArenaMisc-Prog.html#cb143-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-10"><a href="app-ArenaMisc-Prog.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="ex">ThisDocument.gSIMANObj.VariableArrayValue</span><span class="er">(</span><span class="ex">ThisDocument.vPTFactorIndex</span><span class="kw">)</span> <span class="ex">=</span> TextBox1.value</span>
+<span id="cb143-11"><a href="app-ArenaMisc-Prog.html#cb143-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-12"><a href="app-ArenaMisc-Prog.html#cb143-12" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> hide the form</span>
+<span id="cb143-13"><a href="app-ArenaMisc-Prog.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Interact.hide</span></span>
+<span id="cb143-14"><a href="app-ArenaMisc-Prog.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Tell the model to resume running</span>
+<span id="cb143-15"><a href="app-ArenaMisc-Prog.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ThisDocument.gModelObj.Activate</span></span>
+<span id="cb143-16"><a href="app-ArenaMisc-Prog.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<p>Since the setting of the variable <code>vPTFactor</code> occurs as a result of the
+code initiated by the <em>RunBeginSimulation</em> event the value supplied by
+the user will be used for the entire run (unless changed again within
+the model or within VBA).</p>
+<p>The model will now begin to create entities and execute as a normal
+model. Each entity that is created will go through the ASSIGN module and
+have its <code>myPT</code> attribute set to a randomly drawn U(10,20) number. Then
+the entity proceeds to the PROCESS module where it invokes the SEIZE,
+DELAY, and RELEASE logic. In this module, the processing time is
+specified by a user defined function via the <code>UF(fid)</code> function. The
+<code>UF(fid)</code> function will call associated VBA code from directly within an
+model.</p>
+<p>You should think of the <code>UF(fid)</code> function as a mechanism by which you
+can easily call VBA functions. The <code>fid</code> argument is an integer that
+will be passed into VBA. This argument can be used to select from other
+user written functions as necessary.
+The following code exhibit shows the code for the UF function
+for this example.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb144-1"><a href="app-ArenaMisc-Prog.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> This Function allows you to pass a user </span>
+<span id="cb144-2"><a href="app-ArenaMisc-Prog.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined value back to the</span>
+<span id="cb144-3"><a href="app-ArenaMisc-Prog.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> module which called upon the UF<span class="er">(</span><span class="ex">functionID</span><span class="kw">)</span> <span class="kw">function</span><span class="fu"> in</span> <span class="ex">Arena.</span></span>
+<span id="cb144-4"><a href="app-ArenaMisc-Prog.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Use the functionID to select the function that you want via</span>
+<span id="cb144-5"><a href="app-ArenaMisc-Prog.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> the case statement, add additional functions as necessary</span>
+<span id="cb144-6"><a href="app-ArenaMisc-Prog.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> The functions can obviously be named something </span>
+<span id="cb144-7"><a href="app-ArenaMisc-Prog.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> more useful than UserFunctionX<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb144-8"><a href="app-ArenaMisc-Prog.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> The functions must return a double</span>
+<span id="cb144-9"><a href="app-ArenaMisc-Prog.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function ModelLogic_UserFunction<span class="er">(</span><span class="ex">ByVal</span> entityID As Long, </span>
+<span id="cb144-10"><a href="app-ArenaMisc-Prog.html#cb144-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ByVal</span> functionID As Long<span class="kw">)</span> <span class="ex">As</span> Double</span>
+<span id="cb144-11"><a href="app-ArenaMisc-Prog.html#cb144-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> entityID is the active entity</span>
+<span id="cb144-12"><a href="app-ArenaMisc-Prog.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> functionID is supplied when the user calls UF<span class="er">(</span><span class="ex">functionID</span><span class="kw">)</span></span>
+<span id="cb144-13"><a href="app-ArenaMisc-Prog.html#cb144-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-14"><a href="app-ArenaMisc-Prog.html#cb144-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Select</span> Case functionID</span>
+<span id="cb144-15"><a href="app-ArenaMisc-Prog.html#cb144-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 1</span>
+<span id="cb144-16"><a href="app-ArenaMisc-Prog.html#cb144-16" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction1<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb144-17"><a href="app-ArenaMisc-Prog.html#cb144-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 2</span>
+<span id="cb144-18"><a href="app-ArenaMisc-Prog.html#cb144-18" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction2<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb144-19"><a href="app-ArenaMisc-Prog.html#cb144-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">End</span> Select</span>
+<span id="cb144-20"><a href="app-ArenaMisc-Prog.html#cb144-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-21"><a href="app-ArenaMisc-Prog.html#cb144-21" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<p>When you use the <code>UF</code> function, you must write your own
+code. To write the <code>UF</code> function, use the drop down box that lists the
+available VBA events on the <em>ThisDocument</em> module and select the
+<em>UserFunction</em> event. The <em>UserFunction</em> event routine that is created
+has two arguments. The first argument is an identifier that represents
+the current active entity and the second argument is what was supplied
+by the call to <code>UF(fid)</code>.</p>
+<p>When you create the function it will not have any code. You should
+organize your code in a similar fashion. As can be seen in the exhibit,
+the supplied function identifier is used within a VBA select-case
+statement to select from other available user written functions.</p>
+<p>By using this select-case construct, you can easily define a variety of
+your own functions and call whichever function you need from within the model by
+supplying the appropriate function identifier.</p>
+<p>In order to implement the called functions, we need to understand how to
+access attributes associated with the active entity. This can be
+accomplished using two methods associated with the SIMAN object:
+<em>ActiveEntity</em> and <em>AttributeValue</em>. The help system describes the use
+of these methods as follows.</p>
+<blockquote>
+<p><strong><em>ActiveEntity Method</em></strong></p>
+<p><strong>Syntax</strong> <em>ActiveEntity () As Long</em></p>
+<p><strong>Description</strong> Returns the record location (the entity pointer) of
+the currently active entity, or 0 if there is not one. This is
+particularly useful in a VBA block Fire event to access attributes of
+the entity that entered the VBA block in the model.</p>
+<p><strong><em>AttributeValue Method</em></strong></p>
+<p><strong>Syntax</strong> <em>AttributeValue (entityLocation As Long, </em>attributeNumber<em>
+As Long, index1 As Long, index2 As Long) As Double</em></p>
+<p><strong>Description</strong> <em>Returns the value of general-purpose attribute
+</em>attributeNumber* with associated indices <em>index1</em> and <em>index2</em>. The
+number of indices specified must match the number defined for the
+attribute.*</p>
+</blockquote>
+<p>Let’s see how to put these methods into action within the user defined
+functions. The following code exhibit shows how to access the value of an
+attribute associated with the active entity.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb145-1"><a href="app-ArenaMisc-Prog.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function UserFunction1<span class="er">(</span><span class="kw">)</span> <span class="ex">As</span> Double</span>
+<span id="cb145-2"><a href="app-ArenaMisc-Prog.html#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> each entity has a unique id</span>
+<span id="cb145-3"><a href="app-ArenaMisc-Prog.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> activeEntityID As Long</span>
+<span id="cb145-4"><a href="app-ArenaMisc-Prog.html#cb145-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the number of the active entity</span>
+<span id="cb145-5"><a href="app-ArenaMisc-Prog.html#cb145-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> this could have been passed from ModelLogic_UserFunction</span>
+<span id="cb145-6"><a href="app-ArenaMisc-Prog.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">activeEntityID</span> = gSIMANObj.ActiveEntity</span>
+<span id="cb145-7"><a href="app-ArenaMisc-Prog.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-8"><a href="app-ArenaMisc-Prog.html#cb145-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> PTvalue As Double</span>
+<span id="cb145-9"><a href="app-ArenaMisc-Prog.html#cb145-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the value of the myPT attribute</span>
+<span id="cb145-10"><a href="app-ArenaMisc-Prog.html#cb145-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PTvalue</span> = gSIMANObj.AttributeValue<span class="er">(</span><span class="ex">activeEntityID,</span> myPTIndex, 0, 0<span class="kw">)</span></span>
+<span id="cb145-11"><a href="app-ArenaMisc-Prog.html#cb145-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-12"><a href="app-ArenaMisc-Prog.html#cb145-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> factor As Double</span>
+<span id="cb145-13"><a href="app-ArenaMisc-Prog.html#cb145-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">factor</span> = gSIMANObj.VariableArrayValue<span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
+<span id="cb145-14"><a href="app-ArenaMisc-Prog.html#cb145-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb145-15"><a href="app-ArenaMisc-Prog.html#cb145-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> this could be complicated function of the attribute/variables</span>
+<span id="cb145-16"><a href="app-ArenaMisc-Prog.html#cb145-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> here it is very simple <span class="er">(</span><span class="ex">and</span> could have been done within Arena itself</span>
+<span id="cb145-17"><a href="app-ArenaMisc-Prog.html#cb145-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> rather than VBA</span>
+<span id="cb145-18"><a href="app-ArenaMisc-Prog.html#cb145-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserFunction1</span> = PTvalue <span class="pp">*</span> factor</span>
+<span id="cb145-19"><a href="app-ArenaMisc-Prog.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<p>First, the <em>ActiveEntity</em> property of the SIMAN object is used to get an identifier for the
+current active entity (i.e. the entity that entered the VBA block).
+Then, the <em>AttributeValue</em> method of the SIMAN object is used to get the
+value of the attribute.</p>
+<p>Within Arena, attributes can be defined as multi-dimensional via the
+ATTRIBUTES module. Multi-dimensional attributes are not discussed in
+this text, but the <em>AttributeValue</em> method allows for this possibility.
+The two indices that can be supplied indicate to the SIMAN objecti how
+to access the attribute. In the example, these two values are zero,
+which indicates that this is not a multi-dimensional attribute. Once the
+values of the <code>myPT</code> attribute and the <code>vPTFactor</code> variable are
+retrieved from the SIMAN object, they are used to compute the value that
+is returned by the UF function. The variables <code>factor</code> and <code>PTvalue</code> are
+used to calculate the product of their values. Admittedly, this
+calculation can be more readily accomplished directly in without VBA,
+but the point is you can implement any complicated calculation using
+this architecture.</p>
+<p>With the <code>UF</code> function, you can easily invoke VBA code from essentially
+any place within your model. The <code>UF</code> function is especially useful for
+returning a value back to the model. Using the VBA block, you can also invoke
+specific VBA code when the entity passes through the block. In this
+example, after the entity exits the PROCESS module, the entity enters a
+VBA block.</p>
+<p>When you use a VBA block within your model, each VBA block is given a
+unique number. Then, within the <em>ThisDocument</em> module, an individual
+event routine can be created that is associated with each VBA block. In
+the example, the VBA block is used to open up a form and display some
+information about the entity when it reaches the VBA block. This might
+be useful to do when running an model in order to stop the model
+execution each time the entity goes through the VBA block to allow the
+user to interact with the form. However, most of the time the VBA block
+is used to execute complicated code that depends on the state of the
+system when the entity passes through the VBA block.
+The following exhibit shows the code for the VBA block event.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="app-ArenaMisc-Prog.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub VBA_Block_1_Fire<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb146-2"><a href="app-ArenaMisc-Prog.html#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set the values of the textboxes  </span>
+<span id="cb146-3"><a href="app-ArenaMisc-Prog.html#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox1.value</span> = gSIMANObj.VariableArrayValue<span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
+<span id="cb146-4"><a href="app-ArenaMisc-Prog.html#cb146-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox2.value</span> = gSIMANObj.AttributeValue<span class="er">(</span><span class="ex">gSIMANObj.ActiveEntity,</span></span>
+<span id="cb146-5"><a href="app-ArenaMisc-Prog.html#cb146-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">myPTIndex,</span> 0, 0<span class="kw">)</span></span>
+<span id="cb146-6"><a href="app-ArenaMisc-Prog.html#cb146-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox3.value</span> = UserFunction1<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb146-7"><a href="app-ArenaMisc-Prog.html#cb146-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Display the user form</span>
+<span id="cb146-8"><a href="app-ArenaMisc-Prog.html#cb146-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.Show</span></span>
+<span id="cb146-9"><a href="app-ArenaMisc-Prog.html#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<p>By now, this code should start to look familiar. The SIMAN object is
+used to access the values of the attribute and the variable that are of
+interest and then set them equal to the values for the <em>textboxes</em> that
+are being used on the form. Then, the form is shown. This brings up the
+form so that the user can see the values. In <em>UserForm1</em>, a command
+button was defined to close the form. The logic for hiding the form is
+shown in the next exhibit.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb147-1"><a href="app-ArenaMisc-Prog.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub CommandButton1_Click<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb147-2"><a href="app-ArenaMisc-Prog.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> hide the form</span>
+<span id="cb147-3"><a href="app-ArenaMisc-Prog.html#cb147-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.hide</span></span>
+<span id="cb147-4"><a href="app-ArenaMisc-Prog.html#cb147-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Tell the model to resume running</span>
+<span id="cb147-5"><a href="app-ArenaMisc-Prog.html#cb147-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ThisDocument.gModelObj.Activate</span></span>
+<span id="cb147-6"><a href="app-ArenaMisc-Prog.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<p>The show and hide functionality of VBA forms are used within this
+example so that new instances of the forms did not have to be created
+each time they are used. This keeps the form in memory so that the
+controls on the form can be readily accessed. This is not necessarily
+the best practice for managing the forms, but allows the discussion to
+be simplified. As long as you don’t have a large number of forms, this
+approach is reasonable. In addition, within the examples, there is no
+error catching logic. VBA has a very useful error catching mechanism and
+professional code should check for and catch errors.</p>
+</div>
+<div id="app:ArenaMisc:CorRV" class="section level4" number="12.3.3.3">
+<h4><span class="header-section-number">D.3.3.3</span> Generating Correlated Random Variates</h4>
+<p>The final example involves how to explicitly model dependence
+(correlation) within input distributions. In the fitting of input
+models, it was assumed and tested that the sample observations did not
+have correlation. But, what do you do if the data does have correlation?
+For example, let <span class="math inline">\(X_i\)</span> be the service time of the <span class="math inline">\(i^{th}\)</span> customer.
+What if the <span class="math inline">\(X_i\)</span> have significant correlation? That is, the service
+times are correlated. Arrival processes might also correlated. That is,
+the time between arrivals might be correlated. Research has shown, see
+<span class="citation">(<a href="#ref-patuwo1993the" role="doc-biblioref">Patuwo, Disney, and Mcnickle 1993</a>)</span> and <span class="citation">(<a href="#ref-livny1993the" role="doc-biblioref">Livny, Melamed, and Tsiolis 1993</a>)</span>, that ignoring the correlation when
+it is in fact present can lead to gross underestimation of the actual
+performance estimates for the system.</p>
+<p>The discussion here is based on the Normal-to-Anything Transformation as
+discussed in <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>, <span class="citation">(<a href="#ref-cario1998numerical" role="doc-biblioref">Cario and Nelson 1998</a>)</span>,
+<span class="citation">(<a href="#ref-cario1996autoregressive" role="doc-biblioref">Cario and Nelson 1996</a>)</span>, and <span class="citation">(<a href="#ref-biller2003modeling" role="doc-biblioref">Biller and Nelson 2003</a>)</span>. Suppose you have
+a <span class="math inline">\(N(0,1)\)</span> random variable, <span class="math inline">\(Z_i\)</span>, and a way to compute the CDF,
+<span class="math inline">\(\Phi(z)\)</span>, of the normal distribution. Then, based on the inverse
+transform technique, the random variable, <span class="math inline">\(\Phi(Z_i)\)</span> will have a
+<span class="math inline">\(U(0,1)\)</span> distribution. Suppose that you wanted to generate a random
+variable <span class="math inline">\(X_i\)</span> with CDF <span class="math inline">\(F(x)\)</span>, then you can use <span class="math inline">\(\Phi(Z_i)\)</span> as the
+source of uniform random numbers in an inverse transform technique.</p>
+<p><span class="math display">\[X_i = F^{-1}(U_i) = F^{-1}((\Phi(Z_i)))\]</span></p>
+<p>This transform is called the normal-to-anything (NORTA) transformation.
+It can be shown that even if the <span class="math inline">\(Z_i\)</span> are correlated (and thus so are
+the <span class="math inline">\(\Phi(Z_i)\)</span>) then the <span class="math inline">\(X_i\)</span> will have the correct CDF and will also
+be correlated. Unfortunately, the correlation is not directly preserved
+in the transformation so that if the <span class="math inline">\(Z_i\)</span> have correlation <span class="math inline">\(\rho_z\)</span>
+then the <span class="math inline">\(X_i\)</span> will have <span class="math inline">\(\rho_x\)</span> (not necessarily the same). Thus, in
+order to induce correlation in the <span class="math inline">\(X_i\)</span> you must have a method to
+induce correlation in the <span class="math inline">\(Z_i\)</span>.</p>
+<p>One method to induce correlation in the <span class="math inline">\(Z_i\)</span> is to generate the <span class="math inline">\(Z_i\)</span>
+from an autoregressive time-series model of order 1, i.e. AR(1). An
+AR(1) model with <span class="math inline">\(N(0,1)\)</span> marginal distributions has the following form:</p>
+<p><span class="math display">\[Z_i = \phi Z_{i-1} + \varepsilon_i\]</span></p>
+<p>where <span class="math inline">\(Z_1 \sim N(0,1)\)</span>, with independent and identically normally
+distributed errors, <span class="math inline">\(\varepsilon_i \sim N(0,1-\phi^2)\)</span> with <span class="math inline">\(-1&lt;\phi&lt;1\)</span>
+for . <span class="math inline">\(i = 2,3,\ldots\)</span>.</p>
+<p>It is relatively straightforward to generate this process by first
+generating <span class="math inline">\(Z_1\)</span>, then generating <span class="math inline">\(\varepsilon_i \sim N(0,1-\phi^2)\)</span> and
+using <span class="math inline">\(Z_i\)</span> = <span class="math inline">\(\phi Z_{i-1} + \varepsilon_i\)</span> to compute the next <span class="math inline">\(Z_i\)</span>.
+It can be shown that this AR(1) process will have lag-1 correlation:</p>
+<p><span class="math display">\[\phi = \rho^1 = \text{corr}(Z_i, Z_{i+1})\]</span></p>
+<p>Therefore, you can generate a random variable <span class="math inline">\(Z_i\)</span> that has a desired
+correlation and through the NORTA transformation produce <span class="math inline">\(X_i\)</span> that are
+correlated with the correlation being <em>functionally</em> related to
+<span class="math inline">\(\rho_z\)</span>. By changing <span class="math inline">\(\phi\)</span>, one can get the correlation for the <span class="math inline">\(X_i\)</span>
+that is desired. Procedures for accomplishing this are given in the
+previously mentioned references. The spreadsheet <em>NORTAExample.xls</em> can
+also be used to perform this search process.</p>
+<p>The implementation of this technique cannot be readily achieved in a
+general way within through the use of standard modules. In order to
+implement this method, you can make use of VBA. The model,
+<em>NORTA-VBA.doe</em>, shows how to implement the NORTA algorithm with a user
+defined function. Just as illustrated in the last section, a user
+defined function can be written as shown in the following code exhibit.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="app-ArenaMisc-Prog.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function ModelLogic_UserFunction<span class="er">(</span><span class="ex">ByVal</span> entityID As Long, </span>
+<span id="cb148-2"><a href="app-ArenaMisc-Prog.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ByVal</span> functionID As Long<span class="kw">)</span> <span class="ex">As</span> Double</span>
+<span id="cb148-3"><a href="app-ArenaMisc-Prog.html#cb148-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb148-4"><a href="app-ArenaMisc-Prog.html#cb148-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Select</span> Case functionID</span>
+<span id="cb148-5"><a href="app-ArenaMisc-Prog.html#cb148-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 1</span>
+<span id="cb148-6"><a href="app-ArenaMisc-Prog.html#cb148-6" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = CorrelatedUniform<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb148-7"><a href="app-ArenaMisc-Prog.html#cb148-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 2</span>
+<span id="cb148-8"><a href="app-ArenaMisc-Prog.html#cb148-8" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Dim</span> u As Double</span>
+<span id="cb148-9"><a href="app-ArenaMisc-Prog.html#cb148-9" aria-hidden="true" tabindex="-1"></a>            <span class="ex">u</span> = CorrelatedUniform<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb148-10"><a href="app-ArenaMisc-Prog.html#cb148-10" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Dim</span> x As Double</span>
+<span id="cb148-11"><a href="app-ArenaMisc-Prog.html#cb148-11" aria-hidden="true" tabindex="-1"></a>            <span class="ex">x</span> = expoInvCDF<span class="er">(</span><span class="ex">u,</span> 2<span class="kw">)</span></span>
+<span id="cb148-12"><a href="app-ArenaMisc-Prog.html#cb148-12" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = x</span>
+<span id="cb148-13"><a href="app-ArenaMisc-Prog.html#cb148-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">End</span> Select</span>
+<span id="cb148-14"><a href="app-ArenaMisc-Prog.html#cb148-14" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb148-15"><a href="app-ArenaMisc-Prog.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function </span></code></pre></div>
+<p>When you uses <code>UF(1)</code>, a correlated U(0,1) random variable will be
+returned. If the user uses <code>UF(2)</code>, then a correlated exponential
+distribution with a mean of 2 will be returned. Notice that in
+generating the correlated exponential random variable, a correlated
+uniform is first generated and then used in the inverse transform method
+to transform the uniform to the proper distribution. Thus, provided that
+you have functions that implement the inverse transform for the desired
+distributions, you can generate correlated random variables.</p>
+<p>The following code exhibit illustrates how the NORTA technique is
+used to generate the correlated uniform random variables. The variable,
+<em>phi</em>, is used to control the resulting correlation in the AR(1)
+process. The function, <em>SampleNormal</em>, associated with the SIMAN object
+is used to generate a <span class="math inline">\(N(0,1)\)</span> random variable that represents the error
+in the AR(1) process.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="app-ArenaMisc-Prog.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function CorrelatedUniform<span class="er">(</span><span class="kw">)</span> <span class="ex">As</span> Double</span>
+<span id="cb149-2"><a href="app-ArenaMisc-Prog.html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> phi As Double</span>
+<span id="cb149-3"><a href="app-ArenaMisc-Prog.html#cb149-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> e As Double</span>
+<span id="cb149-4"><a href="app-ArenaMisc-Prog.html#cb149-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> u As Double</span>
+<span id="cb149-5"><a href="app-ArenaMisc-Prog.html#cb149-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> change phi inside this function to get a different correlation</span>
+<span id="cb149-6"><a href="app-ArenaMisc-Prog.html#cb149-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">phi</span> = 0.8</span>
+<span id="cb149-7"><a href="app-ArenaMisc-Prog.html#cb149-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> generate error</span>
+<span id="cb149-8"><a href="app-ArenaMisc-Prog.html#cb149-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e</span> = gSimanObj.SampleNormal<span class="er">(</span><span class="ex">0,</span> 1 <span class="at">-</span> <span class="er">(</span><span class="ex">phi</span> <span class="pp">*</span> phi<span class="kw">)</span><span class="ex">,</span> 1<span class="kw">)</span></span>
+<span id="cb149-9"><a href="app-ArenaMisc-Prog.html#cb149-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> compute next AR<span class="er">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">Z</span></span>
+<span id="cb149-10"><a href="app-ArenaMisc-Prog.html#cb149-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">mZ</span> = phi <span class="pp">*</span> mZ + e</span>
+<span id="cb149-11"><a href="app-ArenaMisc-Prog.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> use normal cdf to get uniform</span>
+<span id="cb149-12"><a href="app-ArenaMisc-Prog.html#cb149-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">u</span> = NORMDIST<span class="er">(</span><span class="ex">mZ</span><span class="kw">)</span></span>
+<span id="cb149-13"><a href="app-ArenaMisc-Prog.html#cb149-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">CorrelatedUniform</span> = u</span>
+<span id="cb149-14"><a href="app-ArenaMisc-Prog.html#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span>
+<span id="cb149-15"><a href="app-ArenaMisc-Prog.html#cb149-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-16"><a href="app-ArenaMisc-Prog.html#cb149-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function expoInvCDF<span class="er">(</span><span class="ex">u</span> As Double, mean As Double<span class="kw">)</span> <span class="ex">As</span> Double</span>
+<span id="cb149-17"><a href="app-ArenaMisc-Prog.html#cb149-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">expoInvCDF</span> = <span class="at">-mean</span> <span class="pp">*</span> Log<span class="er">(</span><span class="ex">1</span> <span class="at">-</span> u<span class="kw">)</span></span>
+<span id="cb149-18"><a href="app-ArenaMisc-Prog.html#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<p>The variable, <em>mZ</em>, has been defined at the VBA module level, and thus
+it retains its value between invocations of the <em>CorrelatedUniform</em>
+function. The variable, <em>mZ</em>, represents the AR(1) process. The current
+value of <em>mZ</em> is multiplied with <em>phi</em> and the error is added to obtain
+the next value of <em>mZ</em>. The initial value of <em>mZ</em> was determined by
+implementing the <em>RunBeginReplication</em> event within the ThisDocument
+module. Because of the NORTA transformation, <em>mZ</em>, is <span class="math inline">\(N(0,1)\)</span>, and the
+function NORMDIST is used to compute the probability associated with the
+supplied z-value. The NORMDIST function (not shown here) is an
+implementation of the CDF for the standard normal distribution.</p>
+<p>With minor changes, the code supplied in <em>NORTA-VBA.doe</em> can be easily
+adapted to generate other correlated random variables. In addition, the
+use of the UF function can be expanded to generate other distributions
+that does not have built in (e.g. binomial).</p>
+<p>Arena is a very capable language, but occasionally you will need to access the
+full capabilities of a standard programming language. This section
+illustrated how to utilize VBA within the environment by either using
+the predefined automation events or by defining your own functions or
+events via the UF function and the VBA block. With these constructs you
+can make into a powerful tool for end users. There is one caveat with
+respect to VBA integration that must be mentioned. Since VBA is an
+interpreted language, its execution speed can be slower than compiled
+code. The use of VBA within as indicated within this section can
+increase the execution time of your models. If execution time is a key
+factor for your application, then you should consider using C/C++ rather
+than VBA for your advanced integration needs. allows access to the SIMAN
+runtime engine via C language functions. Essentially, you write your C
+functions and bundle them into a dynamic linked library which can be
+linked to . For more information on this topic, you should search the
+help system under <em>Introduction to C Support</em>.</p>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-albright2001vba" class="csl-entry">
+Albright, S. C. 2001. <em>VBA for Modelers, Developing Decision Support Systems with Microsoft Excel</em>. Duxbury Thomson Learning.
+</div>
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
+</div>
+<div id="ref-biller2003modeling" class="csl-entry">
+Biller, B., and B. L. Nelson. 2003. <span>“Modeling and Generating Multivarate Time- Series Input Processes Using a Vector Autogressive Technique.”</span> <em>Assoc. Comput. Mach. Trans. Modeling and Comput. Simul.</em> 13: 211–37.
+</div>
+<div id="ref-cario1996autoregressive" class="csl-entry">
+Cario, M. C., and B. L. Nelson. 1996. <span>“Autoregressive to Anything: Time Series Input Processes for Simulation.”</span> <em>Operations Research Letters</em> 19: 51–58.
+</div>
+<div id="ref-cario1998numerical" class="csl-entry">
+———. 1998. <span>“Numerical Methods for Fitting and Simulating Autoregressive-to-Anything Processes.”</span> <em>INFORMS Journal of Computing</em> 10: 72–81.
+</div>
+<div id="ref-livny1993the" class="csl-entry">
+Livny, M., B. Melamed, and A. K. Tsiolis. 1993. <span>“The Impact of Autocorrelation on Queueing Systems.”</span> <em>Management Science</em> 39 (3): 322–39.
+</div>
+<div id="ref-patuwo1993the" class="csl-entry">
+Patuwo, B. E., R. L. Disney, and D. C. Mcnickle. 1993. <span>“The Effect of Correlated Arrivals on Queues.”</span> <em>IIE Transactions</em> 25 (3): 105–10.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-ArenaMisc-RunController.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-ArenaMisc-ArenaCosting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/12-MiscTopicsInArena.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

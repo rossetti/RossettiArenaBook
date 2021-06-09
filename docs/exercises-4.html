@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.8 Exercises | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.8 Exercises | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.8 Exercises | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch6-sec-summary.html"/>
+<link rel="next" href="ch7.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercises-4" class="section level2" number="6.8">
+<h2><span class="header-section-number">6.8</span> Exercises</h2>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P1" class="exercise"><strong>Exercise 6.1  </strong></span>As part of a diabetes prevention program, a clinic is considering
+setting up a screening service in a local mall. They are considering two
+designs: Design A: After waiting in a single line, each walk-in patient
+is served by one of three available nurses. Each nurse has their own
+booth, where the patient is first asked some medical health questions,
+then the patient’s blood pressure and vitals are taken, finally, a
+glucose test is performed to check for diabetes. In this design, each
+nurse performs the tasks in sequence for the patient. If the glucose
+test indicates a chance of diabetes, the patient is sent to a separate
+clerk to schedule a follow-up at the clinic. If the test is not
+positive, then the patient departs.</p>
+<p>Design B: After waiting in a single line, each walk-in is served in
+order by a clerk who takes the patient’s health information, a nurse who
+takes the patient’s blood pressure and vitals, and another nurse who
+performs the diabetes test. If the glucose test indicates a chance of
+diabetes, the patient is sent to a separate clerk to schedule a
+follow-up at the clinic. If the test is not positive, then the patient
+departs. In this configuration, there is no room for the patient to wait
+between the tasks; therefore, a patient who as had their health
+information taken cannot move ahead unless the nurse taking the vital
+signs is available. Also, a patient having their glucose tested must
+leave that station before the patient in blood pressure and vital
+checking can move ahead.</p>
+<p>Patients arrive to the clinic according to non-stationary Poisson process. Assume that there is a 5% chance
+(stream 2) that the glucose test will be positive. For design A, the
+time that it takes to have the paperwork completed, the vitals taken,
+and the glucose tested are all log-normally distributed with means of
+6.5, 6.0, and 5.5 minutes respectively (streams 3, 4, 5). They all have
+a standard deviation of approximately 0.5 minutes. For design B, because
+of the specialization of the tasks, it is expected that the mean of the
+task times will decrease by 10%.</p>
+<p>Assume that the mall opens at 10 am and that the system operates until 8
+pm. During the time from 10 am to 12 noon the arrivals are less than the
+overall arrival rate. From 10 am to noon, the rate is only 6.5 per hour.
+From noon to 2 pm, the rate increases to 12.5 per hour. From 2 pm to 4
+pm the traffic lightens up again, back to 6.5 per hour. From 4 pm to 6
+pm, the rate is 12.5 per hour and finally from 6 pm to 8 pm, the rate is
+9.5 per hour. Assume that the clinic is open from 10 am to 8 pm (10
+hours each day) and that any patients in the clinic before 8 pm are
+still served. The distribution used to model the time that it takes to
+schedule a follow up visit is a WEIB(2.6, 7.3) distribution (use stream 6).</p>
+Make a statistically valid recommendation as to the best design based on
+the average system time of the patients. We want to be 95% confident of
+our recommendation to within 2 minutes.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch6P2" class="exercise"><strong>Exercise 6.2  </strong></span>Consider the M/G/1 queue with
+the following variation. The server works continuously as long as there
+is at least one customer in the system. The customers are processed
+FIFO. When the server finishes serving a customer and finds the system
+empty, the server goes away for a length of time called a vacation. At
+the end of the vacation the server returns and begins to serve the
+customers, if any, who have arrived during the vacation. If the server
+finds no customers waiting at the end of a vacation, it immediately
+takes another vacation, and continues in this manner until it finds at
+least one waiting customer upon return from a vacation. Assume that the
+time between customer arrivals is exponentially distributed with mean of
+3 minutes. The service distribution for each customer is a gamma
+distribution with a mean of 4.5 seconds and a variance of 3.375. The
+length of a vacation is a random variable uniformly distributed between
+8 and 12 minutes. Run the simulation long enough to adequately develop a
+95% confidence interval on the expected wait time in the queue for a
+arbitrary customer arriving in steady state. In addition, develop an
+empirical distribution for the number of customers waiting upon the
+return of the server from vacation. In other words, estimate the
+probability that <span class="math inline">\(j = 0, 1, 2\)</span>, etc, where <span class="math inline">\(j\)</span> is the number of waiting
+customers in the queue upon the return of the server from a vacation.
+This queue has many applications, for example, consider how a bus stop
+operates.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P3" class="exercise"><strong>Exercise 6.3  </strong></span>Suppose a service facility
+consists of two stations in series (tandem), each with its own FIFO
+queue. Each station consists of a queue and a single server. A customer
+completing service at station 1 proceeds to station 2, while a customer
+completing service at station 2 leaves the facility. Assume that the
+inter-arrival times of customers to station 1 are IID exponential random
+variables with a mean of 1 minute. Service times of customers at station
+1 are exponential random variables with a mean of 0.7 minute, and at
+station 2 are exponential random variables with mean 0.9 minute.</p>
+<p>Suppose that there is limited space at the second
+station. In particular, there is room for 1 customer to be in service at
+the second station and room for only 1 customer to wait at the second
+station. A customer completing service at the first station will not
+leave the service area at the first station unless there is a space
+available for it to wait at the second station. In other words, the
+customer will not release the server at the first station unless it can
+move to the second station.</p>
+Develop a model for this system using the STATION and ROUTE modules.Run the simulation for exactly 20000 minutes and estimate for each station the expected average delay in queue for the customer, the expected time-average number of customers in queue, and the expected utilization. In addition, estimate the average
+number of customers in the system and the average time spent in the
+system.
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use a resource to model the waiting
+space at the second station. Ensure that a customer leaving the first
+station does not release its resource until it is able to seize the
+space at the second station.</p></li>
+<li><p>Use a HOLD module with the wait and signal option to model this situation. Compare your results to those obtained in part (a).</p></li>
+<li><p>Use a HOLD module with the scan for
+condition option to model this situation. Compare your results to parts (a) and (b).</p></li>
+<li><p>Suppose now there is a travel time from the exit of station 1 to the arrival to station 2. Assume that this travel time is distributed uniformly between 0 and 2 minutes. Modify your simulation for part (a) and rerun it under the same conditions as in part (a).</p></li>
+</ol>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch6P4" class="exercise"><strong>Exercise 6.4  </strong></span>Assume that we have a single server
+that performs service according to an exponential distribution with a
+mean of 0.7 hours. The time between arrival of customers to the server
+is exponential with mean of 1 hour. If the server is busy, the customer
+waiting in the queue until the server is available. The queue is
+processed according to a first in, first out rule. Use HOLD/SIGNAL to
+model this situation. Unlike in the second implementation of the M/M/1 illustrated in Section <a href="ch6-sec-holdSignal.html#ch6:ex:mm1HS:soln2">6.5.1.2</a> develop your model so that the customer has the delay for service in its process flow.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch6P5" class="exercise"><strong>Exercise 6.5  </strong></span>A particular stock keeping unit
+(SKU) has demand that averages 14 units per year and is Poisson
+distributed. That is, the time between demands is exponentially
+distributed with a mean a 1/14 years. Assume that 1 year = 360 days. The
+inventory is managed according to a <span class="math inline">\((r, Q)\)</span> inventory control policy
+with <span class="math inline">\(r = 3\)</span> and <span class="math inline">\(Q = 4\)</span>. The SKU costs $150. An inventory carrying
+charge of 0.20 is used and the annual holding cost for each unit has
+been set at 0.2 * $150 = $30 per unit per year. The SKU is purchased
+from an outside supplier and it is estimated that the cost of time and
+materials required to place a purchase order is about $15. It takes 45
+days to receive a replenishment order. The cost of back-ordering is very
+difficult to estimate, but a guess has been made that the annualized
+cost of a back-order is about $25 per unit per year.
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Using simulate the performance of this
+system using <span class="math inline">\(Q = 4\)</span> and <span class="math inline">\(r =3\)</span>. Report the average inventory on hand,
+the cost for operating the policy, the average number of back-orders,
+and the probability of a stock out for your model.</p></li>
+<li><p>Now suppose that the lead-time is
+stochastic and governed by a lognormal distribution with a mean of 45
+days and a standard deviation of 7 days. What assumptions do you have to
+make to simulate this situation? Simulate this situation and
+compare/contrast the results with part (a).</p></li>
+<li><p>Verify your results for part (a) using results from analytical inventory theory.</p></li>
+</ol>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P7" class="exercise"><strong>Exercise 6.6  </strong></span>The Super Ready Auto Club has been
+serving customers for many years. The Super Ready Auto Club provides
+club, travel, and financial services to its members. One of its most
+popular services includes auto touring and emergency road service.
+Travel provides cruise packages, airline travel, and other vacation
+packages with special discounts for members. Finally, the financial
+services issues credit cards for members at special interest rates.</p>
+<p>Super Ready Auto Club has regional call centers that handle incoming
+calls from members within a given region of the country.
+Table <a href="exercises-4.html#tab:SRAC1">6.6</a> presents the mean of the number of calls, recorded on an hourly basis
+over a period of 7 days, aggregated over a three state region.</p>
+<p>The three types of service calls occur with 60% for auto service, 35%
+for credit card services, and 15% for travel services during the 8 am to
+8 pm time frame. For the other hours of the day, the proportion changes
+to 90% for auto service, 10% for credit card services, and 0% for travel
+services. A sample of call service times were recorded for each of the
+types as shown in Tables <a href="exercises-4.html#tab:SRAC1">6.6</a>, <a href="exercises-4.html#tab:SRAC2">6.7</a>, (<a href="exercises-4.html#tab:SRAC3">6.8</a>, and (<a href="exercises-4.html#tab:SRAC3">6.8</a>. You can find this data in the chapter files that accompany this chapter in the spreasheet called <em>Super Ready Auto Club.xlsx</em>.</p>
+<p>Call center operators cost $18 per hour including fringe benefits. It
+is important that the probability of a call waiting more than 3 minutes
+for an operator be less than 10%. Find a minimum cost staffing plan for
+each hour of the day for each day of the week that on-average meets the
+call probability waiting criteria. Measure the waiting time for a call,
+the average number of calls waiting, and the utilization of the
+operators. In addition, measure the waiting time of the calls by type. The data for this exercise is available within the files associated with this chapter.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>What happens to the waiting times if
+road-side assistance calls are given priority over the credit card and
+travel service calls?</p></li>
+<li><p>Consider how you would handle the
+following work rules. The operators should get a 10 minute break every 2
+hours and a 30 minute food/beverage break every 4 hours. Discuss how you
+would staff the center under these conditions ensuring that there is
+always someone present (i.e. they are not all on break at the same
+time).</p></li>
+</ol>
+<div id="tab:SRAC1">
+<table>
+<caption><span id="tab:SRAC1">Table 6.6: </span> Mean Number of Calls Received for each Hour</caption>
+<thead>
+<tr class="header">
+<th align="left">Hour</th>
+<th align="center">Mon</th>
+<th align="center">Tue</th>
+<th align="center">Wed</th>
+<th align="center">Thur</th>
+<th align="center">Fri</th>
+<th align="center">Sat</th>
+<th align="center">Sun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">6.7</td>
+<td align="center">6.1</td>
+<td align="center">8.7</td>
+<td align="center">8.9</td>
+<td align="center">5.6</td>
+<td align="center">6.2</td>
+<td align="center">9.4</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">9.7</td>
+<td align="center">9.4</td>
+<td align="center">9.3</td>
+<td align="center">7.1</td>
+<td align="center">1.4</td>
+<td align="center">7.0</td>
+<td align="center">8.8</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="center">8.5</td>
+<td align="center">6.0</td>
+<td align="center">70.4</td>
+<td align="center">8.6</td>
+<td align="center">7.9</td>
+<td align="center">7.8</td>
+<td align="center">13.4</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="center">9.0</td>
+<td align="center">10.0</td>
+<td align="center">6.8</td>
+<td align="center">8.3</td>
+<td align="center">6.4</td>
+<td align="center">6.3</td>
+<td align="center">6.7</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="center">6.8</td>
+<td align="center">9.2</td>
+<td align="center">10.9</td>
+<td align="center">44.9</td>
+<td align="center">8.2</td>
+<td align="center">6.5</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="center">8.5</td>
+<td align="center">4.2</td>
+<td align="center">1.4</td>
+<td align="center">6.3</td>
+<td align="center">7.5</td>
+<td align="center">7.8</td>
+<td align="center">8.0</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="center">6.7</td>
+<td align="center">6.9</td>
+<td align="center">9.0</td>
+<td align="center">8.9</td>
+<td align="center">6.7</td>
+<td align="center">46.2</td>
+<td align="center">9.8</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="center">38.2</td>
+<td align="center">35.0</td>
+<td align="center">75.8</td>
+<td align="center">57.8</td>
+<td align="center">37.2</td>
+<td align="center">82.5</td>
+<td align="center">78.8</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="center">20.0</td>
+<td align="center">77.6</td>
+<td align="center">48.7</td>
+<td align="center">25.9</td>
+<td align="center">67.1</td>
+<td align="center">28.1</td>
+<td align="center">99.2</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="center">76.2</td>
+<td align="center">75.4</td>
+<td align="center">71.1</td>
+<td align="center">51.3</td>
+<td align="center">86.2</td>
+<td align="center">106.9</td>
+<td align="center">42.0</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="center">92.5</td>
+<td align="center">105.4</td>
+<td align="center">28.2</td>
+<td align="center">100.2</td>
+<td align="center">90.9</td>
+<td align="center">92.4</td>
+<td align="center">43.6</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="center">76.4</td>
+<td align="center">37.3</td>
+<td align="center">37.3</td>
+<td align="center">77.8</td>
+<td align="center">60.3</td>
+<td align="center">37.9</td>
+<td align="center">68.9</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="center">79.1</td>
+<td align="center">64.2</td>
+<td align="center">25.4</td>
+<td align="center">76.8</td>
+<td align="center">65.1</td>
+<td align="center">77.9</td>
+<td align="center">116.6</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="center">75.2</td>
+<td align="center">102.2</td>
+<td align="center">64.1</td>
+<td align="center">48.7</td>
+<td align="center">93.3</td>
+<td align="center">64.5</td>
+<td align="center">39.5</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="center">117.9</td>
+<td align="center">26.8</td>
+<td align="center">43.8</td>
+<td align="center">80.1</td>
+<td align="center">86.4</td>
+<td align="center">96.8</td>
+<td align="center">52.1</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="center">100.2</td>
+<td align="center">85.9</td>
+<td align="center">54.3</td>
+<td align="center">144.7</td>
+<td align="center">70.9</td>
+<td align="center">167.9</td>
+<td align="center">153.5</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="center">52.7</td>
+<td align="center">64.7</td>
+<td align="center">94.7</td>
+<td align="center">94.6</td>
+<td align="center">152.2</td>
+<td align="center">98.0</td>
+<td align="center">63.7</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
+<td align="center">65.3</td>
+<td align="center">114.9</td>
+<td align="center">124.9</td>
+<td align="center">213.9</td>
+<td align="center">91.5</td>
+<td align="center">135.7</td>
+<td align="center">79.8</td>
+</tr>
+<tr class="odd">
+<td align="left">19</td>
+<td align="center">126.1</td>
+<td align="center">69.6</td>
+<td align="center">89.4</td>
+<td align="center">43.7</td>
+<td align="center">62.7</td>
+<td align="center">111.9</td>
+<td align="center">180.5</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="center">116.6</td>
+<td align="center">70.2</td>
+<td align="center">116.8</td>
+<td align="center">99.6</td>
+<td align="center">113.0</td>
+<td align="center">84.3</td>
+<td align="center">64.1</td>
+</tr>
+<tr class="odd">
+<td align="left">21</td>
+<td align="center">38.6</td>
+<td align="center">20.5</td>
+<td align="center">7.6</td>
+<td align="center">3.8</td>
+<td align="center">58.6</td>
+<td align="center">50.8</td>
+<td align="center">68.5</td>
+</tr>
+<tr class="even">
+<td align="left">22</td>
+<td align="center">8.5</td>
+<td align="center">17.1</td>
+<td align="center">8.8</td>
+<td align="center">13.5</td>
+<td align="center">8.2</td>
+<td align="center">68.1</td>
+<td align="center">7.8</td>
+</tr>
+<tr class="odd">
+<td align="left">23</td>
+<td align="center">9.8</td>
+<td align="center">48.9</td>
+<td align="center">8.9</td>
+<td align="center">95.4</td>
+<td align="center">40.8</td>
+<td align="center">58.5</td>
+<td align="center">44.1</td>
+</tr>
+<tr class="even">
+<td align="left">24</td>
+<td align="center">9.6</td>
+<td align="center">1.3</td>
+<td align="center">28.5</td>
+<td align="center">9.6</td>
+<td align="center">32.2</td>
+<td align="center">74.5</td>
+<td align="center">46.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tab:SRAC2">
+<table>
+<caption><span id="tab:SRAC2">Table 6.7: </span> Road Side Service Call Times in Minutes</caption>
+<tbody>
+<tr class="odd">
+<td align="left">33.6</td>
+<td align="center">34.0</td>
+<td align="center">33.2</td>
+<td align="center">31.3</td>
+<td align="center">32.3</td>
+<td align="center">32.1</td>
+<td align="center">39.0</td>
+<td align="center">35.2</td>
+<td align="center">37.6</td>
+<td align="center">37.4</td>
+</tr>
+<tr class="even">
+<td align="left">32.3</td>
+<td align="center">37.2</td>
+<td align="center">39.3</td>
+<td align="center">32.1</td>
+<td align="center">34.7</td>
+<td align="center">35.1</td>
+<td align="center">33.6</td>
+<td align="center">32.8</td>
+<td align="center">32.8</td>
+<td align="center">40.0</td>
+</tr>
+<tr class="odd">
+<td align="left">37.8</td>
+<td align="center">38.0</td>
+<td align="center">42.4</td>
+<td align="center">37.4</td>
+<td align="center">36.6</td>
+<td align="center">36.6</td>
+<td align="center">33.3</td>
+<td align="center">34.7</td>
+<td align="center">30.2</td>
+<td align="center">33.1</td>
+</tr>
+<tr class="even">
+<td align="left">36.8</td>
+<td align="center">34.4</td>
+<td align="center">36.4</td>
+<td align="center">35.9</td>
+<td align="center">32.6</td>
+<td align="center">37.6</td>
+<td align="center">36.7</td>
+<td align="center">32.3</td>
+<td align="center">40.0</td>
+<td align="center">37.0</td>
+</tr>
+<tr class="odd">
+<td align="left">36.0</td>
+<td align="center">34.6</td>
+<td align="center">33.9</td>
+<td align="center">31.7</td>
+<td align="center">33.8</td>
+<td align="center">39.3</td>
+<td align="center">37.8</td>
+<td align="center">33.7</td>
+<td align="center">35.2</td>
+<td align="center">38.2</td>
+</tr>
+<tr class="even">
+<td align="left">34.6</td>
+<td align="center">33.5</td>
+<td align="center">36.3</td>
+<td align="center">38.9</td>
+<td align="center">35.5</td>
+<td align="center">35.2</td>
+<td align="center">35.0</td>
+<td align="center">33.8</td>
+<td align="center">35.8</td>
+<td align="center">35.8</td>
+</tr>
+<tr class="odd">
+<td align="left">38.2</td>
+<td align="center">38.8</td>
+<td align="center">35.7</td>
+<td align="center">38.7</td>
+<td align="center">30.0</td>
+<td align="center">33.6</td>
+<td align="center">33.4</td>
+<td align="center">34.7</td>
+<td align="center">35.1</td>
+<td align="center">35.5</td>
+</tr>
+<tr class="even">
+<td align="left">34.0</td>
+<td align="center">33.2</td>
+<td align="center">33.7</td>
+<td align="center">32.5</td>
+<td align="center">28.9</td>
+<td align="center">34.4</td>
+<td align="center">34.2</td>
+<td align="center">31.4</td>
+<td align="center">38.7</td>
+<td align="center">35.3</td>
+</tr>
+<tr class="odd">
+<td align="left">35.5</td>
+<td align="center">39.4</td>
+<td align="center">32.6</td>
+<td align="center">36.2</td>
+<td align="center">33.2</td>
+<td align="center">39.3</td>
+<td align="center">41.1</td>
+<td align="center">34.3</td>
+<td align="center">38.6</td>
+<td align="center">33.0</td>
+</tr>
+<tr class="even">
+<td align="left">35.3</td>
+<td align="center">38.1</td>
+<td align="center">33.5</td>
+<td align="center">34.0</td>
+<td align="center">36.4</td>
+<td align="center">33.6</td>
+<td align="center">43.1</td>
+<td align="center">37.2</td>
+<td align="center">35.6</td>
+<td align="center">36.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tab:SRAC3">
+<table>
+<caption><span id="tab:SRAC3">Table 6.8: </span> Vacation Package Service Call Times in Minutes</caption>
+<tbody>
+<tr class="odd">
+<td align="left">52.2</td>
+<td align="center">23.7</td>
+<td align="center">33.9</td>
+<td align="center">30.5</td>
+<td align="center">18.2</td>
+<td align="center">45.2</td>
+<td align="center">38.4</td>
+<td align="center">49.8</td>
+<td align="center">53.9</td>
+<td align="center">38.8</td>
+</tr>
+<tr class="even">
+<td align="left">33.4</td>
+<td align="center">44.2</td>
+<td align="center">28.4</td>
+<td align="center">49.0</td>
+<td align="center">24.9</td>
+<td align="center">46.4</td>
+<td align="center">35.8</td>
+<td align="center">40.3</td>
+<td align="center">16.3</td>
+<td align="center">41.4</td>
+</tr>
+<tr class="odd">
+<td align="left">63.1</td>
+<td align="center">37.5</td>
+<td align="center">33.5</td>
+<td align="center">48.0</td>
+<td align="center">27.6</td>
+<td align="center">38.2</td>
+<td align="center">28.6</td>
+<td align="center">35.2</td>
+<td align="center">24.5</td>
+<td align="center">42.9</td>
+</tr>
+<tr class="even">
+<td align="left">38.9</td>
+<td align="center">19.8</td>
+<td align="center">32.7</td>
+<td align="center">41.4</td>
+<td align="center">42.7</td>
+<td align="center">27.4</td>
+<td align="center">38.7</td>
+<td align="center">30.1</td>
+<td align="center">39.6</td>
+<td align="center">53.5</td>
+</tr>
+<tr class="odd">
+<td align="left">28.8</td>
+<td align="center">42.2</td>
+<td align="center">42.4</td>
+<td align="center">29.2</td>
+<td align="center">22.7</td>
+<td align="center">50.9</td>
+<td align="center">34.2</td>
+<td align="center">53.1</td>
+<td align="center">18.5</td>
+<td align="center">26.5</td>
+</tr>
+<tr class="even">
+<td align="left">40.9</td>
+<td align="center">20.7</td>
+<td align="center">36.6</td>
+<td align="center">33.7</td>
+<td align="center">26.4</td>
+<td align="center">32.8</td>
+<td align="center">25.1</td>
+<td align="center">39.7</td>
+<td align="center">30.9</td>
+<td align="center">34.2</td>
+</tr>
+<tr class="odd">
+<td align="left">35.5</td>
+<td align="center">31.8</td>
+<td align="center">27.2</td>
+<td align="center">28.6</td>
+<td align="center">26.9</td>
+<td align="center">30.6</td>
+<td align="center">26.1</td>
+<td align="center">23.2</td>
+<td align="center">33.3</td>
+<td align="center">35.0</td>
+</tr>
+<tr class="even">
+<td align="left">29.6</td>
+<td align="center">31.6</td>
+<td align="center">29.9</td>
+<td align="center">28.5</td>
+<td align="center">29.3</td>
+<td align="center">30.6</td>
+<td align="center">31.2</td>
+<td align="center">26.7</td>
+<td align="center">25.7</td>
+<td align="center">41.2</td>
+</tr>
+<tr class="odd">
+<td align="left">27.5</td>
+<td align="center">52.0</td>
+<td align="center">27.3</td>
+<td align="center">69.0</td>
+<td align="center">34.2</td>
+<td align="center">31.4</td>
+<td align="center">21.9</td>
+<td align="center">29.8</td>
+<td align="center">31.4</td>
+<td align="center">46.1</td>
+</tr>
+<tr class="even">
+<td align="left">23.8</td>
+<td align="center">35.9</td>
+<td align="center">41.5</td>
+<td align="center">51.0</td>
+<td align="center">17.9</td>
+<td align="center">33.9</td>
+<td align="center">32.2</td>
+<td align="center">26.5</td>
+<td align="center">25.0</td>
+<td align="center">54.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tab:SRAC4">
+<table>
+<caption><span id="tab:SRAC4">Table 6.9: </span> Credit Card Service Call Times in Minutes</caption>
+<tbody>
+<tr class="odd">
+<td align="left">13.5</td>
+<td align="center">10.1</td>
+<td align="center">14.4</td>
+<td align="center">13.9</td>
+<td align="center">14.2</td>
+<td align="center">11.4</td>
+<td align="center">11.0</td>
+<td align="center">14.4</td>
+<td align="center">12.0</td>
+<td align="center">14.4</td>
+</tr>
+<tr class="even">
+<td align="left">14.4</td>
+<td align="center">13.5</td>
+<td align="center">13.4</td>
+<td align="center">14.5</td>
+<td align="center">14.8</td>
+<td align="center">14.9</td>
+<td align="center">13.2</td>
+<td align="center">11.0</td>
+<td align="center">14.9</td>
+<td align="center">15.0</td>
+</tr>
+<tr class="odd">
+<td align="left">14.7</td>
+<td align="center">14.3</td>
+<td align="center">12.3</td>
+<td align="center">14.8</td>
+<td align="center">12.4</td>
+<td align="center">14.9</td>
+<td align="center">15.0</td>
+<td align="center">14.0</td>
+<td align="center">14.6</td>
+<td align="center">14.6</td>
+</tr>
+<tr class="even">
+<td align="left">15.0</td>
+<td align="center">10.3</td>
+<td align="center">11.3</td>
+<td align="center">15.0</td>
+<td align="center">15.0</td>
+<td align="center">15.0</td>
+<td align="center">14.9</td>
+<td align="center">14.8</td>
+<td align="center">11.5</td>
+<td align="center">11.9</td>
+</tr>
+<tr class="odd">
+<td align="left">13.5</td>
+<td align="center">14.9</td>
+<td align="center">11.0</td>
+<td align="center">10.8</td>
+<td align="center">15.0</td>
+<td align="center">13.8</td>
+<td align="center">13.8</td>
+<td align="center">14.5</td>
+<td align="center">14.3</td>
+<td align="center">14.0</td>
+</tr>
+<tr class="even">
+<td align="left">14.9</td>
+<td align="center">10.9</td>
+<td align="center">13.9</td>
+<td align="center">13.5</td>
+<td align="center">15.0</td>
+<td align="center">14.4</td>
+<td align="center">13.2</td>
+<td align="center">15.0</td>
+<td align="center">14.5</td>
+<td align="center">14.4</td>
+</tr>
+<tr class="odd">
+<td align="left">15.0</td>
+<td align="center">14.5</td>
+<td align="center">14.5</td>
+<td align="center">14.9</td>
+<td align="center">11.6</td>
+<td align="center">13.6</td>
+<td align="center">12.4</td>
+<td align="center">11.9</td>
+<td align="center">11.6</td>
+<td align="center">15.0</td>
+</tr>
+<tr class="even">
+<td align="left">11.1</td>
+<td align="center">13.7</td>
+<td align="center">13.9</td>
+<td align="center">14.6</td>
+<td align="center">11.5</td>
+<td align="center">14.4</td>
+<td align="center">15.0</td>
+<td align="center">10.7</td>
+<td align="center">10.4</td>
+<td align="center">14.5</td>
+</tr>
+<tr class="odd">
+<td align="left">12.3</td>
+<td align="center">13.8</td>
+<td align="center">14.7</td>
+<td align="center">13.8</td>
+<td align="center">14.7</td>
+<td align="center">14.8</td>
+<td align="center">14.9</td>
+<td align="center">14.2</td>
+<td align="center">12.9</td>
+<td align="center">14.3</td>
+</tr>
+<tr class="even">
+<td align="left">14.5</td>
+<td align="center">11.5</td>
+<td align="center">12.1</td>
+<td align="center">14.3</td>
+<td align="center">13.6</td>
+<td align="center">14.1</td>
+<td align="center">12.6</td>
+<td align="center">11.7</td>
+<td align="center">14.7</td>
+<td align="center">13.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P8" class="exercise"><strong>Exercise 6.7  </strong></span>The test and repair system
+described in Chapter <a href="ch4.html#ch4">4</a> has 3 testing stations, a diagnostic station, and a
+repair station. Suppose that the machines at the test station are
+subject to random failures. The time between failures is distributed
+according to an exponential distribution with a mean of 240 minutes and
+is based on busy time. Whenever, a test station fails, the testing
+software must be reloaded, which takes between 10 and 15 minutes
+uniformly distributed. The diagnostic machine is also subject to usage
+failures. The number of uses to failure is distributed according to a
+geometric distribution with a mean of 100. The time to repair the
+diagnostic machine is uniformly distributed in the range of 15 to 25
+minutes. Examine the effect of explicitly modeling the machine failures
+for this system in terms of risks associated with meeting the terms of
+the contract.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P9" class="exercise"><strong>Exercise 6.8  </strong></span>A proposal for a remodeled Sly’s
+Convenience Store has 6 gas pumps each having their own waiting line.
+The inter-arrival time distribution of the arriving cars is Poisson with
+a mean of 1.25 per minute. The time to fill up and pay for the purchase is
+exponentially distributed with a mean of 6 minutes. Arriving customers
+choose the pump that has the least number of cars (waiting or using the
+pump). Each pump has room to handle 3 cars (1 in service and 2 waiting).
+Cars that cannot get a pump wait in an overall line to enter a line for
+a pump. The long run performance of the system is of interest.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Estimate the average time in the
+system for a customer, the average number of customers waiting in each
+line, the overall line, and in the system, and estimate the percentage
+of time that there are 1, 2, 3 customers waiting in each line. In
+addition, the percentage of time that there are 1, 2, 3, 4 or more
+customers waiting to enter a pump line should be estimated. Assume that
+each car is between 16 and 18 feet in length. About how much space in
+the overall line would you recommend for the convenience store.</p></li>
+<li><p>Occasionally, a pump will fail. The
+time between pump failures is distributed according to an exponential
+distribution with a mean of 40 hours and is based on clock time (not
+busy time). The time to service a pump is exponentially distributed with
+a mean of 4 hours. For simplicity assume that when a pump fails the
+customer using the pump is able to complete service before the pump is
+unusable and ignore the fact that some customers may be in line when the
+pump fails. Simulate the system under these new conditions and estimate
+the same quantities as requested in
+part (a). In addition, estimate the percentage of time that each pump spends idle,
+busy, or failed. Make sure that newly arriving customers do not decide
+to enter the line of a pump that has failed.</p></li>
+<li><p>The assumption that a person waiting
+in line when a pump fails stays in line is unrealistic. Still assume
+that a customer receiving service when the pump fails can complete
+service, but now allow waiting customers to exit their line and rejoin
+the overall line if a pump fails while they are in line. Compare the
+results of this new model with those of part (b).</p></li>
+</ol>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P10" class="exercise"><strong>Exercise 6.9  </strong></span>Apply the concepts of generic
+station modeling to the system described in Exercise <a href="exercises-3.html#exr:ch5P180">5.18</a>. Be sure to show that your results are essentially the same with and without generic modeling.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P11" class="exercise"><strong>Exercise 6.10  </strong></span>Suppose the shuttle bus system
+described in Section <a href="ch6s4.html#ch6:PickAndDrop">6.6.3</a> now has 3 bus stops. Passengers arrive to bus
+stop 1 according to a Poisson arrival process with a mean rate of 6 per
+hour. Passengers arrive to bus stop 2 according to a Poisson arrival
+process with a mean rate of 10 per hour. Passengers arrive to bus stop 3
+according to a Poisson arrival process with a mean rate of 12 per hour.
+Thirty percent of customers arrive to stop 1 desire to go to stop 2 with
+the remaining going to stop 3. For those passengers arriving to stop 2,
+75% want to go to stop 1 and 25% want to go to stop 3. Finally, for
+those passengers that originate at stop 3, 40% want to go to stop 1 and
+60% want to go to stop 2. The shuttle bus now has 20 seats. The loading
+and unloading times per passenger are still the same as in the example
+and the travel time between stops is still the same. Simulate this
+system for 8 hours of operation and estimate the average waiting time of
+the passengers, the average system time of the passengers, and the
+average number of passengers left at the stop because the bus was full.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch6P12" class="exercise"><strong>Exercise 6.11  </strong></span>Reconsider the STEM Career Fair Mixer Example <a href="ch6-sec-jobfair.html#exm:NSJFE">6.1</a>. The results indicated that the utilization of the JHBunt recruiters was still high, around 90%, and the MalWart recruiters was low, around 50% after making the resource schedule changes. Design a schedule that gets both recruiting stations to about 80% during the peak period.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:kanban" class="exercise"><strong>Exercise 6.12  </strong></span>This problem examines a single
+item, multi-stage, serial production system using a kanban control
+system. The word kanban is Japanese for card. A kanban is simply a card
+that authorizes production. Kanban based control systems are designed to
+limit the amount of inventory in production. While there are many
+variations of kanban control, this problem considers a simplified system
+with the following characteristics.</p>
+</div>
+<ul>
+<li><p>A series of work centers</p></li>
+<li><p>Each work center consists of one or more identical machines with an
+input queue feeding the machines that is essentially infinite.</p></li>
+<li><p>Each work center also has an output queue where completed parts are
+held to await being sent to the next work center.</p></li>
+<li><p>Each work center has a schedule board where requests for new parts
+are posted</p></li>
+<li><p>Customer orders arrive randomly at the last work center to request
+parts. If there are no parts available then the customers will wait
+in a queue until a finished part is placed in the output buffer of
+the last work center.</p></li>
+</ul>
+<p>Figure <a href="exercises-4.html#fig:figKanbanExercise">6.89</a> illustrates a production flow line consisting of
+kanban based work centers.</p>
+<div class="figure" style="text-align: center"><span id="fig:figKanbanExercise"></span>
+<img src="figures2/ch6/figKanbanExercise.png" alt="Kanban workcenter" width="90%" height="90%" />
+<p class="caption">
+Figure 6.89: Kanban workcenter
+</p>
+</div>
+<p>Raw parts enter at the first work center and proceed, as needed, through
+each work center until eventually being completed as finished parts at
+the last work center. Finished parts are used to satisfy end customer
+demand.</p>
+<p>A detailed view of an individual kanban based work center is also shown
+in the figure. Here parts from the previous work center are matched with
+an available kanban to proceed through the machining center. Parts
+completed by the machining center are placed in the output buffer (along
+with their kanban) to await demand from the next work center.</p>
+<p>An individual work center works as follows:</p>
+<ul>
+<li><p>Each work center has a finite number of kanbans, <span class="math inline">\(K_n \geq 1\)</span></p></li>
+<li><p>Every part must acquire one of these kanbans in order to enter a
+given work center and begin processing at the machining center. The
+part holds the kanban throughout it stay in the work center
+(including the time it is in the output buffer).</p></li>
+<li><p>Unattached kanbans are stored on the schedule board and are
+considered as requests for additional parts from the previous work
+center.</p></li>
+<li><p>When a part completes processing at the machines, the system checks
+to see if there is a free kanban at the next work center. If there
+is a free kanban at the next work center, the part releases its
+current kanban and seizes the available kanban from the next work
+center. The part then proceeds to the next work center to begin
+processing at the machines. If a kanban is not available at the next
+work center, the part is place in the output buffer of the work
+center to await a signal that there is a free kanban available at
+the next station.</p></li>
+<li><p>Whenever a kanban is released at the work center it signals any
+waiting parts in the output buffer of its feeder work center. If
+there is a waiting part in the output buffer when the signal occurs,
+the part leaves the output buffer, releasing it current kanban, and
+seizing the kanban of the next station. It then proceeds to the next
+work center to be processed by the machines.</p></li>
+</ul>
+<p>For the first work center in the line, whenever it needs a part (i.e.
+when one of its kanbans are released) a new part is created and
+immediately enters the work center. For the last work center, a kanban
+in its output buffer is not released until a customer arrives and takes
+away the finished part to which the kanban was attached. Consider a
+three work center system. Let <span class="math inline">\(K_N\)</span> be the number of Kanbans and let
+<span class="math inline">\(c_n\)</span> be the number of machines at work center <span class="math inline">\(n, n = 1,2,3\)</span>. Let’s
+assume that each machine’s service time distribution is an exponential
+distribution with service rate <span class="math inline">\(\mu_n\)</span>. Demands from customers arrive to
+the system according to a Poisson process with rate <span class="math inline">\(\lambda\)</span>. As an
+added twist assume that the queue of arriving customers can be limited.
+In other words, the customer queue has a finite waiting capacity, say
+<span class="math inline">\(C_q\)</span>. If a customer arrives when there are <span class="math inline">\(C_q\)</span> customers already in
+the customer queue they do not enter the system. Build a simulation
+model to simulate the following case:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(c_1\)</span></th>
+<th align="center"><span class="math inline">\(c_2\)</span></th>
+<th align="center"><span class="math inline">\(c_3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(k_1\)</span></td>
+<td align="center"><span class="math inline">\(k_2\)</span></td>
+<td align="center"><span class="math inline">\(k_3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\mu_1\)</span></td>
+<td align="center"><span class="math inline">\(\mu_2\)</span></td>
+<td align="center"><span class="math inline">\(\mu_3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(\lambda = 2\)</span> and <span class="math inline">\(C_q = \infty\)</span> with all rates per hour. Estimate
+the average hourly throughput for the production line. That is, the
+number of items produced per hour. Run the simulation for 10
+replications of length 15000 hours with a warm up period of 5000 hours.
+Suppose <span class="math inline">\(C_q = 5\)</span>, what is the effect on the system.</p>
+<hr />
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch6-sec-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/06-Chapter6.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

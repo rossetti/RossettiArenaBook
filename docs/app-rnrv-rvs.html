@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A.2 Generating Random Variates from Distributions | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A.2 Generating Random Variates from Distributions | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A.2 Generating Random Variates from Distributions | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-rnrv-rn.html"/>
+<link rel="next" href="summary-1.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app:rnrv:rvs" class="section level2" number="9.2">
+<h2><span class="header-section-number">A.2</span> Generating Random Variates from Distributions</h2>
+<p>In simulation, pseudo random numbers serve as the foundation for
+generating samples from probability distribution models. We will now
+assume that the random number generator has been rigorously tested and
+that it produces sequences of <span class="math inline">\(U_{i} \sim U(0,1)\)</span> numbers. We now want
+to take the <span class="math inline">\(U_{i} \sim U(0,1)\)</span> and utilize them to generate from
+probability distributions.</p>
+<p>The realized value from a probability distribution is called a random
+variate. Simulations use many different probability distributions as
+inputs. Thus, methods for generating random variates from distributions
+are required. Different distributions may require different algorithms due to the challenges of efficiently producing the random variables. Therefore, we need to know how to generate samples from probability distributions. In generating random variates the goal is to produce samples <span class="math inline">\(X_{i}\)</span> from a distribution <span class="math inline">\(F(x)\)</span> given a source of random
+numbers, <span class="math inline">\(U_{i} \sim U(0,1)\)</span>. There are four basic strategies or methods
+for producing random variates:</p>
+<ol style="list-style-type: decimal">
+<li>Inverse transform or inverse cumulative distribution function (CDF) method</li>
+<li>Convolution</li>
+<li>Acceptance/Rejection</li>
+<li>Mixture and Truncated Distributions</li>
+</ol>
+<p>The following sections discuss each of these methods.</p>
+<div id="inverse-transform-method" class="section level3" number="9.2.1">
+<h3><span class="header-section-number">A.2.1</span> Inverse Transform Method</h3>
+<p>The inverse transform method is the preferred method for generating
+random variates provided that the inverse transform of the cumulative
+distribution function can be easily derived or computed numerically. The
+key advantage for the inverse transform method is that for every <span class="math inline">\(U_{i}\)</span>
+use a corresponding <span class="math inline">\(X_{i}\)</span> will be generated. That is, there is a one-to-one mapping between the pseudo-random number <span class="math inline">\(u_i\)</span> and the generated variate <span class="math inline">\(x_i\)</span>.</p>
+<p>The inverse transform technique utilizes the inverse of the cumulative
+distribution function as illustrated in Figure <a href="app-rnrv-rvs.html#fig:InvTrans">A.2</a>, will illustrates simple cumulative distribution function. First, generate a number, <span class="math inline">\(u_{i}\)</span> between 0
+and 1 (along the <span class="math inline">\(U\)</span> axis), then find the corresponding <span class="math inline">\(x_{i}\)</span>
+coordinate by using <span class="math inline">\(F^{-1}(\cdot)\)</span>. For various values of <span class="math inline">\(u_{i}\)</span>, the
+<span class="math inline">\(x_{i}\)</span> will be properly ‘distributed’ along the x-axis. The beauty of
+this method is that there is a one to one mapping between <span class="math inline">\(u_{i}\)</span> and
+<span class="math inline">\(x_{i}\)</span>. In other words, for each <span class="math inline">\(u_{i}\)</span> there is a unique <span class="math inline">\(x_{i}\)</span>
+because of the monotone property of the CDF.</p>
+<div class="figure" style="text-align: center"><span id="fig:InvTrans"></span>
+<img src="figures2/AppRNRV/invTransFig.png" alt="Inverse Transform Method" width="50%" />
+<p class="caption">
+Figure A.2: Inverse Transform Method
+</p>
+</div>
+<p>The idea illustrated in Figure <a href="app-rnrv-rvs.html#fig:InvTrans">A.2</a> is based on the following theorem.</p>
+<hr />
+
+<div class="theorem">
+<span id="thm:InvTransThm" class="theorem"><strong>Theorem A.2  (Inverse Transform)  </strong></span>Let <span class="math inline">\(X\)</span> be a random variable with <span class="math inline">\(X \sim F(x)\)</span>. Define another random variable <span class="math inline">\(Y\)</span>
+such that <span class="math inline">\(Y = F(X)\)</span>. That is, Y is determined by evaluating the
+function <span class="math inline">\(F(\cdot)\)</span> at the value <span class="math inline">\(X\)</span>. If <span class="math inline">\(Y\)</span> is defined in this manner,
+then <span class="math inline">\(Y \sim U(0,1)\)</span>.
+</div>
+<hr />
+<p>The proof utilizes the definition of the cumulative distribution
+function to derive the CDF for <span class="math inline">\(Y\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+F(y) &amp; = P\left\{Y \leq y \right\}  \\
+    &amp; = P\left\{F(X) \leq y\right\}  \; \text{substitute for } Y \\
+    &amp; = P\left\{F^{-1}(F(X)) \leq F^{-1}(y)\right\}  \; \text{apply inverse} \\ 
+    &amp; = P\left\{X \leq F^{-1}(y)\right\}  \; \text{definition of inverse} \\ 
+    &amp; = F(F^{-1}(y)) \; \text{definition of CDF}\\ 
+    &amp; = y \; \text{definition of inverse} 
+\end{split}
+\]</span>
+Since <span class="math inline">\(P(Y \leq y) = y\)</span> defines a <span class="math inline">\(U(0,1)\)</span> random variable, the proof is
+complete.</p>
+<p>This result also works in reverse if you start with a uniformly
+distributed random variable then you can get a random variable with the
+distribution of <span class="math inline">\(F(x)\)</span>. The idea is to generate <span class="math inline">\(U_{i} \sim U(0,1)\)</span> and
+then to use the inverse cumulative distribution function to transform
+the random number to the appropriately distributed random variate.</p>
+<p>Let’s assume that we have a function, <em>randU01()</em>, that will provide
+pseudo-random numbers on the range (0,1). Then, the following presents the pseudo-code for the inverse transform algorithm.</p>
+<div class="line-block">1. <span class="math inline">\(u = rand01()\)</span><br />
+2. <span class="math inline">\(x = F^{-1}(u)\)</span><br />
+3. return <span class="math inline">\(x\)</span></div>
+<p> </p>
+<p>Line 1 generates a uniform number. Line 2 takes the inverse of <span class="math inline">\(u\)</span> and line 3 returns the random variate. The following example illustrates the inverse transform method for the
+exponential distribution.</p>
+<p>The exponential distribution is often used to model the time until and event (e.g. time
+until failure, time until an arrival etc.) and has the following probability density function:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+0.0 &amp; \text{if} \left\{x &lt; 0\right\}\\
+\lambda e^{-\lambda x} &amp; \text{if} \left\{x \geq 0 \right\} \\
+\end{cases}
+\]</span>
+with
+<span class="math display">\[
+\begin{split}
+E\left[X\right] &amp;= \frac{1}{\lambda} \\
+Var\left[X\right] &amp;= \frac{1}{\lambda^2}
+\end{split}
+\]</span></p>
+<hr />
+
+<div class="example">
+<span id="exm:ExpInvCDF" class="example"><strong>Example A.2  (Generating Exponential Random Variates)  </strong></span>Consider a random variable, <span class="math inline">\(X\)</span>, that represents the time until failure for a machine tool. Suppose <span class="math inline">\(X\)</span> is exponentially distributed with an expected value of <span class="math inline">\(1.\overline{33}\)</span>. Generate a random variate for the time until the first failure using a uniformly distributed value of <span class="math inline">\(u = 0.7\)</span>.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:ExpInvCDF">A.2</a></strong> In order to solve this problem, we must first compute the CDF for the exponential distribution. For any value, <span class="math inline">\(b &lt; 0\)</span>, we have by definition:</p>
+<p><span class="math display">\[
+F(b) = P\left\{X \le b \right\} = \int_{ - \infty }^b f(x)\;dx = \int\limits_{ - \infty }^b {0 dx} = 0
+\]</span>
+For any value <span class="math inline">\(b \geq 0\)</span>,</p>
+<p><span class="math display">\[
+\begin{split}
+F(b) &amp; =  P\left\{X \le b \right\} = \int_{ - \infty }^b f(x)dx\\
+ &amp;  =  \int_{ - \infty }^0 f(x)dx +  \int\limits_0^b f(x)dx \\
+ &amp; =  \int\limits_{0}^{b} \lambda e^{\lambda x}dx = - \int\limits_{0}^{b} e^{-\lambda x}(-\lambda)dx\\
+ &amp; =  -e^{-\lambda x} \bigg|_{0}^{b} = -e^{-\lambda b} - (-e^{0}) = 1 - e^{-\lambda b}
+ \end{split}
+\]</span>
+Thus, the CDF of the exponential distribution is:
+<span class="math display">\[
+F(x) =
+\begin{cases}
+0 &amp; \text{if} \left\{x &lt; 0 \right\}\\
+1 - e^{-\lambda x} &amp; \text{if} \left\{x \geq 0\right\}\\
+\end{cases}
+\]</span>
+Now the inverse of the CDF can be derived by setting
+<span class="math inline">\(u = F(x)\)</span> and solving for <span class="math inline">\(x = F^{-1}(u)\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+u &amp; = 1 - e^{-\lambda x}\\
+x &amp; = \frac{-1}{\lambda}\ln \left(1-u \right) = F^{-1}(u)
+\end{split}
+\]</span>
+For Example <a href="app-rnrv-rvs.html#exm:ExpInvCDF">A.2</a>, we have that <span class="math inline">\(E[X]= 1.\overline{33}\)</span>. Since <span class="math inline">\(E\left[X\right] = 1/\lambda\)</span> for the exponential distribution, we have that <span class="math inline">\(\lambda = 0.75\)</span>. Since <span class="math inline">\(u=0.7\)</span>, then the generated random variate, <span class="math inline">\(x\)</span>, would be:</p>
+<p><span class="math display">\[x = \frac{-1}{0.75}\ln \left(1-0.7 \right) = 1.6053\]</span>
+Thus, if we let <span class="math inline">\(\theta = E\left[X\right]\)</span>, the formula for generating an exponential random variate is simply:</p>
+<p><span class="math display" id="eq:expRV">\[\begin{equation}
+x = \frac{-1}{\lambda}\ln \left(1-u \right) = -\theta \ln{(1-u)}
+\tag{A.1}
+\end{equation}\]</span></p>
+<p>In the following pseudo-code, we assume that <em>randU01()</em> is a function that returns a uniformly distributed random number over the range (0,1).</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01())\)</span><br />
+2. <span class="math inline">\(x = \frac{-1}{\lambda}\ln \left(1-u \right)\)</span><br />
+3. return <span class="math inline">\(x\)</span></div>
+<p> </p>
+<p>Thus, the key to applying the inverse transform technique for generating random variates is to be able to first derive the cumulative distribution function (CDF) and then to derive its inverse function. It turns out that for many common distributions, the CDF and inverse CDF well known.</p>
+<p>The uniform distribution over an interval <span class="math inline">\((a,b)\)</span> is often used to model situations
+where the analyst does not have much information and can only assume
+that the outcome is equally likely over a range of values. The uniform
+distribution has the following characteristics:</p>
+<p><span class="math display">\[X \sim \operatorname{Uniform}(a,b)\]</span>
+<span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{1}{b-a    } &amp; a \leq x \leq b\\
+0   &amp; \text{otherwise}
+\end{cases}
+\]</span>
+<span class="math display">\[
+\begin{split}
+E\left[X\right] &amp;= \frac{a+b}{2}\\
+Var\left[X\right] &amp;= \frac{(b-a)^{2}}{12}
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+F(x) =
+\begin{cases}
+0.0 &amp;  x &lt; a\\
+\frac{x-a}{b-a} &amp; a \leq x \leq b\\
+1.0 &amp;  x &gt; b
+\end{cases}
+\]</span></p>
+<hr />
+
+<div class="example">
+<span id="exm:UnifInvCDF" class="example"><strong>Example A.3  (Inverse CDF for Uniform Distribution)  </strong></span>Consider a random variable, <span class="math inline">\(X\)</span>, that represents the amount of grass clippings in a mower bag in pounds. Suppose the random variable is uniformly distributed between 5 and 35 pounds. Generate a random variate for the weight using a pseudo-random number of <span class="math inline">\(u = 0.25\)</span>.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:UnifInvCDF">A.3</a></strong> To solve this problem, we must determine the inverse CDF algorithm for the <span class="math inline">\(U(a,b)\)</span> distribution. The inverse of the CDF can be derived by setting <span class="math inline">\(u = F(x)\)</span> and solving
+for <span class="math inline">\(x = F^{-1}(u)\)</span>.
+<span class="math display">\[
+\begin{split}
+u &amp; = \frac{x-a}{b-a}\\
+u(b-a) &amp;= x-a \\
+x &amp; = a + u(b-a) = F^{-1}(u)
+\end{split}
+\]</span>
+For the example, we have that <span class="math inline">\(a = 5\)</span> and <span class="math inline">\(b = 35\)</span> and <span class="math inline">\(u=0.25\)</span>, then the generated <span class="math inline">\(x\)</span> would be:</p>
+<p><span class="math display">\[
+F^{-1}(u) = x = 5 + 0.25\times(35 - 5) = 5 + 7.5 = 12.5
+\]</span>
+Notice how the value of <span class="math inline">\(u\)</span> is first scaled on the range <span class="math inline">\((0,b-a)\)</span> and then shifted
+to the range <span class="math inline">\((a, b)\)</span>. For the uniform distribution this transformation
+is linear because of the form of its <span class="math inline">\(F(x)\)</span>.</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br />
+2. <span class="math inline">\(x = a + u(b-a)\)</span><br />
+3. return <span class="math inline">\(x\)</span></div>
+<p> </p>
+<p>For the previous distributions a closed form representation of the
+cumulative distribution function was available. If the cumulative
+distribution function can be inverted, then the inverse transform method
+can be easily used to generate random variates from the distribution. If
+no closed form analytical formula is available for the inverse
+cumulative distribution function, then often we can resort to numerical
+methods to implement the function. For example, the normal distribution
+is an extremely useful distribution and numerical methods have
+been devised to provide its inverse cumulative distribution function.</p>
+<p>The inverse CDF method also works for discrete distributions. For a
+discrete random variable, <span class="math inline">\(X\)</span>, with possible values <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> (<span class="math inline">\(n\)</span> may be
+infinite), the probability distribution is called the probability mass
+function (PMF) and denoted:</p>
+<p><span class="math display">\[
+f\left( {{x_i}} \right) = P\left( {X = {x_i}} \right)
+\]</span></p>
+<p>where <span class="math inline">\(f\left( {{x_i}} \right) \ge 0\)</span> for all <span class="math inline">\({x_i}\)</span> and</p>
+<p><span class="math display">\[
+\sum\limits_{i = 1}^n {f\left({{x_i}} \right)}  = 1
+\]</span></p>
+<p>The cumulative distribution function is</p>
+<p><span class="math display">\[
+F(x) = P\left( {X \le x} \right) = \sum\limits_{{x_i} \le x} {f\left( {{x_i}} \right)}
+\]</span>
+and satisfies, <span class="math inline">\(0 \le F\left( x \right) \le 1\)</span>, and if <span class="math inline">\(x \le y\)</span> then
+<span class="math inline">\(F(x) \le F(y)\)</span>.</p>
+<p>In order to apply the inverse transform method to
+discrete distributions, the cumulative distribution function can be
+searched to find the value of <span class="math inline">\(x\)</span> associated with the given <span class="math inline">\(u\)</span>. This
+process is illustrated in the following example.</p>
+<hr />
+
+<div class="example">
+<span id="exm:DiscreteCDF" class="example"><strong>Example A.4  (Discrete Empirical Distribution)  </strong></span>Suppose you have a random variable, <span class="math inline">\(X\)</span>, with the following discrete probability mass
+function and cumulative distribution function.
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x_{i}\)</span></th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(f(x_{i})\)</span></td>
+<td align="center">0.4</td>
+<td align="center">0.3</td>
+<td align="center">0.2</td>
+<td align="center">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>Plot the probability mass function and cumulative distribution function
+for this random variable. Then, develop an inverse cumulative
+distribution function for generating from this distribution. Finally,
+given <span class="math inline">\(u_1 = 0.934\)</span> and <span class="math inline">\(u_2 = 0.1582\)</span> are pseudo-random numbers,
+generate the two corresponding random variates from this PMF.</p>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:DiscreteCDF">A.4</a></strong> To solve this example, we must understand the functional form of the PMF and CDF, which are given as follows:</p>
+<p><span class="math display">\[
+P\left\{X=x\right\} = 
+\begin{cases}
+    0.4 &amp; \text{x = 1}\\
+    0.3 &amp; \text{x = 2}\\
+    0.2 &amp; \text{x = 3}\\
+    0.1 &amp; \text{x = 4}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+F(x) =
+\begin{cases}
+0.0 &amp; \text{if} \; x &lt; 1\\
+0.4 &amp; \text{if} \; 1 \le x &lt; 2\\
+0.7 &amp; \text{if} \; 2 \le x &lt; 3\\
+0.9 &amp; \text{if} \; 3 \le x &lt; 4\\
+1.0 &amp; \text{if} \; x \geq 4
+\end{cases}
+\]</span></p>
+<p>Figure <a href="app-rnrv-rvs.html#fig:EmpiricalCDF">A.3</a> illustrates the CDF for this discrete distribution.</p>
+<div class="figure" style="text-align: center"><span id="fig:EmpiricalCDF"></span>
+<img src="figures2/AppRNRV/EmpiricalCDFFig.png" alt="Example Empirical CDF" width="50%" />
+<p class="caption">
+Figure A.3: Example Empirical CDF
+</p>
+</div>
+<p>Examining Figure <a href="app-rnrv-rvs.html#fig:EmpiricalCDF">A.3</a> indicates that for any value of <span class="math inline">\(u_{i}\)</span> in the
+interval, <span class="math inline">\(\left(0.4, 0.7\right]\)</span> you get an <span class="math inline">\(x_{i}\)</span> of 2. Thus,
+generating random numbers from this distribution can be accomplished by
+using the inverse of the cumulative distribution function.</p>
+<p><span class="math display">\[
+F^{-1}(u) =
+\begin{cases}
+1 &amp; \text{if} \; 0.0 \leq u \leq 0.4\\
+2 &amp; \text{if} \; 0.4 &lt; u \leq 0.7 \\
+3 &amp; \text{if} \; 0.7 &lt; u \leq 0.9\\
+4 &amp; \text{if} \; 0.9 &lt; u \leq 1.0\\
+\end{cases}
+\]</span></p>
+<p>Suppose <span class="math inline">\(u_1 = 0.934\)</span>, then by <span class="math inline">\(F^{-1}(u)\)</span>,
+<span class="math inline">\(x = 4\)</span>. If <span class="math inline">\(u_2 = 0.1582\)</span>, then <span class="math inline">\(x = 1\)</span>. Thus, we use the inverse transform function
+to look up the appropriate <span class="math inline">\(x\)</span> for a given <span class="math inline">\(u\)</span>.</p>
+<p>For a discrete distribution, given a value for <span class="math inline">\(u\)</span>, pick <span class="math inline">\(x_{i}\)</span>, such
+that <span class="math inline">\(F(x_{i-1}) &lt; u \leq F(x_{i})\)</span> provides the inverse CDF function.
+Thus, for any given value of <span class="math inline">\(u\)</span> the generation process amounts to a
+table lookup of the corresponding value for <span class="math inline">\(x_{i}\)</span>. This simply
+involves searching until the condition <span class="math inline">\(F(x_{i-1}) &lt; u \leq F(x_{i})\)</span> is
+true. Since <span class="math inline">\(F(x)\)</span> is an increasing function in <span class="math inline">\(x\)</span>, only the upper
+limit needs to be checked. The following presents these ideas in the form of an algorithm.</p>
+<div class="line-block">1. u = randU01()<br />
+2. i = 1<br />
+3. x = <span class="math inline">\(x_i\)</span><br />
+4. WHILE F(x) ≤ u<br />
+5. i=i+1<br />
+6. x = <span class="math inline">\(x_i\)</span><br />
+7. END WHILE<br />
+8. RETURN x</div>
+<p> </p>
+<p>In the algorithm, if the test <span class="math inline">\(F(x) \leq u\)</span> is true, the while loop
+moves to the next interval. If the test failed, <span class="math inline">\(u &gt; F(x_{i})\)</span> must be
+true. The while loop stops and <span class="math inline">\(x\)</span> is the last value checked, which is
+returned. Thus, only the upper limit in the next interval needs to be
+tested. Other more complicated and possibly more efficient methods for
+performing this process are discussed in <span class="citation">(<a href="#ref-fishman2006first" role="doc-biblioref">Fishman 2006</a>)</span> and
+<span class="citation">(<a href="#ref-ripley1987stochastic" role="doc-biblioref">Ripley 1987</a>)</span>.</p>
+<p>Using the inverse transform method, for discrete random variables, a
+Bernoulli random variate can be easily generated as shown in the following.</p>
+<div class="line-block">1. u = randu01()<br />
+2. IF (<span class="math inline">\(u \leq p\)</span>) THEN<br />
+3. x=1<br />
+4. ELSE<br />
+5. x=0<br />
+6. END IF<br />
+7. RETURN x</div>
+<p> </p>
+<p>To generate <em>discrete uniform</em> random variables, the inverse transform
+method yields the the following algorithm:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br />
+2. <span class="math inline">\(x = a + \lfloor(b-a+1)u\rfloor\)</span><br />
+3. return <span class="math inline">\(x\)</span></div>
+<p> </p>
+<p>Notice how the discrete uniform distribution inverse transform algorithm is different from the case of the continuous uniform distribution associated with Example <a href="app-rnrv-rvs.html#exm:DiscreteCDF">A.4</a>. The inverse transform method also works for generating geometric random variables. Unfortunately, the geometric distribution has multiple
+definitions. Let <span class="math inline">\(X\)</span> be the number of Bernoulli trials needed to get one
+success. Thus, <span class="math inline">\(X\)</span> has range <span class="math inline">\(1, 2, \ldots\)</span> and distribution:</p>
+<p><span class="math display">\[
+P \left\{X=k\right\} = (1-p)^{k-1}p
+\]</span></p>
+<p>We will call this the shifted geometric in this text. The algorithm to
+generate a shifted geometric random variables is as follows:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br />
+2. <span class="math inline">\(x = 1 + \left\lfloor \frac{\ln(1-u)}{\ln(1-p)}\right\rfloor\)</span><br />
+3. return <span class="math inline">\(x\)</span></div>
+<p> </p>
+<p>Notice the use of the floor operator <span class="math inline">\(\lfloor \cdot \rfloor\)</span>. If the geometric is defined as the number of failures <span class="math inline">\(Y = X -1\)</span> before
+the first success, then <span class="math inline">\(Y\)</span> has range <span class="math inline">\(0, 1, 2, \ldots\)</span> and probability
+distribution:</p>
+<p><span class="math display">\[P\left\{Y=k\right\} = (1-p)^{k}p\]</span></p>
+<p>We will call this distribution the geometric distribution in this text.
+The algorithm to generate a geometric random variables is as follows:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br />
+2. <span class="math inline">\(y = \left\lfloor \frac{\ln(1-u)}{\ln(1-p)}\right\rfloor\)</span><br />
+3. return <span class="math inline">\(y\)</span></div>
+<p> </p>
+<p>The Poisson distribution is often used to model the number of
+occurrences within an interval time, space, etc. For example,</p>
+<ul>
+<li><p>the number of phone calls to a doctor’s office in an hour</p></li>
+<li><p>the number of persons arriving to a bank in a day</p></li>
+<li><p>the number of cars arriving to an intersection in an hour</p></li>
+<li><p>the number of defects that occur within a length of item</p></li>
+<li><p>the number of typos in a book</p></li>
+<li><p>the number of pot holes in a mile of road</p></li>
+</ul>
+<p>Assume we have an interval of real numbers, and that incidents occur at
+random throughout the interval. If the interval can be partitioned into
+sub-intervals of small enough length such that:</p>
+<ul>
+<li><p>The probability of more than one incident in a sub-intervals is zero</p></li>
+<li><p>The probability of one incident in a sub-intervals is the same for
+all intervals and proportional to the length of the sub-intervals,
+and</p></li>
+<li><p>The number of incidents in each sub-intervals is independent of
+other sub-intervals</p></li>
+</ul>
+<p>Then, we have a Poisson distribution. Let the probability of an incident
+falling into a subinterval be <span class="math inline">\(p\)</span>. Let there be <span class="math inline">\(n\)</span> subintervals. An
+incident either falls in a subinterval or it does not. This can be
+considered a Bernoulli trial. Suppose there are <span class="math inline">\(n\)</span> subintervals, then
+the number of incidents that fall in the large interval is a binomial
+random variable with expectation <span class="math inline">\(n*p\)</span>. Let <span class="math inline">\(\lambda = np\)</span> be a constant
+and keep dividing the main interval into smaller and smaller
+subintervals such that <span class="math inline">\(\lambda\)</span> remains constant. To keep <span class="math inline">\(\lambda\)</span>
+constant, increase <span class="math inline">\(n\)</span>, and decrease <span class="math inline">\(p\)</span>. What is the chance that <span class="math inline">\(x\)</span>
+incidents occur in the <span class="math inline">\(n\)</span> subintervals?</p>
+<p><span class="math display">\[
+\binom{n}{x} \left( \frac{\lambda}{n} \right)^{x} \left(1- \frac{\lambda}{n} \right)^{n-x}
+\]</span>
+Take the limit as <span class="math inline">\(n\)</span> goes to infinity
+<span class="math display">\[
+\lim\limits_{n\to\infty} \binom{n}{x} \left( \frac{\lambda}{n} \right)^{x} \left(1- \frac{\lambda}{n} \right)^{n-x}
+\]</span>
+and we get the Poisson distribution:</p>
+<p><span class="math display">\[
+P\left\{X=x\right\} = \frac{e^{-\lambda}\lambda^{x}}{x!} \quad \lambda &gt; 0, \quad x = 0, 1, \ldots
+\]</span>
+where <span class="math inline">\(E\left[X\right] = \lambda\)</span> and <span class="math inline">\(Var\left[X\right] = \lambda\)</span>. If a Poisson random variable represents the number of incidents in some interval, then the mean of
+the random variable must equal the expected number of incidents in the
+same length of interval. In other words, the units must match. When
+examining the number of incidents in a unit of time, the Poisson
+distribution is often written as:</p>
+<p><span class="math display">\[
+P\left\{X(t)=x\right\} = \frac{e^{-\lambda t}\left(\lambda t \right)^{x}}{x!}
+\]</span>
+where <span class="math inline">\(X(t)\)</span> is number of events that occur in <span class="math inline">\(t\)</span> time units. This
+leads to an important relationship with the exponential distribution.</p>
+<p>Let <span class="math inline">\(X(t)\)</span> be a Poisson random variable that represents the number of
+arrivals in <span class="math inline">\(t\)</span> time units with <span class="math inline">\(E\left[X(t)\right] = \lambda t\)</span>. What is the
+probability of having no events in the interval from <span class="math inline">\(0\)</span> to <span class="math inline">\(t\)</span>?</p>
+<p><span class="math display">\[
+P\left\{X(t) = 0\right\} = \frac{e^{- \lambda t}(\lambda t)^{0}}{0!} = e^{- \lambda t}
+\]</span>
+This is the probability that no one arrives in the interval <span class="math inline">\((0,t)\)</span>. Let
+<span class="math inline">\(T\)</span> represent the time until an arrival from any starting point in time.
+What is the probability that <span class="math inline">\(T &gt; t\)</span>? That is, what is the probability
+that the time of the arrival is sometime after <span class="math inline">\(t\)</span>? For <span class="math inline">\(T\)</span> to be bigger
+than <span class="math inline">\(t\)</span>, we must not have anybody arrive before <span class="math inline">\(t\)</span>. Thus, these two
+events are the same: <span class="math inline">\(\{T &gt; t\} = \{X(t) = 0\}\)</span>. Thus,
+<span class="math inline">\(P\left\{T &gt; t \right\} = P\left\{X(t) = 0\right\} = e^{- \lambda t}\)</span>. What is the probability that <span class="math inline">\(T \le t\)</span>?</p>
+<p><span class="math display">\[
+P\left\{T \le t\right\} = 1 - P\left\{T &gt; t\right\} =  1 - e^{-\lambda t}
+\]</span></p>
+<p>This is the CDF of <span class="math inline">\(T\)</span>, which is an exponential distribution. Thus, if
+<span class="math inline">\(T\)</span> is a random variable that represents the time between events and <span class="math inline">\(T\)</span>
+is exponential with mean <span class="math inline">\(1/\lambda\)</span>, then, the number of events in <span class="math inline">\(t\)</span>
+will be a Poisson process with <span class="math inline">\(E\left[X(t)\right] = \lambda t\)</span>. Therefore, a
+method for generating Poisson random variates with mean <span class="math inline">\(\lambda\)</span> can be
+derived by counting the number of events that occur before <span class="math inline">\(t\)</span> when the
+time between events is exponential with mean <span class="math inline">\(1/\lambda\)</span>.</p>
+<hr />
+
+<div class="example">
+<span id="exm:GenPoissonRV" class="example"><strong>Example A.5  (Generate Poisson Random Variates)  </strong></span>Let <span class="math inline">\(X(t)\)</span> represent the number of customers that arrive to a bank in an interval of length <span class="math inline">\(t\)</span>, where <span class="math inline">\(t\)</span> is measured in hours. Suppose <span class="math inline">\(X(t)\)</span> has a Poisson
+distribution with mean rate <span class="math inline">\(\lambda = 4\)</span> per hour. Use the the following pseudo-random number (0.971, 0.687, 0.314, 0.752, 0.830) to generate a value of <span class="math inline">\(X(2)\)</span>. That is, generate the number of arrivals in 2 hours.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:GenPoissonRV">A.5</a></strong> Because of the relationship between the Poisson distribution and the exponential distribution, the time between events <span class="math inline">\(T\)</span> will have an
+exponential distribution with mean <span class="math inline">\(0.25 = 1/\lambda\)</span>. Thus, we have:</p>
+<p><span class="math display">\[T_i = \frac{-1}{\lambda}\ln (1-u_i) = -0.25\ln (1-u_i)\]</span></p>
+<p><span class="math display">\[A_i = \sum\limits_{k=1}^{i} T_k\]</span></p>
+<p>where <span class="math inline">\(T_i\)</span> represents the time between the <span class="math inline">\(i-1\)</span> and <span class="math inline">\(i\)</span> arrivals and
+<span class="math inline">\(A_i\)</span> represents the time of the <span class="math inline">\(i^{th}\)</span> arrival. Using the provided <span class="math inline">\(u_i\)</span>, we can compute <span class="math inline">\(T_i\)</span> (via the inverse transform method for the exponential distribution) and <span class="math inline">\(A_i\)</span> until <span class="math inline">\(A_i\)</span> goes over 2 hours.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(i\)</span></th>
+<th align="center"><span class="math inline">\(u_i\)</span></th>
+<th align="center"><span class="math inline">\(T_i\)</span></th>
+<th align="center"><span class="math inline">\(A_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.971</td>
+<td align="center">0.881</td>
+<td align="center">0.881</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">0.687</td>
+<td align="center">0.290</td>
+<td align="center">1.171</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0.314</td>
+<td align="center">0.094</td>
+<td align="center">1.265</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.752</td>
+<td align="center">0.349</td>
+<td align="center">1.614</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">0.830</td>
+<td align="center">0.443</td>
+<td align="center">2.057</td>
+</tr>
+</tbody>
+</table>
+<p>Since the arrival of the fifth customer occurs after time 2 hours,
+<span class="math inline">\(X(2) = 4\)</span>. That is, there were 4 customers that arrived within the 2
+hours. This example is meant to be illustrative of one method for generating Poisson random variates. There are much more efficient methods that have been developed.</p>
+<p>The inverse transform technique is general and is used when
+<span class="math inline">\(F^{-1}(\cdot)\)</span> is closed form and easy to compute. It also has the
+advantage of using one <span class="math inline">\(U(0,1)\)</span> for each <span class="math inline">\(X\)</span> generated, which helps when
+applying certain techniques that are used to improve the estimation
+process in simulation experiments. Because of this advantage many
+simulation languages utilize the inverse transform technique even if a
+closed form solution to <span class="math inline">\(F^{-1}(\cdot)\)</span> does not exist by numerically
+inverting the function.</p>
+</div>
+<div id="convolution" class="section level3" number="9.2.2">
+<h3><span class="header-section-number">A.2.2</span> Convolution</h3>
+<p>Many random variables are related to each other through some functional
+relationship. One of the most common relationships is the convolution
+relationship. The distribution of the sum of two or more random
+variables is called the <em>convolution</em>. Let <span class="math inline">\(Y_{i} \sim G(y)\)</span> be
+independent and identically distributed random variables. Let
+<span class="math inline">\(X = \sum\nolimits_{i=1}^{n} Y_{i}\)</span>. Then the distribution of <span class="math inline">\(X\)</span> is
+said to be the <span class="math inline">\(n\)</span>-fold convolution of <span class="math inline">\(Y\)</span>. Some common random variables
+that are related through the convolution operation are:</p>
+<ul>
+<li><p>A binomial random variable is the sum of Bernoulli random variables.</p></li>
+<li><p>A negative binomial random variable is the sum of geometric random
+variables.</p></li>
+<li><p>An Erlang random variable is the sum of exponential random
+variables.</p></li>
+<li><p>A Normal random variable is the sum of other normal random
+variables.</p></li>
+<li><p>A chi-squared random variable is the sum of squared normal random
+variables.</p></li>
+</ul>
+<p>The basic convolution algorithm simply generates <span class="math inline">\(Y_{i} \sim G(y)\)</span> and
+then sums the generated random variables. Let’s look at a couple of examples. By definition, a negative binomial distribution represents one of the following two random variables:</p>
+<ul>
+<li><p>The number of failures in sequence of Bernoulli trials before the
+r<sup>th</sup> success, has range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>.</p></li>
+<li><p>The number of trials in a sequence of Bernoulli trials until the
+r<sup>th</sup> success, it has range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span></p></li>
+</ul>
+<p>The number of failures before the r<sup>th</sup> success, has range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>. This is the sum of geometric random variables with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span> with the same success probability.</p>
+<p>If <span class="math inline">\(Y\ \sim\ NB(r,\ p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \cdots\}\)</span>, then</p>
+<p><span class="math display">\[Y = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>when <span class="math inline">\(X_{i}\sim Geometric(p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>, and <span class="math inline">\(X_{i}\)</span>
+can be generated via inverse transform with:</p>
+<p><span class="math display">\[X_{i} = \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor\]</span></p>
+<p>Note that <span class="math inline">\(\left\lfloor \cdot \right\rfloor\)</span> is the <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions#:~:text=In%20the%20language%20of%20order,the%20integers%20into%20the%20reals.">floor
+function</a>.</p>
+<p>If we have a negative binomial distribution that represents the number
+of trials until the r<sup>th</sup> success, it has range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span>, in
+this text we call this a shifted negative binomial distribution.</p>
+<p>A random variable from a “shifted” negative binomial distribution is the
+sum of shifted geometric random variables with range <span class="math inline">\(\{1, 2, 3, \dots\}\)</span>.
+with same success probability. In this text, we refer to this geometric distribution as the shifted
+geometric distribution.</p>
+<p>If <span class="math inline">\(T\ \sim\ NB(r,\ p)\)</span> with range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span>, then</p>
+<p><span class="math display">\[T = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>when <span class="math inline">\(X_{i}\sim Shifted\ Geometric(p)\)</span> with range <span class="math inline">\(\{1, 2, 3, \dots\}\)</span>, and
+<span class="math inline">\(X_{i}\)</span> can be generated via inverse transform with:</p>
+<p><span class="math display">\[X_{i} = 1 + \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor\]</span>
+Notice that the relationship between these random variables as follows:</p>
+<p>Let <span class="math inline">\(Y\)</span> be the number of failures in a sequence of Bernoulli trials
+before the <span class="math inline">\(r^{th}\)</span> success.</p>
+<p>Let <span class="math inline">\(T\)</span> be the number of trials in a sequence of Bernoulli trials until
+the <span class="math inline">\(r^{th}\)</span> success,</p>
+<p>Then, clearly, <span class="math inline">\(T = Y + r\)</span>. Notice that we can generate <span class="math inline">\(Y\)</span>, via
+convolution, as previously explained and just add <span class="math inline">\(r\)</span> to get <span class="math inline">\(T\)</span>.</p>
+<p><span class="math display">\[Y = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>Where <span class="math inline">\(X_{i}\sim Geometric(p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>, and <span class="math inline">\(X_{i}\)</span>
+can be generated via inverse transform with:</p>
+<p><span class="math display" id="eq:geomrv">\[\begin{equation}
+X_{i} = \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor
+\tag{A.2}
+\end{equation}\]</span></p>
+<hr />
+
+<div class="example">
+<span id="exm:GenNB" class="example"><strong>Example A.6  (Generate Negative Binomial Variates via Convolution)  </strong></span>Use the following pseudo-random numbers <span class="math inline">\(u_{1} = 0.35\)</span>, <span class="math inline">\(u_{2} = 0.64\)</span>,
+<span class="math inline">\(u_{2} = 0.14\)</span>, generate a random variate from Negative Binomial distribution
+having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(p= 0.3\)</span>. Also, using the same pseudo-random numbers, generate a random variate from a <em>shifted</em> Negative Binomial distribution having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(p=0.3\)</span>.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:GenNB">A.6</a></strong> To solve this example, we need to apply <a href="app-rnrv-rvs.html#eq:geomrv">(A.2)</a> to each provided <span class="math inline">\(u_i\)</span> to compute the three values of <span class="math inline">\(X_i\)</span>.</p>
+<p><span class="math display">\[
+X_{1} = \left\lfloor \frac{ln(1 - 0.35)}{ln(1 - 0.3)} \right\rfloor = 1
+\]</span>
+<span class="math display">\[
+X_{2} = \left\lfloor \frac{ln(1 - 0.64)}{ln(1 - 0.3)} \right\rfloor = 2
+\]</span>
+<span class="math display">\[
+X_{3} = \left\lfloor \frac{ln(1 - 0.14)}{ln(1 - 0.3)} \right\rfloor = 0
+\]</span>
+Thus, we have that <span class="math inline">\(Y= X_1 + X_2 + X_3\)</span> = <span class="math inline">\(1 + 2 + 0 = 3\)</span>. To generate <span class="math inline">\(T\)</span> for the shifted negative binomial, we have that <span class="math inline">\(T = Y + r = Y + 3 = 3 + 3 = 6\)</span>. Notice that this all can be easily done within a spreadsheet or within a computer program.</p>
+<!-- $R$ using the `qgeom()` function. In the following $R$ code, I define a function called `geomrv` to show that it is the same as `qgeom()`.  By the way, if we want to generate random variates in $R$, there is an even easier method by using the `rgeom(n, prob)` and `rnbinom(n, size, prob, mu)` functions. -->
+<!-- ```{r echo=TRUE} -->
+<!-- # define the function to generate a geometric random variable -->
+<!-- geomrv = function(p, u){floor(log(1-u)/log(1-p))} -->
+<!-- geomrv -->
+<!-- u = c(0.35, 0.64, 0.14) -->
+<!-- u -->
+<!-- x = geomrv(0.3, u) -->
+<!-- x -->
+<!-- y= sum(x) -->
+<!-- y -->
+<!-- sum(qgeom(u,0.3)) -->
+<!-- ``` -->
+<p>As another example of using convolution consider the requirement to generate random variables from an Erlang distribution. Suppose that <span class="math inline">\(Y_{i} \sim \text{Exp}(E\left[Y_{i}\right]=1/\lambda)\)</span>. That is, <span class="math inline">\(Y\)</span> is
+exponentially distributed with rate parameter <span class="math inline">\(\lambda\)</span>. Now, define <span class="math inline">\(X\)</span>
+as <span class="math inline">\(X = \sum\nolimits_{i=1}^{r} Y_{i}\)</span>. One can show that <span class="math inline">\(X\)</span> will have
+an Erlang distribution with parameters <span class="math inline">\((r,\lambda)\)</span>, where
+<span class="math inline">\(E\left[X\right] = r/\lambda\)</span> and <span class="math inline">\(Var\left[X\right] = r/\lambda^2\)</span>. Thus, an
+Erlang<span class="math inline">\((r,\lambda)\)</span> is an <span class="math inline">\(r\)</span>-fold convolution of <span class="math inline">\(r\)</span> exponentially
+distributed random variables with common mean <span class="math inline">\(1/\lambda\)</span>.</p>
+<hr />
+
+<div class="example">
+<span id="exm:GenErlangRV" class="example"><strong>Example A.7  (Generate Erlang Random Variates via Convolution)  </strong></span>Use the following pseudo-random numbers <span class="math inline">\(u_{1} = 0.35\)</span>, <span class="math inline">\(u_{2} = 0.64\)</span>,
+<span class="math inline">\(u_{2} = 0.14\)</span>, generate a random variate from an Erlang distribution
+having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(\lambda = 0.5\)</span>.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:GenErlangRV">A.7</a></strong> This requires generating 3 exponential distributed random variates each
+with <span class="math inline">\(\lambda = 0.5\)</span> and adding them up.</p>
+<p><span class="math display">\[
+\begin{split}
+y_{1} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{1} \right) = \frac{-1}{0.5}\ln \left(1 - 0.35 \right) = 0.8616\\
+y_{2} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{2} \right) = \frac{-1}{0.5}\ln \left(1 - 0.64 \right) = 2.0433\\
+y_{3} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{3} \right) = \frac{-1}{0.5}\ln \left(1 - 0.14 \right) = 0.3016\\
+x &amp; = y_{1} + y_{2} + y_{3} = 0.8616 + 2.0433 + 0.3016 = 3.2065
+\end{split}
+\]</span>
+Because of its simplicity, the convolution method is easy to implement; however, in a number of cases (in particular for a large value of <span class="math inline">\(n\)</span>), there are more efficient algorithms available.</p>
+</div>
+<div id="acceptancerejection" class="section level3" number="9.2.3">
+<h3><span class="header-section-number">A.2.3</span> Acceptance/Rejection</h3>
+<p>In the acceptance-rejection method, the probability density function
+(PDF) <span class="math inline">\(f(x)\)</span>, from which it is desired to obtain a sample is replaced by
+a proxy PDF, <span class="math inline">\(w(x)\)</span>, that can be sampled from more easily. The following
+illustrates how <span class="math inline">\(w(x)\)</span> is defined such that the <em>selected</em> samples from
+<span class="math inline">\(w(x)\)</span> can be used directly to represent random variates from <span class="math inline">\(f(x)\)</span>.
+The PDF <span class="math inline">\(w(x)\)</span> is based on the development of a majorizing function for
+<span class="math inline">\(f(x)\)</span>. A majorizing function, <span class="math inline">\(g(x)\)</span>, for <span class="math inline">\(f(x)\)</span>, is a function such
+that <span class="math inline">\(g(x) \geq f(x)\)</span> for <span class="math inline">\(-\infty &lt; x &lt; +\infty\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:MajorizingFunc"></span>
+<img src="figures2/AppRNRV/MajorizingFunc.png" alt="Concept of a Majorizing Function" width="75%" height="75%" />
+<p class="caption">
+Figure A.4: Concept of a Majorizing Function
+</p>
+</div>
+<p>Figure <a href="app-rnrv-rvs.html#fig:MajorizingFunc">A.4</a> illustrates the concept of a majorizing
+function for <span class="math inline">\(f(x)\)</span>, which simply means a function that is bigger than
+<span class="math inline">\(f(x)\)</span> everywhere.</p>
+<p>In addition, to being a majorizing function for <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(g(x)\)</span> must have
+finite area. In other words,</p>
+<p><span class="math display">\[
+c = \int\limits_{-\infty}^{+\infty} g(x) dx
+\]</span></p>
+<p>If <span class="math inline">\(w(x)\)</span> is defined as <span class="math inline">\(w(x) = g(x)/c\)</span> then <span class="math inline">\(w(x)\)</span> will be a
+probability density function. The acceptance-rejection method starts by
+obtaining a random variate <span class="math inline">\(W\)</span> from <span class="math inline">\(w(x)\)</span>. Recall that <span class="math inline">\(w(x)\)</span> should be
+chosen with the stipulation that it can be easily sampled, e.g. via the
+inverse transform method. Let <span class="math inline">\(U \sim U(0,1)\)</span>. The steps of the
+procedure are as provided in the following algorithm. The sampling of
+<span class="math inline">\(U\)</span> and <span class="math inline">\(W\)</span> continue until <span class="math inline">\(U \times g(W) \leq f(W)\)</span> and <span class="math inline">\(W\)</span> is
+returned. If <span class="math inline">\(U \times g(W) &gt; f(W)\)</span>, then the loop repeats.</p>
+<div class="line-block">1. REPEAT<br />
+2. Generate <span class="math inline">\(W \sim w(x)\)</span><br />
+3. Generate <span class="math inline">\(U \sim U(0,1)\)</span><br />
+4. UNTIL <span class="math inline">\((U \times g(W) \leq f(W))\)</span><br />
+5. RETURN <span class="math inline">\(W\)</span></div>
+<p> </p>
+<p>The validity of the procedure is based on deriving the cumulative
+distribution function of <span class="math inline">\(W\)</span> given that the <span class="math inline">\(W=w\)</span> was accepted,
+<span class="math inline">\(P\left\{W \leq x \vert W = w \; \text{is accepted}\right\}\)</span>.</p>
+<p>The efficiency of the acceptance-rejection method is enhanced as the
+probability of rejection is reduced. This probability depends directly
+on the choice of the majorizing function <span class="math inline">\(g(x)\)</span>. The
+acceptance-rejection method has a nice intuitive geometric connotation,
+which is best illustrated with an example.</p>
+<hr />
+
+<div class="example">
+<p><span id="exm:ARExampleRV" class="example"><strong>Example A.8  (Acceptance-Rejection Example)  </strong></span>Consider the
+following PDF over the range <span class="math inline">\(\left[-1,1\right]\)</span>. Develop an
+acceptance/rejection based algorithm for <span class="math inline">\(f(x)\)</span>.</p>
+</div>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{3}{4}\left( 1 - x^2 \right) &amp;     -1 \leq x \leq 1\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:ARExampleFig"></span>
+<img src="figures2/AppRNRV/ARExampleFig.jpg" alt="Plot of f(x)" width="65%" height="65%" />
+<p class="caption">
+Figure A.5: Plot of f(x)
+</p>
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:ARExampleRV">A.8</a></strong> The first step in deriving an acceptance/rejection algorithm for the <span class="math inline">\(f(x)\)</span> in Example <a href="app-rnrv-rvs.html#exm:ARExampleRV">A.8</a> is to select an appropriate majorizing function. A simple method to
+choose a majorizing function is to set <span class="math inline">\(g(x)\)</span> equal to the maximum value
+of <span class="math inline">\(f(x)\)</span>. As can be seen from the plot of <span class="math inline">\(f(x)\)</span> the maximum value of
+3/4 occurs at <span class="math inline">\(x\)</span> equal to <span class="math inline">\(0\)</span>. Thus, we can set <span class="math inline">\(g(x) = 3/4\)</span>. In order
+to proceed, we need to construct the PDF associated with <span class="math inline">\(g(x)\)</span>. Define
+<span class="math inline">\(w(x) = g(x)/c\)</span> as the PDF. To determine <span class="math inline">\(c\)</span>, we need to determine the
+area under the majorizing function:</p>
+<p><span class="math display">\[
+c = \int\limits_{-1}^{1} g(x) dx  = \int\limits_{-1}^{1} \frac{3}{4} dx = \frac{3}{2}
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+w(x) =
+\begin{cases}
+\frac{1}{2} &amp;   -1 \leq x \leq 1\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>This implies that <span class="math inline">\(w(x)\)</span> is a uniform distribution over the range from
+<span class="math inline">\(\left[-1,1\right]\)</span>. Based on the discussion of the continuous uniform distribution, a uniform distribution over the range from <span class="math inline">\(a\)</span>
+to <span class="math inline">\(b\)</span> can be generated with <span class="math inline">\(a + U(b-a)\)</span>. Thus, for this case (<span class="math inline">\(a= -1\)</span>
+and <span class="math inline">\(b=1\)</span>), with <span class="math inline">\(b-a = 1 - -1 = 2\)</span>. The acceptance rejection algorithm
+is as follows:</p>
+<div class="line-block">1. Repeat<br />
+1.1 Generate <span class="math inline">\(U_{1} \sim U(0,1)\)</span><br />
+1.2 <span class="math inline">\(W = -1 + 2U_{1}\)</span><br />
+1.3 Generate <span class="math inline">\(U_{2} \sim U(0,1)\)</span><br />
+1.4 <span class="math inline">\(f = \frac{3}{4}(1-W^2)\)</span><br />
+2. Until <span class="math inline">\((U_{2} \times \frac{3}{4} \leq f)\)</span><br />
+3. Return <span class="math inline">\(W\)</span></div>
+<p> </p>
+<p>Steps 1.1 and 1.2 of generate a random variate, <span class="math inline">\(W\)</span>, from <span class="math inline">\(w(x)\)</span>.
+Note that <span class="math inline">\(W\)</span> is in the range <span class="math inline">\(\left[-1,1\right]\)</span> (the same as the range
+of <span class="math inline">\(X\)</span>) so that step 1.4 is simply finding the height associated with <span class="math inline">\(W\)</span>
+in terms of <span class="math inline">\(f\)</span>. Step 1.3 generates <span class="math inline">\(U_{2}\)</span>. What is the range of
+<span class="math inline">\(U_{2} \times \frac{3}{4}\)</span>? The range is <span class="math inline">\(\left[0,\frac{3}{4}\right]\)</span>.
+Note that this range corresponds to the range of possible values for
+<span class="math inline">\(f\)</span>. Thus, in step 2, a point between <span class="math inline">\(\left[0,\frac{3}{4}\right]\)</span> is
+being compared to the candidate point’s height <span class="math inline">\(f(W)\)</span> along the vertical
+axis. If the point is under <span class="math inline">\(f(W)\)</span>, the <span class="math inline">\(W\)</span> is accepted; otherwise the
+<span class="math inline">\(W\)</span> is rejected and another candidate point must be generated. In other
+words, if a point “under the curve” is generated it will be accepted.</p>
+<p>As illustrated in the previous, the probability of acceptance is related to
+how close <span class="math inline">\(g(x)\)</span> is to <span class="math inline">\(f(x)\)</span>. The ratio of the area under <span class="math inline">\(f(x)\)</span> to the
+area under <span class="math inline">\(g(x)\)</span> is the probability of accepting. Since the area under
+<span class="math inline">\(f(x)\)</span> is 1, the probability of acceptance, <span class="math inline">\(P_{a}\)</span>, is:</p>
+<p><span class="math display">\[
+P_{a} = \frac{1}{\int\limits_{-\infty}^{+\infty} g(x) dx} = \frac{1}{c}
+\]</span></p>
+<p>where <span class="math inline">\(c\)</span> is the area under the majorizing function. For the example, the probability of acceptance is <span class="math inline">\(P_{a} = 2/3\)</span>. Based on this example, it should be clear that the more
+<span class="math inline">\(g(x)\)</span> is similar to the PDF <span class="math inline">\(f(x)\)</span> the better (higher) the probability
+of acceptance. The key to efficiently generating random variates using
+the acceptance-rejection method is finding a suitable majorizing
+function over the same range as <span class="math inline">\(f(x)\)</span>. In the example, this was easy
+because <span class="math inline">\(f(x)\)</span> had a finite range. It is more challenging to derive an
+acceptance rejection algorithm for a probability density function,
+<span class="math inline">\(f(x)\)</span>, if it has an infinite range because it may be more challenging
+to find a good majorizing function.</p>
+</div>
+<div id="AppRNRV:subsec:MTSRV" class="section level3" number="9.2.4">
+<h3><span class="header-section-number">A.2.4</span> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</h3>
+<p>This section describes three random variate generation methods that
+build on the previously discussed methods. These methods allow for more
+flexibility in modeling the underlying randomness. First, let’s consider
+the definition of a mixture distribution and then consider some
+examples.</p>
+<hr />
+
+<div class="definition">
+<span id="def:unnamed-chunk-2" class="definition"><strong>Definition A.4  (Mixture Distribution)  </strong></span>The distribution of
+a random variable <span class="math inline">\(X\)</span> is a <em>mixture distribution</em> if the CDF of <span class="math inline">\(X\)</span> has
+the form:
+<span class="math display">\[
+F_{X}(x) = \sum\limits_{i=1}^{k} \omega_{i}F_{X_{i}}(x)
+\]</span>
+where <span class="math inline">\(0 &lt; \omega_{i} &lt; 1\)</span>, <span class="math inline">\(\sum\nolimits_{i=1}^{k} \omega_{i} = 1\)</span>, <span class="math inline">\(k \geq\)</span>
+and <span class="math inline">\(F_{X_{i}}(x)\)</span> is the CDF of a continuous or discrete random
+variable <span class="math inline">\(X_{i}\)</span>, <span class="math inline">\(i=1, \ldots, k\)</span>.
+</div>
+<hr />
+<p>Notice that the <span class="math inline">\(\omega_{i}\)</span> can be interpreted as a discrete
+probability distribution as follows. Let <span class="math inline">\(I\)</span> be a random variable with
+range <span class="math inline">\(I \in \left\{ 1, \ldots, k \right\}\)</span> where
+<span class="math inline">\(P\left\{I=i\right\} = \omega_{i}\)</span> is the probability that the <span class="math inline">\(i^{th}\)</span>
+distribution <span class="math inline">\(F_{X_{i}}(x)\)</span> is selected. Then, the procedure for
+generating from <span class="math inline">\(F_{X}(x)\)</span> is to randomly generate <span class="math inline">\(I\)</span> from
+<span class="math inline">\(g(i) = \left\{I=i\right\} = \omega_{i}\)</span> and then generate <span class="math inline">\(X\)</span> from
+<span class="math inline">\(F_{X_{I}}(x)\)</span>. The following algorithm presents this procedure.</p>
+<div class="line-block">1. Generate <span class="math inline">\(I \sim g(i)\)</span><br />
+2. Generate <span class="math inline">\(X \sim F_{X_{I}}(x)\)</span><br />
+3. return <span class="math inline">\(X\)</span></div>
+<p> </p>
+<p>Because mixture distributions combine the characteristics of two or more
+distributions, they provide for more flexibility in modeling. For
+example, many of the standard distributions that are presented in
+introductory probability courses, such as the normal, Weibull,
+lognormal, etc., have a single mode. Mixture distributions are often
+utilized for the modeling of data sets that have more than one mode.</p>
+<p>As an example of a mixture distribution, we will discuss the
+hyper-exponential distribution. The hyper-exponential is useful in
+modeling situations that have a high degree of variability. The
+coefficient of variation is defined as the ratio of the standard
+deviation to the expected value for a random variable <span class="math inline">\(X\)</span>. The
+coefficient of variation is defined as <span class="math inline">\(c_{v} = \sigma/\mu\)</span>, where <span class="math inline">\(\sigma = \sqrt{Var\left[X \right]}\)</span> and <span class="math inline">\(\mu = E\left[X\right]\)</span>. For the hyper-exponential
+distribution <span class="math inline">\(c_{v} &gt; 1\)</span>. The hyper-exponential distribution is commonly
+used to model service times that have different (and mutually exclusive)
+phases. An example of this situation is paying with a credit card or
+cash at a checkout register. The following example illustrates how to generate from a hyper-exponential distribution.</p>
+<hr />
+
+<div class="example">
+<p><span id="exm:HyperExpRV" class="example"><strong>Example A.9  (Hyper-Exponential Random Variate)  </strong></span>Suppose the time that it takes to pay with a credit card, <span class="math inline">\(X_{1}\)</span>, is exponentially
+distributed with a mean of <span class="math inline">\(1.5\)</span> minutes and the time that it takes to
+pay with cash, <span class="math inline">\(X_{2}\)</span>, is exponentially distributed with a mean of
+<span class="math inline">\(1.1\)</span> minutes. In addition, suppose that the chance that a person pays
+with credit is 70%. Then, the overall distribution representing the
+payment service time, <span class="math inline">\(X\)</span>, has an hyper-exponential distribution with
+parameters <span class="math inline">\(\omega_{1} = 0.7\)</span>, <span class="math inline">\(\omega_{2} = 0.3\)</span>,
+<span class="math inline">\(\lambda_{1} = 1/1.5\)</span>, and <span class="math inline">\(\lambda_{2} = 1/1.1\)</span>.</p>
+<span class="math display">\[
+\begin{split}
+F_{X}(x) &amp; = \omega_{1}F_{X_{1}}(x) + \omega_{2}F_{X_{2}}(x)\\
+F_{X_{1}}(x) &amp; = 1 - \exp \left( -\lambda_{1} x \right) \\
+F_{X_{2}}(x) &amp; = 1 - \exp \left( -\lambda_{2} x \right)
+\end{split}
+\]</span>
+Derive an algorithm for this distribution. Assume that you have two
+pseudo-random numbers, <span class="math inline">\(u_1 = 0.54\)</span> and <span class="math inline">\(u_2 = 0.12\)</span>, generate a random
+variate from <span class="math inline">\(F_{X}(x)\)</span>.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:HyperExpRV">A.9</a></strong> In order to generate a payment service time, <span class="math inline">\(X\)</span>, we can use the mixture distribution algorithm.</p>
+<div class="line-block">1. Generate <span class="math inline">\(u \sim U(0,1)\)</span><br />
+2. Generate <span class="math inline">\(v \sim U(0,1)\)</span><br />
+3. If <span class="math inline">\((u \leq 7)\)</span><br />
+4. <span class="math inline">\(X = F^{-1}_{X_{1}}(v) = -1.5\ln \left(1-v \right)\)</span><br />
+5. else<br />
+6. <span class="math inline">\(X = F^{-1}_{X_{2}}(v) = -1.1\ln \left(1-v \right)\)</span><br />
+7. end if<br />
+8. return <span class="math inline">\(X\)</span></div>
+<p> </p>
+<p>Using <span class="math inline">\(u_1 = 0.54\)</span>, because <span class="math inline">\(0.54 \leq 0.7\)</span>, we have that</p>
+<p><span class="math display">\[
+X = F^{-1}_{X_{1}}(0.12) = -1.5\ln \left(1- 0.12 \right) = 0.19175
+\]</span></p>
+<p>In the previous example, generating <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X_{i}}(x)\)</span> utilizes
+the inverse transform method for generating from the two exponential
+distribution functions. In general, <span class="math inline">\(F_{X_{i}}(x)\)</span> for a general mixture
+distribution might be any distribution. For example, we might have a
+mixture of a Gamma and a Lognormal distribution. To generate from the
+individual <span class="math inline">\(F_{X_{i}}(x)\)</span> one would use the most appropriate generation
+technique for that distribution. For example, <span class="math inline">\(F_{X_{1}}(x)\)</span> might use
+inverse transform, <span class="math inline">\(F_{X_{2}}(x)\)</span> might use acceptance/rejection,
+<span class="math inline">\(F_{X_{3}}(x)\)</span> might use convolution, etc. This provides great
+flexibility in modeling and in generation.</p>
+<p>In general, we may have situations where we need to control the domain
+over which the random variates are generated. For example, when we are
+modeling situations that involve time (as is often the case within
+simulation), we need to ensure that we do not generate negative values.
+Or, for example, it may be physically impossible to perform a task in a
+time that is shorter than a particular value. The next two generation
+techniques assist with modeling these situations.</p>
+<p>A <em>truncated distribution</em> is a distribution derived from another
+distribution for which the range of the random variable is restricted.
+Truncated distributions can be either discrete or continuous. The
+presentation here illustrates the continuous case. Suppose we have a
+random variable, <span class="math inline">\(X\)</span> with PDF, <span class="math inline">\(f(x)\)</span> and CDF <span class="math inline">\(F(x)\)</span>. Suppose that we
+want to constrain <span class="math inline">\(f(x)\)</span> over interval <span class="math inline">\([a, b]\)</span>, where <span class="math inline">\(a&lt;b\)</span> and the
+interval <span class="math inline">\([a, b]\)</span> is a subset of the original support of <span class="math inline">\(f(x)\)</span>. Note
+that it is possible that <span class="math inline">\(a = -\infty\)</span> or <span class="math inline">\(b = +\infty\)</span>. Constraining
+<span class="math inline">\(f(x)\)</span> in this manner will result in a new random variable,
+<span class="math inline">\(X \vert a \leq X \leq b\)</span>. That is, the random variable <span class="math inline">\(X\)</span> given that
+<span class="math inline">\(X\)</span> is contained in <span class="math inline">\([a, b]\)</span>. Random variables have a probability
+distribution. The question is what is the probability distribution of
+this new random variable and how can we generate from it.</p>
+<p>This new random variable is governed by the conditional distribution of
+<span class="math inline">\(X\)</span> given that <span class="math inline">\(a \leq X \leq b\)</span> and has the following form:</p>
+<p><span class="math display">\[
+f(x \vert a \leq X \leq b)  = f^{*}(x) = 
+\begin{cases}
+\frac{g(x)}{F(b) - F(a)} &amp;  a \leq x \leq b\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+g(x) =
+\begin{cases}
+f(x) &amp;  a \leq x \leq b\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>Note that <span class="math inline">\(g(x)\)</span> is not a probability density. To convert it to a
+density, we need to find its area and divide by its area. The area of <span class="math inline">\(g(x)\)</span> is:</p>
+<p><span class="math display">\[
+\begin{split}
+\int\limits_{-\infty}^{+\infty} g(x) dx &amp; = \int\limits_{-\infty}^{a} g(x) dx + \int\limits_{a}^{b} g(x) dx + \int\limits_{b}^{+\infty} g(x) dx \\
+&amp; = \int\limits_{-\infty}^{a} 0 dx + \int\limits_{a}^{b} f(x) dx + \int\limits_{b}^{+\infty} 0) dx \\
+ &amp; = \int\limits_{a}^{b} f(x) dx = F(b) - F(a)
+\end{split}
+\]</span></p>
+<p>Thus, <span class="math inline">\(f^{*}(x)\)</span> is simply a “re-weighting” of <span class="math inline">\(f(x)\)</span>. The CDF of
+<span class="math inline">\(f^{*}(x)\)</span> is:</p>
+<p><span class="math display">\[
+F^{*}(x) = 
+\begin{cases}
+0 &amp; \text{if} \; x &lt; a \\
+\frac{F(x) - F(a)}{F(b) - F(a)} &amp;   a \leq x \leq b\\
+0 &amp; \text{if} \; b &lt; x\\
+\end{cases}
+\]</span></p>
+<p>This leads to a straight forward algorithm for generating from
+<span class="math inline">\(f^{*}(x)\)</span> as follows:</p>
+<div class="line-block">1. Generate <span class="math inline">\(u \sim U(0,1)\)</span><br />
+2. <span class="math inline">\(W = F(a) + (F(b) - F(a))u\)</span><br />
+3. <span class="math inline">\(X = F^{-1}(W)\)</span><br />
+4. return <span class="math inline">\(X\)</span></div>
+<p> </p>
+<p>Lines 1 and 2 of the algorithm generate a random variable <span class="math inline">\(W\)</span> that is
+uniformly distributed on <span class="math inline">\((F(a), F(b))\)</span>. Then, that value is used within
+the original distribution’s inverse CDF function, to generate a <span class="math inline">\(X\)</span>
+given that <span class="math inline">\(a \leq X \leq b\)</span>. Let’s look at an example.</p>
+<hr />
+
+<div class="example">
+<span id="exm:TruncatedRV" class="example"><strong>Example A.10  (Generating a Truncated Random Variate)  </strong></span>Suppose <span class="math inline">\(X\)</span> represents the distance between two cracks in highway. Suppose that <span class="math inline">\(X\)</span>
+has an exponential distribution with a mean of 10 meters. Generate a
+distance restricted between 3 and 6 meters using the pseudo-random
+number 0.23.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:TruncatedRV">A.10</a></strong> The CDF of the exponential distribution with mean 10 is:</p>
+<p><span class="math display">\[
+F(x) = 1 - e^{-x/10}
+\]</span></p>
+<p>Therefore <span class="math inline">\(F(3) = 1- \exp(-3/10) = 0.259\)</span> and <span class="math inline">\(F(6) = 0.451\)</span>. The
+exponential distribution has inverse cumulative distribution function:</p>
+<p><span class="math display">\[
+F^{-1}(u) = \frac{-1}{\lambda}\ln \left(1-u \right)
+\]</span></p>
+<p>First, we generate a random number uniformly distributed between <span class="math inline">\(F(3)\)</span>
+and <span class="math inline">\(F(6)\)</span> using <span class="math inline">\(u = 0.23\)</span>:</p>
+<p><span class="math display">\[
+W = 0.259 + (0.451 - 0.259)\times 0.23 = 0.3032
+\]</span></p>
+<p>Therefore, in order to generate the distance we have:</p>
+<p><span class="math display">\[
+X = -10 \times \ln \left(1 - 0.3032 \right) = 3.612
+\]</span></p>
+<p>Lastly, we discuss shifted distributions. Suppose <span class="math inline">\(X\)</span> has a given
+distribution <span class="math inline">\(f(x)\)</span>, then the distribution of <span class="math inline">\(X + \delta\)</span> is termed the
+shifted distribution and is specified by <span class="math inline">\(g(x)=f(x - \delta)\)</span>. It is
+easy to generate from a shifted distribution, simply generate <span class="math inline">\(X\)</span>
+according to <span class="math inline">\(F(x)\)</span> and then add <span class="math inline">\(\delta\)</span>.</p>
+<hr />
+
+<div class="example">
+<span id="exm:ShiftedRV" class="example"><strong>Example A.11  (Generating a Shifted Weibull Random Variate Example)  </strong></span>Suppose <span class="math inline">\(X\)</span> represents
+the time to setup a machine for production. From past time studies, we
+know that it cannot take any less than 5.5 minutes to prepare for the
+setup and that the time after the 5.5 minutes is random with a Weibull
+distribution with shape parameter <span class="math inline">\(\alpha = 3\)</span> and scale parameter
+<span class="math inline">\(\beta = 5\)</span>. Using a pseudo-random number of <span class="math inline">\(u= 0.73\)</span> generate a value
+for the time to perform the setup.
+</div>
+<hr />
+<p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:ShiftedRV">A.11</a></strong> The Weibull distribution has a closed form cumulative distribution
+function:</p>
+<p><span class="math display">\[
+F(x) = 1- e^{-(x/\beta)^\alpha}
+\]</span></p>
+<p>Thus, the inverse CDF function is:</p>
+<p><span class="math display">\[
+F^{-1}(u) = \beta\left[ -\ln (1-u)\right]^{1/\alpha}
+\]</span></p>
+<p>Therefore to generate the setup time we have:</p>
+<p><span class="math display">\[
+5.5 + 5\left[ -\ln (1-0.73)\right]^{1/3} = 5.5+ 5.47= 10.97
+\]</span>
+Within this section, we illustrated the four primary methods for generating random variates 1) inverse transform, 2) convolution, 3) acceptance/rejection, and 4) mixture and truncated distributions. These are only a starting point for the study of random variate generation methods.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-fishman2006first" class="csl-entry">
+———. 2006. <em>A First Course in Monte Carlo</em>. Thomson Brooks/Cole.
+</div>
+<div id="ref-ripley1987stochastic" class="csl-entry">
+Ripley, B. D. 1987. <em>Stochastic Simulation</em>. John Wiley &amp; Sons Inc.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-rnrv-rn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/09-AppRNRV.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

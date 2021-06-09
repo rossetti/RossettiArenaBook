@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.5 Holding and Signaling Entities | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.5 Holding and Signaling Entities | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.5 Holding and Signaling Entities | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch6s1sb4sub3.html"/>
+<link rel="next" href="ch6s4.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch6:sec:holdSignal" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Holding and Signaling Entities</h2>
+<p>In this section we will explore the use of two new modules: HOLD and
+SIGNAL. The HOLD module allows entities to be held in a queue based on
+three different options: 1) wait for signal, 2) infinite hold, and 3)
+scan for condition. The SIGNAL module broadcasts a signal to any HOLD
+modules that are listening for the specified signal.</p>
+<p>To understand the usage of the HOLD module, we must better understand
+the three possible options:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Wait for Signal</em> – The wait for signal option holds the entities
+in a queue until a specific numerical value is broadcast via a
+SIGNAL module. The numerical value is specified via the <em>Wait for
+Value</em> field of the module. This field can be a constant, an
+expression (that evaluates to a number), or even an attribute of an
+entity. In the case of an attribute, each incoming entity can wait
+for a different numerical value. Thus, when entities waiting for a
+specific number are signaled with that number, they exit the HOLD
+module. The other entities stay in the queue.</p></li>
+<li><p><em>Infinite Hold</em> – The infinite hold option causes the entities to
+wait in the queue until they are physically removed (via a REMOVE
+module).</p></li>
+<li><p><em>Scan for Condition</em> – The scan for condition option holds the
+entities in the queue until a specific condition becomes true within
+the model. Every time an event occurs within the model, <em>all</em> of the
+scan for conditions are evaluated. If the condition is true, the
+waiting entities are permitted to leave the module immediately (at
+the current time). Since moving entities may cause conditions to
+change, the check of the condition is performed until no entities
+can move at the current time. As discussed in
+Chapter <a href="ch2.html#ch2">2</a>, this
+essentially allows entities to move from the waiting state into the
+ready state. Then the next event is executed. Because of the
+condition checking overhead, models that rely on scan for condition
+logic may execute more slowly.</p></li>
+</ol>
+<p>In the wait for signal option, the entities wait in a single queue, even
+though the entities may be waiting on different signal values. The
+entities are held in the queue according to the queue discipline
+specified in the QUEUE module. In Figure <a href="ch2-howArenaWorks.html#fig:EntityStateTransitions">2.73</a> of
+Chapter <a href="ch2.html#ch2">2</a>, the
+entities are in the condition delayed state, waiting on the condition of
+particular signal. The default discipline of the queue is first in,
+first out. There can be many different HOLD modules that have entities
+listening for the same signal within a model. The SIGNAL is broadcast
+globally and any entities waiting on the signal are released and moved
+into the ready state. The order of release is essentially arbitrary if
+there is more than one HOLD module with entities waiting on the signal.
+If you need a precise ordering of release, then send all entities to
+another queue that has the desired ordering (and then release them
+again), or use a HOLD/REMOVE combination instead.</p>
+<p>The infinite hold option places the entities in the dormant state
+discussed in Chapter <a href="ch2.html#ch2">2</a>. The entities will remain in the queue of the HOLD
+module until they are removed by the active entity via a REMOVE or
+PICKUP module. An example of this is presented in
+Section <a href="ch6s4.html#ch6:PickAndDrop">6.6.3</a>.</p>
+<p>The scan for condition option is similar in some respects to the wait
+for signal option. In the scan for condition option, the entities are
+held in the queue (in the condition delayed state) until a specific
+condition becomes true. However, rather than another entity being
+required to signal the waiting entities, the simulation engine notifies
+waiting entities if the condition become true. This eases the burden on
+the modeler but causes more computational time during the simulation. In
+almost all instances, a HOLD with a scan for condition option can be
+implemented with a HOLD and a wait for signal option by carefully
+thinking about when the desired condition will change and using an
+entity to send a signal at that time.</p>
+
+<div class="rmdnote">
+<p>In my opinion, modelers that use the scan for condition option are ill-informed. You can always replace a scan for condition HOLD module with the wait and signal option if you can identify where the condition changes. This is <em>always</em> more efficient. The only time that I would use a the scan for condition option is if there were many (more than 5) locations in the model where the condition could change. Do not fall in love with the scan for condition option. If you <em>know</em> what you are doing, you almost never need to use the scan for condition option and using the scan for condition option almost always indicates that you do not know what you are doing!</p>
+</div>
+<div id="ch6:sub:sec:mm1HoldSignal" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Redoing the M/M/1 Model with HOLD/SIGNAL</h3>
+<p>In this section, we will take the very familiar single server queue and
+utilize the HOLD/SIGNAL combination to implement it in a more general
+manner. This modeling will illustrate how the coordination of HOLD and
+SIGNAL must be carefully constructed. Recall that in a single server
+queueing situation customers arrive and request service from the server.
+If the server is busy, the customer must wait in the queue; otherwise,
+the customer enters service. After completing service the customer then
+departs.</p>
+<p>Assume that we have a single server that performs service according to an exponential
+distribution with a mean of 0.7 hours. The time between arrival of
+customers to the server is exponential with mean of 1 hour. If the
+server is busy, the customer waits in the queue until the server is
+available. The queue is processed according to a first in, first out
+rule.</p>
+<div id="ch6:ex:mm1HS:soln1" class="section level4" number="6.5.1.1">
+<h4><span class="header-section-number">6.5.1.1</span> First Solution to M/M/1 with HOLD/SIGNAL Example</h4>
+<p>In this solution, we will not use a RESOURCE module. Instead, we will use
+a variable, <code>vServer</code>, that will represent whether or not the server is
+busy. When the customer arrives, we will check if the server is busy. If
+so, the customer will wait until signaled that the server is available.</p>
+<p>The pseudo-code for this example is given in the following pseudo-code.</p>
+<pre><code>CREATE customer every EXPO(1)
+ASSIGN myArriveTime = TNOW
+DECIDE
+    IF vServer == 1
+        BEGIN HOLD Server Queue
+            Wait for End Service Signal
+      END HOLD
+    ENDIF
+END DECIDE
+ASSIGN vServer = 1
+DELAY for EXPO(0.7)
+ASSIGN vServer = 0
+DECIDE
+    IF Server Queue is not empty
+        BEGIN SIGNAL End Service
+            Signal Limit = 1
+        END SIGNAL
+    ENDIF
+END DECIDE
+RECORD TNOW - myArriveTime
+DISPOSE</code></pre>
+<p>The customer is created and then the time of
+arrival is recorded in the attribute <code>myArriveTime.</code> If the server is
+busy, <code>vServer == 1</code>, then the customer goes into the HOLD queue to wait
+for an end of service signal. If the server is not busy, the customer,
+makes the server busy and then delays for the service time. After the
+service is complete, the server is indicated as idle <code>(vServer = 0)</code>.
+Then, the queue is checked. If there are any customers waiting, a signal
+is sent to the HOLD queue to release one customer. Finally, the system
+time is recorded before the customer departs the system.</p>
+<div class="figure" style="text-align: center"><span id="fig:mm1HS1"></span>
+<img src="figures2/ch6/figmm1HS1.png" alt="First implementation of M/M/1 system with HOLD and SIGNAL"  />
+<p class="caption">
+Figure 6.47: First implementation of M/M/1 system with HOLD and SIGNAL
+</p>
+</div>
+<p>Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS1">6.47</a> illustrates the flow chart for the
+implementation. The model represents the pseudo-code almost verbatim.
+The new HOLD and SIGNAL modules are shown in
+Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS1HOLD">6.48</a> and Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS1SIGNAL">6.49</a>, respectively. The completed model can be found in file <em>FirstMM1HoldSignal.doe</em> found in the chapter files.</p>
+<div class="figure" style="text-align: center"><span id="fig:mm1HS1HOLD"></span>
+<img src="figures2/ch6/figmm1HS1HOLD.png" alt="HOLD module for first M/M/1 implemenation" width="45%" height="45%" />
+<p class="caption">
+Figure 6.48: HOLD module for first M/M/1 implemenation
+</p>
+</div>
+<p>Notice that the HOLD module has an option drop down menu that allows the user to select one
+of the aforementioned hold options. In addition, the <em>Wait For Value</em>
+field indicates the value on which the entities will wait. Here is it a
+variable called <code>vEndService</code>. It can be any valid expression that
+evaluates to an integer. The Limit field (blank in this example) can be
+used to set to limit how many entities will be released when the signal
+is received.</p>
+<div class="figure" style="text-align: center"><span id="fig:mm1HS1SIGNAL"></span>
+<img src="figures2/ch6/figmm1HS1SIGNAL.png" alt="SIGNAL module for first M/M/1 implemenation" width="45%" height="45%" />
+<p class="caption">
+Figure 6.49: SIGNAL module for first M/M/1 implemenation
+</p>
+</div>
+<p>Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS1SIGNAL">6.49</a> shows the SIGNAL module. The <em>Signal
+Value</em> field indicates the signal that will be broadcast. The Limit
+field indicates the number of entities to be released when the signal is
+completed. In this case, because the server works on 1 customer at at
+time, the limit value is set to 1. This causes 1 customer to be released
+from the HOLD, whenever the signal is sent.</p>
+<p>Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS1Results">6.50</a> presents the result from running the
+model for 30 replications with warm up of 30,000 hours and a run length
+of 80,000. The results match very closely the theoretical results for
+this M/M/1 situation.</p>
+<div class="figure" style="text-align: center"><span id="fig:mm1HS1Results"></span>
+<img src="figures2/ch6/figmm1HS1Results.png" alt="Results for first M/M/1 implemenation" width="60%" height="60%" />
+<p class="caption">
+Figure 6.50: Results for first M/M/1 implemenation
+</p>
+</div>
+<p>There is one key point to understand in this implementation. What would
+happen if we did not first check if the server was busy before going
+into the HOLD queue? If we did not do this, then no customers would ever
+get signaled! This is because, the signal comes at the end of service
+and no customers would ever reach the SIGNAL (because they would all be waiting for the signal that is never coming). This is a common modeling
+error when first using the HOLD/SIGNAL combination.</p>
+<p>A fundamental aspect of the HOLD/SIGNAL modeling constructs is that
+entities waiting in the HOLD module are signaled from a SIGNAL module.
+In the last example, the departing entity signaled the waiting entity to
+proceed. In the next implementation, we are going to have two types of
+entities. One entity will represent the customer. The second entity will
+represent the server. We will use the HOLD/SIGNAL constructs to
+communicate between the two processes.</p>
+</div>
+<div id="ch6:ex:mm1HS:soln2" class="section level4" number="6.5.1.2">
+<h4><span class="header-section-number">6.5.1.2</span> Second Solution to M/M/1 with HOLD/SIGNAL Example</h4>
+<p>In this implementation, we will have two process flows, one for the
+customers and one for the server. At first, this will seem very strange.
+However, this approach will enable a great deal of modeling flexibility.
+Especially important is the notion of modeling a resource, such as a
+server, with its own process. Modeling a resource as an active component
+of the system (rather than just passively being called) provides great
+flexibility. Flexibility that will serve you well when approaching some
+complicated modeling situations. The key to using to two process flows
+for this modeling is to communicate between the two processes via the
+use of signals.</p>
+<p>Figure <a href="ch6-sec-holdSignal.html#fig:mm1HS2">6.51</a> presents the model for this second
+implementation. Note the two process flows in the figure. The file <em>SecondMM1HoldSignal.doe</em> contains
+the details.</p>
+<div class="figure" style="text-align: center"><span id="fig:mm1HS2"></span>
+<img src="figures2/ch6/figmm1HS2.png" alt="Second implementation of the M/M/1 with HOLD and SIGNAL"  />
+<p class="caption">
+Figure 6.51: Second implementation of the M/M/1 with HOLD and SIGNAL
+</p>
+</div>
+<p>The logic follow very closely the pseudo-code provided in the following pseudo-code.</p>
+<pre><code>CREATE customer every EXPO(1)
+ASSIGN myArriveTime = TNOW
+SIGNAL server of arrival
+    Signal Value = vArrivalSignal
+END SIGNAL
+HOLD in Server Queue
+    Wait for Begin Service Signal
+END HOLD
+HOLD in Service Queue
+    Wait for End Service Signal
+END HOLD    
+RECORD TNOW - myArriveTime
+DISPOSE of customer
+
+CREATE 1 server at time 0.0
+LABEL: A
+ASSIGN vServerStatus = 0 
+HOLD Wait for Customer arrival signal
+  Wait for Value = vArrivalSignal
+END HOLD
+LABEL: B
+SIGNAL Start Service
+    Signal Value = vStartService
+    Signal Limit = 1
+END SIGNAL
+ASSIGN vServerStatus = 1
+DELAY for EXPO(0.7)
+SIGNAL End Service
+    Signal Value = vEndService
+    Signal Limit = 1
+END SIGNAL
+DECIDE
+    IF Server Queue is not empty
+        GOTO to LABEL B:
+    ELSE
+        GOTO to LABEL A:
+    ENDIF
+END DECIDE</code></pre>
+<p>In the pseudo-code, the first CREATE module creates customers
+according to the exponential time between arrivals and then the time of
+arrival is noted in order to later record the system time. Next, the
+customer signals that there has been an arrival. Think of it as the
+customer ringing the customer service bell at the counter. The customer
+then goes into the HOLD to await the beginning of service. If the server
+was busy when the signal went off, the customer just continues to wait.
+If the server was idle (waiting for a customer to arrive), then the
+server moves forward in their process to signal the customer to start
+service. When the customer gets the start service signal, the customer
+moves immediately into another HOLD queue. This second hold queue provides a
+place for the customer to wait while the server is performing the
+service. When the end of service signal occurs the customer departs
+after recording the system time.</p>
+<p>The second CREATE module, creates a single entity that represents the
+server. Essentially, the server will cycle through being idle and busy.
+After being created the server sets its status to idle (0) and then goes
+into a HOLD queue to await the first customer’s arrival. When the
+customer arrives, the customer sends a signal. The server can then
+proceed with service. First, the server signals the customer that
+service is beginning. This allows the customer to proceed to the hold
+queue for service. Then, the server delays for the service time. After
+the service time is complete, the server signals the customer that the
+end of service has occurred. This allows the customer to depart the
+system. After signaling the end of service, the server checks if there
+are any waiting customers, if there are waiting customers, the entity
+representing the server is sent to Label B to signal a start of service.
+If there are no customers waiting, then the entity representing the
+server is sent to Label A, to wait in a hold queue for the next customer
+to arrive.</p>
+<p>This signaling back and forth must seem overly complicated. However,
+this example illustrates how two entities can communicate with signals.
+In addition, the notion of modeling a server as a process should open up
+some exciting possibilities. The modeling of a server as a process
+permits very complicated resource allocation rules to be embedded in a
+model.</p>
+
+<div class="rmdnote">
+<p>Consider modeling resources as entities. This allows logic to be used to model how the resource behaves given the state of the system. This is an excellent way to model resources as intelligent agents.</p>
+</div>
+</div>
+</div>
+<div id="using-wait-and-signal-to-release-entities" class="section level3" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Using Wait and Signal to Release Entities</h3>
+<p>In many situations, entities will need to wait until a specific time or
+condition occurs within a system. One classic example of this is order
+picking waves within a distribution facility. In this situation, orders
+(the entities) will arrive throughout the day and be held until a
+particular time that they can be released. The release of sets of the
+orders is timed to correspond to particular periods of time. In the
+parlance of distribution center picking operations, these periods are
+called waves, like waves hitting a beach.</p>
+<p>The length and timing of the waves is typically determined by some
+optimization algorithm that ensures that the picking operations can be
+completed in an optimal manner in time for the subsequent shipping of
+the items. In addition, each order is assigned (again according to some
+optimization method) to a particular period (wave). For simplicity, we
+will assume that the periods (waves) are one hour long and that the
+orders are randomly assigned to each wave. Again, these assignments are
+often much more complex.</p>
+<p>In this section, we will examine how to release picking orders within a distribution center under the following assumptions:</p>
+<ul>
+<li><p>Assume that at the beginning of a shift there are a number of orders
+that need to be picked within the warehouse</p></li>
+<li><p>Let N be the number of orders to pick</p></li>
+<li><p>Assume that N ~ Poisson (mean rate = 100 orders/day)</p></li>
+<li><p>Assume that the warehouse has 4 picking periods (1, 2, 3, 4)</p>
+<ul>
+<li><p>The first picking period starts at time 0.0</p></li>
+<li><p>Each picking period lasts 60 minutes</p></li>
+</ul></li>
+<li><p>Assume that the orders are equally likely to be assigned to any of
+the four periods</p></li>
+<li><p>After the orders are released, they proceed to pickers who pick the
+orders and send them to be shipped.</p>
+<ul>
+<li>Assume that the time to pick the entire order is TRIA(5, 10, 15)
+minutes</li>
+</ul></li>
+<li><p>Build and Arena model to simulate this system over the picking
+periods</p>
+<ul>
+<li>Determine the number of pickers needed to satisfactorily
+complete the picking operations.</li>
+</ul></li>
+</ul>
+<p>The purpose of this example is to illustrate the basic ideas of using
+the wait and signal functionality of Arena to release the orders. The
+basic strategy will be to assign to each order a number that indicates
+when it should be released. In other words, we assign its release period
+(or wave). Then, the arriving order will wait in a HOLD module for the
+appropriate signal representing the start of its period. At which time,
+the order will be released to pickers for processing.</p>
+<p>The first modeling issue is to represent is the creation of the orders.
+In a typical distribution center setting the customer orders may arrive
+throughout the day; however, they are typically not processed
+immediately upon arrival. In most situations, they are processed by the
+order processing systems of the distribution center (human or computer)
+and made ready for release. There is typically a random number of orders
+to be processed. For simplicity in this example, we will assume that the
+number of orders per day is well modeled with a Poisson distribution
+with a mean rate of 100 per day. Thus, at the beginning of the day all
+orders are available and assigned their release period. Let’s assume
+that there will be four release periods, each spaced 1 hour apart with
+the first period starting at time 0.0 and lasting one hour. Thus, the
+second period starts at time 1.0, and lasts an hour, etc. We will number
+the (waves) periods 1, 2, 3, 4.</p>
+<p>Because of our assumption that orders are randomly assigned to waves, we
+need a distribution to represent this assignment. To keep it simple, we
+will assume that the orders are equally likely to be assigned any of the
+periods 1, 2, 3, 4. Thus, we need to generate a discrete uniform random
+variate over the range from 1 to 4. Recall that the Arena formula for
+generating a DU(a,b) random variate, X, is:</p>
+<p><code>X = a + AINT((b - a + 1)*UNIF(0,1))</code></p>
+<p>Thus, to generate DU(1,4), we have,</p>
+<p><code>1 + AINT((4 - 1 + 1)*UNIF(0,1)) = 1 + AINT(4*UNIF(0,1))</code></p>
+<p>Again, in general, the assignment of orders to particular picking
+periods (waves) is often a much more complex process that takes into
+account the order due dates, the work associated with the orders, and
+the locations of the items to be picked.</p>
+<p>Let’s take a look at the pseudo-code to create and hold the orders for
+later release.</p>
+<pre><code>ATTRIBUTES: myWave // to hold which picking wave to listen for
+--
+CREATE POIS(100) entities with 1 event at time 0.0
+ASSIGN myWave = 1 + AINT(4*UNIF(0,1))
+HOLD wait for signal myWave
+Go To: Label Picking Process</code></pre>
+<p>That’s it! This will create the orders, assign their wave number and
+cause them to wait within a HOLD module for a signal that is specified
+by the value of the attribute, myWave. When this signal (number) is
+broadcast by a SIGNAL module all the entities (orders) waiting in the
+HOLD queue for that corresponding wave number will be released and proceed for further processing.</p>
+<p>The second modeling issue is to represent the timing and signaling of
+the picking waves. To implement this situation, we will create a
+“clock-entity” that determines the period and makes the signal. For this
+situation we will use a global variable, vPeriod, that keeps track of
+the current period and is used to signal the start of the period.</p>
+<p>Now, we have one tricky issue to address. The start of the first wave
+happens at time 0.0, but as noted in the previous pseudo-code, the
+orders for the day are also created at time 0.0. We need to coordinate
+between two CREATE modules to ensure that the clock-entity allows the
+orders to be created first. We must ensure that the orders are in the
+HOLD module before the signal for the first wave occurs; otherwise, the
+orders associated with the first wave will not be in the HOLD queue when
+the signal occurs. Thus, they will miss the first signal and not be
+released.</p>
+<p>While there are number of ways to address this issue, the simplest is to
+cause the clock-entity to be created infinitesimally after time 0.0.
+This will allow all the entities (orders) from the order creation
+process to be created and go into the HOLD module queue before the
+clock-entity signals the start of the first wave. Let’s take a look at
+the pseudo-code for this situation.</p>
+<p>We will use three variables to represent the time periods.</p>
+<pre><code>VARIABLES:
+vPeriod = 0 // to track the current period
+vPeriodLength = 60 // minutes per period
+vLastPeriod = 4 // the number of periods</code></pre>
+<p>Then, we will use a logical entity, call it the <em>clock-entity</em>, that will
+loop around signaling the appropriate period. In essence, it is ticking
+off the periods through time. This is a very common modeling pattern.</p>
+<pre><code>CREATE 1 entity at time 0.0001
+A:
+ASSIGN vPeriod = vPeriod + 1
+If vPeriod \&gt; vLastPeriod
+DISPOSE
+ELSE
+SIGNAL vPeriod
+DELAY vPeriodLength minutes
+Go to: Label A</code></pre>
+<p>Notice that in this pseudo-code there are two defined variables
+(<code>vPeriodLength</code> and <code>vLastPeriod</code>) to make the code more generic. Using
+these variables, we can easily vary the number of periods and the length
+of each period. Notice also that the CREATE module indicates that the
+clock entity is created at time 0.0001. This ensures that the CREATE
+module associated with creating the orders goes first (at time 0.0) and
+allows the orders to fill up the HOLD queue. The clock-entity then
+increments the variable, <code>vPeriod</code>, so that the current period (wave) is
+noted. We then check if the current period is greater than the last
+period to simulate. If so, the clock-entity is disposed.</p>
+<p>If the last period has not happened, we need to signal the start of the
+period. When the clock-entity executes the SIGNAL module, the value of
+the signal (<code>vPeriod</code>) is broadcast globally throughout the model. <em>Any</em>
+entities in <em>any</em> HOLD modules that are waiting for that particular
+number as their signal will be removed from the HOLD queue and placed in
+the ready state to be processed at the current time. Since the
+clock-entity immediately enters a DELAY module, it is placed in the
+time-delayed state to become the active entity 60 minutes later. Thus,
+all the entities that were signaled can now be processed. According to
+our previous pseudo-code, they will go to the label Picking Process.</p>
+<p>As noted previously, there are a number of other ways to coordinate the
+timing of the order process and the wave process to ensure that the
+orders are placed in the HOLD queue before the clock-entity makes the
+first signal. Rather than using an infinitesimal delay as illustrated
+here, you could remove the CREATE module for the clock-entity. To ensure
+that the clock-entity is made after the orders are made, you can have
+the order making process create the clock-entity. One way to do this is
+to have the first order created go through a SEPARATE module. The
+duplicate entity will be the clock entity and it would be sent to the
+logic that signals the waves (pseudo code labeled A). Because a SEPARATE
+module places the duplicate entities in the ready state, the
+clock-entity will not proceed until the orders are all waiting. The interested reader is encouraged to test their knowledge by implementing this approach. The implementation and analysis of this example within Arena is left as an exercise.</p>
+<p>In the next section, we see how essential the wait and signal constructs are to the modeling of an important situation within inventory systems.</p>
+</div>
+<div id="modeling-a-reorder-point-reorder-quantity-inventory-policy" class="section level3" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> Modeling a Reorder Point, Reorder Quantity Inventory Policy</h3>
+<p>In an inventory system, there are units of an item (e.g. computer
+printers, etc.) for which customers make demands. If the item is
+available (in stock) then the customer can receive the item and depart.
+If the item is not on hand when a demand from a customer arrives then
+the customer may depart without the item (i.e. lost sales) or the
+customer may be placed on a list for when the item becomes available
+(i.e. back ordered). In a sense, the item is like a resource that is
+consumed by the customer. Unlike the previous notions of a resource,
+inventory can be replenished. The proper control of the replenishment
+process is the key to providing adequate customer service. There are two
+basic questions that must be addressed when controlling the inventory
+replenishment process: 1) When to order? and 2) How much to order?. If
+the system does not order enough or does not order at the right time,
+the system not be able to fill customer demand in a timely manner.
+Figure <a href="ch6-sec-holdSignal.html#fig:Inventory">6.52</a> illustrates a simple inventory system.</p>
+<div class="figure" style="text-align: center"><span id="fig:Inventory"></span>
+<img src="figures2/ch6/figInventory.png" alt="A simple reorder point, reorder quantity inventory system" width="90%" height="90%" />
+<p class="caption">
+Figure 6.52: A simple reorder point, reorder quantity inventory system
+</p>
+</div>
+<p>There are a number of different ways to manage the replenishment process
+for an inventory item. These different methods are called
+<em>inventory control policies</em>. An inventory control policy must determine (at the
+very least) when to place a replenishment order and how much to order.
+This section examines the use of a reorder point (<span class="math inline">\(r\)</span>), reorder quantity
+(<span class="math inline">\(Q\)</span>) inventory policy. This is often denoted as an <span class="math inline">\((r, Q)\)</span> inventory
+policy. The modeling of a number of other inventory control policies
+will be explored as exercises. After developing a basic understanding of
+how to model an <span class="math inline">\((r, Q)\)</span> inventory system, the modeling can be expanded
+to study supply chains. A supply chain can be thought of as a network
+of locations that hold inventory in order to satisfy end customer
+demand.</p>
+<p>The topic of inventory systems has been well studied. A full exposition of the
+topic of inventory systems is beyond the scope of this text, but the
+reader can consult a number of texts within the area, such as
+<span class="citation">(<a href="#ref-hadley1963analysis" role="doc-biblioref">Hadley and Whitin 1963</a>)</span>, <span class="citation">(<a href="#ref-2006inventory" role="doc-biblioref">Axsäter 2006</a>)</span>, <span class="citation"><a href="#ref-silver1998inventory" role="doc-biblioref">Silver, Pyke, and Peterson</a> (<a href="#ref-silver1998inventory" role="doc-biblioref">1998</a>)</span>, or
+<span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span> for more details. The reader interested in
+supply chain modeling might consult <span class="citation">(<a href="#ref-nahmias2001production" role="doc-biblioref">Nahmias 2001</a>)</span>,
+<span class="citation">(<a href="#ref-askin2002design" role="doc-biblioref">Askin and Goldberg 2002</a>)</span>, <span class="citation">(<a href="#ref-chopra2007supply" role="doc-biblioref">Chopra and Meindl 2007</a>)</span>, or <span class="citation">(<a href="#ref-ballou2004business" role="doc-biblioref">Ballou 2004</a>)</span>.</p>
+<p>Within this section we will develop a model of a continuous review <span class="math inline">\((r, Q)\)</span> inventory
+system with back-ordering. In a continuous review <span class="math inline">\((r, Q)\)</span> inventory
+control system, demand arrives according to some stochastic process.
+When a demand (customer order) occurs, the amount of the demand is
+determined, and then the system checks for the availability of stock. If
+the stock on-hand is enough for the order, the demand is filled and the
+quantity on-hand is decreased. On the other hand, if the stock on-hand
+is not enough to fill the order, the entire order is back-ordered. The
+back-orders are accumulated in a queue and they will be filled after the
+arrival of a replenishment order. Assume for simplicity that the
+back-orders are filled on a first come first served basis. The inventory
+position (inventory on-hand plus on-order minus back-orders) is checked
+each time after a regular customer demand and the occurrence of a
+back-order. If the inventory position reaches or falls under the reorder
+point, a replenishment order is placed. The replenishment order will
+take a possibly random amount of time to arrive and fill any back-orders
+and increase the on-hand inventory. The time from when a replenishment
+order is placed until the time that it arrives to fill any back-orders
+is often called the lead time for the item.</p>
+<p>There are three key state variables that are required to model this
+situation. Let <span class="math inline">\(I(t)\)</span>, <span class="math inline">\(\mathit{IO}(t)\)</span>, and <span class="math inline">\(\mathit{BO}(t)\)</span> be the
+amount of inventory on hand, on order, and back-ordered, respectively at
+time <span class="math inline">\(t\)</span>. The net inventory, <span class="math inline">\(\mathit{IN}(t) = I(t) - \mathit{BO}(t)\)</span>,
+represents the amount of inventory (positive or negative). Notice that
+if <span class="math inline">\(I(t) &gt; 0\)</span>, then <span class="math inline">\(\mathit{BO}(t) = 0\)</span>, and that if
+<span class="math inline">\(\mathit{BO}(t) &gt; 0\)</span>, then <span class="math inline">\(I(t) = 0\)</span>. These variables compose the
+inventory position, which is defined as:</p>
+<p><span class="math display">\[\mathit{IP}(t) = I(t) + \mathit{IO}(t) - \mathit{BO}(t)\]</span></p>
+<p>The inventory position represents both the current amount on hand,
+<span class="math inline">\(I(t)\)</span>, the amounted back ordered, <span class="math inline">\(\mathit{BO}(t)\)</span>, and the amount
+previously ordered, <span class="math inline">\(\mathit{IO}(t)\)</span>. Thus, when placing an order, the
+inventory position can be used to determine whether or not a
+replenishment order needs to be placed. Since, <span class="math inline">\(\mathit{IO}(t)\)</span>, is
+included in <span class="math inline">\(\mathit{IP}(t)\)</span>, the system will only order, when
+outstanding orders are not enough to get <span class="math inline">\(\mathit{IP}(t)\)</span> above the
+reorder point.</p>
+<p>In the continuous review <span class="math inline">\((r, Q)\)</span> policy, the inventory position must be
+checked against the reorder point as demands arrive to be filled. After
+filling (or back-ordering) a demand, either <span class="math inline">\(I(t)\)</span> or <span class="math inline">\(\mathit{BO}(t)\)</span>
+will have changed (and thus <span class="math inline">\(\mathit{IP}(t)\)</span> will change). If
+<span class="math inline">\(\mathit{IP}(t)\)</span> changes, it must be checked against the reorder point.
+If <span class="math inline">\(\mathit{IP}(t) \leq r\)</span>, then an order for the amount <span class="math inline">\(Q\)</span> is placed.</p>
+<p>For simplicity, assume that each demand that arrives is for 1 unit. This
+simplifies how the order is processed and the processing of any back
+orders. The pseudo-code for this situation is given the following pseudo-code.</p>
+<pre><code>CREATE demand
+ASSIGN myAmtDemanded = 1
+Send to LABEL: Order Fulfillment
+
+LABEL: Order Fulfillment
+DECIDE 
+    IF I(t) &gt;= myAmtDemanded THEN //fill the demand
+        ASSIGN I(t) = I(t) - myAmtDemanded
+    ELSE // handle the backorder
+        ASSIGN BO(t) = BO(t) + myAmtDemanded
+        SEPARATE Duplicate 1 entiy
+            Send duplicate to LABEL: Handle Back Order
+    ENDIF
+  ASSIGN IP(t) = I(t) + IO(t) - BO(t)$
+  Send to LABEL: Replenishment Ordering
+END DECIDE
+
+LABEL: Handle Back Order
+HOLD Back order queue: wait for signal
+    On Signal: release all from queue
+END HOLD
+ASSIGN BO(t) = BO(t) - myAmtDemanded
+Send to LABEL: Order Fulfillment
+ 
+LABEL: Replenishment Ordering
+IF IP(t) &lt;= r 
+    ASSIGN IO(t) = IO(t) + Q //place the order
+    DELAY for lead time
+    ASSIGN IO(t) = IO(t) - Q //receive the order
+    ASSIGN I(t) = I(t) + Q
+    SIGNAL: Hold back order queue
+ENDIF
+DISPOSE</code></pre>
+<p>Referring to the pseudo-code, the entity being created is a customer demand.
+The amount of the demand should be an attribute (<code>myAmtDemanded</code>) of the
+entity having value 1. After the customer arrives, the customer is sent
+to order fulfillment. Notice the use of a label to indicate the order
+filling logic.</p>
+<p>At order fulfillment, we need to check if there is inventory available
+to satisfy the demand. If the amount required can be satisfied
+<span class="math inline">\(I(t) \geq \mathit{myAmtDemanded}\)</span>. Then, the on hand inventory is
+decremented by the amount of the demand. If the demand cannot be
+satisfied <span class="math inline">\(I(t) &lt; \mathit{myAmtDemanded}\)</span>). In this case, the amount
+waiting in the back order queue, <span class="math inline">\(\mathit{BO}(t)\)</span>, is incremented by the
+amount demanded. Then, a duplicate is made so that the duplicate can be
+sent to the back order queue.</p>
+<p>In either case of filling the demand or not filling the demand, the
+inventory position must be updated. This is because either <span class="math inline">\(I(t)\)</span> or
+<span class="math inline">\(\mathit{BO}(t)\)</span> changed. Since the inventory position changed, we must
+check if a replenishment order is necessary. The entity is sent to the
+replenishment logic.</p>
+<p>At the replenishment logic, the inventory position is checked against
+the reorder point. If the inventory position is less than or equal to
+the reorder point, an order is placed. If no order is placed, the entity
+skips over the order placement logic and is disposed. If an order is
+placed, the on order variable is incremented by the reorder quantity and
+the delay for the lead time started. Once the lead time activity is
+completed, the on order and on hand variables are updated and a signal
+is sent to the back-order queue. A signal is sent to the back order
+queue so that if there are any demands waiting in the back order queue,
+the demands can try to be filled.</p>
+<p>The key performance measures for this type of system are the average
+amount of inventory on hand, the average amount of inventory
+back-ordered, the percentage of time that the system is out of stock,
+and the average number of orders made per unit time.</p>
+<p>Let’s discuss these performance measures before indicating how to
+collect them within a simulation. The average inventory on hand and the
+average amount of inventory back-ordered can be defined as follows:</p>
+<p><span class="math display">\[\begin{aligned}
+\bar{I} &amp; = \frac{1}{T}\int_0^T I(t)\mathrm{d}t \\
+\overline{\mathit{BO}} &amp; = \frac{1}{T}\int_0^T \mathit{BO}(t)\mathrm{d}t\end{aligned}\]</span></p>
+<p>As can be seen from the definitions, both <span class="math inline">\(I(t)\)</span> and <span class="math inline">\(\mathit{BO}(t)\)</span>
+are time-persistent variables and their averages are time averages. Under
+certain conditions as <span class="math inline">\(T\)</span> goes to infinity, these time averages will
+converge to the steady state performance for the <span class="math inline">\((r, Q)\)</span> inventory
+model. The percentage of time that the system is out of stock can be
+defined based on <span class="math inline">\(I(t)\)</span> as follows:</p>
+<p><span class="math display">\[SO(t) = 
+   \begin{cases}
+     1 &amp; I(t) = 0\\
+     0 &amp; I(t) &gt; 0
+  \end{cases}\]</span></p>
+<p><span class="math display">\[\overline{\mathit{SO}} = \frac{1}{T}\int_0^T \mathit{SO}(t)\mathrm{d}t\]</span></p>
+<p>Thus, the variable <span class="math inline">\(SO(t)\)</span> indicates whether or not there is no stock on
+hand at any time. A time average value for this variable can also be
+defined and interpreted as the percentage of time that the system is out
+of stock. One minus <span class="math inline">\(\overline{\mathit{SO}}\)</span> can be interpreted as the
+proportion of time that the system has stock on hand. Under certain
+conditions (but not always), this can also be interpreted as the fill
+rate of the system (i.e. the fraction of demands that can be filled
+immediately). Let <span class="math inline">\(Y_i\)</span> be an indicator variable that indicates 1 if the
+<span class="math inline">\(i^{th}\)</span> demand is immediately filled (without back ordering) and 0 if
+the <span class="math inline">\(i^{th}\)</span> demand is back ordered upon arrival. Then, the fill rate is
+defined as follows.</p>
+<p><span class="math display">\[\overline{\mathit{FR}} = \frac{1}{n} \sum_{i=1}^{n} Y_i\]</span></p>
+<p>Thus, the fill rate is just the average number of demands that are
+directly satisfied from on hand inventory. The variables
+<span class="math inline">\(\overline{\mathit{SO}}\)</span> and <span class="math inline">\(\overline{\mathit{FR}}\)</span> are measures of
+customer service.</p>
+<p>To understand the cost of operating the inventory policy, the average
+number of replenishment orders made per unit time or the <em>average order
+frequency</em> needs to be measured. Let <span class="math inline">\(N(t)\)</span> be the number of
+replenishment orders placed in <span class="math inline">\((0,t]\)</span>, then the average order frequency
+over the period <span class="math inline">\((0,t]\)</span> can be defined as:</p>
+<p><span class="math display">\[\overline{\mathit{OF}} = \frac{N(T)}{T}\]</span></p>
+<p>Notice that the average order frequency is a rate (units/time).</p>
+<p>In order to determine the best settings of the reorder point and reorder
+quantity, we need an objective function that trades-off the key
+performance measures within the system. This can be achieved by
+developing a total cost equation on a per time period basis. Let <span class="math inline">\(h\)</span> be
+the holding cost for the item in terms of $/unit/time. That is, for
+every unit of inventory held, we accrue <span class="math inline">\(h\)</span> dollars per time period. Let
+<span class="math inline">\(b\)</span> be the back order cost for the item in terms of $/unit/time. That
+is, for every unit of inventory back ordered, we accrue <span class="math inline">\(b\)</span> dollars per
+time period. finally, let <span class="math inline">\(k\)</span> represent the cost in dollars per order
+whenever an order is placed. The settings of the reorder point and
+reorder quantity depend on these cost factors. For example, if the cost
+per order is very high, then we should not want to order very often.
+However, this means that we would need to carry a lot of inventory to
+prevent a high chance of stocking out. If we carry more inventory, then
+the inventory holding cost is high.</p>
+<p>The average total cost per time period can be formulated as follows:</p>
+<p><span class="math display">\[\overline{\mathit{TC}} = k\overline{\mathit{OF}} + h\bar{I} + b\overline{\mathit{BO}}\]</span></p>
+<p>A discussion of the technical issues and analytical results related to
+these variables can be found in Chapter 6 of <span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span>.
+Let’s take a look at an example that illustrates an inventory situation.</p>
+<hr />
+
+<div class="example">
+<span id="exm:exRQModel" class="example"><strong>Example 6.3  </strong></span>An inventory manager is
+interested in understanding the cost and service trade-offs related to
+the inventory management of computer printers. Suppose customer demand
+occurs according to a Poisson process at a rate of 3.6 units per month
+and the lead time is 0.5 months. The manager has estimated that the
+holding cost for the item is approximately $0.25 per unit per month. In
+addition, when a back-order occurs, the estimate cost will be $1.75 per
+unit per month. Every time that an order is placed, it costs
+approximately $0.15 to prepare and process the order. The inventory
+manager has set the reorder point to 1 units and the reorder quantity to
+2 units. Develop a simulation model that estimates the following
+quantities:
+</div>
+<ol style="list-style-type: decimal">
+<li><p>Average inventory on hand and back ordered</p></li>
+<li><p>Average frequency at which orders are placed</p></li>
+<li><p>Probability that an arriving customer does not have their demand
+immediately filled</p></li>
+<li><p>Average total cost per time</p></li>
+</ol>
+<hr />
+<p>The Arena model will follow closely the previously discussed pseudo-code. To develop this model, first define the variables to be used as per
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryArena">6.53</a>. The reorder point and reorder
+quantity have been set to (<span class="math inline">\(r = 1\)</span>) and (<span class="math inline">\(Q = 2\)</span>), respectively. The
+costs have be set based on the example. Notice that the report
+statistics check boxes have been checked for the on hand inventory and
+the back-ordered inventory. This will cause time-based statistics to be
+collected on these variables.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryArena"></span>
+<img src="figures2/ch6/figInventoryArena.png" alt="Defining the inventory model variables" width="70%" height="70%" />
+<p class="caption">
+Figure 6.53: Defining the inventory model variables
+</p>
+</div>
+<p>Figure <a href="ch6-sec-holdSignal.html#fig:InventoryOrderArrivalFilling">6.54</a> illustrates the logic for
+creating incoming demands and for order fulfillment. First, an entity is
+created to represent the demand. This occurs according to a time between
+arrivals with an exponential distribution with a mean of (1.0/0.12) days
+(3.6 units/month * (1 month/30 days) = 0.12 units/day).</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryOrderArrivalFilling"></span>
+<img src="figures2/ch6/figInventoryOrderArrivalFilling.png" alt="Initial order filling logic for the (r, Q) inventory model" width="70%" height="70%" />
+<p class="caption">
+Figure 6.54: Initial order filling logic for the (r, Q) inventory model
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:InventoryAssigningDemand"></span>
+<img src="figures2/ch6/figInventoryAssigningDemand.png" alt="Assigning the amount of demand" width="45%" height="45%" />
+<p class="caption">
+Figure 6.55: Assigning the amount of demand
+</p>
+</div>
+<p>The ASSIGN module in Figure <a href="ch6-sec-holdSignal.html#fig:InventoryAssigningDemand">6.55</a> shows the amount demanded set to 1 and a stock out indicator set to zero. This will be used to tally the
+probability that an incoming demand is not filled immediately from on
+hand inventory. This is called the probability of stocking out. This is
+the complement of the fill rate. Then, a ROUTE module with zero transfer
+delay is used to send the demand to a station to handle the order
+fulfillment. Note that a STATION was used here to represent a logical
+label to which an entity can be sent.</p>
+<p>At the order fulfillment station, the DECIDE module is used to check if
+the amount demanded is less than or equal to the inventory on hand. If
+true, the demand is filled using the ASSIGN module to decrement the
+inventory on hand. The RECORD module is used to collect statistics for
+the probability of stock out. The inventory position is updated and then
+the demand is sent to the reordering logic. If false, the demand is
+back-ordered. The ASSIGN module labeled Backorder increments the number
+of back orders. Then the SEPARATE module creates a duplicate, which goes
+to the station than handles back orders. The original is sent to update
+the inventory position before being sent to the reordering logic via a
+ROUTE module.</p>
+<p>The Fill Demand, BackOrder, and Update Inventory Position ASSIGN modules
+have the form shown in
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryAssignModules">6.56</a>. The amount on hand or the amount
+back-ordered is decreased or increased accordingly. In addition, the
+inventory position is updated. In the back-ordering ASSIGN module, the
+stock out flag is set to 1 to indicate that this particular demand did
+not get an immediate fill.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryAssignModules"></span>
+<img src="figures2/ch6/figInventoryAssignModules.png" alt="ASSIGN modules for filling, backordering, and updating inventory position" width="65%" height="65%" />
+<p class="caption">
+Figure 6.56: ASSIGN modules for filling, backordering, and updating inventory position
+</p>
+</div>
+<p>When the demand is ultimately filled, it will pass through the RECORD
+module within
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryOrderArrivalFilling">6.54</a>. Notice, that in the RECORD
+module, the expression option is used to record on the attribute, which
+has a value of 1 if the demand had been back-ordered upon arrival and
+the value 0 if it had not been back-ordered upon initial arrival. This
+indicator variable will estimate the probability that an arriving
+customer will be back-ordered. In inventory analysis parlance, this is
+called the probability of stock out. One minus the probability of stock
+out is called the fill rate for the inventory system. Under Poisson
+arrivals, it can be shown that the probability of an arriving customer
+being back-ordered will be the same as <span class="math inline">\(\overline{\mathit{SO}}\)</span>, the
+percentage of time that the system is stocked out. This is due to a
+phenomenon called PASTA (Poisson Arrivals See Time Averages) and is
+discussed in <span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span> as well as many texts on
+stochastic processes (e.g. <span class="citation">(<a href="#ref-tijms2003first" role="doc-biblioref">Tijms 2003</a>)</span>)</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryRecordFillRate"></span>
+<img src="figures2/ch6/figInventoryRecordFillRate.png" alt="Recording the initial fill indicator variable" width="55%" height="55%" />
+<p class="caption">
+Figure 6.57: Recording the initial fill indicator variable
+</p>
+</div>
+<p>The logic representing the back ordering and replenishment ordering
+process is given in
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryBOReorderLogic">6.58</a>. Notice how STATION modules have
+been used to denote the start of the logic. In the case of back
+ordering, the Handle Back Order station has a HOLD module, which will
+hold the demands waiting to be filled in a queue. See Figure <a href="ch6-sec-holdSignal.html#fig:InventoryBackorderHoldModule">6.59</a>. When the HOLD module
+is signaled (value = 1), the waiting demands are released. The release
+will be triggered after a replenishment order arrives. The number of
+waiting back orders is decremented in the ASSIGN module and the demands
+are sent via a ROUTE module for order fulfillment.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryBOReorderLogic"></span>
+<img src="figures2/ch6/figInventoryBOReorderLogic.png" alt="Back ordering and replenishment logic" width="75%" height="75%" />
+<p class="caption">
+Figure 6.58: Back ordering and replenishment logic
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:InventoryBackorderHoldModule"></span>
+<img src="figures2/ch6/figInventoryBackorderHoldModule.png" alt="Backorder queue as a HOLD module" width="45%" height="45%" />
+<p class="caption">
+Figure 6.59: Backorder queue as a HOLD module
+</p>
+</div>
+<p>At the Reorder Logic station, the DECIDE module checks if the inventory
+position is equal to or below the reorder point. If this is true, then
+the amount on order is updated. After the amount of the order is
+determined, the order entity experiences the delay representing the lead
+time. After the lead time, the order has essentially arrived to
+replenish the inventory. The corresponding ordering and replenishment
+ASSIGN modules and the subsequent SIGNAL modules are given in
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryOrderingAndReplenishment">6.60</a> and
+Figure <a href="ch6-sec-holdSignal.html#fig:InventorySignalling">6.61</a>, respectively.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryOrderingAndReplenishment"></span>
+<img src="figures2/ch6/figInventoryOrderingAndReplenishment.png" alt="Ordering and replenishment ASSIGN modules" width="70%" height="70%" />
+<p class="caption">
+Figure 6.60: Ordering and replenishment ASSIGN modules
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:InventorySignalling"></span>
+<img src="figures2/ch6/figInventorySignalling.png" alt="Signalling the backorder queue" width="45%" height="45%" />
+<p class="caption">
+Figure 6.61: Signalling the backorder queue
+</p>
+</div>
+<p>The basic model structure is now completed; however, there are a few
+issues related to the collection of the performance measures that must
+be discussed. The average order frequency must be collected. Recall
+<span class="math inline">\(\bar{OF} = N(T)/T\)</span> that . Thus, the number of orders placed within the
+time interval of interest must be observed. This can be done by creating
+a logic entity that will observe the number of orders that have been
+placed since the start of the observation period. In
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryOrderArrivalFilling">6.54</a>, there is a variable called,
+<code>vNumOrders</code>, which is incremented each time an order is placed. This
+is, in essence, <span class="math inline">\(N(T)\)</span>.
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryOrderFrequency">6.62</a> shows the order frequency collection
+logic. First an entity is created every, <span class="math inline">\(T\)</span>, time units. In this case,
+the interval is monthly (every 30 days).</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryOrderFrequency"></span>
+<img src="figures2/ch6/figInventoryOrderFrequency.png" alt="Order frequency collection logic" width="70%" height="70%" />
+<p class="caption">
+Figure 6.62: Order frequency collection logic
+</p>
+</div>
+<p>Then the RECORD module, shown in Figure <a href="ch6-sec-holdSignal.html#fig:InventoryRecordOrders">6.63</a>, observes the value of <code>vNumOrders</code>. The following
+ASSIGN module sets <code>vNumOrders</code> equal to zero. Thus, <code>vNumOrders</code>
+represents the number of orders accumulated during the 30 day period.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryRecordOrders"></span>
+<img src="figures2/ch6/figInventoryRecordOrders.png" alt="Recording the number of orders placed" width="55%" height="55%" />
+<p class="caption">
+Figure 6.63: Recording the number of orders placed
+</p>
+</div>
+<p>To close out the statistical collection of the performance measures, the
+collection of <span class="math inline">\(\overline{\mathit{SO}}\)</span> as well as the cost of the policy
+needs to be discussed. To collect <span class="math inline">\(\overline{\mathit{SO}}\)</span>, a
+time-persistent statistic needs to be defined using the Statistic module
+of the Advanced Process panel as in
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryStatisticsModule">6.64</a>. The expression <code>(vOnHand == 0)</code> is
+a boolean expression, which evaluates to 1.0 if true and 0.0 if false.
+By creating a time-persistent statistic on this expression, the
+proportion of time that the on-hand is equal to 0.0 can be tabulated.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryStatisticsModule"></span>
+<img src="figures2/ch6/figInventoryStatisticsModule.png" alt="Statistic module for (r, Q) inventory model" width="75%" height="75%" />
+<p class="caption">
+Figure 6.64: Statistic module for (r, Q) inventory model
+</p>
+</div>
+<p>To record the costs associated with the policy, three Output statistics
+are needed. Recall that these are designed to be observed at the end of
+each replication. For the inventory holding cost, the time-average of
+the on-hand inventory variable, <code>DAVG(vOnHand Value)</code>, should be
+multiplied by the holding cost per unit per time. The back-ordering cost
+is done in a similar manner. The ordering cost is computed by taking the
+cost per order times the average order frequency. Recall that this was
+captured via a RECORD module every month. The average from the RECORD
+module is available through the <code>TAVG()</code> function. Finally, the total
+cost is tabulated as the sum of the back-ordering cost, the holding
+cost, and the ordering cost. In
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryStatisticsModule">6.64</a>, this was accomplished by using the
+<code>OVALUE()</code> function for OUTPUT statistics. This function returns the
+last observed value of the OUTPUT statistic. In this case, it will
+return the value observed at the end of the replication. Each of these
+statistics will be shown on the reports as user-defined statistics. The completed model is found in file <em>rQInventoryModel.doe</em> in the chapter files.</p>
+<p>The case of (r = 1, Q = 2) was run for 30 replications with a warm up
+period of 3600 days and a run length of 39,600 days.
+Figure <a href="ch6-sec-holdSignal.html#fig:InventoryArenaResults">6.65</a> indicates that the total cost is
+about 1.03 per month with a probability of stocking out close to 40%.
+Notice that the stock out probability is essentially the same as the
+percentage of time the system was out of stock. This is an indication
+that the PASTA property of Poisson arrivals is working according to
+theory.</p>
+<div class="figure" style="text-align: center"><span id="fig:InventoryArenaResults"></span>
+<img src="figures2/ch6/figInventoryArenaResults.png" alt="Results for the (r, Q) inventory model" width="55%" height="55%" />
+<p class="caption">
+Figure 6.65: Results for the (r, Q) inventory model
+</p>
+</div>
+<p>This example should give you a solid basis for developing more
+sophisticated inventory models. While analytical results are available
+for this example, small changes in the assumptions necessitate the need
+for simulation. For example, what if the lead times are stochastic or
+the demand is not in units of 1. In the latter case, the filling of the
+back-order queue should be done in different ways. For example, suppose
+customers wanting 5 and 3 items respectively were waiting in the queue.
+Now suppose a replenishment of 4 items comes in. Do you give 4 units of
+the item to the customer wanting 5 units (partial fill) or do you choose
+the customer wanting 3 units and fill their entire back-order and give
+only 1 unit to the customer wanting 5 units. The more realism needed,
+the less analytical models can be applied, and the more simulation
+becomes useful.</p>
+<p>In the next section, we will expand our modeling capabilities by looking at a number of useful constructs related to how entities behave within a model.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-askin2002design" class="csl-entry">
+Askin, R. G., and J. B. Goldberg. 2002. <em>Design and Analysis of Lean Production Systems</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-2006inventory" class="csl-entry">
+Axsäter, S. 2006. <em>Inventory Control</em>. Springer Science + Business Media.
+</div>
+<div id="ref-ballou2004business" class="csl-entry">
+Ballou, R. H. 2004. <em>Business Logistics/Supply Chain Management: Planning, Organizing, and Controlling the Supply Chain</em>. 5th ed. Prentice-Hall.
+</div>
+<div id="ref-chopra2007supply" class="csl-entry">
+Chopra, S., and Meindl. 2007. <em>Supply Chain Management: Strategy, Planning, and Operations</em>. 3rd ed. Prentice-Hall.
+</div>
+<div id="ref-hadley1963analysis" class="csl-entry">
+Hadley, G., and T. M. Whitin. 1963. <em>Analysis of Inventory Systems</em>. Prentice Hall.
+</div>
+<div id="ref-nahmias2001production" class="csl-entry">
+Nahmias, S. 2001. <em>Production and Operations Analysis</em>. 4th ed. McGraw-Hill.
+</div>
+<div id="ref-silver1998inventory" class="csl-entry">
+Silver, E. A., D. F. Pyke, and R. Peterson. 1998. <em>Inventory Management and Production Planning and Scheduling</em>. 3rd ed. John Wiley &amp; Sons.
+</div>
+<div id="ref-tijms2003first" class="csl-entry">
+Tijms, H. C. 2003. <em>A First Course in Stochastic Models</em>. John-Wiley &amp; Sons.
+</div>
+<div id="ref-zipkin2000foundations" class="csl-entry">
+Zipkin, P. H. 2000. <em>Foundations of Inventory Management</em>. McGraw-Hill.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch6s1sb4sub3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch6s4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/06-Chapter6.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

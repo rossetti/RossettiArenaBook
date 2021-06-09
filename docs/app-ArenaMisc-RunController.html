@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>D.2 SIMAN and the Run Controller | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="D.2 SIMAN and the Run Controller | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="D.2 SIMAN and the Run Controller | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-ArenaMisc-GettingHelp.html"/>
+<link rel="next" href="app-ArenaMisc-Prog.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app:ArenaMisc:RunController" class="section level2" number="12.2">
+<h2><span class="header-section-number">D.2</span> SIMAN and the Run Controller</h2>
+<p>In a programming language such as Visual Basic or Java, programmers must
+first define the data types that they will use (int, float, double,
+etc.) and declare the variables, arrays, classes, etc. for those data
+types to be used in the program. The programmer then uses flow of
+control (if-then, while, etc.) statements to use the data types to
+perform the desired task. Programming in Arena is quite different than
+programming in a base language like C. An Arena simulation program consists of
+the flow chart and data modules that have been used or defined within
+the model. By dragging and dropping flow chart modules and filling in
+the appropriate dialog box entries you are writing a program. Along with
+programming comes debugging and making sure that the program is working
+as it was intended. To be able to better debug your programs, you must
+have, at the very least, a rudimentary understanding of Arena’s
+underlying language called SIMAN. SIMAN code is produced by the
+environment, compiled, and then executed. This section provides an
+overview of SIMAN and Arena’s debugger called the Run Controller.</p>
+<div id="app:ArenaMisc:RunController:modExp" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">D.2.1</span> SIMAN MOD and EXP Files</h3>
+<p>To better understand some of the underlying programming concepts within Arena, it is useful to know that Arena is built on top of the SIMAN simulation programming system. To learn more about SIMAN, I suggest reviewing the following two textbooks 1 and <span class="citation"><a href="#ref-banks1995introduction" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span>.</p>
+<p>The section will review the pharmacy model of Chapter <a href="ch2.html#ch2">2</a> in order to provide an overview of SIMAN. You should open up the pharmacy model from Chapter <a href="ch2.html#ch2">2</a> in order to follow along. Using the Run/SIMAN/View menu will generate two files associated with the SIMAN program, the
+<em>mod</em> (model) file and the <em>exp</em> (experiment) file. The files can be
+viewed using the Window menu (Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig67">D.3</a>, within the Arena Environment.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig67"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig67.png" alt="Run SIMAN view menu" width="40%" height="40%" />
+<p class="caption">
+Figure D.3: Run SIMAN view menu
+</p>
+</div>
+<p>The <em>mod</em> file contains the SIMAN representation for the flow chart
+modules that were laid out in the model window. The <em>exp</em> file contains
+the SIMAN representation for the data modules and simulation run control
+parameters that are used during the execution of the simulation. <em>mod</em>
+stands for model, and <em>exp</em> stands for experiment.</p>
+<p>The following code listing presents the experiment (<em>exp</em>) file for the
+pharmacy model. For readers that are familiar with C or C++ programming,
+the <em>exp</em> file is similar to the header files used in those languages.
+The experiment file defines the elements that are to be used by the
+model during the execution of the simulation. As indicated for this
+file, the major elements are categorized as PROJECT, VARIABLES, QUEUES,
+RESOURCES, PICTURES, REPLICATE, and ENTITIES. Additional categories that
+are not used (and thus not shown) in this model include TALLIES and
+OUTPUTS. Each of these constructs will be discussed as you learn more
+about the modules within the Environment. The experiment module declares
+and defines that certain elements will be used in the model. For
+example, the RESOURCES element indicates that there is a resource called
+Pharmacist that can be used in the model. Understanding the exact syntax
+of the SIMAN elements is not necessarily important, but being able to
+look for and interpret these elements can be useful in diagnosing
+certain errors that occur during the model debugging process. It is
+important to understand that these elements are defined during the model
+building process, especially when data modules are filled out within the
+Environment.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb137-1"><a href="app-ArenaMisc-RunController.html#cb137-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PROJECT,</span>      <span class="st">&quot;Unnamed Project&quot;</span>,<span class="st">&quot; &quot;</span>,,,No,Yes,Yes,Yes,No,No,No,No,No,No<span class="kw">;</span></span>
+<span id="cb137-2"><a href="app-ArenaMisc-RunController.html#cb137-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">VARIABLES:</span>    Get Medicine.WIP,CLEAR<span class="er">(</span><span class="ex">System</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude-Exclude&quot;</span><span class="kw">)</span><span class="ex">,DATATYPE</span><span class="er">(</span><span class="ex">Real</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-3"><a href="app-ArenaMisc-RunController.html#cb137-3" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Dispose</span> 1.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-4"><a href="app-ArenaMisc-RunController.html#cb137-4" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Create</span> Customers.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-5"><a href="app-ArenaMisc-RunController.html#cb137-5" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Get</span> Medicine.NumberIn,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-6"><a href="app-ArenaMisc-RunController.html#cb137-6" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Get</span> Medicine.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">);</span></span>
+<span id="cb137-7"><a href="app-ArenaMisc-RunController.html#cb137-7" aria-hidden="true" tabindex="-1"></a>                      <span class="ex">QUEUES:</span>       Get Medicine.Queue,FIFO,,AUTOSTATS<span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span>
+<span id="cb137-8"><a href="app-ArenaMisc-RunController.html#cb137-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PICTURES:</span>     Picture.Airplane:</span>
+<span id="cb137-9"><a href="app-ArenaMisc-RunController.html#cb137-9" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Green</span> Ball:</span>
+<span id="cb137-10"><a href="app-ArenaMisc-RunController.html#cb137-10" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Blue</span> Page:</span>
+<span id="cb137-11"><a href="app-ArenaMisc-RunController.html#cb137-11" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Telephone:</span></span>
+<span id="cb137-12"><a href="app-ArenaMisc-RunController.html#cb137-12" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Blue</span> Ball:</span>
+<span id="cb137-13"><a href="app-ArenaMisc-RunController.html#cb137-13" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Yellow</span> Page:</span>
+<span id="cb137-14"><a href="app-ArenaMisc-RunController.html#cb137-14" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.EMail:</span></span>
+<span id="cb137-15"><a href="app-ArenaMisc-RunController.html#cb137-15" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Yellow</span> Ball:</span>
+<span id="cb137-16"><a href="app-ArenaMisc-RunController.html#cb137-16" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Bike:</span></span>
+<span id="cb137-17"><a href="app-ArenaMisc-RunController.html#cb137-17" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Report:</span></span>
+<span id="cb137-18"><a href="app-ArenaMisc-RunController.html#cb137-18" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Van:</span></span>
+<span id="cb137-19"><a href="app-ArenaMisc-RunController.html#cb137-19" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Widgets:</span></span>
+<span id="cb137-20"><a href="app-ArenaMisc-RunController.html#cb137-20" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Envelope:</span></span>
+<span id="cb137-21"><a href="app-ArenaMisc-RunController.html#cb137-21" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Fax:</span></span>
+<span id="cb137-22"><a href="app-ArenaMisc-RunController.html#cb137-22" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Truck:</span></span>
+<span id="cb137-23"><a href="app-ArenaMisc-RunController.html#cb137-23" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Person:</span></span>
+<span id="cb137-24"><a href="app-ArenaMisc-RunController.html#cb137-24" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Letter:</span></span>
+<span id="cb137-25"><a href="app-ArenaMisc-RunController.html#cb137-25" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Box:</span></span>
+<span id="cb137-26"><a href="app-ArenaMisc-RunController.html#cb137-26" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Woman:</span></span>
+<span id="cb137-27"><a href="app-ArenaMisc-RunController.html#cb137-27" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Package:</span></span>
+<span id="cb137-28"><a href="app-ArenaMisc-RunController.html#cb137-28" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Man:</span></span>
+<span id="cb137-29"><a href="app-ArenaMisc-RunController.html#cb137-29" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Diskette:</span></span>
+<span id="cb137-30"><a href="app-ArenaMisc-RunController.html#cb137-30" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Boat:</span></span>
+<span id="cb137-31"><a href="app-ArenaMisc-RunController.html#cb137-31" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Red</span> Page:</span>
+<span id="cb137-32"><a href="app-ArenaMisc-RunController.html#cb137-32" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Ball:</span></span>
+<span id="cb137-33"><a href="app-ArenaMisc-RunController.html#cb137-33" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Green</span> Page:</span>
+<span id="cb137-34"><a href="app-ArenaMisc-RunController.html#cb137-34" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Red</span> Ball<span class="kw">;</span></span>
+<span id="cb137-35"><a href="app-ArenaMisc-RunController.html#cb137-35" aria-hidden="true" tabindex="-1"></a>    <span class="ex">RESOURCES:</span>    Pharmacist,Capacity<span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="ex">,,,COST</span><span class="er">(</span><span class="ex">0.0,0.0,0.0</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="ex">Resources</span><span class="kw">)</span><span class="ex">,,AUTOSTATS</span><span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span>
+<span id="cb137-36"><a href="app-ArenaMisc-RunController.html#cb137-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">REPLICATE,</span>    1,,HoursToBaseTime<span class="er">(</span><span class="ex">10000</span><span class="kw">)</span><span class="ex">,Yes,Yes,,,,24,Minutes,No,No,,,Yes</span><span class="kw">;</span></span>
+<span id="cb137-37"><a href="app-ArenaMisc-RunController.html#cb137-37" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ENTITIES:</span>     Customer,Picture.Van,0.0,0.0,0.0,0.0,0.0,0.0,AUTOSTATS<span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span></code></pre></div>
+<p>The following listing presents the contents of the SIMAN model (<em>mod</em>)
+file for the Pharmacy model. The model file is similar in spirit to the
+“.c" or”*.cpp" files in C/C++ programming. It represents the flow
+chart portion of the model. In this code, ";" indicates a comment line.
+The capitalized commands represent special SIMAN language keywords. For
+example, the ASSIGN keyword is used to indicate an assignment statement,
+i.e. <em>variable = expression</em>.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb138-1"><a href="app-ArenaMisc-RunController.html#cb138-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-2"><a href="app-ArenaMisc-RunController.html#cb138-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Create 1 <span class="er">(</span><span class="ex">Create</span> Customers<span class="kw">)</span></span>
+<span id="cb138-3"><a href="app-ArenaMisc-RunController.html#cb138-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-4"><a href="app-ArenaMisc-RunController.html#cb138-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">2$</span>            CREATE,        1,MinutesToBaseTime<span class="er">(</span><span class="ex">expo</span><span class="er">(</span><span class="ex">6</span><span class="kw">))</span><span class="ex">,Customer:MinutesToBaseTime</span><span class="er">(</span><span class="ex">EXPO</span><span class="er">(</span><span class="ex">6</span><span class="kw">))</span><span class="ex">:NEXT</span><span class="er">(</span><span class="ex">3$</span><span class="kw">);</span></span>
+<span id="cb138-5"><a href="app-ArenaMisc-RunController.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="app-ArenaMisc-RunController.html#cb138-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">3$</span>            ASSIGN:        Create Customers.NumberOut=Create Customers.NumberOut + 1:NEXT<span class="er">(</span><span class="ex">0$</span><span class="kw">);</span></span>
+<span id="cb138-7"><a href="app-ArenaMisc-RunController.html#cb138-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-8"><a href="app-ArenaMisc-RunController.html#cb138-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-9"><a href="app-ArenaMisc-RunController.html#cb138-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Process 1 <span class="er">(</span><span class="ex">Get</span> Medicine<span class="kw">)</span></span>
+<span id="cb138-10"><a href="app-ArenaMisc-RunController.html#cb138-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-11"><a href="app-ArenaMisc-RunController.html#cb138-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">0$</span>            ASSIGN:        Get Medicine.NumberIn=Get Medicine.NumberIn + 1:</span>
+<span id="cb138-12"><a href="app-ArenaMisc-RunController.html#cb138-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP+1<span class="kw">;</span></span>
+<span id="cb138-13"><a href="app-ArenaMisc-RunController.html#cb138-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">9$</span>            QUEUE,         Get Medicine.Queue<span class="kw">;</span></span>
+<span id="cb138-14"><a href="app-ArenaMisc-RunController.html#cb138-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">8$</span>            SEIZE,         2,VA:</span>
+<span id="cb138-15"><a href="app-ArenaMisc-RunController.html#cb138-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Pharmacist,1:NEXT</span><span class="er">(</span><span class="ex">7$</span><span class="kw">);</span></span>
+<span id="cb138-16"><a href="app-ArenaMisc-RunController.html#cb138-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-17"><a href="app-ArenaMisc-RunController.html#cb138-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">7$</span>            DELAY:         expo<span class="er">(</span><span class="ex">3</span><span class="kw">)</span><span class="ex">,,VA</span><span class="kw">;</span></span>
+<span id="cb138-18"><a href="app-ArenaMisc-RunController.html#cb138-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">6$</span>            RELEASE:       Pharmacist,1<span class="kw">;</span></span>
+<span id="cb138-19"><a href="app-ArenaMisc-RunController.html#cb138-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">54$</span>           ASSIGN:        Get Medicine.NumberOut=Get Medicine.NumberOut + 1:</span>
+<span id="cb138-20"><a href="app-ArenaMisc-RunController.html#cb138-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP-1:NEXT<span class="er">(</span><span class="ex">1$</span><span class="kw">);</span></span>
+<span id="cb138-21"><a href="app-ArenaMisc-RunController.html#cb138-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-22"><a href="app-ArenaMisc-RunController.html#cb138-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-23"><a href="app-ArenaMisc-RunController.html#cb138-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Dispose 1 <span class="er">(</span><span class="ex">Dispose</span> 1<span class="kw">)</span></span>
+<span id="cb138-24"><a href="app-ArenaMisc-RunController.html#cb138-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-25"><a href="app-ArenaMisc-RunController.html#cb138-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">1$</span>            ASSIGN:        Dispose 1.NumberOut=Dispose 1.NumberOut + 1<span class="kw">;</span></span>
+<span id="cb138-26"><a href="app-ArenaMisc-RunController.html#cb138-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">57$</span>           DISPOSE:       Yes<span class="kw">;</span></span></code></pre></div>
+<p>There are two keywords that you should
+immediately recognize from the model window, CREATE and DISPOSE. Each
+non-commented line has a line number that identifies the SIMAN
+statement. For example, 57$ identifies the DISPOSE statement. These
+line numbers are especially useful in following the execution of the
+code. For example, within the code, you should notice the use of the
+NEXT() keyword. For example, on line number 54$, the keyword NEXT(1$)
+redirects the flow of control to the line statement 1$. You should also
+notice that many lines of code are generated from the placement of the
+three modules (CREATE, PROCESS, DISPOSE). Much of this SIMAN code is
+added to the model to enable additional statistical collection. The
+exact syntax associated with this generated SIMAN code will not be the
+focus of the discussion; however, the ability to review this code and
+interpret its basic functionality is essential when developing and
+debugging complex models. The code generated within the experiment and
+model files is not directly editable. The only way to change this code
+is to change the model in the data modules or within the model window.
+Finally, the SIMAN code is not directly executed on the computer. Before
+running the model, the SIMAN code is checked for syntax or other errors
+and then is translated to an executable form via a C/C++ compiler
+translation.</p>
+<p>In a programming language like “C", the program starts at a clearly
+defined starting point, e.g. the”main()" function. Arena has no such main()
+function. Examining the actual SIMAN code that is generated from the
+model building process does not yield a specific starting point either.
+So where does start executing? To fully answer this question involves
+many aspects of simulation that have not yet been examined. Thus, at
+this point, a simplified answer to the question will be presented.</p>
+<p>A simulation program models the changes in a system at specific events
+in time. These events are scheduled and executed by the simulation
+executive ordered by time. starts executing with the first scheduled
+event and then processes each event sequentially until there are no more
+events to be executed. Of course, this begs the question, how does the
+first event get scheduled? In , the first event is determined1 by the
+CREATE module with the smallest “First Creation" time.
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig68">D.4</a> illustrates the dialog box for the
+CREATE module. The text field labeled”First Creation" accepts an
+expression that must evaluate to a real number. In the figure, the
+expo() function is used to generate a random variable from the
+exponential distribution with a mean of six minutes to be used as the
+time of the event associated with the creation of an entity from this
+CREATE module.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig68"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig68.png" alt="CREATE module dialog" width="55%" height="55%" />
+<p class="caption">
+Figure D.4: CREATE module dialog
+</p>
+</div>
+<p>The careful reader should have the natural question, “What if there are
+ties?" In other words, what if there are two or more CREATE modules
+with a”First Creation" time set to the same value. For example, it is
+quite common to have multiple CREATE modules with their <em>First Creation</em>
+time set at zero. Which CREATE module will go first? This is where
+looking at the SIMAN model output is useful. The CREATE module with the
+smallest <em>First Creation</em> time that is <strong>listed first</strong> in the SIMAN model
+file will be the first to execute. Thus, if there are multiple CREATE
+modules each with a <em>First Creation</em> time set to zero, then the CREATE
+module that is listed first will create its entity first. Well, this is a simplified discussion. In general,there are other ways to get an initial event scheduled.</p>
+<p>Now that we know that there is a language underneath Arena, we can better use Arena’s debugging tool: the Run Controller. The next section provides an overview of using the run controller.</p>
+</div>
+<div id="app:ArenaMisc:RunController:Using" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">D.2.2</span> Using the Run Controller</h3>
+<p>An integral part of any programming effort is debugging the program.
+Simulation program development in is no different. You have already seen
+how to do some rudimentary tracing via the READWRITE module; however,
+this section discusses some of the debugging and tracing capabilities
+that are built into the Environment. Arena’s debugging and tracing
+facilities come in two major forms: the run controller and animation.
+Some of the basic capabilities of Arena’s animation have already been
+demonstrated. Using animation to assist in checking your model logic is
+highly recommended. Aspects of animation will be discussed throughout
+this text; however, in this section concentrates on using Arena’s Run
+Controller. Arena’s Run Controller is found on the Run menu as shown in
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig69">D.5</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig69"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig69.png" alt="Invoking the Run Controller" width="55%" height="55%" />
+<p class="caption">
+Figure D.5: Invoking the Run Controller
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig70"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig70.png" alt="Arena Environment with Run Controller invoked" width="85%" height="85%" />
+<p class="caption">
+Figure D.6: Arena Environment with Run Controller invoked
+</p>
+</div>
+<p>Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig70">D.6</a> illustrates how the Arena Environment
+appears after the run controller has been invoked on the original
+pharmacy model. The run controller allows tracing and debugging actions
+to be performed by the user through the use of various commands. Let’s
+first learn about the various commands and capabilities of the run
+controller. Go to Help and in the index search type in "Command-Driven
+Run Controller Introduction". You should see a screen that looks
+something like that shown in Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig71">D.7</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig71"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig71.png" alt="Getting help for the Run Controller" width="85%" height="85%" />
+<p class="caption">
+Figure D.7: Getting help for the Run Controller
+</p>
+</div>
+<p>The Run Controller allows the system to be executed in a debugging mode.
+With the run controller, you can set trace options, watch variables and
+attributes, run the model until certain time or conditions are true,
+examine the values of entities attributes, etc. Within the help system,
+use the hyperlink that says "Run Controller Commands". You will see a
+list of commands for the run controller as shown in Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig72">D.8</a>. Selecting any of these provides
+detailed instructions on how to use the command within the run
+controller environment.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig72"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig72.png" alt="The Run Controller commands" width="65%" height="65%" />
+<p class="caption">
+Figure D.8: The Run Controller commands
+</p>
+</div>
+<p>In what follows, some simple commands will be used to examine the drive
+through pharmacy model. Open the pharmacy model within and then open up
+the CREATE module and make sure that the time of the first arrival is
+set to 0.0. In addition, open up the PROCESS module and make sure that
+the delay expression is EXPO(5). This will help in ensuring that your
+output looks like what is shown in the figures. The first arrival will
+be discussed in what follows.</p>
+<p>Now, you should invoke the run controller as indicated in
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig69">D.5</a>. This will start the run of the model.
+will immediately pause the execution of the model at the first execution
+step. You should see a window as illustrated in
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig70">D.6</a>. Let’s first turn the tracing on
+for the model. By default, embeds tracing output into the SIMAN code
+that is generated. Information about the current module and the active
+entity will be displayed. To turn on the tracing, enter "set trace" at
+the prompt (in Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig73">D.9</a>) or select the command from the drop down menu of commands,
+then press return to enter the command. You can also press the toggle
+trace button.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig73"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig73.png" alt="Using commands in the Run Controller" width="90%" height="90%" />
+<p class="caption">
+Figure D.9: Using commands in the Run Controller
+</p>
+</div>
+<p>Now select the ’VCR-like run button for single stepping through the
+model. The button is indicated in
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig74">D.10</a>. You should single step again
+into the model. Your command window should look like
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig74">D.10</a>. Remember that the CREATE module
+was set to create a single arrival at time 0.0. This is exactly what is
+displayed. In addition, the trace output is telling you that the next
+arrival will be coming at time 2.0769136. The asterisk marking the
+output indicates the SIMAN statement that will be executed on the <em>next</em>
+step. Then, when the step executes the trace results are given and the
+next statement to execute is indicated.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig74"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig74.png" alt="Run Controller output window after 2 steps" width="90%" height="90%" />
+<p class="caption">
+Figure D.10: Run Controller output window after 2 steps
+</p>
+</div>
+<p>If you press the single step button twice, you will see that ASSIGN
+statements are executed and that the current entity is about to execute
+a QUEUE statement. After seven steps, the run controller output should
+appear as shown in Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig75">D.11</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig75"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig75.png" alt="Run Controller output window after 7 steps" width="90%" height="90%" />
+<p class="caption">
+Figure D.11: Run Controller output window after 7 steps
+</p>
+</div>
+<p>From this trace output, it is apparent that the entity was sent directly
+to the SEIZE block from the QUEUE block where it seized 1 unit of the
+pharmacist. Then, the entity proceeded to the DELAY block where it was
+delayed by 2.2261054 time units. This is the service time of the entity.
+Since the entity is entering service at time 0.0, it will thus leave at
+time 2.2261054. In summary, Entity 2 was created at time zero, arrived
+to the system, and attempted to get a unit of the pharmacist. Since the
+pharmacist was idle at the start of the simulation, the entity did not
+have to wait in queue and was able to immediately start service.</p>
+<p>Now, something new has happened. The time has jumped to 2.0769136. As
+you might recall, this was the time indicated by the CREATE module for
+the next entity to arrive. This entity is denoted by the number 3.
+Entity 3 is now the active entity. What happened to Entity 2? It was
+placed on the future events list by the DELAY module and is scheduled to
+“wake up" at time 2.2261054. By using the <code>VIEW CALENDAR</code> command, you
+can see all the events that are scheduled on the event calendar.
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig76">D.12</a> illustrates the output of the <code>VIEW CALENDAR</code>
+command. There are two data structures within to hold entities that are
+scheduled. The”current events chain" represents the entities that are
+scheduled to occur at the current time. The "future events heap"
+represents those entities that are scheduled in the future.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig76"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig76.png" alt="VIEW CALENDAR output" width="90%" height="90%" />
+<p class="caption">
+Figure D.12: VIEW CALENDAR output
+</p>
+</div>
+<p>This output indicates that no other entities are scheduled for the
+current time and that Entity 2 is scheduled to activate at time
+2.2261054. The entity is not going to ’arrive" as indicated. This is a
+typo in the output. The actual word should be "activate". In addition,
+the calendar indicates that an entity numbered 1 is scheduled to cause
+the end of the simulation at time 600000.0. uses an internal entity to
+schedule the event that represents the end of a replication. If there
+are a large number of entities on the calendar, then the <code>VIEW CALENDAR</code>
+command can be very verbose.</p>
+<p>Single stepping the model allows the next entity to be created and
+arrive to the model. This was foretold in the last trace of the CREATE
+module.</p>
+<p>The run controller provides the ability to stop the execution when a
+condition occurs. Suppose that you are interested in examining the
+attributes of the customers in the queue when at least 2 are waiting.
+You can set a watch on the number of customers in the queue and this
+will cause to stop whenever this condition becomes true. Then, by using
+the <code>VIEW QUEUE</code> command you can view the contents of the customer waiting
+queue. Carefully type in <code>SET WATCH NQ(Get Medicine.Queue) = = 2</code> at the
+run controller prompt and hit return. Your run controller should look
+like Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig77">D.13</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig77"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig77.png" alt="Setting a WATCH on a variable" width="90%" height="90%" />
+<p class="caption">
+Figure D.13: Setting a WATCH on a variable
+</p>
+</div>
+<p>If you type <code>GO</code> at the run controller prompt, will run until the watch
+condition is met, see Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig78">D.14</a>. The VIEW QUEUE command will show all
+the entities in all the queues, see Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig79">D.15</a>. You can also select only certain queues and
+only certain entities. See the Arena’s help for how to specialize the
+commands.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig78"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig78.png" alt="Output after WATCH condition break" width="90%" height="90%" />
+<p class="caption">
+Figure D.14: Output after WATCH condition break
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig79"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig79.png" alt="Output after VIEW QUEUE" width="90%" height="90%" />
+<p class="caption">
+Figure D.15: Output after VIEW QUEUE
+</p>
+</div>
+<p>Arena also has a debugging bar within the run command controller that can be
+accessed from the Run <span class="math inline">\(&gt;\)</span> Run Control <span class="math inline">\(&gt;\)</span> Breakpoints menu, see
+Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig70">D.6</a>. This allows the user to easily set
+breakpoints, view the calendar, view the attributes of the active
+entity, and set watches on the model. The debug bar is illustrated for
+this execution after the next step in Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig80">D.16</a>. In the figure, the active entity tab is open
+to allow the attributes of the entity to be seen. The functionality of
+the debug bar is similar to many debuggers. The help system has a
+discussion on how to use the tabs within the debug bar. You can find out
+more by searching for <em>Debug Bar</em> in Arena’s help system.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4fig80"></span>
+<img src="figures2/AppMiscArenaTopics/ch4fig80.png" alt="Debug window within the Run Controller" width="90%" height="90%" />
+<p class="caption">
+Figure D.16: Debug window within the Run Controller
+</p>
+</div>
+<p>There are many commands that you can try to use during your debugging.
+Only a few commands have been discussed here. What do you think the
+following commands do?</p>
+<ul>
+<li><p><code>go until 10.0</code></p></li>
+<li><p><code>show NR()</code></p></li>
+<li><p><code>show NQ()</code></p></li>
+<li><p><code>view entity</code></p></li>
+</ul>
+<p>Restart your model. Turn on the tracing, type them in, and find out!</p>
+<p>There are just a couple of final notes to mention about using the Run
+Controller. When the model runs to completion or if you stop it during
+the run, the run controller window will show the text based statistical
+results for your model, which can be quite useful. In addition, after
+you are done tracing your model, be sure to turn the tracing off (CANCEL
+TRACE) and to save the model with the tracing off. After you turn the
+tracing on for a model, Arena remembers this even though you might not be
+running the model via the run controller. The trace output will still be
+produced and will significantly slow the execution of your model down.
+In addition, the memory requirements of the trace output can be quite
+large and you may get out of memory errors for what appears to be
+inexplicable reasons. Don’t forget to turn the tracing off and to
+re-save!</p>
+<p>The following section introduces some additional programming concepts that may prove useful when building Arena models.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks1995introduction" class="csl-entry">
+Banks, J., B. Burnette, H. Kozloski, and J. Rose. 1995. <em>Introduction to <span>SIMAN</span> v and <span>CINEMA</span> v</em>. John Wiley &amp; Sons.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-ArenaMisc-GettingHelp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-ArenaMisc-Prog.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/12-MiscTopicsInArena.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

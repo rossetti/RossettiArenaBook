@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.9 Exercises | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.9 Exercises | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.9 Exercises | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch4-Summary.html"/>
+<link rel="next" href="ch5.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch4:Exercises" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Exercises</h2>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P10" class="exercise"><strong>Exercise 4.1  </strong></span>The <span class="math inline">\(\underline{\hspace{3cm}}\)</span> attribute is a unique number assigned
+to an entity when it is created; however, if the entity is ever
+duplicated (cloned) in the model, the clones will have the same value
+for the attribute.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P20" class="exercise"><strong>Exercise 4.2  </strong></span>Groups of customers arrive to a Blues, Bikes, and BBQ T-Shirt Concession
+Stand according to a Poisson process with a mean rate of 10 per hour.
+There is a 10% chance that a family of 4 will want T-Shirts, a 30%
+chance that a family of 3 will want T-Shirts, a 20% chance that a couple
+will want matching T-Shirts, and a 40% chance that an individual person
+will want a T-Shirt.
+</div>
+<div class="figure" style="text-align: center"><span id="fig:CreateProblem"></span>
+<img src="figures2/ch4/exrCreateProblem.png" alt="CREATE Module" width="55%" height="55%" />
+<p class="caption">
+Figure 4.107: CREATE Module
+</p>
+</div>
+<p>Specify expressions for A, B, C, and D in the above CREATE module to
+properly generate customers for the T-Shirt Stand.</p>
+<ul>
+<li><p>A: <span class="math inline">\(\underline{\hspace{3cm}}\)</span></p></li>
+<li><p>B: <span class="math inline">\(\underline{\hspace{3cm}}\)</span></p></li>
+<li><p>C: <span class="math inline">\(\underline{\hspace{3cm}}\)</span></p></li>
+<li><p>D: <span class="math inline">\(\underline{\hspace{3cm}}\)</span></p></li>
+</ul>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P30" class="exercise"><strong>Exercise 4.3  </strong></span>Suppose that a customer arriving to the drive through pharmacy will decide to balk if
+the number of cars waiting in line is 4 or more. A customer is said to
+<em>balk</em> if he or she refuses to enter the system and simply departs
+without receiving service. Model this situation using and estimate the
+probability that a customer will balk because the line is too long. Run
+your model for 1 year, with 20 replications. <em>Hint</em> Use the NQ() function.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P40" class="exercise"><strong>Exercise 4.4  </strong></span>Samples of 20 parts from a metal grinding process are selected every hour. Typically 2% of
+the parts need rework. Let X denote the number of parts in the sample of
+20 that require rework. A process problem is suspected if X exceeds its
+mean by more than 3 standard deviations. Using simulate 30 hours of the
+process, i.e. 30 samples of size 20, and estimate the chance that X
+exceeds its expected value by more than 1 standard deviation.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P50" class="exercise"><strong>Exercise 4.5  </strong></span>Samples of 20 parts
+from a metal grinding process are selected every hour. Typically 2% of
+the parts need rework. Let X denote the number of parts in the sample of
+20 that require rework. A process problem is suspected if X exceeds its
+mean by more than 1 standard deviations. Each time X exceeds its mean by
+more than 1 standard deviations all X of the parts requiring rework are
+sent to a rework station. Each part consists of two subcomponents, which
+are split off and repaired separately. The splitting process takes 1
+worker and lasts U(10, 20) minutes per part. After the subcomponents
+have been split, they are repaired in different processes. Subcomponent
+1 takes U(5, 10) minutes to repair with 1 worker at its repair process
+and subcomponent 2 takes expo(7.5) minutes to repair with 1 worker at
+its repair process. Once both of the subcomponents have been repaired,
+they are joined back together to form the original part. The joining
+process takes 5 minutes with 1 worker. The part is then sent back to the
+main production area, which is outside the scope of this problem.
+Simulate 8 hours of production and estimate the average time that it
+takes a part to be repaired.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P60" class="exercise"><strong>Exercise 4.6  </strong></span>TV sets arrive at a two-inspector station for testing. The time between
+arrivals is exponential with a mean of 15 minutes. The inspection time
+per TV set is exponential with a mean of 10 minutes. On the average, 82
+percent of the sets pass inspection. The remaining 18% are routed to an
+adjustment station with a single operator. Adjustment time per TV set is
+uniform between 7 and 14 minutes. After adjustments are made, sets are
+routed back to the inspection station to be retested. We are interested
+in estimating the total time a TV set spends in the system before it is
+released.</p>
+Develop a model for this situation. Report the average system
+time for the TV sets based on 20 replications of 4800 minutes. Also
+report statistics for the average number of times a given TV is
+adjusted.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P70" class="exercise"><strong>Exercise 4.7  </strong></span>A simple manufacturing system is staffed by 3 operators. Parts arrive
+according to a Poisson process with a mean rate of 2 per minute to a
+workstation for a drilling process at one of three identical drill
+presses. The parts wait in a single queue until a drill press is
+available. Each part has a particular number of holes that need to be
+drilled. Each hole takes a Lognormal time to be drilled with an
+approximate mean of 1 minute and a standard deviation of 30 seconds.
+Once the holes are drilled, the part goes to the grinding operation. At
+the grinding operation, one of the 3 available operators grinds out the
+burrs on the part. This activity takes approximately 5 minutes plus or
+minus 30 seconds. After the grinding operation the part leaves the
+system.</p>
+Develop model for this situation. Report the average system
+time for the parts based on 20 replications of 4800 minutes.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P80" class="exercise"><strong>Exercise 4.8  </strong></span>The Hog BBQ Joint is interested in understanding the flow of customers
+for diner (5 pm to 9 pm). Customers arrive in parties of 2, 3, 4, or 5
+with probabilities 0.4, 0.3, 0.2, 0.1, respectively. The time between
+arrivals is exponentially distributed with a mean of 1.4 minutes.
+Customers must arrive prior to 9 pm in order to be seated. The dining
+area has 50 tables. Each table can seat 2 people. For parties, with more
+than 2 customers, the tables are moved together. Each arriving group
+gets in line to be seated. If there are already 6 parties in line, the
+arriving group will leave and go to another restaurant. The time that it
+takes to be served is triangularly distributed with parameters (14, 19,
+24) in minutes. The time that it takes to eat is lognormally distributed
+with a mean of 24 minutes and a standard deviation of 5 minutes. When
+customers are finished eating, they go to the cashier to pay their bill.
+The time that it takes the cashier to process the customers is gamma
+distributed with a mean of 1.5 minutes and a standard deviation of 0.5
+minutes.</p>
+Develop an model for this situation. Simulate 30 days of operation. Make
+a table like the following to summarize your results.
+</div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Average</th>
+<th align="center">Half-width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of customers served</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Number of busy tables</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Number of waiting parties</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Number of parties that depart without eating</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Utilization of cashier</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Customer System Time (in minutes)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Probability of waiting to be seated <span class="math inline">\(&gt;\)</span> 5 minutes</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P90" class="exercise"><strong>Exercise 4.9  </strong></span>In the Tie-Dye T-Shirt model, the owner is expecting the business to grow during the
+summer season. The owner is interested in estimating the average time to
+produce an order and the utilization of the workers if the arrival rate
+for orders increases. Re-run the model for 30 eight hour days with the
+arrival rate increased by 20, 40, 60, and 80 percent. Will the system
+have trouble meeting the demand? Use the statistics to justify your conclusions.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P100" class="exercise"><strong>Exercise 4.10  </strong></span>Suppose that the inspection and packaging process has been split into two processes for
+the Tie-Dye T-Shirt system and assume that there an additional worker to
+perform inspection. The inspection process is uniformly distributed
+between 2 and 5 minutes. After inspection there is a 4 percent chance
+that the whole order will have to be scrapped (and redone). If the order
+fails inspection, the scrapped order should be counted and a new order
+should be initiated into the system. <em>Hint</em>: Consider redirecting the
+order back to the original SEPARATE module. If the order passes
+inspection, it goes to packaging where the packaging time is distributed
+according to a triangular distribution with parameters (2, 4, 10) all in
+minutes. Re-run the model for 30, 8-hour days, with the arrival rate
+increased by 20, 40, 60, and 80%. Will the system have trouble meeting
+the demand? In other words, how does the throughput (number of shirts
+produced per day) change in response to the increasing demand rate?
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P110" class="exercise"><strong>Exercise 4.11  </strong></span>Hungry customers arrive to a Mickey R’s drive through restaurant at a
+mean rate of 10 per hour according to a Poisson process. Management is
+interested in improving the total time spent within the system (i.e.
+from arrival to departure with their food).</p>
+<p>Management is considering a proposed system that splits the order
+taking, payment activity and the order delivery processes. The first
+worker will take the orders from an order-taking speaker. This takes on
+average 1 minute plus or minus 20 seconds uniformly distributed. When
+the order taking activity is completed, the making of the order will
+start. It takes approximately 3 minutes (plus or minus 20 seconds) to
+make the customer’s order, uniformly distributed. Meanwhile, the
+customer will be instructed to drive to the first window to pay for the
+order. Assume that the time that it takes the customer to move forward
+is negligible. The first worker accepts the payment from the customer.
+This takes on average 45 seconds plus or minus 20 seconds uniformly
+distributed. After paying for the order the customer is instructed to
+pull forward to the second window, where a second worker delivers the
+order. Assume that the time that it takes the customer to move forward
+is negligible.</p>
+<p>If the order is not completed by the time the customer reaches the
+second window, then the customer must wait for the order to be
+completed. If the order is completed before the customer arrives to the
+2nd window, then the order must wait for the customer. After both the
+order and the customer are at the 2nd window, the 2nd worker packages
+the customer’s order and gives it to the customer. This takes
+approximately 30 seconds with a standard deviation of 10 seconds,
+lognormally distributed. After the customer receives their order they
+depart.</p>
+Simulate this system for the period from 10 am to 2 pm. Report the total
+time spent in the system for the customers based on 30 days.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P120" class="exercise"><strong>Exercise 4.12  </strong></span>The city is considering improving its hazardous waste and bulk item drop
+off area to improve service. Cars arrive to the drop off area at a rate
+of 10 per hour according to a Poisson process. Each car contains items
+for drop off. There is a 10% chance that the car will contain 1 item, a
+50% chance that the car will contain 2 items, and a 40% chance that the
+car will contain 3 items. There is an 80% chance that an item will be
+hazardous (e.g. chemicals, light bulbs, electronic equipment, etc.) and
+a 20% chance that the item will be a bulk item, which cannot be picked
+up in the curbside recycling program. Of the 80% of items that have
+hazardous waste, about 10% are for electronic equipment that must be
+inspected and taken apart.</p>
+<p>A single worker assists the citizen in taking the material out of their
+car and moving the material to the recycling center. This typically
+takes between 0.5 to 1.5 minutes per item (uniformly distributed) if the
+item is not a bulk item. If the item is a bulk item, then the time takes
+a minimum of 1 minute, most likely 2.5 minutes, with a maximum of 4
+minutes per item triangularly distributed. The worker finishes all items
+in a car before processing the next car.</p>
+<p>Another worker will begin sorting the items immediately after the item
+is unloaded. This process takes 1-2 minutes per item uniformly
+distributed. If the item is electronic equipment, the items are placed
+in front of a special disassembly station to be taken apart.</p>
+<p>The same worker that performs sorting also performs the disassembly of
+the electronic parts. Items that require sorting take priority over
+items that require disassembly. Each electronic item takes between 8 to
+16 minutes uniformly distributed to disassemble.</p>
+The hazardous waste recycling center is open for 7 hours per day, 5 days
+per week. Simulate 12 weeks of performance and estimate the following
+quantities:
+</div>
+<ul>
+<li><p>Utilization of the workers</p></li>
+<li><p>Average waiting time for items waiting to be unloaded</p></li>
+<li><p>Average number of items waiting to be unloaded</p></li>
+<li><p>Average number of items waiting to be sorted</p></li>
+<li><p>Average waiting time of items to be sorted</p></li>
+<li><p>Average number of items waiting to be disassembled</p></li>
+<li><p>Average waiting time for items waiting to be disassembled.</p></li>
+</ul>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P130" class="exercise"><strong>Exercise 4.13  </strong></span>Orders for street lighting poles require the production of the tapered pole, the base
+assembly, and the wiring/lighting assembly package. Orders are released
+to the shop floor with an exponential time between arrival of 20
+minutes. Assume that all the materials for the order are already
+available within the shop floor.</p>
+<p>Once the order arrives, the production of the pole begins. Pole
+production requires that the sheet metal be cut to a trapezoidal shape.
+This process takes place on a cutting shear. After cutting, the pole is
+rolled using a press brake machine. This machine rolls the sheet to an
+almost closed form. After rolling, the pole is sealed on an automated
+welding machine. Each of these processes are uniformly distributed with
+ranges <span class="math inline">\([3, 5]\)</span>, <span class="math inline">\([6,10]\)</span>, and <span class="math inline">\([4,8]\)</span> minutes respectively.</p>
+<p>While the pole is being produced, the base is being prepared. The base
+is a square metal plate with four holes drilled for bolting the place to
+the mounting piece and a large circular hole for attaching the pole to
+the base. The base plates are in stock so that only the holes need to be
+cut. This is done on a water jet cutting machine. This process takes
+approximately 20 minutes plus or minus 2 minutes, triangularly
+distributed. After the holes are cut, the plate goes to a
+grinding/deburring station, which takes between 10 minutes,
+exponentially distributed.</p>
+<p>Once the plate and the pole are completed, they are transported to the
+inspection station. Inspection takes 20 minutes, exponentially
+distributed with 1 operator. There could be a quality problem with the
+pole or with the base (or both). The chance that the problem is with the
+base is 0.02 and the chance that the problem is with the pole is 0.01.
+If either or both have a quality issue, the pole and base go to a rework
+station for rework. Rework is performed by a single operator and
+typically takes between 100 minutes, exponentially distributed. After
+rework, the pole and base are sent to final assembly. If no problems
+occur with the pole or the base, the pole and base are sent directly to
+final assembly.</p>
+<p>At the assembly station, the pole is fixed to the base plate and the
+wiring assembly is placed within the pole. This process takes 1 operator
+approximately 30 minutes with a standard deviation of 4 minutes
+according to a lognormal distribution. After assembly, the pole is sent
+to the shipping area for final delivery.</p>
+The shop is interested in taking on additional orders which would
+essentially double the arrival rate. Estimate the utilization of each
+resource and the average system time to produce an order for a lighting
+pole. Assume that the system runs 5 days per week, with two, eight hours
+shifts per day. Any production that is not completed within 5 days is
+continued on the next available shift. Run the model for 10 years
+assuming 52 weeks per year to report your results.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P140" class="exercise"><strong>Exercise 4.14  </strong></span>Patients arrive at an emergency room where they are treated and then
+depart. Arrivals are exponentially distributed with a mean time between
+arrivals of 0.3 hours. Upon arrival, patients are assigned a rating of 1
+to 5, depending on the severity of their ailments. Patients in Category
+1 are the most severe, and they are immediately sent to a bed where they
+await medical attention. All other patients must first wait in the
+receiving room until a basic registration form and medical record are
+completed. They then proceed to a bed.</p>
+<p>The emergency room has three beds, one registration nurse, and two
+doctors. In all cases, the priority for allocating these resources is
+based on the severity of the ailment. Hint: Read the help for the QUEUE
+module and rank the queue by the severity attribute. The registration
+time for patients in Categories 2 through 5 is Uniform (0.1, 0.2) hours.
+The treatment time for all patients is triangularly distributed with the
+minimum, most likely, and maximum values differing according to the
+patient’s category. The distribution of patients by category and the
+corresponding minimum, most likely, and maximum treatment times are
+summarized below.</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Category</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Percent</td>
+<td align="center">6</td>
+<td align="center">8</td>
+<td align="center">18</td>
+<td align="center">33</td>
+<td align="center">35</td>
+</tr>
+<tr class="even">
+<td align="center">Minimum</td>
+<td align="center">0.8</td>
+<td align="center">0.7</td>
+<td align="center">0.4</td>
+<td align="center">0.2</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="odd">
+<td align="center">Most Likely</td>
+<td align="center">1.2</td>
+<td align="center">0.95</td>
+<td align="center">0.6</td>
+<td align="center">0.45</td>
+<td align="center">0.35</td>
+</tr>
+<tr class="even">
+<td align="center">Maximum</td>
+<td align="center">1.6</td>
+<td align="center">1.1</td>
+<td align="center">0.75</td>
+<td align="center">0.6</td>
+<td align="center">0.45</td>
+</tr>
+</tbody>
+</table>
+<p>The required responses for this simulation include:</p>
+<ul>
+<li><p>Average number of patients waiting for registration</p></li>
+<li><p>Utilization of beds</p></li>
+<li><p>System time of each type of patient and overall (across patient
+types)</p></li>
+</ul>
+<p>Using a run length of 30 days, develop a model to estimate the required responses. Report
+the responses based on estimating the system time of a patient
+regardless of type based on 50 replications.</p>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P150" class="exercise"><strong>Exercise 4.15  </strong></span>Customers enter a fast-food restaurant according to an exponential
+inter-arrival time with a mean of 0.7 minutes (use stream 1). Customers
+have a choice of ordering one of three kinds of meals: (1) a soft drink,
+(2) fries, or (3) soft drink, fries, and a burger. Upon arrive to the
+restaurant, the customer enters a single queue, awaits the availability
+of a cashier, gives the order to the cashier, then the customer pays the
+cashier. After the order is placed, the cooking can begin. The customer
+then waits until their order is ready. After receiving the order, the
+customer exits. A cashier may not take any additional orders until the
+current customer has paid. In this system, there are two cooks and two
+cashiers. The time to order and pay is represented by a triangular
+distribution with parameters (0.4, 0.8, 1.2) minutes and (0.2, 0.4, 0.6)
+minutes, respectively. The cooking time depends on the order as follows:
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="center">Percentage</th>
+<th align="center">Cooking Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">30%</td>
+<td align="center">Uniform(0.3,0.8)</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">15%</td>
+<td align="center">Uniform(0.8,1.1)</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">55%</td>
+<td align="center">Uniform(1.0, 1.4)</td>
+</tr>
+</tbody>
+</table>
+<p>Model the system for 8 hours of operation with 30 replications. Make a
+table like the following to summarize your answers for your
+replications.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Average</th>
+<th align="center">Half-width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Type 1 Throughput</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Type 2 Throughput</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Type 3 Throughput</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Utilization of cashiers</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Utilization of cooks</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Customer System Time (in minutes)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>Customer Waiting Time (in minutes)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>Probability of wait <span class="math inline">\(&gt;\)</span> 5 minutes</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P160" class="exercise"><strong>Exercise 4.16  </strong></span>Create a model to simulate observations from a <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variable. Use your
+simulation to generate two independent samples of size <span class="math inline">\(n_1 = 20\)</span> and
+<span class="math inline">\(n_2 = 30\)</span> from normal distributions
+having <span class="math inline">\(\mu_1 = 2\)</span>, <span class="math inline">\(\sigma_1^2 = 0.64\)</span> and <span class="math inline">\(\mu_2 = 2.2, \sigma_2^2 = 0.64\)</span>.
+Assume that you don’t know the true means and variances. Use the method
+of independent samples to test whether <span class="math inline">\(\mu_2 &gt; \mu_1\)</span>.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P170" class="exercise"><strong>Exercise 4.17  </strong></span>Create a model to simulate observations from a <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variable. Use your
+simulation to generate two independent samples of size <span class="math inline">\(n_1 = 20\)</span> and
+<span class="math inline">\(n_2=30\)</span> from normal distributions having
+<span class="math inline">\(\mu_1 = 2\)</span>, <span class="math inline">\(\sigma_1^2 = 0.64\)</span>, and <span class="math inline">\(\mu_2 = 2.2\)</span>, <span class="math inline">\(\sigma_2^2 = 0.36\)</span>. Assume
+that you don’t know the true means and variances. Use the method of
+independent samples to test whether <span class="math inline">\(\mu_2 &gt; \mu_1\)</span>.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P180" class="exercise"><strong>Exercise 4.18  </strong></span>Create a model to simulate observations from a <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variable. Use your
+simulation to generate two independent samples of size <span class="math inline">\(n_1 = 30\)</span> and
+<span class="math inline">\(n_2 = 30\)</span> from normal distributions having
+<span class="math inline">\(\mu_1 = 2\)</span>, <span class="math inline">\(\sigma_1^2 = 0.64\)</span> and <span class="math inline">\(\mu_2 = 2.2\)</span>, <span class="math inline">\(\sigma_2^2 = 0.36\)</span>. Assume
+that you don’t know the true means and variances. Use the paired-t
+method to test whether <span class="math inline">\(\mu_2 &gt; \mu_1\)</span>.
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P190" class="exercise"><strong>Exercise 4.19  </strong></span>Create a model to simulate observations from a <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variable. Use your
+simulation to generate two dependent samples of size <span class="math inline">\(n_1 = 30\)</span> and
+<span class="math inline">\(n_2 = 30\)</span> from normal distributions having
+<span class="math inline">\(\mu_1 = 2\)</span>, <span class="math inline">\(\sigma_1^2 = 0.64\)</span> and <span class="math inline">\(\mu_2 = 2.2\)</span>, <span class="math inline">\(\sigma_2^2 = 0.36\)</span>. Use the method of common random number. Assume that you don’t know the true means and variances. Use the paired-t
+method to test whether <span class="math inline">\(\mu_2 &gt; \mu_1\)</span>.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P200" class="exercise"><strong>Exercise 4.20  </strong></span>Jobs arrive in batches of ten items each. The inter-arrival time is EXPO(2) hours. The
+machine shop contains 2 milling machines and one drill press. About 30%
+of the items require drilling before being processed on the milling
+machine. Drilling time per item is UNIF(10, 15) minutes. The milling
+time is EXPO(15) minutes for items that do not require drilling, and
+UNIF(15,20) for items that do. Assume that the shop has two 8-hour
+shifts each day and that you are only interested in the <em>first</em> shift’s
+performance. Any jobs left over at the end of the first shift are left
+to be processed by the second shift. Estimate the average number of jobs
+left for the second shift to complete at the end of the first shift to
+within plus or minus 5 jobs with 95% confidence. What is your
+replication length? Number of replications? Determine the utilization of
+the drill press and the milling machines as well as the average time an
+item spends in the system.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P210" class="exercise"><strong>Exercise 4.21  </strong></span>A repair and inspection facility consists of two stations, a repair station with two
+technicians, and an inspection station with 1 inspector. Each repair
+technician works at a rate of 3 items per hour, while the inspector can
+inspect 8 items per hour each exponentially distributed. Approximately
+10% of all items fail inspection and are sent back to the repair station
+(this percentage holds even for items that have been repaired two to
+three times). If an item fails inspection three times then it is
+scrapped. When an item is scrapped, the item is sent to a disassembly
+station to recover the usable parts. At the disassembly station, the
+items wait in a queue until a technician is available. The disassembly
+time is distributed according to a Lognormal distribution with a mean of
+20 minutes and a standard deviation of 10 minutes. Assume that items
+arrive according to a Poisson arrival process with a rate of 4 per hour.
+The weekly performance of the system is the key objective of this
+simulation analysis. Assume that the system starts empty and idle on
+Monday mornings and runs continuously for 2 shifts per day for 5 days.
+Any jobs not completed by the end of <span class="math inline">\(2^{nd}\)</span> shift are carried over to
+the <span class="math inline">\(1^{st}\)</span> shift of the next day. Any jobs left over at the end of the
+week are handled by a separate weekend staff that is not of concern to
+the current study. Estimate the following:
+</div>
+<ul>
+<li><p>The average system time of items that pass inspection on the first
+attempt. Measure this quantity such that you are 95% confident to
+within +/- 3 minutes.</p></li>
+<li><p>The average number of jobs completed per week.</p></li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li><p>Sketch an activity diagram for this situation.</p></li>
+<li><p>Assume that there are 2 technicians at the repair station, 1 inspector at the
+inspection station, and 1 technician at the disassembly station. Develop
+a model for this situation.</p></li>
+<li><p>Assume that there are 2 technicians at the repair station and 1 inspector at the
+inspection station. The disassembly station is also staffed by the 2
+technicians that are assigned to the repair station. Develop a model for this situation.</p></li>
+</ol>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P220" class="exercise"><strong>Exercise 4.22  </strong></span>As part of a diabetes prevention program, a clinic is considering
+setting up a screening service in a local mall. They are considering two
+designs: Design A: After waiting in a single line, each walk-in patient
+is served by one of three available nurses. Each nurse has their own
+booth, where the patient is first asked some medical health questions,
+then the patient’s blood pressure and vitals are taken, finally, a
+glucose test is performed to check for diabetes. In this design, each
+nurse performs the tasks in sequence for the patient. If the glucose
+test indicates a chance of diabetes, the patient is sent to a separate
+clerk to schedule a follow-up at the clinic. If the test is not
+positive, then the patient departs.</p>
+<p>Design B: After waiting in a single line, each walk-in is served in
+order by a clerk who takes the patient’s health information, a nurse who
+takes the patient’s blood pressure and vitals, and another nurse who
+performs the diabetes test. If the glucose test indicates a chance of
+diabetes, the patient is sent to a separate clerk to schedule a
+follow-up at the clinic. If the test is not positive, then the patient
+departs. In this configuration, there is no room for the patient to wait
+between the tasks; therefore, a patient who as had their health
+information taken cannot move ahead unless the nurse taking the vital
+signs is available. Also, a patient having their glucose tested must
+leave that station before the patient in blood pressure and vital
+checking can move ahead.</p>
+<p>Patients arrive to the system according to a Poisson arrival process at
+a rate of 9.5 per hour (stream 1). Assume that there is a 5% chance
+(stream 2) that the glucose test will be positive. For design A, the
+time that it takes to have the paperwork completed, the vitals taken,
+and the glucose tested are all log-normally distributed with means of
+6.5, 6.0, and 5.5 minutes respectively (streams 3, 4, 5). They all have
+a standard deviation of approximately 0.5 minutes. For design B, because
+of the specialization of the tasks, it is expected that the mean of the
+task times will decrease by 10%.</p>
+<p>Assume that the clinic is open from 10 am to 8 pm (10
+hours each day) and that any patients in the clinic before 8 pm are
+still served. The distribution used to model the time that it takes to
+schedule a follow up visit is a WEIB(2.6, 7.3) distribution using stream 6.</p>
+<p>Make a statistically valid recommendation as to the best design based on
+the average system time of the patients. We want to be 95% confident of
+our recommendation to within 2 minutes.</p>
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P230" class="exercise"><strong>Exercise 4.23  </strong></span>A copy center has one fast copier
+and one slow copier. The copy time per page for the fast copier is
+thought to be lognormally distributed with a mean of 1.6 seconds and a
+standard deviation of 0.3 seconds. A co-op Industrial Engineering
+student has collected some time study data on the time to copy a page
+for the slow copier. The times, in seconds, are given in the data set associated with Exercise <a href="exercises-8.html#exr:AppDistFitP13">B.13</a>.</p>
+<p>The copy times for the slow and fast copiers are given on a per page
+basis. Thus, the total time to perform a copy job of N pages is the sum
+of the copy times for the N individual pages. Each individual page’s
+time is random.</p>
+<p>Customers arrive to the copy center according to a Poisson process with
+a mean rate of 1 customer every 40 seconds. The number of copies
+requested by each customer is equally likely over the range of 10 and 50
+copies. The customer is responsible for filling out a form that
+indicates the number of copies to be made. This results in a copy job
+which is processed by the copying machines in the copy center. The
+copying machines work on the entire job at one time.</p>
+<p>The policy for selecting a copier is as follows: If the number of copies
+requested is less than or equal to 30, the slow copier will be used. If
+the number of copies exceeds 30, the fast copier will be used, with one
+exception: If no jobs are in queue on the slow copier and the number
+of jobs waiting for the fast copier is at least two, then the customer
+will be served by the slow copier. After the customer gives the
+originals for copying, the customer proceeds to the service counter to
+pay for the copying. Assume that giving the originals for copying
+requires no time and thus does not require action by the copy center
+personnel. In addition, assume that one cashier handles the payment
+counter only so that sufficient workers are available to run the copy
+machines. The time to complete the payment transaction is lognormally
+distributed with a mean of 20 seconds and a standard deviation of 10
+seconds. As soon as both the payment and the copying job are finished,
+the customer takes the copies and departs the copying center. The copy
+center starts out a day with no customers and is open for 10 hours per
+day.</p>
+<p>Management has requested that the co-op Industrial Engineer develop a
+model because they are concerned that customers have to wait too long
+for copies. Recently, several customers complained about long waits.
+Their standard is that the probability that a customer waits longer than
+4 minutes should be no more than 10%. They define a customer’s waiting
+time as the time interval from when the customer enters the store to the
+time the customer leaves the store with their completed copy job. If the
+waiting time criteria is not met, several options are available: The
+policy for allocating jobs to the fast copier could be modified or the
+company could purchase an additional copier which could be either a slow
+copier or a fast copier.</p>
+Develop a model for this problem. Based on 25 replications, report in
+table form, the appropriate statistics on the waiting time of customers,
+the daily throughput of the copy center, and the utilization of the
+payment clerk. In addition estimate the probability that a customer
+spends in the system is longer than 4 minutes.
+</div>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P240" class="exercise"><strong>Exercise 4.24  </strong></span>Passengers arrive at
+an airline terminal according to an exponential distribution for the
+time between arrivals with a mean of 1.5 minutes (stream 1). Of the
+arriving passengers 7% are frequent flyers (stream 2). The time that it
+takes the passenger to walk from the main entrance to the check-in
+counter is uniform between 2.5 and 3.5 minutes (stream 3). Once at the
+counter the travellers must wait in a single line until one of four
+agents is available to serve them. The check-in time (in minutes) is
+Gamma distributed with a mean of 5 minutes and a standard deviation of 4
+minutes (stream 4). When their check-in is completed, passengers with
+carry-on only go directly to security. Those with a bag to check, walk
+to another counter to drop their bag. The time to walk to bag check is
+uniform(1,2) minutes (stream 9). Since the majority of the flyers are
+business, only 25% of the travellers have a bag to check (stream 5). At
+the baggage check, there is a single line served by one agent. The time
+to drop off the bag at the bag check stations is lognormally distributed
+with a mean of 2 minutes and a standard deviation of 1 minute (stream
+6). After dropping off their bags, the traveller goes to security. The
+time to walk to security (either after bag check or directly from the
+check in counter) is exponentially distributed with a mean of 8 minutes
+(stream 10). At the security check point, there is a single line, served
+by two TSA agents. The TSA agents check the boarding passes of the
+passengers. The time that it takes to check the boarding pass is
+triangularly distributed with parameters (2, 3, 4) minutes (stream 7).
+After getting their identity checked, the travellers go through the
+screening process. We are not interested in the screening process.
+However, the time that it takes to get through screening is distributed
+according to a triangular distribution with parameters (5, 7, 9) minutes
+(stream 8). After screening, the walking time to the passenger’s gate is
+exponentially distributed with a mean of 5 minutes (stream 11).</p>
+<p>We are interested in estimating the average time it takes from arriving
+at the terminal until a passenger gets to their gate. This should be
+measured overall and by type (frequent flyer versus non-frequent flyer).</p>
+<p>Assume that the system should be studied for 16 hours per day.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Report the average and 95% confidence interval half-width on the following based on
+the simulation of 10 days of operation. Report all time units in
+minutes.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Statistic</th>
+<th align="center">Average</th>
+<th align="center">Half-Width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Utilization of the check-in agents</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Utilization of the TSA agents</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Utilization of the Bag Check agent</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Frequent Flyer Total time to Gate</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Non-Frequent Flyer Total time to Gate</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Total time to Gate regardless of type</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Number of travellers in the system</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Number of travellers waiting for check-in</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Number of travellers waiting for security</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Time spent waiting for check-in</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Time spent waiting for security</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Based on the results of part (a) determine the number of replications
+necessary to estimate the total time to reach their gate regardless of
+type to within <span class="math inline">\(\pm\)</span> 1 minute with 95% confidence.</li>
+</ol>
+<hr />
+
+<div class="exercise">
+<span id="exr:ch4P250" class="exercise"><strong>Exercise 4.25  </strong></span>Consider the testing and repair
+shop. Suppose instead of increasing the overall arrival rate of jobs to
+the system, the new contract will introduce a new type of component into
+the system that will require a new test plan sequence. The following two
+tables represent the specifics associated with the new testing plan.
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Test Plan</th>
+<th align="center">% of parts</th>
+<th align="center">Sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">20%</td>
+<td align="center">2,3,2,1</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">12.5%</td>
+<td align="center">3,1</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="center">37.5%</td>
+<td align="center">1,3,1</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="center">20%</td>
+<td align="center">2,3</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="center">10%</td>
+<td align="center">2,1,3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Test Plan</th>
+<th align="center">Testing Time Parameters</th>
+<th align="center">Repair Time Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">(20,4.1), (12,4.2), (18,4.3), (16,4.0)</td>
+<td align="center">(30,60,80)</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">(12,4), (15,4)</td>
+<td align="center">(45,55,70)</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="center">(18,4.2), (14,4.4), (12,4.3)</td>
+<td align="center">(30,40,60)</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="center">(24,4), (30,4)</td>
+<td align="center">(35,65,75)</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="center">(20,4.1), (15,4), (12,4.2)</td>
+<td align="center">(20,30,40)</td>
+</tr>
+</tbody>
+</table>
+<p>Management is interested in understanding where the potential bottlenecks are
+in the system and in developing alternatives to mitigate those
+bottlenecks so that they can still handle the contract. The new contract
+stipulates that 80% of the time the testing and repairs should be
+completed within 480 minutes. The company runs 2 shifts each day for
+each 5 day work week. Any jobs not completed at the end of the second
+shift are carried over to first shift of the next working day. Assume
+that the contract is going to last for 1 year (52 weeks). Build a
+simulation model that can assist the company in assessing the risks
+associated with the new contract.</p>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:ch4P260" class="exercise"><strong>Exercise 4.26  </strong></span>Parts arrive at a 4 workstation
+system according to an exponential inter-arrival distribution with a
+mean of 10 minutes. The workstation A has 2 machines. The three
+workstations (B, C, D) each have a single machine. There are 3 part
+types, each with an equal probability of arriving. The process plan for
+the part types are given below. The entries are for exponential
+distributions with the mean processing time (MPT) parameter given.</p>
+</div>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Workstation, MPT</td>
+<td align="center">Workstation, MPT</td>
+<td align="center">Workstation, MPT</td>
+</tr>
+<tr class="even">
+<td align="left">A, 9.5</td>
+<td align="center">C, 14.1</td>
+<td align="center">B, 15</td>
+</tr>
+<tr class="odd">
+<td align="left">A, 13.5</td>
+<td align="center">B, 15</td>
+<td align="center">C, 8.5</td>
+</tr>
+<tr class="even">
+<td align="left">A, 12.6</td>
+<td align="center">B, 11.4</td>
+<td align="center">D, 9.0</td>
+</tr>
+</tbody>
+</table>
+<p>Assume that the transfer time between arrival and the first station,
+between all stations, and between the last station and the system exit
+is 3 minutes.Using the ROUTE, SEQUENCE, and STATION modules, simulate
+the system for 30000 minutes and discuss the potential bottlenecks in
+the system.</p>
+<hr />
+<!-- # ```{exercise, label="ch4P270"} -->
+<!-- #  -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # *** -->
+<!-- #  -->
+<!-- # ```{exercise, label="ch4P280"} -->
+<!-- #  -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # *** -->
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch4-Summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/04-Chapter4.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

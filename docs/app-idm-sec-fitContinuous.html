@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B.5 Fitting Continuous Distributions | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="B.5 Fitting Continuous Distributions | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="B.5 Fitting Continuous Distributions | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-idm-sec-MCD.html"/>
+<link rel="next" href="app-distfit-testU01.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app:idm:sec:fitContinuous" class="section level2" number="10.5">
+<h2><span class="header-section-number">B.5</span> Fitting Continuous Distributions</h2>
+<p>Previously, we examined the modeling of discrete
+distributions. In this section, we will look at modeling a continuous
+distribution using the functionality available in R. This example starts
+with step 3 of the input modeling process. That is, the data has already
+been collected. Additional discussion of this topic can be found in
+Chapter 6 of <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>.</p>
+<hr />
+
+<div class="example">
+<span id="exm:GammaFit" class="example"><strong>Example B.2  (Fitting a Gamma Distribution)  </strong></span>Suppose that we are
+interested in modeling the time that it takes to perform a computer
+component repair task. The 100 observations are provide below in
+minutes. Fit an appropriate distribution to this data.
+</div>
+<p> </p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="right">15.3</td>
+<td align="right">10.0</td>
+<td align="right">12.6</td>
+<td align="right">19.7</td>
+<td align="right">9.4</td>
+<td align="right">11.7</td>
+<td align="right">22.6</td>
+<td align="right">13.8</td>
+<td align="right">15.8</td>
+<td align="right">17.2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="right">12.4</td>
+<td align="right">3.0</td>
+<td align="right">6.3</td>
+<td align="right">7.8</td>
+<td align="right">1.3</td>
+<td align="right">8.9</td>
+<td align="right">10.2</td>
+<td align="right">5.4</td>
+<td align="right">5.7</td>
+<td align="right">28.9</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="right">16.5</td>
+<td align="right">15.6</td>
+<td align="right">13.4</td>
+<td align="right">12.0</td>
+<td align="right">8.2</td>
+<td align="right">12.4</td>
+<td align="right">6.6</td>
+<td align="right">19.7</td>
+<td align="right">13.7</td>
+<td align="right">17.2</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td align="right">3.8</td>
+<td align="right">9.1</td>
+<td align="right">27.0</td>
+<td align="right">9.7</td>
+<td align="right">2.3</td>
+<td align="right">9.6</td>
+<td align="right">8.3</td>
+<td align="right">8.6</td>
+<td align="right">14.8</td>
+<td align="right">11.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td align="right">19.5</td>
+<td align="right">5.3</td>
+<td align="right">25.1</td>
+<td align="right">13.5</td>
+<td align="right">24.7</td>
+<td align="right">9.7</td>
+<td align="right">21.0</td>
+<td align="right">3.9</td>
+<td align="right">6.2</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td align="right">7.0</td>
+<td align="right">10.5</td>
+<td align="right">16.1</td>
+<td align="right">5.2</td>
+<td align="right">23.0</td>
+<td align="right">16.0</td>
+<td align="right">11.3</td>
+<td align="right">7.2</td>
+<td align="right">8.9</td>
+<td align="right">7.8</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td align="right">20.1</td>
+<td align="right">17.8</td>
+<td align="right">14.4</td>
+<td align="right">8.4</td>
+<td align="right">12.1</td>
+<td align="right">3.6</td>
+<td align="right">10.9</td>
+<td align="right">19.6</td>
+<td align="right">14.1</td>
+<td align="right">16.1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td align="right">11.8</td>
+<td align="right">9.2</td>
+<td align="right">31.4</td>
+<td align="right">16.4</td>
+<td align="right">5.1</td>
+<td align="right">20.7</td>
+<td align="right">14.7</td>
+<td align="right">22.5</td>
+<td align="right">22.1</td>
+<td align="right">22.7</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td align="right">22.8</td>
+<td align="right">17.7</td>
+<td align="right">25.6</td>
+<td align="right">10.1</td>
+<td align="right">8.2</td>
+<td align="right">24.4</td>
+<td align="right">30.8</td>
+<td align="right">8.9</td>
+<td align="right">8.1</td>
+<td align="right">12.9</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td align="right">9.8</td>
+<td align="right">5.5</td>
+<td align="right">7.4</td>
+<td align="right">31.5</td>
+<td align="right">29.1</td>
+<td align="right">8.9</td>
+<td align="right">10.3</td>
+<td align="right">8.0</td>
+<td align="right">10.9</td>
+<td align="right">6.2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p> </p>
+<div id="app:idm:subsec:visualizedata" class="section level3" number="10.5.1">
+<h3><span class="header-section-number">B.5.1</span> Visualizing the Data</h3>
+<p>The first steps are to visualize the data and check for independence.
+This can be readily accomplished using the <em>hist</em>, <em>plot</em>, and <em>acf</em>
+functions in R. Assume that the data is in a file called,
+<em>taskTimes.txt</em> within the R working directory.</p>
+<pre><code>y = scan(file=&quot;data/AppDistFitting/taskTimes.txt&quot;)
+hist(y, main=&quot;Task Times&quot;, xlab = &quot;minutes&quot;)
+plot(y,type=&quot;b&quot;,main=&quot;Task Times&quot;, ylab = &quot;minutes&quot;, xlab = &quot;Observation#&quot;)
+acf(y, main = &quot;ACF Plot for Task Times&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:TaskTimesHist"></span>
+<img src="10-AppDistributionFitting_files/figure-html/TaskTimesHist-1.svg" alt="Histogram of Computer Repair Task Times" width="672" />
+<p class="caption">
+Figure B.11: Histogram of Computer Repair Task Times
+</p>
+</div>
+<p>As can be seen in Figure <a href="app-idm-sec-fitContinuous.html#fig:TaskTimesHist">B.11</a>, the histogram is slightly right skewed.</p>
+<div class="figure" style="text-align: center"><span id="fig:TaskTimesTimeSeriesPlot"></span>
+<img src="10-AppDistributionFitting_files/figure-html/TaskTimesTimeSeriesPlot-1.svg" alt="Time Series Plot of Computer Repair Task Times" width="672" />
+<p class="caption">
+Figure B.12: Time Series Plot of Computer Repair Task Times
+</p>
+</div>
+<p>The time series plot, Figure <a href="app-idm-sec-fitContinuous.html#fig:TaskTimesTimeSeriesPlot">B.12</a>, illustrates no significant
+pattern (e.g. trends, etc.).</p>
+<div class="figure" style="text-align: center"><span id="fig:TaskTimesACFPlot"></span>
+<img src="10-AppDistributionFitting_files/figure-html/TaskTimesACFPlot-1.svg" alt="ACF Plot of Computer Repair Task Times" width="672" />
+<p class="caption">
+Figure B.13: ACF Plot of Computer Repair Task Times
+</p>
+</div>
+<p>Finally, the autocorrelation plot, Figure <a href="app-idm-sec-fitContinuous.html#fig:TaskTimesACFPlot">B.13</a>, shows no significant correlation (the early lags are well within the confidence band) with respect to observation
+number.</p>
+<p>Based on the visual analysis, we can conclude that the task times are
+likely to be independent and identically distributed.</p>
+</div>
+<div id="app:idm:subsec:statsdata" class="section level3" number="10.5.2">
+<h3><span class="header-section-number">B.5.2</span> Statistically Summarize the Data</h3>
+<p>An analysis of the statistical properties of the task times can be
+easily accomplished in R using the <em>summary</em>, <em>mean</em>, <em>var</em>, <em>sd</em>, and
+<em>t.test</em> functions. The <em>summary</em> command summarizes the distributional properties in terms
+of the minimum, maximum, median, and 1st and 3rd quartiles of the data.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="app-idm-sec-fitContinuous.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.300   8.275  11.750  13.412  17.325  31.500</code></pre>
+<p>The <em>mean</em>, <em>var</em>, <em>sd</em> commands compute the sample average, sample
+variance, and sample standard deviation of the data.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="app-idm-sec-fitContinuous.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
+<pre><code>## [1] 13.412</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="app-idm-sec-fitContinuous.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(y)</span></code></pre></div>
+<pre><code>## [1] 50.44895</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="app-idm-sec-fitContinuous.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<pre><code>## [1] 7.102742</code></pre>
+<p>Finally, the <em>t.test</em> command can be used to form a 95% confidence interval on the
+mean and test if the true mean is significantly different from zero.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="app-idm-sec-fitContinuous.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(y)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  y
+## t = 18.883, df = 99, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  12.00266 14.82134
+## sample estimates:
+## mean of x 
+##    13.412</code></pre>
+<p>The <em>descdist</em> command of the <em>fitdistrplus</em> package will also provide a
+description of the distribution’s properties.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="app-idm-sec-fitContinuous.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descdist</span>(y, <span class="at">graph=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## summary statistics
+## ------
+## min:  1.3   max:  31.5 
+## median:  11.75 
+## mean:  13.412 
+## estimated sd:  7.102742 
+## estimated skewness:  0.7433715 
+## estimated kurtosis:  2.905865</code></pre>
+<p>The median is less than the mean and the skewness is less than 1.0. This
+confirms the visual conclusion that the data is slightly skewed to the
+right. Before continuing with the analysis, let’s recap what has been
+learned so far:</p>
+<ul>
+<li><p>The data appears to be stationary. This conclusion is based on the
+time series plot where no discernible trend with respect to time is
+found in the data.</p></li>
+<li><p>The data appears to be independent. This conclusion is from the
+autocorrelation plot.</p></li>
+<li><p>The distribution of the data is positively (right) skewed and
+unimodal. This conclusion is based on the histogram and from the
+statistical summary.</p></li>
+</ul>
+</div>
+<div id="app:idm:subsec:hypothDist" class="section level3" number="10.5.3">
+<h3><span class="header-section-number">B.5.3</span> Hypothesizing and Testing a Distribution</h3>
+<p>The next steps involve the model fitting processes of hypothesizing
+distributions, estimating the parameters, and checking for goodness of
+fit. Distributions such as the gamma, Weibull, and lognormal should be
+candidates for this situation based on the histogram. We will perform
+the analysis for the gamma distribution ‘by hand’ so that you can
+develop an understanding of the process. Then, the <em>fitdistrplus</em>
+package will be illustrated.</p>
+<p>Here is what we are going to do:</p>
+<ol style="list-style-type: decimal">
+<li><p>Perform a chi-squared goodness of fit test.</p></li>
+<li><p>Perform a K-S goodness of fit test.</p></li>
+<li><p>Examine the P-P and Q-Q plots.</p></li>
+</ol>
+<p>Recall that the Chi-Square Test divides the range of the data, <span class="math inline">\((x_1, x_2, \dots, x_n)\)</span>, into,
+<span class="math inline">\(k\)</span>, intervals and tests if the number of observations that fall in each
+interval is close the expected number that should fall in the interval
+given the hypothesized distribution is the correct model.</p>
+<p>Since a histogram tabulates the necessary counts for the intervals it is
+useful to begin the analysis by developing a histogram. Let
+<span class="math inline">\(b_{0}, b_{1}, \cdots, b_{k}\)</span> be the breakpoints (end points) of the
+class intervals such that
+<span class="math inline">\(\left(b_{0}, b_{1} \right], \left(b_{1}, b_{2} \right], \cdots, \left(b_{k-1}, b_{k} \right]\)</span>
+form <span class="math inline">\(k\)</span> disjoint and adjacent intervals. The intervals do not have to
+be of equal width. Also, <span class="math inline">\(b_{0}\)</span> can be equal to <span class="math inline">\(-\infty\)</span> resulting in
+interval <span class="math inline">\(\left(-\infty, b_{1} \right]\)</span> and <span class="math inline">\(b_{k}\)</span> can be equal to
+<span class="math inline">\(+\infty\)</span> resulting in interval <span class="math inline">\(\left(b_{k-1}, +\infty \right)\)</span>. Define
+<span class="math inline">\(\Delta b_j = b_{j} - b_{j-1}\)</span> and if all the intervals have the same
+width (except perhaps for the end intervals), <span class="math inline">\(\Delta b = \Delta b_j\)</span>.</p>
+<p>To count the number of observations that fall in each interval, define the following function:</p>
+<p><span class="math display" id="eq:cumSum">\[\begin{equation}
+c(\vec{x}\leq b) = \#\lbrace x_i \leq b \rbrace \; i=1,\ldots,n
+\tag{B.8}
+\end{equation}\]</span></p>
+<p><span class="math inline">\(c(\vec{x}\leq b)\)</span> counts the number of observations less than or equal
+to <span class="math inline">\(x\)</span>. Let <span class="math inline">\(c_{j}\)</span> be the observed count of the <span class="math inline">\(x\)</span> values contained in
+the <span class="math inline">\(j^{th}\)</span> interval <span class="math inline">\(\left(b_{j-1}, b_{j} \right]\)</span>. Then, we can
+determine <span class="math inline">\(c_{j}\)</span> via the following equation:</p>
+<p><span class="math display" id="eq:csubj">\[\begin{equation}
+c_{j} = c(\vec{x}\leq b_{j}) - c(\vec{x}\leq b_{j-1})
+\tag{B.9}
+\end{equation}\]</span></p>
+<p>Define <span class="math inline">\(h_j = c_j/n\)</span> as the relative frequency for the <span class="math inline">\(j^{th}\)</span>
+interval. Note that <span class="math inline">\(\sum\nolimits_{j=1}^{k} h_{j} = 1\)</span>. A plot of the
+cumulative relative frequency, <span class="math inline">\(\sum\nolimits_{i=1}^{j} h_{i}\)</span>, for each
+<span class="math inline">\(j\)</span> is called a cumulative distribution plot. A plot of <span class="math inline">\(h_j\)</span> should
+resemble the true probability distribution in shape because according to
+the mean value theorem of calculus.</p>
+<p><span class="math display">\[p_j = P\{b_{j-1} \leq X \leq b_{j}\} = \int\limits_{b_{j-1}}^{b_{j}} f(x) \mathrm{d}x = \Delta b \times f(y) \; \text{for} \; y \in \left(b_{j-1}, b_{j} \right)\]</span></p>
+<p>Therefore, since <span class="math inline">\(h_j\)</span> is an estimate for <span class="math inline">\(p_j\)</span>, the shape of the
+distribution should be proportional to the relative frequency, i.e.
+<span class="math inline">\(h_j \approx \Delta b \times f(y)\)</span>.</p>
+<p>The number of intervals is a key decision parameter and will affect the
+visual quality of the histogram and ultimately the chi-squared test
+statistic calculations that are based on the tabulated counts from the
+histogram. In general, the visual display of the histogram is highly
+dependent upon the number of class intervals. If the widths of the
+intervals are too small, the histogram will tend to have a ragged shape.
+If the width of the intervals are too large, the resulting histogram
+will be very block like. Two common rules for setting the number of
+interval are:</p>
+<ol style="list-style-type: decimal">
+<li><p>Square root rule, choose the number of intervals, <span class="math inline">\(k = \sqrt{n}\)</span>.</p></li>
+<li><p>Sturges rule, choose the number of intervals,
+<span class="math inline">\(k = \lfloor 1 + \log_{2}(n) \rfloor\)</span>.</p></li>
+</ol>
+<p>A frequency diagram in R is very simple by using the <em>hist()</em> function.
+The <em>hist()</em> function provides the frequency version of histogram and
+<em>hist(x, freq=F)</em> provides the density version of the histogram. The
+<em>hist()</em> function will automatically determine breakpoints using the
+Sturges rule as its default. You can also provide your own breakpoints
+in a vector. The <em>hist()</em> function will automatically compute the counts
+associated with the intervals.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="app-idm-sec-fitContinuous.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make histogram with no plot</span></span>
+<span id="cb96-2"><a href="app-idm-sec-fitContinuous.html#cb96-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb96-3"><a href="app-idm-sec-fitContinuous.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># show the histogram object components</span></span>
+<span id="cb96-4"><a href="app-idm-sec-fitContinuous.html#cb96-4" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
+<pre><code>## $breaks
+## [1]  0  5 10 15 20 25 30 35
+## 
+## $counts
+## [1]  6 34 25 16 11  5  3
+## 
+## $density
+## [1] 0.012 0.068 0.050 0.032 0.022 0.010 0.006
+## 
+## $mids
+## [1]  2.5  7.5 12.5 17.5 22.5 27.5 32.5
+## 
+## $xname
+## [1] &quot;y&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
+<p>Notice how the <em>hist</em> command returns a result object. In the example,
+the result object is assigned to the variable <span class="math inline">\(h\)</span>. By printing the
+result object, you can see all the tabulated results. For example the
+variable <em>h$counts</em> shows the tabulation of the counts based on the
+default breakpoints.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="app-idm-sec-fitContinuous.html#cb98-1" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts</span></code></pre></div>
+<pre><code>## [1]  6 34 25 16 11  5  3</code></pre>
+<p>The breakpoints are given by the variable
+<em>h$breaks</em>. Note that by default <em>hist</em> defines the intervals as
+right-closed, i.e. <span class="math inline">\(\left(b_{k-1}, b_{k} \right]\)</span>, rather than
+left-closed, <span class="math inline">\(\left[b_{k-1}, b_{k} \right)\)</span>. If you want left closed
+intervals, set the <em>hist</em> parameter, <em>right = FALSE</em>. The relative
+frequencies, <span class="math inline">\(h_j\)</span> can be computed by dividing the counts by the number
+of observations, i.e. <em>h$counts/length(y)</em>.</p>
+<p>The variable <em>h$density</em> holds the relative frequencies divided by the
+interval length. In terms of notation, this is, <span class="math inline">\(f_j = h_j/\Delta b_j\)</span>.
+This is referred to as the density because it estimates the height of
+the probability density curve.</p>
+<p>To define your own break points, put them in a vector using the collect
+command (for example: <span class="math inline">\(b = c(0,4,8,12,16,20,24,28,32)\)</span>) and then specify
+the vector with the <em>breaks</em> option of the <em>hist</em> command if you do not
+want to use the default breakpoints. The following listing illustrates
+how to do this.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="app-idm-sec-fitContinuous.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up some new break points</span></span>
+<span id="cb100-2"><a href="app-idm-sec-fitContinuous.html#cb100-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>,<span class="dv">20</span>,<span class="dv">24</span>,<span class="dv">28</span>,<span class="dv">32</span>)</span>
+<span id="cb100-3"><a href="app-idm-sec-fitContinuous.html#cb100-3" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre><code>## [1]  0  4  8 12 16 20 24 28 32</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="app-idm-sec-fitContinuous.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make histogram with no plot for new breakpoints</span></span>
+<span id="cb102-2"><a href="app-idm-sec-fitContinuous.html#cb102-2" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">breaks =</span> b, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb102-3"><a href="app-idm-sec-fitContinuous.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># show the histogram object components</span></span>
+<span id="cb102-4"><a href="app-idm-sec-fitContinuous.html#cb102-4" aria-hidden="true" tabindex="-1"></a>hb</span></code></pre></div>
+<pre><code>## $breaks
+## [1]  0  4  8 12 16 20 24 28 32
+## 
+## $counts
+## [1]  6 16 30 17 12  9  5  5
+## 
+## $density
+## [1] 0.0150 0.0400 0.0750 0.0425 0.0300 0.0225 0.0125 0.0125
+## 
+## $mids
+## [1]  2  6 10 14 18 22 26 30
+## 
+## $xname
+## [1] &quot;y&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
+<p>You can also use the <em>cut()</em> function and the <em>table()</em> command to
+tabulate the counts by providing a vector of breaks and tabulate the
+counts using the <em>cut()</em> and the <em>table()</em> commands without using the
+<em>hist</em> command. The following listing illustrates how to do this.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="app-idm-sec-fitContinuous.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define the intervals</span></span>
+<span id="cb104-2"><a href="app-idm-sec-fitContinuous.html#cb104-2" aria-hidden="true" tabindex="-1"></a>y.cut <span class="ot">=</span> <span class="fu">cut</span>(y, <span class="at">breaks=</span>b)</span>
+<span id="cb104-3"><a href="app-idm-sec-fitContinuous.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate the counts in the intervals</span></span>
+<span id="cb104-4"><a href="app-idm-sec-fitContinuous.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(y.cut)</span></code></pre></div>
+<pre><code>## y.cut
+##   (0,4]   (4,8]  (8,12] (12,16] (16,20] (20,24] (24,28] (28,32] 
+##       6      16      30      17      12       9       5       5</code></pre>
+<p>By using the <em>hist</em> function in R, we have a method for tabulating
+the relative frequencies. In order to apply the chi-square test, we need
+to be able to compute the following test statistic:</p>
+<p><span class="math display" id="eq:chisqd">\[\begin{equation}
+\chi^{2}_{0} = \sum\limits_{j=1}^{k} \frac{\left( c_{j} - np_{j} \right)^{2}}{np_{j}}
+\tag{B.10}
+\end{equation}\]</span></p>
+<p>where</p>
+<p><span class="math display" id="eq:psubj">\[\begin{equation}
+p_j = P\{b_{j-1} \leq X \leq b_{j}\} = \int\limits_{b_{j-1}}^{b_{j}} f(x) \mathrm{d}x = F(b_{j}) - F(b_{j-1})
+\tag{B.11}
+\end{equation}\]</span></p>
+<p>Notice that <span class="math inline">\(p_{j}\)</span> depends on <span class="math inline">\(F(x)\)</span>, the cumulative distribution
+function of the hypothesized distribution. Thus, we need to hypothesize
+a distribution and estimate the parameters of the distribution.</p>
+<p>For this situation, we will hypothesize that the task times come from a
+gamma distribution. Therefore, we need to estimate the shape (<span class="math inline">\(\alpha\)</span>)
+and the scale (<span class="math inline">\(\beta\)</span>) parameters. In order to do this we can use an
+estimation technique such as the method of moments or the maximum
+likelihood method. For simplicity and illustrative purposes, we will use
+the method of moments to estimate the parameters.</p>
+<p>The method of moments is a technique for constructing estimators of the
+parameters that is based on matching the sample moments (e.g. sample
+average, sample variance, etc.) with the corresponding distribution
+moments. This method equates sample moments to population (theoretical)
+ones. Recall that the mean and variance of the gamma distribution are:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X] &amp; = \alpha \beta \\
+Var[X] &amp; = \alpha \beta^{2}
+\end{aligned}
+\]</span></p>
+<p>Setting <span class="math inline">\(\bar{X} = E[X]\)</span> and <span class="math inline">\(S^{2} = Var[X]\)</span> and solving for <span class="math inline">\(\alpha\)</span> and
+<span class="math inline">\(\beta\)</span> yields,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\alpha}  &amp; = \frac{(\bar{X})^2}{S^{2}}\\
+\hat{\beta} &amp; = \frac{S^{2}}{\bar{X}}
+\end{aligned}
+\]</span></p>
+<p>Using the results, <span class="math inline">\(\bar{X} = 13.412\)</span> and <span class="math inline">\(S^{2} = 50.44895\)</span>, yields,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\alpha}  &amp; = \frac{(\bar{X})^2}{S^{2}} = \frac{(13.412)^2}{50.44895} = 3.56562\\
+\hat{\beta} &amp; = \frac{S^{2}}{\bar{X}} = \frac{50.44895}{13.412} = 3.761478
+\end{aligned}
+\]</span></p>
+<p>Then, you can compute the theoretical probability of falling in your
+intervals. Table <a href="app-idm-sec-fitContinuous.html#tab:TaskTimeGOF">B.6</a> illustrates the computations necessary to
+compute the chi-squared test statistic.</p>
+<div id="tab:TaskTimeGOF">
+<table>
+<caption><span id="tab:TaskTimeGOF">Table B.6: </span> Chi-Squared Goodness of Fit Calculations</caption>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(j\)</span></th>
+<th align="center"><span class="math inline">\(b_{j-1}\)</span></th>
+<th align="center"><span class="math inline">\(b_{j}\)</span></th>
+<th align="center"><span class="math inline">\(c_{j}\)</span></th>
+<th align="center"><span class="math inline">\(F(b_{j-1})\)</span></th>
+<th align="center"><span class="math inline">\(F(b_{j})\)</span></th>
+<th align="center"><span class="math inline">\(p_j\)</span></th>
+<th align="center"><span class="math inline">\(np_{j}\)</span></th>
+<th align="center"><span class="math inline">\(\frac{\left( c_{j} - np_{j} \right)^{2}}{np_{j}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.00</td>
+<td align="center">5.00</td>
+<td align="center">6.00</td>
+<td align="center">0.00</td>
+<td align="center">0.08</td>
+<td align="center">0.08</td>
+<td align="center">7.89</td>
+<td align="center">0.45</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">5.00</td>
+<td align="center">10.00</td>
+<td align="center">34.00</td>
+<td align="center">0.08</td>
+<td align="center">0.36</td>
+<td align="center">0.29</td>
+<td align="center">28.54</td>
+<td align="center">1.05</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">10.00</td>
+<td align="center">15.00</td>
+<td align="center">25.00</td>
+<td align="center">0.36</td>
+<td align="center">0.65</td>
+<td align="center">0.29</td>
+<td align="center">28.79</td>
+<td align="center">0.50</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">15.00</td>
+<td align="center">20.00</td>
+<td align="center">16.00</td>
+<td align="center">0.65</td>
+<td align="center">0.84</td>
+<td align="center">0.18</td>
+<td align="center">18.42</td>
+<td align="center">0.32</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">20.00</td>
+<td align="center">25.00</td>
+<td align="center">11.00</td>
+<td align="center">0.84</td>
+<td align="center">0.93</td>
+<td align="center">0.09</td>
+<td align="center">9.41</td>
+<td align="center">0.27</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">25.00</td>
+<td align="center">30.00</td>
+<td align="center">5.00</td>
+<td align="center">0.93</td>
+<td align="center">0.97</td>
+<td align="center">0.04</td>
+<td align="center">4.20</td>
+<td align="center">0.15</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">30.00</td>
+<td align="center">35.00</td>
+<td align="center">3.00</td>
+<td align="center">0.97</td>
+<td align="center">0.99</td>
+<td align="center">0.02</td>
+<td align="center">1.72</td>
+<td align="center">0.96</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">35.00</td>
+<td align="center"><span class="math inline">\(\infty\)</span></td>
+<td align="center">0.00</td>
+<td align="center">0.99</td>
+<td align="center">1.00</td>
+<td align="center">0.01</td>
+<td align="center">1.03</td>
+<td align="center">1.03</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Since the 7th and 8th intervals have less than 5 expected counts, we should combine them with the 6th interval. Computing the chi-square test statistic value over the 6 intervals yields:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\chi^{2}_{0} &amp; = \sum\limits_{j=1}^{6} \frac{\left( c_{j} - np_{j} \right)^{2}}{np_{j}}\\
+ &amp; = \frac{\left( 6.0 - 7.89\right)^{2}}{7.89} + \frac{\left(34-28.54\right)^{2}}{28.54} + \frac{\left(25-28.79\right)^{2}}{28.79} + \frac{\left(16-18.42\right)^{2}}{218.42} \\
+ &amp; + \frac{\left(11-9.41\right)^{2}}{9.41} + \frac{\left(8-6.95\right)^{2}}{6.95} \\
+ &amp; = 2.74
+\end{aligned}
+\]</span></p>
+<p>Since two parameters of the gamma were estimated from the data, the
+degrees of freedom for the chi-square test is 3 (#intervals -
+#parameters - 1 = 6-2-1). Computing the p-value yields
+<span class="math inline">\(P\{\chi^{2}_{3} &gt; 2.74\} = 0.433\)</span>. Thus, given such a high p-value, we
+would not reject the hypothesis that the observed data is gamma
+distributed with <span class="math inline">\(\alpha = 3.56562\)</span> and <span class="math inline">\(\beta = 3.761478\)</span>.</p>
+<p>The following listing provides a script that will compute the chi-square
+test statistic and its p-value within R.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="app-idm-sec-fitContinuous.html#cb106-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">mean</span>(y)<span class="sc">*</span><span class="fu">mean</span>(y)<span class="sc">/</span><span class="fu">var</span>(y) <span class="co">#estimate alpha</span></span>
+<span id="cb106-2"><a href="app-idm-sec-fitContinuous.html#cb106-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">var</span>(y)<span class="sc">/</span><span class="fu">mean</span>(y) <span class="co">#estmate beta</span></span>
+<span id="cb106-3"><a href="app-idm-sec-fitContinuous.html#cb106-3" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">plot=</span><span class="cn">FALSE</span>) <span class="co"># make histogram</span></span>
+<span id="cb106-4"><a href="app-idm-sec-fitContinuous.html#cb106-4" aria-hidden="true" tabindex="-1"></a>LL <span class="ot">=</span> hy<span class="sc">$</span>breaks <span class="co"># set lower limit of intervals</span></span>
+<span id="cb106-5"><a href="app-idm-sec-fitContinuous.html#cb106-5" aria-hidden="true" tabindex="-1"></a>UL <span class="ot">=</span> <span class="fu">c</span>(LL[<span class="sc">-</span><span class="dv">1</span>],<span class="dv">10000</span>) <span class="co"># set upper limit of intervals</span></span>
+<span id="cb106-6"><a href="app-idm-sec-fitContinuous.html#cb106-6" aria-hidden="true" tabindex="-1"></a>FLL <span class="ot">=</span> <span class="fu">pgamma</span>(LL,<span class="at">shape =</span> a, <span class="at">scale =</span> b) <span class="co">#compute F(LL)</span></span>
+<span id="cb106-7"><a href="app-idm-sec-fitContinuous.html#cb106-7" aria-hidden="true" tabindex="-1"></a>FUL <span class="ot">=</span> <span class="fu">pgamma</span>(UL,<span class="at">shape =</span> a, <span class="at">scale =</span> b)  <span class="co">#compute F(UL)</span></span>
+<span id="cb106-8"><a href="app-idm-sec-fitContinuous.html#cb106-8" aria-hidden="true" tabindex="-1"></a>pj <span class="ot">=</span> FUL <span class="sc">-</span> FLL <span class="co"># compute prob of being in interval</span></span>
+<span id="cb106-9"><a href="app-idm-sec-fitContinuous.html#cb106-9" aria-hidden="true" tabindex="-1"></a>ej <span class="ot">=</span> <span class="fu">length</span>(y)<span class="sc">*</span>pj <span class="co"># compute expected number in interval</span></span>
+<span id="cb106-10"><a href="app-idm-sec-fitContinuous.html#cb106-10" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">c</span>(ej[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">sum</span>(ej[<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>])) <span class="co">#combine last 3 intervals</span></span>
+<span id="cb106-11"><a href="app-idm-sec-fitContinuous.html#cb106-11" aria-hidden="true" tabindex="-1"></a>cnts <span class="ot">=</span> <span class="fu">c</span>(hy<span class="sc">$</span>counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">sum</span>(hy<span class="sc">$</span>counts[<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>])) <span class="co">#combine last 3 intervals</span></span>
+<span id="cb106-12"><a href="app-idm-sec-fitContinuous.html#cb106-12" aria-hidden="true" tabindex="-1"></a>chissq <span class="ot">=</span> ((cnts<span class="sc">-</span>e)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>e <span class="co">#compute chi sq values</span></span>
+<span id="cb106-13"><a href="app-idm-sec-fitContinuous.html#cb106-13" aria-hidden="true" tabindex="-1"></a>sumchisq <span class="ot">=</span> <span class="fu">sum</span>(chissq) <span class="co"># compute test statistic</span></span>
+<span id="cb106-14"><a href="app-idm-sec-fitContinuous.html#cb106-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">length</span>(e)<span class="sc">-</span><span class="dv">2-1</span> <span class="co">#compute degrees of freedom</span></span>
+<span id="cb106-15"><a href="app-idm-sec-fitContinuous.html#cb106-15" aria-hidden="true" tabindex="-1"></a>pvalue <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(sumchisq, df) <span class="co">#compute p-value</span></span>
+<span id="cb106-16"><a href="app-idm-sec-fitContinuous.html#cb106-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sumchisq) <span class="co"># print test statistic</span></span></code></pre></div>
+<pre><code>## [1] 2.742749</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="app-idm-sec-fitContinuous.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pvalue) <span class="co">#print p-value</span></span></code></pre></div>
+<pre><code>## [1] 0.4330114</code></pre>
+<p>Notice that we computed the same <span class="math inline">\(\chi^{2}\)</span> value and p-value as when doing the calculations by hand.</p>
+</div>
+<div id="kolmogorov-smirnov-test" class="section level3" number="10.5.4">
+<h3><span class="header-section-number">B.5.4</span> Kolmogorov-Smirnov Test</h3>
+<p>The Kolmogorov-Smirnov (K-S) Test compares the hypothesized
+distribution, <span class="math inline">\(\hat{F}(x)\)</span>, to the empirical distribution and does not
+depend on specifying intervals for tabulating the test statistic. The
+K-S test compares the theoretical cumulative distribution function (CDF)
+to the empirical CDF by checking the largest absolute deviation between
+the two over the range of the random variable. The K-S Test is described
+in detail in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>, which also includes a discussion of
+the advantages/disadvantages of the test. For example,
+<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> indicates that the K-S Test is more powerful than
+the Chi-Squared test and has the ability to be used on smaller sample
+sizes.</p>
+<p>To apply the K-S Test, we must be able to compute the empirical
+distribution function. The empirical distribution is the proportion of
+the observations that are less than or equal to <span class="math inline">\(x\)</span>. Recalling
+Equation <a href="app-idm-sec-fitContinuous.html#eq:cumSum">(B.8)</a>, we can define the empirical distribution as in
+Equation <a href="app-idm-sec-fitContinuous.html#eq:emCDF1">(B.12)</a>.</p>
+<p><span class="math display" id="eq:emCDF1">\[\begin{equation}
+\tilde{F}_{n} \left( x \right)  = \frac{c(\vec{x} \leq x)}{n}
+\tag{B.12}
+\end{equation}\]</span></p>
+<p>To formalize this definition, suppose we have a sample of data, <span class="math inline">\(x_{i}\)</span>
+for <span class="math inline">\(i=1, 2, \cdots, n\)</span> and we then sort this data to obtain <span class="math inline">\(x_{(i)}\)</span>
+for <span class="math inline">\(i=1, 2, \cdots, n\)</span>, where <span class="math inline">\(x_{(1)}\)</span> is the smallest, <span class="math inline">\(x_{(2)}\)</span> is
+the second smallest, and so forth. Thus, <span class="math inline">\(x_{(n)}\)</span> will be the largest
+value. These sorted numbers are called the <em>order statistics</em> for the
+sample and <span class="math inline">\(x_{(i)}\)</span> is the <span class="math inline">\(i^{th}\)</span> order statistic.</p>
+<p>Since the empirical distribution function is characterized by the
+proportion of the data values that are less than or equal to the
+<span class="math inline">\(i^{th}\)</span> order statistic for each <span class="math inline">\(i=1, 2, \cdots, n\)</span>,
+Equation <a href="app-idm-sec-fitContinuous.html#eq:emCDF1">(B.12)</a> can be re-written as:</p>
+<p><span class="math display" id="eq:emCDF12">\[\begin{equation}
+\tilde{F}_{n} \left( x_{(i)} \right)  = \frac{i}{n}
+\tag{B.13}
+\end{equation}\]</span></p>
+<p>The reason that this revised definition works is because for a given
+<span class="math inline">\(x_{(i)}\)</span> the number of data values less than or equal to <span class="math inline">\(x_{(i)}\)</span> will
+be <span class="math inline">\(i\)</span>, by definition of the order statistic. For each order statistic,
+the empirical distribution can be easily computed as follows:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{F}_{n} \left( x_{(1)} \right) &amp;  =  \frac{1}{n}\\
+\tilde{F}_{n} \left( x_{(2)} \right) &amp;  = \frac{2}{n}\\
+ \vdots &amp; \\
+ \tilde{F}_{n} \left( x_{(i)} \right) &amp;  = \frac{i}{n}\\
+  \vdots    &amp; \\
+ \tilde{F}_{n} \left( x_{(n)} \right) &amp;  = \frac{n}{n} = 1
+\end{aligned}
+\]</span></p>
+<p>A continuity correction is often used when defining the empirical
+distribution as follows:</p>
+<p><span class="math display">\[\tilde{F}_{n} \left( x_{(i)} \right)  = \frac{i - 0.5}{n}\]</span></p>
+<p>This enhances the testing of continuous distributions. The sorting and
+computing of the empirical distribution is easy to accomplish in a
+spreadsheet program or in the statistical package R.</p>
+<p>The K-S Test statistic, <span class="math inline">\(D_{n}\)</span> is defined as <span class="math inline">\(D_{n} = \max \lbrace D^{+}_{n}, D^{-}_{n} \rbrace\)</span> where:</p>
+<p><span class="math display">\[
+\begin{aligned}
+D^{+}_{n} &amp; = \underset{1 \leq i \leq n}{\max} \Bigl\lbrace \tilde{F}_{n} \left( x_{(i)} \right) -  \hat{F}(x_{(i)}) \Bigr\rbrace \\
+  &amp; = \underset{1 \leq i \leq n}{\max} \Bigl\lbrace \frac{i}{n} -  \hat{F}(x_{(i)}) \Bigr\rbrace \end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+D^{-}_{n} &amp; = \underset{1 \leq i \leq n}{\max} \Bigl\lbrace \hat{F}(x_{(i)}) - \tilde{F}_{n} \left( x_{(i-1)} \right) \Bigr\rbrace \\
+  &amp; = \underset{1 \leq i \leq n}{\max} \Bigl\lbrace \hat{F}(x_{(i)}) - \frac{i-1}{n} \Bigr\rbrace
+\end{aligned}
+\]</span></p>
+<p>The K-S Test statistic, <span class="math inline">\(D_{n}\)</span>, represents the largest vertical
+distance between the hypothesized distribution and the empirical
+distribution over the range of the distribution.
+Table <a href="app-StatTables.html#tab:ksValues">G.5</a> contains critical values for the K-S test, where you reject the null
+hypothesis if <span class="math inline">\(D_{n}\)</span> is greater than the critical value <span class="math inline">\(D_{\alpha}\)</span>,
+where <span class="math inline">\(\alpha\)</span> is the Type 1 significance level.</p>
+<p>Intuitively, a large value for the K-S test statistic indicates a poor
+fit between the empirical and the hypothesized distributions. The null
+hypothesis is that the data comes from the hypothesized distribution.
+While the K-S Test can also be applied to discrete data, special tables
+must be used for getting the critical values. Additionally, the K-S Test
+in its original form assumes that the parameters of the hypothesized
+distribution are known, i.e. given without estimating from the data.
+Research on the effect of using the K-S Test with estimated parameters
+has indicated that it will be conservative in the sense that the actual
+Type I error will be less than specified.</p>
+<p>The following R listing, illustrates how to compute the K-S statistic by
+hand (which is quite unnecessary) because you can simply use the
+<em>ks.test</em> command as illustrated.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="app-idm-sec-fitContinuous.html#cb110-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y) <span class="co"># make a vector to count y&#39;s</span></span>
+<span id="cb110-2"><a href="app-idm-sec-fitContinuous.html#cb110-2" aria-hidden="true" tabindex="-1"></a>yj <span class="ot">=</span> <span class="fu">sort</span>(y) <span class="co"># sort the y&#39;s</span></span>
+<span id="cb110-3"><a href="app-idm-sec-fitContinuous.html#cb110-3" aria-hidden="true" tabindex="-1"></a>Fj <span class="ot">=</span> <span class="fu">pgamma</span>(yj, <span class="at">shape =</span> a, <span class="at">scale =</span> b)  <span class="co">#compute F(yj)</span></span>
+<span id="cb110-4"><a href="app-idm-sec-fitContinuous.html#cb110-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y)</span>
+<span id="cb110-5"><a href="app-idm-sec-fitContinuous.html#cb110-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">max</span>((j<span class="sc">/</span>n)<span class="sc">-</span>Fj),<span class="fu">max</span>(Fj <span class="sc">-</span> ((j<span class="dv">-1</span>)<span class="sc">/</span>n))) <span class="co"># compute K-S test statistic</span></span>
+<span id="cb110-6"><a href="app-idm-sec-fitContinuous.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(D)</span></code></pre></div>
+<pre><code>## [1] 0.05265431</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="app-idm-sec-fitContinuous.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(y, <span class="st">&#39;pgamma&#39;</span>, <span class="at">shape=</span>a, <span class="at">scale =</span>b) <span class="co"># compute k-s test</span></span></code></pre></div>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  y
+## D = 0.052654, p-value = 0.9444
+## alternative hypothesis: two-sided</code></pre>
+<p>Based on the very high p-value of 0.9444, we should not reject the
+hypothesis that the observed data is gamma distributed with
+<span class="math inline">\(\alpha = 3.56562\)</span> and <span class="math inline">\(\beta = 3.761478\)</span>.</p>
+<p>We have now completed the chi-squared goodness of fit test as well as
+the K-S test. The Chi-Squared test has more general applicability than
+the K-S Test. Specifically, the Chi-Squared test applies to both
+continuous and discrete data; however, it suffers from depending on the
+interval specification. In addition, it has a number of other
+shortcomings which are discussed in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. While the K-S
+Test can also be applied to discrete data, special tables must be used
+for getting the critical values. Additionally, the K-S Test in its
+original form assumes that the parameters of the hypothesized
+distribution are known, i.e. given without estimating from the data.
+Research on the effect of using the K-S Test with estimated parameters
+has indicated that it will be conservative in the sense that the actual
+Type I error will be less than specified. Additional advantage and
+disadvantage of the K-S Test are given in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. There
+are other statistical tests that have been devised for testing the
+goodness of fit for distributions. One such test is Anderson-Darling
+Test. <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> describes this test. This test detects tail
+differences and has a higher power than the K-S Test for many popular
+distributions. It can be found as standard output in commercial
+distribution fitting software.</p>
+</div>
+<div id="app:idm:subsec:visFit" class="section level3" number="10.5.5">
+<h3><span class="header-section-number">B.5.5</span> Visualizing the Fit</h3>
+<p>Another valuable diagnostic tool is to make probability-probability
+(P-P) plots and quantile-quantile (Q-Q) plots. A P-P Plot plots the empirical distribution function versus the theoretical distribution evaluated at each order statistic value. Recall
+that the empirical distribution is defined as:</p>
+<p><span class="math display">\[\tilde{F}_n (x_{(i)}) = \dfrac{i}{n}\]</span></p>
+<p>Alternative definitions are also used in many software packages to
+account for continuous data. As previously mentioned</p>
+<p><span class="math display">\[\tilde{F}_n(x_{(i)}) = \dfrac{i - 0.5}{n}\]</span></p>
+<p>is very common, as well as,</p>
+<p><span class="math display">\[\tilde{F}_n(x_{(i)}) = \dfrac{i - 0.375}{n + 0.25}\]</span></p>
+<p>To make a P-P Plot, perform the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Sort the data to obtain the order statistics:
+<span class="math inline">\((x_{(1)}, x_{(2)}, \ldots x_{(n)})\)</span></p></li>
+<li><p>Compute <span class="math inline">\(\tilde{F}_n(x_{(i)}) = \dfrac{i - 0.5}{n} = q_i\)</span> for i= 1,
+2, <span class="math inline">\(\ldots\)</span> n</p></li>
+<li><p>Compute <span class="math inline">\(\hat{F}(x_{(i)})\)</span> for i= 1, 2, <span class="math inline">\(\ldots\)</span> n where <span class="math inline">\(\hat{F}\)</span>
+is the CDF of the hypothesized distribution</p></li>
+<li><p>Plot <span class="math inline">\(\hat{F}(x_{(i)})\)</span> versus <span class="math inline">\(\tilde{F}_n (x_{(i)})\)</span> for i= 1, 2,
+<span class="math inline">\(\ldots\)</span> n</p></li>
+</ol>
+<p>The Q-Q Plot is similar in spirit to the P-P Plot. For the Q-Q Plot, the
+quantiles of the empirical distribution (which are simply the order
+statistics) are plotted versus the quantiles from the hypothesized
+distribution. Let <span class="math inline">\(0 \leq q \leq 1\)</span> so that the <span class="math inline">\(q^{th}\)</span> quantile of the
+distribution is denoted by <span class="math inline">\(x_q\)</span> and is defined by:</p>
+<p><span class="math display">\[q = P(X \leq x_q) = F(x_q) = \int_{-\infty}^{x_q} f(u)du\]</span></p>
+<p>As shown in Figure <a href="app-idm-sec-fitContinuous.html#fig:Quantile">B.14</a>, <span class="math inline">\(x_q\)</span> is that value on the measurement axis such that 100q% of the area under the graph of <span class="math inline">\(f(x)\)</span> lies to the left of <span class="math inline">\(x_q\)</span> and 100(1-q)%
+of the area lies to the right. This is the same as the inverse
+cumulative distribution function.</p>
+<div class="figure" style="text-align: center"><span id="fig:Quantile"></span>
+<img src="figures2/AppDistFitting/figQuantile.png" alt="The Quantile of a Distribution" width="50%" />
+<p class="caption">
+Figure B.14: The Quantile of a Distribution
+</p>
+</div>
+<p>For example, the z-values for the standard normal distribution tables
+are the quantiles of that distribution. The quantiles of a distribution
+are readily available if the inverse CDF of the distribution is
+available. Thus, the quantile can be defined as:</p>
+<p><span class="math display">\[x_q = F^{-1}(q)\]</span></p>
+<p>where <span class="math inline">\(F^{-1}\)</span> represents the inverse of the cumulative distribution
+function (not the reciprocal). For example, if the hypothesized
+distribution is N(0,1) then 1.96 = <span class="math inline">\(\Phi^{-1}(0.975)\)</span> so that
+<span class="math inline">\(x_{0.975}\)</span> = 1.96 where <span class="math inline">\(\Phi(z)\)</span> is the CDF of the standard normal
+distribution. When you give a probability to the inverse of the
+cumulative distribution function, you get back the corresponding
+ordinate value that is associated with the area under the curve, e.g.
+the quantile.</p>
+<p>To make a Q-Q Plot, perform the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Sort the data to obtain the order statistics:
+<span class="math inline">\((x_{(1}, x_{(2)}, \ldots x_{(n)})\)</span></p></li>
+<li><p>Compute <span class="math inline">\(q_i = \dfrac{i - 0.5}{n}\)</span> for i= 1, 2, <span class="math inline">\(\ldots\)</span> n</p></li>
+<li><p>Compute <span class="math inline">\(x_{q_i} = \hat{F}^{-1} (q_i)\)</span> for where i = 1, 2, <span class="math inline">\(\ldots\)</span>
+n is the <span class="math inline">\(\hat{F}^{-1}\)</span> inverse CDF of the hypothesized distribution</p></li>
+<li><p>Plot <span class="math inline">\(x_{q_i}\)</span> versus <span class="math inline">\(x_{(i)}\)</span> for i = 1, 2, <span class="math inline">\(\ldots\)</span> n</p></li>
+</ol>
+<p>Thus, in order to make a P-P Plot, the CDF of the hypothesized
+distribution must be available and in order to make a Q-Q Plot, the
+inverse CDF of the hypothesized distribution must be available. When the
+inverse CDF is not readily available there are other methods to making
+Q-Q plots for many distributions. These methods are outlined in
+<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. The following example will illustrate how to make
+and interpret the P-P plot and Q-Q plot for the hypothesized gamma
+distribution for the task times.</p>
+<p>The following R listing will make the P-P and Q-Q plots for this
+situation.</p>
+<pre><code>plot(Fj,ppoints(length(y))) # make P-P plot
+abline(0,1) # add a reference line to the plot
+qqplot(y, qgamma(ppoints(length(y)), shape = a, scale = b)) # make Q-Q Plot
+abline(0,1) # add a reference line to the plot</code></pre>
+<p>The function <em>ppoints()</em> in R will generate <span class="math inline">\(\tilde{F}_n(x_{(i)})\)</span>. Then
+you can easily use the distribution function (with the “p,” as in
+pgamma()) to compute the theoretical probabilities. In R, the quantile
+function can be found by appending a “q” to the name of the available
+distributions. We have already seen qt() for the student-t distribution.
+For the normal, we use qnorm() and for the gamma, we use qgamma().
+Search the R help for ‘distributions’ to find the other common
+distributions. The function <em>abline()</em> will add a reference line between
+0 and 1 to the plot. Figure <a href="app-idm-sec-fitContinuous.html#fig:PPTaskTimes">B.15</a> illustrates the P-P plot.</p>
+<div class="figure" style="text-align: center"><span id="fig:PPTaskTimes"></span>
+<img src="10-AppDistributionFitting_files/figure-html/PPTaskTimes-1.svg" alt="The P-P Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)" width="672" />
+<p class="caption">
+Figure B.15: The P-P Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)
+</p>
+</div>
+<p>The Q-Q plot should appear approximately linear with intercept zero and
+slope 1, i.e. a 45 degree line, if there is a good fit to the data. In
+addition, curvature at the ends implies too long or too short tails,
+convex or concave curvature implies asymmetry, and stragglers at either
+ends may be outliers. The P-P Plot should also appear linear with
+intercept 0 and slope 1. The abline() function was used to add the
+reference line to the plots. Figure <a href="app-idm-sec-fitContinuous.html#fig:QQTaskTimes">B.16</a> illustrates the Q-Q plot. As can be seen
+in the figures, both plots do not appear to show any significant
+departure from a straight line. Notice that the Q-Q plot is a little off
+in the right tail.</p>
+<div class="figure" style="text-align: center"><span id="fig:QQTaskTimes"></span>
+<img src="10-AppDistributionFitting_files/figure-html/QQTaskTimes-1.svg" alt="The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)" width="672" />
+<p class="caption">
+Figure B.16: The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)
+</p>
+</div>
+<p>Now, that we have seen how to do the analysis ‘by hand,’ let’s see how
+easy it can be using the <em>fitdistrplus</em> package. Notice that the
+<em>fitdist</em> command will fit the parameters of the distribution.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="app-idm-sec-fitContinuous.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb115-2"><a href="app-idm-sec-fitContinuous.html#cb115-2" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">=</span> <span class="fu">fitdist</span>(y, <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb115-3"><a href="app-idm-sec-fitContinuous.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fy)</span></code></pre></div>
+<pre><code>## Fitting of the distribution &#39; gamma &#39; by maximum likelihood 
+## Parameters:
+##        estimate Std. Error
+## shape 3.4098479 0.46055722
+## rate  0.2542252 0.03699365</code></pre>
+<p>Then, the <em>gofstat</em> function does all the work to compute the chi-square goodness
+of fit, K-S test statistic, as well as other goodness of fit criteria.
+The results lead to the same conclusion that we had before: the gamma
+distribution is a good model for this data.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="app-idm-sec-fitContinuous.html#cb117-1" aria-hidden="true" tabindex="-1"></a>gfy <span class="ot">=</span> <span class="fu">gofstat</span>(fy)</span>
+<span id="cb117-2"><a href="app-idm-sec-fitContinuous.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy)</span></code></pre></div>
+<pre><code>## Goodness-of-fit statistics
+##                              1-mle-gamma
+## Kolmogorov-Smirnov statistic  0.04930008
+## Cramer-von Mises statistic    0.03754480
+## Anderson-Darling statistic    0.25485917
+## 
+## Goodness-of-fit criteria
+##                                1-mle-gamma
+## Akaike&#39;s Information Criterion    663.3157
+## Bayesian Information Criterion    668.5260</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="app-idm-sec-fitContinuous.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisq) <span class="co"># chi-squared test statistic</span></span></code></pre></div>
+<pre><code>## [1] 3.544766</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="app-idm-sec-fitContinuous.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisqpvalue) <span class="co"># chi-squared p-value</span></span></code></pre></div>
+<pre><code>## [1] 0.8956877</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="app-idm-sec-fitContinuous.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisqdf)  <span class="co"># chi-squared degrees of freedom</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<!-- ``` -->
+<!-- library(fitdistrplus) -->
+<!-- fy = fitdist(y, "gamma") -->
+<!-- print(fy) -->
+<!-- Fitting of the distribution ' gamma ' by maximum likelihood  -->
+<!-- Parameters: -->
+<!--        estimate Std. Error -->
+<!-- shape 3.4098479 0.46055722 -->
+<!-- rate  0.2542252 0.03699365 -->
+<!-- plot(fy) -->
+<!-- gfy = gofstat(fy) -->
+<!-- print(gfy) -->
+<!-- Goodness-of-fit statistics -->
+<!--                              1-mle-gamma -->
+<!-- Kolmogorov-Smirnov statistic  0.04930008 -->
+<!-- Cramer-von Mises statistic    0.03754480 -->
+<!-- Anderson-Darling statistic    0.25485917 -->
+<!-- Goodness-of-fit criteria -->
+<!--                                1-mle-gamma -->
+<!-- Aikake's Information Criterion    663.3157 -->
+<!-- Bayesian Information Criterion    668.5260 -->
+<!-- > print(gfy$chisq) -->
+<!-- [1] 3.544766 -->
+<!-- > print(gfy$chisqpvalue) -->
+<!-- [1] 0.8956877 -->
+<!-- > print(gfy$chisqdf) -->
+<!-- [1] 8 -->
+<!-- ``` -->
+<p>Plotting the object returned from the <em>fitdist</em> command via (e.g. plot(fy)), produces a plot
+(Figure <a href="app-idm-sec-fitContinuous.html#fig:gammafitplot">B.17</a>) of the empirical and theoretical
+distributions, as well as the P-P and Q-Q plots.</p>
+<div class="figure" style="text-align: center"><span id="fig:gammafitplot"></span>
+<img src="10-AppDistributionFitting_files/figure-html/gammafitplot-1.svg" alt="Distribution Plot from fitdistrplus for Gamma Distribution Fit of Computer Repair Times" width="672" />
+<p class="caption">
+Figure B.17: Distribution Plot from fitdistrplus for Gamma Distribution Fit of Computer Repair Times
+</p>
+</div>
+<p>Figure <a href="app-idm-sec-fitContinuous.html#fig:fitPlotUnif">B.18</a> illustrates the P-P and Q-Q plots if we
+were to hypothesize a uniform distribution. Clearly, the plots in
+Figure <a href="app-idm-sec-fitContinuous.html#fig:fitPlotUnif">B.18</a> illustrate that a uniform distribution
+is not a good model for the task times.</p>
+<div class="figure" style="text-align: center"><span id="fig:fitPlotUnif"></span>
+<img src="10-AppDistributionFitting_files/figure-html/fitPlotUnif-1.svg" alt="Distribution Plot from fitdistrplus for Uniform Distribution Fit of Computer Repair Times" width="672" />
+<p class="caption">
+Figure B.18: Distribution Plot from fitdistrplus for Uniform Distribution Fit of Computer Repair Times
+</p>
+</div>
+</div>
+<div id="app:idms2sb3" class="section level3" number="10.5.6">
+<h3><span class="header-section-number">B.5.6</span> Using the Input Analyzer</h3>
+<p>In this section, we will use the Arena Input Analyzer to fit
+a distribution to service times collected for the pharmacy example. The Arena Input Analyzer is a separate program hat comes with Arena. It is available as part of the free student edition of Arena.</p>
+<p>Let <em><span class="math inline">\(X_i\)</span></em> be the service time of the <span class="math inline">\(i^{th}\)</span> customer, where the service
+time is defined as starting when the <span class="math inline">\((i - 1)^{st}\)</span> customer begins to
+drive off and ending when the <span class="math inline">\(i^{th}\)</span> customer drives off after
+interacting with the pharmacist. In the case where there is no customer
+already in line when the <span class="math inline">\(i^{th}\)</span> customer arrives, the start of the
+service can be defined as the point where the customer’s car arrives to
+the beginning of the space in front of the pharmacist’s window. Notice
+that in this definition, the time that it takes the car to pull up to
+the pharmacy window is being included. An alternative definition of
+service time might simply be the time between when the pharmacist asks
+the customer what they need until the time in which the customer gets
+the receipt. Both of these definitions are reasonable interpretations of
+service times and it is up to you to decide what sort of definition fits
+best with the overall modeling objectives. As you can see, input
+modeling is as much an art as it is a science.</p>
+<p>One hundred observations of the service time were collected using a
+portable digital assistant and are shown in
+Table <a href="app-idm-sec-fitContinuous.html#tab:PharmacyData">B.7</a> where the first observation is in row 1
+column 1, the second observation is in row 2 column 1, the <span class="math inline">\(21^{st}\)</span>
+observation is in row 1 column 2, and so forth. This data is available
+in the text file <em>PharmacyInputModelingExampleData.txt</em> that accompanies
+this chapter.</p>
+<div id="tab:PharmacyData">
+<table>
+<caption><span id="tab:PharmacyData">Table B.7: </span> Pharmacy Service Times</caption>
+<tbody>
+<tr class="odd">
+<td align="center">61</td>
+<td align="center">278.73</td>
+<td align="center">194.68</td>
+<td align="center">55.33</td>
+<td align="center">398.39</td>
+</tr>
+<tr class="even">
+<td align="center">59.09</td>
+<td align="center">70.55</td>
+<td align="center">151.65</td>
+<td align="center">58.45</td>
+<td align="center">86.88</td>
+</tr>
+<tr class="odd">
+<td align="center">374.89</td>
+<td align="center">782.22</td>
+<td align="center">185.45</td>
+<td align="center">640.59</td>
+<td align="center">137.64</td>
+</tr>
+<tr class="even">
+<td align="center">195.45</td>
+<td align="center">46.23</td>
+<td align="center">120.42</td>
+<td align="center">409.49</td>
+<td align="center">171.39</td>
+</tr>
+<tr class="odd">
+<td align="center">185.76</td>
+<td align="center">126.49</td>
+<td align="center">367.76</td>
+<td align="center">87.19</td>
+<td align="center">135.6</td>
+</tr>
+<tr class="even">
+<td align="center">268.61</td>
+<td align="center">110.05</td>
+<td align="center">146.81</td>
+<td align="center">59</td>
+<td align="center">291.63</td>
+</tr>
+<tr class="odd">
+<td align="center">257.5</td>
+<td align="center">294.19</td>
+<td align="center">73.79</td>
+<td align="center">71.64</td>
+<td align="center">187.02</td>
+</tr>
+<tr class="even">
+<td align="center">475.51</td>
+<td align="center">433.89</td>
+<td align="center">440.7</td>
+<td align="center">121.69</td>
+<td align="center">174.11</td>
+</tr>
+<tr class="odd">
+<td align="center">77.3</td>
+<td align="center">211.38</td>
+<td align="center">330.09</td>
+<td align="center">96.96</td>
+<td align="center">911.19</td>
+</tr>
+<tr class="even">
+<td align="center">88.71</td>
+<td align="center">266.5</td>
+<td align="center">97.99</td>
+<td align="center">301.43</td>
+<td align="center">201.53</td>
+</tr>
+<tr class="odd">
+<td align="center">108.17</td>
+<td align="center">71.77</td>
+<td align="center">53.46</td>
+<td align="center">68.98</td>
+<td align="center">149.96</td>
+</tr>
+<tr class="even">
+<td align="center">94.68</td>
+<td align="center">65.52</td>
+<td align="center">279.9</td>
+<td align="center">276.55</td>
+<td align="center">163.27</td>
+</tr>
+<tr class="odd">
+<td align="center">244.09</td>
+<td align="center">71.61</td>
+<td align="center">122.81</td>
+<td align="center">497.87</td>
+<td align="center">677.92</td>
+</tr>
+<tr class="even">
+<td align="center">230.68</td>
+<td align="center">155.5</td>
+<td align="center">42.93</td>
+<td align="center">232.75</td>
+<td align="center">255.64</td>
+</tr>
+<tr class="odd">
+<td align="center">371.02</td>
+<td align="center">83.51</td>
+<td align="center">515.66</td>
+<td align="center">52.2</td>
+<td align="center">396.21</td>
+</tr>
+<tr class="even">
+<td align="center">160.39</td>
+<td align="center">148.43</td>
+<td align="center">56.11</td>
+<td align="center">144.24</td>
+<td align="center">181.76</td>
+</tr>
+<tr class="odd">
+<td align="center">104.98</td>
+<td align="center">46.23</td>
+<td align="center">74.79</td>
+<td align="center">86.43</td>
+<td align="center">554.05</td>
+</tr>
+<tr class="even">
+<td align="center">102.98</td>
+<td align="center">77.65</td>
+<td align="center">188.15</td>
+<td align="center">106.6</td>
+<td align="center">123.22</td>
+</tr>
+<tr class="odd">
+<td align="center">140.19</td>
+<td align="center">104.15</td>
+<td align="center">278.06</td>
+<td align="center">183.82</td>
+<td align="center">89.12</td>
+</tr>
+<tr class="even">
+<td align="center">193.65</td>
+<td align="center">351.78</td>
+<td align="center">95.53</td>
+<td align="center">219.18</td>
+<td align="center">546.57</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Prior to using the Input Analyzer, you should check the data if the
+observations are stationary (not dependent on time) and whether it is
+independent. We will leave that analysis as an exercise, since we have
+already illustrated the process using R in the previous sections.</p>
+<p>After opening the Input Analyzer you should choose New from the File
+menu to start a new input analyzer data set. Then, using File <span class="math inline">\(&gt;\)</span> Data
+File <span class="math inline">\(&gt;\)</span> Use Existing, you can import the text file containing the data
+for analysis. The resulting import should leave the Input Analyzer
+looking like Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerImport">B.19</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerImport"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerImport.png" alt="Input Analyzer After Data Import" width="70%" height="70%" />
+<p class="caption">
+Figure B.19: Input Analyzer After Data Import
+</p>
+</div>
+<p>You should save the session, which will create a (<em>.dft</em>) file. Notice
+how the Input Analyzer automatically makes a histogram of the data and
+performs a basic statistical summary of the data. In looking at
+Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerImport">B.19</a>, we might hypothesize a distribution
+that has long tail to the right, such as the exponential distribution.</p>
+<p>The Input Analyzer will fit many of the common distributions that are
+available within Arena: Beta, Erlang, Exponential, Gamma, Lognormal, Normal,
+Triangular, Uniform, Weibull, Empirical, Poisson. In addition, it will
+provide the expression to be used within the Arena model. The fitting process
+within the Input Analyzer is highly dependent upon the intervals that
+are chosen for the histogram of the data. Thus, it is very important
+that you vary the number of intervals and check the sensitivity of the
+fitting process to the number of intervals in the histogram.</p>
+<p>There are two basic methods by which you can perform the fitting process
+1) individually for a specific distribution and 2) by fitting all of the
+possible distributions. Given the interval specification the Input
+Analyzer will compute a Chi-Squared goodness of fit statistic,
+Kolmogorov-Smirnov Test, and squared error criteria, all of which will
+be discussed in what follows.</p>
+<p>Let’s try to fit an exponential distribution to the observations. With
+the formerly imported data imported into an input window within the
+Input Analyzer, go to the Fit menu and select the exponential
+distribution. The resulting analysis is shown in the following listing.</p>
+<pre><code>Distribution Summary
+Distribution:   Exponential
+Expression: 36 + EXPO(147)
+Square Error:   0.003955
+
+Chi Square Test
+Number of intervals = 4
+Degrees of freedom  = 2
+Test Statistic      = 2.01
+Corresponding p-value   = 0.387
+
+Kolmogorov-Smirnov Test
+Test Statistic  = 0.0445
+Corresponding p-value   &gt; 0.15
+
+Data Summary
+Number of Data Points   = 100
+Min Data Value          = 36.8
+Max Data Value          = 782
+Sample Mean             = 183
+Sample Std Dev          = 142
+
+Histogram Summary
+Histogram Range     = 36 to 783
+Number of Intervals = 10</code></pre>
+<p>The Input Analyzer has made a fit to
+the data and has recommended the Arena expression (36 + EXPO(147)). What
+is this value 36? The value 36 is called the offset or location
+parameter. The visual fit of the data is shown in Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerExpFit">B.20</a></p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerExpFit"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerExpFit.png" alt="Histogram for Exponential Fit to Service Times" width="70%" height="70%" />
+<p class="caption">
+Figure B.20: Histogram for Exponential Fit to Service Times
+</p>
+</div>
+<p>Recall the discussion in Section <a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV">A.2.4</a> concerning
+shifted distributions. Any distribution can have this additional
+parameter that shifts it along the x-axis. This can complicate parameter estimation procedures.
+The Input Analyzer has an algorithm which will attempt to estimate this
+parameter. Generally, a reasonable estimate of this parameter can be computed via the floor of the minimum observed value, <span class="math inline">\(\lfloor \min(x_i)\rfloor\)</span>. Is the model reasonable for the service time data? From the histogram with the exponential distribution overlaid, it appears to be a
+reasonable fit.</p>
+<p>To understand the results of the fit, you must understand how to
+interpret the results from the Chi-Square Test and the
+Kolmogorov-Smirnov Test. The null hypothesis is that the data come from
+they hypothesized distribution versus the alternative hypothesis that
+the data do not come from the hypothesized distribution. The Input
+Analyzer shows the p-value of the tests.</p>
+<p>The results of the distribution fitting process indicate that the p-value for the
+Chi-Square Test is 0.387. Thus, we would not reject the hypothesis that
+the service times come from the propose exponential distribution. For
+the K-S test, the p-value is greater than 0.15 which also does not
+suggest a serious lack of fit for the exponential distribution.</p>
+<p>Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerUnifFit">B.21</a> show the results of fitting a
+uniform distribution to the data.</p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerUnifFit"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerUnifFit.png" alt="Uniform Distribtuion and Histogram for Service Time Data" width="70%" height="70%" />
+<p class="caption">
+Figure B.21: Uniform Distribtuion and Histogram for Service Time Data
+</p>
+</div>
+<p>The following listing shows the results for the uniform distribution. The results show that the p-value for the K-S Test is smaller than 0.01, which indicates that the uniform distribution is probably not a good model for
+the service times.</p>
+<pre><code>Distribution Summary
+Distribution:   Uniform      
+Expression: UNIF(36, 783)
+Square Error:   0.156400
+
+Chi Square Test
+  Number of intervals   = 7
+  Degrees of freedom    = 6
+  Test Statistic        = 164
+  Corresponding p-value &lt; 0.005
+
+Kolmogorov-Smirnov Test
+  Test Statistic    = 0.495
+  Corresponding p-value &lt; 0.01
+
+Data Summary
+Number of Data Points   = 100
+Min Data Value          = 36.8
+Max Data Value          = 782
+Sample Mean             = 183
+Sample Std Dev          = 142
+
+Histogram Summary
+Histogram Range     = 36 to 783
+Number of Intervals = 10</code></pre>
+<p>In general, you should be cautious of goodness-of-fit tests because they
+are unlikely to reject any distribution when you have little data, and
+they are likely to reject every distribution when you have lots of data.
+The point is, for whatever software that you use for your modeling
+fitting, you will need to correctly interpret the results of any
+statistical tests that are performed. Be sure to understand how these
+tests are computed and how sensitive the tests are to various
+assumptions within the model fitting process.</p>
+<p>The final result of interest in the Input Analyzer’s distribution
+summary output is the value labeled <em>Square Error</em>. This is the criteria
+that the Input Analyzer uses to recommend a particular distribution when
+fitting multiple distributions at one time to the data. The squared error is defined as the sum over the intervals of the squared difference between the relative frequency and the probability
+associated with each interval:</p>
+<p><span class="math display" id="eq:SquaredError">\[\begin{equation}
+\text{Square Error} = \sum_{j = 1}^k (h_j - \hat{p}_j)^2
+\tag{B.14}
+\end{equation}\]</span></p>
+<p>Table <a href="app-idm-sec-fitContinuous.html#tab:SqErrorCalc">B.8</a> shows the square error calculation for the fit of the exponential
+distribution to the service time data. The computed square error matches
+closely the value computed within the Input Analyzer, with the
+difference attributed to round off errors.</p>
+<div id="tab:SqErrorCalc">
+<table>
+<caption><span id="tab:SqErrorCalc">Table B.8: </span> Square Error Calculation</caption>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(j\)</span></th>
+<th align="center"><span class="math inline">\(c_j\)</span></th>
+<th align="center"><span class="math inline">\(b_j\)</span></th>
+<th align="center"><span class="math inline">\(h_j\)</span></th>
+<th align="center"><span class="math inline">\(\hat{p_j}\)</span></th>
+<th align="center"><span class="math inline">\((h_j - \hat{p_j})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">43</td>
+<td align="center">111</td>
+<td align="center">0.43</td>
+<td align="center">0.399</td>
+<td align="center">0.000961</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">19</td>
+<td align="center">185</td>
+<td align="center">0.19</td>
+<td align="center">0.24</td>
+<td align="center">0.0025</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">14</td>
+<td align="center">260</td>
+<td align="center">0.14</td>
+<td align="center">0.144</td>
+<td align="center">1.6E-05</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">335</td>
+<td align="center">0.1</td>
+<td align="center">0.0866</td>
+<td align="center">0.00018</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">410</td>
+<td align="center">0.06</td>
+<td align="center">0.0521</td>
+<td align="center">6.24E-05</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">484</td>
+<td align="center">0.04</td>
+<td align="center">0.0313</td>
+<td align="center">7.57E-05</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">559</td>
+<td align="center">0.02</td>
+<td align="center">0.0188</td>
+<td align="center">1.44E-06</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">634</td>
+<td align="center">0</td>
+<td align="center">0.0113</td>
+<td align="center">0.000128</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">708</td>
+<td align="center">0.01</td>
+<td align="center">0.0068</td>
+<td align="center">1.02E-05</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">783</td>
+<td align="center">0.01</td>
+<td align="center">0.00409</td>
+<td align="center">3.49E-05</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Square Error</td>
+<td align="center">0.003969</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When you select the Fit All option within the Input Analyzer, each of the
+possible distributions are fit in turn and the summary results computed.
+Then, the Input Analyzer ranks the distributions from smallest to
+largest according to the square error criteria. As you can see from the
+definition of the square error criteria, the metric is dependent upon
+the defining intervals. Thus, it is highly recommended that you test the
+sensitivity of the results to different values for the number of
+intervals.</p>
+<p>Using the Fit All function results in the Input Analyzer suggesting that
+36 + 747 * BETA(0.667, 2.73) expression is a good fit of the model (Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerFitAllBeta">B.22</a>. The Window <span class="math inline">\(&gt;\)</span> Fit All Summary menu option will show the squared error
+criteria for all the distributions that were fit. Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerFitAllSummary">B.23</a> indicates that the Erlang distribution is second in the fitting process
+according to the squared error criteria and the Exponential distribution is third in the rankings. Since the Exponential distribution is a special case of the Erlang distribution we see that their squared error criteria is the same. Thus, in reality, these results reflect the same distribution.</p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerFitAllBeta"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerFitAllBeta.png" alt="Fit All Beta Recommendation for Service Time Data" width="70%" height="70%" />
+<p class="caption">
+Figure B.22: Fit All Beta Recommendation for Service Time Data
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerFitAllSummary"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerFitAllSummary.png" alt="Fit All Recommendation for Service Time Data" width="40%" height="40%" />
+<p class="caption">
+Figure B.23: Fit All Recommendation for Service Time Data
+</p>
+</div>
+<p>By using Options <span class="math inline">\(&gt;\)</span> Parameters <span class="math inline">\(&gt;\)</span> Histogram, the Histogram Parameters dialog can be used to change the parameters associated with the histogram as shown in
+Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerHistParameters">B.24</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerHistParameters"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerHistParameters.png" alt="Changing the Histogram Parameters" width="40%" height="40%" />
+<p class="caption">
+Figure B.24: Changing the Histogram Parameters
+</p>
+</div>
+<p>Changing the number of intervals to 12 results in the output provided in
+Figure <a href="app-idm-sec-fitContinuous.html#fig:InputAnalyzerFitAll12Intervals">B.25</a>, which indicates that the exponential
+distribution is a reasonable model based on the Chi-Square test, the K-S
+test, and the squared error criteria. You are encouraged to check other
+fits with differing number of intervals. In most of the fits, the
+exponential distribution will be recommended. It is beginning to look
+like the exponential distribution is a reasonable model for the service
+time data.</p>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerFitAll12Intervals"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerFitAll12Intervals.png" alt="Fit All with 12 Intervals" width="40%" height="40%" />
+<p class="caption">
+Figure B.25: Fit All with 12 Intervals
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:InputAnalyzerExpFitHistChange"></span>
+<img src="figures2/AppDistFitting/figInputAnalyzerExpFitHistChange.png" alt="Exponential Fit with 12 Intervals" width="70%" height="70%" />
+<p class="caption">
+Figure B.26: Exponential Fit with 12 Intervals
+</p>
+</div>
+<p>The Input Analyzer is convenient because it has the fit all summary and
+will recommend a distribution. However, it does not provide P-P plots
+and Q-Q plots. To do this, we can use the <em>fitdistrplus</em> package within
+R. Before proceeding with this analysis, there is a technical issue that
+must be addressed.</p>
+<p>The proposed model from the Input Analyzer is: 36 + EXPO(147). That is,
+if <span class="math inline">\(X\)</span> is a random variable that represents the service time then
+<span class="math inline">\(X \sim 36\)</span> + EXPO(147), where 147 is the mean of the exponential
+distribution, so that <span class="math inline">\(\lambda = 1/147\)</span>. Since 36 is a constant in this
+expression, this implies that the random variable <span class="math inline">\(W = X - 36\)</span>, has
+<span class="math inline">\(W \sim\)</span> EXPO(147). Thus, the model checking versus the exponential
+distribution can be done on the random variable <span class="math inline">\(W\)</span>. That is, take the
+original data and subtract 36.</p>
+<p>The following listing illustrates the R commands to make the fit,
+assuming that the data is in a file called <em>ServiceTimes.txt</em> within the
+R working directory. Figure <a href="app-idm-sec-fitContinuous.html#fig:expfitplot">B.27</a> shows that the exponential distribution is a
+good fit for the service times based on the empirical distribution, P-P
+plot, and the Q-Q plot.</p>
+<pre><code>x = scan(file=&quot;ServiceTimes.txt&quot;) #read in the file
+Read 100 items
+w=x-36
+library(fitdistrplus)
+Loading required package: survival
+Loading required package: splines
+fw = fitdist(w, &quot;exp&quot;)
+fw
+Fitting of the distribution &#39; exp &#39; by maximum likelihood 
+Parameters:
+        estimate   Std. Error
+rate 0.006813019 0.0006662372
+1/fw$estimate
+    rate 
+146.7778 
+plot(fw)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:expfitplot"></span>
+<img src="10-AppDistributionFitting_files/figure-html/expfitplot-1.svg" alt="Distribution Plot from fitdistrplus for Service Time Data" width="672" />
+<p class="caption">
+Figure B.27: Distribution Plot from fitdistrplus for Service Time Data
+</p>
+</div>
+<p>The P-P and Q-Q plots of the shifted data indicate that the exponential distribution is an excellent fit for the service time data.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-idm-sec-MCD.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-distfit-testU01.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/10-AppDistributionFitting.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

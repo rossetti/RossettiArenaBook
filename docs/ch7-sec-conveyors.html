@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7.3 Modeling Systems with Conveyors | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7.3 Modeling Systems with Conveyors | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7.3 Modeling Systems with Conveyors | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch7-sec-transporters.html"/>
+<link rel="next" href="ch7-sec-AGVs.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch7:sec:conveyors" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Modeling Systems with Conveyors</h2>
+<p>A conveyor is a track, belt, or some other device that provides movement
+over a fixed path. Typically, conveyors are used to transport items that
+have high volumes over short to medium range distances. The speeds of
+conveyance typically range from 20-80 feet per minute to as fast as 500
+feet per minute. Conveyors can be gravity based or powered. The modeling
+of conveyors can be roughly classified as follows:</p>
+<dl>
+<dt>Accumulating</dt>
+<dd><p>Items on the conveyor continue to move forward when there is a
+blockage on the conveyor.</p>
+</dd>
+<dt>Non-accumulating</dt>
+<dd><p>Items on the conveyor stop when the conveyor stops</p>
+</dd>
+<dt>Fixed spacing</dt>
+<dd><p>Items on the conveyor have a fixed space between them or the items
+ride in a bucket or bin.</p>
+</dd>
+<dt>Random spacing</dt>
+<dd><p>Items are placed on the conveyor in no particular position and take
+up space on the conveyor.</p>
+</dd>
+</dl>
+<p>You have experienced conveyors in some form. For example, the belt
+conveyor at a grocery store is like an accumulating conveyor. An
+escalator is like a fixed spaced non-accumulating conveyor (the steps
+are like a bucket for the person to ride in. People movers in airports
+are like non-accumulating, random spacing conveyors. When designing
+systems with conveyors there are a number of performance measures to
+consider:</p>
+<dl>
+<dt>Throughput capacity</dt>
+<dd><p>The number of loads processed per time</p>
+</dd>
+<dt>Delivery time</dt>
+<dd><p>The time taken to move the item from origin to destination</p>
+</dd>
+<dt>Queue lengths</dt>
+<dd><p>The queues to get on the conveyor and for blockages when the
+conveyor accumulates</p>
+</dd>
+<dt>Number of carriers used or the space utilized</dt>
+<dd><p>The number of spaces on the conveyor used</p>
+</dd>
+</dl>
+<p>The modeling of conveyors does not necessarily require specialized
+simulation constructs. For example, gravity based conveyors can be
+modeled as a PROCESS or a DELAY with a deterministic delay. The delay is
+set to model the time that it takes the entity to fall or slide from one
+location to another. One simple way to model multiple items moving on a
+conveyor is to use a resource to model the front of the conveyor with a
+small delay to load the entity on the conveyor. This allows for spacing
+between the items on the conveyor. Once on the conveyor the entity
+releases the front of the conveyor and delays for its move time to the
+end of the conveyor. At the end of the conveyor, there could be another
+resource and a delay to unload the conveyor. As long as the delays are
+deterministic, the entities will not pass each other on the conveyor. If
+you are not interested in modeling the space taken by the conveyor, then
+this type of modeling is very reasonable. <span class="citation">(<a href="#ref-henriksen1986simplified" role="doc-biblioref">Henriksen and Schriber 1986</a>)</span>
+discuss a number of ways to approach the simulation modeling of
+conveyors. When space becomes an important element of the modeling, then
+the simulation language constructs for conveyors become useful. For
+example, if there actually is a conveyor between two stations and the
+space allocated for the length of the conveyor is important to the
+system operation, you might want to use conveyor related modules.</p>
+<p>In , a conveyor is a material-handling device for transferring or moving
+entities along a pre-determined path having fixed pre-defined loading
+and discharge points. Each entity to be conveyed must wait for
+sufficient space on the conveyor before it can gain entry and begin its
+transfer. In essence, simulation modeling constructs for conveyors model
+the travel path via a mapping of space/distance to resources. Space
+along the path is divided up into units of resources called cells. The
+conveyor is then essentially a set of moving cells of equal length.
+Whenever an entity reaches a conveyor entry point it must wait for a
+predefined amount of unoccupied and available consecutive cells in order
+to get on the conveyor.</p>
+<p>Figure <a href="ch7-sec-conveyors.html#fig:ch7fig23">7.23</a> illustrates the idea of modeling a conveyor
+as a set of contiguous cells representing the space on the conveyor. One
+way to think of this is like an escalator with each cell being a step.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig23"></span>
+<img src="figures2/ch7/ch7fig23.jpg" alt="A conveyor conceptualized as a set of contiguous cells"  />
+<p class="caption">
+Figure 7.23: A conveyor conceptualized as a set of contiguous cells
+</p>
+</div>
+<p>In the figure, if each cell represents 1 foot and the total length of
+the conveyor is 15 feet, then there will be 15 cells. The cell size of
+the conveyor is the smallest portion of a conveyor that an entity can
+occupy. In modeling with conveyors, the size of the entity also matters.
+For example, think of people riding an escalator. Some people have a
+suitcase and take up two steps and others do not have a suitcase an only
+take up one step. An entity must acquire enough contiguous cells to hold
+their physical size in order to be conveyed.</p>
+<p>The key modules for modeling the use of conveyors are:</p>
+<dl>
+<dt>ACCESS</dt>
+<dd><p>When an entity enters an ACCESS module, it will wait until the
+appropriate amount of contiguous cells are available at the access
+point. Once the entity has control of the cells, it can then be
+conveyed from its current station to a station associated with the
+conveyor. This is similar in concept to the ALLOCATE module for
+transporters.</p>
+</dd>
+<dt>CONVEY</dt>
+<dd><p>The CONVEY module causes the entity to move from its origin station
+to its next station. The time to move is based on the velocity of
+the conveyor and the distance between the stations. This similar in
+concept to the MOVE module for transporters.</p>
+</dd>
+<dt>EXIT</dt>
+<dd><p>The EXIT module causes the entity to release the cells that it holds
+on the conveyor. If another entity is waiting in queue for the
+conveyor at the same station where the cells are released, the
+waiting entity will then access the conveyor. This is like releasing
+a resource or freeing a transporter.</p>
+</dd>
+<dt>START</dt>
+<dd><p>The START module changes the status of the conveyor to active.
+Entities may reside on the conveyor while it is stopped. These
+entities will maintain their respective positions on the conveyor
+once it is started. The entity using the START module does not have
+to be on the conveyor.</p>
+</dd>
+<dt>STOP</dt>
+<dd><p>The STOP module changes the status of the conveyor to inactive. The
+conveyor will stop immediately, regardless of the number of entities
+on the conveyors. This is useful for modeling conveyor failures or
+blockages on the conveyor. The entity using the STOP module does not
+have to be on the conveyor.</p>
+</dd>
+<dt>CONVEYOR</dt>
+<dd><p>This data module defines whether or not the conveyor is an
+accumulating or non-accumulating conveyor, the cell size (in
+physical units e.g. feet), and the velocity. A conveyor consists of
+a sequence of segments as defined by the SEGMENT module. The sum of
+the distances among the stations on the conveyor (specified by
+SEGMENT module) must be divisible by the cell size. If not, an error
+will occur when the model is checked.</p>
+</dd>
+<dt>SEGMENT</dt>
+<dd><p>This data module defines the segment network that makes up a
+conveyor. Each segment is a directed link between two stations
+forming a network. The conveyor path is defined by a beginning
+station and a set of next station-distance pairs. The beginning
+station of the segment is the beginning station number or name, and
+the next station defines the next station name that is a length of
+distance units from the previously defined station. The length of
+the segment must be specified in integer distance units (feet,
+meters, etc.). No station should be repeated within the segment
+network unless the conveyor is a loop conveyor. In that case, the
+last ending station should be the same as the beginning station for
+the segment network.</p>
+</dd>
+</dl>
+<p>As was the case for transporters, the ENTER and LEAVE modules of the
+advanced transfer template will also provide some conveyor
+functionality. LEAVE provides for ACCESS and CONVEY. ENTER provides for
+EXIT. The modules work slightly differently for accumulating and
+non-accumulating conveyors.</p>
+<p>Non-accumulating conveyors travel in a single direction, and the spacing
+remains the same between the entities. When an entity is placed on the
+conveyor, the entire conveyor is actually disengaged or stopped until
+instructions are given to transfer the entity to its destination. When
+the entity reaches its destination, the entire conveyor is again
+disengaged until instructions are given to remove the entity from the
+conveyor, at which time it is engaged or started.</p>
+<p>As previously mentioned, the conveyor is divided into a number of cells.
+To get on the conveyor and begin moving, the entity must have its
+required number of contiguous cells. For example, in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig24">7.24</a>, the circle needed 1 cell to get on
+the conveyor. Suppose the hexagon was trying to get on the conveyor. As
+cell 2 became available, the hexagon would seize it. Then it would wait
+for the next cell (cell 1) to become available and seize it. After
+having both required cells, it is “on" the conveyor. But moving on a
+conveyor is a bit more continuous than this. Conceptually, you can think
+of the hexagon, starting to move on the conveyor when it gets cell 2.
+When one cell moves, all cells must move, in lock step. Since entities
+are mapped on to the cells by their size, when a cell moves the entity
+moves. Reversing this analogy becomes useful. Suppose the cells are
+fixed, but the entities can move. In order for an entity to”take a
+step" it needs the next cell. As it crosses over to the next cell it
+releases the previous cell that it occupied. It is as if the entity’s
+“step size” is 1 cell at a time.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig24"></span>
+<img src="figures2/ch7/ch7fig24.jpg" alt="Different entity sizes on a conveyor" width="80%" height="80%" />
+<p class="caption">
+Figure 7.24: Different entity sizes on a conveyor
+</p>
+</div>
+<p>Figure <a href="ch7-sec-conveyors.html#fig:ch7fig25">7.25</a> illustrates an approximate
+activity flow diagram for an entity using a non-accumulating conveyor.
+Suppose the entity size is 2 feet and each cell is 1 foot on the
+conveyor. There is a queue for the entities waiting to access the
+conveyor. The cells of the conveyor act as resources modeling the space
+on the conveyor. The movements of the entity through the space of each
+cell are activities. For the 2 foot entity, it first seizes the first
+cell and then moves through the distance of the cell. After the movement
+it seizes the next cell and moves through its length. Because it is 2
+feet (cells) long it seizes the 3rd cell and then releases the first
+cell before delaying for the move time for the 3rd cell. As cells become
+released other entities can seize them and continue their movement. The
+repeated pattern of overlapping SEIZE and RELEASE modules that underlie
+conveyor modeling clearly depends upon the number of cells and the size
+of the entity. Thus, the activity diagram would actually vary by the
+size of the entity (number of cells required).</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig25"></span>
+<img src="figures2/ch7/ch7fig25.jpg" alt="Activity diagram for non-accumulating conveyor" width="80%" height="80%" />
+<p class="caption">
+Figure 7.25: Activity diagram for non-accumulating conveyor
+</p>
+</div>
+<p>The larger the number of cells to model a segment of a conveyor the more
+slowly the model will execute; however, a larger number of cells allows
+for a more “continuous" representation of how entities actually exit
+and leave the conveyor. Larger cell sizes force entities to delay longer
+to move and thus waiting entities must delay for available space longer.
+A smaller mapping of cells to distance allows then entity to”creep"
+onto the conveyor in a more continuous fashion. For example, suppose the
+conveyor was 6 feet long and space was modeled in inches. That is, the
+length of the conveyor is 72 inches. Now suppose the entity required 1
+foot of space while on the conveyor. If the conveyor is modeled with 72
+cells, the entity starts to get on the conveyor after only 1 inch (cell)
+and requires 12 cells (inches) when riding on the conveyor. If the
+mapping of distance was 1 cell equals 1 foot, the entity would have to
+wait until it got a whole cell of 1 foot before it moved onto the
+conveyor.</p>
+<p>Now you are ready to put these concepts into action.</p>
+<div id="ch7s3sb1" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Test and Repair Shop with Conveyors</h3>
+<p>For simplicity, the test and repair shop will be used for illustrating
+the use of conveyors. Figure <a href="ch7-sec-conveyors.html#fig:ch7fig26">7.26</a> shows the test and repair shop with
+the conveyors and the distance between the stations. From the figure,
+the distances from each station going in clockwise order are as follows:</p>
+<ul>
+<li><p>Diagnostic station to test station 1, 20 feet</p></li>
+<li><p>Test station 1 to test station 2, 20 feet</p></li>
+<li><p>Test station 2 to repair, 15 feet</p></li>
+<li><p>Repair to test station 3, 45 feet</p></li>
+<li><p>Test station 3 to diagnostics, 30 feet</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig26"></span>
+<img src="figures2/ch7/ch7fig26.jpg" alt="Test and repair shop with conveyors" width="90%" height="90%" />
+<p class="caption">
+Figure 7.26: Test and repair shop with conveyors
+</p>
+</div>
+<p>Assume that the conveyor’s velocity is 10 feet per minute. These figures
+have been provided in this example; however, in modeling a real system,
+you will have to tabulate this information. To illustrate the use of
+entity sizes, assume the following concerning the parts following the
+four test plans:</p>
+<ul>
+<li><p>Test plan 1 and 2 parts require 1 foot of space while riding on the
+conveyor</p></li>
+<li><p>Test plan 3 and 4 parts require 2 feet of space while riding on the
+conveyor</p></li>
+</ul>
+<p>The conveyor logic will first be implemented without animation. Then,
+the animation for the conveyors will be added. To convert the previous
+model so that it uses conveyors, the model,
+<em>RepairShopWithTransportersNoAnimation.doe</em>, should be changed as
+follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Delete the TRANSPORTER and DISTANCE modules defined for using the
+transporter</p></li>
+<li><p>Delete the REQUEST and TRANSPORT modules for leaving the stations
+and replace them with LEAVE modules. The LEAVE modules will be
+filled out in a moment.</p></li>
+<li><p>Add a variable array called <code>vSizes()</code> of dimension 4 to hold the
+sizes of the parts following each of the test plans as shown in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig27">7.27</a>.</p></li>
+<li><p>Save your file. The completed model can be found in the file
+<em>RepairShopWithConveyorsWithNoAnimation.doe</em>.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig27"></span>
+<img src="figures2/ch7/ch7fig27.jpg" alt="Array for part sizes" width="70%" height="70%" />
+<p class="caption">
+Figure 7.27: Array for part sizes
+</p>
+</div>
+<p>Now, you are ready to define the conveyor and its segments. You will
+first define the segments for the conveyor, then the conveyor itself.
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig28">7.28</a> shows the segments to be used on the
+conveyor. First, give the segment a name and then specify the station
+that represents the <em>beginning</em> station. The beginning station is the
+station associated with the first segment of the conveyor. Since this is
+a loop conveyor, the beginning station is arbitrary. The diagnostic
+station is used here since this is where the parts enter the system.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig28"></span>
+<img src="figures2/ch7/ch7fig28.jpg" alt="SEGMENT module for test and repair conveyor" width="60%" height="60%" />
+<p class="caption">
+Figure 7.28: SEGMENT module for test and repair conveyor
+</p>
+</div>
+<p>Then, the next station and the distance to the next station are given
+for each part of the conveyor. Notice that the distances have been added
+as shown in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig26">7.26</a>. The lengths specified in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig28">7.28</a> are in the actual physical distances
+(e.g. feet). The mapping to cells occurs in the CONVEYOR module.</p>
+<p>Figure <a href="ch7-sec-conveyors.html#fig:ch7fig29">7.29</a> shows the CONVEYOR module. To
+associated the conveyor with a segment use the Segment Name drop down
+box. The next decision is the type of conveyor. In this case, a
+non-accumulating conveyor should be used.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig29"></span>
+<img src="figures2/ch7/ch7fig29.jpg" alt="CONVEYOR module for test and repair example" width="60%" height="60%" />
+<p class="caption">
+Figure 7.29: CONVEYOR module for test and repair example
+</p>
+</div>
+<p>The velocity of the conveyor is 10 feet per minute. Now, the cell size
+and the maximum cells occupied text-boxes must be completed. The cell
+size is the most important decision. Thinking back to
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig25">7.25</a>, it should be clear that
+space must be represented by discrete cells of a specified integral
+length. Thus, the total length of the conveyor must be integer valued
+and the cell size must result in an integer number of cells for each
+segment. The lengths of each distance specified in the SEGMENT module
+for the example are all divisible by 5. Thus, you could choose a cell
+size of 5. This would mean that each cell would be 5 feet in length.
+Since entities access the conveyor by grabbing cells, this hardly seems
+appropriate if the parts are 1 and 2 feet in length, respectively. In
+the case of a 5 foot cells size, the parts would have a lot of space
+between each other as they ride on the conveyor. Instead, the cell size
+will be specified as 1 foot. This will always work, since every number
+is divisible by 1. It also works well in this case, since the smallest
+part is 1 foot and the distances in the SEGMENT module are based on the
+units of feet. Now, the maximum number of cells text field is easy. This
+represents the size of the biggest entity in terms of cells. This should
+be 2 in this case since parts that follow test plans 3 and 4 are 2 feet
+in length.</p>
+<p>With the CONVEYOR and SEGMENT modules defined, it is an easy matter to
+change the ENTER and LEAVE modules to use the conveyors. The first item
+to address is to make sure that each created part knows its size so that
+the size can be used in the LEAVE module. You can do this with the
+"Assign Test Plan" ASSIGN module as shown in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig30">7.30</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig30"></span>
+<img src="figures2/ch7/ch7fig30.jpg" alt="Assigning the size of the parts" width="60%" height="60%" />
+<p class="caption">
+Figure 7.30: Assigning the size of the parts
+</p>
+</div>
+<p>The LEAVE modules must be updated to use the conveyor to transfer out
+and to indicate the number of cells required by the entity. This is done
+in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig31">7.31</a> using the entity’s <code>mySize</code> attribute.
+Each of the other LEAVE modules for the other stations should be updated
+in a similar fashion. Now, you must update the ENTER module so that the
+entity can exit the conveyor after arriving to the desired station.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig31"></span>
+<img src="figures2/ch7/ch7fig31.jpg" alt="LEAVE module for test and repair example" width="60%" height="60%" />
+<p class="caption">
+Figure 7.31: LEAVE module for test and repair example
+</p>
+</div>
+<p>In Figure <a href="ch7-sec-conveyors.html#fig:ch7fig32">7.32</a>, the Exit Conveyor option is used when
+transferring into the Test 1 Station. In both of the ENTER and LEAVE
+modules, the option of delaying the entity is available. This can be
+used to represent a loading or an unloading time for the conveyor.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig32"></span>
+<img src="figures2/ch7/ch7fig32.jpg" alt="ENTER module for test station 1" width="60%" height="60%" />
+<p class="caption">
+Figure 7.32: ENTER module for test station 1
+</p>
+</div>
+<p>With the conveyor statistics check-box clicked, the conveyor statistics
+will appear on the summary reports. See Figure <a href="ch7-sec-conveyors.html#fig:ch7fig33">7.33</a>. The utilization is calculated for
+the conveyor, regardless of conveyor type. This utilization represents
+the length of entities on the conveyor in comparison to the length of
+the entire conveyor over the simulation run. Thus, conveyor utilization
+is in terms of the space utilized. In addition, there is very little
+queuing for getting on the conveyor. The statistics for the conveyor in
+this problem indicate that the conveyor is not highly utilized; however,
+the chance of meeting the contract limit is up to 80%. The volumes in
+this example may make it difficult to justify the use of conveyors for
+the test and repair shop. Ultimately, the decision would come down to a
+cost/benefit analysis.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig33"></span>
+<img src="figures2/ch7/ch7fig33.jpg" alt="Statistics for test and repair shop with conveyors" width="60%" height="60%" />
+<p class="caption">
+Figure 7.33: Statistics for test and repair shop with conveyors
+</p>
+</div>
+</div>
+<div id="ch7s3sb2" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Animating Conveyors</h3>
+<p>To augment the model with animation, the Animate Transfer toolbar can be
+used. To visibly discern the plan that an entity is following within the
+animation, you can define a picture set, with appropriately drawn
+pictures for each type of plan. This is illustrated in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig34">7.34</a> and Figure <a href="ch7-sec-conveyors.html#fig:ch7fig35">7.35</a>. The assignment to the Entity.Picture
+attribute is shown in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig39">7.39</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig34"></span>
+<img src="figures2/ch7/ch7fig34.jpg" alt="Enity pictures for test plans" width="55%" height="55%" />
+<p class="caption">
+Figure 7.34: Enity pictures for test plans
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig35"></span>
+<img src="figures2/ch7/ch7fig35.jpg" alt="Picture set for test plans" width="55%" height="55%" />
+<p class="caption">
+Figure 7.35: Picture set for test plans
+</p>
+</div>
+<p>To update the previous transporter animation, perform the following
+steps.</p>
+<ol style="list-style-type: decimal">
+<li><p>Copy and paste the animation elements from the file,
+<em>RepairShopWithTransportersWithAnimation.doe</em> to your own model
+file. The completed model is called,
+<em>RepairShopWithConveyorsWithAnimation.doe</em>.</p></li>
+<li><p>Delete the transporter picture, station markers, and distance
+connectors.</p></li>
+<li><p>Using the Animate Transfer toolbar’s Segment button make station
+markers and segment connectors to represent the conveyors as shown
+in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig26">7.26</a>. The segment animation dialog is
+shown in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig36">7.36</a>. It works very much like the
+route and distance animation dialog.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig36"></span>
+<img src="figures2/ch7/ch7fig36.jpg" alt="Segment animation dialog" width="50%" height="50%" />
+<p class="caption">
+Figure 7.36: Segment animation dialog
+</p>
+</div>
+<p>After the segments have been laid down, you might want to place some
+lines to represent the conveyors. This was done in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig36">7.36</a> where the roller pattern from the
+line patterns button on the drawing toolbar was also used. That’s it!
+Animating conveyors is very easy. If you run the model with the
+animation on you will see that the entities move along the conveyor
+segments, getting on and off at the appropriate stations. You will also
+clearly see that for the majority of time the conveyor does not have
+very many parts. This section concentrated on non-accumulating
+conveyors. The next section describes how accumulating conveyors operate
+and discusses a number of other conveyor modeling issues.</p>
+</div>
+<div id="ch7s3sb3" class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Miscellaneous Issues in Conveyor Modeling</h3>
+<p>This section discusses accumulating conveyors, how to model merging
+conveyors, diverging conveyors, how to allow processing to occur on the
+entity while it is still on the conveyor, and re-circulation conveyors.</p>
+<div id="ch7s3sb3sub1" class="section level4" number="7.3.3.1">
+<h4><span class="header-section-number">7.3.3.1</span> Accumulating Conveyors</h4>
+<p>An accumulating conveyor can be thought of as always running. When an
+entity stops moving on the conveyor (e.g. to unload), other entities are
+still allowed on the conveyor since the conveyor continues moving. When
+entities on the conveyor meet up with the stopped entity, they stop, and
+a queue accumulates behind the stopped entity until the original stopped
+entity is removed or transferred to its destination.</p>
+<p>As an analogy, imagine wearing a pair of roller blades and being on a
+people mover in an airport. Don’t ask how you got your roller blades
+through security! While on the people mover you aren’t skating (you are
+standing still, resting, but still moving with the people mover). Up
+ahead of you, some seriously deranged simulation book author places a
+bar across the people mover. When you reach the bar, you grab on. Since
+you are on roller blades, you remain stationary at the bar, while your
+roller blades are going like mad underneath you.</p>
+<p>Now imagine all the people on the mover having roller blades. The people
+following you will continue approaching the bar until they bump into
+you. Everyone will pile up behind the bar until the bar is removed. You
+are on an accumulating conveyor! Notice that while you were on the
+conveyor and there was no blockage, the spacing between the people
+remained the same, but that when the blockage occurred the spacing
+between the entities decreased until they bump up against each other. To
+summarize:</p>
+<ul>
+<li><p>Accumulating conveyors are always moving.</p></li>
+<li><p>If an entity stops to exit or receives processing on the conveyor,
+other entities behind it are blocked and begin to queue up on the
+conveyor.</p></li>
+<li><p>Entities in front of the blockage continue moving.</p></li>
+<li><p>When a blockage ends, blocked entities, may continue, but must first
+wait for the entities immediately in front of them to move forward.</p></li>
+</ul>
+<p>In modeling accumulating conveyors, the main differences occur in the
+actions of the ACCESS and CONVEY modules. Instead of disengaging the
+conveyor as with non-accumulating conveyors the conveyor continues to
+run. ACCESS allocates the required number of cells to any waiting
+entities as space becomes available. Any entities that are being
+conveyed continue until they reach a blockage. If the blocking entity is
+removed or conveyed, the accumulated entities only start to move when
+the required number of cells becomes available.</p>
+<p>In the ACCESS module the number of cells still refers to the number of
+cells required by the entity while moving on the conveyor; however, you
+must indicate what the space requirements will be when the entities
+experience a blockage. In the CONVEYOR module, if the accumulating
+conveyor option is selected, the user must decide on how to fill in the
+Accumulation Length text field. The accumulation length specifies the
+amount of space required by the entities when accumulating. It does not
+need to be the same as the amount of space implied by the number of
+cells required when the entity is being conveyed. Also, it doesn’t have
+to be divisible into an even number of cells. In addition, as can be
+seen in Figure <a href="ch7-sec-conveyors.html#fig:ch7fig37">7.37</a>, the accumulation length can
+also be an entity (user defined) attribute. Thus, the accumulation size
+can vary by entity. Typically, the space implied by the number of cells
+required while moving will be larger than that required when
+accumulating. This will allow spacing between the entities when moving
+and allow them to get closer to each other when accumulating.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig37"></span>
+<img src="figures2/ch7/ch7fig37.jpg" alt="Accumulating conveyor dialog" width="55%" height="55%" />
+<p class="caption">
+Figure 7.37: Accumulating conveyor dialog
+</p>
+</div>
+<p>The test and repair example barely required non-accumulating conveyors.
+Thus, to illustrate accumulating conveyors, a SMART file,
+<em>(Smarts101.doe)</em>, will be used. See Figure <a href="ch7-sec-conveyors.html#fig:ch7fig38">7.38</a>. The SMART files can be found within the
+folder within your Arena installation.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig38"></span>
+<img src="figures2/ch7/ch7fig38.jpg" alt="Arena Smarts101.doe model for accumulating conveyors" width="90%" height="90%" />
+<p class="caption">
+Figure 7.38: Arena Smarts101.doe model for accumulating conveyors
+</p>
+</div>
+<p>In this example, there is 1 segment for the conveyor of length 10, which
+(while not specified in the model) can be assumed to be in meters. The
+velocity is only 1 meter per hour, the conveyor cell size is 1, and the
+maximum size of an entity is 1. The entities, which are bicycles, enter
+at the arrival station and access the conveyor, where they are conveyed
+to the finishing area. You can think of the bicycles as being assembled
+as they move along the conveyor. This type of system often occurs in
+assembly lines. Once the bicycles reach the finishing area, they
+experience an unload delay prior to exiting the conveyor. Because the
+unload delay occurs prior to exiting the conveyor, the entity’s movement
+is blocked and an accumulation queue will occur behind the entity on the
+conveyor. You should run the model and convince yourself that the
+bicycles are accumulating.</p>
+<p>When modeling with accumulating conveyors, additional statistics are
+collected on the average number of accumulating entities if the
+conveyors check-box is checked on the Project Parameters tab of the Run
+Setup dialog box. You can check out the help system to see all the
+statistics.</p>
+</div>
+<div id="ch7s3sb3sub2" class="section level4" number="7.3.3.2">
+<h4><span class="header-section-number">7.3.3.2</span> Merging and Diverging Conveyors</h4>
+<p>In conveyor modeling a common situation involves one or more conveyors
+feeding another conveyor. For example in a distribution center, there
+may be conveyors associated with each unloading dock, which are then
+attached to a main conveyor that takes the products to a storage area.
+To model this situation within , the feeding conveyors and the main
+conveyor can be modeled with different CONVEYOR modules and separate
+SEGMENT definitions. In this distribution center example, an item
+accesses the unloading dock’s conveyor rides the length of the conveyor
+and then attempts to get on the main conveyor. After it has accessed the
+main conveyor, the entity exits its current unloading dock conveyor.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig39"></span>
+<img src="figures2/ch7/ch7fig39.jpg" alt="Transferring between conveyors" width="90%" height="90%" />
+<p class="caption">
+Figure 7.39: Transferring between conveyors
+</p>
+</div>
+<p>Arena has two SMART files that illustrate these concepts. Let’s first take a
+look at <em>Smarts107.doe</em>. Figure <a href="ch7-sec-conveyors.html#fig:ch7fig39">7.39</a> illustrates the overall model.
+There are two conveyor lines for area 1 and area 2, respectively. When
+the entities arrive to their area, an attribute called <code>LineNum</code> is
+assigned to indicate where it came from. The entities access the
+appropriate conveyor and then are conveyed to the sorting area. The
+sorting area in this example is the station where the main conveyor
+begins. Once the parts arrive at the sorting station, they first access
+the conveyor to the processing area. Then, the entity exits its current
+conveyor. The DECIDE module is used to select the correct conveyor to
+exit based on the <code>LineNum</code> attribute. By first accessing the next
+conveyor, the entity may have to wait on its current conveyor. Because
+of this, it is very natural to model this situation with accumulating
+conveyors. The feeder conveyors will back up as entities try to get on
+the main conveyor.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig40"></span>
+<img src="figures2/ch7/ch7fig40.jpg" alt="One conveyor merging into another" width="90%" height="90%" />
+<p class="caption">
+Figure 7.40: One conveyor merging into another
+</p>
+</div>
+<p>A similar example, Figure <a href="ch7-sec-conveyors.html#fig:ch7fig40">7.40</a>, involves the merging of one conveyor onto anther
+conveyor as in SMART file, <em>Smarts110.doe</em>. In this example, there are
+two conveyors. The main conveyor has two segment lengths associated with
+it. For example, the main conveyor goes from Entry A Station to the
+Midpoint Station to the EndPoint station, with lengths 5 feet
+respectively. The second conveyor is a single conveyor from the Entry B
+station to the MidPoint Station with a length of 10 feet. Notice that
+the MidPoint station is associated with segments related to the two
+conveyors. In other words, they share a common station. The entities
+arrive at both the Entry A and Entry B stations. Entities that arrive at
+the Entry A station first convey to the MidPoint station and then
+immediately convey to the EndPoint station. They do not exit the
+conveyor at the MidPoint station. Entities from the Entry B station are
+conveyed to the MidPoint station. Once at the MidPoint station they
+first ACCESS the main conveyor and then EXIT their conveyor. This causes
+entities coming from Entry B to potentially wait for space on the main
+conveyor. This basic idea can be expanded to any number of feeder
+conveyors along a longer main conveyor.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig41"></span>
+<img src="figures2/ch7/ch7fig41.jpg" alt="Simple alternating conveyor" width="90%" height="90%" />
+<p class="caption">
+Figure 7.41: Simple alternating conveyor
+</p>
+</div>
+<p>Diverging conveyors are often used in system that sort items. The items
+come in on one main conveyor and are transferred to any number of other
+conveyors based on their attributes (e.g. destination). Arena’s
+<em>Smarts108.doe</em> file illustrates the basic concepts behind diverging
+conveyors. In this example, as shown in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig41">7.41</a>, the parts arrive to the arrival
+area and access a conveyor to the sorting area. Once an entity reaches
+the sorting station, the entity first exits the incoming conveyor and
+then there is a small delay for the sorting. The module labeled “Parts
+Enter Sorting Area” is an ENTER module with the transfer in option used
+to exit the conveyor. Then the entity is shunted down one of the lines
+based on a DECIDE module. In this model, a variable is used to keep
+track of the last line that an entity was sent to so that the other line
+will be used in the DECIDE for the next entity. This implements a simple
+alternating logic. After being shunted down one of the conveyors, the
+entity uses the standard ACCESS, CONVEY, STATION, EXIT logic before
+being disposed.</p>
+<p>With a little imagination a more sophisticated sorting station can be
+implemented. For example, number of conveyors that handle the parts by
+destination might be used in the system. When the parts are created they
+are given an attribute indicating their destination station. When they
+get to the sorting station, a DECIDE module can be used to pick the
+correct conveyor handling their destination.</p>
+</div>
+<div id="ch7s3sb3sub3" class="section level4" number="7.3.3.3">
+<h4><span class="header-section-number">7.3.3.3</span> Processing while on the Conveyor</h4>
+<p>In the bicycle example from <em>Smarts101.doe</em>, the workers can be
+conceptualized as moving along with the conveyor as they assemble the
+bicycles. In many systems it is common for a machine to be positioned to
+use the surface of the conveyor as its work area. For example, in
+circuit board manufacturing, the circuit boards ride on a conveyor
+through chip placement machines. While in the machine, the conveyor
+stops to do the insertion. These types of situations can be easily
+modeled in by not exiting the conveyor while undergoing a PROCESS
+module.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig42"></span>
+<img src="figures2/ch7/ch7fig42.jpg" alt="Processing while on a conveyor" width="90%" height="90%" />
+<p class="caption">
+Figure 7.42: Processing while on a conveyor
+</p>
+</div>
+<p>Arena’s SMART file, <em>Smarts103.doe</em>, contains an example of this type of
+modeling. In this example, as shown in
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig42">7.42</a>, packages are created for the
+packing area, where they access and convey on a conveyor to the pack and
+label station. The conveyor consists of two segments attached at the
+pack and label station. Once at the Labeling Area station the entity
+enters a PROCESS module, which requires a delay and the labeling
+machine. Notice that the entity did not exit the conveyor. The "Loading
+Area" module is a simple STATION module. After completing the
+processing, the entity proceeds to be conveyed to the shipping area,
+where it exits the conveyor. In this example, the conveyor is a
+non-accumulating conveyor. If you run the model, you will see that the
+whole conveyor stops when the entity is being processed. If an
+accumulating conveyor is used, the packages would queue up behind the
+labeling machine.</p>
+</div>
+<div id="ch7s3sb3sub4" class="section level4" number="7.3.3.4">
+<h4><span class="header-section-number">7.3.3.4</span> Recirculating Conveyors</h4>
+<p>A recirculating conveyor is a loop conveyor in which the entities may
+ride on the conveyor until there is adequate space at their desired
+location. In essence the conveyor is used as space to hold the entities
+that cannot get off due to inadequate space at the necessary station.
+For example, suppose that in the test and repair shop there was only
+space for one waiting part at test station two. Thus, the size of test
+station two’s queue can be at most 1.</p>
+<p>The previous model can be easily modified to handle this situation by
+not using an ENTER module at test station 2.
+Figure <a href="ch7-sec-conveyors.html#fig:ch7fig43">7.43</a> shows the changes to the logic
+for test station 2 to handle this situation. As can be seen in the
+figure, the ENTER module has been replaced with a combination of
+STATION, DECIDE, EXIT, and CONVEY. The DECIDE module checks the queue at
+the Testing Process 2 module. If a part is not in the queue, then the
+arriving part can exit the station and try to seize the testing
+resources. If there is a part waiting, then the arriving part is sent to
+the CONVEY module to be conveyed back around to test station 2. As long
+as there is a path back to the station, this is perfectly fine (as in
+this case). The modified model is available with the files for this
+chapter in the file called
+<em>RepairShopWithRecirculatingConveyorsWithAnimation.doe</em>. If you run the
+model and watch the animation, you will see much more parts on the
+conveyor because of the re-circulation.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch7fig43"></span>
+<img src="figures2/ch7/ch7fig43.jpg" alt="Test and repair shop with recirculating conveyor" width="90%" height="90%" />
+<p class="caption">
+Figure 7.43: Test and repair shop with recirculating conveyor
+</p>
+</div>
+<p>There are still a number of issues related to conveyor modeling that
+have not discussed, especially the use of the specialized variables
+defined for conveyors. You should refer to the Arena’s Variables Guide
+or to Arena’s help system under conveyor variables for more information
+on this topic. also has a number of other SMART files that illustrate
+the use of conveyors. For example, you might want to explore SMART file,
+<em>Smarts105.doe</em>, to better understand entity size and how it relates to
+cells on the conveyor. Conveyors allow the modeling of space through the
+used of cells. The next section examines how Arena models space when it is
+relevant for transporter modeling.</p>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-henriksen1986simplified" class="csl-entry">
+Henriksen, J., and T. Schriber. 1986. <span>“Simplified Approaches to Modeling Accumulating and Non-Accumulating Conveyor Systems.”</span> In <em>Proceedings of the 1986 Winter Simulation Conference</em>. Institute of Electrical; Electronic Engineers.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch7-sec-transporters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch7-sec-AGVs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/07-Chapter7.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

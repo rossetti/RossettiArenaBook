@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1 Enhancing the STEM Career Mixer Example | Simulation Modeling and Arena</title>
+  <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1 Enhancing the STEM Career Mixer Example | Simulation Modeling and Arena" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
+  
+  <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1 Enhancing the STEM Career Mixer Example | Simulation Modeling and Arena" />
+  
+  <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
+  
+
+<meta name="author" content="Manuel D. Rossetti" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch4.html"/>
+<link rel="next" href="ch4-IterativeLooping.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Modeling and Arena</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-support-files.html"><a href="book-support-files.html"><i class="fa fa-check"></i>Book Support Files</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="" data-path="usage-of-arena.html"><a href="usage-of-arena.html"><i class="fa fa-check"></i>Usage of Arena</a></li>
+<li class="chapter" data-level="" data-path="intended-audience.html"><a href="intended-audience.html"><i class="fa fa-check"></i>Intended Audience</a></li>
+<li class="chapter" data-level="" data-path="organization-of-the-book.html"><a href="organization-of-the-book.html"><i class="fa fa-check"></i>Organization of the Book</a></li>
+<li class="chapter" data-level="" data-path="course-syllabus-suggestion.html"><a href="course-syllabus-suggestion.html"><i class="fa fa-check"></i>Course Syllabus Suggestion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="ch1.html"><a href="ch1.html"><i class="fa fa-check"></i><b>1</b> Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simulation-modeling.html"><a href="simulation-modeling.html"><i class="fa fa-check"></i><b>1.1</b> Simulation Modeling</a></li>
+<li class="chapter" data-level="1.2" data-path="why-simulate.html"><a href="why-simulate.html"><i class="fa fa-check"></i><b>1.2</b> Why Simulate?</a></li>
+<li class="chapter" data-level="1.3" data-path="types-of-systems-and-simulation-models.html"><a href="types-of-systems-and-simulation-models.html"><i class="fa fa-check"></i><b>1.3</b> Types of Systems and Simulation Models</a></li>
+<li class="chapter" data-level="1.4" data-path="simulation-descriptive-or-prescriptive-modeling.html"><a href="simulation-descriptive-or-prescriptive-modeling.html"><i class="fa fa-check"></i><b>1.4</b> Simulation: Descriptive or Prescriptive Modeling?</a></li>
+<li class="chapter" data-level="1.5" data-path="randomness-in-simulation.html"><a href="randomness-in-simulation.html"><i class="fa fa-check"></i><b>1.5</b> Randomness in Simulation</a></li>
+<li class="chapter" data-level="1.6" data-path="simulation-languages.html"><a href="simulation-languages.html"><i class="fa fa-check"></i><b>1.6</b> Simulation Languages</a></li>
+<li class="chapter" data-level="1.7" data-path="ch1-sec-simMeth.html"><a href="ch1-sec-simMeth.html"><i class="fa fa-check"></i><b>1.7</b> Simulation Methodology</a></li>
+<li class="chapter" data-level="1.8" data-path="organization-of-the-book-1.html"><a href="organization-of-the-book-1.html"><i class="fa fa-check"></i><b>1.8</b> Organization of the Book</a></li>
+<li class="chapter" data-level="1.9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>1.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch2.html"><a href="ch2.html"><i class="fa fa-check"></i><b>2</b> Introduction to Simulation and Arena</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
+<li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
+<li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="HowDEDSClockWorks.html"><a href="HowDEDSClockWorks.html"><i class="fa fa-check"></i><b>2.3</b> How the Discrete-Event Clock Works</a></li>
+<li class="chapter" data-level="2.4" data-path="simulating-a-queueing-system-by-hand.html"><a href="simulating-a-queueing-system-by-hand.html"><i class="fa fa-check"></i><b>2.4</b> Simulating a Queueing System By Hand</a></li>
+<li class="chapter" data-level="2.5" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html"><i class="fa fa-check"></i><b>2.5</b> Elements of Process-Oriented Simulation</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#ch2:EntitiesAttributesVariables"><i class="fa fa-check"></i><b>2.5.1</b> Entities, Attributes, and Variables</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#creating-and-disposing-of-entities"><i class="fa fa-check"></i><b>2.5.2</b> Creating and Disposing of Entities</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ch2-ProcessModeling.html"><a href="ch2-ProcessModeling.html#defining-variables-and-attributes"><i class="fa fa-check"></i><b>2.5.3</b> Defining Variables and Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html"><i class="fa fa-check"></i><b>2.6</b> Modeling a Simple Discrete-Event Dynamic System</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:DriveThruPharmacy"><i class="fa fa-check"></i><b>2.6.1</b> A Drive through Pharmacy</a></li>
+<li class="chapter" data-level="2.6.2" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:ModelingThePharmacy"><i class="fa fa-check"></i><b>2.6.2</b> Modeling the System</a></li>
+<li class="chapter" data-level="2.6.3" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Implementation"><i class="fa fa-check"></i><b>2.6.3</b> Pharmacy Model Implementation</a></li>
+<li class="chapter" data-level="2.6.4" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Arrivals"><i class="fa fa-check"></i><b>2.6.4</b> Specify the Arrival Process</a></li>
+<li class="chapter" data-level="2.6.5" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Resources"><i class="fa fa-check"></i><b>2.6.5</b> Specifying the Resources</a></li>
+<li class="chapter" data-level="2.6.6" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Process"><i class="fa fa-check"></i><b>2.6.6</b> Specify the Process</a></li>
+<li class="chapter" data-level="2.6.7" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:RunParameters"><i class="fa fa-check"></i><b>2.6.7</b> Specify Run Parameters</a></li>
+<li class="chapter" data-level="2.6.8" data-path="modeling-a-simple-discrete-event-dynamic-system.html"><a href="modeling-a-simple-discrete-event-dynamic-system.html#ch2:PM:Results"><i class="fa fa-check"></i><b>2.6.8</b> Analyze the Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ch2-PM-Extension.html"><a href="ch2-PM-Extension.html"><i class="fa fa-check"></i><b>2.7</b> Extending the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.8" data-path="ch2-PM-Animate.html"><a href="ch2-PM-Animate.html"><i class="fa fa-check"></i><b>2.8</b> Animating the Drive Through Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html"><i class="fa fa-check"></i><b>2.9</b> Attributes, Variables, and Some I/O</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:ModifiedPharmacyModel"><i class="fa fa-check"></i><b>2.9.1</b> Modifying the Pharmacy Model</a></li>
+<li class="chapter" data-level="2.9.2" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:Assign"><i class="fa fa-check"></i><b>2.9.2</b> Using the ASSIGN Module</a></li>
+<li class="chapter" data-level="2.9.3" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:ReadWrite"><i class="fa fa-check"></i><b>2.9.3</b> Using the READWRITE Module</a></li>
+<li class="chapter" data-level="2.9.4" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RECORD"><i class="fa fa-check"></i><b>2.9.4</b> Using the RECORD Module</a></li>
+<li class="chapter" data-level="2.9.5" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:AnimatingVariables"><i class="fa fa-check"></i><b>2.9.5</b> Animating a Variable</a></li>
+<li class="chapter" data-level="2.9.6" data-path="ch2-AttVariablesIO.html"><a href="ch2-AttVariablesIO.html#ch2:AttVariablesIO:RunModel"><i class="fa fa-check"></i><b>2.9.6</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ch2-howArenaWorks.html"><a href="ch2-howArenaWorks.html"><i class="fa fa-check"></i><b>2.10</b> How Arena Manages Entities and Events</a></li>
+<li class="chapter" data-level="2.11" data-path="ch2-Summary.html"><a href="ch2-Summary.html"><i class="fa fa-check"></i><b>2.11</b> Summary</a></li>
+<li class="chapter" data-level="2.12" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i><b>2.12</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch3.html"><a href="ch3.html"><i class="fa fa-check"></i><b>3</b> Statistical Analysis for Finite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch3-finiteVsInfinite.html"><a href="ch3-finiteVsInfinite.html"><i class="fa fa-check"></i><b>3.1</b> Finite versus Infinite Horizon Simulation Studies</a></li>
+<li class="chapter" data-level="3.2" data-path="ch3s1.html"><a href="ch3s1.html"><i class="fa fa-check"></i><b>3.2</b> Types of Statistical Quantities in Simulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ch3s1.html"><a href="ch3s1.html#within-replication-observations"><i class="fa fa-check"></i><b>3.2.1</b> Within Replication Observations</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ch3s1.html"><a href="ch3s1.html#across-replication-observations"><i class="fa fa-check"></i><b>3.2.2</b> Across Replication Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html"><i class="fa fa-check"></i><b>3.3</b> Review of Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch3StatReview.html"><a href="ch3StatReview.html#point-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>3.3.1</b> Point Estimates and Confidence Intervals</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch3StatReview.html"><a href="ch3StatReview.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.2</b> Sample Size Determination</a></li>
+<li class="chapter" data-level="3.3.3" data-path="ch3StatReview.html"><a href="ch3StatReview.html#determining-the-sample-size-for-an-arena-simulation"><i class="fa fa-check"></i><b>3.3.3</b> Determining the Sample Size for an Arena Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html"><i class="fa fa-check"></i><b>3.4</b> Modeling a STEM Career Mixer</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#conceptualizing-the-system"><i class="fa fa-check"></i><b>3.4.1</b> Conceptualizing the System</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#implementing-the-model"><i class="fa fa-check"></i><b>3.4.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modeling-a-stem-career-mixer.html"><a href="modeling-a-stem-career-mixer.html#planning-the-sample-size"><i class="fa fa-check"></i><b>3.4.3</b> Planning the Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><a href="using-sequential-sampling-methods-on-a-finite-horizon-simulation.html"><i class="fa fa-check"></i><b>3.5</b> Using Sequential Sampling Methods on a Finite Horizon Simulation</a></li>
+<li class="chapter" data-level="3.6" data-path="ch2-Frequencies.html"><a href="ch2-Frequencies.html"><i class="fa fa-check"></i><b>3.6</b> Tabulating Frequencies using the STATISTIC Module</a></li>
+<li class="chapter" data-level="3.7" data-path="ch3Summary.html"><a href="ch3Summary.html"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch4.html"><a href="ch4.html"><i class="fa fa-check"></i><b>4</b> Modeling Systems with Processes and Basic Entity Flow</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html"><i class="fa fa-check"></i><b>4.1</b> Enhancing the STEM Career Mixer Example</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:TurnOffCreate"><i class="fa fa-check"></i><b>4.1.1</b> Turning Off a CREATE Module</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:ModelingWalking"><i class="fa fa-check"></i><b>4.1.2</b> Modeling Walking Time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:Expressions"><i class="fa fa-check"></i><b>4.1.3</b> Using Expressions within an Arena Model</a></li>
+<li class="chapter" data-level="4.1.4" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#ch4:RevisedJFE:NewModules"><i class="fa fa-check"></i><b>4.1.4</b> Introducing the STATION, ROUTE, STORAGE, and SET Modules</a></li>
+<li class="chapter" data-level="4.1.5" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#controlling-randomness-by-specifying-stream-numbers"><i class="fa fa-check"></i><b>4.1.5</b> Controlling Randomness by Specifying Stream Numbers</a></li>
+<li class="chapter" data-level="4.1.6" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#pseudo-code-for-the-revised-stem-mixer-example"><i class="fa fa-check"></i><b>4.1.6</b> Pseudo-code for the Revised STEM Mixer Example</a></li>
+<li class="chapter" data-level="4.1.7" data-path="ch4-RevisedJFE.html"><a href="ch4-RevisedJFE.html#implementing-the-revised-stem-mixer-model-in-arena"><i class="fa fa-check"></i><b>4.1.7</b> Implementing the Revised STEM Mixer Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ch4-IterativeLooping.html"><a href="ch4-IterativeLooping.html"><i class="fa fa-check"></i><b>4.2</b> Example: Iterative Looping, Expressions, and Sub-models</a></li>
+<li class="chapter" data-level="4.3" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html"><i class="fa fa-check"></i><b>4.3</b> Batching and Separating Entities</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4:TieDyeTShirtsSub1"><i class="fa fa-check"></i><b>4.3.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ch4-BatchSeparate.html"><a href="ch4-BatchSeparate.html#ch4s7sb1sub2"><i class="fa fa-check"></i><b>4.3.2</b> Building the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html"><i class="fa fa-check"></i><b>4.4</b> Statistical Issues When Comparing Two Systems</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2indepSamples"><i class="fa fa-check"></i><b>4.4.1</b> Analyzing Two Independent Samples</a></li>
+<li class="chapter" data-level="4.4.2" data-path="ch4-StatIssuesTwoSystems.html"><a href="ch4-StatIssuesTwoSystems.html#ch4:2depSamples"><i class="fa fa-check"></i><b>4.4.2</b> Analyzing Two Dependent Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html"><i class="fa fa-check"></i><b>4.5</b> The LOTR Makers, Inc. Example</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#conceptualizing-the-model"><i class="fa fa-check"></i><b>4.5.1</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#implementing-the-model-1"><i class="fa fa-check"></i><b>4.5.2</b> Implementing the Model</a></li>
+<li class="chapter" data-level="4.5.3" data-path="ch4-LOTRExample.html"><a href="ch4-LOTRExample.html#running-the-model"><i class="fa fa-check"></i><b>4.5.3</b> Running the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html"><i class="fa fa-check"></i><b>4.6</b> Comparing Two Alternative Configurations for the LOTR Makers</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="comparing-two-alternative-configurations-for-the-lotr-makers.html"><a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#resource-sets"><i class="fa fa-check"></i><b>4.6.1</b> Resource Sets</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html"><i class="fa fa-check"></i><b>4.7</b> Modeling Systems with Routing Sequences</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#computer-test-and-repair-shop-example"><i class="fa fa-check"></i><b>4.7.1</b> Computer Test and Repair Shop Example</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#conceptualizing-the-model-1"><i class="fa fa-check"></i><b>4.7.2</b> Conceptualizing the Model</a></li>
+<li class="chapter" data-level="4.7.3" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#ch4:Sequences"><i class="fa fa-check"></i><b>4.7.3</b> STATION, ROUTE, and SEQUENCE Modules</a></li>
+<li class="chapter" data-level="4.7.4" data-path="ch4-RoutingSequences.html"><a href="ch4-RoutingSequences.html#running-the-test-and-repair-model"><i class="fa fa-check"></i><b>4.7.4</b> Running the Test and Repair Model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ch4-Summary.html"><a href="ch4-Summary.html"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="ch4-Exercises.html"><a href="ch4-Exercises.html"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch5.html"><a href="ch5.html"><i class="fa fa-check"></i><b>5</b> Statistical Analysis for Infinite Horizon Simulation Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch5-MM1Spreadsheet.html"><a href="ch5-MM1Spreadsheet.html"><i class="fa fa-check"></i><b>5.1</b> A Spreadsheet Example</a></li>
+<li class="chapter" data-level="5.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html"><i class="fa fa-check"></i><b>5.2</b> Statistical Analysis Techniques for Warmup Detection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#ch5s4sb1"><i class="fa fa-check"></i><b>5.2.1</b> Assessing the Effect of Initial Conditions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-analysis-techniques-for-warmup-detection.html"><a href="statistical-analysis-techniques-for-warmup-detection.html#using-a-welch-plot-to-detect-the-warmup-period"><i class="fa fa-check"></i><b>5.2.2</b> Using a Welch Plot to Detect the Warmup Period</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html"><i class="fa fa-check"></i><b>5.3</b> Performing the Method of Replication-Deletion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ch5-RepDeletion.html"><a href="ch5-RepDeletion.html#ch5:WelchPlotAnalyzer"><i class="fa fa-check"></i><b>5.3.1</b> Looking for the Warm up Period in the Welch Plot Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html"><i class="fa fa-check"></i><b>5.4</b> The Batch Means Method</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="ch5-BatchMeansMethod.html"><a href="ch5-BatchMeansMethod.html#ch5:bmInArena"><i class="fa fa-check"></i><b>5.4.1</b> Performing the Method of Batch Means</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html"><i class="fa fa-check"></i><b>5.5</b> Applying Queueing Theory Results to Verify and Validate a Simulation</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-preparation-station"><i class="fa fa-check"></i><b>5.5.1</b> Analyzing the Preparation Station</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-build-lines"><i class="fa fa-check"></i><b>5.5.2</b> Analyzing the Build Lines</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-packaging-station"><i class="fa fa-check"></i><b>5.5.3</b> Analyzing the Packaging Station</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-palletizing-station"><i class="fa fa-check"></i><b>5.5.4</b> Analyzing the Palletizing Station</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ch5-VandV.html"><a href="ch5-VandV.html#analyzing-the-total-system-time"><i class="fa fa-check"></i><b>5.5.5</b> Analyzing the Total System Time</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ch5-VandV.html"><a href="ch5-VandV.html#other-issues-for-verification-and-validation"><i class="fa fa-check"></i><b>5.5.6</b> Other Issues for Verification and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Modeling Systems with Advanced Process Concepts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html"><i class="fa fa-check"></i><b>6.1</b> Non-stationary Processes</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#thinning-method"><i class="fa fa-check"></i><b>6.1.1</b> Thinning Method</a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6-sec-NSPP.html"><a href="ch6-sec-NSPP.html#rate-inversion-method"><i class="fa fa-check"></i><b>6.1.2</b> Rate Inversion Method</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html"><i class="fa fa-check"></i><b>6.2</b> Advanced Resource Modeling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#scheduled-capacity-changes"><i class="fa fa-check"></i><b>6.2.1</b> Scheduled Capacity Changes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#calculating-utilization"><i class="fa fa-check"></i><b>6.2.2</b> Calculating Utilization</a></li>
+<li class="chapter" data-level="6.2.3" data-path="ch6-AdvResModeling.html"><a href="ch6-AdvResModeling.html#resource-failure-modeling"><i class="fa fa-check"></i><b>6.2.3</b> Resource Failure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html"><i class="fa fa-check"></i><b>6.3</b> Job Fair Example with Non-Stationary Arrivals</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#collecting-statistics-by-time-periods"><i class="fa fa-check"></i><b>6.3.1</b> Collecting Statistics by Time Periods</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#modeling-the-statistical-collection"><i class="fa fa-check"></i><b>6.3.2</b> Modeling the Statistical Collection</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ch6-sec-jobfair.html"><a href="ch6-sec-jobfair.html#implementing-the-model-in-arena"><i class="fa fa-check"></i><b>6.3.3</b> Implementing the Model in Arena</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6s1sb4sub3.html"><a href="ch6s1sb4sub3.html"><i class="fa fa-check"></i><b>6.4</b> Modeling Balking and Reneging</a></li>
+<li class="chapter" data-level="6.5" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html"><i class="fa fa-check"></i><b>6.5</b> Holding and Signaling Entities</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#ch6:sub:sec:mm1HoldSignal"><i class="fa fa-check"></i><b>6.5.1</b> Redoing the M/M/1 Model with HOLD/SIGNAL</a></li>
+<li class="chapter" data-level="6.5.2" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#using-wait-and-signal-to-release-entities"><i class="fa fa-check"></i><b>6.5.2</b> Using Wait and Signal to Release Entities</a></li>
+<li class="chapter" data-level="6.5.3" data-path="ch6-sec-holdSignal.html"><a href="ch6-sec-holdSignal.html#modeling-a-reorder-point-reorder-quantity-inventory-policy"><i class="fa fa-check"></i><b>6.5.3</b> Modeling a Reorder Point, Reorder Quantity Inventory Policy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="ch6s4.html"><a href="ch6s4.html"><i class="fa fa-check"></i><b>6.6</b> Miscellaneous Modeling Concepts</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb1"><i class="fa fa-check"></i><b>6.6.1</b> Picking Between Stations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="ch6s4.html"><a href="ch6s4.html#ch6s4sb2"><i class="fa fa-check"></i><b>6.6.2</b> Generic Station Modeling</a></li>
+<li class="chapter" data-level="6.6.3" data-path="ch6s4.html"><a href="ch6s4.html#ch6:PickAndDrop"><i class="fa fa-check"></i><b>6.6.3</b> Picking up and Dropping Off Entities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="ch6-sec-summary.html"><a href="ch6-sec-summary.html"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+<li class="chapter" data-level="6.8" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i><b>6.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch7.html"><a href="ch7.html"><i class="fa fa-check"></i><b>7</b> Modeling Systems with Entity Movement and Material Handling Constructs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html"><i class="fa fa-check"></i><b>7.1</b> Resource Constrained Transfer</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb1"><i class="fa fa-check"></i><b>7.1.1</b> Implementing Resource Constrained Transfer</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ch7-sec-RCT.html"><a href="ch7-sec-RCT.html#ch7s1sb2"><i class="fa fa-check"></i><b>7.1.2</b> Animating Resource Constrained Transfer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html"><i class="fa fa-check"></i><b>7.2</b> Constrained Transfer with Transporters</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7:TRTransporters"><i class="fa fa-check"></i><b>7.2.1</b> Test and Repair Shop with Workers as Transporters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ch7-sec-transporters.html"><a href="ch7-sec-transporters.html#ch7s2sb2"><i class="fa fa-check"></i><b>7.2.2</b> Animating Transporters</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html"><i class="fa fa-check"></i><b>7.3</b> Modeling Systems with Conveyors</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb1"><i class="fa fa-check"></i><b>7.3.1</b> Test and Repair Shop with Conveyors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb2"><i class="fa fa-check"></i><b>7.3.2</b> Animating Conveyors</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ch7-sec-conveyors.html"><a href="ch7-sec-conveyors.html#ch7s3sb3"><i class="fa fa-check"></i><b>7.3.3</b> Miscellaneous Issues in Conveyor Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ch7-sec-AGVs.html"><a href="ch7-sec-AGVs.html"><i class="fa fa-check"></i><b>7.4</b> Modeling Guided Path Transporters</a></li>
+<li class="chapter" data-level="7.5" data-path="ch7-Summary.html"><a href="ch7-Summary.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch8.html"><a href="ch8.html"><i class="fa fa-check"></i><b>8</b> Applications of Simulation Modeling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html"><i class="fa fa-check"></i><b>8.1</b> Analyzing Multiple Systems</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub1"><i class="fa fa-check"></i><b>8.1.1</b> Sensitivity Analysis Using the Process Analyzer</a></li>
+<li class="chapter" data-level="8.1.2" data-path="ch7s5sb2.html"><a href="ch7s5sb2.html#ch7s5sb2sub2"><i class="fa fa-check"></i><b>8.1.2</b> Multiple Comparisons with the Best</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="ch11s1.html"><a href="ch11s1.html"><i class="fa fa-check"></i><b>8.2</b> SM Testing Contest Problem Description</a></li>
+<li class="chapter" data-level="8.3" data-path="sec-ModelingQs.html"><a href="sec-ModelingQs.html"><i class="fa fa-check"></i><b>8.3</b> Answering the Basic Modeling Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html"><i class="fa fa-check"></i><b>8.4</b> Detailed Modeling</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#sec:conveyorStationModeling"><i class="fa fa-check"></i><b>8.4.1</b> Conveyor and Station Modeling</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub2"><i class="fa fa-check"></i><b>8.4.2</b> Modeling Samples and the Test Cells</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub3"><i class="fa fa-check"></i><b>8.4.3</b> Modeling Sample Holders and the Load/Unload Area</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sec-DetailedModeling.html"><a href="sec-DetailedModeling.html#ch11s2sb2sub4"><i class="fa fa-check"></i><b>8.4.4</b> Performance Measure Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ch11s2sb2sub5.html"><a href="ch11s2sb2sub5.html"><i class="fa fa-check"></i><b>8.5</b> Simulation Horizon and Run Parameters</a></li>
+<li class="chapter" data-level="8.6" data-path="ch11s2sb3.html"><a href="ch11s2sb3.html"><i class="fa fa-check"></i><b>8.6</b> Preliminary Experimental Analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html"><i class="fa fa-check"></i><b>8.7</b> Final Experimental Analysis and Results</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub1"><i class="fa fa-check"></i><b>8.7.1</b> Using the Process Analyzer on the Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub2"><i class="fa fa-check"></i><b>8.7.2</b> Using OptQuest on the Problem</a></li>
+<li class="chapter" data-level="8.7.3" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s2sb4sub3"><i class="fa fa-check"></i><b>8.7.3</b> Investigating the New Logic Alternative</a></li>
+<li class="chapter" data-level="8.7.4" data-path="ch11s2sb4.html"><a href="ch11s2sb4.html#ch11s3"><i class="fa fa-check"></i><b>8.7.4</b> Sensitivity Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="ch11s4.html"><a href="ch11s4.html"><i class="fa fa-check"></i><b>8.8</b> Completing the Project</a></li>
+<li class="chapter" data-level="8.9" data-path="ch11s5.html"><a href="ch11s5.html"><i class="fa fa-check"></i><b>8.9</b> Some Final Thoughts</a></li>
+<li class="chapter" data-level="8.10" data-path="exercises-6.html"><a href="exercises-6.html"><i class="fa fa-check"></i><b>8.10</b> Exercises</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-rnrv.html"><a href="app-rnrv.html"><i class="fa fa-check"></i><b>A</b> Generating Pseudo-Random Numbers and Random Variates</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html"><i class="fa fa-check"></i><b>A.1</b> Pseudo Random Numbers</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="app-rnrv-rn.html"><a href="app-rnrv-rn.html#app:rnrv:rngs"><i class="fa fa-check"></i><b>A.1.1</b> Random Number Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html"><i class="fa fa-check"></i><b>A.2</b> Generating Random Variates from Distributions</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#inverse-transform-method"><i class="fa fa-check"></i><b>A.2.1</b> Inverse Transform Method</a></li>
+<li class="chapter" data-level="A.2.2" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#convolution"><i class="fa fa-check"></i><b>A.2.2</b> Convolution</a></li>
+<li class="chapter" data-level="A.2.3" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#acceptancerejection"><i class="fa fa-check"></i><b>A.2.3</b> Acceptance/Rejection</a></li>
+<li class="chapter" data-level="A.2.4" data-path="app-rnrv-rvs.html"><a href="app-rnrv-rvs.html#AppRNRV:subsec:MTSRV"><i class="fa fa-check"></i><b>A.2.4</b> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>A.3</b> Summary</a></li>
+<li class="chapter" data-level="A.4" data-path="exercises-7.html"><a href="exercises-7.html"><i class="fa fa-check"></i><b>A.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-idm.html"><a href="app-idm.html"><i class="fa fa-check"></i><b>B</b> Probability Distribution Modeling</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-idm-sec-rvPD.html"><a href="app-idm-sec-rvPD.html"><i class="fa fa-check"></i><b>B.1</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="B.2" data-path="app-idm-sec-MDD.html"><a href="app-idm-sec-MDD.html"><i class="fa fa-check"></i><b>B.2</b> Modeling with Discrete Distributions</a></li>
+<li class="chapter" data-level="B.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html"><i class="fa fa-check"></i><b>B.3</b> Fitting Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#AppDisFit:PoissonFit"><i class="fa fa-check"></i><b>B.3.1</b> Fitting a Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#visualizing-the-data"><i class="fa fa-check"></i><b>B.3.2</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#estimating-the-rate-parameter-for-the-poisson-distribution"><i class="fa fa-check"></i><b>B.3.3</b> Estimating the Rate Parameter for the Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.4" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#chi-squared-goodness-of-fit-test-for-poisson-distribution"><i class="fa fa-check"></i><b>B.3.4</b> Chi-Squared Goodness of Fit Test for Poisson Distribution</a></li>
+<li class="chapter" data-level="B.3.5" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#subsub:chisqGOF"><i class="fa fa-check"></i><b>B.3.5</b> Chi-Squared Goodness of Fit Test</a></li>
+<li class="chapter" data-level="B.3.6" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#using-the-fitdistrplus-r-package-on-discrete-data"><i class="fa fa-check"></i><b>B.3.6</b> Using the fitdistrplus R Package on Discrete Data</a></li>
+<li class="chapter" data-level="B.3.7" data-path="app-idm-sec-fitDiscrete.html"><a href="app-idm-sec-fitDiscrete.html#fitting-a-discrete-empirical-distribution"><i class="fa fa-check"></i><b>B.3.7</b> Fitting a Discrete Empirical Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-idm-sec-MCD.html"><a href="app-idm-sec-MCD.html"><i class="fa fa-check"></i><b>B.4</b> Modeling with Continuous Distributions</a></li>
+<li class="chapter" data-level="B.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html"><i class="fa fa-check"></i><b>B.5</b> Fitting Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="B.5.1" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visualizedata"><i class="fa fa-check"></i><b>B.5.1</b> Visualizing the Data</a></li>
+<li class="chapter" data-level="B.5.2" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:statsdata"><i class="fa fa-check"></i><b>B.5.2</b> Statistically Summarize the Data</a></li>
+<li class="chapter" data-level="B.5.3" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:hypothDist"><i class="fa fa-check"></i><b>B.5.3</b> Hypothesizing and Testing a Distribution</a></li>
+<li class="chapter" data-level="B.5.4" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>B.5.4</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="B.5.5" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idm:subsec:visFit"><i class="fa fa-check"></i><b>B.5.5</b> Visualizing the Fit</a></li>
+<li class="chapter" data-level="B.5.6" data-path="app-idm-sec-fitContinuous.html"><a href="app-idm-sec-fitContinuous.html#app:idms2sb3"><i class="fa fa-check"></i><b>B.5.6</b> Using the Input Analyzer</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html"><i class="fa fa-check"></i><b>B.6</b> Testing Uniform (0,1) Pseudo-Random Numbers</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#chi-squared-goodness-of-fit-tests-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.1</b> Chi-Squared Goodness of Fit Tests for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.2" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#higher-dimensional-chi-squared-test"><i class="fa fa-check"></i><b>B.6.2</b> Higher Dimensional Chi-Squared Test</a></li>
+<li class="chapter" data-level="B.6.3" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#kolmogorov-smirnov-test-for-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.3</b> Kolmogorov-Smirnov Test for Pseudo-Random Numbers</a></li>
+<li class="chapter" data-level="B.6.4" data-path="app-distfit-testU01.html"><a href="app-distfit-testU01.html#testing-for-independence-and-patterns-in-pseudo-random-numbers"><i class="fa fa-check"></i><b>B.6.4</b> Testing for Independence and Patterns in Pseudo-Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="B.7" data-path="app-distfit-idms2sb4.html"><a href="app-distfit-idms2sb4.html"><i class="fa fa-check"></i><b>B.7</b> Additional Distribution Modeling Concepts</a></li>
+<li class="chapter" data-level="B.8" data-path="app-idmSummary.html"><a href="app-idmSummary.html"><i class="fa fa-check"></i><b>B.8</b> Summary</a></li>
+<li class="chapter" data-level="B.9" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i><b>B.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="app-qtAndInvT.html"><a href="app-qtAndInvT.html"><i class="fa fa-check"></i><b>C</b> Queueing Theory</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="app-qts1.html"><a href="app-qts1.html"><i class="fa fa-check"></i><b>C.1</b> Single Line Queueing Stations</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="app-qts1.html"><a href="app-qts1.html#queueing-notation"><i class="fa fa-check"></i><b>C.1.1</b> Queueing Notation</a></li>
+<li class="chapter" data-level="C.1.2" data-path="app-qts1.html"><a href="app-qts1.html#littles-formula"><i class="fa fa-check"></i><b>C.1.2</b> Little’s Formula</a></li>
+<li class="chapter" data-level="C.1.3" data-path="app-qts1.html"><a href="app-qts1.html#app:qts1sb1"><i class="fa fa-check"></i><b>C.1.3</b> Deriving Formulas for Markovian Single Queue Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html"><i class="fa fa-check"></i><b>C.2</b> Examples and Applications of Queueing Analysis</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#infinite-queue-examples"><i class="fa fa-check"></i><b>C.2.1</b> Infinite Queue Examples</a></li>
+<li class="chapter" data-level="C.2.2" data-path="app-qts1sb2.html"><a href="app-qts1sb2.html#finite-queue-examples"><i class="fa fa-check"></i><b>C.2.2</b> Finite Queue Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="app-qts1sb3.html"><a href="app-qts1sb3.html"><i class="fa fa-check"></i><b>C.3</b> Non-Markovian Queues and Approximations</a></li>
+<li class="chapter" data-level="C.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html"><i class="fa fa-check"></i><b>C.4</b> Summary of Queueing Formulas</a>
+<ul>
+<li class="chapter" data-level="C.4.1" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1-queue"><i class="fa fa-check"></i><b>C.4.1</b> M/M/1 Queue</a></li>
+<li class="chapter" data-level="C.4.2" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmc-queue"><i class="fa fa-check"></i><b>C.4.2</b> M/M/c Queue</a></li>
+<li class="chapter" data-level="C.4.3" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue"><i class="fa fa-check"></i><b>C.4.3</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.4" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mgcc-queue"><i class="fa fa-check"></i><b>C.4.4</b> M/G/c/c Queue</a></li>
+<li class="chapter" data-level="C.4.5" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1k-queue"><i class="fa fa-check"></i><b>C.4.5</b> M/M/1/k Queue</a></li>
+<li class="chapter" data-level="C.4.6" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmck-queue-1"><i class="fa fa-check"></i><b>C.4.6</b> M/M/c/k Queue</a></li>
+<li class="chapter" data-level="C.4.7" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mm1kk-queue"><i class="fa fa-check"></i><b>C.4.7</b> M/M/1/k/k Queue</a></li>
+<li class="chapter" data-level="C.4.8" data-path="app-qt-sec-formulas.html"><a href="app-qt-sec-formulas.html#mmckk-queue"><i class="fa fa-check"></i><b>C.4.8</b> M/M/c/k/k Queue</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i><b>C.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="app-ArenaMisc.html"><a href="app-ArenaMisc.html"><i class="fa fa-check"></i><b>D</b> Miscellaneous Topics in Arena</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="app-ArenaMisc-GettingHelp.html"><a href="app-ArenaMisc-GettingHelp.html"><i class="fa fa-check"></i><b>D.1</b> Getting Help in Arena</a></li>
+<li class="chapter" data-level="D.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html"><i class="fa fa-check"></i><b>D.2</b> SIMAN and the Run Controller</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:modExp"><i class="fa fa-check"></i><b>D.2.1</b> SIMAN MOD and EXP Files</a></li>
+<li class="chapter" data-level="D.2.2" data-path="app-ArenaMisc-RunController.html"><a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController:Using"><i class="fa fa-check"></i><b>D.2.2</b> Using the Run Controller</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html"><i class="fa fa-check"></i><b>D.3</b> Programming Concepts within Arena</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:MsAccess"><i class="fa fa-check"></i><b>D.3.1</b> Using the Generated Access File</a></li>
+<li class="chapter" data-level="D.3.2" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:Files"><i class="fa fa-check"></i><b>D.3.2</b> Working with Files, Excel, and Access</a></li>
+<li class="chapter" data-level="D.3.3" data-path="app-ArenaMisc-Prog.html"><a href="app-ArenaMisc-Prog.html#app:ArenaMisc:Prog:VBA"><i class="fa fa-check"></i><b>D.3.3</b> Using Visual Basic for Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html"><i class="fa fa-check"></i><b>D.4</b> Resource and Entity Costing</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:ResourceCosting"><i class="fa fa-check"></i><b>D.4.1</b> Resource Costing</a></li>
+<li class="chapter" data-level="D.4.2" data-path="app-ArenaMisc-ArenaCosting.html"><a href="app-ArenaMisc-ArenaCosting.html#app:ArenaMisc:EntityCosting"><i class="fa fa-check"></i><b>D.4.2</b> Entity Costing</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>D.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="app-ArenaOFD.html"><a href="app-ArenaOFD.html"><i class="fa fa-check"></i><b>E</b> Arena Operators, Functions, Distributions, and Modules</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="arena-mathematical-and-logical-operators.html"><a href="arena-mathematical-and-logical-operators.html"><i class="fa fa-check"></i><b>E.1</b> Arena Mathematical and Logical Operators</a></li>
+<li class="chapter" data-level="E.2" data-path="arena-probability-distributions-functions.html"><a href="arena-probability-distributions-functions.html"><i class="fa fa-check"></i><b>E.2</b> Arena Probability Distributions Functions</a></li>
+<li class="chapter" data-level="E.3" data-path="basic-process-panel-modules.html"><a href="basic-process-panel-modules.html"><i class="fa fa-check"></i><b>E.3</b> Basic Process Panel Modules</a></li>
+<li class="chapter" data-level="E.4" data-path="advanced-process-panel-modules.html"><a href="advanced-process-panel-modules.html"><i class="fa fa-check"></i><b>E.4</b> Advanced Process Panel Modules</a></li>
+<li class="chapter" data-level="E.5" data-path="advanced-transfer-panel-modules.html"><a href="advanced-transfer-panel-modules.html"><i class="fa fa-check"></i><b>E.5</b> Advanced Transfer Panel Modules</a></li>
+<li class="chapter" data-level="E.6" data-path="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><a href="important-siman-blocks-elements-and-pre-defined-attributes-and-variables.html"><i class="fa fa-check"></i><b>E.6</b> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>F</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="app-DiscreteDistributions.html"><a href="app-DiscreteDistributions.html"><i class="fa fa-check"></i><b>F.1</b> Discrete Distrbutions</a></li>
+<li class="chapter" data-level="F.2" data-path="app-ContinuousDistributions.html"><a href="app-ContinuousDistributions.html"><i class="fa fa-check"></i><b>F.2</b> Continuous Distrbutions</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="app-StatTables.html"><a href="app-StatTables.html"><i class="fa fa-check"></i><b>G</b> Statistical Tables</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Modeling and Arena</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch4:RevisedJFE" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Enhancing the STEM Career Mixer Example</h2>
+<p>In Chapter <a href="ch3.html#ch3">3</a>, we discussed the implementation of an Arena model for the
+STEM Career Fair Mixer of Example <a href="modeling-a-stem-career-mixer.html#exm:exSTEMCareerFair">3.4</a>. In this section, we are going to
+embellish the system to add a few modeling issues that will make the
+model a bit more realistic. This will also allow for the introduction of
+the following new Arena modules.</p>
+<ul>
+<li><p>EXPRESSION</p></li>
+<li><p>ROUTE</p></li>
+<li><p>STATION</p></li>
+<li><p>STORAGE</p></li>
+<li><p>STORE</p></li>
+<li><p>UNSTORE</p></li>
+</ul>
+<p>We will also re-examine how the CREATE module works and see how to
+collect additional performance metrics. Finally, we will learn how to
+control the underlying random number streams used when generating random
+variables within Arena.</p>
+<p>The following issues will be addressed in the new model.</p>
+<ul>
+<li><p>In reality, those students that wander around before deciding to
+visit the recruiters actually visit the conversation area associated
+with the mixer. The organizer of the event has asked alumni to
+volunteer to be available within the conversation area to chat with
+students and discuss their career development. After all, it is a
+mixer. The organizer of the mixer would like to plan for the size of
+the conversation area.</p></li>
+<li><p>The STEM Fair is scheduled for 6 hours; however, currently, the
+simulation simply ends “abruptly” at 6 hours. How should we handle
+those students that are attending the mixer when the mixer ends? In
+this section, we will model a more realistic approach to ending the
+mixer and handling the students in progress.</p></li>
+</ul>
+<!-- -   Currently, there is no animation for the students walking and -->
+<!--     conversing. In addition, the animation for the recruiting stations -->
+<!--     currently uses the default Arena flow chart animation. The organizer -->
+<!--     of the mixer would like a better animation for the model. -->
+<p>After discussing with the STEM Fair organizer, the following additional
+facts were discovered. Generally, near the end of the scheduled mixer
+time, an announcement is made to everyone in the facility through the
+public address (PA) system that the mixer will be ending soon. For the
+purposes of this modeling enhancement, we can assume that the
+announcement goes out 15 minutes before the end of the mixer. At that
+time, we can assume the following:</p>
+<ul>
+<li><p>The doors to the mixture are closed to new arrivals. In other words,
+a closed sign goes up so that no new students are admitted to the
+mixer.</p></li>
+<li><p>Any students that were chatting within the conversation area finish
+up their conversations and then head for the exit, without visiting
+the recruiting stations.</p></li>
+<li><p>Any student walking to the name tag area, the conversation area or
+to the recruiting area proceed to the exit.</p></li>
+<li><p>Any students already at the recruiting stations, either in line
+waiting, or talking with the recruiter are allowed to finish up
+their visit and then depart the mixer.</p></li>
+</ul>
+<p>Based on additional observations and discussion with the STEM mixer
+organizer, the following changes can be assumed:</p>
+<ul>
+<li><p>Because the distances between the stations in the hall are now
+important an enhanced drawing of the system has been made that
+better illustrates the standard layout that has been used in the
+past for the mixer. The distances shown in the drawing are rough
+estimates.</p></li>
+<li><p>New data suggest that 60% of the arriving students do not visit the
+conversation area, but instead go directly to the recruiting area to
+pick one of the two recruiting stations to visit, with equal
+probability.</p></li>
+<li><p>The remaining 40% of students will first visit the conversation
+area. The time spent within the conversation area is a little less
+than previously noted to exclude the time spent walking. The
+conversation time is triangularly distribution with a minimum of 10
+minutes, a most likely value of 15 minutes, and a maximum value of
+30 minutes. After having their conversations, 90% of the students
+decide to visit one of the two recruiting stations. The other 10%
+are too tired or timid and decide to leave.</p></li>
+<li><p>The speed of people walking can vary greatly, but prior data
+suggests that for short distances within and around buildings,
+people walk between 1 mile per hour and 3 miles per hour, with a
+most likely time of 2 miles per hour, triangularly distributed.</p></li>
+</ul>
+<p>After further conversations with students who have attended past mixers,
+it was discovered that there really isn’t a preference for visiting one
+of the recruiters first. Instead, after arriving to the recruiting area,
+students decide to visit the recruiter that has the least number of
+people (waiting and interacting with the recruiters). If both recruiter
+locations have the same total number of students, then the students show
+no preference between the two recruiters. After visiting the first
+recruiter, if they have already spent more than 45 minutes at the STEM
+fair, they decide to depart; otherwise, they visit the recruiter that
+they have not yet visited. After visiting both, they depart.</p>
+<p>Because of these changes to the modeling assumptions, the STEM organizer
+would like to better understand the following aspects of potential
+system performance.</p>
+<ul>
+<li><p>When the PA announcement occurs, how many students on average are:</p>
+<ul>
+<li><p>In the conversation area</p></li>
+<li><p>Attending the MalWart recruiting station</p></li>
+<li><p>Attending the JHBunt recruiting station</p></li>
+</ul></li>
+<li><p>How long after the 6-hour scheduled time does the mixer actually
+end? That is, since all students are permitted to finish up what
+they are currently doing when the PA announcement occurs, how long
+does it take for the hall to be completely empty?</p></li>
+<li><p>How many students, on average, are in the conversation area?</p></li>
+<li><p>The probability that a student departs because they have already
+spent more than 45 minutes at the mixer after visiting their first
+recruiting station.</p></li>
+<li><p>For students that do not visit the conversation area, what is the
+probability that their system time is less than 30 minutes?</p></li>
+</ul>
+<p>Given this new description there are two major modeling issues that need
+to be addressed:</p>
+<ol style="list-style-type: decimal">
+<li><p>how to close the mixer and</p></li>
+<li><p>modeling and visualizing the walking.</p></li>
+</ol>
+<div id="ch4:RevisedJFE:TurnOffCreate" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Turning Off a CREATE Module</h3>
+<p>In order to better model the closing of the mixer, we need to understand
+how to turn off a CREATE module. As shown in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFECreateModule">4.1</a>, the CREATE
+module has a field labeled “Max Arrivals.” For every CREATE module there
+is an internal variable that counts how many creation events have
+occurred. During the simulation, this variable is automatically compared
+to the current value of the field labeled “Max Arrivals” and if the internal variable
+becomes greater than or equal to the current value of the field “Max Arrivals” then the CREATE module stops its creation process. For
+example, suppose that the value of Max Arrivals was 10. Then, only 10
+creation events will occur.</p>
+<p>By using a variable, say vMaxNumArrivals,
+the user can specify how many arrivals there should be. When you want to
+turn off the CREATE module just set the value of vMaxNumArrivals to 0.
+So, to close the door for the STEM mixer we will use another CREATE
+module that will cause the value of vMaxNumArrivals to be set to zero,
+at time 345 minutes (i.e. 15 minutes before the end of the mixer). This
+will also facilitate the collection of the additional performance
+measures.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFECreateModule"></span>
+<img src="figures2/ch4/JFECreateModule.png" alt="Example CREATE module" width="60%" height="60%" />
+<p class="caption">
+Figure 4.1: Example CREATE module
+</p>
+</div>
+</div>
+<div id="ch4:RevisedJFE:ModelingWalking" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Modeling Walking Time</h3>
+<p>To model the walking within the mixer, we need to translate the distance
+travelled into time. Since we are told the typical velocity for walking
+within a building for a person, we can randomly generate the velocity
+associated with a walking trip. Then, if we know the distance to walk,
+we can determine the time via the following relationship, where <span class="math inline">\(v\)</span> is
+the speed (velocity), <span class="math inline">\(d\)</span> is the distance, and <span class="math inline">\(t\)</span> is the time.</p>
+<p><span class="math display">\[v = \frac{d}{t}\]</span></p>
+<p>Thus, we can randomly generate the value of <span class="math inline">\(v\)</span>, and use the
+relationship to determine the time taken.</p>
+<p><span class="math display">\[t = \frac{d}{v}\]</span></p>
+<p>We know that the speed of people walking is triangularly distributed
+with a minimum of 1 mile per hour, a mode of 2 miles per hour, and a
+maximum of 3 miles per hour. This translates into a minimum of 88 feet
+per minute, a mode of 176 feet per minute, and a maximum of 264 feet per
+minute. Thus, we represent the speed as a random variable, Speed ~
+TRIA(88, 176, 264) feet per minute and if we know the distance to
+travel, we can compute the time.</p>
+<p>We have the following distances between the major locations of the
+system:</p>
+<ul>
+<li><p>Entrance to Name Tags, 20 feet</p></li>
+<li><p>Name Tags to Conversation Area, 30 feet</p></li>
+<li><p>Name Tags to Recruiting Area (either JHBunt or MalMart), 80 feet</p></li>
+<li><p>Name Tags to Exit, 140 feet</p></li>
+<li><p>Conversation Area to Recruiting Area (either JHBunt or MalMart), 50
+feet</p></li>
+<li><p>Conversation Area to Exit, 110 feet</p></li>
+<li><p>Recruiting Area (either JHBunt or MalMart) to Exit, 60 feet</p></li>
+</ul>
+<p>For simplicity, we assume that the distance between the JHBunt and
+MalWart recruiting locations within the recruiting area can be ignored.</p>
+</div>
+<div id="ch4:RevisedJFE:Expressions" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Using Expressions within an Arena Model</h3>
+<p>Within Arena mathematical expressions may be formed using combinations
+of integers, constants, attributes, variables, or random distributions.
+Conditional statements may also be used. Conditional expressions are
+evaluated as numerical expressions; a true condition is assigned a value
+of 1, and a false condition is assigned a value of 0. We have already
+used many expressions within the example models. Suppose we have some
+distribution (e.g. walking speed distribution) that we need to use in
+many places within the model. That is, we will need to enter the
+mathematical expression in many different fields within different
+modules within the model. Now suppose, after about a month of using the
+model, we decide that the expression needs to be updated because of some
+new data. Since the mathematical expression is used throughout the
+model, we need to find it everywhere that it is used. Of course, we
+could use the search and find capability associated with the Arena
+environment to make the edits; however, a much better approach is to use
+the EXPRESSION module found on the Advanced Process panel.</p>
+<p>The EXPRESSION module permits the definition of a named expression.
+Then, the name of the expression can be used throughout the model,
+similar to how variables and attributes are used. The EXPRESSION module
+defines expressions and their associated values. An expression can
+contain any Arena-supported expression logic, including real values,
+Arena distributions, Arena or user-defined system variables, and
+combinations of these. Expressions can be single elements or one- or
+two-dimensional arrays. By defining and naming an expression, you can
+use that name throughout your model. Then, if there is an update of the
+expression, you need only edit the expression within the EXPRESSION
+module to change it everywhere that it is used in the model. Expressions
+are extremely useful, especially arrayed expressions. We will use an
+expression defined within the EXPRESSION module to represent the speed
+distribution within the new implementation of the model. As a naming
+convention, I append the letter “e” to the beginning of any of my
+expressions. For example, we will use the name “eWalkingSpeedRV” to
+represent the walking speed within the new implementation. By appending
+the letter “e” to the name of your expressions, you will know that it is
+a defined expression when you see it used within various modules.</p>
+</div>
+<div id="ch4:RevisedJFE:NewModules" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Introducing the STATION, ROUTE, STORAGE, and SET Modules</h3>
+<p>Because the model stakeholders desire improved animation, we will also
+need to introduce some new Arena constructs: STATION, ROUTE, and
+STORAGE.</p>
+<dl>
+<dt>STATION</dt>
+<dd><p>The STATION module represents a named location to which entities can
+be transferred. Initially, one can think of stations as the label
+part of the Go To – Label construct found in standard programming
+languages; however, stations are more powerful than a simple label.
+Stations can be placed in sets and held within sequences. Stations
+are also necessary for mapping model logic transfers to a physical
+(spatial) representation of the world.</p>
+</dd>
+<dt>ROUTE</dt>
+<dd><p>The ROUTE module causes an entering entity to be transferred to a
+station with a possible time delay that accompanies the transfer.
+The entity leaves the route module and after the specified time
+delay reappears in the model at the specified station.</p>
+</dd>
+</dl>
+<p>The STATION module is found on the Advanced Transfer panel. See
+Figure <a href="ch4-RevisedJFE.html#fig:fig1StationModule">4.2</a> for the edit by dialog view of the STATION module. For our current purposes, we can think of a STATION module as a fancy label. A
+STATION denotes a location within the model to and from which entity
+instances can be transferred. Stations work very much like labels;
+however, special entity transfer modules are needed to send the entities
+to and from stations. Those modules are found on the Advanced Transfer
+panel, one of which is the ROUTE module, as shown in Figure <a href="ch4-RevisedJFE.html#fig:fig2RouteModule">4.3</a>. For our current purposes, a ROUTE module can be thought of as a Goto Label
+module, where we specify a station as the destination rather than a
+named label. ROUTE modules allow for the specification of a time delay
+associated with the transfer from the current location to the
+destination. The nice thing about this is that there are convenient
+animation constructs available for showing the entities as they
+experience the transfer delay. We will use this capability to show the
+people walking between the areas within the STEM mixer. The other
+modules associated with the Advanced Transfer panel will be discussed in
+Chapter <a href="ch7.html#ch7">7</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:fig1StationModule"></span>
+<img src="figures2/ch4/fig1StationModule.png" alt="The STATION module" width="70%" height="70%" />
+<p class="caption">
+Figure 4.2: The STATION module
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:fig2RouteModule"></span>
+<img src="figures2/ch4/fig2RouteModule.png" alt="The ROUTE module" width="70%" height="70%" />
+<p class="caption">
+Figure 4.3: The ROUTE module
+</p>
+</div>
+<p>Finally, we will use the STORAGE module found on the Advanced Process
+panel to model the conversation areas associated with the STEM mixer.
+Figure <a href="ch4-RevisedJFE.html#fig:fig3StorageModule">4.4</a> shows the STORAGE module as a data definition module on the
+Advanced Process panel. The STORAGE module is also a named location
+within the model. The STORAGE module simply creates and defines a
+storage that can be used within the model. The primary purpose of a
+storage is for animation; however, every storage has a special variable
+accessed through the function, NSTO(Storage Name), that returns the
+current number of entities associated with the storage. To place an
+entity in a storage, we use the STORE module and to take an entity out
+of storage, we use the UNSTORE module. The STORE and UNSTORE modules are
+also found on the Advanced Process Panel as illustrated in Figures <a href="ch4-RevisedJFE.html#fig:fig4StoreModule">4.5</a>
+and <a href="ch4-RevisedJFE.html#fig:fig5UnstoreModule">4.6</a>. The STORE module automatically increments the number of entities
+in the associated storage by one and the UNSTORE module automatically
+decrements the number of entities in the associated storage by one.
+Thus, the variable, NSTO(Storage Name) can be used to collect statistics
+on the number of entities associated with the storage at any time. The
+nice thing about storages is that animated storages can be associated with the storage in order to display the entities currently in the storage during the animation. This capability could be use to show the students that are in the conversation area. In fact, a storage can be useful in animating the time that an entity is in the time delayed state.</p>
+<div class="figure" style="text-align: center"><span id="fig:fig3StorageModule"></span>
+<img src="figures2/ch4/fig3StorageModule.png" alt="The STORAGE module" width="70%" height="70%" />
+<p class="caption">
+Figure 4.4: The STORAGE module
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:fig4StoreModule"></span>
+<img src="figures2/ch4/fig4StoreModule.png" alt="The STORE module" width="70%" height="70%" />
+<p class="caption">
+Figure 4.5: The STORE module
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:fig5UnstoreModule"></span>
+<img src="figures2/ch4/fig5UnstoreModule.png" alt="The UNSTORE module" width="70%" height="70%" />
+<p class="caption">
+Figure 4.6: The UNSTORE module
+</p>
+</div>
+<p>The last new modeling construct that we will use within the
+implementation of the enhanced STEM Career Fair Mixer model is that of
+sets. Sets represent a set of similar elements held in an indexed list.
+Sets are an incredibly useful construct for implementing many useful
+modeling situations, especially the random selection of elements from
+the list. We will demonstrate the use of set by introducing tally sets
+(sets that hold tally statistics) and a station set (a set that holds a
+list of station). In the case of the station set, we will randomly
+select a station from the set and then send an entity to the station.</p>
+</div>
+<div id="controlling-randomness-by-specifying-stream-numbers" class="section level3" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Controlling Randomness by Specifying Stream Numbers</h3>
+<p>Random number generators in computer simulation languages come with a default set of streams that divide a sequence of random numbers into independent sets (or sequences). The streams are only independent if you do not use up all the random numbers within the subsequence. These streams allow the randomness associated with a simulation to be controlled. During the simulation, you can associate a specific stream with specific random processes in the model. This has the advantage of allowing you to check if the random numbers are causing significant differences in the outputs. In addition, this allows the random numbers used across alternative simulations to be better synchronized.</p>
+<p>Now a common question using simulation languages such as Arena can be answered. That is, <em>“If the simulation is using random numbers, why to I get the same results each time I run my program?”</em> The corollary to this question is, <em>“If I want to get different random results each time I run my program, how do I do it?”</em> The answer to the first question is that the underlying random number generator is starting with the same seed each time you run your program. Thus, your program will use the same pseudo random numbers today as it did yesterday and the day before, etc. The answer to the corollary question is that you must tell the random number generator to use a different seed (or alternatively a different stream) if you want different invocations of the program to produce different results. The latter is not necessarily a desirable goal. For example, when developing your simulation programs, it is desirable to have repeatable results so that you can know that your program is working correctly.</p>
+<p>Since a random number stream is a sub-sequence of pseudo-random numbers that
+start at particular place with a larger sequence of pseudo-random
+numbers, it is useful to have a starting point for the sequence. The starting point of a sequence of pseudo-random numbers is
+called the seed. A seed allows us to pick a particular stream. Having
+multiple streams is useful to assign different streams to different
+sources of randomness within a model. This facilitates the control of
+the use of pseudo-random numbers when performing experiments. Every
+distribution in Arena has an extra <em>optional</em> parameter for the stream.
+For example, EXPO(mean, stream#), LOGN(mean, sd, stream#), DISC( cp1,
+v1, cp2, v2, .…, 1.0, vn, stream#), where stream# is some integer
+representing the stream you want to use for that distribution. Arena
+associates an integer number, 1, 2, 3, etc. with the seed associated
+with a particular random number stream. For all intents and purposes, we
+can assume that each stream produces independent random numbers.</p>
+
+<div class="rmdnote">
+A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the <em>seed</em>. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams. This facilitates the control of the use of pseudo-random numbers when performing experiments.
+</div>
+<p>To specify the stream in the CREATE module, use the "Expression"
+option for the type and then specify the distribution, e.g. EXPO(mean,
+2). Use the expression option to specify the exact required expression.
+To control the stream associated with a DECIDE, use the DISC() function
+to assign an attribute, and then use a DECIDE module to check that
+attribute. For example:</p>
+<pre><code>// 40% chance for path 1, 60% chance for path 2, using stream 9
+ASSIGN: myFlag = DISC(0.4, 1, 1.0, 2, 9)
+DECIDE: If myFlag == 1, 
+   go to path 1
+Else 
+   goto path 2</code></pre>
+<p>To prepare the STEM Mixer model for better control of the underlying
+randomness due to random number generation, the following stream
+assignments should be made.</p>
+<ul>
+<li><p>Arrival process, stream 1</p></li>
+<li><p>Name tag activity, stream 2</p></li>
+<li><p>Choice to visit conversation area, stream 3</p></li>
+<li><p>Choice between conversation areas, stream 4</p></li>
+<li><p>Conversation time, stream 5</p></li>
+<li><p>Deciding to visit recruiters after visiting conversation area, stream 6</p></li>
+<li><p>Choice between MalMart and JHBunt, stream 7</p></li>
+<li><p>MalMart interaction time, stream 8</p></li>
+<li><p>JHBunt interaction time, stream 9</p></li>
+<li><p>Walking speed, stream 10</p></li>
+</ul>
+<p>Using streams to control the randomness will allow us to better implement a variance reduction technique called common random numbers when we make comparisons between system configurations. This will be discussed in Section <a href="ch4-StatIssuesTwoSystems.html#ch4:StatIssuesTwoSystems">4.4</a>.</p>
+
+<div class="rmdnote">
+If the simulation uses the same underlying pseudo-random numbers, <strong>how come my simulation results are sometimes unexpectedly different?</strong>.
+Sometimes by changing the order of modules you change the sequence of random numbers that are assigned to various things that happen in the model (e.g. entity attribute, service times, paths taken, etc.). Now, the result can sometimes be radically different if different random numbers are used for different purposes. By using streams dedicated to different random processes, you reduce this possibility and increase the likelihood that two models that have different configurations will have differences due to the change and not due to the random numbers used.
+</div>
+<p>Further details about how to generate random numbers and random variates are provided in Appendix <a href="app-rnrv.html#app:rnrv">A</a>. The next section presents the pseudo-code for the revised STEM Mixer example.</p>
+</div>
+<div id="pseudo-code-for-the-revised-stem-mixer-example" class="section level3" number="4.1.6">
+<h3><span class="header-section-number">4.1.6</span> Pseudo-code for the Revised STEM Mixer Example</h3>
+<p>Now we are ready to update the pseudo-code from Chapter <a href="ch3.html#ch3">3</a> to address the
+previously discussed enhancements. The first thing to do is to define in
+the pseudo-code the modeling constructs that we will utilize. For this
+situation, we will define six new variables. The variable vClosed will
+be used to indicate that the mixer is closed. Then, we will have two new
+variables to keep track of how many students are visiting the MalWart
+and JHBunt recruiters, vNumAtMalWart and vNumAtJHBunt. Finally, we have
+three variables relate to the closing of the mixer: vMaxNumArrivals (to
+shut off the CREATE module), vWarningTime (to represent the time
+interval to the end of the mixer) and vMixerTimeLength (to represent the
+total time available for the mixer). These variables are defined in the
+following pseudo-code.</p>
+<pre><code>// Model Definition Pseudo-Code
+ATTRIBUTES:
+myType // represents the type of the student (1= recruiters first, 2 =
+conversation first, 3 = timid).
+myArrivalTime // the time that the student arrived to the mixer
+myFirstRecruiter // the recruiter visited first
+myNumVisits // the number of recruiters visited
+
+VARIABLES:
+vNumInSys // represents the number of students attending the mixer at any time t
+vClosed = 0// represents that the STEM fair has closed its doors, 1 = closed, 0 = open
+vNumAtJHBunt // number of students visiting JHBunt recruiters
+vNumAtMalWart // number of students visiting MalWart recruiters
+vMaxNumArrivals = 10000// used to control creation of students
+vWarningTime = 15 // minutes, used to control when to close the STEM Mixer
+vMixerTimeLength = 360 minutes
+
+EXPRESSIONS:
+eDoorClosingTime = vMixerTimeLength - vWarningTime
+eWalkingSpeedRV = TRIA(88, 176, 264, 10)
+eEntranceToNameTagsTimeRV = 20.0/eWalkingSpeedRV
+eNameTagsToConverseAreaTimeRV = 30.0/eWalkingSpeedRV
+eNameTagsToRecruitingAreaTimeRV = 80.0/eWalkingSpeedRV
+eNameTagsToExitTimeRV = 140.0/eWalkingSpeedRV
+eConverseAreaToRecruitingAreaTimeRV = 50.0/eWalkingSpeedRV
+eConverseAreaToExitTimeRV = 110.0/eWalkingSpeedRV
+eRecruitingAreaToExitTimeRV = 60.0/eWalkingSpeedRV
+
+RESOURCES:
+rMalWartRecruiters, 2 // the MalWart recruiters with capacity 2
+rJHBuntRecruiters, 3 // the JHBunt recruiters with capacity 3
+
+STORAGES:
+stoConversationArea //use to show students in the conversation area
+
+STATIONS:
+staEntrance // the entrance to the mixer
+staNameTag // the location to get name tags
+staConverseArea // the area for holding conversations
+staRecruitingArea // the area for visiting recruiters
+staJHBunt // the JHBunt recruiting location
+staMalWart // the MalMart recruiting location
+staExit // the location to exit the mixer
+
+SETS:
+RecruiterStationSet (staJHBunt, staMarWart) // hold stations for picking between stations
+SystemTimeSet(Type1SysTime, Type2SysTime, Type3SysTime) // to more easily collect statistics</code></pre>
+<p>In addition to variables, we have defined nine expressions, eight of
+which are related to the walking and time taken for movement between
+locations. A STORAGE has been defined to track the number of students in
+the conversation area and seven stations have been defined to represent
+locations. Finally, two sets are defined. The RecruiterStationSet holds
+the stations representing the JHBunt recruiting location and the MalWart
+recruiting location. The SystemTimeSet is a tally set that holds the
+tally statistical variables for collecting statistics by type of
+student. Now, we are ready to represent the model logic.</p>
+<pre><code>// Creating the Students
+CREATE vMaxNumArrivals of students every EXPO(2,1) minutes with the
+first arriving at time EXPO(2,1)
+STATION staEntrance
+BEGIN ASSIGN
+   myArrivalTime = TNOW
+   vNumInSys = vNumInSys + 1
+END ASSIGN
+ROUTE to staNameTag, time = eEntranceToNameTagsTimeRV</code></pre>
+<p>The logic for creating the students for the mixer is very similar to
+what was done in Chapter <a href="ch3.html#ch3">3</a>. The changes include having a variable,
+vMaxNumArrivals, to use to turn off the CREATE module and using a
+STATION to represent the entrance to the mixer. At the station, we
+assign the arrival time of the student for statistical collection and
+increment the number of students attending the mixer. Then, we use a
+ROUTE module to send the student to the name tag area using the time
+expression for modeling the walking from the entrance to the name tag
+area.</p>
+<pre><code>// Getting a Name Tag
+STATION staNameTag
+DECIDE IF vClosed == 1
+   ROUTE to staExit, time = eNameTagsToExitTimeRV
+END DECIDE
+DELAY UNIF(15,45, 2) seconds to get name tag
+ASSIGN myType = DISC(0.60, 1, 1.0, 2, 3) // 1 = recruiting only, 2 = conversation area
+DECIDE If myType == 1 // recruiting station only student
+   ROUTE to staRecruitingArea, time = eNameTagsToRecruitingAreaTimeRV
+ELSE // myType = 2, conversation first student
+   ROUTE to staConverseArea, time = eNameTagsToConverseAreaTimeRV
+END DECIDE</code></pre>
+<p>The logic for getting a name tag has been updated to include sending
+students that were headed to the name tag area to the exit if the mixer
+closing warning occurred during their walk to the name tag area. Notice the specification of the stream number in the UNIF() distribution representing the time to get a name tag. Then, a DISC() distribution is use to determine the type of student and then the student is sent to the
+appropriate area via ROUTE modules. The pseudo-code for the conversation area, has the same check for closing during the walk to the location. Then,
+we see the use of the STORE and UNSTORE constructs to track how many
+students are in the conversation area during the delay for the conversation. Sending the students to the exit or to recruiting is used by assigning their type and then using a DECIDE to send them to the appropriate station.</p>
+<pre><code>// Visiting the Conversation Area
+STATION staConverseArea
+DECIDE IF vClosed == 1
+   ROUTE to staExit, time = eConverseAreaToExitTimeRV
+END DECIDE
+STORE stoConversationArea
+DELAY TRIA(10, 15, 30, 5) minutes for conversation
+UNSTORE stoConversationArea
+ASSIGN myType = DISC(0.9, 2, 1.0, 3, 6)
+DECIDE If myType == 2 // recruiting station student
+   ROUTE to staRecruitingArea, time = eConverseAreaToRecruitingAreaTimeRV
+ELSE // myType = 3, timid student
+   ROUTE to staExit, time = eConverseAreaToExitTimeRV
+END DECIDE</code></pre>
+<p>After arriving to the recruiting area, we check if the mixer has closed
+and if so, send the student to the exit. Then, the logic checks the
+variables used to keep track of the number of students visiting JHBunt
+and MalWart are checked to determined which recruiter to visit. Notice
+the use of the DISC() distribution function in the case of ties. An
+attribute, myFirstRecruiter, is used to hold the choice, and then the
+appropriate station is selected from the recruiter station set based on
+the attribute. The use of a randomly assigned attribute to index into a
+set is a very useful pattern. Besides indexing into a set, this same
+idea can be used to randomly pick a value from an array or an
+expression.</p>
+<pre><code>// Visiting the Recruiting Area
+STATION: staRecruitingArea
+DECIDE IF vClosed == 1
+   ROUTE to staExit, time = eRecruitingAreaToExitTimeRV
+END DECIDE
+DECIDE IF vNumAtJHBunt == vNumAtMalWart
+   ASSIGN myFirstRecruiter = DISC(0.5, 1, 1.0, 2,7)
+ELSE IF vNumAtJHBunt &lt; vNumAtMalWart
+   ASSIGN myFirstRecruiter = 1
+ELSE
+   ASSIGN myFirstRecruiter = 2
+ENDIF
+ROUTE with 0 delay, to RecruiterStationSet(myFirstRecruiter)</code></pre>
+<p>The pseudo-code for attending the MalWart or JHBunt recruiting stations is
+essentially the same. First we increment the number of students that are
+visiting and then process the students at the station.</p>
+<pre><code>// Attending MalWart
+STATION: staMalWart
+ASSIGN vNumAtMalWart = vNumAtMalWart + 1
+SEIZE 1 MalWart recruiter
+DELAY for EXPO(3,8) minutes for interaction
+RELEASE 1 MalWart recruiter
+ASSIGN vNumAtMalWart = vNumAtMalWart - 1
+ASSIGN myNumVisits = myNumVisits + 1
+DECIDE IF (myNumVisits == 1) AND (TNOW - myArrivalTime) &gt; 45
+   ASSIGN my45MinuteFlag = 1
+   ROUTE to staExit, time = eRecruitingAreaToExitTimeRV
+ELSE IF myNumVisits == 2
+   ROUTE to staExit, time = eRecruitingAreaToExitTimeRV
+ELSE
+   ROUTE with 0 delay to staJHBunt
+END DECIDE</code></pre>
+<p>The logic for determining which recruiter is visited next is interesting. Using an
+attribute, myNumVisits, allows us to determine if one or both recruiters
+have been visited. In the case of only one visit, we can determine
+whether or not the student has been at the mixer more than 45 minutes.
+If so, an attribute is used as an indicator variable to denote this
+event for later statistical processing. If both stations have been
+visited, then the student exits the mixer. If only one recruiter has
+been visited, then the student is sent to the opposite recruiter.</p>
+<pre><code>// Attending JHBunt
+STATION: staJHBunt
+ASSIGN vNumAtJHBunt = vNumAtJHBunt + 1
+SEIZE 1 JHBunt recruiter
+DELAY for EXPO(6,9) minutes for interaction
+RELEASE 1 JHBunt recruiter
+ASSIGN vNumAtJHBunt = vNumAtJHBunt - 1
+ASSIGN myNumVisits = myNumVisits + 1
+DECIDE IF (myNumVisits == 1) AND (TNOW -- myArrivalTime) &gt; 45
+   ASSIGN my45MinuteFlag = 1
+   ROUTE to staExit, time = eRecruitingAreaToExitTimeRV
+ELSE IF myNumVisits == 2
+   ROUTE to staExit, time = eRecruitingAreaToExitTimeRV
+ELSE
+   ROUTE with 0 delay to staMalWart
+END DECIDE</code></pre>
+<p>The exit area is primarily used to collect statistics on departing
+students. There are three updates to note. First, we can collect
+statistics on the probability that the students that do not visit the
+conversation have a system time that is less than or equal to 30
+minutes. We use an expression (mySysTime &lt;= 30) to collect on a logical
+indicator of this event. Secondly, we used a tally set to record the
+system times by student type (myType). Lastly, we director record on the
+indicator attribute, my45MinuteFlag, to collect the probability that the
+student exited after visiting only one recruiter because they had
+already been at the mixer for more than 45 minutes.</p>
+<pre><code>// Exiting and Collecting Statistics
+STATION: staExit
+ASSIGN: vNumInSys = vNumInSys - 1
+ASSIGN: mySysTime = TNOW -- myArrivalTime
+DECIDE IF myType == 1 // no conversation students
+   RECORD (mySysTime &lt;= 30)
+END DECIDE
+RECORD mySysTime, as System Time regardless of type
+RECORD mySystTime, using SystemTimeSet by myType
+RECORD my45MinuteFlag
+DISPOSE</code></pre>
+<p>Now we have to model the closing of the STEM Mixer. As previously
+mentioned, we can do this by creating a logical entity that is used to
+turn off the CREATE module governing the creation of the students. We
+create one entity at the door closing time and close the door by
+changing the global variable, vClosed. In addition, we collect
+observation based statistics via RECORD statement that records the
+values of the variables <em>at this particular instance in time</em>. These are
+observation based statistics, <em>not</em> time persistent, because we are
+observing the random value at a particular instance of time (not over
+time).</p>
+<pre><code>// Model Pseudo-Code Listing for Closing the Mixer
+CREATE 1 entity, at time eDoorClosingTime
+ASSIGN vMaxNumArrivals = 0
+ASSIGN vClosed = 1
+RECORD Expressions // observe variables at door closing time
+   NSTO(stoConversationArea)
+   vNumAtMalWart
+   vNumAtJHBunt
+   vNumInSys
+END RECORD
+DISPOSE</code></pre>
+<p>Now that all the pseudo-code is specified, implementing the model in Arena is very straight-forward. We implement these ideas in the next section.</p>
+</div>
+<div id="implementing-the-revised-stem-mixer-model-in-arena" class="section level3" number="4.1.7">
+<h3><span class="header-section-number">4.1.7</span> Implementing the Revised STEM Mixer Model in Arena</h3>
+<p>To implement this model within Arena, we can follow the pseudo-code
+starting with the model definitions. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEAttributeModule">4.7</a> and <a href="ch4-RevisedJFE.html#fig:ch4JFEAVariableModule">4.8</a> show the revised
+attributes and variables for the Arena model. It is best practice to define your modeling constructs first before using them in the Arena flow chart area. This allows you to select the construct from drop-down boxes or from within the expression builder rather than directly typing in the construct. This reduces the number of typos and other syntax errors.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEAttributeModule"></span>
+<img src="figures2/ch4/ch4JFEAttributeModule.PNG" alt="Defining the attributes for the revised STEM Mixer example"  />
+<p class="caption">
+Figure 4.7: Defining the attributes for the revised STEM Mixer example
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEAVariableModule"></span>
+<img src="figures2/ch4/ch4JFEVariableModule.PNG" alt="Defining the variables for the revised STEM Mixer example"  />
+<p class="caption">
+Figure 4.8: Defining the variables for the revised STEM Mixer example
+</p>
+</div>
+<p>Notice how the comments section of the spreadsheet view of the ATTRIBUTE
+and VARIABLE modules provides an easy way to specify to the modeler the
+purpose and use of the attribute or variable. In Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEExpressionModule">4.9</a>, we see the
+definitions of the expressions used throughout the model. The EXPRESSION
+module also allows for a comment to indicate information about the
+expression. In the figure, we see the eEntranceToNameTagsTimeRV
+expression that implements the distance (20 feet) divided by the walking
+speed expression. All of the routing time distributions were defined in
+terms of eWalkingSpeedRV. Thus, if the distribution changes, it need
+only be edit in a single expression. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEStationData">4.10</a> presents the station data
+and Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEStationSet">4.11</a> shows the definition of a set to hold the two recruiting
+stations. The set definition module available on the Advanced Process panel was used to define the recruiting station set.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEExpressionModule"></span>
+<img src="figures2/ch4/ch4JFEExpressionModule.PNG" alt="Defining the expressions for the revised STEM Mixer example"  />
+<p class="caption">
+Figure 4.9: Defining the expressions for the revised STEM Mixer example
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEStationData"></span>
+<img src="figures2/ch4/ch4JFEStationData.PNG" alt="Defining the stations for the revised STEM Mixer example" width="85%" height="85%" />
+<p class="caption">
+Figure 4.10: Defining the stations for the revised STEM Mixer example
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEStationSet"></span>
+<img src="figures2/ch4/ch4JFEStationSet.PNG" alt="Defining the station set for the revised STEM Mixer example" width="70%" height="70%" />
+<p class="caption">
+Figure 4.11: Defining the station set for the revised STEM Mixer example
+</p>
+</div>
+<p>To implement the flow chart modules, we can start with the creation of
+the students and the logical entity to shut off the creation of students
+at the appropriate time.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFECreate"></span>
+<img src="figures2/ch4/Ch4JFECreate.PNG" alt="Creating the students and closing the doors" width="70%" height="70%" />
+<p class="caption">
+Figure 4.12: Creating the students and closing the doors
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFECreateModules"></span>
+<img src="figures2/ch4/ch4JFECreateModules.PNG" alt="Data for CREATE modules"  />
+<p class="caption">
+Figure 4.13: Data for CREATE modules
+</p>
+</div>
+<p>Figure <a href="ch4-RevisedJFE.html#fig:ch4JFECreate">4.12</a> shows the flow chart modules for creating the students and the
+door closing entity, which map almost directly to the pseudo-code
+listings. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFECreateModules">4.13</a> shows the data view of the CREATE modules. Notice
+the use of the stream number in specifying the mean time between
+arrivals of the students and the use of the variable, vMaxArrivals, in
+the “Max Arrivals” field. The expression, eDoorClosingTime, is used to
+specify the time of the first creation for the door closing entity. Why use an expression for this time? As noted in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEExpressionModule">4.9</a>, the eDoorClosingTime expression is computed from the two variables, vWarningTime and vMixerTimeLength. Defining these as parameters to the model facilitates their use when performing experiments. This is also good model building practice. To the extent possible define parameters as variables or expressions. Do not embedded magic numbers (undocumented constants) within the text fields of the dialog boxes.
+After being created, the students go to the name tag are as illustrated
+in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFENameTagModules">4.14</a>. As noted in the pseudo-code, first we check if the mixer
+closed during the time that it took for the entity to get to the name
+tag area. If the mixer has not closed, the student decides whether or
+not to directly visit the recruiting area or the conversation area.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFENameTagModules"></span>
+<img src="figures2/ch4/ch4JFENameTagModules.PNG" alt="Name tag station and modules"  />
+<p class="caption">
+Figure 4.14: Name tag station and modules
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEConversationModules"></span>
+<img src="figures2/ch4/ch4JFEConversationModules.PNG" alt="Conversation area station and modules"  />
+<p class="caption">
+Figure 4.15: Conversation area station and modules
+</p>
+</div>
+<p>Those students that first go to the conversation area proceed to the
+logic illustrated in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEConversationModules">4.15</a>. The other students go directly to the
+logic shown in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingAreaModules">4.16</a>. Notice the use of the STORE and UNSTORE
+modules in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingAreaModules">4.16</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFERecruitingAreaModules"></span>
+<img src="figures2/ch4/ch4JFERecruitingAreaModules.PNG" alt="Recruiting area station and modules"  />
+<p class="caption">
+Figure 4.16: Recruiting area station and modules
+</p>
+</div>
+<p>Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingAreaModules">4.16</a> shows the use of the DECIDE module to implement the logic
+associated with determining which recruiter is visited first. If there
+is a tie between the two recruiters, one of stations associated with the
+recruiters is randomly selected; otherwise, the station with the lower
+number of students is selected. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERouteModules">4.17</a> shows the data view for all
+of the ROUTE modules in the model. Notice that the already discussed
+expressions are used in each of the ROUTE modules. In addition, the
+ROUTE module defined on line 11 implements the random selection of the
+station to visit by using the MEMBER() function. The Arena MEMBER(set
+name, set index) function will return the member of the set indicated by
+the index of the set member. In this case, the RecruiterStationSet is
+indexed into by the attribute myFirstRecruiter, which was assigned
+previously in one of the ASSIGN modules of Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingAreaModules">4.16</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFERouteModules"></span>
+<img src="figures2/ch4/ch4JFERouteModules.PNG" alt="Data view for ROUTE modules"  />
+<p class="caption">
+Figure 4.17: Data view for ROUTE modules
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFERecruitingStations"></span>
+<img src="figures2/ch4/ch4JFERecruitingStations.PNG" alt="JHBunt and MalWart recruiting station modules"  />
+<p class="caption">
+Figure 4.18: JHBunt and MalWart recruiting station modules
+</p>
+</div>
+<p>After selecting the recruiter to visit first, the students will go to
+either of the two stations shown in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingStations">4.18</a>. The logic associated
+with both stations is essentially the same. First the number of students
+at the recruiter is incremented, the student enters the recruiting
+process, and then the number of students at the recruiter is
+decremented. The entries for the two PROCESS modules show in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFERecruitingStations">4.18</a>
+are shown in Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEProcessModules">4.19</a>. Finally, an N-way by condition is used to
+implement the DECIDE logic for exiting or visiting the other recruiter.
+Notice that the distributions associated with the delay have been
+updated to utilize the required stream numbers.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEProcessModules"></span>
+<img src="figures2/ch4/ch4JFEProcessModules.PNG" alt="STEM Mixer PROCESS modules"  />
+<p class="caption">
+Figure 4.19: STEM Mixer PROCESS modules
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEExitModules"></span>
+<img src="figures2/ch4/ch4JFEExitModules.PNG" alt="STEM Mixer exit station modules"  />
+<p class="caption">
+Figure 4.20: STEM Mixer exit station modules
+</p>
+</div>
+<p>After visiting the recruiter area, the students will depart. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEExitModules">4.20</a>
+shows the layout of the modules to collect statistics on departing
+students. This logic has been simplified, as compared to, what was
+presented in Chapter <a href="ch3.html#ch3">3</a> because of the use of tally sets. Figure x15
+shows that a record can be defined that can collect statistics on the
+system time by type of student. This option is implemented by checking
+the “Record in Set” option for the RECORD module, designating the set
+containing the created tally variables, and defining the attribute that
+can be used to select the correct member from the set via the “Set
+Index” field.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFERecordTallySet"></span>
+<img src="figures2/ch4/ch4JFERecordTallySet.PNG" alt="Recording the system times with a tally set"  />
+<p class="caption">
+Figure 4.21: Recording the system times with a tally set
+</p>
+</div>
+<p>Running the model for 30 replications, we achieve the results shown in
+Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEClosingStatistics">4.22</a> and Figure <a href="ch4-RevisedJFE.html#fig:ch4JFESystemTimes">4.23</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFEClosingStatistics"></span>
+<img src="figures2/ch4/ch4JFEClosingStatistics.PNG" alt="Results for closing statistics"  />
+<p class="caption">
+Figure 4.22: Results for closing statistics
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ch4JFESystemTimes"></span>
+<img src="figures2/ch4/ch4JFESystemTimes.PNG" alt="Results for system times by student type"  />
+<p class="caption">
+Figure 4.23: Results for system times by student type
+</p>
+</div>
+<p>Figure <a href="ch4-RevisedJFE.html#fig:ch4JFESystemTimes">4.23</a> shows the system times for the different types of students. A
+type 1 student goes directly to the recruiting area. A type 2 student
+first visits the conversation area before visiting the recruiting area.
+A type 3 student first visits the conversation area and then decides to
+directly depart the mixer. Figure <a href="ch4-RevisedJFE.html#fig:ch4JFEClosingStatistics">4.22</a> shows that there are on average about 15.7 students in the system when the closing starts. The probability that type 1 students spend less than 30 minutes attending the fair is about 77 percent on average.</p>
+<p>In this section, we learned about the Arena elements: EXPRESSION, ROUTE, STATION, STORAGE, STORE, and UNSTORE. In particular, we saw how we can define expressions and use them throughout the model and represent the simple transfer of entities between locations with a time delay. In the next section, we build on some prior concepts, especially attributes, variables, and expressions to see how these concepts can be put to use within Arena. So far, our examples have shown situations where entities flow essentially forward through the model, perhaps taking different paths. In the next section, we illustrate how entities can be used to loop through Arena modules to implement coding logic. In addition, we see how arrays can facilitate model building and additional methods for organizing the modules within the flow chart area.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch4-IterativeLooping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://git.uark.edu/mdr_arena_book/arenabook/04-Chapter4.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MDRArenaBook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
