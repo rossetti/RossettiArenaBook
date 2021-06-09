@@ -33,7 +33,7 @@ You are reading the 3rd edition of *Simulation Modeling and Arena* by Dr. Manuel
   - first main release of text book
   - files and supporting materials are related to Arena, version 16.0
 
-If you find typographical errors or other issues related to the text or supporting files, then please use the repository's issue tracking system to create a new issue. You should first check if the same or similar issue has already been submitted. The issue tracking system is for filing issues about the correctness of the text or files. It is **not** about general questions about simulation concepts, solutions to homework, how to do something in Arena, etc.  Such issues will not be considered and will be deleted as needed.
+If you find typographical errors or other issues related to the text or supporting files, then please use the [repository's](https://github.com/rossetti/RossettiArenaBook) issue tracking system to create a new issue. You should first check if the same or similar issue has already been submitted. The issue tracking system is for filing issues about the correctness of the text or files. It is **not** about general questions about simulation concepts, solutions to homework, how to do something in Arena, etc.  Such issues will not be considered and will be deleted as needed.
 
 ## Book Support Files {-}
 
