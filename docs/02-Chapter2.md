@@ -1541,7 +1541,7 @@ describes how allows the modeler to create and dispose of entities.
 
 ### Creating and Disposing of Entities
 
-The basic mechanism by which entity instances are introduced into an model is
+The basic mechanism by which entity instances are introduced into a model is
 the CREATE module. An entity (entity instance) is an object that flows within the model.
 As an entity flows through the model it causes the *execution of each
 module through which it flows*. Because of this, nothing will happen in
@@ -2025,7 +2025,7 @@ this situation, the system is the pharmacist and the potential customers
 as idealized in Figure \@ref(fig:DriveThru). Now you should consider the entities of
 the system. An entity is a conceptual thing of importance that flows
 through a system potentially using the resources of the system.
-Therefore, one of the first questions to ask when developing an model
+Therefore, one of the first questions to ask when developing a model
 is: *What are the entities*? In this situation, the entities are the
 customers that need to use the pharmacy. This is because customers are
 discrete things that enter the system, flow through the system, and then
@@ -2943,7 +2943,7 @@ you can animate each of the individual resources in the standard manner. Please 
 Animation is an important part of the simulation process. It is
 extremely useful for showing to decision makers and experts to explain
 and ensure that the model is accepted. With this example, you have
-actually learned a great deal about animating an model. One of the
+actually learned a great deal about animating a model. One of the
 standard practices is to rely on the default animation that is available
 with the flow chart modules. Then, when animation is important for
 validation and for convincing decision makers, the simulation analyst
@@ -3995,7 +3995,7 @@ diagram.
 times for a automated storage and retrieval system has a shifted
 exponential distribution. It is known that it takes a minimum of 15
 seconds for any retrieval. The rate parameter of the exponential distribution
-is $\lambda = 45$ retrievals per second. Setup an model that will generate 20 observations of
+is $\lambda = 45$ retrievals per second. Setup a model that will generate 20 observations of
 the retrieval times. Report the minimum, maximum, sample average, and 95\%
 confidence interval half-width of the observations.
 \EndKnitrBlock{exercise}
@@ -4005,7 +4005,7 @@ confidence interval half-width of the observations.
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch2P5"><strong>(\#exr:ch2P5) </strong></span>The time to failure for a computer printer fan has a Weibull
 distribution with shape parameter $\alpha = 2$ and scale parameter
-$\beta = 3$. Setup an model that will generate 50 observations of the
+$\beta = 3$. Setup a model that will generate 50 observations of the
 failure times. Report the minimum, maximum, sample average, and 95\%
 confidence interval half-width of the observations.
 \EndKnitrBlock{exercise}
@@ -4016,7 +4016,7 @@ confidence interval half-width of the observations.
 <span class="exercise" id="exr:ch2P6"><strong>(\#exr:ch2P6) </strong></span>The time to failure for a computer
 printer fan has a Weibull distribution with shape parameter $\alpha = 2$
 and scale parameter $\beta = 3$. Testing has indicated that the
-distribution is limited to the range from 1.5 to 4.5. Set up an model to
+distribution is limited to the range from 1.5 to 4.5. Set up a model to
 generate 100 observations from this truncated distribution. Report the
 minimum, maximum, sample average, and 95\% confidence interval half-width
 of the observations.
@@ -4030,7 +4030,7 @@ interest rate for a capital project is unknown. An accountant has
 estimated that the minimum interest rate will between 2\% and 5\% within
 the next year. The accountant believes that any interest rate in this
 range is equally likely. You are tasked with generating interest rates
-for a cash flow analysis of the project. Set up an model to generate 100
+for a cash flow analysis of the project. Set up a model to generate 100
 observations of the interest rate values for the capital project
 analysis. Report the minimum, maximum, sample average, and 95\%
 confidence interval half-width of the observations.
@@ -4039,7 +4039,7 @@ confidence interval half-width of the observations.
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P8"><strong>(\#exr:ch2P8) </strong></span>Develop an model to generate 30 observations from the following probability density
+<span class="exercise" id="exr:ch2P8"><strong>(\#exr:ch2P8) </strong></span>Develop a model to generate 30 observations from the following probability density
 function:
 
 $$
@@ -4061,7 +4061,7 @@ minimum of 20 minutes and a maximum of 25 minutes, and a 75\% chance that
 the time is distributed according to a Weibull distribution with shape
 of 2 and a scale of 4.5.
 
-Setup an model to generate 100 observations of the service time. Compute
+Setup a model to generate 100 observations of the service time. Compute
 the theoretical expected value of the distribution. Estimate the expected
 value of the distribution and compute a 95\% confidence interval on the
 expected value. Did your confidence interval contain the theoretical
@@ -4073,7 +4073,7 @@ expected value of the distribution?
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch2P10"><strong>(\#exr:ch2P10) </strong></span>Suppose that $X$ is
 a random variable with a $N(\mu = 2, \sigma = 1.5)$ normal distribution.
-Generate 100 observations of $X$ using an model.
+Generate 100 observations of $X$ using a simulation model.
 
 Estimate the mean from your observations. Report a 95\% confidence interval for your point estimate.
 
@@ -4100,7 +4100,7 @@ deviations.
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch2P12"><strong>(\#exr:ch2P12) </strong></span>Consider the following discrete distribution of the random variable $X$ whose
-probability mass function is $p(x)$. Setup an model to generate 30 observations of the random variable $X$. Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.
+probability mass function is $p(x)$. Setup a model to generate 30 observations of the random variable $X$. Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.
 \EndKnitrBlock{exercise}
 
     $x$      0     1     2     3     4
@@ -4112,7 +4112,7 @@ probability mass function is $p(x)$. Setup an model to generate 30 observations 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch2P13"><strong>(\#exr:ch2P13) </strong></span>The demand for parts
 at a repair bench per day can be described by the following discrete
-probability mass function. Setup an model to generate 30 observations of the demand. Report the minimum, maximum, sample average, and 95\% confidence interval half-width
+probability mass function. Setup a model to generate 30 observations of the demand. Report the minimum, maximum, sample average, and 95\% confidence interval half-width
 of the observations.
 \EndKnitrBlock{exercise}
 
@@ -4181,7 +4181,7 @@ simulation analysis in order to assess the expected present value of the
 decision and the chance that the decision has a negative return.
 
 We desire to be 95% confident that our estimate of the true expected
-present value is within $\pm$ 10 dollars. Develop an model for this
+present value is within $\pm$ 10 dollars. Develop a model for this
 situation.
 
 ***
@@ -4221,7 +4221,7 @@ and a standard deviation of 0.2 millimeter. The thickness of parts B and
 C is uniformly distributed with a minimum of 4.98 millimeters and a
 maximum of 5.02 millimeters. Assume all dimensions are independent.
 
-Develop an model to estimate the probability that the gap $D$ is less
+Develop a model to estimate the probability that the gap $D$ is less
 than 10.1 millimeters with 95\% confidence to within plus or minus 0.01
 millimeters.
 
@@ -4356,7 +4356,7 @@ $D < Q$, Mr. Wilson sells only $D$ and will have scrap of $Q-D$. Assume
 that he has determined that $Q = 50$.
 
 Make sure that you can estimate the average profit and the probability
-that the profit is greater than zero for Mr. Wilson. Develop an model to
+that the profit is greater than zero for Mr. Wilson. Develop a model to
 estimate the average profit based on 100 observations.
 
 ***
@@ -4375,7 +4375,7 @@ $Y \sim$ uniform with minimum 10 and maximum 15 seconds
 
 $Z \sim$ uniform with minimum of 5 and a maximum of 10 seconds
 
-Develop an model that can estimate the average total time that it takes
+Develop a model that can estimate the average total time that it takes
 to locate a part and can estimate the probability that the time to
 locate a part exceeds 60 seconds. Base your analysis on 1000
 observations.
@@ -4407,13 +4407,13 @@ the following probability mass function:
 The lead-time is the number of days from placing an order until the firm
 receives the order from the supplier.
 
-Assume that the lead-time is a constant 10 days. Develop an model to
+Assume that the lead-time is a constant 10 days. Develop a model to
 simulate 1000 instances of LDT. Report the summary statistics for the
 1000 observations. Estimate the chance that LDT is greater than or equal
 to 10. Report a 95% confidence interval on your estimate.
 
 Assume that the lead-time has a shifted geometric distribution with
-probability parameter equal to 0.2 Use an model to simulate 1000
+probability parameter equal to 0.2 Use a model to simulate 1000
 instances of LDT. Report the summary statistics for the 1000
 observations. Estimate the chance that LDT is greater than or equal to
 10. Report a 95\% confidence interval on your estimate.
@@ -4423,7 +4423,7 @@ observations. Estimate the chance that LDT is greater than or equal to
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch2P25"><strong>(\#exr:ch2P25) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
 where $\chi_k^2$ is a chi-squared random variable with $k$ degrees of
-freedom. Setup an model to generate 50 $\chi_5^2$ random variates.
+freedom. Setup a model to generate 50 $\chi_5^2$ random variates.
 Report the minimum, maximum, sample average, and 95\% confidence interval
 half-width of the observations.
 
@@ -4432,7 +4432,7 @@ half-width of the observations.
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P26"><strong>(\#exr:ch2P26) </strong></span>Setup an model that
+<span class="exercise" id="exr:ch2P26"><strong>(\#exr:ch2P26) </strong></span>Setup a model that
 will generate 30 observations from the following probability density
 function using the Acceptance-Rejection algorithm for generating random
 variates.
@@ -4600,7 +4600,7 @@ of customers with car problems form a Poisson process with a mean rate
 of one every other day. There is one mechanic dedicated to the
 customer's car. The time that the mechanic spends on a car can be
 described by an exponential distribution with a mean of 1.6 days. Setup
-an model to estimate the expected time within the shop for the cars and
+a model to estimate the expected time within the shop for the cars and
 the utilization of the mechanic. Run your model for 10000 days for 30
 replications and report the results. Estimate the total cost per day to
 the dealer for this policy. Use the M/M/1 queueing results from the chapter

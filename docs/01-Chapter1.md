@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Simulation Modeling {#ch1}
 
 **[Learning Objectives]{.smallcaps}**
@@ -451,7 +456,7 @@ be translated into a computer model. Attempting to implement the
 simulation model, from scratch, in a general purpose language such as
 FORTRAN, Visual Basic, C/C++, or Java will require above average
 programming skills. In the absence of specialized libraries for these
-languages that try to relive the user from some of the burden,
+languages that try to relieve the user from some of the burden,
 simulation as a tool would be relegated to \"elite\" programmers.
 Luckily, the repetitive nature of computations in simulation allows the
 development of computer libraries that are applicable to simulation
@@ -947,8 +952,6 @@ that depart late on any given day).
 ***
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:ch1P5"><strong>(\#exr:ch1P5) </strong></span>Classify the systems as either being discrete or continuous:
-
-- Classify the systems as either being discrete or continuous:
 
 - Elevator system (You are interested in modeling the number of people
 waiting on each floor and traveling within the elevators.)
