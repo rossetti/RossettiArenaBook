@@ -178,10 +178,14 @@ at time 345 minutes (i.e. 15 minutes before the end of the mixer). This
 will also facilitate the collection of the additional performance
 measures.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/JFECreateModule.png" alt="Example CREATE module" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4JFECreateModule)Example CREATE module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/JFECreateModule} 
+
+}
+
+\caption{Example CREATE module}(\#fig:ch4JFECreateModule)
+\end{figure}
 
 ### Modeling Walking Time {#ch4:RevisedJFE:ModelingWalking}
 
@@ -307,15 +311,23 @@ people walking between the areas within the STEM mixer. The other
 modules associated with the Advanced Transfer panel will be discussed in
 Chapter \@ref(ch7).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/fig1StationModule.png" alt="The STATION module" width="70%" height="70%" />
-<p class="caption">(\#fig:fig1StationModule)The STATION module</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/fig2RouteModule.png" alt="The ROUTE module" width="70%" height="70%" />
-<p class="caption">(\#fig:fig2RouteModule)The ROUTE module</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/fig1StationModule} 
+
+}
+
+\caption{The STATION module}(\#fig:fig1StationModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/fig2RouteModule} 
+
+}
+
+\caption{The ROUTE module}(\#fig:fig2RouteModule)
+\end{figure}
 
 Finally, we will use the STORAGE module found on the Advanced Process
 panel to model the conversation areas associated with the STEM mixer.
@@ -336,20 +348,32 @@ Thus, the variable, NSTO(Storage Name) can be used to collect statistics
 on the number of entities associated with the storage at any time. The
 nice thing about storages is that animated storages can be associated with the storage in order to display the entities currently in the storage during the animation. This capability could be use to show the students that are in the conversation area. In fact, a storage can be useful in animating the time that an entity is in the time delayed state.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/fig3StorageModule.png" alt="The STORAGE module" width="70%" height="70%" />
-<p class="caption">(\#fig:fig3StorageModule)The STORAGE module</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/fig4StoreModule.png" alt="The STORE module" width="70%" height="70%" />
-<p class="caption">(\#fig:fig4StoreModule)The STORE module</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/fig3StorageModule} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/fig5UnstoreModule.png" alt="The UNSTORE module" width="70%" height="70%" />
-<p class="caption">(\#fig:fig5UnstoreModule)The UNSTORE module</p>
-</div>
+}
+
+\caption{The STORAGE module}(\#fig:fig3StorageModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/fig4StoreModule} 
+
+}
+
+\caption{The STORE module}(\#fig:fig4StoreModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/fig5UnstoreModule} 
+
+}
+
+\caption{The UNSTORE module}(\#fig:fig5UnstoreModule)
+\end{figure}
 
 The last new modeling construct that we will use within the
 implementation of the enhanced STEM Career Fair Mixer model is that of
@@ -384,7 +408,9 @@ associates an integer number, 1, 2, 3, etc. with the seed associated
 with a particular random number stream. For all intents and purposes, we
 can assume that each stream produces independent random numbers.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the *seed*. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams.  This facilitates the control of the use of pseudo-random numbers when performing experiments.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the *seed*. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams.  This facilitates the control of the use of pseudo-random numbers when performing experiments.
+\EndKnitrBlock{rmdnote}
 
 To specify the stream in the CREATE module, use the \"Expression\"
 option for the type and then specify the distribution, e.g. EXPO(mean,
@@ -427,8 +453,10 @@ assignments should be made.
 
 Using streams to control the randomness will allow us to better implement a variance reduction technique called common random numbers when we make comparisons between system configurations. This will be discussed in Section \@ref(ch4:StatIssuesTwoSystems).
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">If the simulation uses the same underlying pseudo-random numbers, **how come my simulation results are sometimes unexpectedly different?**. 
-Sometimes by changing the order of modules you change the sequence of random numbers that are assigned to various things that happen in the model (e.g. entity attribute, service times, paths taken, etc.).  Now, the result can sometimes be radically different if different random numbers are used for different purposes. By using streams dedicated to different random processes, you reduce this possibility and increase the likelihood that two models that have different configurations will have differences due to the change and not due to the random numbers used.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+If the simulation uses the same underlying pseudo-random numbers, **how come my simulation results are sometimes unexpectedly different?**. 
+Sometimes by changing the order of modules you change the sequence of random numbers that are assigned to various things that happen in the model (e.g. entity attribute, service times, paths taken, etc.).  Now, the result can sometimes be radically different if different random numbers are used for different purposes. By using streams dedicated to different random processes, you reduce this possibility and increase the likelihood that two models that have different configurations will have differences due to the change and not due to the random numbers used.
+\EndKnitrBlock{rmdnote}
 
 Further details about how to generate random numbers and random variates are provided in Appendix \@ref(app:rnrv). The next section presents the pseudo-code for the revised STEM Mixer example.
 
@@ -704,15 +732,23 @@ To implement this model within Arena, we can follow the pseudo-code
 starting with the model definitions. Figure \@ref(fig:ch4JFEAttributeModule) and \@ref(fig:ch4JFEAVariableModule) show the revised
 attributes and variables for the Arena model.  It is best practice to define your modeling constructs first before using them in the Arena flow chart area.  This allows you to select the construct from drop-down boxes or from within the expression builder rather than directly typing in the construct.  This reduces the number of typos and other syntax errors.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEAttributeModule.png" alt="Defining the attributes for the revised STEM Mixer example"  />
-<p class="caption">(\#fig:ch4JFEAttributeModule)Defining the attributes for the revised STEM Mixer example</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEVariableModule.png" alt="Defining the variables for the revised STEM Mixer example"  />
-<p class="caption">(\#fig:ch4JFEAVariableModule)Defining the variables for the revised STEM Mixer example</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFEAttributeModule} 
+
+}
+
+\caption{Defining the attributes for the revised STEM Mixer example}(\#fig:ch4JFEAttributeModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFEVariableModule} 
+
+}
+
+\caption{Defining the variables for the revised STEM Mixer example}(\#fig:ch4JFEAVariableModule)
+\end{figure}
 
 Notice how the comments section of the spreadsheet view of the ATTRIBUTE
 and VARIABLE modules provides an easy way to specify to the modeler the
@@ -727,34 +763,54 @@ only be edit in a single expression. Figure \@ref(fig:ch4JFEStationData) present
 and Figure \@ref(fig:ch4JFEStationSet) shows the definition of a set to hold the two recruiting
 stations. The set definition module available on the Advanced Process panel was used to define the recruiting station set.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEExpressionModule.png" alt="Defining the expressions for the revised STEM Mixer example"  />
-<p class="caption">(\#fig:ch4JFEExpressionModule)Defining the expressions for the revised STEM Mixer example</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEStationData.png" alt="Defining the stations for the revised STEM Mixer example" width="85%" height="85%" />
-<p class="caption">(\#fig:ch4JFEStationData)Defining the stations for the revised STEM Mixer example</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFEExpressionModule} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEStationSet.png" alt="Defining the station set for the revised STEM Mixer example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4JFEStationSet)Defining the station set for the revised STEM Mixer example</p>
-</div>
+}
+
+\caption{Defining the expressions for the revised STEM Mixer example}(\#fig:ch4JFEExpressionModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch4/ch4JFEStationData} 
+
+}
+
+\caption{Defining the stations for the revised STEM Mixer example}(\#fig:ch4JFEStationData)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4JFEStationSet} 
+
+}
+
+\caption{Defining the station set for the revised STEM Mixer example}(\#fig:ch4JFEStationSet)
+\end{figure}
 
 To implement the flow chart modules, we can start with the creation of
 the students and the logical entity to shut off the creation of students
 at the appropriate time.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFECreate.png" alt="Creating the students and closing the doors" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4JFECreate)Creating the students and closing the doors</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFECreateModules.png" alt="Data for CREATE modules"  />
-<p class="caption">(\#fig:ch4JFECreateModules)Data for CREATE modules</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4JFECreate} 
+
+}
+
+\caption{Creating the students and closing the doors}(\#fig:ch4JFECreate)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFECreateModules} 
+
+}
+
+\caption{Data for CREATE modules}(\#fig:ch4JFECreateModules)
+\end{figure}
 
 Figure \@ref(fig:ch4JFECreate) shows the flow chart modules for creating the students and the
 door closing entity, which map almost directly to the pseudo-code
@@ -769,25 +825,37 @@ closed during the time that it took for the entity to get to the name
 tag area. If the mixer has not closed, the student decides whether or
 not to directly visit the recruiting area or the conversation area.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFENameTagModules.png" alt="Name tag station and modules"  />
-<p class="caption">(\#fig:ch4JFENameTagModules)Name tag station and modules</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEConversationModules.png" alt="Conversation area station and modules"  />
-<p class="caption">(\#fig:ch4JFEConversationModules)Conversation area station and modules</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFENameTagModules} 
+
+}
+
+\caption{Name tag station and modules}(\#fig:ch4JFENameTagModules)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFEConversationModules} 
+
+}
+
+\caption{Conversation area station and modules}(\#fig:ch4JFEConversationModules)
+\end{figure}
 
 Those students that first go to the conversation area proceed to the
 logic illustrated in Figure \@ref(fig:ch4JFEConversationModules). The other students go directly to the
 logic shown in Figure \@ref(fig:ch4JFERecruitingAreaModules). Notice the use of the STORE and UNSTORE
 modules in Figure \@ref(fig:ch4JFERecruitingAreaModules).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFERecruitingAreaModules.png" alt="Recruiting area station and modules"  />
-<p class="caption">(\#fig:ch4JFERecruitingAreaModules)Recruiting area station and modules</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFERecruitingAreaModules} 
+
+}
+
+\caption{Recruiting area station and modules}(\#fig:ch4JFERecruitingAreaModules)
+\end{figure}
 
 Figure \@ref(fig:ch4JFERecruitingAreaModules) shows the use of the DECIDE module to implement the logic
 associated with determining which recruiter is visited first. If there
@@ -803,15 +871,23 @@ the index of the set member. In this case, the RecruiterStationSet is
 indexed into by the attribute myFirstRecruiter, which was assigned
 previously in one of the ASSIGN modules of Figure \@ref(fig:ch4JFERecruitingAreaModules).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFERouteModules.png" alt="Data view for ROUTE modules"  />
-<p class="caption">(\#fig:ch4JFERouteModules)Data view for ROUTE modules</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFERecruitingStations.png" alt="JHBunt and MalWart recruiting station modules"  />
-<p class="caption">(\#fig:ch4JFERecruitingStations)JHBunt and MalWart recruiting station modules</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFERouteModules} 
+
+}
+
+\caption{Data view for ROUTE modules}(\#fig:ch4JFERouteModules)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFERecruitingStations} 
+
+}
+
+\caption{JHBunt and MalWart recruiting station modules}(\#fig:ch4JFERecruitingStations)
+\end{figure}
 
 After selecting the recruiter to visit first, the students will go to
 either of the two stations shown in Figure \@ref(fig:ch4JFERecruitingStations). The logic associated
@@ -824,15 +900,23 @@ implement the DECIDE logic for exiting or visiting the other recruiter.
 Notice that the distributions associated with the delay have been
 updated to utilize the required stream numbers.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEProcessModules.png" alt="STEM Mixer PROCESS modules"  />
-<p class="caption">(\#fig:ch4JFEProcessModules)STEM Mixer PROCESS modules</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEExitModules.png" alt="STEM Mixer exit station modules"  />
-<p class="caption">(\#fig:ch4JFEExitModules)STEM Mixer exit station modules</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFEProcessModules} 
+
+}
+
+\caption{STEM Mixer PROCESS modules}(\#fig:ch4JFEProcessModules)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFEExitModules} 
+
+}
+
+\caption{STEM Mixer exit station modules}(\#fig:ch4JFEExitModules)
+\end{figure}
 
 After visiting the recruiter area, the students will depart. Figure \@ref(fig:ch4JFEExitModules)
 shows the layout of the modules to collect statistics on departing
@@ -845,23 +929,35 @@ containing the created tally variables, and defining the attribute that
 can be used to select the correct member from the set via the "Set
 Index" field.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFERecordTallySet.png" alt="Recording the system times with a tally set"  />
-<p class="caption">(\#fig:ch4JFERecordTallySet)Recording the system times with a tally set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFERecordTallySet} 
+
+}
+
+\caption{Recording the system times with a tally set}(\#fig:ch4JFERecordTallySet)
+\end{figure}
 
 Running the model for 30 replications, we achieve the results shown in
 Figure \@ref(fig:ch4JFEClosingStatistics) and Figure \@ref(fig:ch4JFESystemTimes).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFEClosingStatistics.png" alt="Results for closing statistics"  />
-<p class="caption">(\#fig:ch4JFEClosingStatistics)Results for closing statistics</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4JFESystemTimes.png" alt="Results for system times by student type"  />
-<p class="caption">(\#fig:ch4JFESystemTimes)Results for system times by student type</p>
-</div>
+{\centering \includegraphics{./figures2/ch4/ch4JFEClosingStatistics} 
+
+}
+
+\caption{Results for closing statistics}(\#fig:ch4JFEClosingStatistics)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4JFESystemTimes} 
+
+}
+
+\caption{Results for system times by student type}(\#fig:ch4JFESystemTimes)
+\end{figure}
 
 Figure \@ref(fig:ch4JFESystemTimes) shows the system times for the different types of students. A
 type 1 student goes directly to the recruiting area. A type 2 student
@@ -909,10 +1005,14 @@ The model introduced in this section will use the following modules:
 This example is based partly on Arena's SMARTS file 183. The final model will
 look something like that shown in Figure \@ref(fig:ch4IterativeLooping).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLooping.png" alt="Completed model for iterative looping example" width="90%" height="90%" />
-<p class="caption">(\#fig:ch4IterativeLooping)Completed model for iterative looping example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch4/ch4IterativeLooping} 
+
+}
+
+\caption{Completed model for iterative looping example}(\#fig:ch4IterativeLooping)
+\end{figure}
 
 This system produces products. The products have different model
 configurations (model 1 and 2) that are being produced within a small
@@ -1127,10 +1227,14 @@ environment and define following variables using the VARIABLE module as shown in
     each model/type combination, a 2-dimensional variable (2 rows, 2
     columns)
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingVariables.png" alt="Variable definitions for iterative looping example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingVariables)Variable definitions for iterative looping example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingVariables} 
+
+}
+
+\caption{Variable definitions for iterative looping example}(\#fig:ch4IterativeLoopingVariables)
+\end{figure}
 
 The example specifies that there is a different distribution for each
 model/product type combination. Thus, we need to be able to store these
@@ -1166,10 +1270,14 @@ where the row designates the model type and the column designates the
 product type. Use the spreadsheet view to enter the exponential
 distribution with the appropriate mean values as indicated in Figure \@ref(fig:ch4IterativeLoopingExpressions).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingExpressions.png" alt="Expression definitions for iterative looping example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingExpressions)Expression definitions for iterative looping example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingExpressions} 
+
+}
+
+\caption{Expression definitions for iterative looping example}(\#fig:ch4IterativeLoopingExpressions)
+\end{figure}
 
 This creates an arrayed expression. This is similar to an arrayed
 variable, except that the value stored in the array element can be any
@@ -1180,10 +1288,14 @@ the first part of the model. You should place the two CREATE modules and
 the two ASSIGN modules into the model window as shown in Figure \@ref(fig:ch4IterativeLooping). Fill in the create modules as
 indicated in Figure \@ref(fig:ch4IterativeLoopingCreateModules). For this example, there will only be 10 products of each model configuration created.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingCreateModules.png" alt="Creating the products for iterative looping example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingCreateModules)Creating the products for iterative looping example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingCreateModules} 
+
+}
+
+\caption{Creating the products for iterative looping example}(\#fig:ch4IterativeLoopingCreateModules)
+\end{figure}
 
 The ASSIGN modules can be used to define the attributes and to assign
 their values. In the ASSIGN modules, the values of the `myModel` and
@@ -1194,10 +1306,14 @@ to represent the model type. Open up the first ASSIGN module for model
 type 1 and make it look like the ASSIGN module show in
 Figure \@ref(fig:ch4IterativeLoopingAssign1).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingAssign1.png" alt="ASSIGN module dialog box for model type 1" width="55%" height="55%" />
-<p class="caption">(\#fig:ch4IterativeLoopingAssign1)ASSIGN module dialog box for model type 1</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/ch4IterativeLoopingAssign1} 
+
+}
+
+\caption{ASSIGN module dialog box for model type 1}(\#fig:ch4IterativeLoopingAssign1)
+\end{figure}
 
 For variety, you can use the spreadsheet view to fill out the second
 ASSIGN module. Click on the ASSIGN module in the model window. The
@@ -1205,10 +1321,14 @@ corresponding ASSIGN module will be selected in the data sheet view.
 Click on the assignment rows to get the assignments window and fill it
 in as indicated in Figure \@ref(fig:ch4IterativeLoopingAssign2).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingAssign2.png" alt="Second ASSIGN module in data sheet view" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4IterativeLoopingAssign2)Second ASSIGN module in data sheet view</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4IterativeLoopingAssign2} 
+
+}
+
+\caption{Second ASSIGN module in data sheet view}(\#fig:ch4IterativeLoopingAssign2)
+\end{figure}
 
 \FloatBarrier
 
@@ -1227,10 +1347,14 @@ The WHILE-ENDWHILE construct will be used as an iterative looping
 technique to compute the total processing time according to the number
 of iterations (10) for the given model/type combination.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingFirstLocation.png" alt="First location processing" width="85%" height="85%" />
-<p class="caption">(\#fig:ch4IterativeLoopingFirstLocation)First location processing</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch4/ch4IterativeLoopingFirstLocation} 
+
+}
+
+\caption{First location processing}(\#fig:ch4IterativeLoopingFirstLocation)
+\end{figure}
 
 #### WHILE-ENDWHILE Blocks {#ch4s6sb3sub5}
 
@@ -1242,10 +1366,14 @@ attach the BLOCKS panel by going to the Basic Process panel and right
 clicking, choose Attach, and then select the file called *Blocks.tpo*. A
 new panel of blocks will appear for use.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel1.png" alt="First location processing sub-model" width="85%" height="85%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel1)First location processing sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel1} 
+
+}
+
+\caption{First location processing sub-model}(\#fig:ch4IterativeLoopingSubModel1)
+\end{figure}
 
 Now we implement the pseudo-code logic within the sub-model. We will initialize the counter in the first Assign block:
 
@@ -1272,10 +1400,14 @@ Figure \@ref(fig:ch4IterativeLoopingSubModel1Assign). Notice how the variables 
 initialized prior to the WHILE. In addition, the `myProcessingTime`
 attribute has been defined and initialized to zero.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel1Assign.png" alt="Initializing the looping counter" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel1Assign)Initializing the looping counter</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel1Assign} 
+
+}
+
+\caption{Initializing the looping counter}(\#fig:ch4IterativeLoopingSubModel1Assign)
+\end{figure}
 
 Now the counter must be checked in the condition expression of the WHILE
 block. The WHILE and ENDWHILE blocks can be found on the Blocks Panel.
@@ -1284,10 +1416,14 @@ Figure \@ref(fig:ch4IterativeLoopingWHILE). When the variable `vCounter` is
 greater than `vNumIterations`, the WHILE condition will evaluate to
 false and the entity will exit the WHILE-ENDWHILE loop.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingWHILE.png" alt="WHILE block within first sub-model" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4IterativeLoopingWHILE)WHILE block within first sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4IterativeLoopingWHILE} 
+
+}
+
+\caption{WHILE block within first sub-model}(\#fig:ch4IterativeLoopingWHILE)
+\end{figure}
 
 Make sure to update the value of the counter variable or the evaluation
 expression within the body of the WHILE and ENDWHILE loop; otherwise you
@@ -1301,10 +1437,14 @@ based on the previous value, resulting in a summation. The variable
 `vCounter` is incremented each time to ensure that the WHILE loop will
 eventually end.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel1Assign2.png" alt="Second ASSIGN module with first sub-model" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel1Assign2)Second ASSIGN module with first sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel1Assign2} 
+
+}
+
+\caption{Second ASSIGN module with first sub-model}(\#fig:ch4IterativeLoopingSubModel1Assign2)
+\end{figure}
 
 There is nothing to fill in for the ENDWHILE block. Just make sure that
 it is connected to the last ASSIGN module and to the exit point
@@ -1337,10 +1477,14 @@ occur in the future. It is important to remember that while the entity
 associated with the delay is waiting for its delay to end, other events
 may occur causing other entities to move.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingDelay.png" alt="Scheduling a selay" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingDelay)Scheduling a selay</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingDelay} 
+
+}
+
+\caption{Scheduling a selay}(\#fig:ch4IterativeLoopingDelay)
+\end{figure}
 
 There are two basic ways to cause a delay for an entity, the PROCESS
 module and the DELAY module. We have already used the delay option of the PROCESS module. The DELAY module is found on the Advanced Process
@@ -1353,10 +1497,14 @@ not set the units and have too long or too short a delay. The too long a
 delay is often caught during debugging because the entities take such a
 long time to leave the module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingDelayModule.png" alt="The DELAY module"  />
-<p class="caption">(\#fig:ch4IterativeLoopingDelayModule)The DELAY module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4IterativeLoopingDelayModule} 
+
+}
+
+\caption{The DELAY module}(\#fig:ch4IterativeLoopingDelayModule)
+\end{figure}
 
 Now you will add an ASSIGN module to facilitate the displaying of the
 values of variables in the model window during the simulation. This will
@@ -1364,10 +1512,14 @@ also illustrate how arrays can be used within a model. Using the
 data sheet view, make the ASSIGN module look like that show in
 Figure \@ref(fig:ch4IterativeLoopingAssignArrays).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingAssignArrays.png" alt="ASSIGN module with arrays" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingAssignArrays)ASSIGN module with arrays</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingAssignArrays} 
+
+}
+
+\caption{ASSIGN module with arrays}(\#fig:ch4IterativeLoopingAssignArrays)
+\end{figure}
 
 The values of *attributes* cannot be displayed using the variable
 animation constructs. So, in this ASSIGN module, an array
@@ -1383,10 +1535,14 @@ ASSIGN module in the model window. In fact, the element can be placed
 anywhere in the model window. Repeat this process for the other elements
 of the `vPTLocation1` array.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingAnimateVariables.png" alt="Animate variable dialog box" width="45%" height="45%" />
-<p class="caption">(\#fig:ch4IterativeLoopingAnimateVariables)Animate variable dialog box</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch4/ch4IterativeLoopingAnimateVariables} 
+
+}
+
+\caption{Animate variable dialog box}(\#fig:ch4IterativeLoopingAnimateVariables)
+\end{figure}
 
 Now, the model can be completed. Lay down the modules indicated in
 Figure \@ref(fig:ch4IterativeLooping) to complete the model. In
@@ -1407,25 +1563,41 @@ and updates the counter. An If/Then DECIDE module is used to redirect
 the entity back through the loop the appropriate number of times. This
 is GOTO programming!
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingProcessSubModel.png" alt="PROCESS based sub-model" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4IterativeLoopingProcessSubModel)PROCESS based sub-model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel2.png" alt="Second sub-model modules" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel2)Second sub-model modules</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4IterativeLoopingProcessSubModel} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel2Assign.png" alt="ASSIGN modules in second sub-model" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel2Assign)ASSIGN modules in second sub-model</p>
-</div>
+}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingSubModel2Decide.png" alt="ASSIGN modules in second sub-model" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingSubModel2Decide)ASSIGN modules in second sub-model</p>
-</div>
+\caption{PROCESS based sub-model}(\#fig:ch4IterativeLoopingProcessSubModel)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel2} 
+
+}
+
+\caption{Second sub-model modules}(\#fig:ch4IterativeLoopingSubModel2)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel2Assign} 
+
+}
+
+\caption{ASSIGN modules in second sub-model}(\#fig:ch4IterativeLoopingSubModel2Assign)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingSubModel2Decide} 
+
+}
+
+\caption{ASSIGN modules in second sub-model}(\#fig:ch4IterativeLoopingSubModel2Decide)
+\end{figure}
 
 Again, be sure to use logic that will change the tested condition (in
 this case `vCounter`) so that you do not get an infinite loop. I prefer
@@ -1474,10 +1646,14 @@ similar fashion as you did to show the processing time at the first
 location, except in this case show the counts captured by the variable
 `vMTCount.`
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4IterativeLoopingLastAssign.png" alt="Last ASSIGN module for animation purposes" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4IterativeLoopingLastAssign)Last ASSIGN module for animation purposes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4IterativeLoopingLastAssign} 
+
+}
+
+\caption{Last ASSIGN module for animation purposes}(\#fig:ch4IterativeLoopingLastAssign)
+\end{figure}
 
 To run the model, execute the model using the "VCR" run button. It is
 useful to use the step command to track the entities as they progress
@@ -1532,7 +1708,8 @@ and SEPARATE modules will be examined to investigate some of the rules
 involved in the use of these modules.
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exTieDyeTShirts"><strong>(\#exm:exTieDyeTShirts) </strong></span>Suppose production orders for tie-dye T-shirts arrive to a production
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exTieDyeTShirts"><strong>(\#exm:exTieDyeTShirts) </strong></span>Suppose production orders for tie-dye T-shirts arrive to a production
 facility according to a Poisson process with a mean rate of 1 per hour.
 There are two basic psychedelic designs involving either red or blue
 dye. For some reason the blue shirts are a little more popular than the
@@ -1557,7 +1734,8 @@ order. After the shirts are combined with the packaging, they are
 inspected by the packaging worker which is distributed according to a
 triangular distribution with a minimum of 5 minutes, a most likely value
 of 10 minutes, and a maximum value of 15 minutes. Finally, the boxed
-customer order is sent to shipping.</div>\EndKnitrBlock{example}
+customer order is sent to shipping.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1613,10 +1791,14 @@ process. Notice that the orders and shirts must be synchronized together
 after each of these processes. In addition, the order making process and
 the final packaging process share the packager as a resource.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsActivityDiagram.png" alt="Activity diagram for Tie Dye T-Shirts example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsActivityDiagram)Activity diagram for Tie Dye T-Shirts example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4TieDyeTShirtsActivityDiagram} 
+
+}
+
+\caption{Activity diagram for Tie Dye T-Shirts example}(\#fig:ch4TieDyeTShirtsActivityDiagram)
+\end{figure}
 
 To prepare to represent this situation in pseudo-code, let's define the structural elements of the model. 
 
@@ -1680,19 +1862,27 @@ DISPOSE: Ship order out of the system
 
 The completed model is given in Figure \@ref(fig:ch4TieDyeTShirtsOverview) and can be found in the files associated with this chapter as *TieDyeShirts.doe*. Notice how there is a parallel structure in the middle of the model. This is where the orders are processed separately from the shirts. Parallel processing is quite a common pattern in simulation modeling.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsOverview.png" alt="Overall Tie Dye T-Shirt model"  />
-<p class="caption">(\#fig:ch4TieDyeTShirtsOverview)Overall Tie Dye T-Shirt model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch4/ch4TieDyeTShirtsOverview} 
+
+}
+
+\caption{Overall Tie Dye T-Shirt model}(\#fig:ch4TieDyeTShirtsOverview)
+\end{figure}
 
 Take the time now to drag and drop the necessary modules to your model
 area. Each of the modules will be discussed in what follows.The CREATE module is essentially the same as you have already seen. Open up your CREATE module and fill it out as shown in
 Figure \@ref(fig:ch4TieDyeTShirtsCreateModule).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsCreateModule.png" alt="CREATE module for Tie Dye T-Shirt model" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsCreateModule)CREATE module for Tie Dye T-Shirt model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsCreateModule} 
+
+}
+
+\caption{CREATE module for Tie Dye T-Shirt model}(\#fig:ch4TieDyeTShirtsCreateModule)
+\end{figure}
 
 In the ASSIGN module of
 Figure \@ref(fig:ch4TieDyeTShirtsAssignModule), a variable is used to count each order as it
@@ -1706,10 +1896,14 @@ attributes and variables can only be real numbers. The DISC()
 distribution is used to randomly assign the size of the order. This will
 be remembered by the entity within the `myOrderSize` attribute.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsAssignModule.png" alt="Assigning the order number, type, and size" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsAssignModule)Assigning the order number, type, and size</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4TieDyeTShirtsAssignModule} 
+
+}
+
+\caption{Assigning the order number, type, and size}(\#fig:ch4TieDyeTShirtsAssignModule)
+\end{figure}
 
 After you have filled in the dialog boxes as shown, you can proceed to
 the SEPARATE module. The SEPARATE module has two options *Split Existing Batch* and *Duplicate Original*. The *Duplicate Original* option is used
@@ -1726,10 +1920,14 @@ the original entering entity. For modeling purposes, these entities will
 be conceptualized as the shirts. Don't worry about the text field in the
 dialog box relating to cost attributes at this time.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsSeparate.png" alt="SEPARATE module for creating shirts from orders" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsSeparate)SEPARATE module for creating shirts from orders</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsSeparate} 
+
+}
+
+\caption{SEPARATE module for creating shirts from orders}(\#fig:ch4TieDyeTShirtsSeparate)
+\end{figure}
 
 When an entity enters the SEPARATE module, the original will exit along
 the original exit point, and the duplicate (or split off) entities will
@@ -1746,10 +1944,14 @@ should add the resources to the model using the resource data sheet view
 as shown in Figure \@ref(fig:ch4TieDyeTShirtsResources). Notice here that there are two units of capacity for the shirt maker resource to represent the two workers
 involved in this process.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsResources.png" alt="Defining the resources for Tie Dye T-Shirts example" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsResources)Defining the resources for Tie Dye T-Shirts example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4TieDyeTShirtsResources} 
+
+}
+
+\caption{Defining the resources for Tie Dye T-Shirts example}(\#fig:ch4TieDyeTShirtsResources)
+\end{figure}
 
 The packager is used to process the orders along the original entity
 path. Figure \@ref(fig:ch4TieDyeTShirtsOrderFormingProcess) shows the dialog box for using the
@@ -1758,15 +1960,23 @@ drive through pharmacy model. Fill out both PROCESS modules as shown in
 Figure \@ref(fig:ch4TieDyeTShirtsOrderFormingProcess)  and
 Figure \@ref(fig:ch4TieDyeTShirtsShirtMakingProcess).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsOrderFormingProcess.png" alt="Seizing, delaying, and releasing the packager" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsOrderFormingProcess)Seizing, delaying, and releasing the packager</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsShirtMakingProcess.png" alt="Seizing,delaying, and releasing the shirt makers" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsShirtMakingProcess)Seizing,delaying, and releasing the shirt makers</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsOrderFormingProcess} 
+
+}
+
+\caption{Seizing, delaying, and releasing the packager}(\#fig:ch4TieDyeTShirtsOrderFormingProcess)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsShirtMakingProcess} 
+
+}
+
+\caption{Seizing,delaying, and releasing the shirt makers}(\#fig:ch4TieDyeTShirtsShirtMakingProcess)
+\end{figure}
 
 After the order's packaging is complete, it must wait until the shirts
 associated with the order are made. As seen in
@@ -1782,10 +1992,14 @@ and wait until there are `myOrderSize` other entities also in the batch
 queue that have the same indicated attribute. Then these entities are
 combined together and leave as a permanent entity.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsBatchingShirts.png" alt="Batching the shirts in an order together" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsBatchingShirts)Batching the shirts in an order together</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsBatchingShirts} 
+
+}
+
+\caption{Batching the shirts in an order together}(\#fig:ch4TieDyeTShirtsBatchingShirts)
+\end{figure}
 
 The attributes of the representative entity are determined by the
 selection indicated in the *Save Criterion* text box field. All the
@@ -1819,15 +2033,23 @@ to combine the group of shirts and the order/packaging together into a
 permanent entity. After the order is completed, it is sent to a PROCESS
 module (Figure \@ref(fig:ch4TieDyeTShirtsInspectionAndPackaging)) where it is inspected and then sent to a DISPOSE module, which represents shipping.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsSecondBatch.png" alt="Batching the shirts and the order together" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsSecondBatch)Batching the shirts and the order together</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsInspectionAndPackaging.png" alt="Using the packager to do inspection and packaging" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsInspectionAndPackaging)Using the packager to do inspection and packaging</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsSecondBatch} 
+
+}
+
+\caption{Batching the shirts and the order together}(\#fig:ch4TieDyeTShirtsSecondBatch)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsInspectionAndPackaging} 
+
+}
+
+\caption{Using the packager to do inspection and packaging}(\#fig:ch4TieDyeTShirtsInspectionAndPackaging)
+\end{figure}
 
 The only items that have not been discussed are the two ASSIGN modules
 labeled *Assign 2* and *Assign 3*. In these modules, the animation
@@ -1849,10 +2071,14 @@ is done because the numbers 1 and 2 have been mapped to the type of
 order, Blue = 1 and Red = 2. The order type attribute can be used to
 index into the set to assign the appropriate picture to the entity.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsPictureSet.png" alt="Defining a picture set" width="50%" height="50%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsPictureSet)Defining a picture set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch4/ch4TieDyeTShirtsPictureSet} 
+
+}
+
+\caption{Defining a picture set}(\#fig:ch4TieDyeTShirtsPictureSet)
+\end{figure}
 
 In Figure \@ref(fig:ch4TieDyeTShirtsAssignPicture), an assignment of type "Other" has
 been made to the Entity.Picture special purpose attribute. The
@@ -1864,20 +2090,32 @@ Figure \@ref(fig:ch4TieDyeTShirtsAssignBox) indicates the ASSIGN module for dir
 assigning a picture to an entity. In this case, since the shirts and
 packaging have been combined, the combined entity is shown as a box.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsExpressionBuilder.png" alt="Using the expression builder to index into a set" width="60%" height="60%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsExpressionBuilder)Using the expression builder to index into a set</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsAssignPicture.png" alt="Assigning an animation picture based on a set index" width="70%" height="70%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsAssignPicture)Assigning an animation picture based on a set index</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/ch4TieDyeTShirtsExpressionBuilder} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/ch4TieDyeTShirtsAssignBox.png" alt="Directly assigning an animation picture" width="55%" height="55%" />
-<p class="caption">(\#fig:ch4TieDyeTShirtsAssignBox)Directly assigning an animation picture</p>
-</div>
+}
+
+\caption{Using the expression builder to index into a set}(\#fig:ch4TieDyeTShirtsExpressionBuilder)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/ch4TieDyeTShirtsAssignPicture} 
+
+}
+
+\caption{Assigning an animation picture based on a set index}(\#fig:ch4TieDyeTShirtsAssignPicture)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/ch4TieDyeTShirtsAssignBox} 
+
+}
+
+\caption{Directly assigning an animation picture}(\#fig:ch4TieDyeTShirtsAssignBox)
+\end{figure}
 
 You should run the model for 8 hours and set the base time unit to
 minutes. When you run the model use the animation slider bar to slow
@@ -1899,8 +2137,10 @@ picture set to assign different pictures to the entities as they move
 through the model. This is especially useful in debugging and
 interpreting the actions of modules within Arena.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">**What is the difference between a DECIDE module and a SEPARATE module?**
-  It seems like DECIDE and SEPARATE control the flow of the entities.  There are two ouput ports on each of the modules. However, these modules function quite differently. The DECIDE module allows for decision-making processes in the model. One entity enters and the *same* entity exits on one of the output ports. For the SEPARATE module, one entity enters and potentially *multiple* entities exit. The original entity exits the port labeled "original" and duplicates exit the port labeled "duplicates". A SEPARATE module can also be used to split an entity that has been batched together. The CLONE module also has similar functionality.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+**What is the difference between a DECIDE module and a SEPARATE module?**
+  It seems like DECIDE and SEPARATE control the flow of the entities.  There are two ouput ports on each of the modules. However, these modules function quite differently. The DECIDE module allows for decision-making processes in the model. One entity enters and the *same* entity exits on one of the output ports. For the SEPARATE module, one entity enters and potentially *multiple* entities exit. The original entity exits the port labeled "original" and duplicates exit the port labeled "duplicates". A SEPARATE module can also be used to split an entity that has been batched together. The CLONE module also has similar functionality.
+\EndKnitrBlock{rmdnote}
 
 In the next section, we will review some statistical concepts related to comparing two random samples.  Then, we will examine another modeling situation that uses the SEPARATE module and then use that model to compare two design configurations.
 
@@ -1924,10 +2164,14 @@ useful analysis tool.
 Figure \@ref(fig:MultipleInputsMultipleOutput) represents the notion of using
 different inputs to get different outputs.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figMultipleInputsMultipleOutputs.png" alt="Changing inputs on models represent different system configurations" width="60%" height="60%" />
-<p class="caption">(\#fig:MultipleInputsMultipleOutput)Changing inputs on models represent different system configurations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figMultipleInputsMultipleOutputs} 
+
+}
+
+\caption{Changing inputs on models represent different system configurations}(\#fig:MultipleInputsMultipleOutput)
+\end{figure}
 
 Naturally, when you have different design configurations, you would like
 to know which configurations are better than the others. Since the
@@ -2172,10 +2416,14 @@ around the difference between the two systems. If the difference between
 the two systems falls in this zone, you are indifferent between the two
 systems (i.e. there is no practical difference).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figIndifferenceZone.png" alt="Concept of an indifference zone" width="70%" height="70%" />
-<p class="caption">(\#fig:IndifferenceZone)Concept of an indifference zone</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figIndifferenceZone} 
+
+}
+
+\caption{Concept of an indifference zone}(\#fig:IndifferenceZone)
+\end{figure}
 
 Using the indifference zone to model the notion of practical
 significance, if $u < -\Delta$, you can conclude confidence that
@@ -2310,7 +2558,9 @@ so that you can more readily infer that any difference in performance is
 due to the inherent difference between the systems and not caused by the
 random numbers.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">Use common random numbers when comparing two alternatives to block out the factor of the assigned random numbers and reduce the variance of your estimates for the difference between the system configurations.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+Use common random numbers when comparing two alternatives to block out the factor of the assigned random numbers and reduce the variance of your estimates for the difference between the system configurations.
+\EndKnitrBlock{rmdnote}
 
 In experimental design settings, this is called blocking on a factor.
 For example, if you wanted to perform and experiment to determine
@@ -2329,7 +2579,8 @@ In the next section, we introduce a modeling situation involving the production 
 In this section, we will develop a model for a small manufacturing system.  The purpose of the model is to illustrate how to model with a variety of different distributions, illustrate a common entity creation pattern, and cover the use of resource sets.  In a future section we will build on this model in order to compare two system design configurations in a statistically valid manner.  We start by introducing the modeling situation. The situation is fictitious but has a number of interesting modeling issues.
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exLOTR"><strong>(\#exm:exLOTR) </strong></span>Every morning the sales force at LOTR Makers, Inc. makes a number of confirmation
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exLOTR"><strong>(\#exm:exLOTR) </strong></span>Every morning the sales force at LOTR Makers, Inc. makes a number of confirmation
 calls to customers who have previously been visited by the sales force.
 They have tracked the success rate of their confirmation calls over time
 and have determined that the chance of success varies from day to day.
@@ -2374,7 +2625,8 @@ sent to a rework craftsman. The minimum time that it takes to rework the
 pair of rings has been determined to be 5 minutes plus some random time
 that is distributed according to a Weibull distribution with a scale
 parameter of 15 and a shape parameter of 5. After the rework is
-completed, the pair of rings is sent to packaging.</div>\EndKnitrBlock{example}
+completed, the pair of rings is sent to packaging.
+\EndKnitrBlock{example}
 
 ***
 
@@ -2563,10 +2815,14 @@ might want to try to implement the logic yourself so that you can check
 how you are doing against what is presented here. If not, you should try
 to implement the logic as you proceed through the example.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRSalesProcess.png" alt="Sales confirmation process" width="90%" height="90%" />
-<p class="caption">(\#fig:LOTRSalesProcess)Sales confirmation process</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch4/figLOTRSalesProcess} 
+
+}
+
+\caption{Sales confirmation process}(\#fig:LOTRSalesProcess)
+\end{figure}
 
 To implement the sales order process, you first need to decide how to
 represent the required data. In the pseudo-code, there is only one
@@ -2590,10 +2846,14 @@ additional arrivals generated from this CREATE module. Fill out your
 CREATE module as shown in
 Figure \@ref(fig:LOTRCreateModule).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRCreateModule.png" alt="Initiating the sales call confirmation process" width="55%" height="55%" />
-<p class="caption">(\#fig:LOTRCreateModule)Initiating the sales call confirmation process</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figLOTRCreateModule} 
+
+}
+
+\caption{Initiating the sales call confirmation process}(\#fig:LOTRCreateModule)
+\end{figure}
 
 In the first ASSIGN module, the probability of success for the day is
 determined. The variable (`vSalesProb`) has been used to represent the
@@ -2602,15 +2862,23 @@ probability as drawn from the BETA() distribution function
 initialized to 1, prior to starting the looping logic. This attribute is
 going to count the number of calls made.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRAssign1.png" alt="Determining the probability of success" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRAssign1)Determining the probability of success</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRSPDecide.png" alt="Checking that all calls have been made" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRSPDecide)Checking that all calls have been made</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRAssign1} 
+
+}
+
+\caption{Determining the probability of success}(\#fig:LOTRAssign1)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRSPDecide} 
+
+}
+
+\caption{Checking that all calls have been made}(\#fig:LOTRSPDecide)
+\end{figure}
 
 The DECIDE module in Figure \@ref(fig:LOTRSPDecide) uses the attribute (`myCallNum`) to check the variable `vNumCalls`. The variable (`vNumCalls`) is defined
 in the VARIABLE module (not shown here) and has been initialized to 100.
@@ -2618,10 +2886,14 @@ Because the total number of calls has been represented as a variable,
 the desired number of calls can be easily changed in the VARIABLE
 module, without editing the DECIDE module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRAssign2.png" alt="Tracking the call results" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRAssign2)Tracking the call results</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRAssign2} 
+
+}
+
+\caption{Tracking the call results}(\#fig:LOTRAssign2)
+\end{figure}
 
 Figure \@ref(fig:LOTRAssign2) presents the ASSIGN module in the
 looping logic. In this ASSIGN, the attribute `myCallNum` is incremented.
@@ -2651,10 +2923,14 @@ collected for entities that exit through this DISPOSE module. Since the
 problem does not require anything about the statistics for the order
 process logic entity, this is advisable.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRSeparateModule.png" alt="Creating the jobs for production" width="55%" height="55%" />
-<p class="caption">(\#fig:LOTRSeparateModule)Creating the jobs for production</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figLOTRSeparateModule} 
+
+}
+
+\caption{Creating the jobs for production}(\#fig:LOTRSeparateModule)
+\end{figure}
 
 The production process is too long for one screen shot so this
 discussion is divided into three parts: the making and inspection
@@ -2668,20 +2944,32 @@ Figure \@ref(fig:LOTRInspectProcess) show the PROCESS modules and the
 appropriate delay distributions using the uniform and triangular
 distributions.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRMakeAndInspect.png" alt="Making and inspecting the rings" width="70%" height="70%" />
-<p class="caption">(\#fig:LOTRMakeAndInspect)Making and inspecting the rings</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRMakeProcess.png" alt="PROCESS module for making the rings" width="55%" height="55%" />
-<p class="caption">(\#fig:LOTRMakeProcess)PROCESS module for making the rings</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figLOTRMakeAndInspect} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRInspectProcess.png" alt="PROCESS module for inspecting the rings" width="55%" height="55%" />
-<p class="caption">(\#fig:LOTRInspectProcess)PROCESS module for inspecting the rings</p>
-</div>
+}
+
+\caption{Making and inspecting the rings}(\#fig:LOTRMakeAndInspect)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figLOTRMakeProcess} 
+
+}
+
+\caption{PROCESS module for making the rings}(\#fig:LOTRMakeProcess)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figLOTRInspectProcess} 
+
+}
+
+\caption{PROCESS module for inspecting the rings}(\#fig:LOTRInspectProcess)
+\end{figure}
 
 The ASSIGN module between the two processes is used to determine the
 diameters of the rings.
@@ -2690,10 +2978,14 @@ and `myODSmallRing`) are both set using the normal distribution. The
 parameters of the `NORM()` functions are defined by variables in the
 VARIABLE module (not shown here).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRDiameters.png" alt="Determining the ring diameters" width="65%" height="65%" />
-<p class="caption">(\#fig:LOTRDiameters)Determining the ring diameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch4/figLOTRDiameters} 
+
+}
+
+\caption{Determining the ring diameters}(\#fig:LOTRDiameters)
+\end{figure}
 
 After inspection, the rings must be checked to see whether rework is
 necessary. An overview of this checking is given in
@@ -2701,10 +2993,14 @@ Figure \@ref(fig:LOTRDiameters). The RECORD modules are used to
 collect statistics on the probability of the smaller ring being too big
 or the smaller ring being too small.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRCheckDiameters.png" alt="Checking ring diameters" width="70%" height="70%" />
-<p class="caption">(\#fig:LOTRCheckDiameters)Checking ring diameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figLOTRCheckDiameters} 
+
+}
+
+\caption{Checking ring diameters}(\#fig:LOTRCheckDiameters)
+\end{figure}
 
 Figure \@ref(fig:LOTRCheckSmallRingTooBig) shows the DECIDE module for
 checking if the ring is too big. The 2-way by condition option was used
@@ -2721,24 +3017,36 @@ the diameters of the rings is too large (larger than the tolerance),
 then the rings are too loose and need rework. If the rings fit properly,
 then they go directly to packaging.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRCheckSmallRingTooBig.png" alt="Checking to determine whether small ring is too big" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRCheckSmallRingTooBig)Checking to determine whether small ring is too big</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRCheckSmallRingTooLoose.png" alt="Checking to determine whether small ring is too small" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRCheckSmallRingTooLoose)Checking to determine whether small ring is too small</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRCheckSmallRingTooBig} 
+
+}
+
+\caption{Checking to determine whether small ring is too big}(\#fig:LOTRCheckSmallRingTooBig)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRCheckSmallRingTooLoose} 
+
+}
+
+\caption{Checking to determine whether small ring is too small}(\#fig:LOTRCheckSmallRingTooLoose)
+\end{figure}
 
 Figure \@ref(fig:LOTRReworkPackaging) shows the rework and packaging
 processes. Again, the PROCESS module is used to represent these
 processes.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRReworkPackaging.png" alt="Rework and packaging processes" width="70%" height="70%" />
-<p class="caption">(\#fig:LOTRReworkPackaging)Rework and packaging processes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figLOTRReworkPackaging} 
+
+}
+
+\caption{Rework and packaging processes}(\#fig:LOTRReworkPackaging)
+\end{figure}
 
 Figures \@ref(fig:LOTRReworkProcess) and
 Figure \@ref(fig:LOTRPackagingProcess) show the rework and packaging
@@ -2746,15 +3054,23 @@ process modules. Note that the delay type has been changed to expression
 so that `5 + WEIB(15, 3)` and `LOGN(7, 1)` can be specified for each of the
 respective processing times.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRReworkProcess.png" alt="Rework PROCESS module" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRReworkProcess)Rework PROCESS module</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRPackagingProcess.png" alt="Packaging PROCESS module" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRPackagingProcess)Packaging PROCESS module</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRReworkProcess} 
+
+}
+
+\caption{Rework PROCESS module}(\#fig:LOTRReworkProcess)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRPackagingProcess} 
+
+}
+
+\caption{Packaging PROCESS module}(\#fig:LOTRPackagingProcess)
+\end{figure}
 
 ### Running the Model
 
@@ -2803,10 +3119,14 @@ record the average, minimum, maximum, and half-width across the
 replications for the defined expression. You can also use the Output
 File field to write out the observed values to a file if necessary.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTROutputStatistics.png" alt="Defining OUTPUT statistics for overtime" width="80%" height="80%" />
-<p class="caption">(\#fig:LOTROutputStatistics)Defining OUTPUT statistics for overtime</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch4/figLOTROutputStatistics} 
+
+}
+
+\caption{Defining OUTPUT statistics for overtime}(\#fig:LOTROutputStatistics)
+\end{figure}
 
 The second OUTPUT statistic in
 Figure \@ref(fig:LOTROutputStatistics) defines an OUTPUT statistic called
@@ -2831,10 +3151,14 @@ never terminate. This is a logical situation that the modeler is
 responsible for preventing. The number of replications has been
 specified to 30 to represent the 30 days of production.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRRunSetup.png" alt="Specifying the number of replications in run setup" width="55%" height="55%" />
-<p class="caption">(\#fig:LOTRRunSetup)Specifying the number of replications in run setup</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figLOTRRunSetup} 
+
+}
+
+\caption{Specifying the number of replications in run setup}(\#fig:LOTRRunSetup)
+\end{figure}
 
 Running the model results in the user defined statistics for the
 probability of overtime and the average time to produce the orders as
@@ -2846,10 +3170,14 @@ overtime occurring. In the exercises, you are asked to explore the
 reasons behind the overtime and to recommend an alternative to reduce
 the likelihood of overtime.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRResults.png" alt="LOTR model results across 30 replicated days" width="80%" height="80%" />
-<p class="caption">(\#fig:LOTRResults)LOTR model results across 30 replicated days</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch4/figLOTRResults} 
+
+}
+
+\caption{LOTR model results across 30 replicated days}(\#fig:LOTRResults)
+\end{figure}
 
 In this example, you have learned how to model a small system involving
 random components and to translate the conceptual model into an
@@ -2908,10 +3236,14 @@ how the SEIZE and RELEASE arrows from the make ring activity go to the
 boundary of the oval. This indicates that the make ring activity pulls
 resources from this set of resources.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRTwoAlternatives.png" alt="Two LOTR alternative configurations" width="80%" height="80%" />
-<p class="caption">(\#fig:LOTRTwoAlternatives)Two LOTR alternative configurations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch4/figLOTRTwoAlternatives} 
+
+}
+
+\caption{Two LOTR alternative configurations}(\#fig:LOTRTwoAlternatives)
+\end{figure}
 
 The rework activity still uses the rework craftsman. In particular, the
 SEIZE and RELEASE arrows go directly to the rework craftsman. The SEIZE
@@ -3055,10 +3387,14 @@ time. After making this change, you should save the model under the
 name, *LOTRConfig1.doe*, to represent the first system configuration.
 You will now edit this model to create the second system configuration.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig1DelayModule.png" alt="DELAY module for preparation and travel time" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRConfig1DelayModule)DELAY module for preparation and travel time</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig1DelayModule} 
+
+}
+
+\caption{DELAY module for preparation and travel time}(\#fig:LOTRConfig1DelayModule)
+\end{figure}
 
 The first step will be to define the resource set. This can be done
 using the SET module on the Basic Process panel. Within the SET module,
@@ -3074,10 +3410,14 @@ defining the resources using the RESOURCE module, the programming
 environment will automatically create the listed resources in the
 RESOURCE module. You will still have to edit the RESOURCE module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2ResourceSet.png" alt="Adding members to a resource set" width="50%" height="50%" />
-<p class="caption">(\#fig:LOTRConfig2ResourceSet)Adding members to a resource set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch4/figLOTRConfig2ResourceSet} 
+
+}
+
+\caption{Adding members to a resource set}(\#fig:LOTRConfig2ResourceSet)
+\end{figure}
 
 After defining and adding the resources to the set, you should save your
 model as *LOTRConfig2.doe*. You are now ready to specify how to use
@@ -3089,10 +3429,14 @@ Set. Then, you should select the `RingMakers` set using the `Preferred
 Order` resource selection rule. You should close up the PROCESS module
 and save your model.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2ProcessResourceSet.png" alt="Using a resource set in a PROCESS module" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRConfig2ProcessResourceSet)Using a resource set in a PROCESS module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig2ProcessResourceSet} 
+
+}
+
+\caption{Using a resource set in a PROCESS module}(\#fig:LOTRConfig2ProcessResourceSet)
+\end{figure}
 
 Now, you must handle the fact that the processing time to make a ring
 depends on which resource is selected. In
@@ -3104,10 +3448,14 @@ selected. This index will have the value 1 or 2 according to whichever
 member of the `RingMakers` set was selected. This index can then be used
 to determine the appropriate processing time. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2Expressions.png" alt="Expressions for ring making time by type of worker" width="50%" height="50%" />
-<p class="caption">(\#fig:LOTRConfig2Expressions)Expressions for ring making time by type of worker</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch4/figLOTRConfig2Expressions} 
+
+}
+
+\caption{Expressions for ring making time by type of worker}(\#fig:LOTRConfig2Expressions)
+\end{figure}
 
 Since there are only two
 ring makers, an arrayed EXPRESSION can be defined, see
@@ -3123,10 +3471,14 @@ Figure \@ref(fig:LOTRConfig2RingProcessingTime). Notice how an attribute has bee
 used to remember the index and then that attribute is used to select the
 appropriate processing time from the EXPRESSION array.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2RingProcessingTime.png" alt="Using the save attribute to remember the selected resource and index into the expression" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRConfig2RingProcessingTime)Using the save attribute to remember the selected resource and index into the expression</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig2RingProcessingTime} 
+
+}
+
+\caption{Using the save attribute to remember the selected resource and index into the expression}(\#fig:LOTRConfig2RingProcessingTime)
+\end{figure}
 
 The next required model change is to ensure that the rework craftsman
 gives priority to rework jobs. This can be done by editing the PROCESS
@@ -3135,10 +3487,14 @@ Figure \@ref(fig:LOTRConfig2SeizePriority). In addition, you need to add an
 additional 15 minutes for the rework worker's time to perform the rework
 due to the job sharing. You are now almost ready to run the models.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2SeizePriority.png" alt="Adjusting the priority when seizing the resource" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRConfig2SeizePriority)Adjusting the priority when seizing the resource</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig2SeizePriority} 
+
+}
+
+\caption{Adjusting the priority when seizing the resource}(\#fig:LOTRConfig2SeizePriority)
+\end{figure}
 
 The final change to the model will enable the time to produce the rings
 to be captured to a file for analysis within the Output Analyzer. Go to
@@ -3150,10 +3506,14 @@ model file for the first configuration and add an output file (e.g.
 *prodTimeC1.dat*) to capture the statistics for the first configuration.
 You should then run each model for 30 replications.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2CaptureOutput.png" alt="Capturing total production time across replication results to a file" width="50%" height="50%" />
-<p class="caption">(\#fig:LOTRConfig2CaptureOutput)Capturing total production time across replication results to a file</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch4/figLOTRConfig2CaptureOutput} 
+
+}
+
+\caption{Capturing total production time across replication results to a file}(\#fig:LOTRConfig2CaptureOutput)
+\end{figure}
 
 After running the models, open up the Output Analyzer and add the two
 generated files to a new data group. Use the Analyze $>$ Compare Means
@@ -3168,34 +3528,50 @@ that configuration 1 has the higher mean time to produce the rings. If
 this is the case, then configuration 2 would be preferred (shorter
 production time is better). 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRSetupCRNCompare.png" alt="Setup paired difference analysis in Output Analyzer" width="60%" height="60%" />
-<p class="caption">(\#fig:LOTRSetupCRNCompare)Setup paired difference analysis in Output Analyzer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRSetupCRNCompare} 
+
+}
+
+\caption{Setup paired difference analysis in Output Analyzer}(\#fig:LOTRSetupCRNCompare)
+\end{figure}
 
 From the results shown in Figure \@ref(fig:LOTRCRNResults), you can clearly see that system configuration 2 has the smaller production time. In fact, you can be 95%
 confident that the true difference between the systems is 92 minutes.
 This is a practical difference by most standards.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRCRNResults.png" alt="Results for the paired difference analysis" width="65%" height="65%" />
-<p class="caption">(\#fig:LOTRCRNResults)Results for the paired difference analysis</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch4/figLOTRCRNResults} 
+
+}
+
+\caption{Results for the paired difference analysis}(\#fig:LOTRCRNResults)
+\end{figure}
 
 Based on these results, LOTR Makers Inc should consider sharing the
 rework worker between the work stations. If you check the other
 performance measures as per Figures \@ref(fig:figLOTRConfig1Utilization) and \@ref(fig:figLOTRConfig2Utilization), you will see that the utilization of the rework
 worker is increased significantly (near 97%) in configuration 2. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig1Utilization.png" alt="Configuration 1 resource utilization" width="60%" height="60%" />
-<p class="caption">(\#fig:figLOTRConfig1Utilization)Configuration 1 resource utilization</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRConfig2Utilization.png" alt="Configuration 2 resource utilization" width="60%" height="60%" />
-<p class="caption">(\#fig:figLOTRConfig2Utilization)Configuration 2 resource utilization</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig1Utilization} 
+
+}
+
+\caption{Configuration 1 resource utilization}(\#fig:figLOTRConfig1Utilization)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figLOTRConfig2Utilization} 
+
+}
+
+\caption{Configuration 2 resource utilization}(\#fig:figLOTRConfig2Utilization)
+\end{figure}
 
 There is also a larger waiting line at the rework station. Such a high
 utilization for both the ring makers (especially the rework worker) is a
@@ -3258,10 +3634,14 @@ first using `vStream` equal to 1 for configuration 1 and `vStream` equal to
 the results using the Analyze $>$ Compare Means $>$ Two sample t-test
 option. Figure \@ref(fig:LOTRINDResults) presents the results from the analysis.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figLOTRINDResults.png" alt="Independent two sample analysis from Output Analyzer" width="70%" height="70%" />
-<p class="caption">(\#fig:LOTRINDResults)Independent two sample analysis from Output Analyzer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figLOTRINDResults} 
+
+}
+
+\caption{Independent two sample analysis from Output Analyzer}(\#fig:LOTRINDResults)
+\end{figure}
 
 The results indicate that configuration 2 has a smaller production time.
 Notice that the confidence interval for the independent analysis is
@@ -3322,10 +3702,14 @@ telecommunication, computer, and service systems.
 Figure \@ref(fig:NetworkOfQueues) illustrates the concept of a network of
 stations for producing a vacuum cleaner.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figNetworkOfQueues.png" alt="Vaccum cleaner manufacturing system as a network of stations" width="90%" height="90%" />
-<p class="caption">(\#fig:NetworkOfQueues)Vaccum cleaner manufacturing system as a network of stations</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch4/figNetworkOfQueues} 
+
+}
+
+\caption{Vaccum cleaner manufacturing system as a network of stations}(\#fig:NetworkOfQueues)
+\end{figure}
 
 The analytical treatment of the theory associated with networks of
 queues has been widely examined and remains an active area for
@@ -3415,10 +3799,14 @@ Figure \@ref(fig:TestAndRepairSystem) illustrates the arrangement of the
 stations and the flow of the parts following Plan 2 in the test and
 repair shop.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairSystem.png" alt="Overview of the test and repair shop" width="80%" height="80%" />
-<p class="caption">(\#fig:TestAndRepairSystem)Overview of the test and repair shop</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch4/figTestAndRepairSystem} 
+
+}
+
+\caption{Overview of the test and repair shop}(\#fig:TestAndRepairSystem)
+\end{figure}
 
 The company is considering accepting a new contract that will increase
 the overall arrival rate of jobs to the system by 10%. They are
@@ -3449,10 +3837,14 @@ goes to the repair station, where 1 of 3 repair workers is seized for
 the repair activity. After the repair activity, the part leaves the
 system.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairActivityDiagram.png" alt="Activity diagram for test and repair system" width="65%" height="65%" />
-<p class="caption">(\#fig:TestAndRepairActivityDiagram)Activity diagram for test and repair system</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch4/figTestAndRepairActivityDiagram} 
+
+}
+
+\caption{Activity diagram for test and repair system}(\#fig:TestAndRepairActivityDiagram)
+\end{figure}
 
 The following pseudo-code represent the main concepts for modeling the test and repair system. This is a straight forward representation of the flow presented in the activity
 diagram. From the activity diagram and the pseudo-code, it should be
@@ -3622,15 +4014,23 @@ be built by following these steps:
     available here and each sequence name must be carefully typed into
     the dialog box. The order of the sequences is important.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairJobSteps.png" alt="Defining sequences, job steps, and assignments" width="70%" height="70%" />
-<p class="caption">(\#fig:TestAndRepairJobSteps)Defining sequences, job steps, and assignments</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairSequenceSet.png" alt="Defining an advanced set to hold the sequences" width="55%" height="55%" />
-<p class="caption">(\#fig:TestAndRepairSequenceSet)Defining an advanced set to hold the sequences</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figTestAndRepairJobSteps} 
+
+}
+
+\caption{Defining sequences, job steps, and assignments}(\#fig:TestAndRepairJobSteps)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/figTestAndRepairSequenceSet} 
+
+}
+
+\caption{Defining an advanced set to hold the sequences}(\#fig:TestAndRepairSequenceSet)
+\end{figure}
 
 Now that all the data modules have been specified, you can easily build
 the model using the flow chart modules. The completed model can be found in the book support files associated with chapter called, *RepairShop.doe*.  Figure \@ref(fig:TestAndRepairModelOverview) presents an overview of the model. The
@@ -3643,15 +4043,23 @@ record the job's system time. The next module is a STATION module that
 represents the diagnostic station, see
 Figure \@ref(fig:TestAndRepairDiagnosticStation).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairModelOverview.png" alt="Overview of the test and repair model" width="80%" height="80%" />
-<p class="caption">(\#fig:TestAndRepairModelOverview)Overview of the test and repair model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairDiagnosticStation.png" alt="Modeling the diagnostics station with a STATION module" width="50%" height="50%" />
-<p class="caption">(\#fig:TestAndRepairDiagnosticStation)Modeling the diagnostics station with a STATION module</p>
-</div>
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch4/figTestAndRepairModelOverview} 
+
+}
+
+\caption{Overview of the test and repair model}(\#fig:TestAndRepairModelOverview)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch4/figTestAndRepairDiagnosticStation} 
+
+}
+
+\caption{Modeling the diagnostics station with a STATION module}(\#fig:TestAndRepairDiagnosticStation)
+\end{figure}
 
 After passing through the STATION module, the entity goes through the
 diagnostic process. Following the diagnostic process, the part is
@@ -3664,10 +4072,14 @@ test plan sequences. The sequence returned from the set is assigned to
 the special purpose attribute, `Entity.Sequence`, so that the entity can
 now follow this sequence.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairTestPlanAssign.png" alt="Assigning the test plans" width="70%" height="70%" />
-<p class="caption">(\#fig:TestAndRepairTestPlanAssign)Assigning the test plans</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch4/figTestAndRepairTestPlanAssign} 
+
+}
+
+\caption{Assigning the test plans}(\#fig:TestAndRepairTestPlanAssign)
+\end{figure}
 
 The part then enters the ROUTE module for sending the parts to the
 testing stations. Figure \@ref(fig:TestAndRepairRouteModule) illustrates the ROUTE module. This module allows a time delay in the route time field and allows the user to
@@ -3684,10 +4096,14 @@ transfer). After the entity completes the transfer and enters the
 destination station, the entity's `Entity.CurrentStation` attribute is
 updated.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairRouteModule.png" alt="Selecting the By Sequence option within the ROUTE module" width="60%" height="60%" />
-<p class="caption">(\#fig:TestAndRepairRouteModule)Selecting the By Sequence option within the ROUTE module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figTestAndRepairRouteModule} 
+
+}
+
+\caption{Selecting the By Sequence option within the ROUTE module}(\#fig:TestAndRepairRouteModule)
+\end{figure}
 
 In the example, the part is sent to the appropriate station on its
 sequence. Each of the stations used to represent the testing stations
@@ -3696,10 +4112,14 @@ ROUTE). The PROCESS module (Figure \@ref(fig:TestAndRepairTestingProcessModule))
 determine the delay time for the testing process. This attribute was set
 when the entity's job step attributes were executed.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairTestingProcessModule.png" alt="PROCESS module for the testing process" width="60%" height="60%" />
-<p class="caption">(\#fig:TestAndRepairTestingProcessModule)PROCESS module for the testing process</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figTestAndRepairTestingProcessModule} 
+
+}
+
+\caption{PROCESS module for the testing process}(\#fig:TestAndRepairTestingProcessModule)
+\end{figure}
 
 After proceeding through its testing plan, the part is finally routed to
 the `RepairStation`, since it was the station associated with the last
@@ -3707,20 +4127,28 @@ job step. At the repair station, the part goes through its repair
 process by using the expression `eRepairTimeCDFs` and its attribute,
 `myTestPlan`, as shown in Figure \@ref(fig:TestAndRepairRepairProcess).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairRepairProcess.png" alt="PROCESS module for the repair process" width="60%" height="60%" />
-<p class="caption">(\#fig:TestAndRepairRepairProcess)PROCESS module for the repair process</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figTestAndRepairRepairProcess} 
+
+}
+
+\caption{PROCESS module for the repair process}(\#fig:TestAndRepairRepairProcess)
+\end{figure}
 
 The ASSIGN module after the repair process module simply computes the
 entity's total system time in the attribute, `mySysTime`, so that the
 following two RECORD modules can compute the appropriate statistics as
 indicated in Figure \@ref(fig:TestAndRepairRecordModules).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairRecordModules.png" alt="RECORD modules for test and repair model" width="75%" height="750%" />
-<p class="caption">(\#fig:TestAndRepairRecordModules)RECORD modules for test and repair model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=7.5\textheight]{./figures2/ch4/figTestAndRepairRecordModules} 
+
+}
+
+\caption{RECORD modules for test and repair model}(\#fig:TestAndRepairRecordModules)
+\end{figure}
 
 ### Running the Test and Repair Model
 
@@ -3743,10 +4171,14 @@ under empty and idle conditions. Let's assume that 10 replications of
 4,160 hours will be sufficient as illustrated in
 Figure \@ref(fig:TestAndRepairRunSetup).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairRunSetup.png" alt="Run setup specification for test and repair shop model" width="60%" height="60%" />
-<p class="caption">(\#fig:TestAndRepairRunSetup)Run setup specification for test and repair shop model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch4/figTestAndRepairRunSetup} 
+
+}
+
+\caption{Run setup specification for test and repair shop model}(\#fig:TestAndRepairRunSetup)
+\end{figure}
 
 As shown in Figure \@ref(fig:TestAndRepairResults), for the current situation, the
 probability that a job completes its testing and repair within 480
@@ -3755,10 +4187,14 @@ of not meeting the contract specification. You are asked to analyze the
 new contract's risks and make a recommendation to the company on how to
 proceed within the exercises.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/figTestAndRepairResults.png" alt="User defined statistics for current contract" width="65%" height="65%" />
-<p class="caption">(\#fig:TestAndRepairResults)User defined statistics for current contract</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch4/figTestAndRepairResults} 
+
+}
+
+\caption{User defined statistics for current contract}(\#fig:TestAndRepairResults)
+\end{figure}
 
 In the test and repair example, the time that it took to transfer the
 parts between the stations was a simple stochastic delay (e.g. UNIF
@@ -3919,24 +4355,32 @@ learned in this chapter. Chapter \@ref(ch5) will return to some statistical conc
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P10"><strong>(\#exr:ch4P10) </strong></span>The $\underline{\hspace{3cm}}$ attribute is a unique number assigned
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P10"><strong>(\#exr:ch4P10) </strong></span>The $\underline{\hspace{3cm}}$ attribute is a unique number assigned
 to an entity when it is created; however, if the entity is ever
 duplicated (cloned) in the model, the clones will have the same value
-for the attribute.</div>\EndKnitrBlock{exercise}
+for the attribute.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P20"><strong>(\#exr:ch4P20) </strong></span>Groups of customers arrive to a Blues, Bikes, and BBQ T-Shirt Concession
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P20"><strong>(\#exr:ch4P20) </strong></span>Groups of customers arrive to a Blues, Bikes, and BBQ T-Shirt Concession
 Stand according to a Poisson process with a mean rate of 10 per hour.
 There is a 10\% chance that a family of 4 will want T-Shirts, a 30\%
 chance that a family of 3 will want T-Shirts, a 20\% chance that a couple
 will want matching T-Shirts, and a 40\% chance that an individual person
-will want a T-Shirt.</div>\EndKnitrBlock{exercise}
+will want a T-Shirt.
+\EndKnitrBlock{exercise}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch4/exrCreateProblem.png" alt="CREATE Module" width="55%" height="55%" />
-<p class="caption">(\#fig:CreateProblem)CREATE Module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch4/exrCreateProblem} 
+
+}
+
+\caption{CREATE Module}(\#fig:CreateProblem)
+\end{figure}
 
 Specify expressions for A, B, C, and D in the above CREATE module to
 properly generate customers for the T-Shirt Stand.
@@ -3951,25 +4395,30 @@ properly generate customers for the T-Shirt Stand.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P30"><strong>(\#exr:ch4P30) </strong></span>Suppose that a customer arriving to the drive through pharmacy will decide to balk if
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P30"><strong>(\#exr:ch4P30) </strong></span>Suppose that a customer arriving to the drive through pharmacy will decide to balk if
 the number of cars waiting in line is 4 or more. A customer is said to
 *balk* if he or she refuses to enter the system and simply departs
 without receiving service. Model this situation using and estimate the
 probability that a customer will balk because the line is too long. Run
-your model for 1 year, with 20 replications. *Hint* Use the NQ() function.</div>\EndKnitrBlock{exercise}
+your model for 1 year, with 20 replications. *Hint* Use the NQ() function.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P40"><strong>(\#exr:ch4P40) </strong></span>Samples of 20 parts from a metal grinding process are selected every hour. Typically 2\% of
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P40"><strong>(\#exr:ch4P40) </strong></span>Samples of 20 parts from a metal grinding process are selected every hour. Typically 2\% of
 the parts need rework. Let X denote the number of parts in the sample of
 20 that require rework. A process problem is suspected if X exceeds its
 mean by more than 3 standard deviations. Using simulate 30 hours of the
 process, i.e. 30 samples of size 20, and estimate the chance that X
-exceeds its expected value by more than 1 standard deviation.</div>\EndKnitrBlock{exercise}
+exceeds its expected value by more than 1 standard deviation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P50"><strong>(\#exr:ch4P50) </strong></span>Samples of 20 parts
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P50"><strong>(\#exr:ch4P50) </strong></span>Samples of 20 parts
 from a metal grinding process are selected every hour. Typically 2\% of
 the parts need rework. Let X denote the number of parts in the sample of
 20 that require rework. A process problem is suspected if X exceeds its
@@ -3986,11 +4435,13 @@ they are joined back together to form the original part. The joining
 process takes 5 minutes with 1 worker. The part is then sent back to the
 main production area, which is outside the scope of this problem.
 Simulate 8 hours of production and estimate the average time that it
-takes a part to be repaired.</div>\EndKnitrBlock{exercise}
+takes a part to be repaired.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P60"><strong>(\#exr:ch4P60) </strong></span>TV sets arrive at a two-inspector station for testing. The time between
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P60"><strong>(\#exr:ch4P60) </strong></span>TV sets arrive at a two-inspector station for testing. The time between
 arrivals is exponential with a mean of 15 minutes. The inspection time
 per TV set is exponential with a mean of 10 minutes. On the average, 82
 percent of the sets pass inspection. The remaining 18\% are routed to an
@@ -4003,11 +4454,13 @@ released.
 Develop a model for this situation. Report the average system
 time for the TV sets based on 20 replications of 4800 minutes. Also
 report statistics for the average number of times a given TV is
-adjusted.</div>\EndKnitrBlock{exercise}
+adjusted.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P70"><strong>(\#exr:ch4P70) </strong></span>A simple manufacturing system is staffed by 3 operators. Parts arrive
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P70"><strong>(\#exr:ch4P70) </strong></span>A simple manufacturing system is staffed by 3 operators. Parts arrive
 according to a Poisson process with a mean rate of 2 per minute to a
 workstation for a drilling process at one of three identical drill
 presses. The parts wait in a single queue until a drill press is
@@ -4021,11 +4474,13 @@ minus 30 seconds. After the grinding operation the part leaves the
 system.
 
 Develop model for this situation. Report the average system
-time for the parts based on 20 replications of 4800 minutes.</div>\EndKnitrBlock{exercise}
+time for the parts based on 20 replications of 4800 minutes.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P80"><strong>(\#exr:ch4P80) </strong></span>The Hog BBQ Joint is interested in understanding the flow of customers
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P80"><strong>(\#exr:ch4P80) </strong></span>The Hog BBQ Joint is interested in understanding the flow of customers
 for diner (5 pm to 9 pm). Customers arrive in parties of 2, 3, 4, or 5
 with probabilities 0.4, 0.3, 0.2, 0.1, respectively. The time between
 arrivals is exponentially distributed with a mean of 1.4 minutes.
@@ -4043,7 +4498,8 @@ distributed with a mean of 1.5 minutes and a standard deviation of 0.5
 minutes.
 
 Develop an model for this situation. Simulate 30 days of operation. Make
-a table like the following to summarize your results.</div>\EndKnitrBlock{exercise}
+a table like the following to summarize your results.
+\EndKnitrBlock{exercise}
 
 
                                                        Average   Half-width
@@ -4058,16 +4514,19 @@ a table like the following to summarize your results.</div>\EndKnitrBlock{exerci
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P90"><strong>(\#exr:ch4P90) </strong></span>In the Tie-Dye T-Shirt model, the owner is expecting the business to grow during the
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P90"><strong>(\#exr:ch4P90) </strong></span>In the Tie-Dye T-Shirt model, the owner is expecting the business to grow during the
 summer season. The owner is interested in estimating the average time to
 produce an order and the utilization of the workers if the arrival rate
 for orders increases. Re-run the model for 30 eight hour days with the
 arrival rate increased by 20, 40, 60, and 80 percent. Will the system
-have trouble meeting the demand? Use the statistics to justify your conclusions.</div>\EndKnitrBlock{exercise}
+have trouble meeting the demand? Use the statistics to justify your conclusions.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P100"><strong>(\#exr:ch4P100) </strong></span>Suppose that the inspection and packaging process has been split into two processes for
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P100"><strong>(\#exr:ch4P100) </strong></span>Suppose that the inspection and packaging process has been split into two processes for
 the Tie-Dye T-Shirt system and assume that there an additional worker to
 perform inspection. The inspection process is uniformly distributed
 between 2 and 5 minutes. After inspection there is a 4 percent chance
@@ -4080,11 +4539,13 @@ according to a triangular distribution with parameters (2, 4, 10) all in
 minutes. Re-run the model for 30, 8-hour days, with the arrival rate
 increased by 20, 40, 60, and 80%. Will the system have trouble meeting
 the demand? In other words, how does the throughput (number of shirts
-produced per day) change in response to the increasing demand rate?</div>\EndKnitrBlock{exercise}
+produced per day) change in response to the increasing demand rate?
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P110"><strong>(\#exr:ch4P110) </strong></span>Hungry customers arrive to a Mickey R's drive through restaurant at a
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P110"><strong>(\#exr:ch4P110) </strong></span>Hungry customers arrive to a Mickey R's drive through restaurant at a
 mean rate of 10 per hour according to a Poisson process. Management is
 interested in improving the total time spent within the system (i.e.
 from arrival to departure with their food).
@@ -4116,11 +4577,13 @@ lognormally distributed. After the customer receives their order they
 depart.
 
 Simulate this system for the period from 10 am to 2 pm. Report the total
-time spent in the system for the customers based on 30 days.</div>\EndKnitrBlock{exercise}
+time spent in the system for the customers based on 30 days.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P120"><strong>(\#exr:ch4P120) </strong></span>The city is considering improving its hazardous waste and bulk item drop
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P120"><strong>(\#exr:ch4P120) </strong></span>The city is considering improving its hazardous waste and bulk item drop
 off area to improve service. Cars arrive to the drop off area at a rate
 of 10 per hour according to a Poisson process. Each car contains items
 for drop off. There is a 10% chance that the car will contain 1 item, a
@@ -4152,7 +4615,8 @@ items that require disassembly. Each electronic item takes between 8 to
 
 The hazardous waste recycling center is open for 7 hours per day, 5 days
 per week. Simulate 12 weeks of performance and estimate the following
-quantities:</div>\EndKnitrBlock{exercise}
+quantities:
+\EndKnitrBlock{exercise}
 
 -   Utilization of the workers
 
@@ -4170,7 +4634,8 @@ quantities:</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P130"><strong>(\#exr:ch4P130) </strong></span>Orders for street lighting poles require the production of the tapered pole, the base
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P130"><strong>(\#exr:ch4P130) </strong></span>Orders for street lighting poles require the production of the tapered pole, the base
 assembly, and the wiring/lighting assembly package. Orders are released
 to the shop floor with an exponential time between arrival of 20
 minutes. Assume that all the materials for the order are already
@@ -4218,11 +4683,13 @@ resource and the average system time to produce an order for a lighting
 pole. Assume that the system runs 5 days per week, with two, eight hours
 shifts per day. Any production that is not completed within 5 days is
 continued on the next available shift. Run the model for 10 years
-assuming 52 weeks per year to report your results.</div>\EndKnitrBlock{exercise}
+assuming 52 weeks per year to report your results.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P140"><strong>(\#exr:ch4P140) </strong></span>Patients arrive at an emergency room where they are treated and then
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P140"><strong>(\#exr:ch4P140) </strong></span>Patients arrive at an emergency room where they are treated and then
 depart. Arrivals are exponentially distributed with a mean time between
 arrivals of 0.3 hours. Upon arrival, patients are assigned a rating of 1
 to 5, depending on the severity of their ailments. Patients in Category
@@ -4241,7 +4708,8 @@ minimum, most likely, and maximum values differing according to the
 patient's category. The distribution of patients by category and the
 corresponding minimum, most likely, and maximum treatment times are
 summarized below.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
     Category      1     2      3      4      5
   ------------- ----- ------ ------ ------ ------
@@ -4265,7 +4733,8 @@ regardless of type based on 50 replications.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P150"><strong>(\#exr:ch4P150) </strong></span>Customers enter a fast-food restaurant according to an exponential
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P150"><strong>(\#exr:ch4P150) </strong></span>Customers enter a fast-food restaurant according to an exponential
 inter-arrival time with a mean of 0.7 minutes (use stream 1). Customers
 have a choice of ordering one of three kinds of meals: (1) a soft drink,
 (2) fries, or (3) soft drink, fries, and a burger. Upon arrive to the
@@ -4277,7 +4746,8 @@ customer exits. A cashier may not take any additional orders until the
 current customer has paid. In this system, there are two cooks and two
 cashiers. The time to order and pay is represented by a triangular
 distribution with parameters (0.4, 0.8, 1.2) minutes and (0.2, 0.4, 0.6)
-minutes, respectively. The cooking time depends on the order as follows:</div>\EndKnitrBlock{exercise}
+minutes, respectively. The cooking time depends on the order as follows:
+\EndKnitrBlock{exercise}
 
 
    Type   Percentage     Cooking Time
@@ -4303,42 +4773,51 @@ replications.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P160"><strong>(\#exr:ch4P160) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P160"><strong>(\#exr:ch4P160) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
 simulation to generate two independent samples of size $n_1 = 20$ and
 $n_2 = 30$ from normal distributions
 having $\mu_1 = 2$, $\sigma_1^2 = 0.64$ and  $\mu_2 = 2.2, \sigma_2^2 = 0.64$.
 Assume that you don't know the true means and variances. Use the method
-of independent samples to test whether $\mu_2 > \mu_1$.</div>\EndKnitrBlock{exercise}
+of independent samples to test whether $\mu_2 > \mu_1$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P170"><strong>(\#exr:ch4P170) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P170"><strong>(\#exr:ch4P170) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
 simulation to generate two independent samples of size $n_1 = 20$ and
 $n_2=30$ from normal distributions having
 $\mu_1 = 2$, $\sigma_1^2 = 0.64$, and  $\mu_2 = 2.2$, $\sigma_2^2 = 0.36$. Assume
 that you don't know the true means and variances. Use the method of
-independent samples to test whether $\mu_2 > \mu_1$.</div>\EndKnitrBlock{exercise}
+independent samples to test whether $\mu_2 > \mu_1$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P180"><strong>(\#exr:ch4P180) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P180"><strong>(\#exr:ch4P180) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
 simulation to generate two independent samples of size $n_1 = 30$ and
 $n_2 = 30$ from normal distributions having
 $\mu_1 = 2$, $\sigma_1^2 = 0.64$ and $\mu_2 = 2.2$, $\sigma_2^2 = 0.36$. Assume
 that you don't know the true means and variances. Use the paired-t
-method to test whether $\mu_2 > \mu_1$.</div>\EndKnitrBlock{exercise}
+method to test whether $\mu_2 > \mu_1$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P190"><strong>(\#exr:ch4P190) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P190"><strong>(\#exr:ch4P190) </strong></span>Create a model to simulate observations from a $N(\mu, \sigma^2)$ random variable. Use your
 simulation to generate two dependent samples of size $n_1 = 30$ and
 $n_2 = 30$ from normal distributions having
 $\mu_1 = 2$, $\sigma_1^2 = 0.64$ and $\mu_2 = 2.2$, $\sigma_2^2 = 0.36$. Use the method of common random number.  Assume that you don't know the true means and variances. Use the paired-t
-method to test whether $\mu_2 > \mu_1$.</div>\EndKnitrBlock{exercise}
+method to test whether $\mu_2 > \mu_1$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P200"><strong>(\#exr:ch4P200) </strong></span>Jobs arrive in batches of ten items each. The inter-arrival time is EXPO(2) hours. The
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P200"><strong>(\#exr:ch4P200) </strong></span>Jobs arrive in batches of ten items each. The inter-arrival time is EXPO(2) hours. The
 machine shop contains 2 milling machines and one drill press. About 30%
 of the items require drilling before being processed on the milling
 machine. Drilling time per item is UNIF(10, 15) minutes. The milling
@@ -4352,11 +4831,13 @@ within plus or minus 5 jobs with 95\% confidence. What is your
 replication length? Number of replications? Determine the utilization of
 the drill press and the milling machines as well as the average time an
 item spends in the system.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P210"><strong>(\#exr:ch4P210) </strong></span>A repair and inspection facility consists of two stations, a repair station with two
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P210"><strong>(\#exr:ch4P210) </strong></span>A repair and inspection facility consists of two stations, a repair station with two
 technicians, and an inspection station with 1 inspector. Each repair
 technician works at a rate of 3 items per hour, while the inspector can
 inspect 8 items per hour each exponentially distributed. Approximately
@@ -4376,7 +4857,8 @@ Any jobs not completed by the end of $2^{nd}$ shift are carried over to
 the $1^{st}$ shift of the next day. Any jobs left over at the end of the
 week are handled by a separate weekend staff that is not of concern to
 the current study. Estimate the following:
-  </div>\EndKnitrBlock{exercise}
+  
+\EndKnitrBlock{exercise}
 -   The average system time of items that pass inspection on the first
     attempt. Measure this quantity such that you are 95\% confident to
     within +/- 3 minutes.
@@ -4395,7 +4877,8 @@ technicians that are assigned to the repair station. Develop a model for this si
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P220"><strong>(\#exr:ch4P220) </strong></span>As part of a diabetes prevention program, a clinic is considering
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P220"><strong>(\#exr:ch4P220) </strong></span>As part of a diabetes prevention program, a clinic is considering
 setting up a screening service in a local mall. They are considering two
 designs: Design A: After waiting in a single line, each walk-in patient
 is served by one of three available nurses. Each nurse has their own
@@ -4438,11 +4921,13 @@ schedule a follow up visit is a WEIB(2.6, 7.3) distribution using stream 6.
 Make a statistically valid recommendation as to the best design based on
 the average system time of the patients. We want to be 95\% confident of
 our recommendation to within 2 minutes.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P230"><strong>(\#exr:ch4P230) </strong></span>A copy center has one fast copier
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P230"><strong>(\#exr:ch4P230) </strong></span>A copy center has one fast copier
 and one slow copier. The copy time per page for the fast copier is
 thought to be lognormally distributed with a mean of 1.6 seconds and a
 standard deviation of 0.3 seconds. A co-op Industrial Engineering
@@ -4496,11 +4981,13 @@ Develop a model for this problem. Based on 25 replications, report in
 table form, the appropriate statistics on the waiting time of customers,
 the daily throughput of the copy center, and the utilization of the
 payment clerk. In addition estimate the probability that a customer
-spends in the system is longer than 4 minutes.</div>\EndKnitrBlock{exercise}
+spends in the system is longer than 4 minutes.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P240"><strong>(\#exr:ch4P240) </strong></span>Passengers arrive at
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P240"><strong>(\#exr:ch4P240) </strong></span>Passengers arrive at
 an airline terminal according to an exponential distribution for the
 time between arrivals with a mean of 1.5 minutes (stream 1). Of the
 arriving passengers 7\% are frequent flyers (stream 2). The time that it
@@ -4537,7 +5024,8 @@ measured overall and by type (frequent flyer versus non-frequent flyer).
 
 Assume that the system should be studied for 16 hours per day.
 
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 a. Report the average and 95\% confidence interval half-width on the following based on
 the simulation of 10 days of operation. Report all time units in
 minutes.
@@ -4562,11 +5050,13 @@ type to within $\pm$ 1 minute with 95\% confidence.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P250"><strong>(\#exr:ch4P250) </strong></span>Consider the testing and repair
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P250"><strong>(\#exr:ch4P250) </strong></span>Consider the testing and repair
 shop. Suppose instead of increasing the overall arrival rate of jobs to
 the system, the new contract will introduce a new type of component into
 the system that will require a new test plan sequence. The following two
-tables represent the specifics associated with the new testing plan.</div>\EndKnitrBlock{exercise}
+tables represent the specifics associated with the new testing plan.
+\EndKnitrBlock{exercise}
 
 
   Test Plan    \% of parts   Sequence
@@ -4598,14 +5088,16 @@ associated with the new contract.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch4P260"><strong>(\#exr:ch4P260) </strong></span>Parts arrive at a 4 workstation
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch4P260"><strong>(\#exr:ch4P260) </strong></span>Parts arrive at a 4 workstation
 system according to an exponential inter-arrival distribution with a
 mean of 10 minutes. The workstation A has 2 machines. The three
 workstations (B, C, D) each have a single machine. There are 3 part
 types, each with an equal probability of arriving. The process plan for
 the part types are given below. The entries are for exponential
 distributions with the mean processing time (MPT) parameter given.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
   ------------------ ------------------ ------------------
   Workstation, MPT    Workstation, MPT   Workstation, MPT

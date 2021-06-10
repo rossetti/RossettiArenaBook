@@ -77,8 +77,10 @@ random*.
 
 ***
 
-\BeginKnitrBlock{definition}\iffalse{-91-80-115-101-117-100-111-45-82-97-110-100-111-109-32-78-117-109-98-101-114-115-93-}\fi{}<div class="definition"><span class="definition" id="def:PRN"><strong>(\#def:PRN)  \iffalse (Pseudo-Random Numbers) \fi{} </strong></span>A sequence of pseudo-random numbers, $U_{i}$, is a deterministic sequence of numbers in $(0,1)$ having the same relevant statistical properties as a sequence of truly
-random $U(0,1)$ numbers.([@ripley1987stochastic])</div>\EndKnitrBlock{definition}
+\BeginKnitrBlock{definition}\iffalse{-91-80-115-101-117-100-111-45-82-97-110-100-111-109-32-78-117-109-98-101-114-115-93-}\fi{}
+<span class="definition" id="def:PRN"><strong>(\#def:PRN)  \iffalse (Pseudo-Random Numbers) \fi{} </strong></span>A sequence of pseudo-random numbers, $U_{i}$, is a deterministic sequence of numbers in $(0,1)$ having the same relevant statistical properties as a sequence of truly
+random $U(0,1)$ numbers.([@ripley1987stochastic])
+\EndKnitrBlock{definition}
 
 ***
 
@@ -116,7 +118,8 @@ is as follows
 
 ***
 
-\BeginKnitrBlock{definition}\iffalse{-91-76-105-110-101-97-114-32-67-111-110-103-114-117-101-110-116-105-97-108-32-71-101-110-101-114-97-116-111-114-93-}\fi{}<div class="definition"><span class="definition" id="def:LCG"><strong>(\#def:LCG)  \iffalse (Linear Congruential Generator) \fi{} </strong></span>A LCG defines a sequence of
+\BeginKnitrBlock{definition}\iffalse{-91-76-105-110-101-97-114-32-67-111-110-103-114-117-101-110-116-105-97-108-32-71-101-110-101-114-97-116-111-114-93-}\fi{}
+<span class="definition" id="def:LCG"><strong>(\#def:LCG)  \iffalse (Linear Congruential Generator) \fi{} </strong></span>A LCG defines a sequence of
 integers, $R_{0}, R_{1}, \ldots$ between $0$ and $m-1$ according to the
 following recursive relationship:
 
@@ -133,7 +136,8 @@ To compute a corresponding pseudo-random uniform number, we use
 
 $$
 U_{i} = \frac{R_{i}}{m}
-$$</div>\EndKnitrBlock{definition}
+$$
+\EndKnitrBlock{definition}
 
 ***
 
@@ -148,10 +152,12 @@ random numbers. To make this concrete, let's look at a simple example of
 an LCG.
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-83-105-109-112-108-101-32-76-67-71-32-69-120-97-109-112-108-101-93-}\fi{}<div class="example"><span class="example" id="exm:SimpleLCG"><strong>(\#exm:SimpleLCG)  \iffalse (Simple LCG Example) \fi{} </strong></span>Consider an LCG
+\BeginKnitrBlock{example}\iffalse{-91-83-105-109-112-108-101-32-76-67-71-32-69-120-97-109-112-108-101-93-}\fi{}
+<span class="example" id="exm:SimpleLCG"><strong>(\#exm:SimpleLCG)  \iffalse (Simple LCG Example) \fi{} </strong></span>Consider an LCG
 with the following parameters $(m = 8$, $a = 5$, $c = 1$, $R_{0} = 5)$. Compute
 the first nine values for $R_{i}$ and $U_{i}$ from the defined
-sequence.</div>\EndKnitrBlock{example}
+sequence.
+\EndKnitrBlock{example}
 ***
 
 Let's first remember how to compute using the $\bmod$ operator. The
@@ -219,7 +225,9 @@ if a LCG will have the largest possible cycle.
 
 ***
 
-\BeginKnitrBlock{theorem}\iffalse{-91-76-67-71-32-84-104-101-111-114-101-109-93-}\fi{}<div class="theorem"><span class="theorem" id="thm:LCGThm"><strong>(\#thm:LCGThm)  \iffalse (LCG Theorem) \fi{} </strong></span>An LCG has full period if and only if the following three conditions hold: (1) The only positive integer that (exactly) divides both $m$ and $c$ is 1 (i.e. $c$ and $m$ have no common factors other than 1), (2) If $q$ is a prime number that divides $m$ then $q$ should divide $(a-1)$. (i.e. $(a-1)$ is a multiple of every prime number that divides $m$), and (3) If 4 divides $m$, then 4 should divide $(a-1)$. (i.e. $(a-1)$ is a multiple of 4 if $m$ is a multiple of 4)</div>\EndKnitrBlock{theorem}
+\BeginKnitrBlock{theorem}\iffalse{-91-76-67-71-32-84-104-101-111-114-101-109-93-}\fi{}
+<span class="theorem" id="thm:LCGThm"><strong>(\#thm:LCGThm)  \iffalse (LCG Theorem) \fi{} </strong></span>An LCG has full period if and only if the following three conditions hold: (1) The only positive integer that (exactly) divides both $m$ and $c$ is 1 (i.e. $c$ and $m$ have no common factors other than 1), (2) If $q$ is a prime number that divides $m$ then $q$ should divide $(a-1)$. (i.e. $(a-1)$ is a multiple of every prime number that divides $m$), and (3) If 4 divides $m$, then 4 should divide $(a-1)$. (i.e. $(a-1)$ is a multiple of 4 if $m$ is a multiple of 4)
+\EndKnitrBlock{theorem}
 
 ***
 
@@ -243,7 +251,9 @@ holds for the generator.
 
 Since all three conditions hold, the LCG achieves full period.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">The theorem only tells us when a specification of $(a, c, m)$ will obtain full period. In case (3), it does not tell us anything about what happens if $4$ does not divide $m$, If $4$ divides $m$, and we pick $a$ so that it divides $(a-1)$ then the condition will be met. If $4$ does not divide $m$, then the theorem really does not tell us one way or the other whether the LCG obtains full period.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+The theorem only tells us when a specification of $(a, c, m)$ will obtain full period. In case (3), it does not tell us anything about what happens if $4$ does not divide $m$, If $4$ divides $m$, and we pick $a$ so that it divides $(a-1)$ then the condition will be met. If $4$ does not divide $m$, then the theorem really does not tell us one way or the other whether the LCG obtains full period.
+\EndKnitrBlock{rmdnote}
 
 There are some simplifying conditions, see @banks2005discreteevent,
 which allow for easier application of the theorem. For $m = 2^{b}$, ($m$
@@ -286,10 +296,14 @@ that will come out of the generator when it is called within software.
 Since generators cycle, you can think of the sequence as a big circular
 list as indicated in Figure \@ref(fig:LCGCycle).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppRNRV/LCGCycle.png" alt="Sequence for Simple LCG Example" width="50%" />
-<p class="caption">(\#fig:LCGCycle)Sequence for Simple LCG Example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{./figures2/AppRNRV/LCGCycle} 
+
+}
+
+\caption{Sequence for Simple LCG Example}(\#fig:LCGCycle)
+\end{figure}
 
 Starting with seed $R_{0} = 5$, you get a sequence
 $\{2, 3, 0, 1, 6, 7, 4, 5\}$. Starting with seed, $R_{0}=1$, you get the
@@ -301,8 +315,10 @@ numbers will not overlap. This leads to the definition of a stream:
 
 ***
 
-\BeginKnitrBlock{definition}\iffalse{-91-83-116-114-101-97-109-93-}\fi{}<div class="definition"><span class="definition" id="def:unnamed-chunk-1"><strong>(\#def:unnamed-chunk-1)  \iffalse (Stream) \fi{} </strong></span>The subsequence of random numbers generated from a given seed is called a
-random number stream.</div>\EndKnitrBlock{definition}
+\BeginKnitrBlock{definition}\iffalse{-91-83-116-114-101-97-109-93-}\fi{}
+<span class="definition" id="def:unnamed-chunk-1"><strong>(\#def:unnamed-chunk-1)  \iffalse (Stream) \fi{} </strong></span>The subsequence of random numbers generated from a given seed is called a
+random number stream.
+\EndKnitrBlock{definition}
 
 ***
 
@@ -405,7 +421,9 @@ this new generator is conceptually similar to that which has already
 been described. The generator allows multiple independent streams to be
 defined along with sub-streams.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the *seed*. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams.  This facilitates the control of the use of pseudo-random numbers when performing experiments.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the *seed*. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams.  This facilitates the control of the use of pseudo-random numbers when performing experiments.
+\EndKnitrBlock{rmdnote}
 
 
 The fantastic thing about this generator is the sheer size of the
@@ -462,19 +480,25 @@ this method is that there is a one to one mapping between $u_{i}$ and
 $x_{i}$. In other words, for each $u_{i}$ there is a unique $x_{i}$
 because of the monotone property of the CDF.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppRNRV/invTransFig.png" alt="Inverse Transform Method" width="50%" />
-<p class="caption">(\#fig:InvTrans)Inverse Transform Method</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{./figures2/AppRNRV/invTransFig} 
+
+}
+
+\caption{Inverse Transform Method}(\#fig:InvTrans)
+\end{figure}
 
 The idea illustrated in Figure \@ref(fig:InvTrans) is based on the following theorem.
 
 ***
 
-\BeginKnitrBlock{theorem}\iffalse{-91-73-110-118-101-114-115-101-32-84-114-97-110-115-102-111-114-109-93-}\fi{}<div class="theorem"><span class="theorem" id="thm:InvTransThm"><strong>(\#thm:InvTransThm)  \iffalse (Inverse Transform) \fi{} </strong></span>Let $X$ be a random variable with $X \sim F(x)$. Define another random variable $Y$
+\BeginKnitrBlock{theorem}\iffalse{-91-73-110-118-101-114-115-101-32-84-114-97-110-115-102-111-114-109-93-}\fi{}
+<span class="theorem" id="thm:InvTransThm"><strong>(\#thm:InvTransThm)  \iffalse (Inverse Transform) \fi{} </strong></span>Let $X$ be a random variable with $X \sim F(x)$. Define another random variable $Y$
 such that $Y = F(X)$. That is, Y is determined by evaluating the
 function $F(\cdot)$ at the value $X$. If $Y$ is defined in this manner,
-then $Y \sim U(0,1)$.</div>\EndKnitrBlock{theorem}
+then $Y \sim U(0,1)$.
+\EndKnitrBlock{theorem}
 
 ***
 
@@ -530,7 +554,9 @@ Var\left[X\right] &= \frac{1}{\lambda^2}
 $$
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-69-120-112-111-110-101-110-116-105-97-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-93-}\fi{}<div class="example"><span class="example" id="exm:ExpInvCDF"><strong>(\#exm:ExpInvCDF)  \iffalse (Generating Exponential Random Variates) \fi{} </strong></span>Consider a random variable, $X$, that represents the time until failure for a machine tool. Suppose $X$ is exponentially distributed with an expected value of $1.\overline{33}$.  Generate a random variate for the time until the first failure using a uniformly distributed value of $u = 0.7$.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-69-120-112-111-110-101-110-116-105-97-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-93-}\fi{}
+<span class="example" id="exm:ExpInvCDF"><strong>(\#exm:ExpInvCDF)  \iffalse (Generating Exponential Random Variates) \fi{} </strong></span>Consider a random variable, $X$, that represents the time until failure for a machine tool. Suppose $X$ is exponentially distributed with an expected value of $1.\overline{33}$.  Generate a random variate for the time until the first failure using a uniformly distributed value of $u = 0.7$.
+\EndKnitrBlock{example}
 
 ***
 
@@ -616,7 +642,9 @@ $$
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-73-110-118-101-114-115-101-32-67-68-70-32-102-111-114-32-85-110-105-102-111-114-109-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:UnifInvCDF"><strong>(\#exm:UnifInvCDF)  \iffalse (Inverse CDF for Uniform Distribution) \fi{} </strong></span>Consider a random variable, $X$, that represents the amount of grass clippings in a mower bag in pounds. Suppose the random variable is uniformly distributed between 5 and 35 pounds. Generate a random variate for the weight using a pseudo-random number of $u = 0.25$.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-73-110-118-101-114-115-101-32-67-68-70-32-102-111-114-32-85-110-105-102-111-114-109-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:UnifInvCDF"><strong>(\#exm:UnifInvCDF)  \iffalse (Inverse CDF for Uniform Distribution) \fi{} </strong></span>Consider a random variable, $X$, that represents the amount of grass clippings in a mower bag in pounds. Suppose the random variable is uniformly distributed between 5 and 35 pounds. Generate a random variate for the weight using a pseudo-random number of $u = 0.25$.
+\EndKnitrBlock{example}
 
 ***
 
@@ -683,8 +711,10 @@ process is illustrated in the following example.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-68-105-115-99-114-101-116-101-32-69-109-112-105-114-105-99-97-108-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:DiscreteCDF"><strong>(\#exm:DiscreteCDF)  \iffalse (Discrete Empirical Distribution) \fi{} </strong></span>Suppose you have a random variable, $X$, with the following discrete probability mass
-function and cumulative distribution function.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-68-105-115-99-114-101-116-101-32-69-109-112-105-114-105-99-97-108-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:DiscreteCDF"><strong>(\#exm:DiscreteCDF)  \iffalse (Discrete Empirical Distribution) \fi{} </strong></span>Suppose you have a random variable, $X$, with the following discrete probability mass
+function and cumulative distribution function.
+\EndKnitrBlock{example}
 
     $x_{i}$      1     2     3     4
   ------------ ----- ----- ----- -----
@@ -723,10 +753,14 @@ $$
 
 Figure \@ref(fig:EmpiricalCDF) illustrates the CDF for this discrete distribution. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppRNRV/EmpiricalCDFFig.png" alt="Example Empirical CDF" width="50%" />
-<p class="caption">(\#fig:EmpiricalCDF)Example Empirical CDF</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{./figures2/AppRNRV/EmpiricalCDFFig} 
+
+}
+
+\caption{Example Empirical CDF}(\#fig:EmpiricalCDF)
+\end{figure}
 
 Examining Figure \@ref(fig:EmpiricalCDF) indicates that for any value of $u_{i}$ in the
 interval, $\left(0.4, 0.7\right]$ you get an $x_{i}$ of 2. Thus,
@@ -920,8 +954,10 @@ time between events is exponential with mean $1/\lambda$.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-80-111-105-115-115-111-110-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-93-}\fi{}<div class="example"><span class="example" id="exm:GenPoissonRV"><strong>(\#exm:GenPoissonRV)  \iffalse (Generate Poisson Random Variates) \fi{} </strong></span>Let $X(t)$ represent the number of customers that arrive to a bank in an interval of length $t$, where $t$ is measured in hours. Suppose $X(t)$ has a Poisson
-distribution with mean rate $\lambda = 4$ per hour. Use the the following pseudo-random number (0.971, 0.687, 0.314, 0.752, 0.830) to generate a value of $X(2)$. That is, generate the number of arrivals in 2 hours.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-80-111-105-115-115-111-110-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-93-}\fi{}
+<span class="example" id="exm:GenPoissonRV"><strong>(\#exm:GenPoissonRV)  \iffalse (Generate Poisson Random Variates) \fi{} </strong></span>Let $X(t)$ represent the number of customers that arrive to a bank in an interval of length $t$, where $t$ is measured in hours. Suppose $X(t)$ has a Poisson
+distribution with mean rate $\lambda = 4$ per hour. Use the the following pseudo-random number (0.971, 0.687, 0.314, 0.752, 0.830) to generate a value of $X(2)$. That is, generate the number of arrivals in 2 hours.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1044,9 +1080,11 @@ X_{i} = \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-78-101-103-97-116-105-118-101-32-66-105-110-111-109-105-97-108-32-86-97-114-105-97-116-101-115-32-118-105-97-32-67-111-110-118-111-108-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:GenNB"><strong>(\#exm:GenNB)  \iffalse (Generate Negative Binomial Variates via Convolution) \fi{} </strong></span>Use the following pseudo-random numbers $u_{1} = 0.35$, $u_{2} = 0.64$,
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-78-101-103-97-116-105-118-101-32-66-105-110-111-109-105-97-108-32-86-97-114-105-97-116-101-115-32-118-105-97-32-67-111-110-118-111-108-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:GenNB"><strong>(\#exm:GenNB)  \iffalse (Generate Negative Binomial Variates via Convolution) \fi{} </strong></span>Use the following pseudo-random numbers $u_{1} = 0.35$, $u_{2} = 0.64$,
 $u_{2} = 0.14$, generate a random variate from Negative Binomial distribution
-having parameters $r=3$ and $p= 0.3$.  Also, using the same pseudo-random numbers, generate a random variate from a *shifted* Negative Binomial distribution having parameters $r=3$ and $p=0.3$.</div>\EndKnitrBlock{example}
+having parameters $r=3$ and $p= 0.3$.  Also, using the same pseudo-random numbers, generate a random variate from a *shifted* Negative Binomial distribution having parameters $r=3$ and $p=0.3$.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1091,9 +1129,11 @@ distributed random variables with common mean $1/\lambda$.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-69-114-108-97-110-103-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-32-118-105-97-32-67-111-110-118-111-108-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:GenErlangRV"><strong>(\#exm:GenErlangRV)  \iffalse (Generate Erlang Random Variates via Convolution) \fi{} </strong></span>Use the following pseudo-random numbers $u_{1} = 0.35$, $u_{2} = 0.64$,
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-101-32-69-114-108-97-110-103-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-115-32-118-105-97-32-67-111-110-118-111-108-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:GenErlangRV"><strong>(\#exm:GenErlangRV)  \iffalse (Generate Erlang Random Variates via Convolution) \fi{} </strong></span>Use the following pseudo-random numbers $u_{1} = 0.35$, $u_{2} = 0.64$,
 $u_{2} = 0.14$, generate a random variate from an Erlang distribution
-having parameters $r=3$ and $\lambda = 0.5$.</div>\EndKnitrBlock{example}
+having parameters $r=3$ and $\lambda = 0.5$.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1121,10 +1161,14 @@ The PDF $w(x)$ is based on the development of a majorizing function for
 $f(x)$. A majorizing function, $g(x)$, for $f(x)$, is a function such
 that $g(x) \geq f(x)$ for $-\infty < x < +\infty$.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppRNRV/MajorizingFunc.png" alt="Concept of a Majorizing Function" width="75%" height="75%" />
-<p class="caption">(\#fig:MajorizingFunc)Concept of a Majorizing Function</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/AppRNRV/MajorizingFunc} 
+
+}
+
+\caption{Concept of a Majorizing Function}(\#fig:MajorizingFunc)
+\end{figure}
 
 Figure \@ref(fig:MajorizingFunc) illustrates the concept of a majorizing
 function for $f(x)$, which simply means a function that is bigger than
@@ -1166,10 +1210,12 @@ which is best illustrated with an example.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-65-99-99-101-112-116-97-110-99-101-45-82-101-106-101-99-116-105-111-110-32-69-120-97-109-112-108-101-93-}\fi{}<div class="example"><span class="example" id="exm:ARExampleRV"><strong>(\#exm:ARExampleRV)  \iffalse (Acceptance-Rejection Example) \fi{} </strong></span>Consider the
+\BeginKnitrBlock{example}\iffalse{-91-65-99-99-101-112-116-97-110-99-101-45-82-101-106-101-99-116-105-111-110-32-69-120-97-109-112-108-101-93-}\fi{}
+<span class="example" id="exm:ARExampleRV"><strong>(\#exm:ARExampleRV)  \iffalse (Acceptance-Rejection Example) \fi{} </strong></span>Consider the
 following PDF over the range $\left[-1,1\right]$. Develop an
 acceptance/rejection based algorithm for $f(x)$. 
-</div>\EndKnitrBlock{example}
+
+\EndKnitrBlock{example}
 
 $$
 f(x) =
@@ -1179,10 +1225,14 @@ f(x) =
 \end{cases}
 $$
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppRNRV/ARExampleFig.jpg" alt="Plot of f(x)" width="65%" height="65%" />
-<p class="caption">(\#fig:ARExampleFig)Plot of f(x)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/AppRNRV/ARExampleFig} 
+
+}
+
+\caption{Plot of f(x)}(\#fig:ARExampleFig)
+\end{figure}
 
 ***
 
@@ -1265,7 +1315,8 @@ examples.
 
 ***
 
-\BeginKnitrBlock{definition}\iffalse{-91-77-105-120-116-117-114-101-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}<div class="definition"><span class="definition" id="def:unnamed-chunk-2"><strong>(\#def:unnamed-chunk-2)  \iffalse (Mixture Distribution) \fi{} </strong></span>The distribution of
+\BeginKnitrBlock{definition}\iffalse{-91-77-105-120-116-117-114-101-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}
+<span class="definition" id="def:unnamed-chunk-2"><strong>(\#def:unnamed-chunk-2)  \iffalse (Mixture Distribution) \fi{} </strong></span>The distribution of
 a random variable $X$ is a *mixture distribution* if the CDF of $X$ has
 the form: 
 $$
@@ -1273,7 +1324,8 @@ F_{X}(x) = \sum\limits_{i=1}^{k} \omega_{i}F_{X_{i}}(x)
 $$ 
 where $0 < \omega_{i} < 1$, $\sum\nolimits_{i=1}^{k} \omega_{i} = 1$, $k \geq$
 and $F_{X_{i}}(x)$ is the CDF of a continuous or discrete random
-variable $X_{i}$, $i=1, \ldots, k$.</div>\EndKnitrBlock{definition}
+variable $X_{i}$, $i=1, \ldots, k$.
+\EndKnitrBlock{definition}
 
 ***
 
@@ -1312,7 +1364,8 @@ cash at a checkout register. The following example illustrates how to generate f
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-72-121-112-101-114-45-69-120-112-111-110-101-110-116-105-97-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-93-}\fi{}<div class="example"><span class="example" id="exm:HyperExpRV"><strong>(\#exm:HyperExpRV)  \iffalse (Hyper-Exponential Random Variate) \fi{} </strong></span>Suppose the time that it takes to pay with a credit card, $X_{1}$, is exponentially
+\BeginKnitrBlock{example}\iffalse{-91-72-121-112-101-114-45-69-120-112-111-110-101-110-116-105-97-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-93-}\fi{}
+<span class="example" id="exm:HyperExpRV"><strong>(\#exm:HyperExpRV)  \iffalse (Hyper-Exponential Random Variate) \fi{} </strong></span>Suppose the time that it takes to pay with a credit card, $X_{1}$, is exponentially
 distributed with a mean of $1.5$ minutes and the time that it takes to
 pay with cash, $X_{2}$, is exponentially distributed with a mean of
 $1.1$ minutes. In addition, suppose that the chance that a person pays
@@ -1330,7 +1383,8 @@ F_{X_{2}}(x) & = 1 - \exp \left( -\lambda_{2} x \right)
 $$
 Derive an algorithm for this distribution. Assume that you have two
 pseudo-random numbers, $u_1 = 0.54$ and $u_2 = 0.12$, generate a random
-variate from $F_{X}(x)$.</div>\EndKnitrBlock{example}
+variate from $F_{X}(x)$.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1447,10 +1501,12 @@ given that $a \leq X \leq b$. Let's look at an example.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-97-32-84-114-117-110-99-97-116-101-100-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-93-}\fi{}<div class="example"><span class="example" id="exm:TruncatedRV"><strong>(\#exm:TruncatedRV)  \iffalse (Generating a Truncated Random Variate) \fi{} </strong></span>Suppose $X$ represents the distance between two cracks in highway. Suppose that $X$
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-97-32-84-114-117-110-99-97-116-101-100-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-93-}\fi{}
+<span class="example" id="exm:TruncatedRV"><strong>(\#exm:TruncatedRV)  \iffalse (Generating a Truncated Random Variate) \fi{} </strong></span>Suppose $X$ represents the distance between two cracks in highway. Suppose that $X$
 has an exponential distribution with a mean of 10 meters. Generate a
 distance restricted between 3 and 6 meters using the pseudo-random
-number 0.23.</div>\EndKnitrBlock{example}
+number 0.23.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1488,13 +1544,15 @@ according to $F(x)$ and then add $\delta$.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-97-32-83-104-105-102-116-101-100-32-87-101-105-98-117-108-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-32-69-120-97-109-112-108-101-93-}\fi{}<div class="example"><span class="example" id="exm:ShiftedRV"><strong>(\#exm:ShiftedRV)  \iffalse (Generating a Shifted Weibull Random Variate Example) \fi{} </strong></span>Suppose $X$ represents
+\BeginKnitrBlock{example}\iffalse{-91-71-101-110-101-114-97-116-105-110-103-32-97-32-83-104-105-102-116-101-100-32-87-101-105-98-117-108-108-32-82-97-110-100-111-109-32-86-97-114-105-97-116-101-32-69-120-97-109-112-108-101-93-}\fi{}
+<span class="example" id="exm:ShiftedRV"><strong>(\#exm:ShiftedRV)  \iffalse (Generating a Shifted Weibull Random Variate Example) \fi{} </strong></span>Suppose $X$ represents
 the time to setup a machine for production. From past time studies, we
 know that it cannot take any less than 5.5 minutes to prepare for the
 setup and that the time after the 5.5 minutes is random with a Weibull
 distribution with shape parameter $\alpha = 3$ and scale parameter
 $\beta = 5$. Using a pseudo-random number of $u= 0.73$ generate a value
-for the time to perform the setup.</div>\EndKnitrBlock{example}
+for the time to perform the setup.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1538,44 +1596,60 @@ distributions. To further your study of random variate generation, you should st
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP1"><strong>(\#exr:AppRNRVP1) </strong></span>The sequence of random numbers generated from a given seed is called a
-random number (a)$\underline{\hspace{3cm}}$.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP1"><strong>(\#exr:AppRNRVP1) </strong></span>The sequence of random numbers generated from a given seed is called a
+random number (a)$\underline{\hspace{3cm}}$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP2"><strong>(\#exr:AppRNRVP2) </strong></span>State three major methods of generating random variables from any
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP2"><strong>(\#exr:AppRNRVP2) </strong></span>State three major methods of generating random variables from any
 distribution. (a)$\underline{\hspace{3cm}}$.
-(b)$\underline{\hspace{3cm}}$.(c)$\underline{\hspace{3cm}}$.</div>\EndKnitrBlock{exercise}
+(b)$\underline{\hspace{3cm}}$.(c)$\underline{\hspace{3cm}}$.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP3"><strong>(\#exr:AppRNRVP3) </strong></span>Consider the multiplicative congruential generator with ($a = 13$, $m = 64$, $c = 0$, and
-seeds $X_0$ = 1,2,3,4). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate one period's worth of uniform random variables from each of the supplied seeds.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP3"><strong>(\#exr:AppRNRVP3) </strong></span>Consider the multiplicative congruential generator with ($a = 13$, $m = 64$, $c = 0$, and
+seeds $X_0$ = 1,2,3,4). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate one period's worth of uniform random variables from each of the supplied seeds.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP4"><strong>(\#exr:AppRNRVP4) </strong></span>Consider the multiplicative congruential generator with ($a = 11$, $m = 64$, $c = 0$, and
-seeds $X_0$ = 1,2,3,4). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate one period's worth of uniform random variables from each of the supplied seeds.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP4"><strong>(\#exr:AppRNRVP4) </strong></span>Consider the multiplicative congruential generator with ($a = 11$, $m = 64$, $c = 0$, and
+seeds $X_0$ = 1,2,3,4). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate one period's worth of uniform random variables from each of the supplied seeds.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP5"><strong>(\#exr:AppRNRVP5) </strong></span>Consider the linear congruential generator with ($a = 11$, $m = 16$, $c = 5$, and
-seed $X_0$ = 1). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP5"><strong>(\#exr:AppRNRVP5) </strong></span>Consider the linear congruential generator with ($a = 11$, $m = 16$, $c = 5$, and
+seed $X_0$ = 1). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP6"><strong>(\#exr:AppRNRVP6) </strong></span>Consider the linear congruential generator with ($a = 13$, $m = 16$, $c = 13$, and
-seed $X_0$ = 37). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP6"><strong>(\#exr:AppRNRVP6) </strong></span>Consider the linear congruential generator with ($a = 13$, $m = 16$, $c = 13$, and
+seed $X_0$ = 37). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP7"><strong>(\#exr:AppRNRVP7) </strong></span>Consider the linear congruential generator with ($a = 8$, $m = 10$, $c = 1$, and
-seed $X_0$ = 11). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP7"><strong>(\#exr:AppRNRVP7) </strong></span>Consider the linear congruential generator with ($a = 8$, $m = 10$, $c = 1$, and
+seed $X_0$ = 11). a) Using Theorem \@ref(thm:LCGThm), does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP8"><strong>(\#exr:AppRNRVP8) </strong></span>Consider the following discrete distribution of the random variable $X$ whose
-probability mass function is $p(x)$.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP8"><strong>(\#exr:AppRNRVP8) </strong></span>Consider the following discrete distribution of the random variable $X$ whose
+probability mass function is $p(x)$.
+\EndKnitrBlock{exercise}
 
     $x$      0     1     2     3     4
   -------- ----- ----- ----- ----- -----
@@ -1589,7 +1663,9 @@ d. Generate 3 values of $X$ using the following pseudo-random numbers $u_1= 0.94
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP9"><strong>(\#exr:AppRNRVP9) </strong></span>Consider the following uniformly distributed random numbers:</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP9"><strong>(\#exr:AppRNRVP9) </strong></span>Consider the following uniformly distributed random numbers:
+\EndKnitrBlock{exercise}
 
    $U_1$    $U_2$    $U_3$    $U_4$    $U_5$    $U_6$    $U_7$    $U_8$
   -------- -------- -------- -------- -------- -------- -------- --------
@@ -1602,7 +1678,9 @@ using the 2nd random number.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP10"><strong>(\#exr:AppRNRVP10) </strong></span>Consider the following uniformly distributed random numbers:</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP10"><strong>(\#exr:AppRNRVP10) </strong></span>Consider the following uniformly distributed random numbers:
+\EndKnitrBlock{exercise}
 
    $U_1$    $U_2$    $U_3$    $U_4$    $U_5$    $U_6$    $U_7$    $U_8$
   -------- -------- -------- -------- -------- -------- -------- --------
@@ -1624,8 +1702,10 @@ generate 4 random variates from the probability mass function.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP11"><strong>(\#exr:AppRNRVP11) </strong></span>Suppose that customers arrive at an ATM via a Poisson process with mean 7 per hour.
-Determine the arrival time of the first 6 customers using the following pseudo-random numbers via the inverse transformation method. Start with the first row and read across the table.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP11"><strong>(\#exr:AppRNRVP11) </strong></span>Suppose that customers arrive at an ATM via a Poisson process with mean 7 per hour.
+Determine the arrival time of the first 6 customers using the following pseudo-random numbers via the inverse transformation method. Start with the first row and read across the table.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1635,8 +1715,10 @@ Determine the arrival time of the first 6 customers using the following pseudo-r
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP12"><strong>(\#exr:AppRNRVP12) </strong></span>The demand, $D$, for parts at a repair bench per day can be described by the following
-discrete probability mass function:</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP12"><strong>(\#exr:AppRNRVP12) </strong></span>The demand, $D$, for parts at a repair bench per day can be described by the following
+discrete probability mass function:
+\EndKnitrBlock{exercise}
 
     $D$      0     1     2
   -------- ----- ----- -----
@@ -1647,31 +1729,39 @@ random numbers: 0.943, 0.398, 0.372, 0.943.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP13"><strong>(\#exr:AppRNRVP13) </strong></span>The service times for a automated storage and retrieval system has a shifted
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP13"><strong>(\#exr:AppRNRVP13) </strong></span>The service times for a automated storage and retrieval system has a shifted
 exponential distribution. It is known that it takes a minimum of 15
 seconds for any retrieval. The parameter of the exponential distribution
-is $\lambda = 45$. Generate two service times for this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</div>\EndKnitrBlock{exercise}
+is $\lambda = 45$. Generate two service times for this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP14"><strong>(\#exr:AppRNRVP14) </strong></span>The time to failure for a computer
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP14"><strong>(\#exr:AppRNRVP14) </strong></span>The time to failure for a computer
 printer fan has a Weibull distribution with shape parameter $\alpha = 2$
 and scale parameter $\beta = 3$. Testing has indicated that the
-distribution is limited to the range from 1.5 to 4.5. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</div>\EndKnitrBlock{exercise}
+distribution is limited to the range from 1.5 to 4.5. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP15"><strong>(\#exr:AppRNRVP15) </strong></span>The interest rate for a capital project is unknown. An accountant has
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP15"><strong>(\#exr:AppRNRVP15) </strong></span>The interest rate for a capital project is unknown. An accountant has
 estimated that the minimum interest rate will between 2% and 5% within
 the next year. The accountant believes that any interest rate in this
 range is equally likely. You are tasked with generating interest rates
-for a cash flow analysis of the project. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</div>\EndKnitrBlock{exercise}
+for a cash flow analysis of the project. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP16"><strong>(\#exr:AppRNRVP16) </strong></span>Customers arrive at a service location according to a Poisson distribution with mean 10 per
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP16"><strong>(\#exr:AppRNRVP16) </strong></span>Customers arrive at a service location according to a Poisson distribution with mean 10 per
 hour. The installation has two servers. Experience shows that 60% of the
-arriving customers prefer the first server. Start with the first row and read across the table determine the arrival times of the first three customers at each server.</div>\EndKnitrBlock{exercise}
+arriving customers prefer the first server. Start with the first row and read across the table determine the arrival times of the first three customers at each server.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1681,7 +1771,8 @@ arriving customers prefer the first server. Start with the first row and read ac
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP17"><strong>(\#exr:AppRNRVP17) </strong></span>Consider the triangular distribution:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP17"><strong>(\#exr:AppRNRVP17) </strong></span>Consider the triangular distribution:
 
 $$F(x) = 
   \begin{cases}
@@ -1689,76 +1780,89 @@ $$F(x) =
      \dfrac{(x - a)^2}{(b - a)(c - a)} &  a \leq x \leq c\\ 
      1 - \dfrac{(b - x)^2}{(b - a)(b - c)} & c < x \leq b\\
      1 & b < x\\
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398, 0.372, 0.943, 0.204 generate 5 random variates from the triangular
 distribution with $a = 2$, $c = 5$, $b = 10$.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP18"><strong>(\#exr:AppRNRVP18) </strong></span>Consider the following probability density function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP18"><strong>(\#exr:AppRNRVP18) </strong></span>Consider the following probability density function:
 
 $$f(x) = 
   \begin{cases}
      \dfrac{3x^2}{2} & -1 \leq x \leq 1\\
      0 & \text{otherwise} \\
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398 generate two random variates from this distribution.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP19"><strong>(\#exr:AppRNRVP19) </strong></span>Consider the following probability density function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP19"><strong>(\#exr:AppRNRVP19) </strong></span>Consider the following probability density function:
 
 $$f(x) = 
   \begin{cases}
      0.5x - 1 & 2 \leq x \leq 4\\
      0 & \text{otherwise} \\
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398 generate two random variates from this distribution.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP20"><strong>(\#exr:AppRNRVP20) </strong></span>Consider the following probability density function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP20"><strong>(\#exr:AppRNRVP20) </strong></span>Consider the following probability density function:
 
 $$f(x) = 
   \begin{cases}
      \dfrac{2x}{25} & 0 \leq x \leq 5\\
      0 & \text{otherwise} \\
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398 generate two random variates from this distribution.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP21"><strong>(\#exr:AppRNRVP21) </strong></span>Consider the following probability density function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP21"><strong>(\#exr:AppRNRVP21) </strong></span>Consider the following probability density function:
 
 $$f(x) = 
   \begin{cases}
      \dfrac{2}{x^3} & x > 1\\
      0 & x \leq 1\\
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398 generate two random variates from this distribution.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP22"><strong>(\#exr:AppRNRVP22) </strong></span>The times to failure for an automated production process have been found to be
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP22"><strong>(\#exr:AppRNRVP22) </strong></span>The times to failure for an automated production process have been found to be
 randomly distributed according to a Rayleigh distribution:
 
 $$\ f(x) = 
    \begin{cases}
      2 \beta^{-2} x e^{(-(x/\beta)^2)} & x > 0\\
      0 & \text{otherwise}
-  \end{cases}$$</div>\EndKnitrBlock{exercise}
+  \end{cases}$$
+\EndKnitrBlock{exercise}
 a. Derive an inverse transform algorithm for this distribution.
 b. Using 0.943, 0.398 generate two random variates from this distribution with $\beta = 2.0$.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP23"><strong>(\#exr:AppRNRVP23) </strong></span>Using the first two rows of random numbers from the following table, generate 5 random numbers from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using the
-convolution method the number of Bernoulli trials to get 4 successes.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP23"><strong>(\#exr:AppRNRVP23) </strong></span>Using the first two rows of random numbers from the following table, generate 5 random numbers from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using the
+convolution method the number of Bernoulli trials to get 4 successes.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1768,7 +1872,9 @@ convolution method the number of Bernoulli trials to get 4 successes.</div>\EndK
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP24"><strong>(\#exr:AppRNRVP24) </strong></span>Using the first two rows of random numbers from the following table, generate 5 random numbers from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using a sequence of Bernoulli trials to get 4 successes.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP24"><strong>(\#exr:AppRNRVP24) </strong></span>Using the first two rows of random numbers from the following table, generate 5 random numbers from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using a sequence of Bernoulli trials to get 4 successes.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1778,7 +1884,8 @@ convolution method the number of Bernoulli trials to get 4 successes.</div>\EndK
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP25"><strong>(\#exr:AppRNRVP25) </strong></span> Suppose that the processing time for a job consists of two distributions. There
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP25"><strong>(\#exr:AppRNRVP25) </strong></span> Suppose that the processing time for a job consists of two distributions. There
 is a 30% chance that the processing time is lognormally distributed with
 a mean of 20 minutes and a standard deviation of 2 minutes, and a 70%
 chance that the time is uniformly distributed between 10 and 20 minutes.
@@ -1789,7 +1896,8 @@ $\ln(X) \sim N(\mu, \sigma^2)$. Also, note that:
 $$\begin{aligned}
 E[X] & = e^{\mu + \sigma^{2}/2}\\
 Var[X] & = e^{2\mu + \sigma^{2}}\left(e^{\sigma^{2}} - 1\right)\end{aligned}$$
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1799,12 +1907,14 @@ Var[X] & = e^{2\mu + \sigma^{2}}\left(e^{\sigma^{2}} - 1\right)\end{aligned}$$
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP26"><strong>(\#exr:AppRNRVP26) </strong></span>Suppose that the service time for a patient consists of two distributions. There
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP26"><strong>(\#exr:AppRNRVP26) </strong></span>Suppose that the service time for a patient consists of two distributions. There
 is a 25% chance that the service time is uniformly distributed with
 minimum of 20 minutes and a maximum of 25 minutes, and a 75% chance that
 the time is distributed according to a Weibull distribution with shape
 of 2 and a scale of 4.5. Using the first row of random numbers from
-the following table generate the service time for two patients.</div>\EndKnitrBlock{exercise}
+the following table generate the service time for two patients.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1814,10 +1924,12 @@ the following table generate the service time for two patients.</div>\EndKnitrBl
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP27"><strong>(\#exr:AppRNRVP27) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP27"><strong>(\#exr:AppRNRVP27) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
 where $\chi_k^2$ is a chi-squared random variable with $k$ degrees of
 freedom. Using the first two rows of random numbers from
-the following table generate two $\chi_5^2$ random variates.</div>\EndKnitrBlock{exercise}
+the following table generate two $\chi_5^2$ random variates.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
    0.943   0.398   0.372   0.943   0.204   0.794
@@ -1827,25 +1939,31 @@ the following table generate two $\chi_5^2$ random variates.</div>\EndKnitrBlock
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP28"><strong>(\#exr:AppRNRVP28) </strong></span>In the (a)$\underline{\hspace{3cm}}$ technique for generating random
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP28"><strong>(\#exr:AppRNRVP28) </strong></span>In the (a)$\underline{\hspace{3cm}}$ technique for generating random
 variates, you want the (b)$\underline{\hspace{3cm}}$ function to be as
 close as possible to the distribution function that you want to generate
 from in order to ensure that the (c)$\underline{\hspace{3cm}}$ is as
-high as possible, thereby improving the efficiency of the algorithm.</div>\EndKnitrBlock{exercise}
+high as possible, thereby improving the efficiency of the algorithm.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP29"><strong>(\#exr:AppRNRVP29) </strong></span>Prove that the acceptance-rejection method for continuous random variables is valid by
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP29"><strong>(\#exr:AppRNRVP29) </strong></span>Prove that the acceptance-rejection method for continuous random variables is valid by
 showing that for any $x$,
 
 $$P\lbrace X \leq x \rbrace = \int_{-\infty}^x f(y)dy$$
 
 Hint: Let E be the event that the acceptance occurs and use conditional
-probability.</div>\EndKnitrBlock{exercise}
+probability.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP30"><strong>(\#exr:AppRNRVP30) </strong></span>Consider the following probability density function:</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP30"><strong>(\#exr:AppRNRVP30) </strong></span>Consider the following probability density function:
+\EndKnitrBlock{exercise}
 $$f(x) = 
   \begin{cases}
      \dfrac{3x^2}{2} & -1 \leq x \leq 1\\
@@ -1862,7 +1980,8 @@ b. Using the first row of random numbers from the following table generate 2 ran
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP31"><strong>(\#exr:AppRNRVP31) </strong></span>This problem is
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP31"><strong>(\#exr:AppRNRVP31) </strong></span>This problem is
 based on [@cheng1977the], see also [@ahrens1972computer]. Consider the
 gamma distribution:
 
@@ -1885,7 +2004,8 @@ resulting probability distribution function when converting $g(x)$ to a
 density function:
 
 $$h(x) = ab \dfrac{x^{a-1}}{(b + x^a)^2} \ \  \text{for} x > 0$$
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 a. Develop an inverse transform algorithm for generating from $h(x)$
 
 b. Using the first two rows of random numbers from the following table, generate two random variates from a gamma distribution with parameters $\alpha =2$ and $\beta = 10$ via the
@@ -1897,14 +2017,16 @@ acceptance/rejection method.
    0.102   0.057   0.409   0.398   0.400   0.997
   ------- ------- ------- ------- ------- -------
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP32"><strong>(\#exr:AppRNRVP32) </strong></span>Parts arrive to a machine center with three drill presses according to a Poisson
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP32"><strong>(\#exr:AppRNRVP32) </strong></span>Parts arrive to a machine center with three drill presses according to a Poisson
 distribution with mean $\lambda$. The arriving customers are assigned to
 one of the three drill presses randomly according to the respective
 probabilities $p_1$, $p_2$, and $p_3$ where $p_1 + p_2 + p_3 = 1$ and
 $p_i > 0$ for $i = 1, 2, 3$. What is the distribution of the
 inter-arrival times to each drill press? Specify the parameters of the
 distribution. Suppose that $p_1$, $p_2$, and $p_3$ equal to 0.25, 0.45, and 0.3
-respectively and that $\lambda$ is equal to 12 per minute.</div>\EndKnitrBlock{exercise}
+respectively and that $\lambda$ is equal to 12 per minute.
+\EndKnitrBlock{exercise}
 
 Using the first row of random numbers from the following table generate the first three arrival times.
 
@@ -1916,21 +2038,24 @@ Using the first row of random numbers from the following table generate the firs
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP33"><strong>(\#exr:AppRNRVP33) </strong></span>Consider the following function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP33"><strong>(\#exr:AppRNRVP33) </strong></span>Consider the following function:
 
 $$f(x) = 
   \begin{cases}
      cx^{2} & a \leq x \leq b\\
      0 & \text{otherwise} \\
   \end{cases}
-$$</div>\EndKnitrBlock{exercise}
+$$
+\EndKnitrBlock{exercise}
 
 a. Determine the value of $c$ that will turn $g(x)$ into a probability density function. The resulting probability density function is called a parabolic distribution.
 b. Denote the probability density function found in part (a), $f(x)$.  Let $X$ be a random variable from $f(x)$.  Derive the inverse cumulative distribution function for $f(x)$.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppRNRVP34"><strong>(\#exr:AppRNRVP34) </strong></span>Consider the following probability density function:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppRNRVP34"><strong>(\#exr:AppRNRVP34) </strong></span>Consider the following probability density function:
 
 $$f(x) = 
   \begin{cases}
@@ -1939,7 +2064,8 @@ $$f(x) =
   \end{cases}
 $$
   
-Derive an inverse cumulative distribution algorithm for generating from $f(x)$.</div>\EndKnitrBlock{exercise}
+Derive an inverse cumulative distribution algorithm for generating from $f(x)$.
+\EndKnitrBlock{exercise}
 
 ***
 

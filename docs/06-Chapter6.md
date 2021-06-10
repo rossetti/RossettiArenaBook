@@ -224,10 +224,14 @@ behavior of the mean arrival rates over the course of a day.
   Table: (\#tab:MeanArrivalRates) Mean arrival rates for each time interval
 :::
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6NSArrivals.png" alt="Arrival rate per hour for time intervals" width="70%" height="70%" />
-<p class="caption">(\#fig:NSArrivals)Arrival rate per hour for time intervals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/ch6NSArrivals} 
+
+}
+
+\caption{Arrival rate per hour for time intervals}(\#fig:NSArrivals)
+\end{figure}
 
 The two major methods by which a non-stationary Poisson process can be
 generated are thinning and rate inversion. Both methods will be briefly
@@ -314,10 +318,14 @@ non-stationary Poisson process in is to define the intervals and compute
 the rates per hour as per Table \@ref(tab:MeanArrivalRates). It is extremely important to have the rates on a per hour basis. The SCHEDULE module is a data module on the
 Basic Process panel.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ScheduleDataModule.png" alt="SCHEDULE data module" width="60%" height="60%" />
-<p class="caption">(\#fig:ScheduleDataModule)SCHEDULE data module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6ScheduleDataModule} 
+
+}
+
+\caption{SCHEDULE data module}(\#fig:ScheduleDataModule)
+\end{figure}
 
 Figure \@ref(fig:ScheduleDataModule) illustrates where to find the SCHEDULE in
 the Basic Process panel. To use the SCHEDULE module, double-click on the
@@ -375,10 +383,14 @@ arrival rate (per hour) and the duration that the arrival rate will last
 should be entered. The completed dialog entries are shown in
 Figure \@ref(fig:ScheduleDialog).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ScheduleDialog.png" alt="SCHEDULE dialog" width="45%" height="45%" />
-<p class="caption">(\#fig:ScheduleDialog)SCHEDULE dialog</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/ch6ScheduleDialog} 
+
+}
+
+\caption{SCHEDULE dialog}(\#fig:ScheduleDialog)
+\end{figure}
 
 Note that the arrival rates are given per hour. Not entering the arrival
 rates per hour is a common error in using this module. Even if you
@@ -398,10 +410,14 @@ the schedule is specified with an infinite last duration, the value
 specified will be used for the rest of the simulation and the schedule
 will not repeat.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6CREATEwithSchedule.png" alt="CREATE module with schedule type" width="60%" height="60%" />
-<p class="caption">(\#fig:CREATEwithSchedule)CREATE module with schedule type</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6CREATEwithSchedule} 
+
+}
+
+\caption{CREATE module with schedule type}(\#fig:CREATEwithSchedule)
+\end{figure}
 
 As indicated in this limited example, it is relatively easy to model a
 non-stationary Poisson arrival process within Arena. If the arrival process to
@@ -494,8 +510,10 @@ true if the resource named *Pharmacist* is currently busy. Thus, the
 `STATE()` function can be used in conditional statements and within the
 environment (e.g. variable animation) to check the state of a resource.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">**How do we check if a resource is busy?** You can use either of the two following expressions to check if a
-resource is busy: 1) STATE(Resource ID ) == BUSY_RES, or 2) NR(Resource ID ) \> 0, where Resource ID is the name of your resource that you want to check.</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+**How do we check if a resource is busy?** You can use either of the two following expressions to check if a
+resource is busy: 1) STATE(Resource ID ) == BUSY_RES, or 2) NR(Resource ID ) \> 0, where Resource ID is the name of your resource that you want to check.
+\EndKnitrBlock{rmdnote}
 
 The function `STATE( Resource ID)` returns the current state of the specified Resource ID as defined in the *Statesets* option for the resource. The STATE variable returns an integer number corresponding to the position within the specified Resource ID's associated stateset. It also may be used to assign a new state to the resource.
 To vary the capacity of a resource, you can use the SCHEDULE module on
@@ -532,10 +550,14 @@ pattern can be easily extended for multiple capacity changes and
 duration. This is what the SCHEDULE module does in an easier to use
 form.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6CapChangeActivityDiagram.jpg" alt="Activity diagram for scheduled capacity Changes" width="70%" height="70%" />
-<p class="caption">(\#fig:CapChangeActDiagram)Activity diagram for scheduled capacity Changes</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/ch6CapChangeActivityDiagram} 
+
+}
+
+\caption{Activity diagram for scheduled capacity Changes}(\#fig:CapChangeActDiagram)
+\end{figure}
 
 As an example, consider the following illustration of the SCHEDULE
 module based on a modified version of
@@ -568,10 +590,14 @@ appropriate RESOURCE module.
   Table: (\#tab:ExStaffingSched) Example staffing schedule
 :::
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ResCapSpreadsheetView.png" alt="Resource schedule value, duration data sheet view" width="65%" height="65%" />
-<p class="caption">(\#fig:ResCapSpreadsheetView)Resource schedule value, duration data sheet view</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch6/ch6ResCapSpreadsheetView} 
+
+}
+
+\caption{Resource schedule value, duration data sheet view}(\#fig:ResCapSpreadsheetView)
+\end{figure}
 
 To setup the schedule, there are a number of schedule editing formats
 available. Figure \@ref(fig:ResCapSpreadsheetView) shows the schedule spreadsheet editor
@@ -621,10 +647,14 @@ Preempt
 
 The wait rule has been used in Figure \@ref(fig:ResourceWithSchedule). Let's discuss a bit more on how these rules function with an example.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ResourceWithSchedule.png" alt="RESOURCE module dialog with schedule capacity" width="50%" height="50%" />
-<p class="caption">(\#fig:ResourceWithSchedule)RESOURCE module dialog with schedule capacity</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/ch6ResourceWithSchedule} 
+
+}
+
+\caption{RESOURCE module dialog with schedule capacity}(\#fig:ResourceWithSchedule)
+\end{figure}
 
 Let's suppose that your simulation professor has office hours throughout
 the day, except from 12-12:30 pm for lunch. In addition, since your
@@ -788,15 +818,23 @@ same. The tabulation of the amount of busy time as per the scheduled
 rules accounts for the difference. Let's take a more detailed look at
 how these quantities are computed.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6SchedChangeModel.png" alt="Scheduled capacity change model" width="90%" height="90%" />
-<p class="caption">(\#fig:SchedChangeModel)Scheduled capacity change model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6SchedChangeModelResults.png" alt="Scheduled capacity change model results" width="65%" height="65%" />
-<p class="caption">(\#fig:SchedChangeModelResults)Scheduled capacity change model results</p>
-</div>
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/ch6SchedChangeModel} 
+
+}
+
+\caption{Scheduled capacity change model}(\#fig:SchedChangeModel)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch6/ch6SchedChangeModelResults} 
+
+}
+
+\caption{Scheduled capacity change model results}(\#fig:SchedChangeModelResults)
+\end{figure}
 
 ### Calculating Utilization
 
@@ -885,10 +923,14 @@ Figure \@ref(fig:ArenaUtilHelp). The interested read should search
 under, *resource statistics: Instantaneous Utilization Vs. Scheduled
 utilization*.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ArenaUtilHelp.png" alt="Utilization example from Help files" width="90%" height="90%" />
-<p class="caption">(\#fig:ArenaUtilHelp)Utilization example from Help files</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/ch6ArenaUtilHelp} 
+
+}
+
+\caption{Utilization example from Help files}(\#fig:ArenaUtilHelp)
+\end{figure}
 \FloatBarrier
 
 ### Resource Failure Modeling
@@ -918,10 +960,14 @@ distribution. When the time of failure occurs, the resource is placed in
 the failed state. If the resource has busy units, then the rules for
 capacity change (ignore, wait, and preempt) are invoked.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ActivityDiagramFailures.png" alt="Activity diagram for failure modeling" width="80%" height="80%" />
-<p class="caption">(\#fig:ActDiagFailures)Activity diagram for failure modeling</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/ch6ActivityDiagramFailures} 
+
+}
+
+\caption{Activity diagram for failure modeling}(\#fig:ActDiagFailures)
+\end{figure}
 
 Usage based failures occur *after* the resource has been released. Each
 time the resource is released a count is incremented, when it reaches
@@ -936,15 +982,23 @@ Figure \@ref(fig:CountFailures) and
 Figure \@ref(fig:TimeFailures) illustrate how to define count based
 and time based failures within the FAILURES module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6CountFailures.png" alt="Count cased failure dialog" width="45%" height="45%" />
-<p class="caption">(\#fig:CountFailures)Count cased failure dialog</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6TimeFailures.png" alt="Time based failure dialog" width="45%" height="45%" />
-<p class="caption">(\#fig:TimeFailures)Time based failure dialog</p>
-</div>
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/ch6CountFailures} 
+
+}
+
+\caption{Count cased failure dialog}(\#fig:CountFailures)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/ch6TimeFailures} 
+
+}
+
+\caption{Time based failure dialog}(\#fig:TimeFailures)
+\end{figure}
 
 In both cases, the up-time, downtime, or count fields can all be
 expressions. In the case of the time based failure
@@ -963,15 +1017,23 @@ Figure \@ref(fig:FailureAttached) and
 Figure \@ref(fig:ResFailureSpreadsheetView) illustrate how to attach the
 failures to resources.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ResourceFailuresAttached.png" alt="Resource with failure attached" width="50%" height="50%" />
-<p class="caption">(\#fig:FailureAttached)Resource with failure attached</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6ResourceFailureSpreadsheetView.png" alt="Resource with failures data sheet view" width="80%" height="80%" />
-<p class="caption">(\#fig:ResFailureSpreadsheetView)Resource with failures data sheet view</p>
-</div>
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/ch6ResourceFailuresAttached} 
+
+}
+
+\caption{Resource with failure attached}(\#fig:FailureAttached)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/ch6ResourceFailureSpreadsheetView} 
+
+}
+
+\caption{Resource with failures data sheet view}(\#fig:ResFailureSpreadsheetView)
+\end{figure}
 
 Notice that in the case of
 Figure \@ref(fig:ResFailureSpreadsheetView)}, you can clearly see that a
@@ -1003,7 +1065,8 @@ building and analysis of the new model. In this new modeling situation,
 we will see how to utilize the SCHEDULE module for the case of varying the mean arrival rate and varying the resource capacity.
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-78-111-110-45-83-116-97-116-105-111-110-97-114-121-32-83-84-69-77-32-70-97-105-114-32-77-105-120-101-114-93-}\fi{}<div class="example"><span class="example" id="exm:NSJFE"><strong>(\#exm:NSJFE)  \iffalse (Non-Stationary STEM Fair Mixer) \fi{} </strong></span>Suppose new data on the arrival behavior of the students have become
+\BeginKnitrBlock{example}\iffalse{-91-78-111-110-45-83-116-97-116-105-111-110-97-114-121-32-83-84-69-77-32-70-97-105-114-32-77-105-120-101-114-93-}\fi{}
+<span class="example" id="exm:NSJFE"><strong>(\#exm:NSJFE)  \iffalse (Non-Stationary STEM Fair Mixer) \fi{} </strong></span>Suppose new data on the arrival behavior of the students have become
 available. Over the course of the 6 hours that the mixer is open, the
 new data indicates that, while on average, the arrival rate is still 30
 per hour, the rate varies significantly by the time of day. Let's assume
@@ -1012,7 +1075,8 @@ over 30 minute intervals during the 6 hours of the mixer and it showed
 that there was a larger arrival rate during the middle hours of the
 operating hours than during the beginning or ending hours of the data.
 The Table \@ref(tab:STEMArrivals) summarizes the arrival rate for each 30 minute period throughout
-the 6 hour period.</div>\EndKnitrBlock{example}
+the 6 hour period.
+\EndKnitrBlock{example}
 
 ::: {#tab:STEMArrivals}
   Period   Time Frame     Duration   Mean Arrival Rate per Hour
@@ -1260,10 +1324,14 @@ on these options, which will provide more of the technical details of
 the meaning of the various options. We will illustrate the use of this
 functionality when developing the updated STEM Mixer model.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6SmartsTPbyPeriod.png" alt="Capturing variable metric over a specified time period" width="50%" height="50%" />
-<p class="caption">(\#fig:SmartsTPbyPeriod)Capturing variable metric over a specified time period</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/ch6SmartsTPbyPeriod} 
+
+}
+
+\caption{Capturing variable metric over a specified time period}(\#fig:SmartsTPbyPeriod)
+\end{figure}
 
 ### Modeling the Statistical Collection
 
@@ -1342,125 +1410,197 @@ decide to experiment with the parameter settings.
 
 Now we are ready to implement the changes to the model developed in Chapter \@ref(ch4) section \@ref(ch4:RevisedJFE). There are really just two major changes to make 1) implementing the non-stationary arrivals and 2) implementing the statistical collection for the peak period.  To start, we need to take the mean arrival rate information found in Example \@ref(exm:NSJFE) and define a schedule for the arrival of students to the mixer.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEArrivalSchedule.PNG" alt="Student arrival schedule for 30 minute intervals" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEArrivalSchedule)Student arrival schedule for 30 minute intervals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFEArrivalSchedule} 
+
+}
+
+\caption{Student arrival schedule for 30 minute intervals}(\#fig:JFEArrivalSchedule)
+\end{figure}
 
 Figure \@ref(fig:JFEArrivalSchedule) shows the Arena arrival schedule data sheet view. Because the time units are set to minutes, the (value, duration) pairs are entered with the duration values as 30 minutes.  Also, because the arrival rate data is already per hour, we can simply enter the mean arrival rates.  If the provide mean arrival rate data was not per hour, then we would have needed to convert them to a per hour basis before entering them into the arrival schedule. Next, the arrival schedule must be connected to the CREATE module used to create the student entities. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEUpdatedCreateModule.PNG" alt="Updated CREATE module with arrival schedule" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEUpdatedCreateModule)Updated CREATE module with arrival schedule</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFEUpdatedCreateModule} 
+
+}
+
+\caption{Updated CREATE module with arrival schedule}(\#fig:JFEUpdatedCreateModule)
+\end{figure}
 
 Figure \@ref(fig:JFEUpdatedCreateModule) illustrates the updated CREATE module.  Notice that the type of arrival has been designated as *Schedule* and the name of the schedule from Figure \@ref(fig:JFEArrivalSchedule) has been supplied.  As discussed in Chapter \@ref(ch4), we still turn off the CREATE module by setting `vMaxArrivals` to 0 by using an entity scheduled to occur at the end of the mixer.  However, because we used an arrivals schedule we could also have specified one extra interval in the arrival schedule with the (rate, duration) pair as (0, ).  A blank duration is interpreted as infinity.  Thus, rate would be set the mean arrival rate to 0 when that interval occurs and it would remain at 0 for the remainder of the simulation.  This would effectively shut off the CREATE module.
 
 Now we will implement the pseudo-code of the last section within Arena.  An overview of the Arena flow chart modules can be found in Figure \@ref(fig:JFEPeriodStatCollection).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEPeriodStatCollection.PNG" alt="Overview of statistical collection logic" width="90%" height="90%" />
-<p class="caption">(\#fig:JFEPeriodStatCollection)Overview of statistical collection logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/ch6JFEPeriodStatCollection} 
+
+}
+
+\caption{Overview of statistical collection logic}(\#fig:JFEPeriodStatCollection)
+\end{figure}
 
 To implement this logic, we will first update the variables, attributes, and time persistent variables. Figure \@ref(fig:JFEUpdatedAttributes) and \@ref(fig:JFEUpdatedVariables) show the updated attributes and variables to be used in the revised model. The variables and attribute names match what was presented in the pseudo-code.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEUpdatedAttributes.PNG" alt="Updated attributes"  />
-<p class="caption">(\#fig:JFEUpdatedAttributes)Updated attributes</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEUpdatedVariables.PNG" alt="Updated variables"  />
-<p class="caption">(\#fig:JFEUpdatedVariables)Updated variables</p>
-</div>
+{\centering \includegraphics{./figures2/ch6/ch6JFEUpdatedAttributes} 
+
+}
+
+\caption{Updated attributes}(\#fig:JFEUpdatedAttributes)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/ch6JFEUpdatedVariables} 
+
+}
+
+\caption{Updated variables}(\#fig:JFEUpdatedVariables)
+\end{figure}
 
 Figure \@ref(fig:JFEUpdatedTimePersistentStats) illustrates the updated definition of additional time persistent variables to collect statistics during various time periods.  The two definitions on rows 2 and 3 collect the same performance measure, the average number of students waiting for either recruiter during the peak period.  The definition on row 2 is used within the implementation of the previously discussed pseudo-code.  The definition on row 3 will use Arena's enhance statistical collect by period functionality to start the collection at time 150 and last for 120 minutes.  We will see that the results of both methods for collecting this performance measure will match exactly.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEUpdatedTimePersistentStats.PNG" alt="Updated time persistent statistic definitions"  />
-<p class="caption">(\#fig:JFEUpdatedTimePersistentStats)Updated time persistent statistic definitions</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/ch6JFEUpdatedTimePersistentStats} 
+
+}
+
+\caption{Updated time persistent statistic definitions}(\#fig:JFEUpdatedTimePersistentStats)
+\end{figure}
 
 Then, there are additional time-persistent performance measures defined for the peak period and for the collection of hourly statistics.  Rows 4 and 5 of Figure \@ref(fig:JFEUpdatedTimePersistentStats) collect the utilization of the resources used to model the JHBunt and MalMart recruiters using the `ResUtil()` function.  This will allow us to note the utilization during the peak period.  Then, rows 6 through 17 simply collect the average number of busy units of resource for JHBunt and MalMart for each hour of operation of the mixer.  These statistics will facilitate determining how many recruiters to staff during each hour of operation.
 
 To implement the modules found in Figure \@ref(fig:JFEPeriodStatCollection), we need to use CREATE, ASSIGN, DELAY, DECIDE, and RECORD modules that follow the previously described pseudo-code.  Figure \@ref(fig:JFECreatePeriodObserver) shows the creating of the logical entity to collect statistics for the peak period.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFECreatePeriodObserver.PNG" alt="Creating the period observer" width="60%" height="60%" />
-<p class="caption">(\#fig:JFECreatePeriodObserver)Creating the period observer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFECreatePeriodObserver} 
+
+}
+
+\caption{Creating the period observer}(\#fig:JFECreatePeriodObserver)
+\end{figure}
 
 Figure \@ref(fig:JFEAssignBeginAndEndPeriod) shows the ASSIGN modules used to capture the statistics at the beginning and end of the period.  Notice the use of the `TAVG()`, `TNUM()`, and `DAVG()` functions as discussed in the pseudo-code.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEStartPeriodAssign.PNG" alt="Assign logic to capture period Statistics"  /><img src="./figures2/ch6/ch6JFEEndPeriodAssign.PNG" alt="Assign logic to capture period Statistics"  />
-<p class="caption">(\#fig:JFEAssignBeginAndEndPeriod)Assign logic to capture period Statistics</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/ch6JFEStartPeriodAssign} \includegraphics{./figures2/ch6/ch6JFEEndPeriodAssign} 
+
+}
+
+\caption{Assign logic to capture period Statistics}(\#fig:JFEAssignBeginAndEndPeriod)
+\end{figure}
 
 Figure \@ref(fig:JFEUDecideCheck) illustrates the use of a DECIDE module to check if there were no observations during the peak period in order to avoid a divide by zero error when computing the system time for the peak period.  
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEDecide.PNG" alt="Checking for zero in the denominator" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEUDecideCheck)Checking for zero in the denominator</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFEDecide} 
+
+}
+
+\caption{Checking for zero in the denominator}(\#fig:JFEUDecideCheck)
+\end{figure}
 
 Figures \@ref(fig:JFESysTimePeriodRecord) and \@ref(fig:JFENumWaitingPeriodRecord) present the RECORD modules for capturing the peak period system time and average number of students waiting for either recruiter. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFESysTimePeriodRecord.PNG" alt="Updated time persistent statistic definitions" width="60%" height="60%" />
-<p class="caption">(\#fig:JFESysTimePeriodRecord)Updated time persistent statistic definitions</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFENumWaitingPeriodRecord.PNG" alt="Updated time persistent statistic definitions" width="60%" height="60%" />
-<p class="caption">(\#fig:JFENumWaitingPeriodRecord)Updated time persistent statistic definitions</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFESysTimePeriodRecord} 
+
+}
+
+\caption{Updated time persistent statistic definitions}(\#fig:JFESysTimePeriodRecord)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFENumWaitingPeriodRecord} 
+
+}
+
+\caption{Updated time persistent statistic definitions}(\#fig:JFENumWaitingPeriodRecord)
+\end{figure}
 
 The entire Arena model is found in the file *STEM_MixerArrivalsScheduleOnly.doe*.  This implementation has not yet considered the resource schedule constructs that were previously discussed.  We will run this model and review the statistics to understand how to set up the resource capacity change.  The base case scenario that we will perform is to run the model using the previously specified capacity of 3 units for JHBunt and 2 units for MalMart. We will see how the non-stationary arrivals affect the performance of the system.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEBaseRunTallyStats.PNG" alt="Base scenario tally results for non-stationary arrivals and no resource capacity change"  />
-<p class="caption">(\#fig:JFEBaseRunTallyStats)Base scenario tally results for non-stationary arrivals and no resource capacity change</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEBaseRunTimePersistentStats.PNG" alt="Base scenario time persistent results for non-stationary arrivals and no resource capacity change"  />
-<p class="caption">(\#fig:JFEBaseRunTimePersistentStats)Base scenario time persistent results for non-stationary arrivals and no resource capacity change</p>
-</div>
+{\centering \includegraphics{./figures2/ch6/ch6JFEBaseRunTallyStats} 
+
+}
+
+\caption{Base scenario tally results for non-stationary arrivals and no resource capacity change}(\#fig:JFEBaseRunTallyStats)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/ch6JFEBaseRunTimePersistentStats} 
+
+}
+
+\caption{Base scenario time persistent results for non-stationary arrivals and no resource capacity change}(\#fig:JFEBaseRunTimePersistentStats)
+\end{figure}
 
 Examining Figure \@ref(fig:JFEBaseRunTallyStats), the first thing to note is that the overall system time for the students has increased to about 52 minutes versus the 27.6 minutes in Chapter \@ref(ch4).  Clearly, the non-stationary arrival behavior of the students has a significant affect on the system and should be accounted for within the modeling.  By looking at Figure \@ref(fig:JFEBaseRunTimePersistentStats), the reason for the increase in system time becomes clear.  The utilization of the recruiting stations is nearly 100 percent (99\% and 97\%) during the peak period.  Utilization this high will cause a significant line that will take some time to be worked down as the arrival rate eventually decreases.  This can be better noted by reviewing the average number of busy units by hour of operation within Figure \@ref(fig:JFEBaseRunTimePersistentStats).  Clearly, hours 4, 5, and 6 all have the reported average number busy very near or at the capacity limit of the resources.  This indicates that we should increase the capacity during those time periods.  Finally, please note the value of the statistic, `TimeAvgNumWaitingDuringPeriod` on Figure \@ref(fig:JFEBaseRunTallyStats) of 25.9556.  In addition, note on Figure \@ref(fig:JFEBaseRunTimePersistentStats), the value of time-persistent statistic, `NumStudentsWaitingTP2`, as also 25.9556.  We see that the two methods of capturing this statistic via the *by hand* method and by enhanced functionality for period based collection of time-persistent statistics resulted in exactly the same estimates.  Now you can better understand what Arena is doing to collect period based statistics.
 
 A easy way to further analyze this situation is to set the capacity of the resources to infinity and review the estimated number of busy resources by hour of the day.  Then, we can specify a capacity by hour that results in a desired utilization for each hour of the day.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEInfRunTimePersistentStats.PNG" alt="Base scenario time persistent results for non-stationary arrivals and infinite resource capacity"  />
-<p class="caption">(\#fig:JFEBaseRunInfCapacity)Base scenario time persistent results for non-stationary arrivals and infinite resource capacity</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/ch6JFEInfRunTimePersistentStats} 
+
+}
+
+\caption{Base scenario time persistent results for non-stationary arrivals and infinite resource capacity}(\#fig:JFEBaseRunInfCapacity)
+\end{figure}
 
 Figure \@ref(fig:JFEBaseRunInfCapacity) shows the result of running the non-stationary arrival schedule with infinite capacity for the recruiting resources. Notice how the estimated number busy units for the resources track the arrival pattern.  Now considering the JHBunt recruiting station during the fourth hour of the day, we see an average number of recruiters busy of 5.2991.  Thus, if we set the resource capacity of the JHBunt recruiting station to 6 recruiters during the fourth hour of the day, we would expect to achieve a utilization of about 88\%, ($5.2991/6 = 0.8832$).  With this thinking in mind we can determine the capacity for each hour of the day and the expected utilization.  
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEResourceSchedule.PNG" alt="Possible resource capacity schedule for STEM Mixer" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEResourceSchedule)Possible resource capacity schedule for STEM Mixer</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEUpdatedResourceModules.PNG" alt="Using the resource schedules in the resource module" width="80%" height="80%" />
-<p class="caption">(\#fig:JFEUpdatedResourceModules)Using the resource schedules in the resource module</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/ch6JFEResourceSchedule} 
+
+}
+
+\caption{Possible resource capacity schedule for STEM Mixer}(\#fig:JFEResourceSchedule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/ch6JFEUpdatedResourceModules} 
+
+}
+
+\caption{Using the resource schedules in the resource module}(\#fig:JFEUpdatedResourceModules)
+\end{figure}
 
 Figure \@ref(fig:JFEResourceSchedule) illustrates a possible resource capacity change schedule for the MalMart recruiting station.  For simplicity the same schedule will be used for the JHBunt recruiting station. The Arena file for this change can be found in the chapter files as *STEM_MixerBothSchedules.doe*. Figure \@ref(fig:JFEUpdatedResourceModules) illustrates how to connect the defined resource schedule to the resource module so that the resource uses the schedule during the simulation. Figure \@ref(fig:JFEScheduleTallyResults) and Figure \@ref(fig:JFEScheduleTimePersistentResults) present the results when using the resource schedule defined in Figure \@ref(fig:JFEResourceSchedule).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEScheduleTallyResults.PNG" alt="Tally results for non-stationary arrivals and time varying resource capacity" width="90%" height="90%" />
-<p class="caption">(\#fig:JFEScheduleTallyResults)Tally results for non-stationary arrivals and time varying resource capacity</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/ch6JFEScheduleTimePersistentResults.PNG" alt="=Time persistent results for non-stationary arrivals and time varying resource capacity" width="90%" height="90%" />
-<p class="caption">(\#fig:JFEScheduleTimePersistentResults)=Time persistent results for non-stationary arrivals and time varying resource capacity</p>
-</div>
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/ch6JFEScheduleTallyResults} 
+
+}
+
+\caption{Tally results for non-stationary arrivals and time varying resource capacity}(\#fig:JFEScheduleTallyResults)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/ch6JFEScheduleTimePersistentResults} 
+
+}
+
+\caption{=Time persistent results for non-stationary arrivals and time varying resource capacity}(\#fig:JFEScheduleTimePersistentResults)
+\end{figure}
 The first thing to notice is in Figure \@ref(fig:JFEScheduleTallyResults) the substantial drop in overall system time from the near 52 minutes down to about 22 minutes.  Also, from Figure \@ref(fig:JFEScheduleTimePersistentResults), we see that the utilization of the JHBunt recruiting station is still a bit high (90\%) during the peak arrival period.  Thus, it may be worth exploring the addition of an additional recruiter during hour 5.  We leave the further exploration of this model to the interested reader.
 
 Non-stationary arrival patterns are a fact of life in many systems that handle people.  The natural daily processes of waking up, working, etc. all contribute to processes that depend on time.  This section illustrated how to model non-stationary arrival processes and illustrated some of the concepts necessary when developing staffing plans for such systems.  Incorporating these modeling issues into your simulation models allows for more realistic analysis; however, this also necessitates much more complex statistical analysis of the input distributions and requires careful capture of meaningful statistics.  Capturing statistics by time periods is especially important because the statistical results that do not account for the time varying nature of the performance measures may mask what may be actually happening within the model.  The overall average across the entire simulation time horizon may be significantly different than what occurs during individual periods of time that correspond to non-stationary situations.  A good design must reflect these variations due to time.  
@@ -1475,7 +1615,8 @@ customer, the desire (or ability) to renege from the system. You can find the co
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-87-97-108-107-45-105-110-32-104-101-97-108-116-104-32-99-97-114-101-32-99-108-105-110-105-99-93-}\fi{}<div class="example"><span class="example" id="exm:exWinHCC"><strong>(\#exm:exWinHCC)  \iffalse (Walk-in health care clinic) \fi{} </strong></span>A walk-in care
+\BeginKnitrBlock{example}\iffalse{-91-87-97-108-107-45-105-110-32-104-101-97-108-116-104-32-99-97-114-101-32-99-108-105-110-105-99-93-}\fi{}
+<span class="example" id="exm:exWinHCC"><strong>(\#exm:exWinHCC)  \iffalse (Walk-in health care clinic) \fi{} </strong></span>A walk-in care
 clinic has analyzed their operations and they have found that they can
 classify their walk-in patients into three categories: high priority
 (urgent need of medical attention), medium priority (need standard
@@ -1490,7 +1631,8 @@ distributed. Then, the patients wait in the waiting room based on their
 priority. Patients with higher priority are placed at the front of the
 line. Patients with the same priority are ordered based on a first-come
 first served basis. The service time distributions of the customers are
-given as follows.</div>\EndKnitrBlock{example}
+given as follows.
+\EndKnitrBlock{example}
 
   Priority   Service Time Distribution (in minutes)
   ---------- ----------------------------------------
@@ -1539,15 +1681,23 @@ addition, the system must know the balk criteria for the low priority
 patients. This information is modeled with variables as illustrated in
 Figure \@ref(fig:WinHCCVariableModule).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCExpressionModule.png" alt="Expressions for walk-in clinic model" width="70%" height="70%" />
-<p class="caption">(\#fig:WinHCCExpressionModule)Expressions for walk-in clinic model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCVariableModule.png" alt="Walk-in clinic VARIABLE module" width="80%" height="80%" />
-<p class="caption">(\#fig:WinHCCVariableModule)Walk-in clinic VARIABLE module</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figWinHCCExpressionModule} 
+
+}
+
+\caption{Expressions for walk-in clinic model}(\#fig:WinHCCExpressionModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figWinHCCVariableModule} 
+
+}
+
+\caption{Walk-in clinic VARIABLE module}(\#fig:WinHCCVariableModule)
+\end{figure}
 
 The entity for this model is the patient. Patients are created according
 to a particular type, enter the system and then depart. Thus, a key
@@ -1623,10 +1773,14 @@ it has to wait, it stops being the active entity, stops moving, and
 gives control back the event scheduler. At this point, the duplicate
 (clone) entity begins to move.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCActivityDiagram.png" alt="Activity diagram for modeling reneging" width="80%" height="80%" />
-<p class="caption">(\#fig:WinHCCActivityDiagram)Activity diagram for modeling reneging</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figWinHCCActivityDiagram} 
+
+}
+
+\caption{Activity diagram for modeling reneging}(\#fig:WinHCCActivityDiagram)
+\end{figure}
 
 Within the simulation, no actual simulation time has advanced. That is, the clone moves at the same simulated time because it was put in the *ready* state before becoming the *active* entity. The now active clone
 then enters the delay module that represents the time until reneging.
@@ -1654,15 +1808,23 @@ time and the type of patient and then changes the Entity Type and Entity
 Picture based on some sets that have been defined for each type of
 patient. This is shown in Figure \@ref(fig:WinHCCAssignPatientTypes).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCModelOverview.png" alt="Overview of walk-in clinic model" width="80%" height="80%" />
-<p class="caption">(\#fig:WinHCCModelOverview)Overview of walk-in clinic model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCAssignPatientTypes.png" alt="Assigning the type of patient" width="70%" height="70%" />
-<p class="caption">(\#fig:WinHCCAssignPatientTypes)Assigning the type of patient</p>
-</div>
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figWinHCCModelOverview} 
+
+}
+
+\caption{Overview of walk-in clinic model}(\#fig:WinHCCModelOverview)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figWinHCCAssignPatientTypes} 
+
+}
+
+\caption{Assigning the type of patient}(\#fig:WinHCCAssignPatientTypes)
+\end{figure}
 
 The Triage and Doctor PROCESS modules are done similarly to how you have
 implemented many of the prior models. In order to implement the priority
@@ -1671,10 +1833,14 @@ for the patients by type, the QUEUE module can be used. In this case the
 in Figure \@ref(fig:WinHCCQueueModule). You should attempt to build this model
 or examine the supplied file for all the details.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCQueueModule.png" alt="Using the QUEUE module to rank order the queue" width="70%" height="70%" />
-<p class="caption">(\#fig:WinHCCQueueModule)Using the QUEUE module to rank order the queue</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figWinHCCQueueModule} 
+
+}
+
+\caption{Using the QUEUE module to rank order the queue}(\#fig:WinHCCQueueModule)
+\end{figure}
 
 The balking and reneging logic have been placed inside two different
 sub-models. Balking only occurs for non-urgent patients, so the type of
@@ -1684,19 +1850,27 @@ a balk will occur can be recorded with the expression,
 to 1 for true or 0 for false. Thus, the probability of balking can be
 estimated. The patients who actually balk are then disposed. This is illustrated in Figure \@ref(fig:WinHCCBalkingLogic).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCBalkingLogic.png" alt="Balking logic sub-model" width="80%" height="80%" />
-<p class="caption">(\#fig:WinHCCBalkingLogic)Balking logic sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figWinHCCBalkingLogic} 
+
+}
+
+\caption{Balking logic sub-model}(\#fig:WinHCCBalkingLogic)
+\end{figure}
 
 The reneging logic is more complicated.
 Figure \@ref(fig:WinHCCRenegingLogic) presents an overview of the sub-model
 logic for reneging.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCRenegingLogic.png" alt="Reneging logic sub-model" width="80%" height="80%" />
-<p class="caption">(\#fig:WinHCCRenegingLogic)Reneging logic sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figWinHCCRenegingLogic} 
+
+}
+
+\caption{Reneging logic sub-model}(\#fig:WinHCCRenegingLogic)
+\end{figure}
 
 In the logic, the patient's type is checked to see if the patient is of
 type non-urgent. If so, the entity is sent to a SEPARATE module. The
@@ -1712,10 +1886,14 @@ number to have the clone search for the original entity within the
 queue. The SEARCH module allows the searching of a batch, queue, or
 expression for a particular expression.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCSearchModule.png" alt="SEARCH module for reneging logic" width="50%" height="50%" />
-<p class="caption">(\#fig:WinHCCSearchModule)SEARCH module for reneging logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/figWinHCCSearchModule} 
+
+}
+
+\caption{SEARCH module for reneging logic}(\#fig:WinHCCSearchModule)
+\end{figure}
 
 As illustrated in Figure \@ref(fig:WinHCCSearchModule), the `DoctorProcess.Queue` is searched starting at the first entity in the queue (rank 1) to last entity in
 queue(the entity at rank NQ). The search proceeds to find the first
@@ -1736,10 +1914,14 @@ This is can be observed as an expression in the RECORD modules to
 collect the probability of reneging as illustrated in
 Figure \@ref(fig:WinHCCRecordReneging).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCRecordReneging.png" alt="Recording whether reneging occurred" width="60%" height="60%" />
-<p class="caption">(\#fig:WinHCCRecordReneging)Recording whether reneging occurred</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/figWinHCCRecordReneging} 
+
+}
+
+\caption{Recording whether reneging occurred}(\#fig:WinHCCRecordReneging)
+\end{figure}
 
 If $J > 0$, then the entity at rank $J$ can be removed from the
 `DoctorProcess.Queue `as illustrated in
@@ -1747,10 +1929,14 @@ Figure \@ref(fig:WinHCCRemoveModule). The rest of the model is relatively
 straightforward and you are encouraged to explore the final dialog
 boxes.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCRemoveModule.png" alt="REMOVE module for removing reneging patient" width="55%" height="55%" />
-<p class="caption">(\#fig:WinHCCRemoveModule)REMOVE module for removing reneging patient</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figWinHCCRemoveModule} 
+
+}
+
+\caption{REMOVE module for removing reneging patient}(\#fig:WinHCCRemoveModule)
+\end{figure}
 
 Assuming that the clinic opens at 8 am and closes at 6 pm, the
 simulation was set up for 30 replications to yield the results shown in
@@ -1761,10 +1947,14 @@ the system. The reader is asked to further explore this model in the
 exercises, including the implementation to collect statistics on the
 number of customers waiting in the doctor queue.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figWinHCCResults.png" alt="Example output for walk-in clinic model" width="65%" height="65%" />
-<p class="caption">(\#fig:WinHCCResults)Example output for walk-in clinic model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch6/figWinHCCResults} 
+
+}
+
+\caption{Example output for walk-in clinic model}(\#fig:WinHCCResults)
+\end{figure}
 
 While some analytical work has been done for queuing systems involving
 balking and reneging, simulation allows for the modeling of more
@@ -1847,8 +2037,10 @@ implemented with a HOLD and a wait for signal option by carefully
 thinking about when the desired condition will change and using an
 entity to send a signal at that time.  
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">In my opinion, modelers that use the scan for condition option are ill-informed. You can always replace a scan for condition HOLD module with the wait and signal option if you can identify where the condition changes. This is *always* more efficient. The only time that I would use a the scan for condition option is if there were many (more than 5) locations in the model where the condition could change. Do not fall in love with the scan for condition option. If you *know* what you are doing, you almost never need to use the scan for condition option and using the scan for condition option almost always indicates that you do not know what you are doing!
-</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+In my opinion, modelers that use the scan for condition option are ill-informed. You can always replace a scan for condition HOLD module with the wait and signal option if you can identify where the condition changes. This is *always* more efficient. The only time that I would use a the scan for condition option is if there were many (more than 5) locations in the model where the condition could change. Do not fall in love with the scan for condition option. If you *know* what you are doing, you almost never need to use the scan for condition option and using the scan for condition option almost always indicates that you do not know what you are doing!
+
+\EndKnitrBlock{rmdnote}
 
 ### Redoing the M/M/1 Model with HOLD/SIGNAL {#ch6:sub:sec:mm1HoldSignal}
 
@@ -1911,20 +2103,28 @@ Then, the queue is checked. If there are any customers waiting, a signal
 is sent to the HOLD queue to release one customer. Finally, the system
 time is recorded before the customer departs the system.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figmm1HS1.png" alt="First implementation of M/M/1 system with HOLD and SIGNAL"  />
-<p class="caption">(\#fig:mm1HS1)First implementation of M/M/1 system with HOLD and SIGNAL</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/figmm1HS1} 
+
+}
+
+\caption{First implementation of M/M/1 system with HOLD and SIGNAL}(\#fig:mm1HS1)
+\end{figure}
 
 Figure \@ref(fig:mm1HS1) illustrates the flow chart for the
 implementation. The model represents the pseudo-code almost verbatim.
 The new HOLD and SIGNAL modules are shown in
 Figure \@ref(fig:mm1HS1HOLD) and Figure \@ref(fig:mm1HS1SIGNAL), respectively. The completed model can be found in file *FirstMM1HoldSignal.doe* found in the chapter files.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figmm1HS1HOLD.png" alt="HOLD module for first M/M/1 implemenation" width="45%" height="45%" />
-<p class="caption">(\#fig:mm1HS1HOLD)HOLD module for first M/M/1 implemenation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figmm1HS1HOLD} 
+
+}
+
+\caption{HOLD module for first M/M/1 implemenation}(\#fig:mm1HS1HOLD)
+\end{figure}
 
 Notice that the HOLD module has an option drop down menu that allows the user to select one
 of the aforementioned hold options. In addition, the *Wait For Value*
@@ -1934,10 +2134,14 @@ evaluates to an integer. The Limit field (blank in this example) can be
 used to set to limit how many entities will be released when the signal
 is received.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figmm1HS1SIGNAL.png" alt="SIGNAL module for first M/M/1 implemenation" width="45%" height="45%" />
-<p class="caption">(\#fig:mm1HS1SIGNAL)SIGNAL module for first M/M/1 implemenation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figmm1HS1SIGNAL} 
+
+}
+
+\caption{SIGNAL module for first M/M/1 implemenation}(\#fig:mm1HS1SIGNAL)
+\end{figure}
 
 Figure \@ref(fig:mm1HS1SIGNAL) shows the SIGNAL module. The *Signal
 Value* field indicates the signal that will be broadcast. The Limit
@@ -1951,10 +2155,14 @@ model for 30 replications with warm up of 30,000 hours and a run length
 of 80,000. The results match very closely the theoretical results for
 this M/M/1 situation.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figmm1HS1Results.png" alt="Results for first M/M/1 implemenation" width="60%" height="60%" />
-<p class="caption">(\#fig:mm1HS1Results)Results for first M/M/1 implemenation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/figmm1HS1Results} 
+
+}
+
+\caption{Results for first M/M/1 implemenation}(\#fig:mm1HS1Results)
+\end{figure}
 
 There is one key point to understand in this implementation. What would
 happen if we did not first check if the server was busy before going
@@ -1988,10 +2196,14 @@ Figure \@ref(fig:mm1HS2) presents the model for this second
 implementation. Note the two process flows in the figure.  The file *SecondMM1HoldSignal.doe* contains
 the details.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figmm1HS2.png" alt="Second implementation of the M/M/1 with HOLD and SIGNAL"  />
-<p class="caption">(\#fig:mm1HS2)Second implementation of the M/M/1 with HOLD and SIGNAL</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch6/figmm1HS2} 
+
+}
+
+\caption{Second implementation of the M/M/1 with HOLD and SIGNAL}(\#fig:mm1HS2)
+\end{figure}
 
 The logic follow very closely the pseudo-code provided in the following pseudo-code.
 
@@ -2075,8 +2287,10 @@ some exciting possibilities. The modeling of a server as a process
 permits very complicated resource allocation rules to be embedded in a
 model.
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">Consider modeling resources as entities.  This allows logic to be used to model how the resource behaves given the state of the system.  This is an excellent way to model resources as intelligent agents.
-</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}
+Consider modeling resources as entities.  This allows logic to be used to model how the resource behaves given the state of the system.  This is an excellent way to model resources as intelligent agents.
+
+\EndKnitrBlock{rmdnote}
 
 ### Using Wait and Signal to Release Entities
 
@@ -2290,10 +2504,14 @@ the system does not order enough or does not order at the right time,
 the system not be able to fill customer demand in a timely manner.
 Figure \@ref(fig:Inventory) illustrates a simple inventory system.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventory.png" alt="A simple reorder point, reorder quantity inventory system" width="90%" height="90%" />
-<p class="caption">(\#fig:Inventory)A simple reorder point, reorder quantity inventory system</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/figInventory} 
+
+}
+
+\caption{A simple reorder point, reorder quantity inventory system}(\#fig:Inventory)
+\end{figure}
 
 There are a number of different ways to manage the replenishment process
 for an inventory item. These different methods are called
@@ -2518,7 +2736,8 @@ Let's take a look at an example that illustrates an inventory situation.
 
 ***
 
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exRQModel"><strong>(\#exm:exRQModel) </strong></span>An inventory manager is
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exRQModel"><strong>(\#exm:exRQModel) </strong></span>An inventory manager is
 interested in understanding the cost and service trade-offs related to
 the inventory management of computer printers. Suppose customer demand
 occurs according to a Poisson process at a rate of 3.6 units per month
@@ -2529,7 +2748,8 @@ unit per month. Every time that an order is placed, it costs
 approximately \$0.15 to prepare and process the order. The inventory
 manager has set the reorder point to 1 units and the reorder quantity to
 2 units. Develop a simulation model that estimates the following
-quantities:</div>\EndKnitrBlock{example}
+quantities:
+\EndKnitrBlock{example}
 
 1.  Average inventory on hand and back ordered
 
@@ -2550,10 +2770,14 @@ statistics check boxes have been checked for the on hand inventory and
 the back-ordered inventory. This will cause time-based statistics to be
 collected on these variables.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryArena.png" alt="Defining the inventory model variables" width="70%" height="70%" />
-<p class="caption">(\#fig:InventoryArena)Defining the inventory model variables</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figInventoryArena} 
+
+}
+
+\caption{Defining the inventory model variables}(\#fig:InventoryArena)
+\end{figure}
 
 Figure \@ref(fig:InventoryOrderArrivalFilling) illustrates the logic for
 creating incoming demands and for order fulfillment. First, an entity is
@@ -2561,15 +2785,23 @@ created to represent the demand. This occurs according to a time between
 arrivals with an exponential distribution with a mean of (1.0/0.12) days
 (3.6 units/month \* (1 month/30 days) = 0.12 units/day).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryOrderArrivalFilling.png" alt="Initial order filling logic for the (r, Q) inventory model" width="70%" height="70%" />
-<p class="caption">(\#fig:InventoryOrderArrivalFilling)Initial order filling logic for the (r, Q) inventory model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryAssigningDemand.png" alt="Assigning the amount of demand" width="45%" height="45%" />
-<p class="caption">(\#fig:InventoryAssigningDemand)Assigning the amount of demand</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figInventoryOrderArrivalFilling} 
+
+}
+
+\caption{Initial order filling logic for the (r, Q) inventory model}(\#fig:InventoryOrderArrivalFilling)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figInventoryAssigningDemand} 
+
+}
+
+\caption{Assigning the amount of demand}(\#fig:InventoryAssigningDemand)
+\end{figure}
 
 The ASSIGN module in Figure \@ref(fig:InventoryAssigningDemand) shows the amount demanded set to 1 and a stock out indicator set to zero. This will be used to tally the
 probability that an incoming demand is not filled immediately from on
@@ -2599,10 +2831,14 @@ inventory position is updated. In the back-ordering ASSIGN module, the
 stock out flag is set to 1 to indicate that this particular demand did
 not get an immediate fill.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryAssignModules.png" alt="ASSIGN modules for filling, backordering, and updating inventory position" width="65%" height="65%" />
-<p class="caption">(\#fig:InventoryAssignModules)ASSIGN modules for filling, backordering, and updating inventory position</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch6/figInventoryAssignModules} 
+
+}
+
+\caption{ASSIGN modules for filling, backordering, and updating inventory position}(\#fig:InventoryAssignModules)
+\end{figure}
 
 When the demand is ultimately filled, it will pass through the RECORD
 module within
@@ -2621,10 +2857,14 @@ phenomenon called PASTA (Poisson Arrivals See Time Averages) and is
 discussed in [@zipkin2000foundations] as well as many texts on
 stochastic processes (e.g. [@tijms2003first])
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryRecordFillRate.png" alt="Recording the initial fill indicator variable" width="55%" height="55%" />
-<p class="caption">(\#fig:InventoryRecordFillRate)Recording the initial fill indicator variable</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figInventoryRecordFillRate} 
+
+}
+
+\caption{Recording the initial fill indicator variable}(\#fig:InventoryRecordFillRate)
+\end{figure}
 
 The logic representing the back ordering and replenishment ordering
 process is given in
@@ -2637,15 +2877,23 @@ will be triggered after a replenishment order arrives. The number of
 waiting back orders is decremented in the ASSIGN module and the demands
 are sent via a ROUTE module for order fulfillment.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryBOReorderLogic.png" alt="Back ordering and replenishment logic" width="75%" height="75%" />
-<p class="caption">(\#fig:InventoryBOReorderLogic)Back ordering and replenishment logic</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryBackorderHoldModule.png" alt="Backorder queue as a HOLD module" width="45%" height="45%" />
-<p class="caption">(\#fig:InventoryBackorderHoldModule)Backorder queue as a HOLD module</p>
-</div>
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch6/figInventoryBOReorderLogic} 
+
+}
+
+\caption{Back ordering and replenishment logic}(\#fig:InventoryBOReorderLogic)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figInventoryBackorderHoldModule} 
+
+}
+
+\caption{Backorder queue as a HOLD module}(\#fig:InventoryBackorderHoldModule)
+\end{figure}
 
 At the Reorder Logic station, the DECIDE module checks if the inventory
 position is equal to or below the reorder point. If this is true, then
@@ -2657,15 +2905,23 @@ ASSIGN modules and the subsequent SIGNAL modules are given in
 Figure \@ref(fig:InventoryOrderingAndReplenishment) and
 Figure \@ref(fig:InventorySignalling), respectively.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryOrderingAndReplenishment.png" alt="Ordering and replenishment ASSIGN modules" width="70%" height="70%" />
-<p class="caption">(\#fig:InventoryOrderingAndReplenishment)Ordering and replenishment ASSIGN modules</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventorySignalling.png" alt="Signalling the backorder queue" width="45%" height="45%" />
-<p class="caption">(\#fig:InventorySignalling)Signalling the backorder queue</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figInventoryOrderingAndReplenishment} 
+
+}
+
+\caption{Ordering and replenishment ASSIGN modules}(\#fig:InventoryOrderingAndReplenishment)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figInventorySignalling} 
+
+}
+
+\caption{Signalling the backorder queue}(\#fig:InventorySignalling)
+\end{figure}
 
 The basic model structure is now completed; however, there are a few
 issues related to the collection of the performance measures that must
@@ -2681,19 +2937,27 @@ Figure \@ref(fig:InventoryOrderFrequency) shows the order frequency collection
 logic. First an entity is created every, $T$, time units. In this case,
 the interval is monthly (every 30 days).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryOrderFrequency.png" alt="Order frequency collection logic" width="70%" height="70%" />
-<p class="caption">(\#fig:InventoryOrderFrequency)Order frequency collection logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figInventoryOrderFrequency} 
+
+}
+
+\caption{Order frequency collection logic}(\#fig:InventoryOrderFrequency)
+\end{figure}
 
 Then the RECORD module, shown in Figure \@ref(fig:InventoryRecordOrders), observes the value of `vNumOrders`. The following
 ASSIGN module sets `vNumOrders` equal to zero. Thus, `vNumOrders`
 represents the number of orders accumulated during the 30 day period.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryRecordOrders.png" alt="Recording the number of orders placed" width="55%" height="55%" />
-<p class="caption">(\#fig:InventoryRecordOrders)Recording the number of orders placed</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figInventoryRecordOrders} 
+
+}
+
+\caption{Recording the number of orders placed}(\#fig:InventoryRecordOrders)
+\end{figure}
 
 To close out the statistical collection of the performance measures, the
 collection of $\overline{\mathit{SO}}$ as well as the cost of the policy
@@ -2705,10 +2969,14 @@ a boolean expression, which evaluates to 1.0 if true and 0.0 if false.
 By creating a time-persistent statistic on this expression, the
 proportion of time that the on-hand is equal to 0.0 can be tabulated.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryStatisticsModule.png" alt="Statistic module for (r, Q) inventory model" width="75%" height="75%" />
-<p class="caption">(\#fig:InventoryStatisticsModule)Statistic module for (r, Q) inventory model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch6/figInventoryStatisticsModule} 
+
+}
+
+\caption{Statistic module for (r, Q) inventory model}(\#fig:InventoryStatisticsModule)
+\end{figure}
 
 To record the costs associated with the policy, three Output statistics
 are needed. Recall that these are designed to be observed at the end of
@@ -2736,10 +3004,14 @@ percentage of time the system was out of stock. This is an indication
 that the PASTA property of Poisson arrivals is working according to
 theory.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figInventoryArenaResults.png" alt="Results for the (r, Q) inventory model" width="55%" height="55%" />
-<p class="caption">(\#fig:InventoryArenaResults)Results for the (r, Q) inventory model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figInventoryArenaResults} 
+
+}
+
+\caption{Results for the (r, Q) inventory model}(\#fig:InventoryArenaResults)
+\end{figure}
 
 This example should give you a solid basis for developing more
 sophisticated inventory models. While analytical results are available
@@ -2801,15 +3073,23 @@ RELEASE logic. After the processing, the entity is routed to the Later
 (exit) station where it is disposed. The only new modeling construct
 required for this situation is the PICKSTATION module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickStation.png" alt="Overview of PICKSTATION  example" width="70%" height="70%" />
-<p class="caption">(\#fig:PickStation)Overview of PICKSTATION  example</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickStationModule.png" alt="PICKSTATION module" width="50%" height="50%" />
-<p class="caption">(\#fig:PickStationModule)PICKSTATION module</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch6/figPickStation} 
+
+}
+
+\caption{Overview of PICKSTATION  example}(\#fig:PickStation)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/figPickStationModule} 
+
+}
+
+\caption{PICKSTATION module}(\#fig:PickStationModule)
+\end{figure}
 
 The PICKSTATION module is very similar to a ROUTE module as shown in
 Figure \@ref(fig:PickStationModule). The top portion of the module
@@ -2824,10 +3104,14 @@ stations and the relevant construct to test at each station (e.g. the
 process queue). The selection of the construct is dependent on criteria
 that were selected in the Selection Based On area.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickStationAddStation.png" alt="Adding a station to the PICKSTATION module" width="35%" height="35%" />
-<p class="caption">(\#fig:PickStationAddStation)Adding a station to the PICKSTATION module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.35\linewidth,height=0.35\textheight]{./figures2/ch6/figPickStationAddStation} 
+
+}
+
+\caption{Adding a station to the PICKSTATION module}(\#fig:PickStationAddStation)
+\end{figure}
 
 Figure \@ref(fig:PickStationAddStation) illustrates the dialog box for
 adding a station to the list when all criteria have been selected.
@@ -2877,10 +3161,14 @@ for 30 minutes and then the break starts and lasts for 10 minutes. The
 resource is then available for the rest of the hour. This allows the
 schedule to repeat hourly.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickStationLeftSchedule.png" alt="Schedules for PICKSTATION extension for resource 1 and 2" width="25%" height="25%" /><img src="./figures2/ch6/figPickStationRightSchedule.png" alt="Schedules for PICKSTATION extension for resource 1 and 2" width="25%" height="25%" />
-<p class="caption">(\#fig:PickStationSchedules)Schedules for PICKSTATION extension for resource 1 and 2</p>
-</div>
+\begin{figure}
+
+{\centering \subfloat[(a) Schedule for resource 1(\#fig:PickStationSchedules-1)]{\includegraphics[width=0.25\linewidth,height=0.25\textheight]{./figures2/ch6/figPickStationLeftSchedule} }\subfloat[(b) Schedule for resource 2(\#fig:PickStationSchedules-2)]{\includegraphics[width=0.25\linewidth,height=0.25\textheight]{./figures2/ch6/figPickStationRightSchedule} }
+
+}
+
+\caption{Schedules for PICKSTATION extension for resource 1 and 2}(\#fig:PickStationSchedules)
+\end{figure}
 
 
 Now the PICKSTATION module needs to be adjusted so that the entity does
@@ -2896,10 +3184,14 @@ is shown in Figure \@ref(fig:PickStationInactive). If you run the model,
 chapter, you can see that the entity does not pick the station that is
 on break.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickStationInactive.png" alt="Preventing a station from being chosen while inactive" width="50%" height="50%" />
-<p class="caption">(\#fig:PickStationInactive)Preventing a station from being chosen while inactive</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/figPickStationInactive} 
+
+}
+
+\caption{Preventing a station from being chosen while inactive}(\#fig:PickStationInactive)
+\end{figure}
 
 In many models (including this one), the station logic is essentially
 the same, SEIZE, DELAY, RELEASE. The next section considers the
@@ -2928,10 +3220,14 @@ processing times assigned within the SEQUENCE module. These two facts
 will make it very easy to replace those 9 modules with 4 modules that
 can handle any part intended for any of the test stations.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepair.png" alt="Overview of test and repair model" width="80%" height="80%" />
-<p class="caption">(\#fig:TestAndRepair2)Overview of test and repair model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figTestAndRepair} 
+
+}
+
+\caption{Overview of test and repair model}(\#fig:TestAndRepair2)
+\end{figure}
 
 Figure \@ref(fig:TestAndRepairGeneric) show the generic version of the test
 and repair model. As shown in the figure, the testing stations have been
@@ -2939,10 +3235,14 @@ replaced by the station name Generic Station. Notice that the generic
 modeling is: STATION, SEIZE, DELAY, RELEASE, ROUTE. The real trick of
 this model begins with set modeling.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGeneric.png" alt="Generic station version of test and repair model" width="80%" height="80%" />
-<p class="caption">(\#fig:TestAndRepairGeneric)Generic station version of test and repair model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figTestAndRepairGeneric} 
+
+}
+
+\caption{Generic station version of test and repair model}(\#fig:TestAndRepairGeneric)
+\end{figure}
 
 Three sets must be defined for this model: a set to hold the test
 stations, a set to hold the test machine resources, and a set to hold
@@ -2963,10 +3263,14 @@ this modeling is the order of the stations listed. In the other sets
 that will be used, you need to make sure that the resources and queues
 associated with the stations are listed in the same order.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGenericStationSet.png" alt="Generic station module with set option" width="45%" height="45%" />
-<p class="caption">(\#fig:TestAndRepairGenericStationSet)Generic station module with set option</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figTestAndRepairGenericStationSet} 
+
+}
+
+\caption{Generic station module with set option}(\#fig:TestAndRepairGenericStationSet)
+\end{figure}
 
 When an entity is sent to one of the stations listed, which station the
 generic station is currently representing must be known. This is
@@ -2981,10 +3285,14 @@ module on the Basic Process panel, and the queue set is defined using
 the Advanced SET module on the Advanced Process panel. With these sets
 defined, they can be used in the SEIZE and RELEASE modules.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGenericResourceSet.png" alt="Resource and queue sets for generic station modeling" width="30%" height="30%" /><img src="./figures2/ch6/figTestAndRepairGenericQueueSet.png" alt="Resource and queue sets for generic station modeling" width="30%" height="30%" />
-<p class="caption">(\#fig:GenericSets)Resource and queue sets for generic station modeling</p>
-</div>
+\begin{figure}
+
+{\centering \subfloat[(a) Set for tester resources(\#fig:GenericSets-1)]{\includegraphics[width=0.3\linewidth,height=0.3\textheight]{./figures2/ch6/figTestAndRepairGenericResourceSet} }\subfloat[(b) Set for queues(\#fig:GenericSets-2)]{\includegraphics[width=0.3\linewidth,height=0.3\textheight]{./figures2/ch6/figTestAndRepairGenericQueueSet} }
+
+}
+
+\caption{Resource and queue sets for generic station modeling}(\#fig:GenericSets)
+\end{figure}
 
 In the original model, a PROCESS module was used to represent the
 testing processes. In this generic model, the PROCESS module will be
@@ -3007,20 +3315,28 @@ one SEIZE module takes away the default queue animation. You can add
 back the animation queues using the Animate toolbar when you develop an
 animation for your model.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGenericSeizeModule.png" alt="SEIZE module for generic station model" width="55%" height="55%" />
-<p class="caption">(\#fig:TestAndRepairGenericSeizeModule)SEIZE module for generic station model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figTestAndRepairGenericSeizeModule} 
+
+}
+
+\caption{SEIZE module for generic station model}(\#fig:TestAndRepairGenericSeizeModule)
+\end{figure}
 
 The DELAY module for the generic station is shown in
 Figure \@ref(fig:TestAndRepairGenericDelayModule). It is simple to make generic because
 the SEQUENCE module is being used to assign to the `myTestingTime`
 attribute when the entity is routed to the station.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGenericDelayModule.png" alt="DELAY module for generic station model" width="55%" height="55%" />
-<p class="caption">(\#fig:TestAndRepairGenericDelayModule)DELAY module for generic station model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figTestAndRepairGenericDelayModule} 
+
+}
+
+\caption{DELAY module for generic station model}(\#fig:TestAndRepairGenericDelayModule)
+\end{figure}
 
 The RELEASE module for the generic station is shown in
 Figure \@ref(fig:TestAndRepairGenericReleaseModule). In this case, the set option has
@@ -3029,10 +3345,14 @@ used to index into the `TestMachineSet` to release a specific member.
 The ROUTE module is just like the ROUTE module used in the original test
 and repair model. It routes the part using the sequence option.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figTestAndRepairGenericReleaseModule.png" alt="RELEASE module for generic station model" width="55%" height="55%" />
-<p class="caption">(\#fig:TestAndRepairGenericReleaseModule)RELEASE module for generic station model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figTestAndRepairGenericReleaseModule} 
+
+}
+
+\caption{RELEASE module for generic station model}(\#fig:TestAndRepairGenericReleaseModule)
+\end{figure}
 
 If you run this model, found in the file *GenericRepairShop.doe*, the
 results will be exactly as seen in
@@ -3107,20 +3427,32 @@ remove from the specified queue starting at the given rank. For example,
 to pick up all the entities in the queue, you can use `NQ(queue name)` in
 the quantity field.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figPickupModule.png" alt="The PICKUP module" width="50%" height="50%" />
-<p class="caption">(\#fig:PickupModule)The PICKUP module</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figDropoffModule.png" alt="The DROPOFF module" width="30%" height="30%" />
-<p class="caption">(\#fig:DropoffModule)The DROPOFF module</p>
-</div>
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/figPickupModule} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figDropoffModuleDialog.png" alt="The DROPOFF module dialog" width="50%" height="50%" />
-<p class="caption">(\#fig:DropoffModuleDialog)The DROPOFF module dialog</p>
-</div>
+}
+
+\caption{The PICKUP module}(\#fig:PickupModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.3\linewidth,height=0.3\textheight]{./figures2/ch6/figDropoffModule} 
+
+}
+
+\caption{The DROPOFF module}(\#fig:DropoffModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch6/figDropoffModuleDialog} 
+
+}
+
+\caption{The DROPOFF module dialog}(\#fig:DropoffModuleDialog)
+\end{figure}
 
 The number of entities picked up cannot be more than the number of
 entities in the queue or a run time error will result. Thus, it is very
@@ -3267,10 +3599,14 @@ straightforward:
 
 -   HOLD until removed
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemOverview.png" alt="Overview of the bus system model" width="80%" height="80%" />
-<p class="caption">(\#fig:BusSystemOverview)Overview of the bus system model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figBusSystemOverview} 
+
+}
+
+\caption{Overview of the bus system model}(\#fig:BusSystemOverview)
+\end{figure}
 
 The next four modules in
 Figure \@ref(fig:BusSystemOverview) represent the creation of the bus. The
@@ -3293,10 +3629,14 @@ station. In Figure \@ref(fig:BusSystemOverview), three sub-models have been used
 represent the drop off logic, the pick up logic, and the logic to decide
 on the next bus stop to visit.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemStationModule.png" alt="Generic station for bus stops" width="45%" height="45%" />
-<p class="caption">(\#fig:BusSystemStationModule)Generic station for bus stops</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figBusSystemStationModule} 
+
+}
+
+\caption{Generic station for bus stops}(\#fig:BusSystemStationModule)
+\end{figure}
 
 The logic for dropping off passengers is shown in
 Figure \@ref(fig:BusSystemDroppingOff). This is a perfect place to utilize the
@@ -3312,15 +3652,23 @@ module, see Figure \@ref(fig:BusSystemDropoffModule), is executed. Notice that i
 since the system time of the passengers must be captured, the *Retain
 Original Entity Values* option should be used.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemDroppingOff.png" alt="Dropping off passengers sub-model" width="80%" height="80%" />
-<p class="caption">(\#fig:BusSystemDroppingOff)Dropping off passengers sub-model</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemDropoffModule.png" alt="DROPOFF module for passengers" width="55%" height="55%" />
-<p class="caption">(\#fig:BusSystemDropoffModule)DROPOFF module for passengers</p>
-</div>
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch6/figBusSystemDroppingOff} 
+
+}
+
+\caption{Dropping off passengers sub-model}(\#fig:BusSystemDroppingOff)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figBusSystemDropoffModule} 
+
+}
+
+\caption{DROPOFF module for passengers}(\#fig:BusSystemDropoffModule)
+\end{figure}
 
 The details of the rest of the modules can be found in the accompanying
 model file. In the case of a bus system with more stops, logic would be
@@ -3328,10 +3676,14 @@ needed to search the group for passengers that want to get off at the
 current stop. The reader will be asked to explore this idea in the
 exercises.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemPickingUp.png" alt="Picking up passengers sub-model" width="90%" height="90%" />
-<p class="caption">(\#fig:BusSystemPickingUp)Picking up passengers sub-model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/figBusSystemPickingUp} 
+
+}
+
+\caption{Picking up passengers sub-model}(\#fig:BusSystemPickingUp)
+\end{figure}
 
 The logic to pick up passengers is very similar to the logic for
 dropping off the passengers. In this case, a WHILE-ENDWHILE construct
@@ -3376,10 +3728,14 @@ exception. The PICKUP block allows an expression to be supplied in the
 the Advance Process panel does not allow this functionality, which is
 critical for the generic modeling.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemPickupBlock.png" alt="The PICKUP Block" width="45%" height="45%" />
-<p class="caption">(\#fig:BusSystemPickupBlock)The PICKUP Block</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch6/figBusSystemPickupBlock} 
+
+}
+
+\caption{The PICKUP Block}(\#fig:BusSystemPickupBlock)
+\end{figure}
 
 In this situation, the `MEMBER(BusStopQSet,myBusStop)` is used to return
 the proper queue in order to pick up the passengers. Each time the
@@ -3394,10 +3750,14 @@ case, a tally set can be used so that the statistics can be collected by
 bus stop. The expression to be observed is:
 `NQ(MEMBER(BusStopQSet,myBusStop))`.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemRecording.png" alt="Recording the number of passengers not picked up" width="55%" height="55%" />
-<p class="caption">(\#fig:BusSystemRecording)Recording the number of passengers not picked up</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch6/figBusSystemRecording} 
+
+}
+
+\caption{Recording the number of passengers not picked up}(\#fig:BusSystemRecording)
+\end{figure}
 
 Running the model for 10 replications of 8 hours yields the results
 shown in Figure \@ref(fig:BusSystemResults). Notice that the waiting time for the
@@ -3406,10 +3766,14 @@ the results indicate that on average, there is less than one passenger
 left waiting because the bus is full. The reader will be asked to
 explore this model further in the exercises.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figBusSystemResults.png" alt="Results for the bus system model" width="60%" height="60%" />
-<p class="caption">(\#fig:BusSystemResults)Results for the bus system model</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch6/figBusSystemResults} 
+
+}
+
+\caption{Results for the bus system model}(\#fig:BusSystemResults)
+\end{figure}
 
 Based on this example, modeling with the PICKUP and DROPOFF modules is
 not too difficult. The additional functions, e.g. AG() etc., which have
@@ -3441,7 +3805,8 @@ from the active entity's group.  With all of these concepts within your simulati
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P1"><strong>(\#exr:ch6P1) </strong></span>As part of a diabetes prevention program, a clinic is considering
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P1"><strong>(\#exr:ch6P1) </strong></span>As part of a diabetes prevention program, a clinic is considering
 setting up a screening service in a local mall. They are considering two
 designs: Design A: After waiting in a single line, each walk-in patient
 is served by one of three available nurses. Each nurse has their own
@@ -3488,11 +3853,13 @@ schedule a follow up visit is a WEIB(2.6, 7.3) distribution (use stream 6).
 
 Make a statistically valid recommendation as to the best design based on
 the average system time of the patients. We want to be 95% confident of
-our recommendation to within 2 minutes.</div>\EndKnitrBlock{exercise}
+our recommendation to within 2 minutes.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P2"><strong>(\#exr:ch6P2) </strong></span>Consider the M/G/1 queue with
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P2"><strong>(\#exr:ch6P2) </strong></span>Consider the M/G/1 queue with
 the following variation. The server works continuously as long as there
 is at least one customer in the system. The customers are processed
 FIFO. When the server finishes serving a customer and finds the system
@@ -3514,11 +3881,13 @@ return of the server from vacation. In other words, estimate the
 probability that $j = 0, 1, 2$, etc, where $j$ is the number of waiting
 customers in the queue upon the return of the server from a vacation.
 This queue has many applications, for example, consider how a bus stop
-operates.</div>\EndKnitrBlock{exercise}
+operates.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P3"><strong>(\#exr:ch6P3) </strong></span>Suppose a service facility
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P3"><strong>(\#exr:ch6P3) </strong></span>Suppose a service facility
 consists of two stations in series (tandem), each with its own FIFO
 queue. Each station consists of a queue and a single server. A customer
 completing service at station 1 proceeds to station 2, while a customer
@@ -3539,7 +3908,8 @@ move to the second station.
 
 Develop a model for this system using the STATION and ROUTE modules.Run the simulation for exactly 20000 minutes and estimate for each station the expected average delay in queue for the customer, the expected time-average number of customers in queue, and the expected utilization. In addition, estimate the average
 number of customers in the system and the average time spent in the
-system.</div>\EndKnitrBlock{exercise}
+system.
+\EndKnitrBlock{exercise}
 
 a. Use a resource to model the waiting
 space at the second station. Ensure that a customer leaving the first
@@ -3555,18 +3925,21 @@ d.	Suppose now there is a travel time from the exit of station 1 to the arrival 
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P4"><strong>(\#exr:ch6P4) </strong></span>Assume that we have a single server
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P4"><strong>(\#exr:ch6P4) </strong></span>Assume that we have a single server
 that performs service according to an exponential distribution with a
 mean of 0.7 hours. The time between arrival of customers to the server
 is exponential with mean of 1 hour. If the server is busy, the customer
 waiting in the queue until the server is available. The queue is
 processed according to a first in, first out rule. Use HOLD/SIGNAL to
-model this situation. Unlike in the second implementation of the M/M/1 illustrated in Section \@ref(ch6:ex:mm1HS:soln2) develop your model so that the customer has the delay for service in its process flow.</div>\EndKnitrBlock{exercise}
+model this situation. Unlike in the second implementation of the M/M/1 illustrated in Section \@ref(ch6:ex:mm1HS:soln2) develop your model so that the customer has the delay for service in its process flow.
+\EndKnitrBlock{exercise}
 
 ***
 
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P5"><strong>(\#exr:ch6P5) </strong></span>A particular stock keeping unit
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P5"><strong>(\#exr:ch6P5) </strong></span>A particular stock keeping unit
 (SKU) has demand that averages 14 units per year and is Poisson
 distributed. That is, the time between demands is exponentially
 distributed with a mean a 1/14 years. Assume that 1 year = 360 days. The
@@ -3578,7 +3951,8 @@ from an outside supplier and it is estimated that the cost of time and
 materials required to place a purchase order is about \$15. It takes 45
 days to receive a replenishment order. The cost of back-ordering is very
 difficult to estimate, but a guess has been made that the annualized
-cost of a back-order is about \$25 per unit per year.</div>\EndKnitrBlock{exercise}
+cost of a back-order is about \$25 per unit per year.
+\EndKnitrBlock{exercise}
 
 a. Using simulate the performance of this
 system using $Q = 4$ and $r =3$. Report the average inventory on hand,
@@ -3595,7 +3969,8 @@ c. Verify your results for part (a) using results from analytical inventory theo
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P7"><strong>(\#exr:ch6P7) </strong></span>The Super Ready Auto Club has been
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P7"><strong>(\#exr:ch6P7) </strong></span>The Super Ready Auto Club has been
 serving customers for many years. The Super Ready Auto Club provides
 club, travel, and financial services to its members. One of its most
 popular services includes auto touring and emergency road service.
@@ -3622,7 +3997,8 @@ each hour of the day for each day of the week that on-average meets the
 call probability waiting criteria. Measure the waiting time for a call,
 the average number of calls waiting, and the utilization of the
 operators. In addition, measure the waiting time of the calls by type. The data for this exercise is available within the files associated with this chapter.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 a. What happens to the waiting times if
 road-side assistance calls are given priority over the credit card and
@@ -3719,7 +4095,8 @@ time).
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P8"><strong>(\#exr:ch6P8) </strong></span>The test and repair system
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P8"><strong>(\#exr:ch6P8) </strong></span>The test and repair system
 described in Chapter \@ref(ch4) has 3 testing stations, a diagnostic station, and a
 repair station. Suppose that the machines at the test station are
 subject to random failures. The time between failures is distributed
@@ -3733,11 +4110,13 @@ diagnostic machine is uniformly distributed in the range of 15 to 25
 minutes. Examine the effect of explicitly modeling the machine failures
 for this system in terms of risks associated with meeting the terms of
 the contract.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P9"><strong>(\#exr:ch6P9) </strong></span>A proposal for a remodeled Sly's
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P9"><strong>(\#exr:ch6P9) </strong></span>A proposal for a remodeled Sly's
 Convenience Store has 6 gas pumps each having their own waiting line.
 The inter-arrival time distribution of the arriving cars is Poisson with
 a mean of 1.25 per minute. The time to fill up and pay for the purchase is
@@ -3746,7 +4125,8 @@ choose the pump that has the least number of cars (waiting or using the
 pump). Each pump has room to handle 3 cars (1 in service and 2 waiting).
 Cars that cannot get a pump wait in an overall line to enter a line for
 a pump. The long run performance of the system is of interest.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 a. Estimate the average time in the
 system for a customer, the average number of customers waiting in each
@@ -3779,13 +4159,16 @@ results of this new model with those of part (b).
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P10"><strong>(\#exr:ch6P10) </strong></span>Apply the concepts of generic
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P10"><strong>(\#exr:ch6P10) </strong></span>Apply the concepts of generic
 station modeling to the system described in Exercise \@ref(exr:ch5P180). Be sure to show that your results are essentially the same with and without generic modeling.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P11"><strong>(\#exr:ch6P11) </strong></span>Suppose the shuttle bus system
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P11"><strong>(\#exr:ch6P11) </strong></span>Suppose the shuttle bus system
 described in Section \@ref(ch6:PickAndDrop) now has 3 bus stops. Passengers arrive to bus
 stop 1 according to a Poisson arrival process with a mean rate of 6 per
 hour. Passengers arrive to bus stop 2 according to a Poisson arrival
@@ -3801,23 +4184,28 @@ and the travel time between stops is still the same. Simulate this
 system for 8 hours of operation and estimate the average waiting time of
 the passengers, the average system time of the passengers, and the
 average number of passengers left at the stop because the bus was full.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch6P12"><strong>(\#exr:ch6P12) </strong></span>Reconsider the STEM Career Fair Mixer Example \@ref(exm:NSJFE). The results indicated that the utilization of the JHBunt recruiters was still high, around 90\%, and the MalWart recruiters was low, around 50\% after making the resource schedule changes.  Design a schedule that gets both recruiting stations to about 80\% during the peak period.
-</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch6P12"><strong>(\#exr:ch6P12) </strong></span>Reconsider the STEM Career Fair Mixer Example \@ref(exm:NSJFE). The results indicated that the utilization of the JHBunt recruiters was still high, around 90\%, and the MalWart recruiters was low, around 50\% after making the resource schedule changes.  Design a schedule that gets both recruiting stations to about 80\% during the peak period.
+
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:kanban"><strong>(\#exr:kanban) </strong></span>This problem examines a single
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:kanban"><strong>(\#exr:kanban) </strong></span>This problem examines a single
 item, multi-stage, serial production system using a kanban control
 system. The word kanban is Japanese for card. A kanban is simply a card
 that authorizes production. Kanban based control systems are designed to
 limit the amount of inventory in production. While there are many
 variations of kanban control, this problem considers a simplified system
 with the following characteristics.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 -   A series of work centers
 
@@ -3838,10 +4226,14 @@ with the following characteristics.
 Figure \@ref(fig:figKanbanExercise) illustrates a production flow line consisting of
 kanban based work centers.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch6/figKanbanExercise.png" alt="Kanban workcenter" width="90%" height="90%" />
-<p class="caption">(\#fig:figKanbanExercise)Kanban workcenter</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch6/figKanbanExercise} 
+
+}
+
+\caption{Kanban workcenter}(\#fig:figKanbanExercise)
+\end{figure}
 
 Raw parts enter at the first work center and proceed, as needed, through
 each work center until eventually being completed as finished parts at

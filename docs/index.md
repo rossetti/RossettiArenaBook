@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-06-09"
+date: "2021-06-10"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:
@@ -22,6 +22,8 @@ description: "An open textbook on discrete-event simulation modeling using Arena
 This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/). 
  
 Welcome to the open text edition. Similarly to the previous two editions, the book is intended as an introductory textbook for a first course in discrete-event simulation modeling and analysis for upper-level undergraduate students as well as entering graduate students.  While the text is focused towards engineering students (primarily industrial engineering) it could also be utilized by advanced business majors, computer science majors, and other disciplines where simulation is practiced.  Practitioners interested in learning simulation and Arena could also use this book independently of a course. 
+
+[Adopt this book!](https://uark.libwizard.com/f/UA_OER_Adoption) for your classes. We would appreciate it if you decide to adopt this book for use in courses that you let us know.  Thanks!
 
 <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>. -->
 
