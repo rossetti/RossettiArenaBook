@@ -47,14 +47,10 @@ immediate feedback from a spreadsheet model should facilitate
 understanding the concepts. Consider a single server queuing system as
 illustrated Figure \@ref(fig:SingleServerQ).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch5/figSingleServerQueue} 
-
-}
-
-\caption{Single server queueing system}(\#fig:SingleServerQ)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figSingleServerQueue.png" alt="Single server queueing system" width="60%" height="60%" />
+<p class="caption">(\#fig:SingleServerQ)Single server queueing system</p>
+</div>
 
 For a single server queueing system, there is an equation that allows
 the computation of the waiting times of each of the customers based on
@@ -102,23 +98,15 @@ based on the inverse transform technique for exponential random
 variables with the cell formulas given in cells D24 and E24, as shown in
 Figure \@ref(fig:SpreadsheetLindleyFormulas).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figSpreadsheetLindley.png" alt="Spreadsheet for Lindley's equation" width="80%" height="80%" />
+<p class="caption">(\#fig:SpreadsheetLindley)Spreadsheet for Lindley's equation</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figSpreadsheetLindley} 
-
-}
-
-\caption{Spreadsheet for Lindley's equation}(\#fig:SpreadsheetLindley)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figSpreadsheetLindleyFormulas} 
-
-}
-
-\caption{Spreadsheet formulas for queueing simulation}(\#fig:SpreadsheetLindleyFormulas)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figSpreadsheetLindleyFormulas.png" alt="Spreadsheet formulas for queueing simulation" width="80%" height="80%" />
+<p class="caption">(\#fig:SpreadsheetLindleyFormulas)Spreadsheet formulas for queueing simulation</p>
+</div>
 
 Figure \@ref(fig:SpreadsheetLindleyFormulas) shows that cell F25 is based on
 the value of cell F24. This implements the recursive nature of Lindley's
@@ -144,23 +132,15 @@ Figure \@ref(fig:CumAvgWait1000) presents the cumulative average plot
 of the first 1000 customers. As seen in the plot, the cumulative average
 starts out low and then eventually trends towards 1.2 minutes.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figResults1000.png" alt="Results across 1000 customers" width="40%" height="40%" />
+<p class="caption">(\#fig:Results1000)Results across 1000 customers</p>
+</div>
 
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/ch5/figResults1000} 
-
-}
-
-\caption{Results across 1000 customers}(\#fig:Results1000)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figCumAvgWait1000} 
-
-}
-
-\caption{Cumulative average waiting time of 1000 customers}(\#fig:CumAvgWait1000)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figCumAvgWait1000.png" alt="Cumulative average waiting time of 1000 customers" width="70%" height="70%" />
+<p class="caption">(\#fig:CumAvgWait1000)Cumulative average waiting time of 1000 customers</p>
+</div>
 
 The first issue to consider with this data is independence. To do this
 you should analyze the 1000 observations in terms of its
@@ -175,23 +155,15 @@ next customer is likely to wait a long time. If the previous customer
 had a short wait, then the next customer is likely to have a short wait.
 This makes sense with respect to how a queue operates.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figACFPlot.png" alt="Autocorrelation plot for waiting times" width="80%" height="80%" />
+<p class="caption">(\#fig:ACFPlot)Autocorrelation plot for waiting times</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figACFPlot} 
-
-}
-
-\caption{Autocorrelation plot for waiting times}(\#fig:ACFPlot)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figLag1Dependence} 
-
-}
-
-\caption{Lag 1 dependence for waiting times}(\#fig:Lag1Dependence)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figLag1Dependence.png" alt="Lag 1 dependence for waiting times" width="80%" height="80%" />
+<p class="caption">(\#fig:Lag1Dependence)Lag 1 dependence for waiting times</p>
+</div>
 
 Strong positive correlation has serious implications when developing
 confidence intervals on the mean customer waiting time because the usual
@@ -251,14 +223,10 @@ Figure \@ref(fig:MultipleSamplePaths) shows 10 different replications of
 the cumulative average for a 10000 customer simulation. This was
 developed using the sheet labeled 10000-Customers.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figMultipleSamplePaths} 
-
-}
-
-\caption{Multiple sample paths of queueing simulation}(\#fig:MultipleSamplePaths)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMultipleSamplePaths.png" alt="Multiple sample paths of queueing simulation" width="80%" height="80%" />
+<p class="caption">(\#fig:MultipleSamplePaths)Multiple sample paths of queueing simulation</p>
+</div>
 
 From the figure, you can see that the cumulative average plots can vary
 significantly over the 10000 customers with the average tracking above
@@ -403,14 +371,10 @@ sample average are computed as:
 
 $$\bar{Y}_r = \dfrac{1}{T_e - T_w}\int_{T_w}^{T_e} Y_r(t)\mathrm{d}t$$
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch5/figWarmUpPeriod} 
-
-}
-
-\caption{The concept of the warm up period}(\#fig:WarmUpPeriod)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figWarmUpPeriod.png" alt="The concept of the warm up period" width="60%" height="60%" />
+<p class="caption">(\#fig:WarmUpPeriod)The concept of the warm up period</p>
+</div>
 
 Figure \@ref(fig:WarmUpPeriod) show the concept of a warm up period for a
 simulation replication. When you perform a simulation, you can easily
@@ -500,14 +464,10 @@ customer. In Figure \@ref(fig:ComputingWelchPlot), cell B2 represents the averag
 10 replications for the $1^{st}$ customer. Column D represents the
 cumulative average associated with column B.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figComputingWelchPlot} 
-
-}
-
-\caption{Computing the averages for the Welch plot}(\#fig:ComputingWelchPlot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figComputingWelchPlot.png" alt="Computing the averages for the Welch plot" width="80%" height="80%" />
+<p class="caption">(\#fig:ComputingWelchPlot)Computing the averages for the Welch plot</p>
+</div>
 
 Figure \@ref(fig:CumAvgWelchPlot) is the plot of the cumulative average
 (column D) superimposed on the averages across replications (column B).
@@ -516,14 +476,10 @@ plot, you can infer that after about customer 3000 the cumulative
 average has started to converge. Thus, from this analysis you might
 infer that $d = 3000$.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch5/figCumAvgWelchPlot} 
-
-}
-
-\caption{Welch plot with superimposed cumulative average Line}(\#fig:CumAvgWelchPlot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figCumAvgWelchPlot.png" alt="Welch plot with superimposed cumulative average Line" width="60%" height="60%" />
+<p class="caption">(\#fig:CumAvgWelchPlot)Welch plot with superimposed cumulative average Line</p>
+</div>
 
 When you perform an infinite horizon simulation by specifying a warm up
 period and making multiple replications, you are using the method of
@@ -623,14 +579,10 @@ the customer exits the SEIZE module they have been removed from the
 queue to start service. At that point a RECORD module is used to capture
 the time interval representing the queueing time.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figMM1RDCSVArenaModel} 
-
-}
-
-\caption{MM1 Arena model}(\#fig:MM1RDArenaModel)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVArenaModel.png" alt="MM1 Arena model" width="80%" height="80%" />
+<p class="caption">(\#fig:MM1RDArenaModel)MM1 Arena model</p>
+</div>
 
 Using the STATISTIC data module, the statistics collected within the
 replications can be captured to files for post processing by the Output
@@ -645,19 +597,13 @@ the model will store every observation and the time of the observation
 to a file with the extension (*.dat*). These files are not
 human-readable, but can be processed by Arena's Output Analyzer.  However, we have set the extension to (*.csv*) because we will post process the files using other programs.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVStatisicsModule.png" alt="STATISTIC Module with CSV extension added" width="70%" height="70%" />
+<p class="caption">(\#fig:MM1RDCSVStatisicsModule)STATISTIC Module with CSV extension added</p>
+</div>
 
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figMM1RDCSVStatisicsModule} 
-
-}
-
-\caption{STATISTIC Module with CSV extension added}(\#fig:MM1RDCSVStatisicsModule)
-\end{figure}
-
-\BeginKnitrBlock{rmdimportant}
-Changing the extension of the output file is **not** sufficient to change the actual data type of the file that is written. We have set the extension in the STATISTIC module simply to ensure that the file name has the csv extension when saved to a file.  Many programs will automatically recognize the CSV extension. In a moment, we will use the Run Setup $>$ Run Control Advanced Settings (Figure \@ref(fig:MM1RDCSVWritingStatsAsText)) tab to ensure that the files are written out as text.
-
-\EndKnitrBlock{rmdimportant}
+\BeginKnitrBlock{rmdimportant}<div class="rmdimportant">Changing the extension of the output file is **not** sufficient to change the actual data type of the file that is written. We have set the extension in the STATISTIC module simply to ensure that the file name has the csv extension when saved to a file.  Many programs will automatically recognize the CSV extension. In a moment, we will use the Run Setup $>$ Run Control Advanced Settings (Figure \@ref(fig:MM1RDCSVWritingStatsAsText)) tab to ensure that the files are written out as text.
+</div>\EndKnitrBlock{rmdimportant}
 
 Figure \@ref(fig:MM1RDCSVStatisicsModule) also shows how to create a statistic to capture
 the number in queue over time to a file. The type of the statistic is
@@ -710,14 +656,10 @@ T_w = \frac{d}{\eta} = d \times \delta
 Specify 30,000 minutes for the replication length and 10 replications on the Run $>$
 Setup $>$ Replication Parameters as shown in Figure \@ref(fig:MM1RDCSVRepParameters).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch5/figMM1RDCSVRepParameters} 
-
-}
-
-\caption{Replication parameters for the warm up analysis}(\#fig:MM1RDCSVRepParameters)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVRepParameters.png" alt="Replication parameters for the warm up analysis" width="60%" height="60%" />
+<p class="caption">(\#fig:MM1RDCSVRepParameters)Replication parameters for the warm up analysis</p>
+</div>
 
 The replication length, $T_e$, is the time when the simulation will end. The
 Base Time Units can be specified for how the statistics on the
@@ -734,14 +676,10 @@ using the Run Setup $>$ Run Control $>$ Advanced dialog as shown in
 Figure \@ref(fig:MM1RDCSVWritingStatsAsText). If this option is checked, all statistical data saved to files will be in a CSV format.  Since we already ensured that the name of the file had the (*.csv*) extension this will facilitate Excel recognizing the file as a comma separate
 variable (CSV) file. Thus, when you double-click on the file, the file will be opened within programs that recognize the CSV format, such as Excel.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch5/figMM1RDCSVWritingStatsAsText} 
-
-}
-
-\caption{Writing statistics output files as text.}(\#fig:MM1RDCSVWritingStatsAsText)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVWritingStatsAsText.png" alt="Writing statistics output files as text." width="65%" height="65%" />
+<p class="caption">(\#fig:MM1RDCSVWritingStatsAsText)Writing statistics output files as text.</p>
+</div>
 
 Running the simulation will generate two files *numInQ.csv*
 and *qtime.csv* within the current working directory for the model.
@@ -756,14 +694,10 @@ indicate that a replication has ended. Using these file characteristics,
 software can be written to post-process the *csv* files in any fashion
 that is required for the analysis.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch5/figMM1RDCSVExcelSnapshot} 
-
-}
-
-\caption{Resulting CSV file as shown in Excel.}(\#fig:MM1RDCSVExcelSnapshot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVExcelSnapshot.png" alt="Resulting CSV file as shown in Excel." width="55%" height="55%" />
+<p class="caption">(\#fig:MM1RDCSVExcelSnapshot)Resulting CSV file as shown in Excel.</p>
+</div>
 
 There is one caveat with respect to using Excel. Excel is limited to
 1,048,576 rows of data. If you have $m$ observations per replication and
@@ -799,14 +733,10 @@ $$\begin{aligned}
 Each of the $\bar{Y}_{rj}$ are computed over intervals of time that are
 equally spaced and can be treated as if they are tally based data. Figure \@ref(fig:DiscretizingTimePersistentData) illustrates the concept of discretizing time-persistent data.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figDiscretizingTimePersistentData} 
-
-}
-
-\caption{Discretizing time persistent observations}(\#fig:DiscretizingTimePersistentData)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figDiscretizingTimePersistentData.png" alt="Discretizing time persistent observations" width="80%" height="80%" />
+<p class="caption">(\#fig:DiscretizingTimePersistentData)Discretizing time persistent observations</p>
+</div>
 
 The computation of the $\bar{Y}_{rj}$ for time-persistent data can be
 achieved when processing the text file written by Arena. 
@@ -831,14 +761,10 @@ The Welch Plot Analyzer is a program that I created to facilitate making Welch p
 3. Writing Welch plot data to a CSV file. The pairs $(\bar{Y}_{\cdot k},\bar{\bar{Y}}_{k})$ are written to the CSV file for each observation, $k = 1, 2, \ldots, m$).
 4. Writing all Welch data to a CSV file. The CSV file will contain each individual replication as a column, with the Welch average and cumulative average as the last two columns.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch5/figWelchPlotAnalyzerOverview} 
-
-}
-
-\caption{Welch Plot Analyzer main dialog}(\#fig:WelchPlotAnalyzerOverview)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figWelchPlotAnalyzerOverview.png" alt="Welch Plot Analyzer main dialog" width="85%" height="85%" />
+<p class="caption">(\#fig:WelchPlotAnalyzerOverview)Welch Plot Analyzer main dialog</p>
+</div>
 
 To begin using the Welch Plot Analyzer, use the top most *Browse* button to select the Arena CSV file that you want to process.  After selecting the file, you should specify the type of statistic, either Tally or Time-Persistent. This choice will affect how the batching of the observations is performed. 
 
@@ -846,14 +772,10 @@ If the data is tally based, then the batch size is interpreted as the number of 
 
 For time-persistent data, the batch size is interpreted as $\Delta$ as per Figure \@ref(fig:DiscretizingTimePersistentData).  It is useful to specify a $\Delta$ for discretizing the time-persistent data. The value of $\Delta$ will default to 1 time unit, which may not be adequate based on the rate of occurrence of the state changes for the time-persistent data.  I recommend that $\Delta$ be set so that about 10 *observations* on average will fall within each interval.  To get an idea for this you can simply open up the Arena generated CSV file and look at the first few rows of the data. By scanning the rows, you can quickly estimate about how much time there needs to be to get about 10 state changes. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch5/figNumInQExcelSnapshot} 
-
-}
-
-\caption{Initial rows of number in queue data set.}(\#fig:NumInQExcelSnapshot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figNumInQExcelSnapshot.png" alt="Initial rows of number in queue data set." width="55%" height="55%" />
+<p class="caption">(\#fig:NumInQExcelSnapshot)Initial rows of number in queue data set.</p>
+</div>
 
 Reviewing the data for the time-persistent number in queue data as shown in Figure \@ref(fig:NumInQExcelSnapshot) indicates that about 10 observations have occurred by time 5.  Thus, it seems like having $\Delta = 5$ would be a reasonable setting.
 
@@ -861,23 +783,15 @@ After setting the batch size, the processing can be set up using the *Setup Proc
 
 Figures \@ref(fig:QTimeWelchPlot) and \@ref(fig:NumInQWelchPlot) provide the Welch plots for the time and queue and number in queue data. Notice that the title of the plot contains information that will convert each observation on the x-axis to units of time. For example, on Figure \@ref(fig:NumInQWelchPlot), we have that each observation is equivalent to 5 time units.  That is because we discretized the data with $\Delta = 5$.  Looking at the plot, it appears that the cumulative average converges after observation number 1000. Thus, to set the warm up period, we take $d=1000$ and $\Delta=5$ for $T_w = d \times \Delta = 1000 \times 5 = 5000$. In Figure \@ref(fig:QTimeWelchPlot), we see that their is a 1 to 1 correspondence between the observation number and time. This is because we get an arrival about every minute.  Thus, looking at the plot, it seems that $d=6000$ is a good deletion point, which translated to $T_w = 6000$. We will set the warm up period of the simulation to the larger of the two $T_w$ values (i.e. $T_w = 6000$)
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figQTimeWelchPlot.png" alt="Welch plot for time in queue data."  />
+<p class="caption">(\#fig:QTimeWelchPlot)Welch plot for time in queue data.</p>
+</div>
 
-{\centering \includegraphics{./figures2/ch5/figQTimeWelchPlot} 
-
-}
-
-\caption{Welch plot for time in queue data.}(\#fig:QTimeWelchPlot)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch5/figNumInQWelchPlot} 
-
-}
-
-\caption{Welch plot for number in queue data.}(\#fig:NumInQWelchPlot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figNumInQWelchPlot.png" alt="Welch plot for number in queue data."  />
+<p class="caption">(\#fig:NumInQWelchPlot)Welch plot for number in queue data.</p>
+</div>
 
 Once you have performed the warm up analysis, you still need to use your
 simulation model to estimate system performance. Because the process of
@@ -893,23 +807,15 @@ period, 60,000 minute replication length). Since the true waiting time in the qu
 Figure \@ref(fig:MM1RDCSVResultsAfterWarmup) indicate that there does not appear to be any
 significant bias with these replication settings.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVResultsAfterWarmup.png" alt="Results based on 30 replications." width="70%" height="70%" />
+<p class="caption">(\#fig:MM1RDCSVResultsAfterWarmup)Results based on 30 replications.</p>
+</div>
 
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figMM1RDCSVResultsAfterWarmup} 
-
-}
-
-\caption{Results based on 30 replications.}(\#fig:MM1RDCSVResultsAfterWarmup)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch5/figMM1RDCSVRunSetup} 
-
-}
-
-\caption{Replication-Deletion settings for the example.}(\#fig:MM1RDCSVRunSetup)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figMM1RDCSVRunSetup.png" alt="Replication-Deletion settings for the example." width="60%" height="60%" />
+<p class="caption">(\#fig:MM1RDCSVRunSetup)Replication-Deletion settings for the example.</p>
+</div>
 
 The process described here for determining the warm up period for steady
 state simulation is tedious and time consuming. Research into automating
@@ -956,14 +862,10 @@ deleting the warm up period, the remainder of the run is divided into
 *k* batches, with each batch average representing a single observation
 as illustrated in Figure \@ref(fig:BatchConcept).  In fact, this is essentially the same concept as previously discussed when processing the data using the Welch Plot Analyzer.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch5/figBatchConcept} 
-
-}
-
-\caption{Illustration of the batch means concept}(\#fig:BatchConcept)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figBatchConcept.png" alt="Illustration of the batch means concept" width="80%" height="80%" />
+<p class="caption">(\#fig:BatchConcept)Illustration of the batch means concept</p>
+</div>
 
 The advantages of the batch means method are that it entails a long
 simulation run, thus dampening the effect of the initial conditions. The
@@ -1171,14 +1073,10 @@ be $n_0 \times T_w = 30,000$. For these setting, the results shown in
 Figure \@ref(fig:InitialBatchMeansResults) are very close to the results for
 the replication-deletion example.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figInitialBatchMeansResults} 
-
-}
-
-\caption{Initial batch means results.}(\#fig:InitialBatchMeansResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figInitialBatchMeansResults.png" alt="Initial batch means results." width="70%" height="70%" />
+<p class="caption">(\#fig:InitialBatchMeansResults)Initial batch means results.</p>
+</div>
 
 Suppose now you want to ensure that the half-widths from a single
 replication are less than a given error bound. The half-widths reported
@@ -1201,23 +1099,15 @@ based sample size formula with $n_0 = 32$, $h_0 = 0.06$, and $h = 0.02$,
 yields:
 
 $$n \cong n_0 \dfrac{h_0^2}{h^2} = 32 \times \dfrac{(0.06)^2}{(0.02)^2} = 288 \ \ \text{batches}$$
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figOUTPUTStatBatchSizes.png" alt="OUTPUT Statistics to get number of batches and batch size." width="70%" height="70%" />
+<p class="caption">(\#fig:OUTPUTStatBatchSizes)OUTPUT Statistics to get number of batches and batch size.</p>
+</div>
 
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figOUTPUTStatBatchSizes} 
-
-}
-
-\caption{OUTPUT Statistics to get number of batches and batch size.}(\#fig:OUTPUTStatBatchSizes)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figBatchSizeResults} 
-
-}
-
-\caption{Results for number of batches and batch size.}(\#fig:BatchSizeResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figBatchSizeResults.png" alt="Results for number of batches and batch size." width="70%" height="70%" />
+<p class="caption">(\#fig:BatchSizeResults)Results for number of batches and batch size.</p>
+</div>
 
 Since each batch in the run had 8192 observations, this yields the need
 for additional observations for the waiting time in the queue. Since, in
@@ -1230,14 +1120,10 @@ half-width meets the desired criteria. This approach is approximate
 since you do not know how the observations will be batched when making
 the final run.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figFinalBatchMeansResults} 
-
-}
-
-\caption{Batch means results for fixed sample size.}(\#fig:FinalBatchMeansResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figFinalBatchMeansResults.png" alt="Batch means results for fixed sample size." width="70%" height="70%" />
+<p class="caption">(\#fig:FinalBatchMeansResults)Batch means results for fixed sample size.</p>
+</div>
 
 Rather than trying to fix the amount of sampling, you might instead try
 to use a sequential sampling technique that is based on the half-width
@@ -1253,14 +1139,10 @@ computes the value of `THALF(Tally ID)` after sufficient data has been
 observed. This expression can be expanded to include other performance
 measures in a compound Boolean statement.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figSequentialSamplingInfHorizon} 
-
-}
-
-\caption{Sequential sampling using terminating condition.}(\#fig:SequentialSamplingInfHorizon)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figSequentialSamplingInfHorizon.png" alt="Sequential sampling using terminating condition." width="70%" height="70%" />
+<p class="caption">(\#fig:SequentialSamplingInfHorizon)Sequential sampling using terminating condition.</p>
+</div>
 
 The results of running the simulation based on the sequential method are
 given in Figure \@ref(fig:InfHorizonSeqSamplingResults). In this case, the simulation run
@@ -1268,14 +1150,10 @@ ended at approximately time 1,928,385. This is lower than the time
 specified for the fixed sampling procedure (but the difference is not
 excessive).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figInfHorizonSeqSamplingResults} 
-
-}
-
-\caption{Results for infinite horizon sequential sampling method.}(\#fig:InfHorizonSeqSamplingResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figInfHorizonSeqSamplingResults.png" alt="Results for infinite horizon sequential sampling method." width="70%" height="70%" />
+<p class="caption">(\#fig:InfHorizonSeqSamplingResults)Results for infinite horizon sequential sampling method.</p>
+</div>
 
 Once the warm up period has been analyzed, performing infinite horizon
 simulations using the batch means method is relatively straight forward.
@@ -1340,8 +1218,7 @@ with an example system to be simulated.
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-83-109-97-108-108-32-77-97-110-117-102-97-99-116-117-114-105-110-103-32-83-121-115-116-101-109-93-}\fi{}
-<span class="example" id="exm:exSmallMfgSys"><strong>(\#exm:exSmallMfgSys)  \iffalse (Small Manufacturing System) \fi{} </strong></span>A small manufacturing system produces parts. The parts arrive from an
+\BeginKnitrBlock{example}\iffalse{-91-83-109-97-108-108-32-77-97-110-117-102-97-99-116-117-114-105-110-103-32-83-121-115-116-101-109-93-}\fi{}<div class="example"><span class="example" id="exm:exSmallMfgSys"><strong>(\#exm:exSmallMfgSys)  \iffalse (Small Manufacturing System) \fi{} </strong></span>A small manufacturing system produces parts. The parts arrive from an
 upstream Poisson process with a rate of arrival of 1 part every 5
 minutes. All parts that enter the system must go through a preparation
 station where there are 2 preparation workers. A part requires only 1 of
@@ -1381,8 +1258,7 @@ Simulate the system for 100 replications of one month (30 days) of
 operation. The base time unit for the simulation should be in minutes.
 We want to simulate this system in order to measure the following
 performance metrics with some high degree of confidence.
-
-\EndKnitrBlock{example}
+</div>\EndKnitrBlock{example}
 
   **Performance Measures**
   ---------------------------------------------------------------------------------
@@ -1418,14 +1294,10 @@ How do you know if these results seem reasonable? You can use basic
 queueing analysis and some simple math to help verify and validate your
 results.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch5/MfgFlowDiagram} 
-
-}
-
-\caption{Small manufacturing system with flow rates}(\#fig:MfgFlowDiagram)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/MfgFlowDiagram.png" alt="Small manufacturing system with flow rates"  />
+<p class="caption">(\#fig:MfgFlowDiagram)Small manufacturing system with flow rates</p>
+</div>
 
 By examining Figure \@ref(fig:MfgFlowDiagram) and using a little flow analysis, we
 can get a pretty good approximation of the results. In the figure, we see each station (preparation, line 1, line 2, packaging, and the palletizer). The flow rate of
@@ -1754,75 +1626,59 @@ The next chapter will address more advanced modeling techniques for process mode
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P10"><strong>(\#exr:ch5P10) </strong></span>The batch means method for analyzing 1 long simulation run is needed
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P10"><strong>(\#exr:ch5P10) </strong></span>The batch means method for analyzing 1 long simulation run is needed
 because within replication data are often (a)
-$\underline{\hspace{3cm}}$ and (b)$\underline{\hspace{3cm}}$.
-\EndKnitrBlock{exercise}
+$\underline{\hspace{3cm}}$ and (b)$\underline{\hspace{3cm}}$.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P20"><strong>(\#exr:ch5P20) </strong></span>The (a)$\underline{\hspace{3cm}}$ conditions of a simulation represent
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P20"><strong>(\#exr:ch5P20) </strong></span>The (a)$\underline{\hspace{3cm}}$ conditions of a simulation represent
 the state of the system when the simulation is started. If we are
 interested in steady state performance, then there may be
 (b)$\underline{\hspace{3cm}}$ in our estimates if we don't account for
 these conditions. One method to mitigate this problem is to perform a
 (c)$\underline{\hspace{3cm}}$ analysis to determine an appropriate
-(d)$\underline{\hspace{3cm}}$ period.
-\EndKnitrBlock{exercise}
+(d)$\underline{\hspace{3cm}}$ period.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P30"><strong>(\#exr:ch5P30) </strong></span>*True* or *False*: The concept of steady state implies that after a long
-enough time the system will not change with respect to time.
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P30"><strong>(\#exr:ch5P30) </strong></span>*True* or *False*: The concept of steady state implies that after a long
+enough time the system will not change with respect to time.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P40"><strong>(\#exr:ch5P40) </strong></span>Name two key statistical aspects associated with the waiting times
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P40"><strong>(\#exr:ch5P40) </strong></span>Name two key statistical aspects associated with the waiting times
 generated from within a replication of a simple queuing situation (e.g.
 M/M/1) that make standard confidence interval calculation using the
-student-t distribution inappropriate.
-\EndKnitrBlock{exercise}
+student-t distribution inappropriate.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P50"><strong>(\#exr:ch5P50) </strong></span>Figure \@ref(fig:QueueCalcExercise) shows the changes in queue length for a single server model over a run
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P50"><strong>(\#exr:ch5P50) </strong></span>Figure \@ref(fig:QueueCalcExercise) shows the changes in queue length for a single server model over a run
 length of 35 time units. The first 5 time units are estimated to
 represent the warm-up period. The remaining 30 time units are divided
 equally among 5 batches. The mean and variance of queue length is of
 interest. For each batch, compute the time average batch mean of the
 queue length. Use your results to estimate the mean and variance of
-queue length.
-\EndKnitrBlock{exercise}
+queue length.</div>\EndKnitrBlock{exercise}
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figQueueCalcExercise} 
-
-}
-
-\caption{Queue length sample path}(\#fig:QueueCalcExercise)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figQueueCalcExercise.png" alt="Queue length sample path" width="70%" height="70%" />
+<p class="caption">(\#fig:QueueCalcExercise)Queue length sample path</p>
+</div>
 
 \FloatBarrier
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P60"><strong>(\#exr:ch5P60) </strong></span>Using the supplied data set, draw the sample path for the state
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P60"><strong>(\#exr:ch5P60) </strong></span>Using the supplied data set, draw the sample path for the state
 variable, $N(t)$. Using a batching interval of 5, apply the batch means method to estimate
 the average number of customers in the system over the range from 0 to
 25. Give a formula for estimating the mean rate of arrivals over the
 interval from 0 to 25 and then use the data to estimate the mean arrival
 rate. Estimate the average time in the system (waiting and in service)
 for the customers indicated in the diagram.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -------- --- --- --- ---- ---- ---- ---- ---- ----
     $t$     0   2   4   5    7    10   12   15   20 
@@ -1831,10 +1687,8 @@ for the customers indicated in the diagram.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P70"><strong>(\#exr:ch5P70) </strong></span>Using the Lindley
-equation spreadsheet simulation, perform the following:
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P70"><strong>(\#exr:ch5P70) </strong></span>Using the Lindley
+equation spreadsheet simulation, perform the following:</div>\EndKnitrBlock{exercise}
 
 a. Develop a 95\% confidence interval for your estimate of the mean waiting time based on
 the data from 1 replication. Discuss why this is inappropriate. How does
@@ -1864,16 +1718,14 @@ with that of (a) and (e) and discuss.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P80"><strong>(\#exr:ch5P80) </strong></span>YBox video game players arrive at a two-person station for testing. The inspection time
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P80"><strong>(\#exr:ch5P80) </strong></span>YBox video game players arrive at a two-person station for testing. The inspection time
 per YBox set is EXPO(10) minutes. On the average 82\% of the sets pass
 inspection. The remaining 18\% are routed to an adjustment station with a
 single operator. Adjustment time per YBox is UNIF(7,14) minutes. After
 adjustments are made, the units are routed back to the inspection
 station to be retested. Build an simulation model of this system. Use a
 replication length of 30,000 minutes.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 a. Perform a warm up analysis of the total time a set spends in the system and estimate the
 system time to within 2 minutes with 95% confidence.
 
@@ -1885,8 +1737,7 @@ number of discarded jobs.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P90"><strong>(\#exr:ch5P90) </strong></span>Cars arrive every EXPO(18) minutes at a car-wash facility that also offers vacuum
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P90"><strong>(\#exr:ch5P90) </strong></span>Cars arrive every EXPO(18) minutes at a car-wash facility that also offers vacuum
 cleaning. It takes EXPO(12) minutes to wash and EXPO(15) minutes to
 vacuum clean. When a car arrives, it can go to either wash or vacuum
 cleaning, depending on which queue is shorter. After the first activity
@@ -1895,13 +1746,11 @@ wash). Assuming infinite queue sizes, determine the average time a car
 spends in washing and the average time a car spends in cleaning, as well
 as the time it spends in the system using a simulation model built using
 . Include a warm up analysis of the system time and estimate the system
-time to within 2 minutes with 95\% confidence.
-\EndKnitrBlock{exercise}
+time to within 2 minutes with 95\% confidence.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P100"><strong>(\#exr:ch5P100) </strong></span>A small
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P100"><strong>(\#exr:ch5P100) </strong></span>A small
 manufacturing system produces three types of parts. There is a 30\%
 chance of getting a Type 1 part, a 50\% chance of getting a Type 2 part
 and a 20\% chance of getting a Type 3 part. The parts arrive from an
@@ -1947,8 +1796,7 @@ the tooling fixture. After the part is built, it leaves the system.
 In this problem, the steady state performance of this system is required
 in order to identify potential long-term bottlenecks in this process.
 For this analysis, collect statistics on the following quantities:
-  
-\EndKnitrBlock{exercise}
+  </div>\EndKnitrBlock{exercise}
 -   Queue statistics for all stations. Utilization statistics for all
     resources.
 
@@ -1961,21 +1809,18 @@ Perform a warm up analysis on the system time of a part regardless of type.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P110"><strong>(\#exr:ch5P110) </strong></span>Reconsider
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P110"><strong>(\#exr:ch5P110) </strong></span>Reconsider
 Exercise \@ref(exr:ch5P100). A process change is being recommended for
 the build station for part type 2 and 3. In particular, a machine change
 will cause the processing time to be log-normally distributed with a
 mean of 10 and a standard deviation of 2 minutes. Use the Output
 Analyzer to compare the system time of the old configuration and the new
 configuration based on 30 replications of length 1000 hours with a warm
-up of 200 hours. Which configuration would you recommend?
-\EndKnitrBlock{exercise}
+up of 200 hours. Which configuration would you recommend?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P120"><strong>(\#exr:ch5P120) </strong></span>A patient arrives at the Emergency Room about every 20 $\pm$ 10 minutes
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P120"><strong>(\#exr:ch5P120) </strong></span>A patient arrives at the Emergency Room about every 20 $\pm$ 10 minutes
 (stream 1). The notation X $\pm$ Y means uniformly distributed with
 minimum $X-Y$ and maximum $X+Y$. They will be treated by either of two
 doctors.
@@ -2020,13 +1865,11 @@ must get the same doctor for their final treatment as for their first
 treatment. For example, if a patient gets Dr. House for their first
 treatment, they must see Dr. House for their final treatment. You do not
 have to implement the changes.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P130"><strong>(\#exr:ch5P130) </strong></span>Consider the M/G/1 queue with
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P130"><strong>(\#exr:ch5P130) </strong></span>Consider the M/G/1 queue with
 the following variation. The server works continuously as long as there
 is at least one customer in the system. The customers are processed
 FIFO. When the server finishes serving a customer and finds the system
@@ -2048,13 +1891,11 @@ return of the server from vacation. In other words, estimate the
 probability that $j = 0, 1, 2$, etc, where $j$ is the number of waiting
 customers in the queue upon the return of the server from a vacation.
 This queue has many applications, for example, consider how a bus stop
-operates.
-\EndKnitrBlock{exercise}
+operates.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P140"><strong>(\#exr:ch5P140) </strong></span>An airline ticket office has two ticket agents answering incoming phone calls for flight reservations. In addition, six callers can be put on hold until one of the agents is
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P140"><strong>(\#exr:ch5P140) </strong></span>An airline ticket office has two ticket agents answering incoming phone calls for flight reservations. In addition, six callers can be put on hold until one of the agents is
 available to take the call. If all eight phone lines (both agent lines
 and the hold lines) are busy, a potential customer gets a busy signal,
 and it is assumed that the call goes to another ticket office and that
@@ -2071,13 +1912,11 @@ They have also noticed that FCB customers take approximately 3 minutes
 on average for the phone call, still exponentially distributed. Regular
 customers still take on average 4 minutes, exponentially distributed.
 Simulate this system with and without the new prioritization scheme and
-compare the average waiting time for the two types of customers.
-\EndKnitrBlock{exercise}
+compare the average waiting time for the two types of customers.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P150"><strong>(\#exr:ch5P150) </strong></span>Consider a system having 6
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P150"><strong>(\#exr:ch5P150) </strong></span>Consider a system having 6
 machines tended by 2 operators. In this system, there are two types of
 stoppages. Type 1 stoppage occurs after a fixed constant amount of
 machine running time, $1/\lambda_1$ = 30 minutes, and has a constant
@@ -2092,13 +1931,11 @@ served queue with no priority given to either type of stoppage. Simulate
 this system for 10000 minutes to estimate the average number of waiting
 machines by type of stoppage, the average utilization of the operator,
 the average utilization of the machines, and the average waiting time of
-the machines by type of stoppage.
-\EndKnitrBlock{exercise}
+the machines by type of stoppage.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P160"><strong>(\#exr:ch5P160) </strong></span>Suppose a service facility
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P160"><strong>(\#exr:ch5P160) </strong></span>Suppose a service facility
 consists of two stations in series (tandem), each with its own FIFO
 queue. Each station consists of a queue and a single server. A customer
 completing service at station 1 proceeds to station 2, while a customer
@@ -2107,8 +1944,7 @@ inter-arrival times of customers to station 1 are IID exponential random
 variables with a mean of 1 minute. Service times of customers at station
 1 are exponential random variables with a mean of 0.7 minute, and at
 station 2 are exponential random variables with mean 0.9 minute. Develop
-an model for this system using the STATION and ROUTE modules.
-\EndKnitrBlock{exercise}
+an model for this system using the STATION and ROUTE modules.</div>\EndKnitrBlock{exercise}
 a. Run the simulation for exactly 20000 minutes and estimate for each station the expected average delay in queue for the customer, the expected time-average number of customers in
 queue, and the expected utilization. In addition, estimate the average
 number of customers in the system and the average time spent in the
@@ -2121,8 +1957,7 @@ c. Suppose now there is a travel time from the exit of station 1 to the arrival 
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P170"><strong>(\#exr:ch5P170) </strong></span>Parts arrive to a machine shop according to an exponential distribution
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P170"><strong>(\#exr:ch5P170) </strong></span>Parts arrive to a machine shop according to an exponential distribution
 with a mean of 10 minutes. Before the parts go into the main machining
 area they must be prepped. The preparation area has two preparation
 machines that are tended by 2 operators. Upon arrival parts are assigned
@@ -2137,8 +1972,7 @@ removals. The operator attends to the parts in a first come, first
 served manner. The times for the preparation machines are given in the
 table below according to a triangular distribution with the provided
 parameters:
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
    Prep Machine   Setup Time   Process Time   Removal Time
   -------------- ------------ -------------- --------------
@@ -2180,8 +2014,7 @@ improve the performance of this system?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P180"><strong>(\#exr:ch5P180) </strong></span>Consider the simple three-workstation flow line. Parts entering the system are placed at a
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P180"><strong>(\#exr:ch5P180) </strong></span>Consider the simple three-workstation flow line. Parts entering the system are placed at a
 staging area for transfer to the first workstation. The staging area can
 be thought as the place where the parts enter the system prior to going
 to the first workstation. No processing takes place at the staging area,
@@ -2205,19 +2038,14 @@ Transfer times from the workstation to paint and from paint to pack are
 2 minutes. The performance measures of interest are the utilization and
 Work-In-Progress (WIP) at the workstation, paint and packaging
 operations. Figure \@ref(fig:SMPaintsExercise) provides an illustration of the system.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 *(This problem is based on an example on page 209 and continues on page 217 of [@pegden1995introduction]. Used with permission)*
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch5/figSMPaintsExercise} 
-
-}
-
-\caption{Simple painting flow line}(\#fig:SMPaintsExercise)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch5/figSMPaintsExercise.png" alt="Simple painting flow line" width="70%" height="70%" />
+<p class="caption">(\#fig:SMPaintsExercise)Simple painting flow line</p>
+</div>
 
 Suppose that statistics on the part flow time, i.e. the total time a
 part spends in the system need to be collected. However, before
@@ -2241,8 +2069,6 @@ resource to add capacity, which would it be?
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch5P190"><strong>(\#exr:ch5P190) </strong></span>Consider the small manufacturing system of Example \@ref(exm:exSmallMfgSys) build a simulation model that produces the results shown in Section \@ref(ch5:VandV).  What happens if the arrival rate of the parts to the system increases by 50\%?
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch5P190"><strong>(\#exr:ch5P190) </strong></span>Consider the small manufacturing system of Example \@ref(exm:exSmallMfgSys) build a simulation model that produces the results shown in Section \@ref(ch5:VandV).  What happens if the arrival rate of the parts to the system increases by 50\%?</div>\EndKnitrBlock{exercise}
 
 ***

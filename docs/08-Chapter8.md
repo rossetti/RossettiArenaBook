@@ -193,14 +193,10 @@ menu within the Environment. The first thing to do after starting the
 Process Analyzer is to start a new PAN file via the File $>$ New menu.
 You should then see a screen similar to Figure \@ref(fig:ch8fig86). 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig86} 
-
-}
-
-\caption{The Process Analyzer}(\#fig:ch8fig86)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig86.png" alt="The Process Analyzer" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig86)The Process Analyzer</p>
+</div>
 
 In the Process Analyzer you define
 the scenarios that you want to be executed. A scenario consists of a
@@ -217,14 +213,10 @@ scenario properties area. You can type in the name for the scenario and
 the name of the (.p) file (or use the file browser) to specify the
 scenario as shown in Figure \@ref(fig:ch8fig87). 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/ch8fig87} 
-
-}
-
-\caption{Adding a new scenario}(\#fig:ch8fig87)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig87.png" alt="Adding a new scenario" width="50%" height="50%" />
+<p class="caption">(\#fig:ch8fig87)Adding a new scenario</p>
+</div>
 
 Then you can use the Insert menu to
 insert controls and response variables for the scenario. The insert
@@ -235,14 +227,10 @@ of inner ring factor), and `vODF` (standard deviation of outer ring
 factor). For each of the controls, be sure to specify the proper data
 type (e.g. `vStream` is an Integer, `vIDF` is a real).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig88} 
-
-}
-
-\caption{Inserting controls}(\#fig:ch8fig88)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig88.png" alt="Inserting controls" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig88)Inserting controls</p>
+</div>
 
 After specifying the first scenario, select the row, right-click and
 choose Duplicate Scenario(s) until you have defined 8 scenarios. Then,
@@ -254,14 +242,10 @@ production (`PairOfRings.TotalTime`), the throughput per day
 (`Throughput`), and the average time spent waiting at the rework station
 (`Rework.Queue.WaitingTime`).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch8/ch8fig89} 
-
-}
-
-\caption{Experimental setup controls and responses}(\#fig:ch8fig89)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig89.png" alt="Experimental setup controls and responses" width="80%" height="80%" />
+<p class="caption">(\#fig:ch8fig89)Experimental setup controls and responses</p>
+</div>
 
 Since a different stream number has been specified for each of the
 scenarios, they will all be independent. Within the context of
@@ -282,14 +266,10 @@ for the responses will be tabulated in the response area as shown in
 Figure \@ref(fig:ch8fig90). After the simulations have been
 completed, you can add more responses and the results will be shown.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch8/ch8fig90} 
-
-}
-
-\caption{Results after running the scenarios}(\#fig:ch8fig90)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig90.png" alt="Results after running the scenarios" width="80%" height="80%" />
+<p class="caption">(\#fig:ch8fig90)Results after running the scenarios</p>
+</div>
 
 The purpose in performing a sensitivity analysis is two-fold: 1) to see
 if small changes in the factors result in significant changes in the
@@ -338,14 +318,10 @@ wizard by selecting Next (and then Finish) making sure that the waiting
 time is your performance measure. You should see a chart similar to that
 shown in Figure \@ref(fig:ch8fig91).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig91} 
-
-}
-
-\caption{Individual scenario chart for rework waiting time}(\#fig:ch8fig91)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig91.png" alt="Individual scenario chart for rework waiting time" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig91)Individual scenario chart for rework waiting time</p>
+</div>
 
 If you right-click on the chart options pop-up menu, you can gain access
 to the data and properties of the chart (Figure \@ref(fig:ch8fig92)). From this dialog you can copy
@@ -353,14 +329,10 @@ the data associated with the chart. This gives you an easy mechanism for
 cutting and pasting the data into another application for additional
 analysis.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/ch8fig92} 
-
-}
-
-\caption{Data within chart options}(\#fig:ch8fig92)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig92.png" alt="Data within chart options" width="50%" height="50%" />
+<p class="caption">(\#fig:ch8fig92)Data within chart options</p>
+</div>
 
 To create a chart across the scenarios, select the column associated
 with the desired response and right-click. Then, select Insert Chart
@@ -370,14 +342,10 @@ selected. In this example, you will make a box and whisker chart of the
 waiting times. Follow the wizard through the process until you have
 created a chart as shown in Figure \@ref(fig:ch8fig93).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig93} 
-
-}
-
-\caption{Box-Whiskers chart across scenarios}(\#fig:ch8fig93)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig93.png" alt="Box-Whiskers chart across scenarios" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig93)Box-Whiskers chart across scenarios</p>
+</div>
 
 There are varying definitions of what constitutes a box-whiskers plot.
 In the Process Analyzer, the box-whiskers plot shows whiskers (narrow
@@ -582,14 +550,10 @@ number for each scenario was set to the same value, thereby, applying
 common random numbers. The PAN file for this analysis is called
 LOTR-MCB.pan and can be found in the supporting files folder called *SensitivityAnalysis* for this chapter.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig94} 
-
-}
-
-\caption{Results for MCB analysis using common random numbers}(\#fig:ch8fig94)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig94.png" alt="Results for MCB analysis using common random numbers" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig94)Results for MCB analysis using common random numbers</p>
+</div>
 
 Suppose you want to pick the best scenario in terms of the average time
 that a pair of rings spends in the system. Furthermore, suppose that you
@@ -616,23 +580,15 @@ see the best scenarios listed. Clicking Finish causes the chart to be
 created and the best scenarios to be identified in red (scenarios 1, 2,
 3, & 4) as shown in Figure \@ref(fig:ch8fig96).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig95.png" alt="Identifying the best scenario" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig95)Identifying the best scenario</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig95} 
-
-}
-
-\caption{Identifying the best scenario}(\#fig:ch8fig95)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch8/ch8fig96} 
-
-}
-
-\caption{Possible best scenarios}(\#fig:ch8fig96)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig96.png" alt="Possible best scenarios" width="75%" height="75%" />
+<p class="caption">(\#fig:ch8fig96)Possible best scenarios</p>
+</div>
 
 As indicated in Figure \@ref(fig:ch8fig96), four possible scenarios have been
 recommended as the best. This means that you can be 95% confident that
@@ -719,14 +675,10 @@ staff developed a standard physical configuration that will be used for
 all future systems. A schematic of this standard configuration is shown
 in Figure \@ref(fig:ch8fig1).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig1} 
-
-}
-
-\caption{Schematic of standard configuration}(\#fig:ch8fig1)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig1.jpg" alt="Schematic of standard configuration" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig1)Schematic of standard configuration</p>
+</div>
 
 The standard configuration consists of a transportation loop or
 racetrack joining six different primary locations: one load/unload area
@@ -785,14 +737,10 @@ the cell (much like exiting from a freeway). The time to merge onto or
 exit from the loop is negligible. A schematic of a typical test cell is
 provided in Figure \@ref(fig:ch8fig2).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig2} 
-
-}
-
-\caption{Test cell schematic}(\#fig:ch8fig2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig2.jpg" alt="Test cell schematic" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig2)Test cell schematic</p>
+</div>
 
 As soon as a tester becomes available, the unit is tested, the results
 are recorded, and the unit attempts to merge back onto the loop. Next it
@@ -823,14 +771,10 @@ the load/unload device or any holders waiting to merge back onto the
 loop. If there is room, the sample holder enters the area. A schematic
 for the load/unload area is shown in Figure \@ref(fig:ch8fig3).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig3} 
-
-}
-
-\caption{Load and unload cell schematic}(\#fig:ch8fig3)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig3.jpg" alt="Load and unload cell schematic" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig3)Load and unload cell schematic</p>
+</div>
 
 As long as there are sample holders in front of the load/unload device,
 it will continue to operate or cycle. It only stops or pauses if there
@@ -1263,23 +1207,15 @@ they experience the load/unload cycle time once they have the
 load/unload machine. If a sample is not available, the sample holder is
 conveyed back to the load/unload area.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig4.jpg" alt="Activity diagram for samples process" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig4)Activity diagram for samples process</p>
+</div>
 
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig4} 
-
-}
-
-\caption{Activity diagram for samples process}(\#fig:ch8fig4)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig5} 
-
-}
-
-\caption{Activity cycle diagram for sample holders}(\#fig:ch8fig5)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig5.jpg" alt="Activity cycle diagram for sample holders" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig5)Activity cycle diagram for sample holders</p>
+</div>
 
 One thing to notice from this diagram is that the sequence does not have
 to be determined until the sample and holder are being conveyed to the
@@ -1334,14 +1270,10 @@ conveyor. Therefore, there are 12 total stations required in the model.
 The Exit point for the load/unload machine can be arbitrarily selected
 as the first station on the loop conveyor.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig6} 
-
-}
-
-\caption{Modeling the conveyor segments}(\#fig:ch8fig6)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig6.jpg" alt="Modeling the conveyor segments" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig6)Modeling the conveyor segments</p>
+</div>
 
 Figure \@ref(fig:ch8fig6) shows the segments for the
 conveyor. The test cells as well as the load/unload machine have exit
@@ -1359,14 +1291,10 @@ foot per second with a cell size of 1 foot. Since a sample holder takes
 up 1 foot on the conveyor and the cell size is 1 foot, the maximum
 number of cells occupied by an entity on the conveyor is simply 1 cell.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig7} 
-
-}
-
-\caption{Specifying the conveyor module}(\#fig:ch8fig7)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig7.jpg" alt="Specifying the conveyor module" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig7)Specifying the conveyor module</p>
+</div>
 
 Since the stations are defined, the sequences within the model can now
 be defined. How you implement the sequences depends on how the conveyor
@@ -1386,14 +1314,10 @@ for test sequence 1 for the problem. Notice that the stations alternate
 (enter then exit) and that the last station is the station representing
 the entry point for the load/unload area.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig8} 
-
-}
-
-\caption{Specifying the job steps for test sequence 1}(\#fig:ch8fig8)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig8.jpg" alt="Specifying the job steps for test sequence 1" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig8)Specifying the job steps for test sequence 1</p>
+</div>
 
 In order to randomly assign a sequence, the sequences can be placed into
 a set and then the index into the set randomly generated via the
@@ -1404,23 +1328,15 @@ Figure \@ref(fig:ch8fig10) shows the implementation of
 the distribution across the sequences as an expression, called
 `eSeqIndex`, using the DISC() function within the EXPRESSION module.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig9.jpg" alt="Filling the set for holding the sequences" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig9)Filling the set for holding the sequences</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig9} 
-
-}
-
-\caption{Filling the set for holding the sequences}(\#fig:ch8fig9)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig10} 
-
-}
-
-\caption{Discrete distribution for assigning random sequences}(\#fig:ch8fig10)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig10.jpg" alt="Discrete distribution for assigning random sequences" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig10)Discrete distribution for assigning random sequences</p>
+</div>
 
 \FloatBarrier
 
@@ -1520,14 +1436,10 @@ The model (with animation) representing this initial modeling is given
 in the file, *SMTestingInitialModeling.doe*. The flow chart modules
 corresponding to the pseudo-code are shown in Figure \@ref(fig:ch8fig11).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch8/ch8fig11} 
-
-}
-
-\caption{Initial model for samples and test cells}(\#fig:ch8fig11)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig11.jpg" alt="Initial model for samples and test cells" width="80%" height="80%" />
+<p class="caption">(\#fig:ch8fig11)Initial model for samples and test cells</p>
+</div>
 
 The following approach was taken when developing the initial model for
 samples and test cells:
@@ -1581,23 +1493,15 @@ samples and test cells:
     simplicity it will be useful to assume that each unit of a multiple
     unit tester does not fail individually.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig12.jpg" alt="ARRIVAL schedule for samples" width="50%" height="50%" />
+<p class="caption">(\#fig:ch8fig12)ARRIVAL schedule for samples</p>
+</div>
 
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/ch8fig12} 
-
-}
-
-\caption{ARRIVAL schedule for samples}(\#fig:ch8fig12)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch8/ch8fig13} 
-
-}
-
-\caption{FAILURE modules for testers}(\#fig:ch8fig13)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig13.jpg" alt="FAILURE modules for testers" width="90%" height="90%" />
+<p class="caption">(\#fig:ch8fig13)FAILURE modules for testers</p>
+</div>
 
 As a first step towards verifying that the model is working as intended,
 the initial model, *SMTestingInitialModeling.doe*, can be modified so
@@ -1642,29 +1546,109 @@ sequences. The modified model for testing sequence 9 is given in file,
 <!--   Table: (\#tab:SampleSysTime) Single Sample System Time -->
 <!-- ::: -->
 
-\begin{table}
-
-\caption{(\#tab:SampleSysTime)Single sample system times.}
-\centering
-\begin{tabular}[t]{rlrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{Feet} & \multicolumn{4}{c}{Time in Minutes} \\
-\cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-7}
-Sequence & Steps & Distance & Travel & Test & Preparation & Total\\
-\midrule
-1 & 1-2-4-5 & 33 & 0.55 & 5.11 & 5 & 10.11\\
-2 & 3-4-5 & 36 & 0.60 & 3.97 & 5 & 9.57\\
-3 & 1-2-3-4 & 33 & 0.55 & 3.89 & 5 & 9.44\\
-4 & 4-3-2 & 132 & 2.20 & 3.12 & 5 & 10.32\\
-5 & 2-5-1 & 84 & 1.40 & 3.32 & 5 & 9.72\\
-\addlinespace
-6 & 4-5-2-3 & 81 & 1.35 & 4.82 & 5 & 11.17\\
-7 & 1-5-3-4 & 81 & 1.35 & 4.74 & 5 & 11.09\\
-8 & 5-3-1 & 132 & 2.20 & 3.50 & 5 & 10.70\\
-9 & 2-4-5 & 36 & 0.60 & 3.79 & 5 & 9.39\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:SampleSysTime)Single sample system times.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Feet</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Time in Minutes</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Sequence </th>
+   <th style="text-align:left;"> Steps </th>
+   <th style="text-align:right;"> Distance </th>
+   <th style="text-align:right;"> Travel </th>
+   <th style="text-align:right;"> Test </th>
+   <th style="text-align:right;"> Preparation </th>
+   <th style="text-align:right;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 1-2-4-5 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.55 </td>
+   <td style="text-align:right;"> 5.11 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 3-4-5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.60 </td>
+   <td style="text-align:right;"> 3.97 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9.57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> 1-2-3-4 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.55 </td>
+   <td style="text-align:right;"> 3.89 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9.44 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 4-3-2 </td>
+   <td style="text-align:right;"> 132 </td>
+   <td style="text-align:right;"> 2.20 </td>
+   <td style="text-align:right;"> 3.12 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10.32 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> 2-5-1 </td>
+   <td style="text-align:right;"> 84 </td>
+   <td style="text-align:right;"> 1.40 </td>
+   <td style="text-align:right;"> 3.32 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9.72 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> 4-5-2-3 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 1.35 </td>
+   <td style="text-align:right;"> 4.82 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 11.17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> 1-5-3-4 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 1.35 </td>
+   <td style="text-align:right;"> 4.74 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 11.09 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> 5-3-1 </td>
+   <td style="text-align:right;"> 132 </td>
+   <td style="text-align:right;"> 2.20 </td>
+   <td style="text-align:right;"> 3.50 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10.70 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> 2-4-5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.60 </td>
+   <td style="text-align:right;"> 3.79 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9.39 </td>
+  </tr>
+</tbody>
+</table>
 
 This testing also provides a lower bound on the expected system times
 for each of the sequences.
@@ -1679,24 +1663,96 @@ test cell 1 is (0.09 + 0.15 + 0.07 + 0.14 + 0.06 = 0.51). The total
 percentage for each of the test cells is given in
 Table \@ref(tab:PercentTestCellArrivals).
 
-\begin{table}
-
-\caption{(\#tab:PercentTestCellArrivals)Percentage of arrivals visiting each test cell.}
-\centering
-\begin{tabular}[t]{rrrrrrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{9}{c}{Proportion from Sequence} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){2-10}
-Cell & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & Total\\
-\midrule
-1 & 0.09 & 0.00 & 0.15 & 0.00 & 0.07 & 0.00 & 0.14 & 0.06 & 0.00 & 0.51\\
-2 & 0.09 & 0.00 & 0.15 & 0.12 & 0.07 & 0.11 & 0.00 & 0.00 & 0.13 & 0.67\\
-3 & 0.00 & 0.13 & 0.15 & 0.12 & 0.00 & 0.07 & 0.11 & 0.13 & 0.00 & 0.71\\
-4 & 0.09 & 0.13 & 0.15 & 0.12 & 0.00 & 0.00 & 0.11 & 0.14 & 0.13 & 0.87\\
-5 & 0.09 & 0.13 & 0.00 & 0.00 & 0.07 & 0.11 & 0.14 & 0.06 & 0.13 & 0.73\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:PercentTestCellArrivals)Percentage of arrivals visiting each test cell.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="9"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Proportion from Sequence</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Cell </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> 6 </th>
+   <th style="text-align:right;"> 7 </th>
+   <th style="text-align:right;"> 8 </th>
+   <th style="text-align:right;"> 9 </th>
+   <th style="text-align:right;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.09 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.07 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.14 </td>
+   <td style="text-align:right;"> 0.06 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.51 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.09 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> 0.12 </td>
+   <td style="text-align:right;"> 0.07 </td>
+   <td style="text-align:right;"> 0.11 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.67 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> 0.12 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.07 </td>
+   <td style="text-align:right;"> 0.11 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.71 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.09 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> 0.12 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.11 </td>
+   <td style="text-align:right;"> 0.14 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0.09 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.07 </td>
+   <td style="text-align:right;"> 0.11 </td>
+   <td style="text-align:right;"> 0.14 </td>
+   <td style="text-align:right;"> 0.06 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 0.73 </td>
+  </tr>
+</tbody>
+</table>
 
 Using the total percentages given in
 Table \@ref(tab:PercentTestCellArrivals),
@@ -1723,24 +1779,67 @@ offered load can give a good idea of about how many servers might be
 utilized. Table \@ref(tab:OfferedLoadPeak) calculates the offered load for each of the test
 cells under the peak arrival rate.
 
-\begin{table}
-
-\caption{(\#tab:OfferedLoadPeak)Offered load calculation for peak hourly rate.}
-\centering
-\begin{tabular}[t]{rrrrrr}
-\toprule
-\multicolumn{1}{c}{Test} & \multicolumn{2}{c}{Testing Time} & \multicolumn{2}{c}{Rate per hour} & \multicolumn{1}{c}{Offered} \\
-\cmidrule(l{3pt}r{3pt}){1-1} \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-6}
-Cell & Minutes & Hours & Arrival & Service & Load\\
-\midrule
-1 & 0.77 & 0.01283 & 102 & 77.92 & 1.31\\
-2 & 0.85 & 0.01417 & 134 & 70.59 & 1.90\\
-3 & 1.03 & 0.01717 & 142 & 58.25 & 2.44\\
-4 & 1.24 & 0.02067 & 174 & 48.39 & 3.60\\
-5 & 1.70 & 0.02833 & 146 & 35.29 & 4.14\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:OfferedLoadPeak)Offered load calculation for peak hourly rate.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Test</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Testing Time</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Rate per hour</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Offered</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Cell </th>
+   <th style="text-align:right;"> Minutes </th>
+   <th style="text-align:right;"> Hours </th>
+   <th style="text-align:right;"> Arrival </th>
+   <th style="text-align:right;"> Service </th>
+   <th style="text-align:right;"> Load </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.01283 </td>
+   <td style="text-align:right;"> 102 </td>
+   <td style="text-align:right;"> 77.92 </td>
+   <td style="text-align:right;"> 1.31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.85 </td>
+   <td style="text-align:right;"> 0.01417 </td>
+   <td style="text-align:right;"> 134 </td>
+   <td style="text-align:right;"> 70.59 </td>
+   <td style="text-align:right;"> 1.90 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1.03 </td>
+   <td style="text-align:right;"> 0.01717 </td>
+   <td style="text-align:right;"> 142 </td>
+   <td style="text-align:right;"> 58.25 </td>
+   <td style="text-align:right;"> 2.44 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1.24 </td>
+   <td style="text-align:right;"> 0.02067 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 48.39 </td>
+   <td style="text-align:right;"> 3.60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 1.70 </td>
+   <td style="text-align:right;"> 0.02833 </td>
+   <td style="text-align:right;"> 146 </td>
+   <td style="text-align:right;"> 35.29 </td>
+   <td style="text-align:right;"> 4.14 </td>
+  </tr>
+</tbody>
+</table>
 
 The arrival rate for the first test cell is 0.51 $\times$ 200 = 102.
 Thus, you can see that a little over 1 server can be expected to be busy
@@ -1755,14 +1854,10 @@ Figure \@ref(fig:ch8fig14) will be produced. As can be seen in the
 figure, the results match very closely to that of the offered load
 analysis.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig14} 
-
-}
-
-\caption{Results from offered load experiment}(\#fig:ch8fig14)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig14.jpg" alt="Results from offered load experiment" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig14)Results from offered load experiment</p>
+</div>
 
 These results provide additional evidence that the initial model is
 working properly and indicate how many units of each test cell might be
@@ -1770,24 +1865,67 @@ needed under peak conditions. The model is given in the file,
 *SMTestingInitialModelingOnResources.doe*.
 Table \@ref(tab:OfferedLoadMin) indicates the offered load under the minimum arrival rate.
 
-\begin{table}
-
-\caption{(\#tab:OfferedLoadMin)Offered load calculation for minimum hourly rate.}
-\centering
-\begin{tabular}[t]{rrrrrr}
-\toprule
-\multicolumn{1}{c}{Test} & \multicolumn{2}{c}{Testing Time} & \multicolumn{2}{c}{Rate per hour} & \multicolumn{1}{c}{Offered} \\
-\cmidrule(l{3pt}r{3pt}){1-1} \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-6}
-Cell & Minutes & Hours & Arrival & Service & Load\\
-\midrule
-1 & 0.77 & 0.01283 & 51 & 77.92 & 0.65\\
-2 & 0.85 & 0.01417 & 67 & 70.59 & 0.95\\
-3 & 1.03 & 0.01717 & 71 & 58.25 & 1.22\\
-4 & 1.24 & 0.02067 & 87 & 48.39 & 1.80\\
-5 & 1.70 & 0.02833 & 73 & 35.29 & 2.07\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:OfferedLoadMin)Offered load calculation for minimum hourly rate.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Test</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Testing Time</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Rate per hour</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Offered</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Cell </th>
+   <th style="text-align:right;"> Minutes </th>
+   <th style="text-align:right;"> Hours </th>
+   <th style="text-align:right;"> Arrival </th>
+   <th style="text-align:right;"> Service </th>
+   <th style="text-align:right;"> Load </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.01283 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 77.92 </td>
+   <td style="text-align:right;"> 0.65 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.85 </td>
+   <td style="text-align:right;"> 0.01417 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 70.59 </td>
+   <td style="text-align:right;"> 0.95 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1.03 </td>
+   <td style="text-align:right;"> 0.01717 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 58.25 </td>
+   <td style="text-align:right;"> 1.22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1.24 </td>
+   <td style="text-align:right;"> 0.02067 </td>
+   <td style="text-align:right;"> 87 </td>
+   <td style="text-align:right;"> 48.39 </td>
+   <td style="text-align:right;"> 1.80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 1.70 </td>
+   <td style="text-align:right;"> 0.02833 </td>
+   <td style="text-align:right;"> 73 </td>
+   <td style="text-align:right;"> 35.29 </td>
+   <td style="text-align:right;"> 2.07 </td>
+  </tr>
+</tbody>
+</table>
 
 Based on the analysis of the offered load, a preliminary estimate of the
 resource requirements for each test cell can be determined as in
@@ -1796,24 +1934,47 @@ up the computed offered load for each test cell. This provides a range
 of values since it is not clear that designing to the maximum is
 necessary given the non-stationary behavior of the arrival of samples.
 
-\begin{table}
-
-\caption{(\#tab:PrelimCellRes)Preliminary test cell resource requirements.}
-\centering
-\begin{tabular}[t]{rrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Resource Requirements} \\
-\cmidrule(l{3pt}r{3pt}){2-3}
-Test Cell & Low & High\\
-\midrule
-1 & 1 & 2\\
-2 & 1 & 2\\
-3 & 2 & 3\\
-4 & 2 & 4\\
-5 & 3 & 5\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:PrelimCellRes)Preliminary test cell resource requirements.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Resource Requirements</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Test Cell </th>
+   <th style="text-align:right;"> Low </th>
+   <th style="text-align:right;"> High </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+</tbody>
+</table>
 
 ### Modeling Sample Holders and the Load/Unload Area {#ch11s2sb2sub3}
 
@@ -1983,14 +2144,10 @@ sample holders are created at time 0.0 and routed to the
 cells and the load/unload area. The logic for the test cell sub-model is
 exactly the same as described during the initial model development.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch8/ch8fig15} 
-
-}
-
-\caption{Overview of entire model}(\#fig:ch8fig15)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig15.jpg" alt="Overview of entire model" width="75%" height="75%" />
+<p class="caption">(\#fig:ch8fig15)Overview of entire model</p>
+</div>
 
 The file, *SMTesting.doe*, contains the completed model. The logic
 described in the previous pseudo-code is implemented in the sub-model, Loading
@@ -2019,28 +2176,20 @@ probability of meeting the 60 minute limit is tallied using a Boolean
 expression. Then, the probability is recorded according to whether or
 not the sample was a rush or not.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch8/ch8fig16} 
-
-}
-
-\caption{System time statistical collection}(\#fig:ch8fig16)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig16.jpg" alt="System time statistical collection" width="85%" height="85%" />
+<p class="caption">(\#fig:ch8fig16)System time statistical collection</p>
+</div>
 
 The cost of each configuration can also be tabulated using output
 statistics (Figure \@ref(fig:ch8fig17)). Even though there is no randomness in these cost values,
 these values can be captured to facilitate the use of the Process
 Analyzer and OptQuest.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch8/ch8fig17} 
-
-}
-
-\caption{STATISTICS module for collecting cost expressions}(\#fig:ch8fig17)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig17.jpg" alt="STATISTICS module for collecting cost expressions" width="85%" height="85%" />
+<p class="caption">(\#fig:ch8fig17)STATISTICS module for collecting cost expressions</p>
+</div>
 
 For example, Table \@ref(tab:HighResCostCase) shows the total monthly cost calculation for
 the high resource case assuming the use of 16 sample holders.
@@ -2201,14 +2350,10 @@ sample paths of 60 days in length. The ten sample paths were averaged to
 produce a Welch plot as shown in Figure \@ref(fig:ch8fig18). From the plot, there is no discernible initialization bias. Thus, it
 appears that if the system has enough resources, there does not seem to be a need for a warm up period. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig18} 
-
-}
-
-\caption{Welch plot for high resource configuration}(\#fig:ch8fig18)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig18.jpg" alt="Welch plot for high resource configuration" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig18)Welch plot for high resource configuration</p>
+</div>
 
 If we run the low resource case of Table \@ref(tab:PrelimCellRes)
 under the same conditions, an execution error will occur that
@@ -2242,14 +2387,10 @@ deleted, the run length should be set to 11 days so that a total of 10
 days of data will be collected. Now, the number of replications needs to
 be determined.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch8/ch8fig19} 
-
-}
-
-\caption{User defined results for pilot run}(\#fig:ch8fig19)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig19.jpg" alt="User defined results for pilot run" width="60%" height="60%" />
+<p class="caption">(\#fig:ch8fig19)User defined results for pilot run</p>
+</div>
 
 Using the high resource case with 48 sample holders a pilot run was made
 of 5 replications of 11 days with 1 day warm up. The user-defined
@@ -2300,35 +2441,183 @@ entire run length of 10 days, this provides evidence that any scenarios
 that have more resources will also be able to execute without any
 problems.
 
-\begin{table}
-
-\caption{(\#tab:InitialResults)Initial results for cell and holder scenarios.}
-\centering
-\begin{tabular}[t]{rrrrrrrrr}
-\toprule
-\multicolumn{6}{c}{Resource Settings } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System Time} \\
-\cmidrule(l{3pt}r{3pt}){1-6} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-9}
-Cell 1 & Cell 2 & Cell 3 & Cell 4 & Cell 5 & \#Holders & Non-Rush & Rush & (minutes)\\
-\midrule
-2 & 2 & 3 & 4 & 5 & 48 & 0.998 & 0.960 & 17.811\\
-2 & 2 & 3 & 4 & 5 & 44 & 0.997 & 0.971 & 17.182\\
-2 & 2 & 3 & 4 & 5 & 40 & 0.994 & 0.976 & 17.046\\
-2 & 2 & 3 & 4 & 5 & 36 & 0.994 & 0.983 & 16.588\\
-2 & 2 & 3 & 4 & 5 & 32 & 0.996 & 0.982 & 16.577\\
-\addlinespace
-2 & 2 & 3 & 4 & 5 & 28 & 0.995 & 0.986 & 16.345\\
-2 & 2 & 3 & 4 & 5 & 24 & 0.988 & 0.990 & 16.355\\
-2 & 2 & 3 & 4 & 5 & 20 & 0.961 & 0.991 & 21.431\\
-2 & 2 & 3 & 4 & 5 & 18 & 0.822 & 0.987 & 32.839\\
-2 & 2 & 3 & 4 & 5 & 17 & 0.721 & 0.990 & 39.989\\
-\addlinespace
-2 & 2 & 3 & 4 & 5 & 16 & 0.494 & 0.989 & 57.565\\
-2 & 2 & 3 & 4 & 5 & 12 & 0.000 & 0.988 & 1309.683\\
-1 & 1 & 2 & 2 & 3 & 16 & 0.000 & 0.985 & 2525.434\\
-1 & 1 & 2 & 2 & 3 & 48 & 0.000 & 0.749 & 2234.676\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:InitialResults)Initial results for cell and holder scenarios.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Resource Settings </div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Time</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Cell 1 </th>
+   <th style="text-align:right;"> Cell 2 </th>
+   <th style="text-align:right;"> Cell 3 </th>
+   <th style="text-align:right;"> Cell 4 </th>
+   <th style="text-align:right;"> Cell 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> (minutes) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 0.998 </td>
+   <td style="text-align:right;"> 0.960 </td>
+   <td style="text-align:right;"> 17.811 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 0.997 </td>
+   <td style="text-align:right;"> 0.971 </td>
+   <td style="text-align:right;"> 17.182 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 40 </td>
+   <td style="text-align:right;"> 0.994 </td>
+   <td style="text-align:right;"> 0.976 </td>
+   <td style="text-align:right;"> 17.046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.994 </td>
+   <td style="text-align:right;"> 0.983 </td>
+   <td style="text-align:right;"> 16.588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 0.996 </td>
+   <td style="text-align:right;"> 0.982 </td>
+   <td style="text-align:right;"> 16.577 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0.995 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 16.345 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 0.990 </td>
+   <td style="text-align:right;"> 16.355 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.961 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 21.431 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 0.822 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 32.839 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 0.721 </td>
+   <td style="text-align:right;"> 0.990 </td>
+   <td style="text-align:right;"> 39.989 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0.494 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 57.565 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 1309.683 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.985 </td>
+   <td style="text-align:right;"> 2525.434 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.749 </td>
+   <td style="text-align:right;"> 2234.676 </td>
+  </tr>
+</tbody>
+</table>
 
 Based on the preliminary results, you should feel confident enough to
 design experiments and proceed with an analysis of the problem in order
@@ -2398,26 +2687,52 @@ values for the number of sample holders can be used as the levels for
 the sample holders.
 
 
-\begin{table}
-
-\caption{(\#tab:FirstExpFL)First experiment factors and levels.}
-\centering
-\begin{tabular}[t]{lrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Levels} \\
-\cmidrule(l{3pt}r{3pt}){2-3}
-Factor & Low & High\\
-\midrule
-Cell 1 \# units & 1 & 2\\
-Cell 2 \# units & 1 & 2\\
-Cell 3 \# units & 2 & 3\\
-Cell 4 \# units & 2 & 4\\
-Cell 5 \# units & 3 & 5\\
-\addlinespace
-\# holders & 20 & 36\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:FirstExpFL)First experiment factors and levels.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Levels</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Factor </th>
+   <th style="text-align:right;"> Low </th>
+   <th style="text-align:right;"> High </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Cell 1 # units </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 2 # units </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 3 # units </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 4 # units </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 5 # units </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> # holders </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 36 </td>
+  </tr>
+</tbody>
+</table>
 
 This amounts to $2^6$ = 64 experiments; however, since sample holders
 have a cost, it makes sense to first run the half-fraction of the
@@ -2448,112 +2763,828 @@ these conclusions. These tests will not do that here, but rather the
 results will be used to set up another experimental design that can help
 to better examine the system's response.
 
-\begin{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:HalfFraction20)Half-fraction with number of sample holders = 20.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Cell Resource Units </div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Total</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> Time </th>
+   <th style="text-align:right;"> Cost </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.963 </td>
+   <td style="text-align:right;"> 2410.517 </td>
+   <td style="text-align:right;"> 100340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.966 </td>
+   <td style="text-align:right;"> 2333.135 </td>
+   <td style="text-align:right;"> 110340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.980 </td>
+   <td style="text-align:right;"> 1913.694 </td>
+   <td style="text-align:right;"> 112740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.973 </td>
+   <td style="text-align:right;"> 1904.499 </td>
+   <td style="text-align:right;"> 122740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.966 </td>
+   <td style="text-align:right;"> 2373.574 </td>
+   <td style="text-align:right;"> 108840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.962 </td>
+   <td style="text-align:right;"> 2407.404 </td>
+   <td style="text-align:right;"> 118840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.973 </td>
+   <td style="text-align:right;"> 1902.445 </td>
+   <td style="text-align:right;"> 121240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.978 </td>
+   <td style="text-align:right;"> 1865.821 </td>
+   <td style="text-align:right;"> 131240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.951 </td>
+   <td style="text-align:right;"> 2332.412 </td>
+   <td style="text-align:right;"> 119940 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.949 </td>
+   <td style="text-align:right;"> 2365.047 </td>
+   <td style="text-align:right;"> 129940 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.003 </td>
+   <td style="text-align:right;"> 0.985 </td>
+   <td style="text-align:right;"> 496.292 </td>
+   <td style="text-align:right;"> 132340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.025 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 284.205 </td>
+   <td style="text-align:right;"> 142340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.956 </td>
+   <td style="text-align:right;"> 2347.050 </td>
+   <td style="text-align:right;"> 128440 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.956 </td>
+   <td style="text-align:right;"> 2316.931 </td>
+   <td style="text-align:right;"> 138440 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.019 </td>
+   <td style="text-align:right;"> 0.984 </td>
+   <td style="text-align:right;"> 364.081 </td>
+   <td style="text-align:right;"> 140840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.122 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 157.798 </td>
+   <td style="text-align:right;"> 150840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.968 </td>
+   <td style="text-align:right;"> 2394.530 </td>
+   <td style="text-align:right;"> 122740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.965 </td>
+   <td style="text-align:right;"> 2360.751 </td>
+   <td style="text-align:right;"> 132740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.980 </td>
+   <td style="text-align:right;"> 1873.405 </td>
+   <td style="text-align:right;"> 135140 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.982 </td>
+   <td style="text-align:right;"> 1865.020 </td>
+   <td style="text-align:right;"> 145140 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.963 </td>
+   <td style="text-align:right;"> 2391.649 </td>
+   <td style="text-align:right;"> 131240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.965 </td>
+   <td style="text-align:right;"> 2361.708 </td>
+   <td style="text-align:right;"> 141240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.974 </td>
+   <td style="text-align:right;"> 1926.889 </td>
+   <td style="text-align:right;"> 143640 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.980 </td>
+   <td style="text-align:right;"> 1841.387 </td>
+   <td style="text-align:right;"> 153640 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.951 </td>
+   <td style="text-align:right;"> 2387.810 </td>
+   <td style="text-align:right;"> 142340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.955 </td>
+   <td style="text-align:right;"> 2352.933 </td>
+   <td style="text-align:right;"> 152340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.202 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 121.199 </td>
+   <td style="text-align:right;"> 154740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.683 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 43.297 </td>
+   <td style="text-align:right;"> 164740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.954 </td>
+   <td style="text-align:right;"> 2291.880 </td>
+   <td style="text-align:right;"> 150840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.947 </td>
+   <td style="text-align:right;"> 2332.031 </td>
+   <td style="text-align:right;"> 160840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.439 </td>
+   <td style="text-align:right;"> 0.985 </td>
+   <td style="text-align:right;"> 69.218 </td>
+   <td style="text-align:right;"> 163240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.961 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 21.431 </td>
+   <td style="text-align:right;"> 173240 </td>
+  </tr>
+</tbody>
+</table>
 
-\caption{(\#tab:HalfFraction20)Half-fraction with number of sample holders = 20.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rrrrrrrrrr}
-\toprule
-\multicolumn{5}{c}{Cell Resource Units } & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System} & \multicolumn{1}{c}{Total} \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-9} \cmidrule(l{3pt}r{3pt}){10-10}
-1 & 2 & 3 & 4 & 5 & \#Holders & Non-Rush & Rush & Time & Cost\\
-\midrule
-1 & 1 & 2 & 2 & 3 & 20 & 0.000 & 0.963 & 2410.517 & 100340\\
-2 & 1 & 2 & 2 & 3 & 20 & 0.000 & 0.966 & 2333.135 & 110340\\
-1 & 2 & 2 & 2 & 3 & 20 & 0.000 & 0.980 & 1913.694 & 112740\\
-2 & 2 & 2 & 2 & 3 & 20 & 0.000 & 0.973 & 1904.499 & 122740\\
-1 & 1 & 3 & 2 & 3 & 20 & 0.000 & 0.966 & 2373.574 & 108840\\
-\addlinespace
-2 & 1 & 3 & 2 & 3 & 20 & 0.000 & 0.962 & 2407.404 & 118840\\
-1 & 2 & 3 & 2 & 3 & 20 & 0.000 & 0.973 & 1902.445 & 121240\\
-2 & 2 & 3 & 2 & 3 & 20 & 0.000 & 0.978 & 1865.821 & 131240\\
-1 & 1 & 2 & 4 & 3 & 20 & 0.000 & 0.951 & 2332.412 & 119940\\
-2 & 1 & 2 & 4 & 3 & 20 & 0.000 & 0.949 & 2365.047 & 129940\\
-\addlinespace
-1 & 2 & 2 & 4 & 3 & 20 & 0.003 & 0.985 & 496.292 & 132340\\
-2 & 2 & 2 & 4 & 3 & 20 & 0.025 & 0.986 & 284.205 & 142340\\
-1 & 1 & 3 & 4 & 3 & 20 & 0.000 & 0.956 & 2347.050 & 128440\\
-2 & 1 & 3 & 4 & 3 & 20 & 0.000 & 0.956 & 2316.931 & 138440\\
-1 & 2 & 3 & 4 & 3 & 20 & 0.019 & 0.984 & 364.081 & 140840\\
-\addlinespace
-2 & 2 & 3 & 4 & 3 & 20 & 0.122 & 0.987 & 157.798 & 150840\\
-1 & 1 & 2 & 2 & 5 & 20 & 0.000 & 0.968 & 2394.530 & 122740\\
-2 & 1 & 2 & 2 & 5 & 20 & 0.000 & 0.965 & 2360.751 & 132740\\
-1 & 2 & 2 & 2 & 5 & 20 & 0.000 & 0.980 & 1873.405 & 135140\\
-2 & 2 & 2 & 2 & 5 & 20 & 0.000 & 0.982 & 1865.020 & 145140\\
-\addlinespace
-1 & 1 & 3 & 2 & 5 & 20 & 0.000 & 0.963 & 2391.649 & 131240\\
-2 & 1 & 3 & 2 & 5 & 20 & 0.000 & 0.965 & 2361.708 & 141240\\
-1 & 2 & 3 & 2 & 5 & 20 & 0.000 & 0.974 & 1926.889 & 143640\\
-2 & 2 & 3 & 2 & 5 & 20 & 0.000 & 0.980 & 1841.387 & 153640\\
-1 & 1 & 2 & 4 & 5 & 20 & 0.000 & 0.951 & 2387.810 & 142340\\
-\addlinespace
-2 & 1 & 2 & 4 & 5 & 20 & 0.000 & 0.955 & 2352.933 & 152340\\
-1 & 2 & 2 & 4 & 5 & 20 & 0.202 & 0.986 & 121.199 & 154740\\
-2 & 2 & 2 & 4 & 5 & 20 & 0.683 & 0.991 & 43.297 & 164740\\
-1 & 1 & 3 & 4 & 5 & 20 & 0.000 & 0.954 & 2291.880 & 150840\\
-2 & 1 & 3 & 4 & 5 & 20 & 0.000 & 0.947 & 2332.031 & 160840\\
-\addlinespace
-1 & 2 & 3 & 4 & 5 & 20 & 0.439 & 0.985 & 69.218 & 163240\\
-2 & 2 & 3 & 4 & 5 & 20 & 0.961 & 0.991 & 21.431 & 173240\\
-\bottomrule
-\end{tabular}
-\end{table}
 
-
-\begin{table}
-
-\caption{(\#tab:HalfFraction36)Half-fraction with number of sample holders = 36.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rrrrrrrrrr}
-\toprule
-\multicolumn{5}{c}{Cell Resource Units } & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System} & \multicolumn{1}{c}{Total} \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-9} \cmidrule(l{3pt}r{3pt}){10-10}
-1 & 2 & 3 & 4 & 5 & \#Holders & Non-Rush & Rush & Time & Cost\\
-\midrule
-1 & 1 & 2 & 2 & 3 & 36 & 0.000 & 0.776 & 2319.323 & 106532\\
-2 & 1 & 2 & 2 & 3 & 36 & 0.000 & 0.764 & 2260.829 & 116532\\
-1 & 2 & 2 & 2 & 3 & 36 & 0.000 & 0.729 & 1816.568 & 118932\\
-2 & 2 & 2 & 2 & 3 & 36 & 0.000 & 0.714 & 1779.530 & 128932\\
-1 & 1 & 3 & 2 & 3 & 36 & 0.000 & 0.768 & 2238.654 & 115032\\
-\addlinespace
-2 & 1 & 3 & 2 & 3 & 36 & 0.000 & 0.775 & 2243.560 & 125032\\
-1 & 2 & 3 & 2 & 3 & 36 & 0.000 & 0.730 & 1762.579 & 127432\\
-2 & 2 & 3 & 2 & 3 & 36 & 0.000 & 0.717 & 1763.306 & 137432\\
-1 & 1 & 2 & 4 & 3 & 36 & 0.000 & 0.796 & 2244.243 & 126132\\
-2 & 1 & 2 & 4 & 3 & 36 & 0.000 & 0.790 & 2268.549 & 136132\\
-\addlinespace
-1 & 2 & 2 & 4 & 3 & 36 & 0.202 & 0.900 & 111.232 & 138532\\
-2 & 2 & 2 & 4 & 3 & 36 & 0.385 & 0.915 & 72.860 & 148532\\
-1 & 1 & 3 & 4 & 3 & 36 & 0.000 & 0.806 & 2255.190 & 134632\\
-2 & 1 & 3 & 4 & 3 & 36 & 0.000 & 0.795 & 2251.548 & 144632\\
-1 & 2 & 3 & 4 & 3 & 36 & 0.360 & 0.899 & 76.398 & 147032\\
-\addlinespace
-2 & 2 & 3 & 4 & 3 & 36 & 0.405 & 0.911 & 68.676 & 157032\\
-1 & 1 & 2 & 2 & 5 & 36 & 0.000 & 0.771 & 2304.784 & 128932\\
-2 & 1 & 2 & 2 & 5 & 36 & 0.000 & 0.771 & 2250.198 & 138932\\
-1 & 2 & 2 & 2 & 5 & 36 & 0.000 & 0.738 & 1753.819 & 141332\\
-2 & 2 & 2 & 2 & 5 & 36 & 0.000 & 0.717 & 1751.676 & 151332\\
-\addlinespace
-1 & 1 & 3 & 2 & 5 & 36 & 0.000 & 0.780 & 2251.174 & 137432\\
-2 & 1 & 3 & 2 & 5 & 36 & 0.000 & 0.771 & 2252.106 & 147432\\
-1 & 2 & 3 & 2 & 5 & 36 & 0.000 & 0.726 & 1781.024 & 149832\\
-2 & 2 & 3 & 2 & 5 & 36 & 0.000 & 0.716 & 1794.930 & 159832\\
-1 & 1 & 2 & 4 & 5 & 36 & 0.000 & 0.787 & 2243.338 & 148532\\
-\addlinespace
-2 & 1 & 2 & 4 & 5 & 36 & 0.000 & 0.794 & 2243.558 & 158532\\
-1 & 2 & 2 & 4 & 5 & 36 & 0.541 & 0.897 & 54.742 & 160932\\
-2 & 2 & 2 & 4 & 5 & 36 & 0.898 & 0.932 & 28.974 & 170932\\
-1 & 1 & 3 & 4 & 5 & 36 & 0.000 & 0.791 & 2263.484 & 157032\\
-2 & 1 & 3 & 4 & 5 & 36 & 0.000 & 0.799 & 2278.707 & 167032\\
-\addlinespace
-1 & 2 & 3 & 4 & 5 & 36 & 0.604 & 0.884 & 49.457 & 169432\\
-2 & 2 & 3 & 4 & 5 & 36 & 0.994 & 0.983 & 16.588 & 179432\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:HalfFraction36)Half-fraction with number of sample holders = 36.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Cell Resource Units </div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Total</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> Time </th>
+   <th style="text-align:right;"> Cost </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.776 </td>
+   <td style="text-align:right;"> 2319.323 </td>
+   <td style="text-align:right;"> 106532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.764 </td>
+   <td style="text-align:right;"> 2260.829 </td>
+   <td style="text-align:right;"> 116532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.729 </td>
+   <td style="text-align:right;"> 1816.568 </td>
+   <td style="text-align:right;"> 118932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.714 </td>
+   <td style="text-align:right;"> 1779.530 </td>
+   <td style="text-align:right;"> 128932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.768 </td>
+   <td style="text-align:right;"> 2238.654 </td>
+   <td style="text-align:right;"> 115032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.775 </td>
+   <td style="text-align:right;"> 2243.560 </td>
+   <td style="text-align:right;"> 125032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.730 </td>
+   <td style="text-align:right;"> 1762.579 </td>
+   <td style="text-align:right;"> 127432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.717 </td>
+   <td style="text-align:right;"> 1763.306 </td>
+   <td style="text-align:right;"> 137432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.796 </td>
+   <td style="text-align:right;"> 2244.243 </td>
+   <td style="text-align:right;"> 126132 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.790 </td>
+   <td style="text-align:right;"> 2268.549 </td>
+   <td style="text-align:right;"> 136132 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.202 </td>
+   <td style="text-align:right;"> 0.900 </td>
+   <td style="text-align:right;"> 111.232 </td>
+   <td style="text-align:right;"> 138532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.385 </td>
+   <td style="text-align:right;"> 0.915 </td>
+   <td style="text-align:right;"> 72.860 </td>
+   <td style="text-align:right;"> 148532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> 2255.190 </td>
+   <td style="text-align:right;"> 134632 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.795 </td>
+   <td style="text-align:right;"> 2251.548 </td>
+   <td style="text-align:right;"> 144632 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.360 </td>
+   <td style="text-align:right;"> 0.899 </td>
+   <td style="text-align:right;"> 76.398 </td>
+   <td style="text-align:right;"> 147032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.405 </td>
+   <td style="text-align:right;"> 0.911 </td>
+   <td style="text-align:right;"> 68.676 </td>
+   <td style="text-align:right;"> 157032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.771 </td>
+   <td style="text-align:right;"> 2304.784 </td>
+   <td style="text-align:right;"> 128932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.771 </td>
+   <td style="text-align:right;"> 2250.198 </td>
+   <td style="text-align:right;"> 138932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.738 </td>
+   <td style="text-align:right;"> 1753.819 </td>
+   <td style="text-align:right;"> 141332 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.717 </td>
+   <td style="text-align:right;"> 1751.676 </td>
+   <td style="text-align:right;"> 151332 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.780 </td>
+   <td style="text-align:right;"> 2251.174 </td>
+   <td style="text-align:right;"> 137432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.771 </td>
+   <td style="text-align:right;"> 2252.106 </td>
+   <td style="text-align:right;"> 147432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.726 </td>
+   <td style="text-align:right;"> 1781.024 </td>
+   <td style="text-align:right;"> 149832 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.716 </td>
+   <td style="text-align:right;"> 1794.930 </td>
+   <td style="text-align:right;"> 159832 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.787 </td>
+   <td style="text-align:right;"> 2243.338 </td>
+   <td style="text-align:right;"> 148532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.794 </td>
+   <td style="text-align:right;"> 2243.558 </td>
+   <td style="text-align:right;"> 158532 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.541 </td>
+   <td style="text-align:right;"> 0.897 </td>
+   <td style="text-align:right;"> 54.742 </td>
+   <td style="text-align:right;"> 160932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.898 </td>
+   <td style="text-align:right;"> 0.932 </td>
+   <td style="text-align:right;"> 28.974 </td>
+   <td style="text-align:right;"> 170932 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.791 </td>
+   <td style="text-align:right;"> 2263.484 </td>
+   <td style="text-align:right;"> 157032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.799 </td>
+   <td style="text-align:right;"> 2278.707 </td>
+   <td style="text-align:right;"> 167032 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.604 </td>
+   <td style="text-align:right;"> 0.884 </td>
+   <td style="text-align:right;"> 49.457 </td>
+   <td style="text-align:right;"> 169432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 0.994 </td>
+   <td style="text-align:right;"> 0.983 </td>
+   <td style="text-align:right;"> 16.588 </td>
+   <td style="text-align:right;"> 179432 </td>
+  </tr>
+</tbody>
+</table>
 
 Using the initial results in
 Table \@ref(tab:InitialResults)
@@ -2570,57 +3601,262 @@ very likely that cell 4 requires 4 testers to meet the requirements.
 Thus, the search space has been narrowed to either 4 or 5 testers at
 cell 5 and between 20 and 24 holders.
 
-\begin{table}
+<table>
+<caption>(\#tab:SecondExpFL)Second experiment factors and levels.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Levels</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Factor </th>
+   <th style="text-align:right;"> Low </th>
+   <th style="text-align:right;"> High </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Cell 3 # units </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 4 # units </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cell 5 # units </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> # holders </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+</tbody>
+</table>
 
-\caption{(\#tab:SecondExpFL)Second experiment factors and levels.}
-\centering
-\begin{tabular}[t]{lrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Levels} \\
-\cmidrule(l{3pt}r{3pt}){2-3}
-Factor & Low & High\\
-\midrule
-Cell 3 \# units & 2 & 3\\
-Cell 4 \# units & 3 & 4\\
-Cell 5 \# units & 4 & 5\\
-\# holders & 20 & 24\\
-\bottomrule
-\end{tabular}
-\end{table}
 
-
-\begin{table}
-
-\caption{(\#tab:SecondResults)Results for second set of experiments.}
-\centering
-\begin{tabular}[t]{rrrrrrrrrr}
-\toprule
-\multicolumn{5}{c}{Cell Resource Settings } & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System} & \multicolumn{1}{c}{Total} \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-9} \cmidrule(l{3pt}r{3pt}){10-10}
-1 & 2 & 3 & 4 & 5 & \#Holders & Non-Rush & Rush & Time & Cost\\
-\midrule
-2 & 2 & 3 & 4 & 5 & 24 & 0.988 & 0.990 & 16.355 & 174788\\
-2 & 2 & 3 & 4 & 4 & 24 & 0.970 & 0.988 & 19.410 & 163588\\
-2 & 2 & 3 & 4 & 5 & 20 & 0.961 & 0.991 & 21.431 & 173240\\
-2 & 2 & 3 & 4 & 4 & 20 & 0.945 & 0.989 & 25.270 & 162040\\
-2 & 2 & 3 & 3 & 4 & 24 & 0.877 & 0.987 & 30.345 & 153788\\
-\addlinespace
-2 & 2 & 3 & 3 & 5 & 24 & 0.871 & 0.988 & 31.244 & 164988\\
-2 & 2 & 2 & 4 & 5 & 24 & 0.812 & 0.984 & 34.065 & 166288\\
-2 & 2 & 2 & 4 & 4 & 24 & 0.782 & 0.986 & 35.289 & 155088\\
-2 & 2 & 3 & 3 & 5 & 20 & 0.734 & 0.991 & 39.328 & 163440\\
-2 & 2 & 3 & 3 & 4 & 20 & 0.731 & 0.992 & 40.370 & 152240\\
-\addlinespace
-2 & 2 & 2 & 3 & 4 & 24 & 0.687 & 0.987 & 42.891 & 145288\\
-2 & 2 & 2 & 4 & 5 & 20 & 0.683 & 0.991 & 43.297 & 164740\\
-2 & 2 & 2 & 3 & 5 & 24 & 0.656 & 0.980 & 46.049 & 156488\\
-2 & 2 & 2 & 4 & 4 & 20 & 0.627 & 0.989 & 45.708 & 153540\\
-2 & 2 & 2 & 3 & 5 & 20 & 0.561 & 0.987 & 52.710 & 154940\\
-\addlinespace
-2 & 2 & 2 & 3 & 4 & 20 & 0.492 & 0.985 & 59.671 & 143740\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:SecondResults)Results for second set of experiments.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Cell Resource Settings </div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Total</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> Time </th>
+   <th style="text-align:right;"> Cost </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 0.990 </td>
+   <td style="text-align:right;"> 16.355 </td>
+   <td style="text-align:right;"> 174788 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.970 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 19.410 </td>
+   <td style="text-align:right;"> 163588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.961 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 21.431 </td>
+   <td style="text-align:right;"> 173240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.945 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 25.270 </td>
+   <td style="text-align:right;"> 162040 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.877 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 30.345 </td>
+   <td style="text-align:right;"> 153788 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.871 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 31.244 </td>
+   <td style="text-align:right;"> 164988 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.812 </td>
+   <td style="text-align:right;"> 0.984 </td>
+   <td style="text-align:right;"> 34.065 </td>
+   <td style="text-align:right;"> 166288 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.782 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 35.289 </td>
+   <td style="text-align:right;"> 155088 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.734 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 39.328 </td>
+   <td style="text-align:right;"> 163440 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.731 </td>
+   <td style="text-align:right;"> 0.992 </td>
+   <td style="text-align:right;"> 40.370 </td>
+   <td style="text-align:right;"> 152240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.687 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 42.891 </td>
+   <td style="text-align:right;"> 145288 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.683 </td>
+   <td style="text-align:right;"> 0.991 </td>
+   <td style="text-align:right;"> 43.297 </td>
+   <td style="text-align:right;"> 164740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.656 </td>
+   <td style="text-align:right;"> 0.980 </td>
+   <td style="text-align:right;"> 46.049 </td>
+   <td style="text-align:right;"> 156488 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.627 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 45.708 </td>
+   <td style="text-align:right;"> 153540 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.561 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 52.710 </td>
+   <td style="text-align:right;"> 154940 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.492 </td>
+   <td style="text-align:right;"> 0.985 </td>
+   <td style="text-align:right;"> 59.671 </td>
+   <td style="text-align:right;"> 143740 </td>
+  </tr>
+</tbody>
+</table>
 
 To finalize the selection of the best configuration for the current
 situation, ten experimental combinations of cell 5 resource capacity (4,
@@ -2640,39 +3876,169 @@ Based on the results of this section, a solid solution for the problem
 has been determined; however, to give you experience applying OptQuest
 to a problem, let us examine its application to this situation.
 
-\begin{table}
+<table>
+<caption>(\#tab:FinalResults)Results for final set of experiments.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Cell Resource Settings </div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Total</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Scenario </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> Time </th>
+   <th style="text-align:right;"> Cost </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.917 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 26.539 </td>
+   <td style="text-align:right;"> 162040 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 0.942 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 23.273 </td>
+   <td style="text-align:right;"> 162427 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 0.976 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 20.125 </td>
+   <td style="text-align:right;"> 162814 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 0.974 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 19.983 </td>
+   <td style="text-align:right;"> 163201 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.979 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 18.512 </td>
+   <td style="text-align:right;"> 163588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 0.958 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 21.792 </td>
+   <td style="text-align:right;"> 173240 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 0.967 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 19.362 </td>
+   <td style="text-align:right;"> 173627 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 0.984 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 18.022 </td>
+   <td style="text-align:right;"> 174014 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 16.971 </td>
+   <td style="text-align:right;"> 174401 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 0.980 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 16.996 </td>
+   <td style="text-align:right;"> 174788 </td>
+  </tr>
+</tbody>
+</table>
 
-\caption{(\#tab:FinalResults)Results for final set of experiments.}
-\centering
-\begin{tabular}[t]{rrrrrrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Cell Resource Settings } & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System} & \multicolumn{1}{c}{Total} \\
-\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-10} \cmidrule(l{3pt}r{3pt}){11-11}
-Scenario & 1 & 2 & 3 & 4 & 5 & \#Holders & Non-Rush & Rush & Time & Cost\\
-\midrule
-1 & 2 & 2 & 3 & 4 & 4 & 20 & 0.917 & 0.987 & 26.539 & 162040\\
-2 & 2 & 2 & 3 & 4 & 4 & 21 & 0.942 & 0.987 & 23.273 & 162427\\
-3 & 2 & 2 & 3 & 4 & 4 & 22 & 0.976 & 0.989 & 20.125 & 162814\\
-4 & 2 & 2 & 3 & 4 & 4 & 23 & 0.974 & 0.988 & 19.983 & 163201\\
-5 & 2 & 2 & 3 & 4 & 4 & 24 & 0.979 & 0.989 & 18.512 & 163588\\
-\addlinespace
-6 & 2 & 2 & 3 & 4 & 5 & 20 & 0.958 & 0.988 & 21.792 & 173240\\
-7 & 2 & 2 & 3 & 4 & 5 & 21 & 0.967 & 0.987 & 19.362 & 173627\\
-8 & 2 & 2 & 3 & 4 & 5 & 22 & 0.984 & 0.988 & 18.022 & 174014\\
-9 & 2 & 2 & 3 & 4 & 5 & 23 & 0.986 & 0.988 & 16.971 & 174401\\
-10 & 2 & 2 & 3 & 4 & 5 & 24 & 0.980 & 0.987 & 16.996 & 174788\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig20} 
-
-}
-
-\caption{Multiple comparison results for non-rush probability}(\#fig:ch8fig20)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig20.jpg" alt="Multiple comparison results for non-rush probability" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig20)Multiple comparison results for non-rush probability</p>
+</div>
 
 ### Using OptQuest on the Problem {#ch11s2sb4sub2}
 
@@ -2704,14 +4070,10 @@ feasible from the pilot experiments, the optimization can be started
 using the high resource case and the number of sample holders within the
 middle of their range (e.g. 27 sample holders).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig21} 
-
-}
-
-\caption{Defining the objective function in OptQuest}(\#fig:ch8fig21)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig21.jpg" alt="Defining the objective function in OptQuest" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig21)Defining the objective function in OptQuest</p>
+</div>
 
 The simulation optimization was executed over a period of about 6 hours
 (wall clock time) until it was manually stopped after 79 total
@@ -2731,14 +4093,10 @@ solution by more closely examining the final set of "best" solutions.
 Since that has already been done in the previous section, it will not be
 included here.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch8/ch8fig22} 
-
-}
-
-\caption{Results from the OptQuest run}(\#fig:ch8fig22)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig22.jpg" alt="Results from the OptQuest run" width="70%" height="70%" />
+<p class="caption">(\#fig:ch8fig22)Results from the OptQuest run</p>
+</div>
 
 ### Investigating the New Logic Alternative {#ch11s2sb4sub3}
 
@@ -2769,30 +4127,163 @@ statistical comparison should be performed; however, that task will be
 skipped for the sake of brevity.
 
 
-\begin{table}
-
-\caption{(\#tab:NewLogicResults)Results for analyzing the new logic.}
-\centering
-\begin{tabular}[t]{rrrrrrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Cell Resource Settings } & \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Probability} & \multicolumn{1}{c}{System} \\
-\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){9-10} \cmidrule(l{3pt}r{3pt}){11-11}
-Scenario & 1 & 2 & 3 & 4 & 5 & \#Holders & SN & Non-Rush & Rush & Time\\
-\midrule
-1 & 2 & 2 & 3 & 4 & 4 & 20 & 2 & 0.937 & 0.989 & 23.937\\
-2 & 2 & 2 & 3 & 4 & 4 & 21 & 2 & 0.956 & 0.988 & 21.461\\
-3 & 2 & 2 & 3 & 4 & 4 & 22 & 2 & 0.957 & 0.989 & 21.159\\
-4 & 2 & 2 & 3 & 4 & 4 & 23 & 2 & 0.972 & 0.989 & 19.011\\
-5 & 2 & 2 & 3 & 4 & 4 & 24 & 2 & 0.975 & 0.986 & 18.665\\
-\addlinespace
-6 & 2 & 2 & 3 & 4 & 4 & 20 & 3 & 0.926 & 0.989 & 25.305\\
-7 & 2 & 2 & 3 & 4 & 4 & 21 & 3 & 0.948 & 0.988 & 22.449\\
-8 & 2 & 2 & 3 & 4 & 4 & 22 & 3 & 0.968 & 0.989 & 20.536\\
-9 & 2 & 2 & 3 & 4 & 4 & 23 & 3 & 0.983 & 0.988 & 18.591\\
-10 & 2 & 2 & 3 & 4 & 4 & 24 & 3 & 0.986 & 0.987 & 18.170\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:NewLogicResults)Results for analyzing the new logic.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Cell Resource Settings </div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Probability</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Scenario </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> #Holders </th>
+   <th style="text-align:right;"> SN </th>
+   <th style="text-align:right;"> Non-Rush </th>
+   <th style="text-align:right;"> Rush </th>
+   <th style="text-align:right;"> Time </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.937 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 23.937 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.956 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 21.461 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.957 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 21.159 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.972 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 19.011 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.975 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 18.665 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.926 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 25.305 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.948 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 22.449 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.968 </td>
+   <td style="text-align:right;"> 0.989 </td>
+   <td style="text-align:right;"> 20.536 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.983 </td>
+   <td style="text-align:right;"> 0.988 </td>
+   <td style="text-align:right;"> 18.591 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> 0.987 </td>
+   <td style="text-align:right;"> 18.170 </td>
+  </tr>
+</tbody>
+</table>
 
 After all the analysis, the results indicate that SMTesting should
 proceed with the (2, 2, 3, 4, 4) configuration with 22 sample holders
@@ -2854,14 +4345,10 @@ of the resources, queues, and has a number of variables for monitoring
 the system. In addition, user defined views were defined for easily
 viewing the animation and the model logic.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch8/ch8fig23} 
-
-}
-
-\caption{Overview of the simulation animation}(\#fig:ch8fig23)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/ch8fig23.jpg" alt="Overview of the simulation animation" width="80%" height="80%" />
+<p class="caption">(\#fig:ch8fig23)Overview of the simulation animation</p>
+</div>
 
 A written report is also a key requirement of a simulation project.
 [@chung2004simulation] provides some guidelines for the report and a
@@ -3080,72 +4567,57 @@ simulation career.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P1"><strong>(\#exr:ch8P1) </strong></span>Perform a sensitivity analysis
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P1"><strong>(\#exr:ch8P1) </strong></span>Perform a sensitivity analysis
 on the recommendation for the SMTesting contest problem by varying the
 arrival rate for each hour by plus or minus 10\%. In addition, examine
 the effect of decreasing or increasing the time between failures for
 test cells 1, 3, 4, 5 by plus or minus 10\% as well as the mean time for
-repair.
-\EndKnitrBlock{exercise}
+repair.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P2"><strong>(\#exr:ch8P2) </strong></span>What solution should be
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P2"><strong>(\#exr:ch8P2) </strong></span>What solution should be
 recommended if the probability of meeting the contract requirements is
 specified as 95\% for non-rush and rush samples?
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P3"><strong>(\#exr:ch8P3) </strong></span>Revise the model to handle the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P3"><strong>(\#exr:ch8P3) </strong></span>Revise the model to handle the
 independent failure of individual testers at each test cell. Does the
-more detailed modeling change the recommended solution?
-\EndKnitrBlock{exercise}
+more detailed modeling change the recommended solution?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P4"><strong>(\#exr:ch8P4) </strong></span>Revise the model to handle the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P4"><strong>(\#exr:ch8P4) </strong></span>Revise the model to handle the
 situation of re-testing at each test cell. Assume that a re-test occurs
 with a 3\% chance and then test the sensitivity of this assumption.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P5"><strong>(\#exr:ch8P5) </strong></span>How does changing the buffer
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P5"><strong>(\#exr:ch8P5) </strong></span>How does changing the buffer
 capacities for the load/unload area and the test cells affect the
-recommended solution?
-\EndKnitrBlock{exercise}
+recommended solution?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P6"><strong>(\#exr:ch8P6) </strong></span>Develop a model that separates
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P6"><strong>(\#exr:ch8P6) </strong></span>Develop a model that separates
 the load/unload area into two stations, one for loading and one for
 unloading with each station having its own machine. Analyze where to
 place the stations on the conveyor and compare your design to the
-recommended solution for the contest problem.
-\EndKnitrBlock{exercise}
+recommended solution for the contest problem.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P7"><strong>(\#exr:ch8P7) </strong></span>Revise the model so that it uses
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P7"><strong>(\#exr:ch8P7) </strong></span>Revise the model so that it uses
 the BATCH/SEPARATE approach to sample holder and sample interaction
 rather than the PICKUP/DROPOFF approach. Compare the results of your
-model to the results presented in this chapter.
-\EndKnitrBlock{exercise}
+model to the results presented in this chapter.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P8"><strong>(\#exr:ch8P8) </strong></span>This problem analyzes the cost
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P8"><strong>(\#exr:ch8P8) </strong></span>This problem analyzes the cost
 associated with the LOTR, Inc. configurations described in
 Example \@ref(exm:exLOTR) of Section \@ref(ch4:LOTRExample). In particular, the master ring maker cost \$30 per hour whether she is busy or idle. Her time is considered value added.
 The rework craftsman earns \$22 per hour; however, his time is
@@ -3168,18 +4640,15 @@ pair of rings. Simulate configuration 1 and configuration 2 as given in
 Section \@ref(ch4:LOTRExample) and report
 the entity and resource costs for the configurations. Which
 configuration would you recommend?
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P9"><strong>(\#exr:ch8P9) </strong></span>Reconsider Exercise \@ref(exr:ch5P100) of Chapter \@ref(ch5). Suppose that you are interested in checking
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P9"><strong>(\#exr:ch8P9) </strong></span>Reconsider Exercise \@ref(exr:ch5P100) of Chapter \@ref(ch5). Suppose that you are interested in checking
 the sensitivity of a number of configurations and possibly picking the
 best configuration based on the part system time. The factors of
 interest are given in the following table.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   Factor                               Levels
   ------------------------------------ --------------------------------
@@ -3198,10 +4667,8 @@ period of 200 hours.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P10"><strong>(\#exr:ch8P10) </strong></span>Reconsider Exercise \@ref(exr:ch4P240) of Chapter \@ref(ch4). The airport is interested in improving the time spent by the travellers
-in the system by considering the following three alternatives:
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P10"><strong>(\#exr:ch8P10) </strong></span>Reconsider Exercise \@ref(exr:ch4P240) of Chapter \@ref(ch4). The airport is interested in improving the time spent by the travellers
+in the system by considering the following three alternatives:</div>\EndKnitrBlock{exercise}
 
 A
 
@@ -3262,8 +4729,7 @@ indifference parameter of 0 minutes.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch8P20"><strong>(\#exr:ch8P20) </strong></span>In preparation for the vaccination of individuals, a major drug store
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch8P20"><strong>(\#exr:ch8P20) </strong></span>In preparation for the vaccination of individuals, a major drug store
 chain is planning for the setup and operation of temporary vaccination
 clinics. In order to determine an efficient vaccination process, the
 company has decided to use discrete-event simulation modeling to
@@ -3273,8 +4739,7 @@ develop a simulation model that can be used by the company during the
 evaluation process and to recommend base configurations that meet some
 minimum performance requirements in a cost-effective manner. Alternative
 configurations may also be recommended for different operating
-conditions.
-\EndKnitrBlock{exercise}
+conditions.</div>\EndKnitrBlock{exercise}
 
 In general, an overview of the vaccination process is as follows:
 
@@ -3380,23 +4845,15 @@ The design of the clinic should be based on basic service configurations
 involving the tables, chairs, and social distancing requirements. Two
 basic service table configurations are illustrated in Figures \@ref(fig:CovidProject2LineServiceTable) and \@ref(fig:CovidProject1LineServiceTable).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/figCovidProject2LineServiceTable.png" alt="Basic eight-foot table service station with 2 lines" width="50%" height="50%" />
+<p class="caption">(\#fig:CovidProject2LineServiceTable)Basic eight-foot table service station with 2 lines</p>
+</div>
 
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/figCovidProject2LineServiceTable} 
-
-}
-
-\caption{Basic eight-foot table service station with 2 lines}(\#fig:CovidProject2LineServiceTable)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/figCovidProject1LineServiceTable} 
-
-}
-
-\caption{Basic eight-foot table service station with 1 line}(\#fig:CovidProject1LineServiceTable)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/figCovidProject1LineServiceTable.png" alt="Basic eight-foot table service station with 1 line" width="50%" height="50%" />
+<p class="caption">(\#fig:CovidProject1LineServiceTable)Basic eight-foot table service station with 1 line</p>
+</div>
 
 Finally, folding chairs will be used for patients to wait in the
 pre-vaccination area as well as the post-vaccination area. The chairs
@@ -3408,14 +4865,10 @@ post vaccination areas to ensure patient safety, utilization of the
 area, and patient flow. Clearly, a number of different layouts based on
 the total number of chairs is possible.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/figCovidProjectPreVacWaiting} 
-
-}
-
-\caption{Waiting area with 12 folding chairs and 4 seated patients}(\#fig:CovidProjectPreVacWaiting)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/figCovidProjectPreVacWaiting.png" alt="Waiting area with 12 folding chairs and 4 seated patients" width="50%" height="50%" />
+<p class="caption">(\#fig:CovidProjectPreVacWaiting)Waiting area with 12 folding chairs and 4 seated patients</p>
+</div>
 
 The placement and number of nurse/vaccination stations are of paramount
 importance to the operation of the clinic. The basic vaccination station
@@ -3424,14 +4877,10 @@ for the nurse to utilize during the vaccination process. A nurse is
 dedicated to vaccinating the patient in a particular chair. The company
 is willing to consider a number of design configurations.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch8/figCovidProjectVacStation} 
-
-}
-
-\caption{Two nurse/vaccination stations supported by one pharmacist}(\#fig:CovidProjectVacStation)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/figCovidProjectVacStation.png" alt="Two nurse/vaccination stations supported by one pharmacist" width="50%" height="50%" />
+<p class="caption">(\#fig:CovidProjectVacStation)Two nurse/vaccination stations supported by one pharmacist</p>
+</div>
 
 For a given set of nurse/vaccination stations, pharmacists are available
 to support the nurses. The pharmacist is needed to take the vaccine out
@@ -3492,14 +4941,10 @@ pre-vaccination, pre-vaccination seating, vaccination, and post
 vaccination processing. The company would like a more realistic layout
 that accommodates the 600-person throughput scenario.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch8/figCovidProjectSystemOverview} 
-
-}
-
-\caption{Simplified diagram with key clinic elements}(\#fig:CovidProjectSystemOverview)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch8/figCovidProjectSystemOverview.png" alt="Simplified diagram with key clinic elements" width="80%" height="80%" />
+<p class="caption">(\#fig:CovidProjectSystemOverview)Simplified diagram with key clinic elements</p>
+</div>
 
 A major constraint for the design of the clinic is the amount of square
 footage and how it is allocated to ensure that the social distancing

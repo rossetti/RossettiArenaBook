@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-06-10"
+date: "2021-06-15"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:
@@ -14,9 +14,12 @@ biblio-style: apalike
 link-citations: true
 url: 'https\://mdr_arena_book.git-pages.uark.edu/arenabook'
 description: "An open textbook on discrete-event simulation modeling using Arena"
+cover-image: images/OER-BOOKCOVER-Rossetti.jpg
 ---
 
 # Preface {-}
+
+
 
 ![Creative Commons License](figures2/by-nc-nd.png)  
 This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/). 

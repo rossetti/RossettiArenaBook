@@ -79,23 +79,15 @@ convention of this textbook to help you to identify the constructs. We will
 also use these module names when we write text based pseudo-code to
 represent our conceptual understanding of the problem to be modeled.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig1ArenaEnvironment.png" alt="The Arena Environment" width="80%" height="80%" />
+<p class="caption">(\#fig:ArenaEnvironment)The Arena Environment</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig1ArenaEnvironment} 
-
-}
-
-\caption{The Arena Environment}(\#fig:ArenaEnvironment)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig2ArenaToolbarsDocked} 
-
-}
-
-\caption{Arena environment with toolbars docked}(\#fig:ArenaToolbarsDocked)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig2ArenaToolbarsDocked.png" alt="Arena environment with toolbars docked" width="80%" height="80%" />
+<p class="caption">(\#fig:ArenaToolbarsDocked)Arena environment with toolbars docked</p>
+</div>
 
 ## Performing Simple Monte-Carlo Simulations using Arena  {#MCinArena}
 
@@ -211,24 +203,18 @@ curve for a simple function.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:exMC"><strong>(\#exm:exMC) </strong></span>Suppose that we want to estimate
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exMC"><strong>(\#exm:exMC) </strong></span>Suppose that we want to estimate
 the area under $f(x) = x^{\frac{1}{2}}$ over the range from $1$ to $4$
 as illustrated in Figure \@ref(fig:areaEst). That is, we want to evaluate the integral:
 
-$$\theta = \int\limits_{1}^{4} x^{\frac{1}{2}}\mathrm{d}x = \dfrac{14}{3}=4.6\bar{6}$$
-\EndKnitrBlock{example}
+$$\theta = \int\limits_{1}^{4} x^{\frac{1}{2}}\mathrm{d}x = \dfrac{14}{3}=4.6\bar{6}$$</div>\EndKnitrBlock{example}
 
 ***
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{02-Chapter2_files/figure-latex/areaEst-1} 
-
-}
-
-\caption{f(x) over the range from 1 to 4 }(\#fig:areaEst)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="02-Chapter2_files/figure-epub3/areaEst-1.svg" alt="f(x) over the range from 1 to 4 " width="70%" />
+<p class="caption">(\#fig:areaEst)f(x) over the range from 1 to 4 </p>
+</div>
 
 According to the previously presented theory, we need to generate
 $X_i \sim U(1,4)$ and then compute $\bar{Y}$, where
@@ -333,14 +319,10 @@ only pseudo-code! It does not represent a functioning Arena model. However, it
 is useful to conceptualize the program in this fashion so that you can
 more readily implement it within the Arena environment.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig3AreaEstArena} 
-
-}
-
-\caption{Arena model for estimating the area of f(x)= sqrt(x)}(\#fig:AreaEstArena)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig3AreaEstArena.png" alt="Arena model for estimating the area of f(x)= sqrt(x)" width="80%" height="80%" />
+<p class="caption">(\#fig:AreaEstArena)Arena model for estimating the area of f(x)= sqrt(x)</p>
+</div>
 
 Figure \@ref(fig:AreaEstArena) represent the flow chart solution
 within the environment. Notice the CREATE, ASSIGN, RECORD, and DISPOSE
@@ -350,14 +332,10 @@ is created at time 0. The CREATE module will be discussed in further
 detail, later in this chapter. The created entity will move to the next
 module (ASSIGN) and cause its logic to be executed.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig4AreaEstCreate} 
-
-}
-
-\caption{Creating 1 entity with a CREATE module}(\#fig:AreaEstCreate)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig4AreaEstCreate.png" alt="Creating 1 entity with a CREATE module" width="60%" height="60%" />
+<p class="caption">(\#fig:AreaEstCreate)Creating 1 entity with a CREATE module</p>
+</div>
 
 An ASSIGN module permits the assignment of values to various quantities
 of interest in the model. In
@@ -366,14 +344,10 @@ generating the value of $x$, computing $f(x)$, and $y$ are provided.
 Each assignment is executed in the order listed. It is important to get
 the order correct when you write your programs!
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig5AreaEstAssign} 
-
-}
-
-\caption{Making assignments using an ASSIGN module}(\#fig:AreaEstAssign)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig5AreaEstAssign.png" alt="Making assignments using an ASSIGN module" width="60%" height="60%" />
+<p class="caption">(\#fig:AreaEstAssign)Making assignments using an ASSIGN module</p>
+</div>
 
 Figure \@ref(fig:AreaEstRecord) shows the RECORD module for this
 situation. The value of the variable $vY$ is in the Value text field.
@@ -384,23 +358,15 @@ and 95% half-width will be reported automatically on the output reports,
 labeled by the text in the Tally Name field. The results are illustrated
 in Figure \@ref(fig:AreaEstResults).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig6AreaEstRecord.png" alt="Recording statistics on an expression using a RECORD module" width="60%" height="60%" />
+<p class="caption">(\#fig:AreaEstRecord)Recording statistics on an expression using a RECORD module</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig6AreaEstRecord} 
-
-}
-
-\caption{Recording statistics on an expression using a RECORD module}(\#fig:AreaEstRecord)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig7AreaEstResults} 
-
-}
-
-\caption{Results from the area estimation model}(\#fig:AreaEstResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig7AreaEstResults.png" alt="Results from the area estimation model" width="60%" height="60%" />
+<p class="caption">(\#fig:AreaEstResults)Results from the area estimation model</p>
+</div>
 
 In order to run the model, you must indicate the required number of
 observations. Since each run of the model produces 1 entity and thus 1
@@ -414,14 +380,10 @@ replications. Thus, the observations across replications form a random
 sample of the observations. Arena will automatically report the statistics across the
 replications.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig8AreaEstRunSetup} 
-
-}
-
-\caption{Setting up the simulation to replicate 20 observations}(\#fig:AreaEstRunSetup)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig8AreaEstRunSetup.png" alt="Setting up the simulation to replicate 20 observations" width="55%" height="55%" />
+<p class="caption">(\#fig:AreaEstRunSetup)Setting up the simulation to replicate 20 observations</p>
+</div>
 
 Figure \@ref(fig:AreaEstResults) shows the results of estimating the
 area of the curve. Notice that the average value (4.3872) reported for
@@ -514,15 +476,13 @@ expected value for any given $q$. Let's look at an example.
 
 ***
 
-\BeginKnitrBlock{example}
-<span class="example" id="exm:BBQWing"><strong>(\#exm:BBQWing) </strong></span>Sly's convenience store sells BBQ wings for 25 cents a piece. They cost 15
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:BBQWing"><strong>(\#exm:BBQWing) </strong></span>Sly's convenience store sells BBQ wings for 25 cents a piece. They cost 15
 cents a piece to make. The BBQ wings that are not sold on a given day
 are purchased by a local food pantry for 2 cents each. Assuming that Sly
 decides to make 30 wings a day, what is the expected revenue for the
 wings provided that the demand distribution is as show in
 Table \@ref(tab:BBQWingDemand).
-
-\EndKnitrBlock{example}
+</div>\EndKnitrBlock{example}
 
 ***
 
@@ -594,14 +554,10 @@ the demand in order to generate the daily demand. The rest of the
 equations follow directly from the previous discussion. The flow
 chart solution is illustrated in Figure \@ref(fig:NewsVendorArena) and uses the same flow chart modules (CREATE, ASSIGN, RECORD, DISPOSE) as in the last example.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig9NewsVendorArena} 
-
-}
-
-\caption{Model for news vendor problem}(\#fig:NewsVendorArena)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig9NewsVendorArena.png" alt="Model for news vendor problem"  />
+<p class="caption">(\#fig:NewsVendorArena)Model for news vendor problem</p>
+</div>
 
 To implement the variable definitions from the pseudo-code, you need to
 use a VARIABLE module to provide the initial values of the variables.
@@ -613,32 +569,20 @@ Figure \@ref(fig:NewsVendorAssignments). The assignments follow
 exactly the previously illustrate pseudo-code. Running the model for 100
 days results in the output illustrated in Figure \@ref(fig:NewsVendorResults). 
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig10NewsVendorVariables.png" alt="Variable definitions used in the news vendor solution"  />
+<p class="caption">(\#fig:VendorVariables)Variable definitions used in the news vendor solution</p>
+</div>
 
-{\centering \includegraphics{./figures2/ch2/fig10NewsVendorVariables} 
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig11NewsVendorAssignments.png" alt="Assignments used in the news vendor solution"  />
+<p class="caption">(\#fig:NewsVendorAssignments)Assignments used in the news vendor solution</p>
+</div>
 
-}
-
-\caption{Variable definitions used in the news vendor solution}(\#fig:VendorVariables)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig11NewsVendorAssignments} 
-
-}
-
-\caption{Assignments used in the news vendor solution}(\#fig:NewsVendorAssignments)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig12NewsVendorResults} 
-
-}
-
-\caption{Results based on 100 replications of the news vendor model}(\#fig:NewsVendorResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig12NewsVendorResults.png" alt="Results based on 100 replications of the news vendor model"  />
+<p class="caption">(\#fig:NewsVendorResults)Results based on 100 replications of the news vendor model</p>
+</div>
 
 The news vendor model can be found within this Chapter's files as *NewsVendor.doe*.
 
@@ -675,14 +619,10 @@ customers in the bank will increase by one. In other words, an arrival
 of a customer will change the state of the bank. Thus, the arrival of a
 customer can be considered an event.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig13ArrivalProcess} 
-
-}
-
-\caption{Customer arrival process}(\#fig:ArrivalProcess)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig13ArrivalProcess.png" alt="Customer arrival process"  />
+<p class="caption">(\#fig:ArrivalProcess)Customer arrival process</p>
+</div>
 
 ::: {#tab:CustArrivals}
    Customer   Time of arrival   Time between arrival
@@ -758,14 +698,10 @@ service. The times that service completions occur and the times that
 arrivals occur constitute the pertinent events for simulating this
 banking system.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig14ServiceProcess} 
-
-}
-
-\caption{Customer service process}(\#fig:ServiceProcess)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig14ServiceProcess.png" alt="Customer service process"  />
+<p class="caption">(\#fig:ServiceProcess)Customer service process</p>
+</div>
 
 ::: {#tab:CustServiceTimes}
    Customer   Service Time Started   Service Time   Service Time Completed
@@ -788,14 +724,10 @@ be able to generate a sequence of events so that, at the occurrence of
 each event, the appropriate actions are invoked that change the state of
 the system.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig15TimeOrderedProcess} 
-
-}
-
-\caption{Events ordered by time}(\#fig:TimeOrderedProcess)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig15TimeOrderedProcess.png" alt="Events ordered by time"  />
+<p class="caption">(\#fig:TimeOrderedProcess)Events ordered by time</p>
+</div>
 
 In the following table, $c_i$ represents the $i^{th}$ customer and $s_j$ represents the $j^{th}$ teller.
 
@@ -963,21 +895,48 @@ keep track of the state of the system after each event has been
 processed. To make this easier, we will keep track of the system
 variables and the entity attributes within a table as follows.
 
-\begin{table}
-
-\caption{(\#tab:SQBH1)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH1)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table>
 
 In the table, we see that the initial state of the system is empty and
 idle. Since there are no customers in the bank, there are no tabulated
@@ -991,22 +950,63 @@ service is the same as the time of their arrival and that they did not
 spend any time waiting in the queue. Thus, $S_{1} = 3$ and $W_{1} = 0$.
 The table has been updated as follows.
 
-\begin{table}
-
-\caption{(\#tab:SQBH2)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH2)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+</tbody>
+</table>
 
 Because customer 1 arrived to an empty system, they immediately started
 service at time 3. Since we know the service time of the customer,
@@ -1024,71 +1024,278 @@ event time will be the minimum of 7 and 11, which will be the departure
 of the first customer. Thus, our bookkeeping table can be updated as
 follows.
 
-\begin{table}
-
-\caption{(\#tab:SQBH3)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH3)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+</tbody>
+</table>
 
 Since there are no customers in the bank and only the one pending event,
 the next event will be the arrival of customer 2 at time 11. The table
 can be updated as follows.
 
-\begin{table}
-
-\caption{(\#tab:SQBH4)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH4)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+</tbody>
+</table>
 
 Since the pending event set is E(13) = A(3), E(15) = D(2) the next event
 will be the arrival of the third customer at time 13 before the
 departure of the second customer at time 15. We will now have a queue
 form. Updating our bookkeeping table, yields:
 
-\begin{table}
-
-\caption{(\#tab:SQBH5)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-13 & A & 2 & 1 & 1 & 3 & 13 & 4 & 15 & NA & NA & 2 & E(14) = A(4), E(15) = D(2)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH5)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(14) = A(4), E(15) = D(2) </td>
+  </tr>
+</tbody>
+</table>
 
 Notice that in the last table update, we did not update $S_{i}$ and
 $W_{i}$ because customer 3 had to wait in queue and did not start
@@ -1097,54 +1304,260 @@ Reviewing the pending event set, we see that the next event will be the
 arrival of customer 4 at time 14, which yields the following bookkeeping
 table.
 
-\begin{table}
-
-\caption{(\#tab:SQBH6)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-13 & A & 2 & 1 & 1 & 3 & 13 & 4 & 15 & NA & NA & 2 & E(14) = A(4), E(15) = D(2)\\
-\addlinespace
-14 & A & 3 & 1 & 2 & 4 & 14 & 3 & 19 & NA & NA & 5 & E(15) = D(2), E(17) = A(5)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH6)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(14) = A(4), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(15) = D(2), E(17) = A(5) </td>
+  </tr>
+</tbody>
+</table>
 
 Notice that we now have 3 customers in the system, 1 in service and 2
 waiting in the queue. Reviewing the pending event set, we see that
 customer 2 will finally complete service and depart at time 15.
 
-\begin{table}
-
-\caption{(\#tab:SQBH7)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-13 & A & 2 & 1 & 1 & 3 & 13 & 4 & 15 & NA & NA & 2 & E(14) = A(4), E(15) = D(2)\\
-\addlinespace
-14 & A & 3 & 1 & 2 & 4 & 14 & 3 & 19 & NA & NA & 5 & E(15) = D(2), E(17) = A(5)\\
-15 & D & 2 & 1 & 1 & 2 & 11 & 4 & 11 & 15 & 4 & 0 & E(17) = A(5), E(19) = D(3)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH7)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(14) = A(4), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(15) = D(2), E(17) = A(5) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(17) = A(5), E(19) = D(3) </td>
+  </tr>
+</tbody>
+</table>
 
 Because customer 2 completes service at time 15 and customer 3 is
 waiting in the line, we see that customer 3's attributes for $S_{i}$ and
@@ -1154,29 +1567,153 @@ will depart at time 19. The pending events set has been updated
 accordingly and indicates that the next event will be the arrival of
 customer 5 at time 17.
 
-\begin{table}
-
-\caption{(\#tab:SQBH8)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-13 & A & 2 & 1 & 1 & 3 & 13 & 4 & 15 & NA & NA & 2 & E(14) = A(4), E(15) = D(2)\\
-\addlinespace
-14 & A & 3 & 1 & 2 & 4 & 14 & 3 & 19 & NA & NA & 5 & E(15) = D(2), E(17) = A(5)\\
-15 & D & 2 & 1 & 1 & 2 & 11 & 4 & 11 & 15 & 4 & 0 & E(17) = A(5), E(19) = D(3)\\
-17 & A & 3 & 1 & 2 & 5 & 17 & 2 & 22 & NA & NA & 5 & E(19) = D(3), E(19) = A(6)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBH8)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(14) = A(4), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(15) = D(2), E(17) = A(5) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(17) = A(5), E(19) = D(3) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(19) = D(3), E(19) = A(6) </td>
+  </tr>
+</tbody>
+</table>
 
 Now, we have a very interesting situation with the pending event set. We
 have two events that are scheduled to occur at the same time, the
@@ -1198,39 +1735,273 @@ present the completed table. We leave it as an exercise for the reader
 to continue the processing of the customers. The completed bookkeeping table at
 time 31 is as follows.
 
-\begin{table}
-
-\caption{(\#tab:SQBHFull)Bank by hand simulation bookkeeping table.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rlrrrrrrrrrrl}
-\toprule
-\multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
-\midrule
-0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
-3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
-7 & D & 0 & 0 & 0 & 1 & 3 & 4 & 3 & 7 & 4 & 0 & E(11) = A(2)\\
-11 & A & 1 & 1 & 0 & 2 & 11 & 4 & 11 & NA & NA & 0 & E(13) = A(3), E(15) = D(2)\\
-13 & A & 2 & 1 & 1 & 3 & 13 & 4 & 15 & NA & NA & 2 & E(14) = A(4), E(15) = D(2)\\
-\addlinespace
-14 & A & 3 & 1 & 2 & 4 & 14 & 3 & 19 & NA & NA & 5 & E(15) = D(2), E(17) = A(5)\\
-15 & D & 2 & 1 & 1 & 2 & 11 & 4 & 11 & 15 & 4 & 0 & E(17) = A(5), E(19) = D(3)\\
-17 & A & 3 & 1 & 2 & 5 & 17 & 2 & 22 & NA & NA & 5 & E(19) = D(3), E(19) = A(6)\\
-19 & D & 2 & 1 & 1 & 3 & 13 & 4 & 15 & 19 & 6 & 2 & E(19) = A(6)\\
-19 & A & 3 & 1 & 2 & 6 & 19 & 4 & 24 & NA & NA & 5 & E(21) = A(7), E(22) = D(4)\\
-\addlinespace
-21 & A & 4 & 1 & 3 & 7 & 21 & 3 & 28 & NA & NA & 7 & E(22) = D(4), E(24) = D(5)\\
-22 & D & 3 & 1 & 2 & 4 & 14 & 3 & 19 & 22 & 8 & 5 & E(24) = D(5), E(27) = A(8)\\
-24 & D & 2 & 1 & 1 & 5 & 17 & 2 & 22 & 24 & 7 & 5 & E(27) = A(8), E(28) = D(6)\\
-27 & A & 3 & 1 & 2 & 8 & 27 & 2 & 31 & NA & NA & 4 & E(28) = D(6), E(31) = D(7)\\
-28 & D & 2 & 1 & 1 & 6 & 19 & 4 & 24 & 28 & 9 & 5 & E(31) = D(7)\\
-\addlinespace
-31 & D & 1 & 1 & 0 & 7 & 21 & 3 & 28 & 31 & 10 & 7 & E(33) = D(8)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:SQBHFull)Bank by hand simulation bookkeeping table.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">System Variables</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Entity Attributes</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> t </th>
+   <th style="text-align:left;"> E(t) </th>
+   <th style="text-align:right;"> N(t) </th>
+   <th style="text-align:right;"> B(t) </th>
+   <th style="text-align:right;"> Q(t) </th>
+   <th style="text-align:right;"> ID(i) </th>
+   <th style="text-align:right;"> A(i) </th>
+   <th style="text-align:right;"> S(i) </th>
+   <th style="text-align:right;"> ST(i) </th>
+   <th style="text-align:right;"> D(i) </th>
+   <th style="text-align:right;"> T(i) </th>
+   <th style="text-align:right;"> W(i) </th>
+   <th style="text-align:left;"> Pending E(t) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(7) = D(1), E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(11) = A(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(13) = A(3), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(14) = A(4), E(15) = D(2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(15) = D(2), E(17) = A(5) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> E(17) = A(5), E(19) = D(3) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(19) = D(3), E(19) = A(6) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> E(19) = A(6) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(21) = A(7), E(22) = D(4) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> E(22) = D(4), E(24) = D(5) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(24) = D(5), E(27) = A(8) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(27) = A(8), E(28) = D(6) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> E(28) = D(6), E(31) = D(7) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> E(31) = D(7) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> E(33) = D(8) </td>
+  </tr>
+</tbody>
+</table>
 
 Given that we have simulated the bank over the time frame from 0 to 31
 minutes, we can now compute performance statistics for the bank and
@@ -1275,14 +2046,10 @@ function in this particular case. The following figure illustrates the
 step function nature of this type of variable. A realization of the
 values of variable is called a sample path.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{02-Chapter2_files/figure-latex/NCInQ-1} 
-
-}
-
-\caption{Number of customers waiting in queue for the bank simulation}(\#fig:NCInQ)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="02-Chapter2_files/figure-epub3/NCInQ-1.svg" alt="Number of customers waiting in queue for the bank simulation" width="70%" />
+<p class="caption">(\#fig:NCInQ)Number of customers waiting in queue for the bank simulation</p>
+</div>
 That is, for a given (realized) sample path, $Q(t)$ is a function that
 returns the number of customers in the queue at time $t$. The mean value
 theorem of calculus for integrals states that given a function,
@@ -1520,14 +2287,10 @@ also illustrates examples of global variables, such as, number of trucks
 loading, number of trucks unloading, number of busy forklifts, etc. This
 type of information belongs to the whole system.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig16WarehouseSystem} 
-
-}
-
-\caption{Global variables and attributes within a system}(\#fig:WarehouseSystem)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig16WarehouseSystem.png" alt="Global variables and attributes within a system"  />
+<p class="caption">(\#fig:WarehouseSystem)Global variables and attributes within a system</p>
+</div>
 
 Once a basic understanding of the system is accomplished through
 understanding system variables, the entities, and their attributes, you
@@ -1564,14 +2327,10 @@ associated with it. Clicking on this button will reveal help files that
 explain the basic functionality of the module. In addition, the text
 field prompts are explained within the help system.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig17CREATEModule} 
-
-}
-
-\caption{CREATE module dialog box}(\#fig:CreateModuleDialog)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig17CREATEModule.png" alt="CREATE module dialog box" width="55%" height="55%" />
+<p class="caption">(\#fig:CreateModuleDialog)CREATE module dialog box</p>
+</div>
 
 
 According to the help files, the basic dialog entries are as follows:
@@ -1624,14 +2383,10 @@ is given by T1 + T2, and the time of the third arrival is given by T1 +
 T2 + T3. In the figure, the number of arriving entities at each arriving
 event is given by N1, N2, and N3 respectively.
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/fig18TBAPlot} 
-
-}
-
-\caption{Example arrival process}(\#fig:TBAPlot)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig18TBAPlot.png" alt="Example arrival process"  />
+<p class="caption">(\#fig:TBAPlot)Example arrival process</p>
+</div>
 
 A CREATE module works by scheduling a future event to occur according to the specified pattern.  At each occurrence of the event, a new instance of the entity type is created.  The instance is called an entity.  The entity instance then executes additional modules until the entity instance hits a module that blocks its progress.  More details of how this process works is provided in Section \@ref(ch2:howArenaWorks). The CREATE module continues scheduling the next creation event until the maximum number of creation events is reached or the simulation ends. A common creation process is the Poisson arrival process.
 
@@ -1642,14 +2397,10 @@ arrival process? Because the time between arrivals for a Poisson process
 with rate $\lambda$ is exponentially distributed with the mean of the
 exponential distribution being $1/\lambda$.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig19PoissonCreateModule} 
-
-}
-
-\caption{CREATE module for Poisson process}(\#fig:PoissonCreateModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig19PoissonCreateModule.png" alt="CREATE module for Poisson process" width="55%" height="55%" />
+<p class="caption">(\#fig:PoissonCreateModule)CREATE module for Poisson process</p>
+</div>
 
 To specify a compound arrival process, use the "Entities per Arrival"
 field. For example, suppose you have a compound Poisson process
@@ -1676,28 +2427,20 @@ field as 0.0, the *Entities per Arrival* as one, and the type field as
 Constant. The value specified for the constant will be immaterial since
 only one entity will be created.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig20CompoundPoissonCreate} 
-
-}
-
-\caption{CREATE module for compound Poisson process}(\#fig:CompoundPoissonCreateModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig20CompoundPoissonCreate.png" alt="CREATE module for compound Poisson process" width="55%" height="55%" />
+<p class="caption">(\#fig:CompoundPoissonCreateModule)CREATE module for compound Poisson process</p>
+</div>
 
 Each entity that is created allocates memory for the entity. Once the
 entity has traveled through its process within the model, the entity
 should be disposed. The DISPOSE module acts as a "sink" to dispose of
 entities when they are no longer needed within the model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch2/fig21DisposeModule} 
-
-}
-
-\caption{DISPOSE module dialog box}(\#fig:DisposeModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig21DisposeModule.png" alt="DISPOSE module dialog box" width="50%" height="50%" />
+<p class="caption">(\#fig:DisposeModule)DISPOSE module dialog box</p>
+</div>
 
 Figure \@ref(fig:DisposeModule) illustrates the dialog box for the
 DISPOSE module. The DISPOSE module indicates the number of entities that
@@ -1768,23 +2511,15 @@ To declare variables, you use the VARIABLE module found in the Basic
 Process template. The VARIABLE module is a data module and is accessed
 either through the spreadsheet view (Figure \@ref(fig:VariableSheetView)) or through a dialog box (Figure \@ref(fig:VariableDialogBox)).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig22VariableSheetView.png" alt="Data sheet view of VARIABLE data module" width="80%" height="80%" />
+<p class="caption">(\#fig:VariableSheetView)Data sheet view of VARIABLE data module</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig22VariableSheetView} 
-
-}
-
-\caption{Data sheet view of VARIABLE data module}(\#fig:VariableSheetView)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch2/fig23VariableDialogBox} 
-
-}
-
-\caption{Dialog box for defining variables}(\#fig:VariableDialogBox)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig23VariableDialogBox.png" alt="Dialog box for defining variables" width="45%" height="45%" />
+<p class="caption">(\#fig:VariableDialogBox)Dialog box for defining variables</p>
+</div>
 
 Variables can be scalars or can be defined as arrays. The
 arrays can be either 1-dimensional or 2-dimensional. For 1-dimensional
@@ -1797,14 +2532,10 @@ of rows and columns. Array indexes start at 1 and run through the size
 of the specified dimension. A runtime error will occur if the index used
 to access an array is not within the bounds of the array's dimensions.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig24SpreadSheetArray} 
-
-}
-
-\caption{Data sheet view for 2-D variable array}(\#fig:SpreadSheetArray)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig24SpreadSheetArray.png" alt="Data sheet view for 2-D variable array" width="80%" height="80%" />
+<p class="caption">(\#fig:SpreadSheetArray)Data sheet view for 2-D variable array</p>
+</div>
 
 When defining a variable or an array of variables, you may specify the initial value(s). The default initial value for all variables is
 zero. By using the spreadsheet view within the Data window, see
@@ -1942,14 +2673,10 @@ when entities of this type are created. The other fields refer to how
 costs are tabulated for the entity when applying activity based costing
 (ABC) functionality. This functionality is discussed in Section \@ref(app:ArenaMisc:ArenaCosting).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig25EntityModule} 
-
-}
-
-\caption{Entity module dialog box}(\#fig:EntityModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig25EntityModule.png" alt="Entity module dialog box" width="55%" height="55%" />
+<p class="caption">(\#fig:EntityModule)Entity module dialog box</p>
+</div>
 
 The advantage of using the *Entity.Type* attribute is that some automated
 functions become easier, such as collecting statistics by entity type
@@ -2008,14 +2735,10 @@ might want to predict if the number of waiting cars will be large.
 Finally, they might want to estimate the utilization of the pharmacist
 in order to ensure that the pharmacist is not too busy.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig26DriveThruPharmacy} 
-
-}
-
-\caption{Simple drive through pharmacy}(\#fig:DriveThru)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig26DriveThruPharmacy.png" alt="Simple drive through pharmacy" width="80%" height="80%" />
+<p class="caption">(\#fig:DriveThru)Simple drive through pharmacy</p>
+</div>
 
 ### Modeling the System {#ch2:ModelingThePharmacy}
 
@@ -2110,14 +2833,10 @@ people who have little simulation background. Activity diagrams are an
 excellent mechanism to document your conceptual model of the system
 before building the model in .
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig27ActivityDiagram} 
-
-}
-
-\caption{Activity diagram for drive through pharmacy}(\#fig:ActivityDiagram)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig27ActivityDiagram.png" alt="Activity diagram for drive through pharmacy" width="60%" height="60%" />
+<p class="caption">(\#fig:ActivityDiagram)Activity diagram for drive through pharmacy</p>
+</div>
 
 Figure \@ref(fig:ActivityDiagram) shows the activity diagram for the
 pharmacy situation. This diagram was built using Visio software and the
@@ -2182,14 +2901,10 @@ With an activity diagram and pseudo-code such as this available to
 represent a solid conceptual understanding of the system, you can begin
 the model development process.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig28OverviewDriveThruArenaModel} 
-
-}
-
-\caption{Overview of pharmacy model}(\#fig:DriveThruOverview)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig28OverviewDriveThruArenaModel.png" alt="Overview of pharmacy model" width="80%" height="80%" />
+<p class="caption">(\#fig:DriveThruOverview)Overview of pharmacy model</p>
+</div>
 
 ### Pharmacy Model Implementation {#ch2:PM:Implementation}
 
@@ -2224,9 +2939,7 @@ time between arrivals is exponentially distributed with a mean of
 (\#eq:rateConversion)
 \end{equation}
 
-\BeginKnitrBlock{rmdwarning}
-**Do not make the mistake of using the arrival rate within the CREATE module**  The CREATE module uses the time between arrivals.  Convert your arrival rate to the time between arrivals as shown in Equation \@ref(eq:rateConversion).
-\EndKnitrBlock{rmdwarning}
+\BeginKnitrBlock{rmdwarning}<div class="rmdwarning">**Do not make the mistake of using the arrival rate within the CREATE module**  The CREATE module uses the time between arrivals.  Convert your arrival rate to the time between arrivals as shown in Equation \@ref(eq:rateConversion).</div>\EndKnitrBlock{rmdwarning}
 
 Open up the CREATE module (by double clicking on it) and fill it in as
 shown in Figure \@ref(fig:PMCreateModule). The distribution for the "Time Between
@@ -2244,14 +2957,10 @@ been used with the appropriate mean time, where expo(*mean*) is a
 function within that generates random variables according to the
 exponential distribution function with the supplied mean.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig29PMCreateModule} 
-
-}
-
-\caption{Pharmacy model CREATE module}(\#fig:PMCreateModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig29PMCreateModule.png" alt="Pharmacy model CREATE module" width="60%" height="60%" />
+<p class="caption">(\#fig:PMCreateModule)Pharmacy model CREATE module</p>
+</div>
 
 Make sure that you specify the units for time as minutes and be sure to
 press OK; otherwise, your work within the module will be lost. In
@@ -2274,14 +2983,10 @@ Basic Process panel and use the corresponding spreadsheet view to select
 the picture for the entity as shown in
 Figure \@ref(fig:PMEntityModule).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig30PMEntityModule} 
-
-}
-
-\caption{Pharmacy model ENTITY module}(\#fig:PMEntityModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig30PMEntityModule.png" alt="Pharmacy model ENTITY module" width="80%" height="80%" />
+<p class="caption">(\#fig:PMEntityModule)Pharmacy model ENTITY module</p>
+</div>
 
 ### Specifying the Resources {#ch2:PM:Resources}
 
@@ -2291,14 +2996,10 @@ data sheet window (Figure \@ref(fig:PMResourceDM)) should have changed to reflec
 Double-click on the row in the spreadsheet module for the RESOURCE
 module to add a resource to the model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch2/fig31PMResourceDM} 
-
-}
-
-\caption{RESOURCE module in data sheet view}(\#fig:PMResourceDM)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig31PMResourceDM.png" alt="RESOURCE module in data sheet view" width="75%" height="75%" />
+<p class="caption">(\#fig:PMResourceDM)RESOURCE module in data sheet view</p>
+</div>
 
 After the resource row has been added, select the row and right-click.
 This will bring up a context menu. From this context menu, select edit
@@ -2310,14 +3011,10 @@ resource's name is Pharmacist and it has a capacity of one. Now, you
 have to indicate how the customers will use this resource within a
 process.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch2/fig32PMResourceDialog} 
-
-}
-
-\caption{RESOURCE dialog box}(\#fig:PMResourceDB)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig32PMResourceDialog.png" alt="RESOURCE dialog box" width="45%" height="45%" />
+<p class="caption">(\#fig:PMResourceDB)RESOURCE dialog box</p>
+</div>
 
 ### Specify the Process {#ch2:PM:Process}
 
@@ -2354,14 +3051,10 @@ time, will be randomly distributed according to an exponential
 distribution with a mean of 3 minutes. Make sure to change the units
 accordingly. When a PROCESS module uses the (Seize, Delay, Release) option, Arena automatically translates this to individual SEIZE, DELAY, and RELEASE modules, just like outlined in the pseudo-code. These modules (SEIZE, DELAY, RELEASE) are executed individually as the entities experience the process. It is very useful to understand what happens when these modules are executed.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch2/fig34PMProcessModule} 
-
-}
-
-\caption{PROCESS module seize, delay, release option}(\#fig:PMProcessModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig34PMProcessModule.png" alt="PROCESS module seize, delay, release option" width="65%" height="65%" />
+<p class="caption">(\#fig:PMProcessModule)PROCESS module seize, delay, release option</p>
+</div>
 
 When an entity seizes a resource, the number of units available of the resource's capacity is (automatically) checked against the amount of units requested by the entity.  There is a global variable (function) defined for each resource called, NR(`Resource ID`), that returns the number of units of the resource that have been allocated to entity requests.  For example, suppose a resource called, `rBankTeller`, has *capacity*, 3, and one of the 3 units (tellers) has already been allocated to a customer for use. That is, one of the tellers is currently serving a customer. In this case, NR(`rBankTeller`), will have the value 1.  There is also a global variable (function) called MR(`Resource ID`) that holds the number of units of capacity defined for the resource. In this example, MR(`rBankTeller`) has the value 3. In the drive through pharmacy example the value of MR() is 1. Again, MR() holds the current *capacity* of the resource. Obviously, resources can have capacity value of various amounts.  
 
@@ -2380,10 +3073,8 @@ a number. A resource is considered busy if *at least 1 unit* of its
 capacity has been allocated. A resource is considered idle when *all*
 units are idle and the resource is not failed or inactive. The failed and inactive states of resources are discussed in Section \@ref(ch6:AdvResModeling).
 
-\BeginKnitrBlock{rmdnote}
-A common misunderstanding by novice modelers is to think that they must continually check MR(`Resource ID`) - NR(`Resource ID`) to see if the resource is available.  Do not think this way.  The purpose of the SEIZE and RELEASE constructs is to manage the allocation and deallocation of resource units. While there can be legitimate reasons for using the values of NR(`Resource ID`) and MR(`Resource ID`) within a model, you should not make the mistake of polling resources for availability. The resource allocation process is done automatically using SEIZE and RELEASE. If you do not like how the resource units are being allocated, then you should use more advanced concepts as discussed in Chapter \@ref(ch6).
-
-\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdnote}<div class="rmdnote">A common misunderstanding by novice modelers is to think that they must continually check MR(`Resource ID`) - NR(`Resource ID`) to see if the resource is available.  Do not think this way.  The purpose of the SEIZE and RELEASE constructs is to manage the allocation and deallocation of resource units. While there can be legitimate reasons for using the values of NR(`Resource ID`) and MR(`Resource ID`) within a model, you should not make the mistake of polling resources for availability. The resource allocation process is done automatically using SEIZE and RELEASE. If you do not like how the resource units are being allocated, then you should use more advanced concepts as discussed in Chapter \@ref(ch6).
+</div>\EndKnitrBlock{rmdnote}
 
 Now we are ready to specify how to execute the pharmacy model.
 
@@ -2411,14 +3102,10 @@ specifies how long the simulation will run. Notice that the base time
 units were changed to minutes. This ensures that information reported by
 the model is converted to minutes in the output reports.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig35PMRunParameters} 
-
-}
-
-\caption{Run setup replication parameters tab}(\#fig:PMRunParameters)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig35PMRunParameters.png" alt="Run setup replication parameters tab" width="60%" height="60%" />
+<p class="caption">(\#fig:PMRunParameters)Run setup replication parameters tab</p>
+</div>
 
 The fully completed model is available within this chapter's files as file, *PharmacyModel.doe*.  
 
@@ -2431,23 +3118,15 @@ The Start Over button stops the run and starts the simulation again. The
 Stop button causes the simulation to stop. The animation slider causes
 the animation to slow down (to the left) or speed up (to the right).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig36PMRunToolbar.png" alt="Run toolbar" width="50%" height="50%" />
+<p class="caption">(\#fig:PMRunToolbar)Run toolbar</p>
+</div>
 
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch2/fig36PMRunToolbar} 
-
-}
-
-\caption{Run toolbar}(\#fig:PMRunToolbar)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch2/fig37PMBatchRun} 
-
-}
-
-\caption{Batch run no animation option}(\#fig:PMBatchRun)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig37PMBatchRun.png" alt="Batch run no animation option" width="45%" height="45%" />
+<p class="caption">(\#fig:PMBatchRun)Batch run no animation option</p>
+</div>
 
 When you run the model, you will see the animation related to the
 customers waiting in line. Because the length of this run is very long,
@@ -2467,23 +3146,15 @@ After running the model, you will see a dialog (Figure \@ref(fig:PMRunCompletion
 simulation run is completed and that the simulation results are ready.
 Answer yes to open up the report viewer.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig38PMRunCompletion.png" alt="Run completion dialog" width="35%" height="35%" />
+<p class="caption">(\#fig:PMRunCompletion)Run completion dialog</p>
+</div>
 
-{\centering \includegraphics[width=0.35\linewidth,height=0.35\textheight]{./figures2/ch2/fig38PMRunCompletion} 
-
-}
-
-\caption{Run completion dialog}(\#fig:PMRunCompletion)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig39PMResults} 
-
-}
-
-\caption{Results for pharmacy model}(\#fig:PMResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig39PMResults.png" alt="Results for pharmacy model" width="90%" height="90%" />
+<p class="caption">(\#fig:PMResults)Results for pharmacy model</p>
+</div>
 
 In the reports preview area, you can drill down to see the statistics
 that you need. Go ahead and do this so that you have the report window
@@ -2507,14 +3178,10 @@ Figure [1.30](#fig:ch4Files){reference-type="ref"
 reference="fig:ch4Files"}. This file can be read with any text editor
 such as Notepad, see Figure \@ref(fig:PMTextResults).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig41PMTextResults} 
-
-}
-
-\caption{Text file summary results}(\#fig:PMTextResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig41PMTextResults.png" alt="Text file summary results" width="90%" height="90%" />
+<p class="caption">(\#fig:PMTextResults)Text file summary results</p>
+</div>
 
 Also as indicated in Figure \@ref(fig:PMWindowsExplorer), Arena generates additional files when you run the
 model. The *modelname.accdb* file is a Microsoft Access database that
@@ -2523,14 +3190,10 @@ file is generated when the model is checked or run. If you have errors
 or warnings when you check your model, the error file will also show up
 in the directory of your *modelname.doe* file
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig40PMWidowsExplorer} 
-
-}
-
-\caption{Files generated when running Arena}(\#fig:PMWindowsExplorer)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig40PMWidowsExplorer.png" alt="Files generated when running Arena" width="60%" height="60%" />
+<p class="caption">(\#fig:PMWindowsExplorer)Files generated when running Arena</p>
+</div>
 
 This single server waiting line system is a very common situation in
 practice. In fact, this exact situation has been studied mathematically
@@ -2598,14 +3261,10 @@ DECIDE module can take different paths out of the module. The path can
 be chosen based on a condition or set of conditions, or based on a
 probability distribution.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/ch2/fig42PMDecideSymbol} 
-
-}
-
-\caption{DECIDE flowchart symbol and module dialog}(\#fig:PMDecideSymbol)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig42PMDecideSymbol.png" alt="DECIDE flowchart symbol and module dialog" width="40%" height="40%" />
+<p class="caption">(\#fig:PMDecideSymbol)DECIDE flowchart symbol and module dialog</p>
+</div>
 
 To model the situation that an arriving pharmacy customer may decide to
 go to a different pharmacy, we need to use a condition within the DECIDE
@@ -2638,37 +3297,25 @@ those that enter and complete service.
 Figure \@ref(fig:PMDecideModule) shows the use of the `NQ()` function
 to chose the correct path.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig43PMWithDecideOverview.png" alt="Overview of pharmacy model with DECIDE module" width="85%" height="85%" />
+<p class="caption">(\#fig:PMExtensionOverview)Overview of pharmacy model with DECIDE module</p>
+</div>
 
-{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch2/fig43PMWithDecideOverview} 
-
-}
-
-\caption{Overview of pharmacy model with DECIDE module}(\#fig:PMExtensionOverview)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig44PMDecideModule} 
-
-}
-
-\caption{DECIDE module dialog with condition specified}(\#fig:PMDecideModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig44PMDecideModule.png" alt="DECIDE module dialog with condition specified" width="60%" height="60%" />
+<p class="caption">(\#fig:PMDecideModule)DECIDE module dialog with condition specified</p>
+</div>
 
 Running the model using the same conditions as before results less
 waiting and utilization as show in Figure \@ref(fig:PMDecideResults). This is because less customers
 enter the system. In the next chapter, we will learn how to quantify the
 probability of losing customers due to long lines.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig45PMDecideResults} 
-
-}
-
-\caption{Results for pharmacy model with DECIDE module}(\#fig:PMDecideResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig45PMDecideResults.png" alt="Results for pharmacy model with DECIDE module" width="60%" height="60%" />
+<p class="caption">(\#fig:PMDecideResults)Results for pharmacy model with DECIDE module</p>
+</div>
 
 \FloatBarrier
 
@@ -2693,23 +3340,15 @@ pictures that can be used within the model. The available entity
 pictures can be found from the Edit menu as shown in
 Figure \@ref(fig:PMAEntityPictures).  You can select different picture files by navigating to where they are installed within your Arena installation. See Figure \@ref(fig:PMAEntityPictFolder) This may vary by installation.  For example, the picture library can be found at the following location in my installation `C:\Users\Public\Documents\Rockwell Software\Arena\PictureLibraries`.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig46PMAEntityPictures.png" alt="Accessing entity pictures" width="35%" height="35%" />
+<p class="caption">(\#fig:PMAEntityPictures)Accessing entity pictures</p>
+</div>
 
-{\centering \includegraphics[width=0.35\linewidth,height=0.35\textheight]{./figures2/ch2/fig46PMAEntityPictures} 
-
-}
-
-\caption{Accessing entity pictures}(\#fig:PMAEntityPictures)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig47PMAEntityPictFolder} 
-
-}
-
-\caption{Entity pictures folder}(\#fig:PMAEntityPictFolder)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig47PMAEntityPictFolder.png" alt="Entity pictures folder" width="60%" height="60%" />
+<p class="caption">(\#fig:PMAEntityPictFolder)Entity pictures folder</p>
+</div>
 
 Once you have selected Edit $>$ Entity Pictures, you should see the
 entity picture placement dialog as shown in
@@ -2723,14 +3362,10 @@ distribution folder on your hard-drive (see Figure \@ref(fig:PMAEntityPictFolder
 file. When selected as the current library, your entity picture
 placement dialog should look as shown in Figure \@ref(fig:PMAPictPlacement).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig48PMAPicturePlacement} 
-
-}
-
-\caption{Entity picture placement dialog}(\#fig:PMAPictPlacement)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig48PMAPicturePlacement.png" alt="Entity picture placement dialog" width="80%" height="80%" />
+<p class="caption">(\#fig:PMAPictPlacement)Entity picture placement dialog</p>
+</div>
 
 Scroll down in the vehicle library and select the red car, then select
 the "$<<$" button to move the picture to the picture list. Finally, you
@@ -2752,14 +3387,10 @@ of the pharmacy. Essentially, the pharmacy will be represented as a box,
 the drive through lane as a line with the road line pattern, and the
 pass through service window as two lines with 3pt thickness.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig49PMADrawingToolbar} 
-
-}
-
-\caption{Basic drawing toolbar}(\#fig:PMADrawingToolbar)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig49PMADrawingToolbar.png" alt="Basic drawing toolbar" width="80%" height="80%" />
+<p class="caption">(\#fig:PMADrawingToolbar)Basic drawing toolbar</p>
+</div>
 
 Figure \@ref(fig:PMASimpleDrawing) illustrates the background drawing for
 the pharmacy. The drawing editor works like most computer based drawing
@@ -2767,14 +3398,10 @@ editors. You should just drag and drop the items, set the fill options,
 thickness, and line pattern as you go. This portion of this example is
 available in the *PharmacyModelWithAnimationS1.doe* file.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig50PMASimpleDrawing} 
-
-}
-
-\caption{Simple pharmacy drawing within Arena model Window}(\#fig:PMASimpleDrawing)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig50PMASimpleDrawing.png" alt="Simple pharmacy drawing within Arena model Window" width="90%" height="90%" />
+<p class="caption">(\#fig:PMASimpleDrawing)Simple pharmacy drawing within Arena model Window</p>
+</div>
 
 In the next part of the example, you will animate the resource so that
 you can see when the pharmacist is busy or idle, provide a location to
@@ -2857,23 +3484,15 @@ the Get Medicine PROCESS module and place it in the road. Fill in the
 Queue animation dialog as shown in Figure \@ref(fig:PMAQueueAnimation). Once you press OK, the cursor will
 turn in to a cross-hair and allow you to place the animation queue.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig51PMAResourceAnimation.png" alt="Resource animation state picture assignment" width="80%" height="80%" />
+<p class="caption">(\#fig:PMAResourceAnimation)Resource animation state picture assignment</p>
+</div>
 
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig51PMAResourceAnimation} 
-
-}
-
-\caption{Resource animation state picture assignment}(\#fig:PMAResourceAnimation)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch2/fig52PMAQueueAnimation} 
-
-}
-
-\caption{Queue animation dialog}(\#fig:PMAQueueAnimation)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig52PMAQueueAnimation.png" alt="Queue animation dialog" width="50%" height="50%" />
+<p class="caption">(\#fig:PMAQueueAnimation)Queue animation dialog</p>
+</div>
 
 The final piece of animation that you will perform is to show the
 current number of waiting cars within the pharmacy. Select the Variable
@@ -2882,23 +3501,15 @@ Figure \@ref(fig:PMAVariableAnimation). The cursor should turn to
 cross-hairs and you should place the variable animation inside the
 pharmacy as shown in Figure \@ref(fig:PMAFinalAnimation).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig53PMAVariableAnimation.png" alt="Variable animation dialog" width="45%" height="45%" />
+<p class="caption">(\#fig:PMAVariableAnimation)Variable animation dialog</p>
+</div>
 
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch2/fig53PMAVariableAnimation} 
-
-}
-
-\caption{Variable animation dialog}(\#fig:PMAVariableAnimation)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig54PMAFinalAnimation} 
-
-}
-
-\caption{Final animation for pharmacy example}(\#fig:PMAFinalAnimation)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig54PMAFinalAnimation.png" alt="Final animation for pharmacy example" width="90%" height="90%" />
+<p class="caption">(\#fig:PMAFinalAnimation)Final animation for pharmacy example</p>
+</div>
 
 The last thing to do before running the animation will be to turn off
 the animation associated with the flow chart connectors. This will stop
@@ -2906,14 +3517,10 @@ the animation of the customers within the flow chart modules and be less
 of a distraction. The Object menu contains the option to disable/enable
 the animation of the connectors as shown in Figure \@ref(fig:PMADisablingConnector).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/ch2/fig55PMADisableConnectorAnimation} 
-
-}
-
-\caption{Disabling connector animation}(\#fig:PMADisablingConnector)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig55PMADisableConnectorAnimation.png" alt="Disabling connector animation" width="40%" height="40%" />
+<p class="caption">(\#fig:PMADisablingConnector)Disabling connector animation</p>
+</div>
 
 The final version of the animated pharmacy model is available in the
 file, *PharmacyModleWithAnimationS2.doe*. If you run the model with the
@@ -2921,8 +3528,7 @@ animation on, you will see the pharmacist indicated as busy or idle, the
 car currently in service, any cars lined up waiting, and the current
 number of cars waiting as part of the animation.
 
-\BeginKnitrBlock{rmdnote}
-**How can I animate a resource that has capacity \> 1**
+\BeginKnitrBlock{rmdnote}<div class="rmdnote">**How can I animate a resource that has capacity \> 1**
 This question is commonly asked because you want to show each unit of
 the resource being busy. Unfortunately, this isn not easy to do because a
 resource is considered busy if at least 1 unit of its capacity is busy. You
@@ -2937,8 +3543,7 @@ method, then you might just look at using a resource set instead. If you
 want to use a resource animation and show each separately, then you need
 to define a different resource to represent each unit of the overall
 resource, put them in a set and seize/delay/release from the set. Then,
-you can animate each of the individual resources in the standard manner. Please see the Arena file, *ResourceAnimations.doe* that accompanies this chapter's files for an example.
-\EndKnitrBlock{rmdnote}
+you can animate each of the individual resources in the standard manner. Please see the Arena file, *ResourceAnimations.doe* that accompanies this chapter's files for an example.</div>\EndKnitrBlock{rmdnote}
 
 Animation is an important part of the simulation process. It is
 extremely useful for showing to decision makers and experts to explain
@@ -3125,14 +3730,12 @@ entity and not stored globally. Global variables are very useful for communicati
 between entities; however, as in any programming language care must be
 taken to use them correctly.
 
-\BeginKnitrBlock{rmdnote}
-**What is the difference between attributes and variables?**
+\BeginKnitrBlock{rmdnote}<div class="rmdnote">**What is the difference between attributes and variables?**
 The key difference is that a variable is global. A variable
 belongs to the system. Attributes are attached to an entity instance. Variables
 define a place in memory in which data can be stored. Since the memory
 is global to the model, any module or entity can read/write/use the
-value of the variable. Memory allocated to an attribute is stored in the *entity table* with the specific entity instance as discussed in Section \@ref(ch2:EntitiesAttributesVariables). If you have experience with a programming language like Java, then Arena variables are like static class variable, which is shared by all instances of the class.  Arena attributes are like Java fields of the class, which are attached only to the object instances.
-\EndKnitrBlock{rmdnote}
+value of the variable. Memory allocated to an attribute is stored in the *entity table* with the specific entity instance as discussed in Section \@ref(ch2:EntitiesAttributesVariables). If you have experience with a programming language like Java, then Arena variables are like static class variable, which is shared by all instances of the class.  Arena attributes are like Java fields of the class, which are attached only to the object instances.</div>\EndKnitrBlock{rmdnote}
 
 The information in Table \@ref(tab:PresData) also needs to be modeled. Does this
 information belong to the system or to each customer? While the
@@ -3190,14 +3793,10 @@ Given the information concerning the variables, the variables can be
 defined as shown in Figure \@ref(fig:PMEDefiningVariables). For scalar variables, you can tell Arena to automatically report statistics on the time average value of the
 variable. Chapter \@ref(ch3) will more formally define time-average statistics, but for now you can think of them as computing the average value of the variable over time.  The initial values can be easily defined using the spreadsheet view.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig56PMEDefiningVariables} 
-
-}
-
-\caption{Defining the variables}(\#fig:PMEDefiningVariables)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig56PMEDefiningVariables.png" alt="Defining the variables" width="80%" height="80%" />
+<p class="caption">(\#fig:PMEDefiningVariables)Defining the variables</p>
+</div>
 
 Now, you are ready to modify the modules from the previous model within
 the model window. The CREATE module is already in the model. In what
@@ -3221,14 +3820,10 @@ associated with the ASSIGN module. Using the Add button, you can add a
 new assignment to the list of assignments for the module. Add an
 attribute named, `myNP` and assign it the value returned from `DISC(0.5, 1, 0.8, 2, 1.0, 3)`.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig57PMENumPrescriptions} 
-
-}
-
-\caption{Assigning the number of prescriptions}(\#fig:PMENumPrescriptions)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig57PMENumPrescriptions.png" alt="Assigning the number of prescriptions" width="90%" height="90%" />
+<p class="caption">(\#fig:PMENumPrescriptions)Assigning the number of prescriptions</p>
+</div>
 
 The function DISC($cp_1, v_1, cp_2, v_2, \cdots, cp_n, v_n$) will supply
 a random number according to a discrete probability function, where
@@ -3250,23 +3845,15 @@ prescriptions and the total number of prescriptions. As an alternative
 to the dialog view of the ASSIGN module, you can use the spreadsheet
 view as illustrated in Figure \@ref(fig:PMESpreadsheetAssign).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig58PMEExpressionBuilder.png" alt="Using the expression builder" width="65%" height="65%" />
+<p class="caption">(\#fig:PMEExpressionBuilder)Using the expression builder</p>
+</div>
 
-{\centering \includegraphics[width=0.65\linewidth,height=0.65\textheight]{./figures2/ch2/fig58PMEExpressionBuilder} 
-
-}
-
-\caption{Using the expression builder}(\#fig:PMEExpressionBuilder)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig59PMESpreadsheetAssign} 
-
-}
-
-\caption{Data sheet view of ASSIGN module}(\#fig:PMESpreadsheetAssign)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig59PMESpreadsheetAssign.png" alt="Data sheet view of ASSIGN module" width="80%" height="80%" />
+<p class="caption">(\#fig:PMESpreadsheetAssign)Data sheet view of ASSIGN module</p>
+</div>
 
 You should complete your ASSIGN module as shown in
 Figure \@ref(fig:PMESpreadsheetAssign). The data sheet view of
@@ -3321,14 +3908,10 @@ essentially writes each value to the file separated by a space. You
 should review the help file on the FILE module for additional
 information on the other access types.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch2/fig60PMEFileModule} 
-
-}
-
-\caption{The FILE module}(\#fig:PMEFileModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig60PMEFileModule.png" alt="The FILE module" width="50%" height="50%" />
+<p class="caption">(\#fig:PMEFileModule)The FILE module</p>
+</div>
 
 Now, open the READWRITE module and make it look like the READ/WRITE
 module given in Figure \@ref(fig:PMEReadWriteModule). Use the drop down menu to select
@@ -3359,14 +3942,10 @@ or the state of the system, the READ/WRITE module is quite useful for
 reading in parameter values at the beginning of the simulation and for
 writing out statistical values at the end of a simulation. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch2/fig61PMEReadWriteModule} 
-
-}
-
-\caption{The READWRITE module}(\#fig:PMEReadWriteModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig61PMEReadWriteModule.png" alt="The READWRITE module" width="55%" height="55%" />
+<p class="caption">(\#fig:PMEReadWriteModule)The READWRITE module</p>
+</div>
 
 After writing out the values to the file, the customer entity proceeds
 to the PROCESS module. Because the mean of the service time distribution
@@ -3380,14 +3959,10 @@ the `vServiceMean` 1-D variable to select the appropriate mean. Since
 has limited data structures, the ability to use arrays in this manner is
 quite common.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig62PMEChangedProcess} 
-
-}
-
-\caption{Changed PROCESS module}(\#fig:PMEChangedProcess)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig62PMEChangedProcess.png" alt="Changed PROCESS module" width="60%" height="60%" />
+<p class="caption">(\#fig:PMEChangedProcess)Changed PROCESS module</p>
+</div>
 
 Now, that the customer has received service, you can update the
 variables that keep track of the number of prescriptions in the system
@@ -3403,14 +3978,10 @@ the designated type is leaving. In preparation for writing the departing
 customer's information to the file, you should set the variable,
 `vEventType`, to 2 to designate a departure.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig63PMEUpdatingVariables} 
-
-}
-
-\caption{Updating variables after service}(\#fig:PMEUpdatingVariables)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig63PMEUpdatingVariables.png" alt="Updating variables after service" width="80%" height="80%" />
+<p class="caption">(\#fig:PMEUpdatingVariables)Updating variables after service</p>
+</div>
 
 \FloatBarrier
 
@@ -3449,14 +4020,10 @@ could also have been used by supplying the `myArriveTime` attribute. You
 should explore and try out this option to see that the two options
 produce the same results.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig64PMERecordModule} 
-
-}
-
-\caption{Using the RECORD module to capture system time}(\#fig:PMERecordModule)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig64PMERecordModule.png" alt="Using the RECORD module to capture system time" width="60%" height="60%" />
+<p class="caption">(\#fig:PMERecordModule)Using the RECORD module to capture system time</p>
+</div>
 
 The final model change is to include another READWRITE module to write
 out the information about the departing customer. The READWRITE module
@@ -3464,14 +4031,10 @@ also has a spreadsheet view for assigning the information that is to be
 read in or written out. Figure \@ref(fig:PMEReadWriteDeparting) shows the spreadsheet view for
 the departing customer's READWRITE module.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig65PMEReadWriteDeparting} 
-
-}
-
-\caption{READWRITE module for departing customers}(\#fig:PMEReadWriteDeparting)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig65PMEReadWriteDeparting.png" alt="READWRITE module for departing customers" width="80%" height="80%" />
+<p class="caption">(\#fig:PMEReadWriteDeparting)READWRITE module for departing customers</p>
+</div>
 
 The module is set to first write out the simulation time via the
 variable `TNOW`, then the type of event, `vEventType`, which was set to 2
@@ -3489,14 +4052,10 @@ If the toolbar is not showing in your Environment, then you can
 right-click in the toolbar area and make sure that the Animate option is
 checked as shown in Figure \@ref(fig:PMEAnimateToolbar).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig66PMEAnimateToolbar} 
-
-}
-
-\caption{The Animate toolbar}(\#fig:PMEAnimateToolbar)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig66PMEAnimateToolbar.png" alt="The Animate toolbar" width="60%" height="60%" />
+<p class="caption">(\#fig:PMEAnimateToolbar)The Animate toolbar</p>
+</div>
 
 You will use the Animate Variables option of the animate toolbar to
 display the current number of prescriptions in the system. Click on the
@@ -3513,23 +4072,15 @@ something that looks like Figure \@ref(fig:PMEAnimatingPrescriptions). During th
 this area will display the variable `vNumPrescriptions` as it changes
 with respect to time.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig67PMEAnimateVariable.png" alt="Animate variable dialog" width="45%" height="45%" />
+<p class="caption">(\#fig:PMEAnimateVariable)Animate variable dialog</p>
+</div>
 
-{\centering \includegraphics[width=0.45\linewidth,height=0.45\textheight]{./figures2/ch2/fig67PMEAnimateVariable} 
-
-}
-
-\caption{Animate variable dialog}(\#fig:PMEAnimateVariable)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.5\textheight]{./figures2/ch2/fig68PMEAnimatingPrescriptions} 
-
-}
-
-\caption{Animation of the prescriptions}(\#fig:PMEAnimatingPrescriptions)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig68PMEAnimatingPrescriptions.png" alt="Animation of the prescriptions" width="50%" height="50%" />
+<p class="caption">(\#fig:PMEAnimatingPrescriptions)Animation of the prescriptions</p>
+</div>
 
 ### Running the Model {#ch2:AttVariablesIO:RunModel}
 
@@ -3539,23 +4090,15 @@ module must be set to 30. This will ensure that only 30 customers are
 created by the CREATE module. Second, the Run Setup $>$ Replication
 Parameters dialog needs to indicate an infinite replication length.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig69PMECreating30Customers.png" alt="Creating only 30 customers" width="60%" height="60%" />
+<p class="caption">(\#fig:PMECreating30Customers)Creating only 30 customers</p>
+</div>
 
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig69PMECreating30Customers} 
-
-}
-
-\caption{Creating only 30 customers}(\#fig:PMECreating30Customers)
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch2/fig70PMENoReplications} 
-
-}
-
-\caption{Run setup with no replication length}(\#fig:PMENoReplications)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig70PMENoReplications.png" alt="Run setup with no replication length" width="60%" height="60%" />
+<p class="caption">(\#fig:PMENoReplications)Run setup with no replication length</p>
+</div>
 
 These two changes (shown in Figure\@ref(fig:PMECreating30Customers) and
 Figure\@ref(fig:PMENoReplications)) ensure that the simulation will stop
@@ -3578,14 +4121,10 @@ clicking on the User Specified area of the report you will see the
 statistics collected for the RECORD module and the VARIABLE module that
 was specified when constructing the model.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch2/fig71PMESysTimeResults} 
-
-}
-
-\caption{System time output report}(\#fig:PMESysTimeResults)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig71PMESysTimeResults.png" alt="System time output report" width="90%" height="90%" />
+<p class="caption">(\#fig:PMESysTimeResults)System time output report</p>
+</div>
 
 Figure \@ref(fig:PMESysTimeResults) indicates that the average system time of
 the 30 customers that departed the system was about 7.1096. Since the
@@ -3733,14 +4272,10 @@ Delayed, Condition Delayed, and Dormant), or be destroyed (DISPOSE). Any
 of the three delay states (Time Delayed, Condition Delayed, and Dormant)
 may transition to the Ready state.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch2/fig72EntityStates} 
-
-}
-
-\caption{Illustration of entity state transitions}(\#fig:EntityStateTransitions)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/fig72EntityStates.png" alt="Illustration of entity state transitions" width="80%" height="80%" />
+<p class="caption">(\#fig:EntityStateTransitions)Illustration of entity state transitions</p>
+</div>
 
 \FloatBarrier
 
@@ -3952,17 +4487,13 @@ The next chapter will dive deeper into the statistical aspects associated with s
 ## Exercises
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P1"><strong>(\#exr:ch2P1) </strong></span>*True* or *False*: The simulation clock for a discrete event dynamic
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P1"><strong>(\#exr:ch2P1) </strong></span>*True* or *False*: The simulation clock for a discrete event dynamic
 stochastic model jumps in equal increments of time in the defined time
-units. For example, 1 second, 2 seconds, 3 seconds, etc.
-\EndKnitrBlock{exercise}
+units. For example, 1 second, 2 seconds, 3 seconds, etc.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P2"><strong>(\#exr:ch2P2) </strong></span>
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P2"><strong>(\#exr:ch2P2) </strong></span></div>\EndKnitrBlock{exercise}
 a. The $\underline{\hspace{3cm}}$ of a system is defined to be that
 collection of variables necessary to describe the system at any time,
 relative to the objectives of study.
@@ -3975,10 +4506,8 @@ data values.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P3"><strong>(\#exr:ch2P3) </strong></span>Provide the missing concept or definition concerning an activity
-diagram.
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P3"><strong>(\#exr:ch2P3) </strong></span>Provide the missing concept or definition concerning an activity
+diagram.</div>\EndKnitrBlock{exercise}
 
   Concept      Definition
   ------------ ----------------------------------------------------------
@@ -3990,42 +4519,35 @@ diagram.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P4"><strong>(\#exr:ch2P4) </strong></span>The service
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P4"><strong>(\#exr:ch2P4) </strong></span>The service
 times for a automated storage and retrieval system has a shifted
 exponential distribution. It is known that it takes a minimum of 15
 seconds for any retrieval. The rate parameter of the exponential distribution
 is $\lambda = 45$ retrievals per second. Setup a model that will generate 20 observations of
 the retrieval times. Report the minimum, maximum, sample average, and 95\%
-confidence interval half-width of the observations.
-\EndKnitrBlock{exercise}
+confidence interval half-width of the observations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P5"><strong>(\#exr:ch2P5) </strong></span>The time to failure for a computer printer fan has a Weibull
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P5"><strong>(\#exr:ch2P5) </strong></span>The time to failure for a computer printer fan has a Weibull
 distribution with shape parameter $\alpha = 2$ and scale parameter
 $\beta = 3$. Setup a model that will generate 50 observations of the
 failure times. Report the minimum, maximum, sample average, and 95\%
-confidence interval half-width of the observations.
-\EndKnitrBlock{exercise}
+confidence interval half-width of the observations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P6"><strong>(\#exr:ch2P6) </strong></span>The time to failure for a computer
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P6"><strong>(\#exr:ch2P6) </strong></span>The time to failure for a computer
 printer fan has a Weibull distribution with shape parameter $\alpha = 2$
 and scale parameter $\beta = 3$. Testing has indicated that the
 distribution is limited to the range from 1.5 to 4.5. Set up a model to
 generate 100 observations from this truncated distribution. Report the
 minimum, maximum, sample average, and 95\% confidence interval half-width
-of the observations.
-\EndKnitrBlock{exercise}
+of the observations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P7"><strong>(\#exr:ch2P7) </strong></span>The
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P7"><strong>(\#exr:ch2P7) </strong></span>The
 interest rate for a capital project is unknown. An accountant has
 estimated that the minimum interest rate will between 2\% and 5\% within
 the next year. The accountant believes that any interest rate in this
@@ -4033,13 +4555,11 @@ range is equally likely. You are tasked with generating interest rates
 for a cash flow analysis of the project. Set up a model to generate 100
 observations of the interest rate values for the capital project
 analysis. Report the minimum, maximum, sample average, and 95\%
-confidence interval half-width of the observations.
-\EndKnitrBlock{exercise}
+confidence interval half-width of the observations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P8"><strong>(\#exr:ch2P8) </strong></span>Develop a model to generate 30 observations from the following probability density
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P8"><strong>(\#exr:ch2P8) </strong></span>Develop a model to generate 30 observations from the following probability density
 function:
 
 $$
@@ -4049,13 +4569,11 @@ f(x) =
      0 & \text{otherwise} \\
   \end{cases}
 $$ 
-Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.
-\EndKnitrBlock{exercise}
+Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P9"><strong>(\#exr:ch2P9) </strong></span>Suppose that the service time for a patient consists of two distributions. There
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P9"><strong>(\#exr:ch2P9) </strong></span>Suppose that the service time for a patient consists of two distributions. There
 is a 25% chance that the service time is uniformly distributed with
 minimum of 20 minutes and a maximum of 25 minutes, and a 75\% chance that
 the time is distributed according to a Weibull distribution with shape
@@ -4065,13 +4583,11 @@ Setup a model to generate 100 observations of the service time. Compute
 the theoretical expected value of the distribution. Estimate the expected
 value of the distribution and compute a 95\% confidence interval on the
 expected value. Did your confidence interval contain the theoretical
-expected value of the distribution?
-\EndKnitrBlock{exercise}
+expected value of the distribution?</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P10"><strong>(\#exr:ch2P10) </strong></span>Suppose that $X$ is
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P10"><strong>(\#exr:ch2P10) </strong></span>Suppose that $X$ is
 a random variable with a $N(\mu = 2, \sigma = 1.5)$ normal distribution.
 Generate 100 observations of $X$ using a simulation model.
 
@@ -4080,28 +4596,23 @@ Estimate the mean from your observations. Report a 95\% confidence interval for 
 Estimate the variance from your observations. Report a 95\% confidence interval for
 your point estimate.
 
-Estimate the $P(X>3)$ from your observations. Report a 95\% confidence interval for your point estimate.
-\EndKnitrBlock{exercise}
+Estimate the $P(X>3)$ from your observations. Report a 95\% confidence interval for your point estimate.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P11"><strong>(\#exr:ch2P11) </strong></span>Samples of 20 parts
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P11"><strong>(\#exr:ch2P11) </strong></span>Samples of 20 parts
 from a metal grinding process are selected every hour. Typically 2\% of
 the parts need rework. Let $X$ denote the number of parts in the sample
 of 20 that require rework. A process problem is suspected if $X$ exceeds
 its mean by more than 3 standard deviations. Simulate 30
 hours of the process, i.e. 30 samples of size 20, and estimate the
 chance that $X$ exceeds its expected value by more than 3 standard
-deviations.
-\EndKnitrBlock{exercise}
+deviations.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P12"><strong>(\#exr:ch2P12) </strong></span>Consider the following discrete distribution of the random variable $X$ whose
-probability mass function is $p(x)$. Setup a model to generate 30 observations of the random variable $X$. Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P12"><strong>(\#exr:ch2P12) </strong></span>Consider the following discrete distribution of the random variable $X$ whose
+probability mass function is $p(x)$. Setup a model to generate 30 observations of the random variable $X$. Report the minimum, maximum, sample average, and 95\% confidence interval half-width of the observations.</div>\EndKnitrBlock{exercise}
 
     $x$      0     1     2     3     4
   -------- ----- ----- ----- ----- -----
@@ -4109,12 +4620,10 @@ probability mass function is $p(x)$. Setup a model to generate 30 observations o
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P13"><strong>(\#exr:ch2P13) </strong></span>The demand for parts
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P13"><strong>(\#exr:ch2P13) </strong></span>The demand for parts
 at a repair bench per day can be described by the following discrete
 probability mass function. Setup a model to generate 30 observations of the demand. Report the minimum, maximum, sample average, and 95\% confidence interval half-width
-of the observations.
-\EndKnitrBlock{exercise}
+of the observations.</div>\EndKnitrBlock{exercise}
 
      Demand       0     1     2
   ------------- ----- ----- -----
@@ -4122,37 +4631,30 @@ of the observations.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P14"><strong>(\#exr:ch2P14) </strong></span>Using and the Monte Carlo method estimate the following integral with 95\% confidence
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P14"><strong>(\#exr:ch2P14) </strong></span>Using and the Monte Carlo method estimate the following integral with 95\% confidence
 to within $\pm 0.01$.
 
-$$\int\limits_{1}^{4} \left( \sqrt{x} + \frac{1}{2\sqrt{x}}\right) \mathrm{d}x$$
-\EndKnitrBlock{exercise}
+$$\int\limits_{1}^{4} \left( \sqrt{x} + \frac{1}{2\sqrt{x}}\right) \mathrm{d}x$$</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P15"><strong>(\#exr:ch2P15) </strong></span>Using and the Monte Carlo method estimate the following integral with 99\% confidence
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P15"><strong>(\#exr:ch2P15) </strong></span>Using and the Monte Carlo method estimate the following integral with 99\% confidence
 to within $\pm 0.01$.
 
 $$\int\limits_{0}^{\pi} \left( \sin (x) - 8x^{2}\right) \mathrm{d}x$$
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P16"><strong>(\#exr:ch2P16) </strong></span>Using and the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P16"><strong>(\#exr:ch2P16) </strong></span>Using and the
 Monte Carlo method estimate the following integral with 99\% confidence
 to within $\pm 0.01$.
 
 $$\theta = \int\limits_{0}^{1} \int\limits_{0}^{1} \left( 4x^{2}y + y^{2}\right) \mathrm{d}x \mathrm{d}y$$
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P17"><strong>(\#exr:ch2P17) </strong></span>A firm is trying to decide whether or not it should purchase a new scale
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P17"><strong>(\#exr:ch2P17) </strong></span>A firm is trying to decide whether or not it should purchase a new scale
 to check a package filling line in the plant. The scale would allow for
 better control over the filling operation and result in less
 overfilling. It is known for certain that the scale costs \$800
@@ -4164,8 +4666,7 @@ of \$50. The salvage value has been estimated to be uniformly
 distributed between \$90 and \$100. The useful life of the scale varies
 according to the amount of usage of the scale. The manufacturing has
 estimated that the useful life can vary between 4 to 7 years with the
-chances given in the following table.
-\EndKnitrBlock{exercise}
+chances given in the following table.</div>\EndKnitrBlock{exercise}
 
     years      4     5     6     7
   ---------- ----- ----- ----- -----
@@ -4185,12 +4686,10 @@ present value is within $\pm$ 10 dollars. Develop a model for this
 situation.
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P18"><strong>(\#exr:ch2P18) </strong></span>A firm is trying to decide whether or not to invest in two proposals A
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P18"><strong>(\#exr:ch2P18) </strong></span>A firm is trying to decide whether or not to invest in two proposals A
 and B that have the net cash flows shown in the following table, where
 $N(\mu, \sigma)$ represents that the cash flow value comes from a normal
-distribution with the provided mean and standard deviation.
-\EndKnitrBlock{exercise}
+distribution with the provided mean and standard deviation.</div>\EndKnitrBlock{exercise}
 
    End of Year         0              1              2              3              4
   ------------- --------------- -------------- -------------- -------------- --------------
@@ -4213,8 +4712,7 @@ Determine the number of samples needed to be 95\% confidence that you
 have estimated the $P[PW(A) > PW(B)]$ to within $\pm$ 0.10.
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P19"><strong>(\#exr:ch2P19) </strong></span>A U-shaped component is to be formed from
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P19"><strong>(\#exr:ch2P19) </strong></span>A U-shaped component is to be formed from
 the three parts A, B, and C. The picture is shown in the figure below.
 The length of A is lognormally distributed with a mean of 20 millimeters
 and a standard deviation of 0.2 millimeter. The thickness of parts B and
@@ -4224,34 +4722,23 @@ maximum of 5.02 millimeters. Assume all dimensions are independent.
 Develop a model to estimate the probability that the gap $D$ is less
 than 10.1 millimeters with 95\% confidence to within plus or minus 0.01
 millimeters.
+</div>\EndKnitrBlock{exercise}
 
-\EndKnitrBlock{exercise}
-
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/exrUShapedComponentProblem} 
-
-}
-
-\caption{U-Shaped Component}(\#fig:UShappedComponent)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/exrUShapedComponentProblem.png" alt="U-Shaped Component"  />
+<p class="caption">(\#fig:UShappedComponent)U-Shaped Component</p>
+</div>
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P20"><strong>(\#exr:ch2P20) </strong></span>Shipments can be transported by rail or trucks between New York and Los
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P20"><strong>(\#exr:ch2P20) </strong></span>Shipments can be transported by rail or trucks between New York and Los
 Angeles. Both modes of transport go through the city of St. Louis. The
 mean travel time and standard deviations between the major cities for
-each mode of transportation are shown in the following figure.
-\EndKnitrBlock{exercise}
+each mode of transportation are shown in the following figure.</div>\EndKnitrBlock{exercise}
 
-\begin{figure}
-
-{\centering \includegraphics{./figures2/ch2/exrTruckProblem} 
-
-}
-
-\caption{Truck Paths}(\#fig:TruckPaths)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="./figures2/ch2/exrTruckProblem.png" alt="Truck Paths"  />
+<p class="caption">(\#fig:TruckPaths)Truck Paths</p>
+</div>
 
 Assume that the travel times (in either direction) are lognormally
 distributed as shown in the figure. For example, the time from NY to St.
@@ -4278,15 +4765,13 @@ shortest.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P21"><strong>(\#exr:ch2P21) </strong></span>A firm produces YBox
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P21"><strong>(\#exr:ch2P21) </strong></span>A firm produces YBox
 gaming stations for the consumer market. Their profit function is:
 $$\text{Profit} = (\text{unit price} - \text{unit cost})\times(\text{quantity sold}) - \text{fixed costs}$$
 
 Suppose that the unit price is \$200 per gaming station, and that the
 other variables have the following probability distributions:
-  
-\EndKnitrBlock{exercise}
+  </div>\EndKnitrBlock{exercise}
 
      Unit Cost      80      90      100    110
   --------------- ------- ------- ------- ------
@@ -4305,8 +4790,7 @@ will be positive.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P22"><strong>(\#exr:ch2P22) </strong></span>T. Wilson operates a sports magazine stand before each game. He can buy
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P22"><strong>(\#exr:ch2P22) </strong></span>T. Wilson operates a sports magazine stand before each game. He can buy
 each magazine for 33 cents and can sell each magazine for 50 cents.
 Magazines not sold at the end of the game are sold for scrap for 5 cents
 each. Magazines can only be purchased in bundles of 10. Thus, he can buy
@@ -4327,8 +4811,7 @@ opponent, and whether or not there are other special events planned for
 the game day weekend. There are three types of game days demand: high,
 medium, low. The type of day has a probability distribution associated
 with it.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
    Type of Day   High   Medium   Low
   ------------- ------ -------- ------
@@ -4361,8 +4844,7 @@ estimate the average profit based on 100 observations.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P23"><strong>(\#exr:ch2P23) </strong></span>The time for an automated storage and retrieval system in a warehouse to
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P23"><strong>(\#exr:ch2P23) </strong></span>The time for an automated storage and retrieval system in a warehouse to
 locate a part consists of three movements. Let $X$ be the time to travel
 to the correct aisle. Let $Y$ be the time to travel to the correct
 location along the aisle. And let $Z$ be the time to travel up to the
@@ -4379,13 +4861,11 @@ Develop a model that can estimate the average total time that it takes
 to locate a part and can estimate the probability that the time to
 locate a part exceeds 60 seconds. Base your analysis on 1000
 observations.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P24"><strong>(\#exr:ch2P24) </strong></span>Lead-time demand may occur in an inventory system when the lead-time is other than
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P24"><strong>(\#exr:ch2P24) </strong></span>Lead-time demand may occur in an inventory system when the lead-time is other than
 instantaneous. The lead-time is the time from the placement of an order
 until the order is received. The lead-time is a random variable. During
 the lead-time, demand also occurs at random. Lead-time demand is thus a
@@ -4397,8 +4877,7 @@ that occur during the lead-time to get many realizations of the random
 variable LDT. Notice that LDT is the *convolution* of a random number of
 random demands. Suppose that the daily demand for an item is given by
 the following probability mass function:
-  
-\EndKnitrBlock{exercise}
+  </div>\EndKnitrBlock{exercise}
 
    Daily Demand (items)    4      5      6      7      8
   ---------------------- ------ ------ ------ ------ ------
@@ -4420,19 +4899,16 @@ observations. Estimate the chance that LDT is greater than or equal to
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P25"><strong>(\#exr:ch2P25) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P25"><strong>(\#exr:ch2P25) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
 where $\chi_k^2$ is a chi-squared random variable with $k$ degrees of
 freedom. Setup a model to generate 50 $\chi_5^2$ random variates.
 Report the minimum, maximum, sample average, and 95\% confidence interval
 half-width of the observations.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P26"><strong>(\#exr:ch2P26) </strong></span>Setup a model that
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P26"><strong>(\#exr:ch2P26) </strong></span>Setup a model that
 will generate 30 observations from the following probability density
 function using the Acceptance-Rejection algorithm for generating random
 variates.
@@ -4442,13 +4918,11 @@ $$f(x) =
      \dfrac{3x^2}{2} & -1 \leq x \leq 1\\
      0 & \text{otherwise} \\
   \end{cases}$$
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P27"><strong>(\#exr:ch2P27) </strong></span>This procedure is due to [@box1958note]. Let $U_1$ and $U_2$ be two independent uniform (0,1) random variables and define:
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P27"><strong>(\#exr:ch2P27) </strong></span>This procedure is due to [@box1958note]. Let $U_1$ and $U_2$ be two independent uniform (0,1) random variables and define:
 
 $$\begin{aligned}
 X_1 & = \cos (2 \pi U_2) \sqrt{-2 ln(U_1)}\\
@@ -4460,18 +4934,15 @@ algorithm for generating normal random variables. Generate 1000
 $N(\mu = 2, \sigma = 0.75)$ random variables via this method. Report the
 minimum, maximum, sample average, and 95\% confidence interval half-width
 of the observations.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P28"><strong>(\#exr:ch2P28) </strong></span>Using the supplied
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P28"><strong>(\#exr:ch2P28) </strong></span>Using the supplied
 data set, draw the sample path for the state variable, $Y(t)$. Assume
 that the value of $Y(t)$ is the value of the state variable just after
 time $t$. Compute the time average over the supplied time range.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -------- --- --- --- ---- ---- ---- ---- ---- ---- ---- ---- ----
     $t$     0   1   6   10   15   18   20   25   30   34   39   42
@@ -4480,14 +4951,12 @@ time $t$. Compute the time average over the supplied time range.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P29"><strong>(\#exr:ch2P29) </strong></span>Using the supplied data set, draw the sample path for the state
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P29"><strong>(\#exr:ch2P29) </strong></span>Using the supplied data set, draw the sample path for the state
 variable, $N(t)$. Give a formula for estimating the time average number
 in the system, $N(t)$, and then use the data to compute the time average
 number in the system over the range from 0 to 25. Assume that the value
 of $N(t$ is the value of the state variable just after time $t$.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
   -------- --- --- --- ---- ---- ---- ---- ---- ----
     $t$     0   2   4   5    7    10   12   15   20 
@@ -4496,14 +4965,12 @@ of $N(t$ is the value of the state variable just after time $t$.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P30"><strong>(\#exr:ch2P30) </strong></span>Consider the banking situation described within the chapter.
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P30"><strong>(\#exr:ch2P30) </strong></span>Consider the banking situation described within the chapter.
 A simulation analyst observed the operation of the bank and recorded the
 information given in the following table. The information was recorded
 right after the bank opened during a period of time for which there was
 only one teller working. From this information, you would like to
-re-create the operation of the system.
-\EndKnitrBlock{exercise}
+re-create the operation of the system.</div>\EndKnitrBlock{exercise}
 
   ---------- --------- ---------
    Customer   Time of   Service
@@ -4530,10 +4997,8 @@ the system times for the customers. What percentage of the total time was the te
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P31"><strong>(\#exr:ch2P31) </strong></span>Consider the following inter-arrival and service times for the first 25
-customers to a single server queuing system.
-\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P31"><strong>(\#exr:ch2P31) </strong></span>Consider the following inter-arrival and service times for the first 25
+customers to a single server queuing system.</div>\EndKnitrBlock{exercise}
 
   ---------- --------------- --------- ---------
    Customer   Inter-Arrival   Service   Time of
@@ -4576,8 +5041,7 @@ the system for the customers.
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P32"><strong>(\#exr:ch2P32) </strong></span>Parts arrive at a station with a single machine according to a Poisson
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P32"><strong>(\#exr:ch2P32) </strong></span>Parts arrive at a station with a single machine according to a Poisson
 process with the rate of 1.5 per minute. The time it takes to process
 the part has an exponential distribution with a mean of 30 second. There
 is no upper limit on the number of parts that wait for process. Setup an
@@ -4585,12 +5049,10 @@ model to estimate the expected number of parts waiting in the queue and
 the utilization of the machine. Run your model for 10000 seconds for 30
 replications and report the results. Use M/M/1 queueing results from the 
 chatper to verify that your simulation is working as intended.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P33"><strong>(\#exr:ch2P33) </strong></span>A large car dealer has a policy of providing cars for its customers that
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P33"><strong>(\#exr:ch2P33) </strong></span>A large car dealer has a policy of providing cars for its customers that
 have car problems. When a customer brings the car in for repair, that
 customer has use of a dealer's car. The dealer estimates that the dealer
 cost for providing the service is \$10 per day for as long as the
@@ -4605,13 +5067,11 @@ the utilization of the mechanic. Run your model for 10000 days for 30
 replications and report the results. Estimate the total cost per day to
 the dealer for this policy. Use the M/M/1 queueing results from the chapter
  to verify that your simulation is working as intended.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P34"><strong>(\#exr:ch2P34) </strong></span>YBox video game players arrive according to a Poisson process with rate
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P34"><strong>(\#exr:ch2P34) </strong></span>YBox video game players arrive according to a Poisson process with rate
 10 per hour to a two-person station for inspection. The inspection time
 per YBox set is EXPO(10) minutes. On the average 82\% of the sets pass
 inspection. The remaining 18\% are routed to an adjustment station with a
@@ -4619,24 +5079,20 @@ single operator. Adjustment time per YBox is UNIF(7,14) minutes. After
 adjustments are made, the units depart the system. The company is
 interested in the total time spent in the system. Run your model for
 10000 minutes for 30 replications and report the results.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P35"><strong>(\#exr:ch2P35) </strong></span>Suppose that the customers arriving to the drive through pharmacy can decide to enter the
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P35"><strong>(\#exr:ch2P35) </strong></span>Suppose that the customers arriving to the drive through pharmacy can decide to enter the
 store instead of entering the drive through lane. Assume a 90% chance
 that the arriving customer decides to use the drive through pharmacy and
 a 10% chance that the customer decides to use the store. Model this
 situation with and discuss the effect on the performance of the drive
-through lane. Run your model for 1 year, with 20 replications.
-\EndKnitrBlock{exercise}
+through lane. Run your model for 1 year, with 20 replications.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P36"><strong>(\#exr:ch2P36) </strong></span>The lack of memory property of the exponential distribution states that given
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P36"><strong>(\#exr:ch2P36) </strong></span>The lack of memory property of the exponential distribution states that given
 $\Delta t$ is the time period that elapsed since the occurrence of the
 last event, the time $t$ remaining until the occurrence of the next
 event is independent of $\Delta t$. This implies that,
@@ -4645,19 +5101,16 @@ Describe a simulation experiment that would allow you to test the lack
 of memory property empirically. Implement your simulation experiment in
 and test the lack of memory property empirically. Explain in your own
 words what lack of memory means.
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P37"><strong>(\#exr:ch2P37) </strong></span>SQL queries arrive to a
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch2P37"><strong>(\#exr:ch2P37) </strong></span>SQL queries arrive to a
 database server according to a Poisson process with a rate of 1 query
 every minute. The time that it takes to execute the query on the server
 is typically between 0.6 and 0.8 minutes uniformly distributed. The
 server can only execute 1 query at a time. Develop a simulation model to
 estimate the average delay time for a query
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 ***
