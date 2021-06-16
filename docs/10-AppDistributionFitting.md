@@ -112,10 +112,14 @@ random variable that represents the service time of the $i^{th}$
 customer. As shown in Figure \@ref(fig:fig1RandomVariables), a random variable is a function that assigns a real number to each outcome, $s$, in a random process that has a set of possible
 outcomes, $S$.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/fig1RandomVariables.png" alt="Random Variables Map Outcomes to Real Numbers" width="60%" height="60%" />
-<p class="caption">(\#fig:fig1RandomVariables)Random Variables Map Outcomes to Real Numbers</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/AppDistFitting/fig1RandomVariables} 
+
+}
+
+\caption{Random Variables Map Outcomes to Real Numbers}(\#fig:fig1RandomVariables)
+\end{figure}
 
 In this case, the process is the service times of the customers and the
 outcomes are the possible values that the service times can take on,
@@ -139,10 +143,14 @@ number, $p \in [0,1]$. The value of $p$ should be interpreted as the
 probability associated with the event represented by the random
 variable.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/fig2ProbDist.png" alt="robability Distributions Map Random Variables to Probabilities" width="55%" height="55%" />
-<p class="caption">(\#fig:fig2ProbDist)robability Distributions Map Random Variables to Probabilities</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/AppDistFitting/fig2ProbDist} 
+
+}
+
+\caption{robability Distributions Map Random Variables to Probabilities}(\#fig:fig2ProbDist)
+\end{figure}
 
 For a discrete random variable, $X$, with possible values
 $x_1, x_2, \ldots x_n$ (n may be infinite), the function, $f(x)$ that
@@ -386,11 +394,13 @@ process. As noted in Table \@ref(tab:discreteD), the Poisson distribution is a 
 for modeling this type of data.
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-70-105-116-116-105-110-103-32-97-32-80-111-105-115-115-111-110-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:PoissonFit"><strong>(\#exm:PoissonFit)  \iffalse (Fitting a Poisson Distribution) \fi{} </strong></span>Suppose that we are interested in modeling the demand for a computer laboratory
+\BeginKnitrBlock{example}\iffalse{-91-70-105-116-116-105-110-103-32-97-32-80-111-105-115-115-111-110-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:PoissonFit"><strong>(\#exm:PoissonFit)  \iffalse (Fitting a Poisson Distribution) \fi{} </strong></span>Suppose that we are interested in modeling the demand for a computer laboratory
 during the morning hours between 9 am to 11 am on normal weekdays.
 During this time a team of undergraduate students has collected the
 number of students arriving to the computer lab during 15 minute
-intervals over a period of 4 weeks. </div>\EndKnitrBlock{example}
+intervals over a period of 4 weeks. 
+\EndKnitrBlock{example}
 
 Since there are four 15 minute intervals in each hour for each two hour
 time period, there are 8 observations per day. Since there are 5 days
@@ -463,154 +473,63 @@ period, day combinations. The variable, $p\$N$, is subsequently used in
 the *hist*, *plot*, and *acf* commands.
 
 
-<table>
-<caption>(\#tab:PCntData)Computer Lab Arrival Data.</caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> Week </th>
-   <th style="text-align:center;"> Period </th>
-   <th style="text-align:center;"> Day </th>
-   <th style="text-align:center;"> N </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 5 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 6 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 11 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 7 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 12 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 8 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 11 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 5 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 6 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 7 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 8 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 15 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 3 </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> M </td>
-   <td style="text-align:center;"> 7 </td>
-  </tr>
-</tbody>
-</table>
+\begin{table}
+
+\caption{(\#tab:PCntData)Computer Lab Arrival Data.}
+\centering
+\begin{tabular}[t]{cccc}
+\toprule
+Week & Period & Day & N\\
+\midrule
+1 & 1 & M & 8\\
+1 & 2 & M & 8\\
+1 & 3 & M & 9\\
+1 & 4 & M & 10\\
+1 & 5 & M & 6\\
+\addlinespace
+1 & 6 & M & 11\\
+1 & 7 & M & 12\\
+1 & 8 & M & 8\\
+2 & 1 & M & 10\\
+2 & 2 & M & 6\\
+\addlinespace
+2 & 3 & M & 7\\
+2 & 4 & M & 11\\
+2 & 5 & M & 10\\
+2 & 6 & M & 10\\
+2 & 7 & M & 5\\
+\addlinespace
+2 & 8 & M & 13\\
+3 & 1 & M & 5\\
+3 & 2 & M & 15\\
+3 & 3 & M & 5\\
+3 & 4 & M & 7\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 As can be seen in Figure \@ref(fig:PCntHist) the data has a somewhat symmetric shape
 with nothing unusual appearing in the figure. The shape of the histogram is consistent with possible shapes associated with the Poisson distribution.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntHist-1.svg" alt="Histogram of Computer Lab Arrivals" width="85%" height="85%" />
-<p class="caption">(\#fig:PCntHist)Histogram of Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{10-AppDistributionFitting_files/figure-latex/PCntHist-1} 
+
+}
+
+\caption{Histogram of Computer Lab Arrivals}(\#fig:PCntHist)
+\end{figure}
 
 The time series plot, shown in Figure \@ref(fig:PCntTimeSeries), illustrates no significant patterns.  We see random looking data centered around a common mean value with no trends of increasing or decreasing data points and no cyclical patterns of up and down behavior.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntTimeSeries-1.svg" alt="Time Series Plot of Computer Lab Arrivals" width="85%" height="85%" />
-<p class="caption">(\#fig:PCntTimeSeries)Time Series Plot of Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{10-AppDistributionFitting_files/figure-latex/PCntTimeSeries-1} 
+
+}
+
+\caption{Time Series Plot of Computer Lab Arrivals}(\#fig:PCntTimeSeries)
+\end{figure}
 
 An autocorrelation plot allows the dependence within the data to be
 quickly examined. An autocorrelation plot is a time series assessment
@@ -738,10 +657,14 @@ the estimation of higher lags is generally unreliable.
 
 As we can see from Figure \@ref(fig:PCntACFPlot), there does not appear to be any significant correlation with respect to observation number for the computer lab arrival data. The autocorrelation is well-contained within the lag correlation limits denoted with the dashed lines within the plot.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntACFPlot-1.svg" alt="Autocorrelation Function Plot for Computer Lab Arrivals" width="85%" height="85%" />
-<p class="caption">(\#fig:PCntACFPlot)Autocorrelation Function Plot for Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{10-AppDistributionFitting_files/figure-latex/PCntACFPlot-1} 
+
+}
+
+\caption{Autocorrelation Function Plot for Computer Lab Arrivals}(\#fig:PCntACFPlot)
+\end{figure}
 
 Because arrival data often varies with time, it would be useful to
 examine whether or not the count data depends in some manner on when it
@@ -773,10 +696,14 @@ Test for independence of all factors:
     Chisq = 133.76, df = 145, p-value = 0.7384
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntSPLOM-1.svg" alt="Scatter Plot Matrix from Lattice Package for Computer Lab Arrivals"  />
-<p class="caption">(\#fig:PCntSPLOM)Scatter Plot Matrix from Lattice Package for Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PCntSPLOM-1} 
+
+}
+
+\caption{Scatter Plot Matrix from Lattice Package for Computer Lab Arrivals}(\#fig:PCntSPLOM)
+\end{figure}
 
 A scatter plot matrix plots the variables in a matrix format that makes
 it easier to view pairwise relationships within the data.
@@ -1186,10 +1113,14 @@ library(fitdistrplus)
 plotdist(p2$N, discrete = TRUE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntEmpiricalPMF-1.svg" alt="Plot of the Empirical PMF and CDF of the Computer Lab Arrivals"  />
-<p class="caption">(\#fig:PCntEmpiricalPMF)Plot of the Empirical PMF and CDF of the Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PCntEmpiricalPMF-1} 
+
+}
+
+\caption{Plot of the Empirical PMF and CDF of the Computer Lab Arrivals}(\#fig:PCntEmpiricalPMF)
+\end{figure}
 
 The *plotdist* command will plot the empirical probability mass function
 and the cumulative distribution function as illustrated in Figure \@ref(fig:PCntEmpiricalPMF).
@@ -1251,10 +1182,14 @@ estimate of $\lambda = 8.275$. The result object, *fp*, returned by the
 *fitdist* can then subsequently be used to plot the fit, *plot* and
 perform a goodness of fit test, *gofstat*.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PCntEmpiricalTheoretical-1.svg" alt="Plot of the Empirical and Theoretical CDF of the Computer Lab Arrivals"  />
-<p class="caption">(\#fig:PCntEmpiricalTheoretical)Plot of the Empirical and Theoretical CDF of the Computer Lab Arrivals</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PCntEmpiricalTheoretical-1} 
+
+}
+
+\caption{Plot of the Empirical and Theoretical CDF of the Computer Lab Arrivals}(\#fig:PCntEmpiricalTheoretical)
+\end{figure}
 
 The *gofstat* command performs a chi-squared goodness of fit test and
 computes the chi-squared statistic value (here $2.233903$) and the
@@ -1297,15 +1232,23 @@ stripchart(packageCnt,method="stack",pch="o")
 table(packageCnt)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PackageHist-1.svg" alt="Histogram of Package Count per Shipment"  />
-<p class="caption">(\#fig:PackageHist)Histogram of Package Count per Shipment</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PackagesDotPlot-1.svg" alt="Dot Plot of Package Countper Shipment"  />
-<p class="caption">(\#fig:PackagesDotPlot)Dot Plot of Package Countper Shipment</p>
-</div>
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PackageHist-1} 
+
+}
+
+\caption{Histogram of Package Count per Shipment}(\#fig:PackageHist)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PackagesDotPlot-1} 
+
+}
+
+\caption{Dot Plot of Package Countper Shipment}(\#fig:PackagesDotPlot)
+\end{figure}
 
 
 As we can see from the $R$ output, the range of the data varies between
@@ -1511,10 +1454,12 @@ Chapter 6 of [@law2007simulation].
 
 ***
 
-\BeginKnitrBlock{example}\iffalse{-91-70-105-116-116-105-110-103-32-97-32-71-97-109-109-97-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}<div class="example"><span class="example" id="exm:GammaFit"><strong>(\#exm:GammaFit)  \iffalse (Fitting a Gamma Distribution) \fi{} </strong></span>Suppose that we are
+\BeginKnitrBlock{example}\iffalse{-91-70-105-116-116-105-110-103-32-97-32-71-97-109-109-97-32-68-105-115-116-114-105-98-117-116-105-111-110-93-}\fi{}
+<span class="example" id="exm:GammaFit"><strong>(\#exm:GammaFit)  \iffalse (Fitting a Gamma Distribution) \fi{} </strong></span>Suppose that we are
 interested in modeling the time that it takes to perform a computer
 component repair task. The 100 observations are provide below in
-minutes. Fit an appropriate distribution to this data.</div>\EndKnitrBlock{example}
+minutes. Fit an appropriate distribution to this data.
+\EndKnitrBlock{example}
 \ 
 
             1      2      3      4      5      6      7      8      9     10
@@ -1547,25 +1492,37 @@ plot(y,type="b",main="Task Times", ylab = "minutes", xlab = "Observation#")
 acf(y, main = "ACF Plot for Task Times")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/TaskTimesHist-1.svg" alt="Histogram of Computer Repair Task Times"  />
-<p class="caption">(\#fig:TaskTimesHist)Histogram of Computer Repair Task Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/TaskTimesHist-1} 
+
+}
+
+\caption{Histogram of Computer Repair Task Times}(\#fig:TaskTimesHist)
+\end{figure}
 
 As can be seen in Figure \@ref(fig:TaskTimesHist), the histogram is slightly right skewed.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/TaskTimesTimeSeriesPlot-1.svg" alt="Time Series Plot of Computer Repair Task Times"  />
-<p class="caption">(\#fig:TaskTimesTimeSeriesPlot)Time Series Plot of Computer Repair Task Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/TaskTimesTimeSeriesPlot-1} 
+
+}
+
+\caption{Time Series Plot of Computer Repair Task Times}(\#fig:TaskTimesTimeSeriesPlot)
+\end{figure}
 
 The time series plot, Figure \@ref(fig:TaskTimesTimeSeriesPlot), illustrates no significant
 pattern (e.g. trends, etc.). 
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/TaskTimesACFPlot-1.svg" alt="ACF Plot of Computer Repair Task Times"  />
-<p class="caption">(\#fig:TaskTimesACFPlot)ACF Plot of Computer Repair Task Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/TaskTimesACFPlot-1} 
+
+}
+
+\caption{ACF Plot of Computer Repair Task Times}(\#fig:TaskTimesACFPlot)
+\end{figure}
 
 Finally, the autocorrelation plot, Figure \@ref(fig:TaskTimesACFPlot), shows no significant correlation (the early lags are well within the confidence band) with respect to observation
 number.
@@ -2222,10 +2179,14 @@ As shown in Figure \@ref(fig:Quantile), $x_q$ is that value on the measurement a
 of the area lies to the right. This is the same as the inverse
 cumulative distribution function.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figQuantile.png" alt="The Quantile of a Distribution" width="50%" />
-<p class="caption">(\#fig:Quantile)The Quantile of a Distribution</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{./figures2/AppDistFitting/figQuantile} 
+
+}
+
+\caption{The Quantile of a Distribution}(\#fig:Quantile)
+\end{figure}
 
 For example, the z-values for the standard normal distribution tables
 are the quantiles of that distribution. The quantiles of a distribution
@@ -2284,10 +2245,14 @@ Search the R help for 'distributions' to find the other common
 distributions. The function *abline()* will add a reference line between
 0 and 1 to the plot. Figure \@ref(fig:PPTaskTimes) illustrates the P-P plot.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/PPTaskTimes-1.svg" alt="The P-P Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)"  />
-<p class="caption">(\#fig:PPTaskTimes)The P-P Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/PPTaskTimes-1} 
+
+}
+
+\caption{The P-P Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)}(\#fig:PPTaskTimes)
+\end{figure}
 
 The Q-Q plot should appear approximately linear with intercept zero and
 slope 1, i.e. a 45 degree line, if there is a good fit to the data. In
@@ -2300,10 +2265,14 @@ in the figures, both plots do not appear to show any significant
 departure from a straight line. Notice that the Q-Q plot is a little off
 in the right tail.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/QQTaskTimes-1.svg" alt="The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)"  />
-<p class="caption">(\#fig:QQTaskTimes)The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/QQTaskTimes-1} 
+
+}
+
+\caption{The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)}(\#fig:QQTaskTimes)
+\end{figure}
 
 Now, that we have seen how to do the analysis 'by hand', let's see how
 easy it can be using the *fitdistrplus* package. Notice that the
@@ -2404,20 +2373,28 @@ Plotting the object returned from the *fitdist* command via (e.g. plot(fy)), pro
 (Figure \@ref(fig:gammafitplot)) of the empirical and theoretical
 distributions, as well as the P-P and Q-Q plots.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/gammafitplot-1.svg" alt="Distribution Plot from fitdistrplus for Gamma Distribution Fit of Computer Repair Times"  />
-<p class="caption">(\#fig:gammafitplot)Distribution Plot from fitdistrplus for Gamma Distribution Fit of Computer Repair Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/gammafitplot-1} 
+
+}
+
+\caption{Distribution Plot from fitdistrplus for Gamma Distribution Fit of Computer Repair Times}(\#fig:gammafitplot)
+\end{figure}
 
 Figure \@ref(fig:fitPlotUnif) illustrates the P-P and Q-Q plots if we
 were to hypothesize a uniform distribution. Clearly, the plots in
 Figure \@ref(fig:fitPlotUnif) illustrate that a uniform distribution
 is not a good model for the task times.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/fitPlotUnif-1.svg" alt="Distribution Plot from fitdistrplus for Uniform Distribution Fit of Computer Repair Times"  />
-<p class="caption">(\#fig:fitPlotUnif)Distribution Plot from fitdistrplus for Uniform Distribution Fit of Computer Repair Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/fitPlotUnif-1} 
+
+}
+
+\caption{Distribution Plot from fitdistrplus for Uniform Distribution Fit of Computer Repair Times}(\#fig:fitPlotUnif)
+\end{figure}
 
 ### Using the Input Analyzer {#app:idms2sb3}
 
@@ -2486,10 +2463,14 @@ File $>$ Use Existing, you can import the text file containing the data
 for analysis. The resulting import should leave the Input Analyzer
 looking like Figure \@ref(fig:InputAnalyzerImport).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerImport.png" alt="Input Analyzer After Data Import" width="70%" height="70%" />
-<p class="caption">(\#fig:InputAnalyzerImport)Input Analyzer After Data Import</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppDistFitting/figInputAnalyzerImport} 
+
+}
+
+\caption{Input Analyzer After Data Import}(\#fig:InputAnalyzerImport)
+\end{figure}
 
 You should save the session, which will create a (*.dft*) file. Notice
 how the Input Analyzer automatically makes a histogram of the data and
@@ -2551,10 +2532,14 @@ the data and has recommended the Arena expression (36 + EXPO(147)). What
 is this value 36? The value 36 is called the offset or location
 parameter. The visual fit of the data is shown in Figure \@ref(fig:InputAnalyzerExpFit)
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerExpFit.png" alt="Histogram for Exponential Fit to Service Times" width="70%" height="70%" />
-<p class="caption">(\#fig:InputAnalyzerExpFit)Histogram for Exponential Fit to Service Times</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppDistFitting/figInputAnalyzerExpFit} 
+
+}
+
+\caption{Histogram for Exponential Fit to Service Times}(\#fig:InputAnalyzerExpFit)
+\end{figure}
 
 Recall the discussion in Section \@ref(AppRNRV:subsec:MTSRV) concerning
 shifted distributions. Any distribution can have this additional
@@ -2579,10 +2564,14 @@ suggest a serious lack of fit for the exponential distribution.
 Figure \@ref(fig:InputAnalyzerUnifFit) show the results of fitting a
 uniform distribution to the data.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerUnifFit.png" alt="Uniform Distribtuion and Histogram for Service Time Data" width="70%" height="70%" />
-<p class="caption">(\#fig:InputAnalyzerUnifFit)Uniform Distribtuion and Histogram for Service Time Data</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppDistFitting/figInputAnalyzerUnifFit} 
+
+}
+
+\caption{Uniform Distribtuion and Histogram for Service Time Data}(\#fig:InputAnalyzerUnifFit)
+\end{figure}
 
 The following listing shows the results for the uniform distribution. The results show that the p-value for the K-S Test is smaller than 0.01, which indicates that the uniform distribution is probably not a good model for
 the service times.
@@ -2672,23 +2661,35 @@ Using the Fit All function results in the Input Analyzer suggesting that
 criteria for all the distributions that were fit. Figure \@ref(fig:InputAnalyzerFitAllSummary) indicates that the Erlang distribution is second in the fitting process
 according to the squared error criteria and the Exponential distribution is third in the rankings. Since the Exponential distribution is a special case of the Erlang distribution we see that their squared error criteria is the same. Thus, in reality, these results reflect the same distribution.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerFitAllBeta.png" alt="Fit All Beta Recommendation for Service Time Data" width="70%" height="70%" />
-<p class="caption">(\#fig:InputAnalyzerFitAllBeta)Fit All Beta Recommendation for Service Time Data</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerFitAllSummary.png" alt="Fit All Recommendation for Service Time Data" width="40%" height="40%" />
-<p class="caption">(\#fig:InputAnalyzerFitAllSummary)Fit All Recommendation for Service Time Data</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppDistFitting/figInputAnalyzerFitAllBeta} 
+
+}
+
+\caption{Fit All Beta Recommendation for Service Time Data}(\#fig:InputAnalyzerFitAllBeta)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/AppDistFitting/figInputAnalyzerFitAllSummary} 
+
+}
+
+\caption{Fit All Recommendation for Service Time Data}(\#fig:InputAnalyzerFitAllSummary)
+\end{figure}
 
 By using Options $>$ Parameters $>$ Histogram, the Histogram Parameters dialog can be used to change the parameters associated with the histogram as shown in
 Figure \@ref(fig:InputAnalyzerHistParameters).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerHistParameters.png" alt="Changing the Histogram Parameters" width="40%" height="40%" />
-<p class="caption">(\#fig:InputAnalyzerHistParameters)Changing the Histogram Parameters</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/AppDistFitting/figInputAnalyzerHistParameters} 
+
+}
+
+\caption{Changing the Histogram Parameters}(\#fig:InputAnalyzerHistParameters)
+\end{figure}
 
 Changing the number of intervals to 12 results in the output provided in
 Figure \@ref(fig:InputAnalyzerFitAll12Intervals), which indicates that the exponential
@@ -2699,15 +2700,23 @@ exponential distribution will be recommended. It is beginning to look
 like the exponential distribution is a reasonable model for the service
 time data.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerFitAll12Intervals.png" alt="Fit All with 12 Intervals" width="40%" height="40%" />
-<p class="caption">(\#fig:InputAnalyzerFitAll12Intervals)Fit All with 12 Intervals</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/AppDistFitting/figInputAnalyzerExpFitHistChange.png" alt="Exponential Fit with 12 Intervals" width="70%" height="70%" />
-<p class="caption">(\#fig:InputAnalyzerExpFitHistChange)Exponential Fit with 12 Intervals</p>
-</div>
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./figures2/AppDistFitting/figInputAnalyzerFitAll12Intervals} 
+
+}
+
+\caption{Fit All with 12 Intervals}(\#fig:InputAnalyzerFitAll12Intervals)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/AppDistFitting/figInputAnalyzerExpFitHistChange} 
+
+}
+
+\caption{Exponential Fit with 12 Intervals}(\#fig:InputAnalyzerExpFitHistChange)
+\end{figure}
 The Input Analyzer is convenient because it has the fit all summary and
 will recommend a distribution. However, it does not provide P-P plots
 and Q-Q plots. To do this, we can use the *fitdistrplus* package within
@@ -2748,10 +2757,14 @@ rate 0.006813019 0.0006662372
 plot(fw)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/expfitplot-1.svg" alt="Distribution Plot from fitdistrplus for Service Time Data"  />
-<p class="caption">(\#fig:expfitplot)Distribution Plot from fitdistrplus for Service Time Data</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/expfitplot-1} 
+
+}
+
+\caption{Distribution Plot from fitdistrplus for Service Time Data}(\#fig:expfitplot)
+\end{figure}
 The P-P and Q-Q plots of the shifted data indicate that the exponential distribution is an excellent fit for the service time data.
 
 ## Testing Uniform (0,1) Pseudo-Random Numbers {#app:distfit:testU01}
@@ -2808,8 +2821,10 @@ Equation \@ref(eq:chisqU01) can be rewritten as:
 Let's apply these concepts to a small example.
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-84-101-115-116-105-110-103-32-49-48-48-32-80-115-101-117-100-111-45-82-97-110-100-111-109-32-78-117-109-98-101-114-115-93-}\fi{}<div class="example"><span class="example" id="exm:TestU01"><strong>(\#exm:TestU01)  \iffalse (Testing 100 Pseudo-Random Numbers) \fi{} </strong></span>Suppose we have 100 observations from a pseudo-random number generator. Perform a $\chi^{2}$
-test that the numbers are distributed $U(0,1)$.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-84-101-115-116-105-110-103-32-49-48-48-32-80-115-101-117-100-111-45-82-97-110-100-111-109-32-78-117-109-98-101-114-115-93-}\fi{}
+<span class="example" id="exm:TestU01"><strong>(\#exm:TestU01)  \iffalse (Testing 100 Pseudo-Random Numbers) \fi{} </strong></span>Suppose we have 100 observations from a pseudo-random number generator. Perform a $\chi^{2}$
+test that the numbers are distributed $U(0,1)$.
+\EndKnitrBlock{example}
 
   ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
    0.971   0.668   0.742   0.171   0.350   0.931   0.803   0.848   0.160   0.085
@@ -2925,8 +2940,10 @@ when applying simulation to the evaluation of multi-dimensional
 integrals as is often found in the physical sciences.
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-50-45-68-32-67-104-105-45-83-113-117-97-114-101-100-32-84-101-115-116-32-105-110-32-82-32-102-111-114-32-85-40-48-44-49-41-93-}\fi{}<div class="example"><span class="example" id="exm:TestU012D"><strong>(\#exm:TestU012D)  \iffalse (2-D Chi-Squared Test in R for U(0,1)) \fi{} </strong></span>Using the same data as in the previous example, perform a 2-Dimensional $\chi^{2}$ Test using the
-statistical package R. Use 4 intervals for each of the dimensions.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}\iffalse{-91-50-45-68-32-67-104-105-45-83-113-117-97-114-101-100-32-84-101-115-116-32-105-110-32-82-32-102-111-114-32-85-40-48-44-49-41-93-}\fi{}
+<span class="example" id="exm:TestU012D"><strong>(\#exm:TestU012D)  \iffalse (2-D Chi-Squared Test in R for U(0,1)) \fi{} </strong></span>Using the same data as in the previous example, perform a 2-Dimensional $\chi^{2}$ Test using the
+statistical package R. Use 4 intervals for each of the dimensions.
+\EndKnitrBlock{example}
 
 ***
 
@@ -3024,9 +3041,11 @@ D^{-}_{n}  & = \underset{1 \leq i \leq n}{\max} \Bigl\lbrace \hat{F}(x_{(i)}) - 
 $$
 
 ***
-\BeginKnitrBlock{example}\iffalse{-91-75-45-83-32-84-101-115-116-32-102-111-114-32-85-40-48-44-49-41-93-}\fi{}<div class="example"><span class="example" id="exm:TestU01KS"><strong>(\#exm:TestU01KS)  \iffalse (K-S Test for U(0,1)) \fi{} </strong></span>Given the data from Example \@ref(exm:TestU01) test the hypothesis that the data appears $U(0,1)$
+\BeginKnitrBlock{example}\iffalse{-91-75-45-83-32-84-101-115-116-32-102-111-114-32-85-40-48-44-49-41-93-}\fi{}
+<span class="example" id="exm:TestU01KS"><strong>(\#exm:TestU01KS)  \iffalse (K-S Test for U(0,1)) \fi{} </strong></span>Given the data from Example \@ref(exm:TestU01) test the hypothesis that the data appears $U(0,1)$
 versus that it is not $U(0,1)$ using the Kolmogorov-Smirnov goodness of
-fit test at the $\alpha = 0.05$ significance level.</div>\EndKnitrBlock{example}
+fit test at the $\alpha = 0.05$ significance level.
+\EndKnitrBlock{example}
 
 ***
 
@@ -3115,10 +3134,14 @@ automatically places the confidence band within the plot. In this
 instance, since none of the $r_{k}, k \geq 1$ are outside the confidence
 band, we can conclude that the data are likely independent observations.
 
-<div class="figure" style="text-align: center">
-<img src="10-AppDistributionFitting_files/figure-epub3/TestU01ACF-1.svg" alt="Autocorrelation Plot for u01data.txt Data Set"  />
-<p class="caption">(\#fig:TestU01ACF)Autocorrelation Plot for u01data.txt Data Set</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{10-AppDistributionFitting_files/figure-latex/TestU01ACF-1} 
+
+}
+
+\caption{Autocorrelation Plot for u01data.txt Data Set}(\#fig:TestU01ACF)
+\end{figure}
 
 
 ```r
@@ -3379,62 +3402,78 @@ The files referenced in the exercises are available in the files associated with
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP1"><strong>(\#exr:AppDistFitP1) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP1"><strong>(\#exr:AppDistFitP1) </strong></span>The observations available in the text
 file, *problem1.txt*, represent the count of the number of failures
 on a windmill turbine farm per year. Using the techniques discussed in
-the chapter recommend an input distribution model for this situation.</div>\EndKnitrBlock{exercise}
+the chapter recommend an input distribution model for this situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP2"><strong>(\#exr:AppDistFitP2) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP2"><strong>(\#exr:AppDistFitP2) </strong></span>The observations available in the text
 file, *problem2.txt*, represent the time that it takes to repair a
 windmill turbine on each occurrence in minutes. Using the techniques
 discussed in the chapter recommend an input distribution model for this
-situation.</div>\EndKnitrBlock{exercise}
+situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP3"><strong>(\#exr:AppDistFitP3) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP3"><strong>(\#exr:AppDistFitP3) </strong></span>The observations available in the text
 file, *problem3.txt*, represent the time in minutes that it takes a
 repair person to drive to the windmill farm to repair a failed turbine.
 Using the techniques discussed in the chapter recommend an input
-distribution model for this situation.</div>\EndKnitrBlock{exercise}
+distribution model for this situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP4"><strong>(\#exr:AppDistFitP4) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP4"><strong>(\#exr:AppDistFitP4) </strong></span>The observations available in the text
 file, *problem4.txt*, represent the time in seconds that it takes to
 service a customer at a movie theater counter. Using the techniques
 discussed in the chapter recommend an input distribution model for this
-situation.</div>\EndKnitrBlock{exercise}
+situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP5"><strong>(\#exr:AppDistFitP5) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP5"><strong>(\#exr:AppDistFitP5) </strong></span>The observations available in the text
 file, *problem5.txt*, represent the time in hours between failures of
 a critical piece of computer testing equipment. Using the techniques
 discussed in the chapter recommend an input distribution model for this
-situation.</div>\EndKnitrBlock{exercise}
+situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP6"><strong>(\#exr:AppDistFitP6) </strong></span>The observations available in the text
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP6"><strong>(\#exr:AppDistFitP6) </strong></span>The observations available in the text
 file, *problem6.txt*, represent the time in minutes associated with
 performing a lube, oil and maintenance check at the local Quick Oil
 Change Shop. Using the techniques discussed in the chapter recommend an
-input distribution model for this situation.</div>\EndKnitrBlock{exercise}
+input distribution model for this situation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP7"><strong>(\#exr:AppDistFitP7) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP7"><strong>(\#exr:AppDistFitP7) </strong></span>If $Z \sim N(0,1)$, and $Y = \sum_{i=1}^k Z_i^2$ then $Y \sim \chi_k^2$,
 where $\chi_k^2$ is a chi-squared random variable with $k$ degrees of
 freedom. Setup an model to generate $n$ = 32, 64, 128, 256, 1024
 observations of $Y$ with $k = 5$. For each sample, fit a distribution to
-the sample.</div>\EndKnitrBlock{exercise}
+the sample.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP8"><strong>(\#exr:AppDistFitP8) </strong></span>Consider the following sample (also found in *problem8.txt*) that represents the time (in seconds) that it takes a hematology cell counter to complete a test on a blood sample.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP8"><strong>(\#exr:AppDistFitP8) </strong></span>Consider the following sample (also found in *problem8.txt*) that represents the time (in seconds) that it takes a hematology cell counter to complete a test on a blood sample.
+\EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- -------
    23.79   75.51   29.89   2.47    32.37
@@ -3488,8 +3527,10 @@ Number of Intervals = 10
 ```
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP9"><strong>(\#exr:AppDistFitP9) </strong></span>Consider the following frequency data
-on the number of orders received per day by a warehouse.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP9"><strong>(\#exr:AppDistFitP9) </strong></span>Consider the following frequency data
+on the number of orders received per day by a warehouse.
+\EndKnitrBlock{exercise}
 
    $j$     $c_j$     $c_j$   $np_j$   $\frac{(c_j - np_j)^2}{np_j}$
   ----- ----------- ------- -------- -------------------------------
@@ -3508,10 +3549,12 @@ provided table to show your calculations.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP10"><strong>(\#exr:AppDistFitP10) </strong></span>The number of electrical outlets in a prefabricated house varies between
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP10"><strong>(\#exr:AppDistFitP10) </strong></span>The number of electrical outlets in a prefabricated house varies between
 10 and 22 outlets. Since the time to perform the install depends on the
 number of outlets, data was collected to develop a probability
-distribution for this variable. The data set is given below and also found in file *problem10.txt*:</div>\EndKnitrBlock{exercise}
+distribution for this variable. The data set is given below and also found in file *problem10.txt*:
+\EndKnitrBlock{exercise}
 
 |    |    |    |    |    |    |    |    |    |    |
 |----|----|----|----|----|----|----|----|----|----|
@@ -3526,7 +3569,8 @@ prefabricated house.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP11"><strong>(\#exr:AppDistFitP11) </strong></span>Test the following fact by generating instances of
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP11"><strong>(\#exr:AppDistFitP11) </strong></span>Test the following fact by generating instances of
 $Y = \sum_{i=1}^{r} X_i$, where $X_i \sim \mathit{expo}(\beta)$ and
 $\beta = E[X_i]$. Using $r=5$ and $\beta =2$. Be careful to specify the
 correct parameters for the exponential distribution function.
@@ -3536,15 +3580,18 @@ hypothesis tests to check $H_0: \mu = \mu_0$ versus
 $H_1: \mu \neq \mu_0$ where $\mu$ is the true mean of $Y$ for each of
 the sample sizes generated. Use the same samples to fit a distribution
 using the Input Analyzer. Properly interpret the statistical results
-supplied by the Input Analyzer.</div>\EndKnitrBlock{exercise}
+supplied by the Input Analyzer.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP12"><strong>(\#exr:AppDistFitP12) </strong></span>Suppose that we are interested in modeling the arrivals to Sly's BBQ
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP12"><strong>(\#exr:AppDistFitP12) </strong></span>Suppose that we are interested in modeling the arrivals to Sly's BBQ
 Food Truck during 11:30 am to 1:30 pm in the downtown square. During
 this time a team of undergraduate students has collected the number of
 customers arriving to the truck for 10 different periods of the 2 hour
-time frame for each day of the week. The data is given below and also found in file *problem12.csv*</div>\EndKnitrBlock{exercise}
+time frame for each day of the week. The data is given below and also found in file *problem12.csv*
+\EndKnitrBlock{exercise}
 
    Obs\#   M    T    W    R   F    S    SU
   ------- ---- ---- ---- --- ---- ---- ----
@@ -3573,12 +3620,14 @@ time frame for each day of the week. The data is given below and also found in f
     
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:AppDistFitP13"><strong>(\#exr:AppDistFitP13) </strong></span>A copy center has one fast copier
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:AppDistFitP13"><strong>(\#exr:AppDistFitP13) </strong></span>A copy center has one fast copier
 and one slow copier. The copy time per page for the fast copier is
 thought to be lognormally distributed with a mean of 1.6 seconds and a
 standard deviation of 0.3 seconds. A co-op Industrial Engineering
 student has collected some time study data on the time to copy a page
-for the slow copier. The times, in seconds, are given in the data file *problem13.txt*</div>\EndKnitrBlock{exercise}
+for the slow copier. The times, in seconds, are given in the data file *problem13.txt*
+\EndKnitrBlock{exercise}
 
 ***
 

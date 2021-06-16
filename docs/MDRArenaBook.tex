@@ -260,7 +260,7 @@
 
 \title{Simulation Modeling and Arena}
 \author{Manuel D. Rossetti}
-\date{2021-06-15}
+\date{2021-06-16}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -303,6 +303,8 @@
 
 \includegraphics{figures2/by-nc-nd.png}\\
 This work is licensed under the \href{http://creativecommons.org/licenses/by-nc-nd/4.0/}{Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License}.
+
+Cover art image based on \href{https://pixabay.com/illustrations/time-clock-watches-wave-time-of-2132452/}{Time} by \href{https://pixabay.com/users/geralt-9301/?utm_source=link-attribution\&utm_medium=referral\&utm_campaign=image\&utm_content=2132452}{Gerd Altmann} from \href{https://pixabay.com/?utm_source=link-attribution\&utm_medium=referral\&utm_campaign=image\&utm_content=2132452}{Pixabay}
 
 Welcome to the open text edition. Similarly to the previous two editions, the book is intended as an introductory textbook for a first course in discrete-event simulation modeling and analysis for upper-level undergraduate students as well as entering graduate students. While the text is focused towards engineering students (primarily industrial engineering) it could also be utilized by advanced business majors, computer science majors, and other disciplines where simulation is practiced. Practitioners interested in learning simulation and Arena could also use this book independently of a course.
 
@@ -9378,19 +9380,19 @@ respective queues.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \begin{exercise}
-\protect\hypertarget{exr:ch3P19}{}{\label{exr:ch3P19} }Referring to Exercise \ref{exr:ch3P16}. Determine the number of replications to ensure that the you are 95\% confident that the true expected system time for part type 2 has a half-width of 0.5 minutes or less.
+\protect\hypertarget{exr:ch3P19}{}{\label{exr:ch3P19} }Referring to Exercise \ref{exr:ch3P16}. Determine the number of replications to ensure that you are 95\% confident that the true expected system time for part type 2 has a half-width of 0.5 minutes or less.
 \end{exercise}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \begin{exercise}
-\protect\hypertarget{exr:ch3P20}{}{\label{exr:ch3P20} }Referring to Exercise \ref{exr:ch3P17}. Determine the number of replications to ensure that the you are 95\% confident that the true waiting time for the accountant is within \(\pm\) 2 minutes.
+\protect\hypertarget{exr:ch3P20}{}{\label{exr:ch3P20} }Referring to Exercise \ref{exr:ch3P17}. Determine the number of replications to ensure that you are 95\% confident that the true waiting time for the accountant is within \(\pm\) 2 minutes.
 \end{exercise}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \begin{exercise}
-\protect\hypertarget{exr:ch3P21}{}{\label{exr:ch3P21} }Referring to Exercise \ref{exr:ch3P18}. Determine the number of replications to ensure that the you are 95\% confident that the average number of parts within the system is within \(\pm\) 1 units.
+\protect\hypertarget{exr:ch3P21}{}{\label{exr:ch3P21} }Referring to Exercise \ref{exr:ch3P18}. Determine the number of replications to ensure that you are 95\% confident that the average number of parts within the system is within \(\pm\) 1 units.
 \end{exercise}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -29814,7 +29816,7 @@ seed \(X_0\) = 37). a) Using Theorem \ref{thm:LCGThm}, does this generator achie
 
 \begin{exercise}
 \protect\hypertarget{exr:AppRNRVP7}{}{\label{exr:AppRNRVP7} }Consider the linear congruential generator with (\(a = 8\), \(m = 10\), \(c = 1\), and
-seed \(X_0\) = 11). a) Using Theorem \ref{thm:LCGThm}, does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.
+seed \(X_0\) = 3). a) Using Theorem \ref{thm:LCGThm}, does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.
 \end{exercise}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -35925,7 +35927,7 @@ quantities.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \begin{exercise}
-\protect\hypertarget{exr:chQTP4}{}{\label{exr:chQTP4} }uppose an operator has been
+\protect\hypertarget{exr:chQTP4}{}{\label{exr:chQTP4} }Suppose an operator has been
 assigned to the responsibility of maintaining 3 machines. For each
 machine the probability distribution of the running time before a
 breakdown is exponentially distributed with a mean of 9 hours. The
@@ -35957,8 +35959,12 @@ mean of 1.75 minutes. Because the shop is small they want the
 probability of 5 or more customers in the shop to be small, say less
 than 7\%. Make a recommendation based on queueing theory to
 SuperFastCopy.
+\end{exercise}
 
-Each airline passenger and his or her carry-on baggage must be checked
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{exercise}
+\protect\hypertarget{exr:chQTP51}{}{\label{exr:chQTP51} }Each airline passenger and his or her carry-on baggage must be checked
 at the security checkpoint. Suppose XNA averages 10 passengers per
 minute with exponential inter-arrival times. To screen passengers, the
 airport must have a metal detector and baggage X-ray machines. Whenever

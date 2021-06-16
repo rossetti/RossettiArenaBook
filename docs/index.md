@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-06-15"
+date: "2021-06-16"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:
@@ -23,6 +23,8 @@ cover-image: images/OER-BOOKCOVER-Rossetti.jpg
 
 ![Creative Commons License](figures2/by-nc-nd.png)  
 This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/). 
+
+Cover art image based on [Time](https://pixabay.com/illustrations/time-clock-watches-wave-time-of-2132452/) by [Gerd Altmann](https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2132452) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2132452)
  
 Welcome to the open text edition. Similarly to the previous two editions, the book is intended as an introductory textbook for a first course in discrete-event simulation modeling and analysis for upper-level undergraduate students as well as entering graduate students.  While the text is focused towards engineering students (primarily industrial engineering) it could also be utilized by advanced business majors, computer science majors, and other disciplines where simulation is practiced.  Practitioners interested in learning simulation and Arena could also use this book independently of a course. 
 

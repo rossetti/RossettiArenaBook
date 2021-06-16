@@ -28,10 +28,14 @@ of simulation experiments are presented. For example, the simulation
 outputs are dependent upon the input random variables, input parameters,
 and the initial conditions of the model.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/fig1RandomInput.png" alt="Random input implies tandom output" width="70%" height="70%" />
-<p class="caption">(\#fig:RandomInput)Random input implies tandom output</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/fig1RandomInput} 
+
+}
+
+\caption{Random input implies tandom output}(\#fig:RandomInput)
+\end{figure}
 
 Input parameters are related to the controllable and uncontrollable
 factors associated with the system. For a simulation model, *all* input
@@ -177,10 +181,14 @@ Figure [1.2](#fig:ch7Replication){reference-type="ref"
 reference="fig:ch7Replication"} illustrates the concept of replications
 being repeated (independent) sample paths.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/fig2ReplicationConcept.png" alt="The concept of replicated sample paths" width="75%" height="75%" />
-<p class="caption">(\#fig:ReplicationConcept)The concept of replicated sample paths</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch3/fig2ReplicationConcept} 
+
+}
+
+\caption{The concept of replicated sample paths}(\#fig:ReplicationConcept)
+\end{figure}
 
 ### Within Replication Observations
 
@@ -219,10 +227,14 @@ the value of the number of customers in the system changes at discrete
 points in time, it holds (or persists with) that value over a duration
 of time. This is why it is called a time-persistent variable.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/fig3SamplePathExample.png" alt="Sample path for tally and time-persistent data" width="75%" height="75%" />
-<p class="caption">(\#fig:SamplePathExample)Sample path for tally and time-persistent data</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./figures2/ch3/fig3SamplePathExample} 
+
+}
+
+\caption{Sample path for tally and time-persistent data}(\#fig:SamplePathExample)
+\end{figure}
 
 Figure \@ref(fig:SamplePathExample) illustrates a single sample path for the
 number of customers in a queue over a period of time. From this sample
@@ -331,8 +343,10 @@ $\hat{p}_i = T_i/T$ as an estimate of the proportion of time that the
 queue had $i$ customers during the interval of observation. Let's take a look at an example.
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exQueueStats"><strong>(\#exm:exQueueStats) </strong></span>Consider Figure \@ref(fig:SamplePathExample), which shows the changes in queue
-length over a simulated period of 25 time units. Compute the time average number in queue over the interval of time from 0 to 25. Compute the percentage of time that the queue had $\lbrace 0, 1, 2, 3, 4\rbrace$ customers.</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exQueueStats"><strong>(\#exm:exQueueStats) </strong></span>Consider Figure \@ref(fig:SamplePathExample), which shows the changes in queue
+length over a simulated period of 25 time units. Compute the time average number in queue over the interval of time from 0 to 25. Compute the percentage of time that the queue had $\lbrace 0, 1, 2, 3, 4\rbrace$ customers.
+\EndKnitrBlock{example}
 ***
 
 Reviewing Figure \@ref(fig:SamplePathExample) indicates the changes in queue
@@ -710,8 +724,10 @@ bound is squared in the denominator for evaluating $n$. Thus, very small
 values of $\epsilon$ can result in very large sample sizes.
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exSampleSize"><strong>(\#exm:exSampleSize) </strong></span>Suppose we are required to estimate the output from a simulation so that we are 99% confidence that we are within $\pm 0.1$ of the true population
-mean. After taking a pilot sample of size $n=10$, we have estimated $s=6$. What is the required sample size?</div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exSampleSize"><strong>(\#exm:exSampleSize) </strong></span>Suppose we are required to estimate the output from a simulation so that we are 99% confidence that we are within $\pm 0.1$ of the true population
+mean. After taking a pilot sample of size $n=10$, we have estimated $s=6$. What is the required sample size?
+\EndKnitrBlock{example}
 
 ***
 
@@ -752,7 +768,9 @@ To facilitate some of the calculations related to determining the sample size fo
 Using a simple example, we will illustrate how to determine the sample size necessary to estimate a quantity of interest with a high level of confidence.
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exArenaSampleSize"><strong>(\#exm:exArenaSampleSize) </strong></span>Suppose that we want to simulate a normally distributed random variable, $X$, with $E[X] = 10$ and $Var[X] = 16$.  From the simulation, we want to estimate the true population mean with 99 percent confidence for a half-width $\pm 0.50$ margin of error.  In addition to estimating the population mean, we want to estimate the probability that the random variable exceeds 8.  That is, we want to estimate, $p= P[X>8]$.  We want to be 95% confident that our estimate of $P[X>8]$ has a margin of error of $\pm 0.05$.  What are the sample size requirements needed to meet the desired margins of error?  </div>\EndKnitrBlock{example}
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exArenaSampleSize"><strong>(\#exm:exArenaSampleSize) </strong></span>Suppose that we want to simulate a normally distributed random variable, $X$, with $E[X] = 10$ and $Var[X] = 16$.  From the simulation, we want to estimate the true population mean with 99 percent confidence for a half-width $\pm 0.50$ margin of error.  In addition to estimating the population mean, we want to estimate the probability that the random variable exceeds 8.  That is, we want to estimate, $p= P[X>8]$.  We want to be 95% confident that our estimate of $P[X>8]$ has a margin of error of $\pm 0.05$.  What are the sample size requirements needed to meet the desired margins of error?  
+\EndKnitrBlock{example}
 
 ***
 
@@ -923,7 +941,8 @@ illustrate the following concepts:
     half-width requirement
 
 ***
-\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:exSTEMCareerFair"><strong>(\#exm:exSTEMCareerFair) </strong></span>Students arrive to a STEM career mixer event according to a Poisson
+\BeginKnitrBlock{example}
+<span class="example" id="exm:exSTEMCareerFair"><strong>(\#exm:exSTEMCareerFair) </strong></span>Students arrive to a STEM career mixer event according to a Poisson
 process at a rate of 0.5 student per minute. The students first go to
 the name tag station, where it takes between 10 and 45 seconds uniformly
 distributed to write their name and affix the tag to themselves. We
@@ -953,7 +972,8 @@ is staffed by 3 recruiters. Again, the students form a single line and
 pick the next available recruiter. The time that the student and
 recruiter interact at the JHBunt station is also exponentially
 distribution, but with a mean of 6 minutes. After visiting the JHBunt
-station, the student departs the mixer.</div>\EndKnitrBlock{example}
+station, the student departs the mixer.
+\EndKnitrBlock{example}
 
 ***
 
@@ -1083,10 +1103,14 @@ an excellent drawing if another simulation analyst could take your
 drawing and write a useful narrative description of what you are
 modeling.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERichPicture.png" alt="Rich picture system drawing of STEM Career Mixer" width="90%" height="90%" />
-<p class="caption">(\#fig:JFERichPicture)Rich picture system drawing of STEM Career Mixer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch3/JFERichPicture} 
+
+}
+
+\caption{Rich picture system drawing of STEM Career Mixer}(\#fig:JFERichPicture)
+\end{figure}
 
 Figure \@ref(fig:JFERichPicture) illustrates a drawing for the STEM mixer problem. As you can
 see in the drawing, we have students arriving to a room that contains
@@ -1320,10 +1344,14 @@ the activities, circles to show the queues and resources, and arrows, to
 show the paths taken. Figure \@ref(fig:JFEActivityDiagram) presents the activity diagram for this
 situation.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEActivityDiagram.png" alt="Activity diagram for STEM Career Mixer" width="90%" height="90%" />
-<p class="caption">(\#fig:JFEActivityDiagram)Activity diagram for STEM Career Mixer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch3/JFEActivityDiagram} 
+
+}
+
+\caption{Activity diagram for STEM Career Mixer}(\#fig:JFEActivityDiagram)
+\end{figure}
 
 In Figure \@ref(fig:JFEActivityDiagram), we see that the students are created according to a time between arrival (TBA) process that is exponentially distributed with a
 mean of 2 minutes and they immediately experience the activity
@@ -1652,30 +1680,50 @@ facilitates the addition of rows of information. By right-clicking on a
 row, you can also view the dialog box associated with the module. The
 "spreadsheet" view of the data modules is shown in Figures \@ref(fig:JFEAttributeModule), \@ref(fig:JFEVariableModule), \@ref(fig:JFEResourceModule), and \@ref(fig:JFETimePersistentModule). 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEAttributeModule.png" alt="Attribute data module" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEAttributeModule)Attribute data module</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEVariableModule.png" alt="Variable data module" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEVariableModule)Variable data module</p>
-</div>
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEAttributeModule} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEResourceModule.png" alt="Resource data module" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEResourceModule)Resource data module</p>
-</div>
+}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFETimePersistentModule.png" alt="Time persistent data module"  />
-<p class="caption">(\#fig:JFETimePersistentModule)Time persistent data module</p>
-</div>
+\caption{Attribute data module}(\#fig:JFEAttributeModule)
+\end{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFETimePersistentStatistic.png" alt="Time persistent dialog module view" width="55%" height="55%" />
-<p class="caption">(\#fig:JFETimePersistentStatistic)Time persistent dialog module view</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEVariableModule} 
+
+}
+
+\caption{Variable data module}(\#fig:JFEVariableModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEResourceModule} 
+
+}
+
+\caption{Resource data module}(\#fig:JFEResourceModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFETimePersistentModule} 
+
+}
+
+\caption{Time persistent data module}(\#fig:JFETimePersistentModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch3/JFETimePersistentStatistic} 
+
+}
+
+\caption{Time persistent dialog module view}(\#fig:JFETimePersistentStatistic)
+\end{figure}
 
 An example of the Edit by Dialog view is shown in Figure \@ref(fig:JFETimePersistentStatistic) for the TIME PERSISTENT
 module. Notice that every Edit by Dialog view has a Help button that
@@ -1687,10 +1735,14 @@ being defined as well as an expression that will be observed for
 statistical collect over time. In this case, the variable, myNumInSys,
 is used as the expression.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFECreateStudents.png" alt="Creating students for STEM Career Mixer"  />
-<p class="caption">(\#fig:JFECreateStudents)Creating students for STEM Career Mixer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFECreateStudents} 
+
+}
+
+\caption{Creating students for STEM Career Mixer}(\#fig:JFECreateStudents)
+\end{figure}
 
 Figure \@ref(fig:JFECreateStudents) shows the module layout for creating the students and getting them flowing into the mixer. These modules follow the pseudo-code very
 closely. Notice in Figure \@ref(fig:JFECreateModule) the edit by dialog view of the CREATE
@@ -1699,19 +1751,28 @@ students per minute, the CREATE module is completed in a similar fashion
 as we discussed in Chapter \@ref(ch2) by specifying the *time between arrival*
 process. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFECreateModule.png" alt="CREATE module for STEM Career Mixer" width="60%" height="60%" />
-<p class="caption">(\#fig:JFECreateModule)CREATE module for STEM Career Mixer</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEAssignArrivals.png" alt="ASSIGN arrivals module" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEAssignArrivals)ASSIGN arrivals module</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFECreateModule} 
+
+}
+
+\caption{CREATE module for STEM Career Mixer}(\#fig:JFECreateModule)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEAssignArrivals} 
+
+}
+
+\caption{ASSIGN arrivals module}(\#fig:JFEAssignArrivals)
+\end{figure}
 
 \FloatBarrier
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">**Why are we not using the Poisson. distribution in the CREATE module?**
+\BeginKnitrBlock{rmdnote}
+**Why are we not using the Poisson. distribution in the CREATE module?**
 This is a common point of confusion. The CREATE module requires the **time
 between events**, while a Poisson distribution models the *number* of events. While it is theoretically possible that the Poisson distribution could be used to represent the time between events, it would indeed be a rare occurrence if it was. If you *ever* want to use the Poisson distribution in your CREATE module then you are either wrong in your thinking or you better know exactly what you are doing! The
 Poisson distribution models a count of the number of events in a time period. The random variable,
@@ -1724,12 +1785,17 @@ states that if we have a Poisson process with mean rate $\lambda$, then the
 time between events is governed by an exponential distribution with a
 mean of $\theta = 1/\lambda$. Thus, we would use the Random(expo) option in the
 CREATE module with the value of $\theta$ specified for the mean of the
-distribution.</div>\EndKnitrBlock{rmdnote}
+distribution.
+\EndKnitrBlock{rmdnote}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEDelayForNameTag.png" alt="DELAY for name tags" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEDelayForNameTag)DELAY for name tags</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFEDelayForNameTag} 
+
+}
+
+\caption{DELAY for name tags}(\#fig:JFEDelayForNameTag)
+\end{figure}
 
 Next, Figure \@ref(fig:JFEAssignArrivals) illustrates the first ASSIGN module, which increments the number of students in the system and assigns the arrival
 time of the student. Figure \@ref(fig:JFEDelayForNameTag) shows the dialog box for a PROCESS module
@@ -1738,15 +1804,23 @@ tag. Notice that this option does not require a resource as we saw in
 the Chapter \@ref(ch2). We simply need to specify the Delay action and type of
 the delay with the appropriate distribution (UNIF(15, 45)), in seconds.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEDecideToWander.png" alt="DECIDE to wander or not" width="55%" height="55%" />
-<p class="caption">(\#fig:JFEDecideToWander)DECIDE to wander or not</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEGoToRecruiting.png" alt="GOTO Label: Recruiting Stations" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEGoToRecruiting)GOTO Label: Recruiting Stations</p>
-</div>
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch3/JFEDecideToWander} 
+
+}
+
+\caption{DECIDE to wander or not}(\#fig:JFEDecideToWander)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEGoToRecruiting} 
+
+}
+
+\caption{GOTO Label: Recruiting Stations}(\#fig:JFEGoToRecruiting)
+\end{figure}
 
 Continuing along with the modules in Figure \@ref(fig:JFECreateStudents), the DECIDE module (shown in Figure \@ref(fig:JFEDecideToWander)) is used with the 2-way by Chance option, where the branching chance is set at 50%. The two ASSIGN modules simply assign
 myType to the value 1 (non-wanders) or 2 (wanderers) depending on the
@@ -1756,20 +1830,32 @@ little like an arrow and simply contains the specified label to where
 the entity will be directed. In this case, the label is the "Recruiting
 Stations".
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERecruitingStations.png" alt="Recruiting station process logic" width="80%" height="80%" />
-<p class="caption">(\#fig:JFERecruitingStations)Recruiting station process logic</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERecruitingStationsLabel.png" alt="Recruiting station label" width="70%" height="70%" />
-<p class="caption">(\#fig:JFERecruitingStationsLabel)Recruiting station label</p>
-</div>
+{\centering \includegraphics[width=0.8\linewidth,height=0.8\textheight]{./figures2/ch3/JFERecruitingStations} 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEVisitMalWartProcess.png" alt="Visting MalWart PROCESS module" width="55%" height="55%" />
-<p class="caption">(\#fig:JFEVisitMalWartProcess)Visting MalWart PROCESS module</p>
-</div>
+}
+
+\caption{Recruiting station process logic}(\#fig:JFERecruitingStations)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFERecruitingStationsLabel} 
+
+}
+
+\caption{Recruiting station label}(\#fig:JFERecruitingStationsLabel)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch3/JFEVisitMalWartProcess} 
+
+}
+
+\caption{Visting MalWart PROCESS module}(\#fig:JFEVisitMalWartProcess)
+\end{figure}
 
 Figure \@ref(fig:JFERecruitingStations) shows the module layout for the recruiting station logic. Notice that Figure \@ref(fig:JFERecruitingStationsLabel) shows the specification of the label marking the start of the logic. Figure \@ref(fig:JFEVisitMalWartProcess) show the PROCESS module for the students
 visiting the MalWart recruiting station. Similar to its use in Chapter
@@ -1777,33 +1863,49 @@ visiting the MalWart recruiting station. Similar to its use in Chapter
 rMalWartRecruiter resource will have one of its two recruiters seized
 and provides the time delay, EXPO(3) minutes, for the delay time. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEWanderingStudents.png" alt="Wandering students process logic"  />
-<p class="caption">(\#fig:JFEWanderingStudents)Wandering students process logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEWanderingStudents} 
+
+}
+
+\caption{Wandering students process logic}(\#fig:JFEWanderingStudents)
+\end{figure}
 
 Figure \@ref(fig:JFEWanderingStudents) illustrates the module flow logic for the students that wander.  Here, we again use a PROCESS module with the DELAY option, a DECIDE with
 2-way by Chance option and GO TO LABEL modules to direct the students.
 The ASSIGN module in Figure \@ref(fig:JFEWanderingStudents) simply sets the attribute, myType, to the value 3, as noted in the pseudo-code.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEExitingLogic.png" alt="Statistics collection exiting logic"  />
-<p class="caption">(\#fig:JFEExitingLogic)Statistics collection exiting logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEExitingLogic} 
+
+}
+
+\caption{Statistics collection exiting logic}(\#fig:JFEExitingLogic)
+\end{figure}
 
 Finally, Figure \@ref(fig:JFEExitingLogic) presents the model flow logic for collecting
 statistics when the students leave the mixer. The ASSIGN module of
 Figure \@ref(fig:JFEExitingLogic) is shown in Figure \@ref(fig:JFEAssignDepartures). 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEAssignDepartures.png" alt="ASSIGN module for departures" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEAssignDepartures)ASSIGN module for departures</p>
-</div>
+\begin{figure}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERecordSystemTimes.png" alt="RECORD module for system time interval option" width="60%" height="60%" />
-<p class="caption">(\#fig:JFERecordSystemTimes)RECORD module for system time interval option</p>
-</div>
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFEAssignDepartures} 
+
+}
+
+\caption{ASSIGN module for departures}(\#fig:JFEAssignDepartures)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFERecordSystemTimes} 
+
+}
+
+\caption{RECORD module for system time interval option}(\#fig:JFERecordSystemTimes)
+\end{figure}
 
 In the ASSIGN module, first the
 number of students in attending the mixer is decremented by 1 and the
@@ -1846,10 +1948,14 @@ Expression
 :   The Expression option allows statistics to be collected on a general
     expression when the entity passes through the module.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEDecideOnType.png" alt="DECIDE module for checking type of student" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEDecideOnType)DECIDE module for checking type of student</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFEDecideOnType} 
+
+}
+
+\caption{DECIDE module for checking type of student}(\#fig:JFEDecideOnType)
+\end{figure}
 
 Figure \@ref(fig:JFEDecideOnType) shows a DECIDE module with the N-way by Condition option. This causes the DECIDE module to have more than two output path ports. The order of
 the listed conditions within the module correspond to the output ports
@@ -1867,10 +1973,14 @@ option of the RECORD module was invented because this is such a very
 common modeling task. The rest of the modules in Figure \@ref(fig:JFEExitingLogic) are
 completed in a similar fashion.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERecordType1SystemTime.png" alt="Recording statistics on type 1 students" width="60%" height="60%" />
-<p class="caption">(\#fig:JFERecordType1SystemTime)Recording statistics on type 1 students</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFERecordType1SystemTime} 
+
+}
+
+\caption{Recording statistics on type 1 students}(\#fig:JFERecordType1SystemTime)
+\end{figure}
 
 ### Planning the Sample Size
 
@@ -1881,10 +1991,14 @@ the operation of the STEM mixer 5 times. Each replication will be
 independent of the others. Thus, we will get a random sample of the
 operation of 5 STEM mixers over which we can report statistics. 
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFERunSetup.png" alt="Run setup dialog for STEM Mixer example" width="60%" height="60%" />
-<p class="caption">(\#fig:JFERunSetup)Run setup dialog for STEM Mixer example</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFERunSetup} 
+
+}
+
+\caption{Run setup dialog for STEM Mixer example}(\#fig:JFERunSetup)
+\end{figure}
 
 Running the simulation results in the output for the user defined statistics as
 show in Figure \@ref(fig:JFEInitialResults). We see that the average system time is 39.192
@@ -1898,10 +2012,14 @@ will see later in the text that using the TIME PERSISTENT module will
 allow the user to save the collected data to a file and also provides
 options for collecting statistics over user defined periods of time.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEInitialResults.png" alt="STEM Mixer simulation results for 5 replications"  />
-<p class="caption">(\#fig:JFEInitialResults)STEM Mixer simulation results for 5 replications</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEInitialResults} 
+
+}
+
+\caption{STEM Mixer simulation results for 5 replications}(\#fig:JFEInitialResults)
+\end{figure}
 
 Since the STEM mixer organizer wants to estimate the average time
 students spend at the mixer, regardless of what they do, to be within
@@ -1919,10 +2037,14 @@ Updating the number of replications to run to be 414 and executing the
 model again yields the results in Figure \@ref(fig:JFEResultsN414). We see from Figure \@ref(fig:JFEResultsN414) that the desired half-width criterion of less than 1 minute is met,
 noting that the resulting half-width is less than 0.79 minutes.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEResultsN414.png" alt="STEM Mixer simulation results for 414 replications"  />
-<p class="caption">(\#fig:JFEResultsN414)STEM Mixer simulation results for 414 replications</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEResultsN414} 
+
+}
+
+\caption{STEM Mixer simulation results for 414 replications}(\#fig:JFEResultsN414)
+\end{figure}
 
 To use the Normal approximation method of determining the sample size
 based on the Arena output, we must first compute the sample standard
@@ -1946,10 +2068,14 @@ h\left( n \right) = t_{1-(\alpha/2),n - 1}\frac{s(n)}{\sqrt{n}} \leq \varepsilon
 $$
 Notice that the equation emphasizes the fact that the half-width, $h(n)$ and the sample standard deviation, $s(n)$, both depend on $n$ in th formula. Using goal-seek within the spreadsheet that accompanies this chapter yields $n \geq 208.02 =209$ as illustrated in Figure \@ref(fig:JFEGoalSeek).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEGoalSeek.png" alt="Goal Seek Results for Student-t Iterative Method" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEGoalSeek)Goal Seek Results for Student-t Iterative Method</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEGoalSeek} 
+
+}
+
+\caption{Goal Seek Results for Student-t Iterative Method}(\#fig:JFEGoalSeek)
+\end{figure}
 
 To summarize, we have the following recommendations for the sample size
 based on the three methods.
@@ -2045,10 +2171,14 @@ half-width is less than or equal to the half-width bound. If it is, then
 indicate the that maximum number of replications, `MREP`, has been reached
 by setting `MREP` equal to the current replication number, `NREP.`
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEOutputStatisticSS.png" alt="Defining an OUTPUT statistic" width="55%" height="55%" />
-<p class="caption">(\#fig:JFEOutputStatisticSS)Defining an OUTPUT statistic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.55\linewidth,height=0.55\textheight]{./figures2/ch3/JFEOutputStatisticSS} 
+
+}
+
+\caption{Defining an OUTPUT statistic}(\#fig:JFEOutputStatisticSS)
+\end{figure}
 
 In order to implement this pseudo-code, you must first define an OUTPUT
 statistic. This is done in Figure \@ref(fig:JFEOutputStatisticSS), where the function TAVG(*Tally ID*) has been used to get the end of replication average for the time spent in both
@@ -2060,10 +2190,14 @@ returns the current half-width for the specified OUTPUT statistic based
 on all the replications that have been fully completed. This function
 can be used to check against the half-width bound.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFESSHalfWidthChecking.png" alt="Implemented half-width checking logic" width="85%" height="85%" />
-<p class="caption">(\#fig:JFESSHalfWidthChecking)Implemented half-width checking logic</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth,height=0.85\textheight]{./figures2/ch3/JFESSHalfWidthChecking} 
+
+}
+
+\caption{Implemented half-width checking logic}(\#fig:JFESSHalfWidthChecking)
+\end{figure}
 
 Figure \@ref(fig:JFESSHalfWidthChecking) illustrates the logic for implementing
 sequential sampling. The CREATE module creates a single entity at time
@@ -2086,10 +2220,14 @@ less than or equal to the bound, the entity goes through the ASSIGN
 module to trigger the stopping of the replications. If the half-width is
 larger than the bound, the entity is disposed.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEORUNHALFCheck.png" alt="Checking the ORUNHALF function" width="60%" height="60%" />
-<p class="caption">(\#fig:JFEORUNHALFCheck)Checking the ORUNHALF function</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth,height=0.6\textheight]{./figures2/ch3/JFEORUNHALFCheck} 
+
+}
+
+\caption{Checking the ORUNHALF function}(\#fig:JFEORUNHALFCheck)
+\end{figure}
 
 The special variable called `MREP` represents the maximum number of
 replications to be run for the simulation. When you fill out the Run $>$
@@ -2106,10 +2244,14 @@ to `NREP.` Note that the assignment type is Other because `MREP` is a
 special variable and not a standard variable (as defined in the VARIABLE
 module).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFESSAssignMREP.png" alt="Assigning MREP to NREP" width="70%" height="70%" />
-<p class="caption">(\#fig:JFESSAssignMREP)Assigning MREP to NREP</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFESSAssignMREP} 
+
+}
+
+\caption{Assigning MREP to NREP}(\#fig:JFESSAssignMREP)
+\end{figure}
 
 This has been implemented in the file *STEM_Mixer_Sequential_Sampling.doe*.
 Before running the model, you should set the number of replications
@@ -2117,10 +2259,14 @@ Before running the model, you should set the number of replications
 arbitrarily large integer. If you execute the model, you will get the
 result indicated in Figure \@ref(fig:JFESSResults).
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFESSResults.png" alt="Sequential sampling results for N = 280 Replications"  />
-<p class="caption">(\#fig:JFESSResults)Sequential sampling results for N = 280 Replications</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFESSResults} 
+
+}
+
+\caption{Sequential sampling results for N = 280 Replications}(\#fig:JFESSResults)
+\end{figure}
 
 In the sequential sampling experiment there were 280 replications. We saw from Table \@ref(tab:JFESSn10) that the sample size should be between 219 and 292 in order to meet the half-width criteria based on an initial sample size of 10 replications. The sequential sampling approach iterates to the minimum number of replications to meet the criteria.
 
@@ -2171,17 +2317,25 @@ because the lower value of the range is not included in the range. The
 specification of categories is similar to specifying the bins in
 histogram. The frequencies option will collect the time spent in each of these categories and also the percentage of the total time within each category.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqJHBuntQFreqModule.PNG" alt="Setting up the frequency option for the JHBunt queue using the statistics module"  />
-<p class="caption">(\#fig:JFEFreqJHBuntQFreqModule)Setting up the frequency option for the JHBunt queue using the statistics module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEFreqJHBuntQFreqModule} 
+
+}
+
+\caption{Setting up the frequency option for the JHBunt queue using the statistics module}(\#fig:JFEFreqJHBuntQFreqModule)
+\end{figure}
 
 In Figure \@ref(fig:JFEFreqJHBuntRFreqModule), the frequency option is used to automatically track the states of the JHBunt recruiter resource. Resources automatically have a default state set defined which include `BUSY` and `IDLE`.  Chapter \@ref(ch6) discusses describes additional resource modeling that includes states `INACTIVE` and `FAILED`.  Since the frequency option will collect the percentage of time spent in the associated states, this represents another method for collecting the utilization of resources.  More generally, you can define any state set and track statistics on time spent in the states based on general model logic.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqJHBuntRFreqModule.PNG" alt="Setting up the frequency option for the JHBunt resource using the statistics module"  />
-<p class="caption">(\#fig:JFEFreqJHBuntRFreqModule)Setting up the frequency option for the JHBunt resource using the statistics module</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEFreqJHBuntRFreqModule} 
+
+}
+
+\caption{Setting up the frequency option for the JHBunt resource using the statistics module}(\#fig:JFEFreqJHBuntRFreqModule)
+\end{figure}
 
 The following quantities will be tabulated for a frequency (as per the help files).
 
@@ -2263,10 +2417,14 @@ percentages to be reported: standard and restricted. The restricted
 percentage is computed based on the total time that has removed any
 excluded categories.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqRep1Output.PNG" alt="Replication 1 frequency output for STEM Mixer"  />
-<p class="caption">(\#fig:JFEFreqRep1Output)Replication 1 frequency output for STEM Mixer</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEFreqRep1Output} 
+
+}
+
+\caption{Replication 1 frequency output for STEM Mixer}(\#fig:JFEFreqRep1Output)
+\end{figure}
 
 Figure \@ref(fig:JFEFreqRep1Output) illustrates the results from
 running the STEM mixer model for 30 replications of 360 minutes. For the frequency tabulation
@@ -2277,10 +2435,14 @@ that the categories do not have to define contiguous intervals. As
 indicated in the figure, the OUT OF RANGE category is automatically
 excluded from the restricted percentage column.  If you add up the percentages in the standard percent column ($34.76 + 39.35 + 18.93 + 6.96 = 100$), we see that they add up to 100 percent. The restricted percent column excludes the OUT OF RANGE category and redistributes the time accordingly. Figure \@ref(fig:JFEFreqExcelOutput) illustrates the spreadsheet tabulation of the frequency results. This file is available in the book support files for this chapter as *FrequenciesCalculations.xlsx*. If the number of observations is multplied by the average time in the category, then we get the total time spent in the category. The total of this time should be equal to the time over which the category was observed, in this case 360 minutes. Notice that the OUT OF RANGE category is restricted from the total time to produce the restricted percentages.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqExcelTabulation.png" alt="Spreadsheet tabulation of frequency data" width="70%" height="70%" /><img src="./figures2/ch3/JFEFreqExcelTabulationFormulas.png" alt="Spreadsheet tabulation of frequency data" width="70%" height="70%" />
-<p class="caption">(\#fig:JFEFreqExcelOutput)Spreadsheet tabulation of frequency data</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEFreqExcelTabulation} \includegraphics[width=0.7\linewidth,height=0.7\textheight]{./figures2/ch3/JFEFreqExcelTabulationFormulas} 
+
+}
+
+\caption{Spreadsheet tabulation of frequency data}(\#fig:JFEFreqExcelOutput)
+\end{figure}
 
 When using frequencies, the frequencies will be tabulated for each
 replication; however, frequency statistics are not automatically
@@ -2291,17 +2453,25 @@ allows finer detail on the time spent in user defined categories. This
 can be very useful, especially, when analyzing the effectiveness of
 resource staffing schedules. Figure \@ref(fig:JFEFreqJHBuntProbEmpty) illustrates how to set up an OUTPUT statistic to collect the percentage of time that the queue is empty across the replications.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqJHBuntProbEmpty.PNG" alt="Collecting frequency statistics across replications"  />
-<p class="caption">(\#fig:JFEFreqJHBuntProbEmpty)Collecting frequency statistics across replications</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEFreqJHBuntProbEmpty} 
+
+}
+
+\caption{Collecting frequency statistics across replications}(\#fig:JFEFreqJHBuntProbEmpty)
+\end{figure}
 
 The results from running the model for 30 replications are shown in Figure \@ref(fig:JFEFreqAcrossRepResults).  We see that there is about a 38\% of the time the queue is empty.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch3/JFEFreqAcrossRepResults.PNG" alt="Across replication results for probability that the queue is empty"  />
-<p class="caption">(\#fig:JFEFreqAcrossRepResults)Across replication results for probability that the queue is empty</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{./figures2/ch3/JFEFreqAcrossRepResults} 
+
+}
+
+\caption{Across replication results for probability that the queue is empty}(\#fig:JFEFreqAcrossRepResults)
+\end{figure}
 
 In the following section, we summarize the coverage of this chapter.
 
@@ -2366,11 +2536,15 @@ complex systems. These systems form the building blocks for modeling systems in 
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P1"><strong>(\#exr:ch3P1) </strong></span>*True* or *False*: The Time Between option of the RECORD module will calculate and record the difference between a specified attribute's value and the current simulation time.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P1"><strong>(\#exr:ch3P1) </strong></span>*True* or *False*: The Time Between option of the RECORD module will calculate and record the difference between a specified attribute's value and the current simulation time.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P2"><strong>(\#exr:ch3P2) </strong></span>Provide the missing information for steps for the modeling questions.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P2"><strong>(\#exr:ch3P2) </strong></span>Provide the missing information for steps for the modeling questions.
+\EndKnitrBlock{exercise}
 
 -   *What is the $\underline{\hspace{3cm}}$?*
 
@@ -2400,12 +2574,16 @@ complex systems. These systems form the building blocks for modeling systems in 
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P3"><strong>(\#exr:ch3P3) </strong></span>The method of $\underline{\hspace{3cm}}$ assumes that a random sample
-is formed when repeatedly running the simulation.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P3"><strong>(\#exr:ch3P3) </strong></span>The method of $\underline{\hspace{3cm}}$ assumes that a random sample
+is formed when repeatedly running the simulation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P4"><strong>(\#exr:ch3P4) </strong></span>Indicate whether or not the statistical quantity should be classified as tally-based or time-persistent.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P4"><strong>(\#exr:ch3P4) </strong></span>Indicate whether or not the statistical quantity should be classified as tally-based or time-persistent.
+\EndKnitrBlock{exercise}
 
 |     Classification    |     Description                                                            |
 |-----------------------|----------------------------------------------------------------------------|
@@ -2422,25 +2600,35 @@ is formed when repeatedly running the simulation.</div>\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P5"><strong>(\#exr:ch3P5) </strong></span>What module is used to compute statistical results across replications? 
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P5"><strong>(\#exr:ch3P5) </strong></span>What module is used to compute statistical results across replications? 
   
-  $\underline{\hspace{3cm}}$</div>\EndKnitrBlock{exercise}
+  $\underline{\hspace{3cm}}$
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P6"><strong>(\#exr:ch3P6) </strong></span>*True* or *False* A replication is the generation of one sample path which represents the evolution of the system from its initial conditions to its ending conditions.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P6"><strong>(\#exr:ch3P6) </strong></span>*True* or *False* A replication is the generation of one sample path which represents the evolution of the system from its initial conditions to its ending conditions.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P7"><strong>(\#exr:ch3P7) </strong></span>In a $\underline{\hspace{3cm}}$ horizon simulation, a well defined ending time or ending condition can be specified which clearly demarks the end of the simulation.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P7"><strong>(\#exr:ch3P7) </strong></span>In a $\underline{\hspace{3cm}}$ horizon simulation, a well defined ending time or ending condition can be specified which clearly demarks the end of the simulation.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P8"><strong>(\#exr:ch3P8) </strong></span>*True* or *False* We use the Arena function, TAVG(), for writing out statistics on the average of observation-based variables.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P8"><strong>(\#exr:ch3P8) </strong></span>*True* or *False* We use the Arena function, TAVG(), for writing out statistics on the average of observation-based variables.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P9"><strong>(\#exr:ch3P9) </strong></span>Which of the following are finite horizon situations? Select all that apply.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P9"><strong>(\#exr:ch3P9) </strong></span>Which of the following are finite horizon situations? Select all that apply.
+\EndKnitrBlock{exercise}
 a. Bank: bank doors open at 9 am and close at 5 pm
 b. Military battle: simulate until force strength reaches a critical value
 c. A factory where we are interested in measuring the steady state throughput
@@ -2448,21 +2636,29 @@ d. A hospital emergency room which is open 24 hours a day, 7 days a week
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P10"><strong>(\#exr:ch3P10) </strong></span>Compute the required sample size necessary to ensure a 95\% confidence interval with a half-width of no larger than 30 minutes for the total time to produce a part. Given the half-width of the system time after 10 runs is 47.25, compute the sample size using the half-width ratio method. Round the answer to the next highest integer.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P10"><strong>(\#exr:ch3P10) </strong></span>Compute the required sample size necessary to ensure a 95\% confidence interval with a half-width of no larger than 30 minutes for the total time to produce a part. Given the half-width of the system time after 10 runs is 47.25, compute the sample size using the half-width ratio method. Round the answer to the next highest integer.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P11"><strong>(\#exr:ch3P11) </strong></span>Compute the required sample size necessary to ensure a 95\% confidence interval with a half-width of no larger than 30 minutes for the total time to produce a part. Given the half-width of the system time after 10 runs is 47.25. Find the approximate number of replications needed in order to have a 99\% confidence interval that is within plus or minus 2 minutes of the true mean system time using the half-width ratio method. </div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P11"><strong>(\#exr:ch3P11) </strong></span>Compute the required sample size necessary to ensure a 95\% confidence interval with a half-width of no larger than 30 minutes for the total time to produce a part. Given the half-width of the system time after 10 runs is 47.25. Find the approximate number of replications needed in order to have a 99\% confidence interval that is within plus or minus 2 minutes of the true mean system time using the half-width ratio method. 
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P12"><strong>(\#exr:ch3P12) </strong></span>Assume that the following results represent the summary statistics for a pilot run of 10 replications from a simulation for the system time in minutes. $\overline{x} = 78.2658 \; \pm 9.39$ with confidence 95\%.
-Find the approximate number of *additional* replications in order to have a 99\% confidence interval that is within plus or minus 2 minutes of the true mean system time. </div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P12"><strong>(\#exr:ch3P12) </strong></span>Assume that the following results represent the summary statistics for a pilot run of 10 replications from a simulation for the system time in minutes. $\overline{x} = 78.2658 \; \pm 9.39$ with confidence 95\%.
+Find the approximate number of *additional* replications in order to have a 99\% confidence interval that is within plus or minus 2 minutes of the true mean system time. 
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P13"><strong>(\#exr:ch3P13) </strong></span>Suppose $n=10$ observations were collected on the time spent in a manufacturing system for a part. The analysis determined a 95\% confidence interval for the
-mean system time of $[18.595, 32.421]$.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P13"><strong>(\#exr:ch3P13) </strong></span>Suppose $n=10$ observations were collected on the time spent in a manufacturing system for a part. The analysis determined a 95\% confidence interval for the
+mean system time of $[18.595, 32.421]$.
+\EndKnitrBlock{exercise}
 a. Find the approximate number of samples needed to have a 95\% confidence
 interval that is within plus or minus 2 minutes of the true mean system
 time.
@@ -2472,12 +2668,16 @@ time.
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P14"><strong>(\#exr:ch3P14) </strong></span>Suppose a pilot run of a simulation model estimated that the average waiting time for a customer during the day was 11.485 minutes based on an initial sample size of 15 replications with a 95\% confidence interval half-width of 1.04.
-Using the half-width ratio sample size determination techniques, recommend a sample size to be 95\% confident that you are within $\pm$ 0.10 of the true mean waiting time in the queue. The half-width ratio method requires a sample size of what amount?</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P14"><strong>(\#exr:ch3P14) </strong></span>Suppose a pilot run of a simulation model estimated that the average waiting time for a customer during the day was 11.485 minutes based on an initial sample size of 15 replications with a 95\% confidence interval half-width of 1.04.
+Using the half-width ratio sample size determination techniques, recommend a sample size to be 95\% confident that you are within $\pm$ 0.10 of the true mean waiting time in the queue. The half-width ratio method requires a sample size of what amount?
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P15"><strong>(\#exr:ch3P15) </strong></span>Assume that the following table represents the summary statistics for a pilot run of 10 replications from a simulation. </div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P15"><strong>(\#exr:ch3P15) </strong></span>Assume that the following table represents the summary statistics for a pilot run of 10 replications from a simulation. 
+\EndKnitrBlock{exercise}
 
 | Simulation Statistics |  NPV  | P(NPV $<$ 0) |
 |:---------------------:|:-----:|:------------:|
@@ -2491,7 +2691,8 @@ b. Find the number of replications necessary to be 99% confident that you have a
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P16"><strong>(\#exr:ch3P16) </strong></span>Consider a manufacturing system comprising two different machines and
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P16"><strong>(\#exr:ch3P16) </strong></span>Consider a manufacturing system comprising two different machines and
 two operators. Each operator is assigned to run a single machine. Parts
 arrive with an exponentially distributed inter-arrival time with a mean
 of 3 minutes. The arriving parts are one of two types. Sixty percent of
@@ -2506,11 +2707,13 @@ standard deviation of 1.5 minutes for Type 2 parts. The operator of the machine 
 
 Run your model for 20000 minutes, with 10 replications. Report the utilization of the
 machines and operators. In addition, report the total time spent in the
-system for each type of part. </div>\EndKnitrBlock{exercise}
+system for each type of part. 
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P17"><strong>(\#exr:ch3P17) </strong></span>Incoming phone calls arrive according to a Poisson process with a rate of 1 call per hour.
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P17"><strong>(\#exr:ch3P17) </strong></span>Incoming phone calls arrive according to a Poisson process with a rate of 1 call per hour.
 Each call is either for the accounting department or for the customer
 service department. There is a 30\% chance that a call is for the
 accounting department and a 70\% chance the call is for the customer
@@ -2530,31 +2733,44 @@ at the accountant, operator 1, operator 3, and operator 3. Develop an
 simulation for this situation. Simulate 30 days of operation, where each
 day is 10 hours long. Report the utilization of the accountant and the
 operators as well as the average time that calls wait within the
-respective queues.</div>\EndKnitrBlock{exercise}
+respective queues.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P18"><strong>(\#exr:ch3P18) </strong></span>Parts arrive to a small manufacturing cell at a rate of one part every 30 $\pm$ 20 seconds.  Forty percent of the parts go to drill press, where one worker drills the hole in 60 $\pm$ 30 seconds. The rest of the parts go to the hole punch where one worker punches the hole in 45 $\pm$ 30 seconds. All parts must go to a deburring station, which takes 25 $\pm$ 10 seconds with one operator.  For all parts, they then go through a heat treatment operation for 20 $\pm$ 10 minutes. For the purposes of this problem, there is always room within the heat treatment area to hold as many parts as necessary. The notation X $\pm$ Y indicates that the random variable is uniformly distributed over the range (X-Y, X+Y).  Build a model that can estimate the following performance measures: 1) average number of parts in the manufacturing cell, and 2) average time spent in the manufacturing cell. Run your model for 20 replications of 100 parts.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P18"><strong>(\#exr:ch3P18) </strong></span>Parts arrive to a small manufacturing cell at a rate of one part every 30 $\pm$ 20 seconds.  Forty percent of the parts go to drill press, where one worker drills the hole in 60 $\pm$ 30 seconds. The rest of the parts go to the hole punch where one worker punches the hole in 45 $\pm$ 30 seconds. All parts must go to a deburring station, which takes 25 $\pm$ 10 seconds with one operator.  For all parts, they then go through a heat treatment operation for 20 $\pm$ 10 minutes. For the purposes of this problem, there is always room within the heat treatment area to hold as many parts as necessary. The notation X $\pm$ Y indicates that the random variable is uniformly distributed over the range (X-Y, X+Y).  Build a model that can estimate the following performance measures: 1) average number of parts in the manufacturing cell, and 2) average time spent in the manufacturing cell. Run your model for 20 replications of 100 parts.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P19"><strong>(\#exr:ch3P19) </strong></span>Referring to Exercise \@ref(exr:ch3P16). Determine the number of replications to ensure that the you are 95\% confident that the true expected system time for part type 2 has a half-width of 0.5 minutes or less.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P19"><strong>(\#exr:ch3P19) </strong></span>Referring to Exercise \@ref(exr:ch3P16). Determine the number of replications to ensure that you are 95\% confident that the true expected system time for part type 2 has a half-width of 0.5 minutes or less.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P20"><strong>(\#exr:ch3P20) </strong></span>Referring to Exercise \@ref(exr:ch3P17). Determine the number of replications to ensure that the you are 95\% confident that the true waiting time for the accountant is within $\pm$ 2 minutes.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P20"><strong>(\#exr:ch3P20) </strong></span>Referring to Exercise \@ref(exr:ch3P17). Determine the number of replications to ensure that you are 95\% confident that the true waiting time for the accountant is within $\pm$ 2 minutes.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P21"><strong>(\#exr:ch3P21) </strong></span>Referring to Exercise \@ref(exr:ch3P18). Determine the number of replications to ensure that the you are 95\% confident that the average number of parts within the system is within $\pm$ 1 units.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P21"><strong>(\#exr:ch3P21) </strong></span>Referring to Exercise \@ref(exr:ch3P18). Determine the number of replications to ensure that you are 95\% confident that the average number of parts within the system is within $\pm$ 1 units.
+\EndKnitrBlock{exercise}
 
 ***
 
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P22"><strong>(\#exr:ch3P22) </strong></span>Referring to Exercise \@ref(exr:ch2P20). Determine the sample size necessary to estimate the mean shipment time for the truck only combination to within 0.5 hours with 95\% confidence</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P22"><strong>(\#exr:ch3P22) </strong></span>Referring to Exercise \@ref(exr:ch2P20). Determine the sample size necessary to estimate the mean shipment time for the truck only combination to within 0.5 hours with 95\% confidence
+\EndKnitrBlock{exercise}
 
 ***
  
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch3P23"><strong>(\#exr:ch3P23) </strong></span>Referring to Exercise \@ref(exr:ch2P22). Develop an model to estimate the average profit with 95\% confidence to within plus or minus \$0.5.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch3P23"><strong>(\#exr:ch3P23) </strong></span>Referring to Exercise \@ref(exr:ch2P22). Develop an model to estimate the average profit with 95\% confidence to within plus or minus \$0.5.
+\EndKnitrBlock{exercise}
 
 ***
 

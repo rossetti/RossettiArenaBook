@@ -218,10 +218,14 @@ to remember is that two perfectly logical and rational people can look
 at the same thing and conceptualize that thing as two entirely different
 systems based on their \"Weltanschauung\" or world view. \index{world view}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch1/ch1fig1.jpg" alt="Conceptualization of a system" width="90%" height="90%" />
-<p class="caption">(\#fig:ch1SystemConcept)Conceptualization of a system</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch1/ch1fig1} 
+
+}
+
+\caption{Conceptualization of a system}(\#fig:ch1SystemConcept)
+\end{figure}
 
 <!-- ![A Conceptualization of a -->
 <!-- System](./figures/ch1/ch1fig1.jpg){#fig:ch1SystemConcept} -->
@@ -247,10 +251,14 @@ Figure \@ref(fig:ch1SystemTypes) illustrates this classification of
 systems. This book primarily examines stochastic, dynamic, discrete
 systems. \index{system!conceptualization}  \index{system!types}
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch1/ch1fig2.jpg" alt="General types of systems" width="90%" height="90%" />
-<p class="caption">(\#fig:ch1SystemTypes)General types of systems</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch1/ch1fig2} 
+
+}
+
+\caption{General types of systems}(\#fig:ch1SystemTypes)
+\end{figure}
 
 <!-- ![General Types of -->
 <!-- Systems](./figures/ch1/ch1fig2.jpg){#fig:ch1SystemTypes} -->
@@ -359,10 +367,14 @@ other words, simulation can also be used for prescriptive modeling.
 Figure \@ref(fig:ch1PrescriptiveSimulation) illustrates the concept of
 using simulation to recommend a solution.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch1/ch1fig3.jpg" alt="Using simulation for prescriptive analysis" width="90%" height="90%" />
-<p class="caption">(\#fig:ch1PrescriptiveSimulation)Using simulation for prescriptive analysis</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch1/ch1fig3} 
+
+}
+
+\caption{Using simulation for prescriptive analysis}(\#fig:ch1PrescriptiveSimulation)
+\end{figure}
 
 <!-- ![Using Simulation for Prescriptive -->
 <!-- Analysis](./figures/ch1/ch1fig3.jpg){#fig:ch1PrescriptiveSimulation} -->
@@ -607,10 +619,14 @@ essential when trying to ensure the ongoing and future use of the
 simulation model, and implementation recognizes that simulation projects
 often fail if there is no follow through on the recommended solutions.
 
-<div class="figure" style="text-align: center">
-<img src="./figures2/ch1/ch1fig4.jpg" alt="General simulation project methodology" width="90%" height="90%" />
-<p class="caption">(\#fig:ch1SimMethodology)General simulation project methodology</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.9\textheight]{./figures2/ch1/ch1fig4} 
+
+}
+
+\caption{General simulation project methodology}(\#fig:ch1SimMethodology)
+\end{figure}
 
 <!-- ![General Simulation -->
 <!-- Methodology](./figures/ch1/ch1fig4.jpg){#fig:ch1SimMethodology -->
@@ -888,22 +904,27 @@ a useful and interesting experience.
 ## Exercises
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P1"><strong>(\#exr:ch1P1) </strong></span>Using the resources at
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P1"><strong>(\#exr:ch1P1) </strong></span>Using the resources at
 (http://www.informs-sim.org/wscpapers.html) find an application of
 simulation to a real system and discuss why simulation was important to
-the analysis.</div>\EndKnitrBlock{exercise}
+the analysis.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P2"><strong>(\#exr:ch1P2) </strong></span>Customers arrive to a gas
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P2"><strong>(\#exr:ch1P2) </strong></span>Customers arrive to a gas
 station with two pumps. Each pump can reasonably accommodate a total of
 two cars. If all the space for the cars is full, potential customers
 will balk (leave without getting gas). What measures of performance will
 be useful in evaluating the effectiveness of the gas station? Describe
 how you would collect the inter-arrival and service times of the
-customers necessary to simulate this system.</div>\EndKnitrBlock{exercise}
+customers necessary to simulate this system.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P3"><strong>(\#exr:ch1P3) </strong></span>Classify the systems as either being discrete or continuous:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P3"><strong>(\#exr:ch1P3) </strong></span>Classify the systems as either being discrete or continuous:
 
 - Electrical Capacitor (You are interested in modeling the amount of
 current in a capacitor at any time $t$).
@@ -913,20 +934,24 @@ people playing Halo 4 at any time $t$.)
 
 - An airport. (You are interested in modeling the percentage of flights
 that depart late on any given day).
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P4"><strong>(\#exr:ch1P4) </strong></span>Classify the systems as either being discrete or continuous:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P4"><strong>(\#exr:ch1P4) </strong></span>Classify the systems as either being discrete or continuous:
 
 - Parking lot
 
 - Level of gas in Fayetteville shale deposit
 
 - Printed circuit board manufacturing facility
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P5"><strong>(\#exr:ch1P5) </strong></span>Classify the systems as either being discrete or continuous:
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P5"><strong>(\#exr:ch1P5) </strong></span>Classify the systems as either being discrete or continuous:
 
 - Elevator system (You are interested in modeling the number of people
 waiting on each floor and traveling within the elevators.)
@@ -936,37 +961,50 @@ waiting for trial.)
 
 - The in-air flight path of an airplane as it moves from an origin to a
 destination.
-</div>\EndKnitrBlock{exercise}
+
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P6"><strong>(\#exr:ch1P6) </strong></span>What is model conceptualization? Give an example of something that might
-be produced during model conceptualization.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P6"><strong>(\#exr:ch1P6) </strong></span>What is model conceptualization? Give an example of something that might
+be produced during model conceptualization.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P7"><strong>(\#exr:ch1P7) </strong></span>The act of implementing the model in computer code, including timing and
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P7"><strong>(\#exr:ch1P7) </strong></span>The act of implementing the model in computer code, including timing and
 general procedures and the representation of the conceptual model into a
-computer simulation program is called: $\underline{\hspace{2in}}$.</div>\EndKnitrBlock{exercise}
+computer simulation program is called: $\underline{\hspace{2in}}$.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P8"><strong>(\#exr:ch1P8) </strong></span>Which of the following does the problem formulation phase of simulation
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P8"><strong>(\#exr:ch1P8) </strong></span>Which of the following does the problem formulation phase of simulation
 not include? 
 - Define the system 
 - Establish performance metrics
 - Verification 
-- Build conceptual models</div>\EndKnitrBlock{exercise}
+- Build conceptual models
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P9"><strong>(\#exr:ch1P9) </strong></span>*Fill in the blank* The general goals of a simulation include the  $\underline{\hspace{2in}}$ of system alternatives and their
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P9"><strong>(\#exr:ch1P9) </strong></span>*Fill in the blank* The general goals of a simulation include the  $\underline{\hspace{2in}}$ of system alternatives and their
 performance measures across various factors (decision variables) with
-respect to some objectives.</div>\EndKnitrBlock{exercise}
+respect to some objectives.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P10"><strong>(\#exr:ch1P10) </strong></span>*Fill in the blank* The general goals of a simulation include the $\underline{\hspace{2in}}$ of system behavior at some future point
-in time.</div>\EndKnitrBlock{exercise}
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P10"><strong>(\#exr:ch1P10) </strong></span>*Fill in the blank* The general goals of a simulation include the $\underline{\hspace{2in}}$ of system behavior at some future point
+in time.
+\EndKnitrBlock{exercise}
 
 ***
-\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ch1P11"><strong>(\#exr:ch1P11) </strong></span>*True* or *False* Verification of the simulation model is performed to
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:ch1P11"><strong>(\#exr:ch1P11) </strong></span>*True* or *False* Verification of the simulation model is performed to
 determine whether the simulation model adequately represents the real
-system.</div>\EndKnitrBlock{exercise}
+system.
+\EndKnitrBlock{exercise}
 
 ***
