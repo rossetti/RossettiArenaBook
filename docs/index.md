@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-06-17"
+date: "2021-07-07"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:
@@ -57,6 +57,8 @@ The example models and related files associated with the textbook are also copyr
 - Welch Plot Application
   + [Mac OS Version](https://uark.box.com/v/RossettiWelchPlotMacVersion)
   + [Windows Version](https://uark.box.com/v/RossettiWelchAppWindowsVersion)
+
+A solutions manual is available for formal adopters of the textbook.  Naturally, instructors must prove that they have adopted the book for the course.  The solutions manual and associated files are copyrighted materials and should not be released to students in any form.  Instructors can guess what happens when solutions become readily available to students!  Contact me if you need further details.
 
 ## Acknowledgments {-}
 
@@ -217,4 +219,3 @@ compressed to allow dedicated time for a project at the end of the
 semester. For instructors that do not require a project, then a less
 aggressive schedule can be easily achieved.
 
-A solutions manual is available for formal adopters of the textbook.  Naturally, instructors must prove that they have adopted the book for the course.  The solutions manual and associated files are copyrighted materials and should not be released to students in any form.  Instructors can guess what happens when solutions become readily available to students!  Contact me if you need further details.

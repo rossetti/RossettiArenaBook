@@ -24,7 +24,7 @@
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-06-17" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="ch2-ArenaEnv.html"><a href="ch2-ArenaEnv.html"><i class="fa fa-check"></i><b>2.1</b> The Arena Environment</a></li>
 <li class="chapter" data-level="2.2" data-path="MCinArena.html"><a href="MCinArena.html"><i class="fa fa-check"></i><b>2.2</b> Performing Simple Monte-Carlo Simulations using Arena</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#simple-monte-carlo-integration-ssmc"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration {ssMC}</a></li>
+<li class="chapter" data-level="2.2.1" data-path="MCinArena.html"><a href="MCinArena.html#ssMC"><i class="fa fa-check"></i><b>2.2.1</b> Simple Monte Carlo Integration</a></li>
 <li class="chapter" data-level="2.2.2" data-path="MCinArena.html"><a href="MCinArena.html#ch2:staticArena"><i class="fa fa-check"></i><b>2.2.2</b> Arena Modules Needed for Static Simulation Examples</a></li>
 <li class="chapter" data-level="2.2.3" data-path="MCinArena.html"><a href="MCinArena.html#ch2:areaArena"><i class="fa fa-check"></i><b>2.2.3</b> Area Estimation via Arena</a></li>
 <li class="chapter" data-level="2.2.4" data-path="MCinArena.html"><a href="MCinArena.html#the-news-vendor-problem"><i class="fa fa-check"></i><b>2.2.4</b> The News Vendor Problem</a></li>
@@ -568,8 +568,8 @@ simulation, where the state of the system evolves over time and the
 state changes at irregularly (randomly occurring) points in time.
 Dynamic simulation (specifically discrete-event simulation) will be the
 subject of subsequent sections of this chapter and other chapters in the book.</p>
-<div id="simple-monte-carlo-integration-ssmc" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Simple Monte Carlo Integration {ssMC}</h3>
+<div id="ssMC" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Simple Monte Carlo Integration</h3>
 <p>In this section, we will illustrate one of the fundamental uses of Monte Carlo
 methods: estimating the area of a function. Suppose we have some
 function, <span class="math inline">\(g(x)\)</span>, defined over the range <span class="math inline">\(a \leq x \leq b\)</span> and we want
@@ -747,7 +747,7 @@ Figure 2.4: Arena model for estimating the area of f(x)= sqrt(x)
 <p>Figure <a href="MCinArena.html#fig:AreaEstArena">2.4</a> represent the flow chart solution
 within the environment. Notice the CREATE, ASSIGN, RECORD, and DISPOSE
 modules laid out in the model window. A CREATE module creates entities
-that flow through other modules. Figure <a href="MCinArena.html#fig:AreaEstCreate">2.5</a> illustrates the creating of 1 entityby setting the maximum number of entities field to the value 1. Since the First Creation field has a value of 0.0, there will be 1 entity that
+that flow through other modules. Figure <a href="MCinArena.html#fig:AreaEstCreate">2.5</a> illustrates the creating of 1 entity by setting the maximum number of entities field to the value 1. Since the First Creation field has a value of 0.0, there will be 1 entity that
 is created at time 0. The CREATE module will be discussed in further
 detail, later in this chapter. The created entity will move to the next
 module (ASSIGN) and cause its logic to be executed.</p>

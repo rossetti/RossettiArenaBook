@@ -15,8 +15,6 @@
 -   To be able to define and use key terms in pseudo-random number
     generation methods such as streams, seeds, period, etc.
 
--   To be able to explain the key issues in pseudo-random number testing
-
 -   To be able to derive and implement an inverse cumulative
     distribution function based random variate generation algorithm
 
@@ -1861,7 +1859,7 @@ b. Using 0.943, 0.398 generate two random variates from this distribution with $
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:AppRNRVP23"><strong>(\#exr:AppRNRVP23) </strong></span>Using the first two rows of random numbers from the following table, generate 5 random numbers from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using the
-convolution method the number of Bernoulli trials to get 4 successes.
+convolution method.
 \EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------

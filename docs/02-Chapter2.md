@@ -122,7 +122,7 @@ state changes at irregularly (randomly occurring) points in time.
 Dynamic simulation (specifically discrete-event simulation) will be the
 subject of subsequent sections of this chapter and other chapters in the book.
 
-### Simple Monte Carlo Integration {ssMC}
+### Simple Monte Carlo Integration {#ssMC}
 
 In this section, we will illustrate one of the fundamental uses of Monte Carlo
 methods: estimating the area of a function. Suppose we have some
@@ -345,7 +345,7 @@ more readily implement it within the Arena environment.
 Figure \@ref(fig:AreaEstArena) represent the flow chart solution
 within the environment. Notice the CREATE, ASSIGN, RECORD, and DISPOSE
 modules laid out in the model window. A CREATE module creates entities
-that flow through other modules. Figure \@ref(fig:AreaEstCreate) illustrates the creating of 1 entityby setting the maximum number of entities field to the value 1. Since the First Creation field has a value of 0.0, there will be 1 entity that
+that flow through other modules. Figure \@ref(fig:AreaEstCreate) illustrates the creating of 1 entity by setting the maximum number of entities field to the value 1. Since the First Creation field has a value of 0.0, there will be 1 entity that
 is created at time 0. The CREATE module will be discussed in further
 detail, later in this chapter. The created entity will move to the next
 module (ASSIGN) and cause its logic to be executed.

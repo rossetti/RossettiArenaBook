@@ -8,6 +8,8 @@
 
 - To be able model continuous distributions based on data
 
+- To be able to explain the key issues in pseudo-random number testing
+
 - To be able to perform basic statistical tests on uniform pseudo-random numbers
 
 When performing a simulation study, there is no substitution for
@@ -3626,7 +3628,7 @@ and one slow copier. The copy time per page for the fast copier is
 thought to be lognormally distributed with a mean of 1.6 seconds and a
 standard deviation of 0.3 seconds. A co-op Industrial Engineering
 student has collected some time study data on the time to copy a page
-for the slow copier. The times, in seconds, are given in the data file *problem13.txt*
+for the slow copier. The times, in seconds, are given in the data file *problem13.txt*. Recommend a probability distribution for the time to copy on the slow copier. Justify your recommendation using the statistical methods described in the chapter.
 \EndKnitrBlock{exercise}
 
 ***
