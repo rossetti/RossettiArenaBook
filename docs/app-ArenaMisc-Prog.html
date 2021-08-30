@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D.3 Programming Concepts within Arena | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D.3 Programming Concepts within Arena | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="D.3 Programming Concepts within Arena | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-ArenaMisc-RunController.html"/>
 <link rel="next" href="app-ArenaMisc-ArenaCosting.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -1098,7 +1072,7 @@ language that has all the aspects of modern computer languages include
 the ability to create objects with properties and methods. A full
 discussion of VBA is beyond the scope of this text. For an introduction
 to VBA for people interested in modeling, you might refer to
-<span class="citation">(<a href="#ref-albright2001vba" role="doc-biblioref">Albright 2001</a>)</span>.</p>
+<span class="citation">(Albright <a href="#ref-albright2001vba" role="doc-biblioref">2001</a>)</span>.</p>
 <p>The section assumes that the reader has some familiarity with VBA or is,
 at the very least, relatively computer language literate. This topic is
 relatively advanced and typical usage of often does not require the user
@@ -1251,11 +1225,11 @@ during the execution of the model. The code will be very simple, it will
 just open up a message box that indicates that the <em>RunBegin VBA</em> event
 has occurred. The code to open up a message box when the event procedure
 fires is as follows:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb140-1"><a href="app-ArenaMisc-Prog.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub ModelLogic_RunBegin<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb140-2"><a href="app-ArenaMisc-Prog.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-3"><a href="app-ArenaMisc-Prog.html#cb140-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">MsgBox</span> <span class="st">&quot;RunBegin&quot;</span></span>
-<span id="cb140-4"><a href="app-ArenaMisc-Prog.html#cb140-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-5"><a href="app-ArenaMisc-Prog.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb140-1"><a href="app-ArenaMisc-Prog.html#cb140-1" aria-hidden="true"></a><span class="ex">Private</span> Sub ModelLogic_RunBegin()</span>
+<span id="cb140-2"><a href="app-ArenaMisc-Prog.html#cb140-2" aria-hidden="true"></a></span>
+<span id="cb140-3"><a href="app-ArenaMisc-Prog.html#cb140-3" aria-hidden="true"></a> <span class="ex">MsgBox</span> <span class="st">&quot;RunBegin&quot;</span></span>
+<span id="cb140-4"><a href="app-ArenaMisc-Prog.html#cb140-4" aria-hidden="true"></a></span>
+<span id="cb140-5"><a href="app-ArenaMisc-Prog.html#cb140-5" aria-hidden="true"></a><span class="ex">End</span> Sub</span></code></pre></div>
 <p>The use of the <em>MsgBox</em> function in this example is just to illustrate
 that the subroutine is called at the proper time. You will quite
 naturally want to put more useful code within your VBA event
@@ -1350,24 +1324,24 @@ dialogues in the file called <em>VBAExample.doe</em>.</p>
 Editor. Double-click on the <em>ThisDocument</em> object and enter the code as
 shown in the following code. If you don’t want to retype this
 code, then you can access it in the file <em>VBAExample.doe</em>.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb141-1"><a href="app-ArenaMisc-Prog.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Option</span> Explicit</span>
-<span id="cb141-2"><a href="app-ArenaMisc-Prog.html#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-3"><a href="app-ArenaMisc-Prog.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Declare global object variables to refer</span>
-<span id="cb141-4"><a href="app-ArenaMisc-Prog.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> to the Model and SIMAN objects</span>
-<span id="cb141-5"><a href="app-ArenaMisc-Prog.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Public allows them to be accessed anywhere in this module</span>
-<span id="cb141-6"><a href="app-ArenaMisc-Prog.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> or any other vba module</span>
-<span id="cb141-7"><a href="app-ArenaMisc-Prog.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> gModelObj As Model</span>
-<span id="cb141-8"><a href="app-ArenaMisc-Prog.html#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> gSIMANObj As SIMAN</span>
-<span id="cb141-9"><a href="app-ArenaMisc-Prog.html#cb141-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-10"><a href="app-ArenaMisc-Prog.html#cb141-10" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Variables can be accessed via their uniquely assigned</span>
-<span id="cb141-11"><a href="app-ArenaMisc-Prog.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> symbol number. An integer variable is needed to hold the index</span>
-<span id="cb141-12"><a href="app-ArenaMisc-Prog.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> It is declared public here so it can be used throughout this module</span>
-<span id="cb141-13"><a href="app-ArenaMisc-Prog.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> and other vba modules</span>
-<span id="cb141-14"><a href="app-ArenaMisc-Prog.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span> vPTFactorIndex As Integer</span>
-<span id="cb141-15"><a href="app-ArenaMisc-Prog.html#cb141-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-16"><a href="app-ArenaMisc-Prog.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Index for the myPT attribute</span>
-<span id="cb141-17"><a href="app-ArenaMisc-Prog.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> It is declared private here so it can be used throughout this module</span>
-<span id="cb141-18"><a href="app-ArenaMisc-Prog.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> myPTIndex As Integer</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb141-1"><a href="app-ArenaMisc-Prog.html#cb141-1" aria-hidden="true"></a><span class="ex">Option</span> Explicit</span>
+<span id="cb141-2"><a href="app-ArenaMisc-Prog.html#cb141-2" aria-hidden="true"></a></span>
+<span id="cb141-3"><a href="app-ArenaMisc-Prog.html#cb141-3" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Declare</span> global object variables to refer</span>
+<span id="cb141-4"><a href="app-ArenaMisc-Prog.html#cb141-4" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">to</span> the Model and SIMAN objects</span>
+<span id="cb141-5"><a href="app-ArenaMisc-Prog.html#cb141-5" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Public</span> allows them to be accessed anywhere in this module</span>
+<span id="cb141-6"><a href="app-ArenaMisc-Prog.html#cb141-6" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">or</span> any other vba module</span>
+<span id="cb141-7"><a href="app-ArenaMisc-Prog.html#cb141-7" aria-hidden="true"></a><span class="ex">Public</span> gModelObj As Model</span>
+<span id="cb141-8"><a href="app-ArenaMisc-Prog.html#cb141-8" aria-hidden="true"></a><span class="ex">Public</span> gSIMANObj As SIMAN</span>
+<span id="cb141-9"><a href="app-ArenaMisc-Prog.html#cb141-9" aria-hidden="true"></a></span>
+<span id="cb141-10"><a href="app-ArenaMisc-Prog.html#cb141-10" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Variables</span> can be accessed via their uniquely assigned</span>
+<span id="cb141-11"><a href="app-ArenaMisc-Prog.html#cb141-11" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">symbol</span> number. An integer variable is needed to hold the index</span>
+<span id="cb141-12"><a href="app-ArenaMisc-Prog.html#cb141-12" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">It</span> is declared public here so it can be used throughout this module</span>
+<span id="cb141-13"><a href="app-ArenaMisc-Prog.html#cb141-13" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">and</span> other vba modules</span>
+<span id="cb141-14"><a href="app-ArenaMisc-Prog.html#cb141-14" aria-hidden="true"></a><span class="ex">Public</span> vPTFactorIndex As Integer</span>
+<span id="cb141-15"><a href="app-ArenaMisc-Prog.html#cb141-15" aria-hidden="true"></a></span>
+<span id="cb141-16"><a href="app-ArenaMisc-Prog.html#cb141-16" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Index</span> for the myPT attribute</span>
+<span id="cb141-17"><a href="app-ArenaMisc-Prog.html#cb141-17" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">It</span> is declared private here so it can be used throughout this module</span>
+<span id="cb141-18"><a href="app-ArenaMisc-Prog.html#cb141-18" aria-hidden="true"></a><span class="ex">Private</span> myPTIndex As Integer</span></code></pre></div>
 <p>Let’s walk through what this code means. The two public variables
 <code>gModelObj</code> and <code>gSIMANObj</code> are object reference variables of type Model
 and SIMAN respectively. These variables allow access to the properties
@@ -1463,38 +1437,38 @@ variable is accessed and then assigned to the value of the <em>TextBox1</em>
 control on the <code>Interact</code> form. Then, the Interact form is told to show
 itself and the focus is set to the text box, <em>TextBox1</em>, on the form for
 user entry.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="app-ArenaMisc-Prog.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub ModelLogic_RunBeginSimulation<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb142-2"><a href="app-ArenaMisc-Prog.html#cb142-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set object references</span>
-<span id="cb142-3"><a href="app-ArenaMisc-Prog.html#cb142-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Set</span> gModelObj = ThisDocument.Model</span>
-<span id="cb142-4"><a href="app-ArenaMisc-Prog.html#cb142-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Set</span> gSIMANObj = ThisDocument.Model.SIMAN</span>
-<span id="cb142-5"><a href="app-ArenaMisc-Prog.html#cb142-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb142-6"><a href="app-ArenaMisc-Prog.html#cb142-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Get the index to the symbol number</span>
-<span id="cb142-7"><a href="app-ArenaMisc-Prog.html#cb142-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> if the symbol does not exist there will be an error,</span>
-<span id="cb142-8"><a href="app-ArenaMisc-Prog.html#cb142-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> There is no error handling in this example</span>
-<span id="cb142-9"><a href="app-ArenaMisc-Prog.html#cb142-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The SymbolNumber method of the SIMAN object returns</span>
-<span id="cb142-10"><a href="app-ArenaMisc-Prog.html#cb142-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> the index associated with the named symbol</span>
-<span id="cb142-11"><a href="app-ArenaMisc-Prog.html#cb142-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb142-12"><a href="app-ArenaMisc-Prog.html#cb142-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the index for the myPT attribute</span>
-<span id="cb142-13"><a href="app-ArenaMisc-Prog.html#cb142-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">myPTIndex</span> = gSIMANObj.SymbolNumber<span class="er">(</span><span class="st">&quot;myPT&quot;</span><span class="kw">)</span></span>
-<span id="cb142-14"><a href="app-ArenaMisc-Prog.html#cb142-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-15"><a href="app-ArenaMisc-Prog.html#cb142-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the index for the vPTFactor variable</span>
-<span id="cb142-16"><a href="app-ArenaMisc-Prog.html#cb142-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vPTFactorIndex</span> = gSIMANObj.SymbolNumber<span class="er">(</span><span class="st">&quot;vPTFactor&quot;</span><span class="kw">)</span></span>
-<span id="cb142-17"><a href="app-ArenaMisc-Prog.html#cb142-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb142-18"><a href="app-ArenaMisc-Prog.html#cb142-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set the current value of the textbox to the</span>
-<span id="cb142-19"><a href="app-ArenaMisc-Prog.html#cb142-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> current value of the vPT variable in Arena</span>
-<span id="cb142-20"><a href="app-ArenaMisc-Prog.html#cb142-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The VariableArrayValue method of the SIMAN object</span>
-<span id="cb142-21"><a href="app-ArenaMisc-Prog.html#cb142-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> returns the value of the variable associated with the index</span>
-<span id="cb142-22"><a href="app-ArenaMisc-Prog.html#cb142-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.TextBox1.value</span> =         </span>
-<span id="cb142-23"><a href="app-ArenaMisc-Prog.html#cb142-23" aria-hidden="true" tabindex="-1"></a>              <span class="ex">gSIMANObj.VariableArrayValue</span><span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
-<span id="cb142-24"><a href="app-ArenaMisc-Prog.html#cb142-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb142-25"><a href="app-ArenaMisc-Prog.html#cb142-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Display the user form</span>
-<span id="cb142-26"><a href="app-ArenaMisc-Prog.html#cb142-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.Show</span></span>
-<span id="cb142-27"><a href="app-ArenaMisc-Prog.html#cb142-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Set the focus to the textbox</span>
-<span id="cb142-28"><a href="app-ArenaMisc-Prog.html#cb142-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Interact.TextBox1.SetFocus</span></span>
-<span id="cb142-29"><a href="app-ArenaMisc-Prog.html#cb142-29" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb142-30"><a href="app-ArenaMisc-Prog.html#cb142-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> The code for setting the variable<span class="st">&#39;s value is   </span></span>
-<span id="cb142-31"><a href="app-ArenaMisc-Prog.html#cb142-31" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;&#39; in the OK button user form code</span></span>
-<span id="cb142-32"><a href="app-ArenaMisc-Prog.html#cb142-32" aria-hidden="true" tabindex="-1"></a><span class="st">End Sub</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="app-ArenaMisc-Prog.html#cb142-1" aria-hidden="true"></a><span class="ex">Private</span> Sub ModelLogic_RunBeginSimulation()</span>
+<span id="cb142-2"><a href="app-ArenaMisc-Prog.html#cb142-2" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="kw">set</span> <span class="ex">object</span> references</span>
+<span id="cb142-3"><a href="app-ArenaMisc-Prog.html#cb142-3" aria-hidden="true"></a>    <span class="ex">Set</span> gModelObj = ThisDocument.Model</span>
+<span id="cb142-4"><a href="app-ArenaMisc-Prog.html#cb142-4" aria-hidden="true"></a>    <span class="ex">Set</span> gSIMANObj = ThisDocument.Model.SIMAN</span>
+<span id="cb142-5"><a href="app-ArenaMisc-Prog.html#cb142-5" aria-hidden="true"></a>    </span>
+<span id="cb142-6"><a href="app-ArenaMisc-Prog.html#cb142-6" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">Get</span> the index to the symbol number</span>
+<span id="cb142-7"><a href="app-ArenaMisc-Prog.html#cb142-7" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="kw">if</span> <span class="ex">the</span> symbol does not exist there will be an error,</span>
+<span id="cb142-8"><a href="app-ArenaMisc-Prog.html#cb142-8" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">There</span> is no error handling in this example</span>
+<span id="cb142-9"><a href="app-ArenaMisc-Prog.html#cb142-9" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">The</span> SymbolNumber method of the SIMAN object returns</span>
+<span id="cb142-10"><a href="app-ArenaMisc-Prog.html#cb142-10" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">the</span> index associated with the named symbol</span>
+<span id="cb142-11"><a href="app-ArenaMisc-Prog.html#cb142-11" aria-hidden="true"></a>    </span>
+<span id="cb142-12"><a href="app-ArenaMisc-Prog.html#cb142-12" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">get</span> the index for the myPT attribute</span>
+<span id="cb142-13"><a href="app-ArenaMisc-Prog.html#cb142-13" aria-hidden="true"></a>    <span class="ex">myPTIndex</span> = gSIMANObj.SymbolNumber(<span class="st">&quot;myPT&quot;</span>)</span>
+<span id="cb142-14"><a href="app-ArenaMisc-Prog.html#cb142-14" aria-hidden="true"></a></span>
+<span id="cb142-15"><a href="app-ArenaMisc-Prog.html#cb142-15" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">get</span> the index for the vPTFactor variable</span>
+<span id="cb142-16"><a href="app-ArenaMisc-Prog.html#cb142-16" aria-hidden="true"></a>    <span class="ex">vPTFactorIndex</span> = gSIMANObj.SymbolNumber(<span class="st">&quot;vPTFactor&quot;</span>)</span>
+<span id="cb142-17"><a href="app-ArenaMisc-Prog.html#cb142-17" aria-hidden="true"></a>    </span>
+<span id="cb142-18"><a href="app-ArenaMisc-Prog.html#cb142-18" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="kw">set</span> <span class="ex">the</span> current value of the textbox to the</span>
+<span id="cb142-19"><a href="app-ArenaMisc-Prog.html#cb142-19" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">current</span> value of the vPT variable in Arena</span>
+<span id="cb142-20"><a href="app-ArenaMisc-Prog.html#cb142-20" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">The</span> VariableArrayValue method of the SIMAN object</span>
+<span id="cb142-21"><a href="app-ArenaMisc-Prog.html#cb142-21" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">returns</span> the value of the variable associated with the index</span>
+<span id="cb142-22"><a href="app-ArenaMisc-Prog.html#cb142-22" aria-hidden="true"></a>    <span class="ex">Interact.TextBox1.value</span> =         </span>
+<span id="cb142-23"><a href="app-ArenaMisc-Prog.html#cb142-23" aria-hidden="true"></a>              <span class="ex">gSIMANObj.VariableArrayValue</span>(vPTFactorIndex)</span>
+<span id="cb142-24"><a href="app-ArenaMisc-Prog.html#cb142-24" aria-hidden="true"></a>    </span>
+<span id="cb142-25"><a href="app-ArenaMisc-Prog.html#cb142-25" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">Display</span> the user form</span>
+<span id="cb142-26"><a href="app-ArenaMisc-Prog.html#cb142-26" aria-hidden="true"></a>    <span class="ex">Interact.Show</span></span>
+<span id="cb142-27"><a href="app-ArenaMisc-Prog.html#cb142-27" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">Set</span> the focus to the textbox</span>
+<span id="cb142-28"><a href="app-ArenaMisc-Prog.html#cb142-28" aria-hidden="true"></a>    <span class="ex">Interact.TextBox1.SetFocus</span></span>
+<span id="cb142-29"><a href="app-ArenaMisc-Prog.html#cb142-29" aria-hidden="true"></a>    </span>
+<span id="cb142-30"><a href="app-ArenaMisc-Prog.html#cb142-30" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">The</span> code for setting the variable<span class="st">&#39;s value is   </span></span>
+<span id="cb142-31"><a href="app-ArenaMisc-Prog.html#cb142-31" aria-hidden="true"></a><span class="st">    &#39;&#39; in the OK button user form code</span></span>
+<span id="cb142-32"><a href="app-ArenaMisc-Prog.html#cb142-32" aria-hidden="true"></a><span class="st">End Sub</span></span></code></pre></div>
 <p>When the <code>Interact</code> form is displayed, the text box will show the current
 value of the variable. The user can then enter a new value in the text
 box and press the OK button. Since the user interacted with the OK
@@ -1511,22 +1485,22 @@ you precede the variable with <code>ThisDocument</code>. (e.g.
 <code>ThisDocument.gSIMANObj</code>). Once the value of the text box has been
 assigned to the variable, the form is hidden and input focus is given
 back to the model via the <code>ThisDocument.gModelObj.Activate</code> method.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb143-1"><a href="app-ArenaMisc-Prog.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub CommandButton2_Click<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb143-2"><a href="app-ArenaMisc-Prog.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> when the user clicks the ok button</span>
-<span id="cb143-3"><a href="app-ArenaMisc-Prog.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Set the current value of vPT to the value</span>
-<span id="cb143-4"><a href="app-ArenaMisc-Prog.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> currently in the textbox</span>
-<span id="cb143-5"><a href="app-ArenaMisc-Prog.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> uses the global variable vPTFactorIndex</span>
-<span id="cb143-6"><a href="app-ArenaMisc-Prog.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined in module ThisDocument</span>
-<span id="cb143-7"><a href="app-ArenaMisc-Prog.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> uses the global variable for the SIMAN object</span>
-<span id="cb143-8"><a href="app-ArenaMisc-Prog.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined in ThisDocument</span>
-<span id="cb143-9"><a href="app-ArenaMisc-Prog.html#cb143-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-10"><a href="app-ArenaMisc-Prog.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="ex">ThisDocument.gSIMANObj.VariableArrayValue</span><span class="er">(</span><span class="ex">ThisDocument.vPTFactorIndex</span><span class="kw">)</span> <span class="ex">=</span> TextBox1.value</span>
-<span id="cb143-11"><a href="app-ArenaMisc-Prog.html#cb143-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-12"><a href="app-ArenaMisc-Prog.html#cb143-12" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> hide the form</span>
-<span id="cb143-13"><a href="app-ArenaMisc-Prog.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Interact.hide</span></span>
-<span id="cb143-14"><a href="app-ArenaMisc-Prog.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Tell the model to resume running</span>
-<span id="cb143-15"><a href="app-ArenaMisc-Prog.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ThisDocument.gModelObj.Activate</span></span>
-<span id="cb143-16"><a href="app-ArenaMisc-Prog.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb143-1"><a href="app-ArenaMisc-Prog.html#cb143-1" aria-hidden="true"></a><span class="ex">Private</span> Sub CommandButton2_Click()</span>
+<span id="cb143-2"><a href="app-ArenaMisc-Prog.html#cb143-2" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">when</span> the user clicks the ok button</span>
+<span id="cb143-3"><a href="app-ArenaMisc-Prog.html#cb143-3" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Set</span> the current value of vPT to the value</span>
+<span id="cb143-4"><a href="app-ArenaMisc-Prog.html#cb143-4" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">currently</span> in the textbox</span>
+<span id="cb143-5"><a href="app-ArenaMisc-Prog.html#cb143-5" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">uses</span> the global variable vPTFactorIndex</span>
+<span id="cb143-6"><a href="app-ArenaMisc-Prog.html#cb143-6" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">defined</span> in module ThisDocument</span>
+<span id="cb143-7"><a href="app-ArenaMisc-Prog.html#cb143-7" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">uses</span> the global variable for the SIMAN object</span>
+<span id="cb143-8"><a href="app-ArenaMisc-Prog.html#cb143-8" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">defined</span> in ThisDocument</span>
+<span id="cb143-9"><a href="app-ArenaMisc-Prog.html#cb143-9" aria-hidden="true"></a></span>
+<span id="cb143-10"><a href="app-ArenaMisc-Prog.html#cb143-10" aria-hidden="true"></a><span class="ex">ThisDocument.gSIMANObj.VariableArrayValue</span>(ThisDocument.vPTFactorIndex) = <span class="ex">TextBox1.value</span></span>
+<span id="cb143-11"><a href="app-ArenaMisc-Prog.html#cb143-11" aria-hidden="true"></a></span>
+<span id="cb143-12"><a href="app-ArenaMisc-Prog.html#cb143-12" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">hide</span> the form</span>
+<span id="cb143-13"><a href="app-ArenaMisc-Prog.html#cb143-13" aria-hidden="true"></a><span class="ex">Interact.hide</span></span>
+<span id="cb143-14"><a href="app-ArenaMisc-Prog.html#cb143-14" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Tell</span> the model to resume running</span>
+<span id="cb143-15"><a href="app-ArenaMisc-Prog.html#cb143-15" aria-hidden="true"></a><span class="ex">ThisDocument.gModelObj.Activate</span></span>
+<span id="cb143-16"><a href="app-ArenaMisc-Prog.html#cb143-16" aria-hidden="true"></a><span class="ex">End</span> Sub</span></code></pre></div>
 <p>Since the setting of the variable <code>vPTFactor</code> occurs as a result of the
 code initiated by the <em>RunBeginSimulation</em> event the value supplied by
 the user will be used for the entire run (unless changed again within
@@ -1545,27 +1519,27 @@ will be passed into VBA. This argument can be used to select from other
 user written functions as necessary.
 The following code exhibit shows the code for the UF function
 for this example.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb144-1"><a href="app-ArenaMisc-Prog.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> This Function allows you to pass a user </span>
-<span id="cb144-2"><a href="app-ArenaMisc-Prog.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> defined value back to the</span>
-<span id="cb144-3"><a href="app-ArenaMisc-Prog.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> module which called upon the UF<span class="er">(</span><span class="ex">functionID</span><span class="kw">)</span> <span class="kw">function</span><span class="fu"> in</span> <span class="ex">Arena.</span></span>
-<span id="cb144-4"><a href="app-ArenaMisc-Prog.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> Use the functionID to select the function that you want via</span>
-<span id="cb144-5"><a href="app-ArenaMisc-Prog.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> the case statement, add additional functions as necessary</span>
-<span id="cb144-6"><a href="app-ArenaMisc-Prog.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> The functions can obviously be named something </span>
-<span id="cb144-7"><a href="app-ArenaMisc-Prog.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> more useful than UserFunctionX<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb144-8"><a href="app-ArenaMisc-Prog.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> The functions must return a double</span>
-<span id="cb144-9"><a href="app-ArenaMisc-Prog.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function ModelLogic_UserFunction<span class="er">(</span><span class="ex">ByVal</span> entityID As Long, </span>
-<span id="cb144-10"><a href="app-ArenaMisc-Prog.html#cb144-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ByVal</span> functionID As Long<span class="kw">)</span> <span class="ex">As</span> Double</span>
-<span id="cb144-11"><a href="app-ArenaMisc-Prog.html#cb144-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> entityID is the active entity</span>
-<span id="cb144-12"><a href="app-ArenaMisc-Prog.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> functionID is supplied when the user calls UF<span class="er">(</span><span class="ex">functionID</span><span class="kw">)</span></span>
-<span id="cb144-13"><a href="app-ArenaMisc-Prog.html#cb144-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb144-14"><a href="app-ArenaMisc-Prog.html#cb144-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Select</span> Case functionID</span>
-<span id="cb144-15"><a href="app-ArenaMisc-Prog.html#cb144-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 1</span>
-<span id="cb144-16"><a href="app-ArenaMisc-Prog.html#cb144-16" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction1<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb144-17"><a href="app-ArenaMisc-Prog.html#cb144-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 2</span>
-<span id="cb144-18"><a href="app-ArenaMisc-Prog.html#cb144-18" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction2<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb144-19"><a href="app-ArenaMisc-Prog.html#cb144-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">End</span> Select</span>
-<span id="cb144-20"><a href="app-ArenaMisc-Prog.html#cb144-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-21"><a href="app-ArenaMisc-Prog.html#cb144-21" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb144-1"><a href="app-ArenaMisc-Prog.html#cb144-1" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">This</span> Function allows you to pass a user </span>
+<span id="cb144-2"><a href="app-ArenaMisc-Prog.html#cb144-2" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">defined</span> value back to the</span>
+<span id="cb144-3"><a href="app-ArenaMisc-Prog.html#cb144-3" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">module</span> which called upon the UF(functionID) <span class="kw">function</span><span class="fu"> in</span> <span class="ex">Arena.</span></span>
+<span id="cb144-4"><a href="app-ArenaMisc-Prog.html#cb144-4" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">Use</span> the functionID to select the function that you want via</span>
+<span id="cb144-5"><a href="app-ArenaMisc-Prog.html#cb144-5" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">the</span> case statement, add additional functions as necessary</span>
+<span id="cb144-6"><a href="app-ArenaMisc-Prog.html#cb144-6" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">The</span> functions can obviously be named something </span>
+<span id="cb144-7"><a href="app-ArenaMisc-Prog.html#cb144-7" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="fu">more</span> useful than UserFunctionX()</span>
+<span id="cb144-8"><a href="app-ArenaMisc-Prog.html#cb144-8" aria-hidden="true"></a><span class="st">&#39;&#39;</span> <span class="ex">The</span> functions must return a double</span>
+<span id="cb144-9"><a href="app-ArenaMisc-Prog.html#cb144-9" aria-hidden="true"></a><span class="ex">Private</span> Function ModelLogic_UserFunction(ByVal entityID As Long, </span>
+<span id="cb144-10"><a href="app-ArenaMisc-Prog.html#cb144-10" aria-hidden="true"></a>    <span class="ex">ByVal</span> functionID As Long) <span class="ex">As</span> Double</span>
+<span id="cb144-11"><a href="app-ArenaMisc-Prog.html#cb144-11" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">entityID</span> is the active entity</span>
+<span id="cb144-12"><a href="app-ArenaMisc-Prog.html#cb144-12" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">functionID</span> is supplied when the user calls UF(functionID)</span>
+<span id="cb144-13"><a href="app-ArenaMisc-Prog.html#cb144-13" aria-hidden="true"></a>    </span>
+<span id="cb144-14"><a href="app-ArenaMisc-Prog.html#cb144-14" aria-hidden="true"></a>    <span class="ex">Select</span> Case functionID</span>
+<span id="cb144-15"><a href="app-ArenaMisc-Prog.html#cb144-15" aria-hidden="true"></a>        <span class="ex">Case</span> 1</span>
+<span id="cb144-16"><a href="app-ArenaMisc-Prog.html#cb144-16" aria-hidden="true"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction1()</span>
+<span id="cb144-17"><a href="app-ArenaMisc-Prog.html#cb144-17" aria-hidden="true"></a>        <span class="ex">Case</span> 2</span>
+<span id="cb144-18"><a href="app-ArenaMisc-Prog.html#cb144-18" aria-hidden="true"></a>            <span class="ex">ModelLogic_UserFunction</span> = UserFunction2()</span>
+<span id="cb144-19"><a href="app-ArenaMisc-Prog.html#cb144-19" aria-hidden="true"></a>    <span class="ex">End</span> Select</span>
+<span id="cb144-20"><a href="app-ArenaMisc-Prog.html#cb144-20" aria-hidden="true"></a></span>
+<span id="cb144-21"><a href="app-ArenaMisc-Prog.html#cb144-21" aria-hidden="true"></a><span class="ex">End</span> Function</span></code></pre></div>
 <p>When you use the <code>UF</code> function, you must write your own
 code. To write the <code>UF</code> function, use the drop down box that lists the
 available VBA events on the <em>ThisDocument</em> module and select the
@@ -1603,25 +1577,25 @@ attribute.*</p>
 <p>Let’s see how to put these methods into action within the user defined
 functions. The following code exhibit shows how to access the value of an
 attribute associated with the active entity.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb145-1"><a href="app-ArenaMisc-Prog.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function UserFunction1<span class="er">(</span><span class="kw">)</span> <span class="ex">As</span> Double</span>
-<span id="cb145-2"><a href="app-ArenaMisc-Prog.html#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> each entity has a unique id</span>
-<span id="cb145-3"><a href="app-ArenaMisc-Prog.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> activeEntityID As Long</span>
-<span id="cb145-4"><a href="app-ArenaMisc-Prog.html#cb145-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the number of the active entity</span>
-<span id="cb145-5"><a href="app-ArenaMisc-Prog.html#cb145-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> this could have been passed from ModelLogic_UserFunction</span>
-<span id="cb145-6"><a href="app-ArenaMisc-Prog.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">activeEntityID</span> = gSIMANObj.ActiveEntity</span>
-<span id="cb145-7"><a href="app-ArenaMisc-Prog.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb145-8"><a href="app-ArenaMisc-Prog.html#cb145-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> PTvalue As Double</span>
-<span id="cb145-9"><a href="app-ArenaMisc-Prog.html#cb145-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> get the value of the myPT attribute</span>
-<span id="cb145-10"><a href="app-ArenaMisc-Prog.html#cb145-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PTvalue</span> = gSIMANObj.AttributeValue<span class="er">(</span><span class="ex">activeEntityID,</span> myPTIndex, 0, 0<span class="kw">)</span></span>
-<span id="cb145-11"><a href="app-ArenaMisc-Prog.html#cb145-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb145-12"><a href="app-ArenaMisc-Prog.html#cb145-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> factor As Double</span>
-<span id="cb145-13"><a href="app-ArenaMisc-Prog.html#cb145-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">factor</span> = gSIMANObj.VariableArrayValue<span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
-<span id="cb145-14"><a href="app-ArenaMisc-Prog.html#cb145-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb145-15"><a href="app-ArenaMisc-Prog.html#cb145-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> this could be complicated function of the attribute/variables</span>
-<span id="cb145-16"><a href="app-ArenaMisc-Prog.html#cb145-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> here it is very simple <span class="er">(</span><span class="ex">and</span> could have been done within Arena itself</span>
-<span id="cb145-17"><a href="app-ArenaMisc-Prog.html#cb145-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> rather than VBA</span>
-<span id="cb145-18"><a href="app-ArenaMisc-Prog.html#cb145-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserFunction1</span> = PTvalue <span class="pp">*</span> factor</span>
-<span id="cb145-19"><a href="app-ArenaMisc-Prog.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb145-1"><a href="app-ArenaMisc-Prog.html#cb145-1" aria-hidden="true"></a><span class="ex">Private</span> Function UserFunction1() <span class="ex">As</span> Double</span>
+<span id="cb145-2"><a href="app-ArenaMisc-Prog.html#cb145-2" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">each</span> entity has a unique id</span>
+<span id="cb145-3"><a href="app-ArenaMisc-Prog.html#cb145-3" aria-hidden="true"></a>    <span class="ex">Dim</span> activeEntityID As Long</span>
+<span id="cb145-4"><a href="app-ArenaMisc-Prog.html#cb145-4" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">get</span> the number of the active entity</span>
+<span id="cb145-5"><a href="app-ArenaMisc-Prog.html#cb145-5" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">this</span> could have been passed from ModelLogic_UserFunction</span>
+<span id="cb145-6"><a href="app-ArenaMisc-Prog.html#cb145-6" aria-hidden="true"></a>    <span class="ex">activeEntityID</span> = gSIMANObj.ActiveEntity</span>
+<span id="cb145-7"><a href="app-ArenaMisc-Prog.html#cb145-7" aria-hidden="true"></a>    </span>
+<span id="cb145-8"><a href="app-ArenaMisc-Prog.html#cb145-8" aria-hidden="true"></a>    <span class="ex">Dim</span> PTvalue As Double</span>
+<span id="cb145-9"><a href="app-ArenaMisc-Prog.html#cb145-9" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">get</span> the value of the myPT attribute</span>
+<span id="cb145-10"><a href="app-ArenaMisc-Prog.html#cb145-10" aria-hidden="true"></a>    <span class="ex">PTvalue</span> = gSIMANObj.AttributeValue(activeEntityID, myPTIndex, 0, 0)</span>
+<span id="cb145-11"><a href="app-ArenaMisc-Prog.html#cb145-11" aria-hidden="true"></a>    </span>
+<span id="cb145-12"><a href="app-ArenaMisc-Prog.html#cb145-12" aria-hidden="true"></a>    <span class="ex">Dim</span> factor As Double</span>
+<span id="cb145-13"><a href="app-ArenaMisc-Prog.html#cb145-13" aria-hidden="true"></a>    <span class="ex">factor</span> = gSIMANObj.VariableArrayValue(vPTFactorIndex)</span>
+<span id="cb145-14"><a href="app-ArenaMisc-Prog.html#cb145-14" aria-hidden="true"></a>    </span>
+<span id="cb145-15"><a href="app-ArenaMisc-Prog.html#cb145-15" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">this</span> could be complicated function of the attribute/variables</span>
+<span id="cb145-16"><a href="app-ArenaMisc-Prog.html#cb145-16" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">here</span> it is very simple (and could have been done within Arena itself</span>
+<span id="cb145-17"><a href="app-ArenaMisc-Prog.html#cb145-17" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">rather</span> than VBA</span>
+<span id="cb145-18"><a href="app-ArenaMisc-Prog.html#cb145-18" aria-hidden="true"></a>    <span class="ex">UserFunction1</span> = PTvalue * factor</span>
+<span id="cb145-19"><a href="app-ArenaMisc-Prog.html#cb145-19" aria-hidden="true"></a><span class="ex">End</span> Function</span></code></pre></div>
 <p>First, the <em>ActiveEntity</em> property of the SIMAN object is used to get an identifier for the
 current active entity (i.e. the entity that entered the VBA block).
 Then, the <em>AttributeValue</em> method of the SIMAN object is used to get the
@@ -1656,15 +1630,15 @@ user to interact with the form. However, most of the time the VBA block
 is used to execute complicated code that depends on the state of the
 system when the entity passes through the VBA block.
 The following exhibit shows the code for the VBA block event.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="app-ArenaMisc-Prog.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub VBA_Block_1_Fire<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb146-2"><a href="app-ArenaMisc-Prog.html#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> set the values of the textboxes  </span>
-<span id="cb146-3"><a href="app-ArenaMisc-Prog.html#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox1.value</span> = gSIMANObj.VariableArrayValue<span class="er">(</span><span class="ex">vPTFactorIndex</span><span class="kw">)</span></span>
-<span id="cb146-4"><a href="app-ArenaMisc-Prog.html#cb146-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox2.value</span> = gSIMANObj.AttributeValue<span class="er">(</span><span class="ex">gSIMANObj.ActiveEntity,</span></span>
-<span id="cb146-5"><a href="app-ArenaMisc-Prog.html#cb146-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">myPTIndex,</span> 0, 0<span class="kw">)</span></span>
-<span id="cb146-6"><a href="app-ArenaMisc-Prog.html#cb146-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.TextBox3.value</span> = UserFunction1<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb146-7"><a href="app-ArenaMisc-Prog.html#cb146-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Display the user form</span>
-<span id="cb146-8"><a href="app-ArenaMisc-Prog.html#cb146-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.Show</span></span>
-<span id="cb146-9"><a href="app-ArenaMisc-Prog.html#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="app-ArenaMisc-Prog.html#cb146-1" aria-hidden="true"></a><span class="ex">Private</span> Sub VBA_Block_1_Fire()</span>
+<span id="cb146-2"><a href="app-ArenaMisc-Prog.html#cb146-2" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="kw">set</span> <span class="ex">the</span> values of the textboxes  </span>
+<span id="cb146-3"><a href="app-ArenaMisc-Prog.html#cb146-3" aria-hidden="true"></a>    <span class="ex">UserForm1.TextBox1.value</span> = gSIMANObj.VariableArrayValue(vPTFactorIndex)</span>
+<span id="cb146-4"><a href="app-ArenaMisc-Prog.html#cb146-4" aria-hidden="true"></a>    <span class="ex">UserForm1.TextBox2.value</span> = gSIMANObj.AttributeValue(gSIMANObj.ActiveEntity,</span>
+<span id="cb146-5"><a href="app-ArenaMisc-Prog.html#cb146-5" aria-hidden="true"></a>                                     <span class="ex">myPTIndex</span>, 0, 0)</span>
+<span id="cb146-6"><a href="app-ArenaMisc-Prog.html#cb146-6" aria-hidden="true"></a>    <span class="ex">UserForm1.TextBox3.value</span> = UserFunction1()</span>
+<span id="cb146-7"><a href="app-ArenaMisc-Prog.html#cb146-7" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">Display</span> the user form</span>
+<span id="cb146-8"><a href="app-ArenaMisc-Prog.html#cb146-8" aria-hidden="true"></a>    <span class="ex">UserForm1.Show</span></span>
+<span id="cb146-9"><a href="app-ArenaMisc-Prog.html#cb146-9" aria-hidden="true"></a><span class="ex">End</span> Sub</span></code></pre></div>
 <p>By now, this code should start to look familiar. The SIMAN object is
 used to access the values of the attribute and the variable that are of
 interest and then set them equal to the values for the <em>textboxes</em> that
@@ -1672,12 +1646,12 @@ are being used on the form. Then, the form is shown. This brings up the
 form so that the user can see the values. In <em>UserForm1</em>, a command
 button was defined to close the form. The logic for hiding the form is
 shown in the next exhibit.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb147-1"><a href="app-ArenaMisc-Prog.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Sub CommandButton1_Click<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb147-2"><a href="app-ArenaMisc-Prog.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> hide the form</span>
-<span id="cb147-3"><a href="app-ArenaMisc-Prog.html#cb147-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">UserForm1.hide</span></span>
-<span id="cb147-4"><a href="app-ArenaMisc-Prog.html#cb147-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> Tell the model to resume running</span>
-<span id="cb147-5"><a href="app-ArenaMisc-Prog.html#cb147-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ThisDocument.gModelObj.Activate</span></span>
-<span id="cb147-6"><a href="app-ArenaMisc-Prog.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Sub</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb147-1"><a href="app-ArenaMisc-Prog.html#cb147-1" aria-hidden="true"></a><span class="ex">Private</span> Sub CommandButton1_Click()</span>
+<span id="cb147-2"><a href="app-ArenaMisc-Prog.html#cb147-2" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">hide</span> the form</span>
+<span id="cb147-3"><a href="app-ArenaMisc-Prog.html#cb147-3" aria-hidden="true"></a>    <span class="ex">UserForm1.hide</span></span>
+<span id="cb147-4"><a href="app-ArenaMisc-Prog.html#cb147-4" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">Tell</span> the model to resume running</span>
+<span id="cb147-5"><a href="app-ArenaMisc-Prog.html#cb147-5" aria-hidden="true"></a>    <span class="ex">ThisDocument.gModelObj.Activate</span></span>
+<span id="cb147-6"><a href="app-ArenaMisc-Prog.html#cb147-6" aria-hidden="true"></a><span class="ex">End</span> Sub</span></code></pre></div>
 <p>The show and hide functionality of VBA forms are used within this
 example so that new instances of the forms did not have to be created
 each time they are used. This keeps the form in memory so that the
@@ -1698,12 +1672,12 @@ For example, let <span class="math inline">\(X_i\)</span> be the service time of
 What if the <span class="math inline">\(X_i\)</span> have significant correlation? That is, the service
 times are correlated. Arrival processes might also correlated. That is,
 the time between arrivals might be correlated. Research has shown, see
-<span class="citation">(<a href="#ref-patuwo1993the" role="doc-biblioref">Patuwo, Disney, and Mcnickle 1993</a>)</span> and <span class="citation">(<a href="#ref-livny1993the" role="doc-biblioref">Livny, Melamed, and Tsiolis 1993</a>)</span>, that ignoring the correlation when
+<span class="citation">(Patuwo, Disney, and Mcnickle <a href="#ref-patuwo1993the" role="doc-biblioref">1993</a>)</span> and <span class="citation">(Livny, Melamed, and Tsiolis <a href="#ref-livny1993the" role="doc-biblioref">1993</a>)</span>, that ignoring the correlation when
 it is in fact present can lead to gross underestimation of the actual
 performance estimates for the system.</p>
 <p>The discussion here is based on the Normal-to-Anything Transformation as
-discussed in <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>, <span class="citation">(<a href="#ref-cario1998numerical" role="doc-biblioref">Cario and Nelson 1998</a>)</span>,
-<span class="citation">(<a href="#ref-cario1996autoregressive" role="doc-biblioref">Cario and Nelson 1996</a>)</span>, and <span class="citation">(<a href="#ref-biller2003modeling" role="doc-biblioref">Biller and Nelson 2003</a>)</span>. Suppose you have
+discussed in <span class="citation">Banks et al. (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>, <span class="citation">(Cario and Nelson <a href="#ref-cario1998numerical" role="doc-biblioref">1998</a>)</span>,
+<span class="citation">(Cario and Nelson <a href="#ref-cario1996autoregressive" role="doc-biblioref">1996</a>)</span>, and <span class="citation">(Biller and Nelson <a href="#ref-biller2003modeling" role="doc-biblioref">2003</a>)</span>. Suppose you have
 a <span class="math inline">\(N(0,1)\)</span> random variable, <span class="math inline">\(Z_i\)</span>, and a way to compute the CDF,
 <span class="math inline">\(\Phi(z)\)</span>, of the normal distribution. Then, based on the inverse
 transform technique, the random variable, <span class="math inline">\(\Phi(Z_i)\)</span> will have a
@@ -1744,21 +1718,21 @@ implement this method, you can make use of VBA. The model,
 <em>NORTA-VBA.doe</em>, shows how to implement the NORTA algorithm with a user
 defined function. Just as illustrated in the last section, a user
 defined function can be written as shown in the following code exhibit.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="app-ArenaMisc-Prog.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function ModelLogic_UserFunction<span class="er">(</span><span class="ex">ByVal</span> entityID As Long, </span>
-<span id="cb148-2"><a href="app-ArenaMisc-Prog.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ByVal</span> functionID As Long<span class="kw">)</span> <span class="ex">As</span> Double</span>
-<span id="cb148-3"><a href="app-ArenaMisc-Prog.html#cb148-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb148-4"><a href="app-ArenaMisc-Prog.html#cb148-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Select</span> Case functionID</span>
-<span id="cb148-5"><a href="app-ArenaMisc-Prog.html#cb148-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 1</span>
-<span id="cb148-6"><a href="app-ArenaMisc-Prog.html#cb148-6" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = CorrelatedUniform<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb148-7"><a href="app-ArenaMisc-Prog.html#cb148-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Case</span> 2</span>
-<span id="cb148-8"><a href="app-ArenaMisc-Prog.html#cb148-8" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Dim</span> u As Double</span>
-<span id="cb148-9"><a href="app-ArenaMisc-Prog.html#cb148-9" aria-hidden="true" tabindex="-1"></a>            <span class="ex">u</span> = CorrelatedUniform<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb148-10"><a href="app-ArenaMisc-Prog.html#cb148-10" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Dim</span> x As Double</span>
-<span id="cb148-11"><a href="app-ArenaMisc-Prog.html#cb148-11" aria-hidden="true" tabindex="-1"></a>            <span class="ex">x</span> = expoInvCDF<span class="er">(</span><span class="ex">u,</span> 2<span class="kw">)</span></span>
-<span id="cb148-12"><a href="app-ArenaMisc-Prog.html#cb148-12" aria-hidden="true" tabindex="-1"></a>            <span class="ex">ModelLogic_UserFunction</span> = x</span>
-<span id="cb148-13"><a href="app-ArenaMisc-Prog.html#cb148-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">End</span> Select</span>
-<span id="cb148-14"><a href="app-ArenaMisc-Prog.html#cb148-14" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb148-15"><a href="app-ArenaMisc-Prog.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function </span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="app-ArenaMisc-Prog.html#cb148-1" aria-hidden="true"></a><span class="ex">Private</span> Function ModelLogic_UserFunction(ByVal entityID As Long, </span>
+<span id="cb148-2"><a href="app-ArenaMisc-Prog.html#cb148-2" aria-hidden="true"></a>    <span class="ex">ByVal</span> functionID As Long) <span class="ex">As</span> Double</span>
+<span id="cb148-3"><a href="app-ArenaMisc-Prog.html#cb148-3" aria-hidden="true"></a>   </span>
+<span id="cb148-4"><a href="app-ArenaMisc-Prog.html#cb148-4" aria-hidden="true"></a>    <span class="ex">Select</span> Case functionID</span>
+<span id="cb148-5"><a href="app-ArenaMisc-Prog.html#cb148-5" aria-hidden="true"></a>        <span class="ex">Case</span> 1</span>
+<span id="cb148-6"><a href="app-ArenaMisc-Prog.html#cb148-6" aria-hidden="true"></a>            <span class="ex">ModelLogic_UserFunction</span> = CorrelatedUniform()</span>
+<span id="cb148-7"><a href="app-ArenaMisc-Prog.html#cb148-7" aria-hidden="true"></a>        <span class="ex">Case</span> 2</span>
+<span id="cb148-8"><a href="app-ArenaMisc-Prog.html#cb148-8" aria-hidden="true"></a>            <span class="ex">Dim</span> u As Double</span>
+<span id="cb148-9"><a href="app-ArenaMisc-Prog.html#cb148-9" aria-hidden="true"></a>            <span class="ex">u</span> = CorrelatedUniform()</span>
+<span id="cb148-10"><a href="app-ArenaMisc-Prog.html#cb148-10" aria-hidden="true"></a>            <span class="ex">Dim</span> x As Double</span>
+<span id="cb148-11"><a href="app-ArenaMisc-Prog.html#cb148-11" aria-hidden="true"></a>            <span class="ex">x</span> = expoInvCDF(u, 2)</span>
+<span id="cb148-12"><a href="app-ArenaMisc-Prog.html#cb148-12" aria-hidden="true"></a>            <span class="ex">ModelLogic_UserFunction</span> = x</span>
+<span id="cb148-13"><a href="app-ArenaMisc-Prog.html#cb148-13" aria-hidden="true"></a>    <span class="ex">End</span> Select</span>
+<span id="cb148-14"><a href="app-ArenaMisc-Prog.html#cb148-14" aria-hidden="true"></a>   </span>
+<span id="cb148-15"><a href="app-ArenaMisc-Prog.html#cb148-15" aria-hidden="true"></a><span class="ex">End</span> Function </span></code></pre></div>
 <p>When you uses <code>UF(1)</code>, a correlated U(0,1) random variable will be
 returned. If the user uses <code>UF(2)</code>, then a correlated exponential
 distribution with a mean of 2 will be returned. Notice that in
@@ -1773,24 +1747,24 @@ used to generate the correlated uniform random variables. The variable,
 process. The function, <em>SampleNormal</em>, associated with the SIMAN object
 is used to generate a <span class="math inline">\(N(0,1)\)</span> random variable that represents the error
 in the AR(1) process.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="app-ArenaMisc-Prog.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function CorrelatedUniform<span class="er">(</span><span class="kw">)</span> <span class="ex">As</span> Double</span>
-<span id="cb149-2"><a href="app-ArenaMisc-Prog.html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> phi As Double</span>
-<span id="cb149-3"><a href="app-ArenaMisc-Prog.html#cb149-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> e As Double</span>
-<span id="cb149-4"><a href="app-ArenaMisc-Prog.html#cb149-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Dim</span> u As Double</span>
-<span id="cb149-5"><a href="app-ArenaMisc-Prog.html#cb149-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> change phi inside this function to get a different correlation</span>
-<span id="cb149-6"><a href="app-ArenaMisc-Prog.html#cb149-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">phi</span> = 0.8</span>
-<span id="cb149-7"><a href="app-ArenaMisc-Prog.html#cb149-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> generate error</span>
-<span id="cb149-8"><a href="app-ArenaMisc-Prog.html#cb149-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e</span> = gSimanObj.SampleNormal<span class="er">(</span><span class="ex">0,</span> 1 <span class="at">-</span> <span class="er">(</span><span class="ex">phi</span> <span class="pp">*</span> phi<span class="kw">)</span><span class="ex">,</span> 1<span class="kw">)</span></span>
-<span id="cb149-9"><a href="app-ArenaMisc-Prog.html#cb149-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> compute next AR<span class="er">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">Z</span></span>
-<span id="cb149-10"><a href="app-ArenaMisc-Prog.html#cb149-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">mZ</span> = phi <span class="pp">*</span> mZ + e</span>
-<span id="cb149-11"><a href="app-ArenaMisc-Prog.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;&#39;</span> use normal cdf to get uniform</span>
-<span id="cb149-12"><a href="app-ArenaMisc-Prog.html#cb149-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">u</span> = NORMDIST<span class="er">(</span><span class="ex">mZ</span><span class="kw">)</span></span>
-<span id="cb149-13"><a href="app-ArenaMisc-Prog.html#cb149-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">CorrelatedUniform</span> = u</span>
-<span id="cb149-14"><a href="app-ArenaMisc-Prog.html#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span>
-<span id="cb149-15"><a href="app-ArenaMisc-Prog.html#cb149-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-16"><a href="app-ArenaMisc-Prog.html#cb149-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Private</span> Function expoInvCDF<span class="er">(</span><span class="ex">u</span> As Double, mean As Double<span class="kw">)</span> <span class="ex">As</span> Double</span>
-<span id="cb149-17"><a href="app-ArenaMisc-Prog.html#cb149-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">expoInvCDF</span> = <span class="at">-mean</span> <span class="pp">*</span> Log<span class="er">(</span><span class="ex">1</span> <span class="at">-</span> u<span class="kw">)</span></span>
-<span id="cb149-18"><a href="app-ArenaMisc-Prog.html#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="ex">End</span> Function</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="app-ArenaMisc-Prog.html#cb149-1" aria-hidden="true"></a><span class="ex">Private</span> Function CorrelatedUniform() <span class="ex">As</span> Double</span>
+<span id="cb149-2"><a href="app-ArenaMisc-Prog.html#cb149-2" aria-hidden="true"></a>    <span class="ex">Dim</span> phi As Double</span>
+<span id="cb149-3"><a href="app-ArenaMisc-Prog.html#cb149-3" aria-hidden="true"></a>    <span class="ex">Dim</span> e As Double</span>
+<span id="cb149-4"><a href="app-ArenaMisc-Prog.html#cb149-4" aria-hidden="true"></a>    <span class="ex">Dim</span> u As Double</span>
+<span id="cb149-5"><a href="app-ArenaMisc-Prog.html#cb149-5" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">change</span> phi inside this function to get a different correlation</span>
+<span id="cb149-6"><a href="app-ArenaMisc-Prog.html#cb149-6" aria-hidden="true"></a>    <span class="ex">phi</span> = 0.8</span>
+<span id="cb149-7"><a href="app-ArenaMisc-Prog.html#cb149-7" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">generate</span> error</span>
+<span id="cb149-8"><a href="app-ArenaMisc-Prog.html#cb149-8" aria-hidden="true"></a>    <span class="ex">e</span> = gSimanObj.SampleNormal(0, 1 - (phi * phi), <span class="ex">1</span>)</span>
+<span id="cb149-9"><a href="app-ArenaMisc-Prog.html#cb149-9" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">compute</span> next AR(1) <span class="ex">Z</span></span>
+<span id="cb149-10"><a href="app-ArenaMisc-Prog.html#cb149-10" aria-hidden="true"></a>    <span class="ex">mZ</span> = phi * mZ + e</span>
+<span id="cb149-11"><a href="app-ArenaMisc-Prog.html#cb149-11" aria-hidden="true"></a>    <span class="st">&#39;&#39;</span> <span class="ex">use</span> normal cdf to get uniform</span>
+<span id="cb149-12"><a href="app-ArenaMisc-Prog.html#cb149-12" aria-hidden="true"></a>    <span class="ex">u</span> = NORMDIST(mZ)</span>
+<span id="cb149-13"><a href="app-ArenaMisc-Prog.html#cb149-13" aria-hidden="true"></a>    <span class="ex">CorrelatedUniform</span> = u</span>
+<span id="cb149-14"><a href="app-ArenaMisc-Prog.html#cb149-14" aria-hidden="true"></a><span class="ex">End</span> Function</span>
+<span id="cb149-15"><a href="app-ArenaMisc-Prog.html#cb149-15" aria-hidden="true"></a></span>
+<span id="cb149-16"><a href="app-ArenaMisc-Prog.html#cb149-16" aria-hidden="true"></a><span class="ex">Private</span> Function expoInvCDF(u As Double, mean As Double) <span class="ex">As</span> Double</span>
+<span id="cb149-17"><a href="app-ArenaMisc-Prog.html#cb149-17" aria-hidden="true"></a>    <span class="ex">expoInvCDF</span> = -mean * Log(1 - u)</span>
+<span id="cb149-18"><a href="app-ArenaMisc-Prog.html#cb149-18" aria-hidden="true"></a><span class="ex">End</span> Function</span></code></pre></div>
 <p>The variable, <em>mZ</em>, has been defined at the VBA module level, and thus
 it retains its value between invocations of the <em>CorrelatedUniform</em>
 function. The variable, <em>mZ</em>, represents the AR(1) process. The current
@@ -1825,27 +1799,27 @@ help system under <em>Introduction to C Support</em>.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-albright2001vba" class="csl-entry">
-Albright, S. C. 2001. <em>VBA for Modelers, Developing Decision Support Systems with Microsoft Excel</em>. Duxbury Thomson Learning.
+<div id="refs" class="references">
+<div id="ref-albright2001vba">
+<p>Albright, S. C. 2001. <em>VBA for Modelers, Developing Decision Support Systems with Microsoft Excel</em>. Duxbury Thomson Learning.</p>
 </div>
-<div id="ref-banks2005discreteevent" class="csl-entry">
-Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
+<div id="ref-banks2005discreteevent">
+<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
 </div>
-<div id="ref-biller2003modeling" class="csl-entry">
-Biller, B., and B. L. Nelson. 2003. <span>“Modeling and Generating Multivarate Time- Series Input Processes Using a Vector Autogressive Technique.”</span> <em>Assoc. Comput. Mach. Trans. Modeling and Comput. Simul.</em> 13: 211–37.
+<div id="ref-biller2003modeling">
+<p>Biller, B., and B. L. Nelson. 2003. “Modeling and Generating Multivarate Time- Series Input Processes Using a Vector Autogressive Technique.” <em>Assoc. Comput. Mach. Trans. Modeling and Comput. Simul.</em> 13: 211–37.</p>
 </div>
-<div id="ref-cario1996autoregressive" class="csl-entry">
-Cario, M. C., and B. L. Nelson. 1996. <span>“Autoregressive to Anything: Time Series Input Processes for Simulation.”</span> <em>Operations Research Letters</em> 19: 51–58.
+<div id="ref-cario1996autoregressive">
+<p>Cario, M. C., and B. L. Nelson. 1996. “Autoregressive to Anything: Time Series Input Processes for Simulation.” <em>Operations Research Letters</em> 19: 51–58.</p>
 </div>
-<div id="ref-cario1998numerical" class="csl-entry">
-———. 1998. <span>“Numerical Methods for Fitting and Simulating Autoregressive-to-Anything Processes.”</span> <em>INFORMS Journal of Computing</em> 10: 72–81.
+<div id="ref-cario1998numerical">
+<p>Cario, M. 1998. “Numerical Methods for Fitting and Simulating Autoregressive-to-Anything Processes.” <em>INFORMS Journal of Computing</em> 10: 72–81.</p>
 </div>
-<div id="ref-livny1993the" class="csl-entry">
-Livny, M., B. Melamed, and A. K. Tsiolis. 1993. <span>“The Impact of Autocorrelation on Queueing Systems.”</span> <em>Management Science</em> 39 (3): 322–39.
+<div id="ref-livny1993the">
+<p>Livny, M., B. Melamed, and A. K. Tsiolis. 1993. “The Impact of Autocorrelation on Queueing Systems.” <em>Management Science</em> 39 (3): 322–39.</p>
 </div>
-<div id="ref-patuwo1993the" class="csl-entry">
-Patuwo, B. E., R. L. Disney, and D. C. Mcnickle. 1993. <span>“The Effect of Correlated Arrivals on Queues.”</span> <em>IIE Transactions</em> 25 (3): 105–10.
+<div id="ref-patuwo1993the">
+<p>Patuwo, B. E., R. L. Disney, and D. C. Mcnickle. 1993. “The Effect of Correlated Arrivals on Queues.” <em>IIE Transactions</em> 25 (3): 105–10.</p>
 </div>
 </div>
             </section>
@@ -1877,7 +1851,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

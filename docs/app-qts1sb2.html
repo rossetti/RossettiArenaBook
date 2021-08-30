@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C.2 Examples and Applications of Queueing Analysis | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C.2 Examples and Applications of Queueing Analysis | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="C.2 Examples and Applications of Queueing Analysis | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-qts1.html"/>
 <link rel="next" href="app-qts1sb3.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -554,7 +528,7 @@ line resources for software for queueing analysis can be found at:</p>
 <ul>
 <li><p><a href="https://web2.uwindsor.ca/math/hlynka/qsoft.html">List of queueing theory software resources</a></p></li>
 <li><p><a href="http://mason.gmu.edu/~jshortle/fqt5th.html">QTSPlus</a> Excel based queueing theory software that accompanies
-<span class="citation"><a href="#ref-Gross2008aa" role="doc-biblioref">Gross et al.</a> (<a href="#ref-Gross2008aa" role="doc-biblioref">2008</a>)</span></p></li>
+<span class="citation">Gross et al. (<a href="#ref-Gross2008aa" role="doc-biblioref">2008</a>)</span></p></li>
 </ul>
 <p>The most important part of performing a queueing analysis is to identify
 the most appropriate queueing model for a given situation. Then,
@@ -756,7 +730,7 @@ the Erlang delay probability:</p>
 of available spreadsheet software), an interesting and useful
 approximation has been developed called the square root staffing rule.
 The derivation of the square root staffing rule is given in
-<span class="citation">(<a href="#ref-tijms2003first" role="doc-biblioref">Tijms 2003</a>)</span>. In what follows, the usefulness of the rule is
+<span class="citation">(Tijms <a href="#ref-tijms2003first" role="doc-biblioref">2003</a>)</span>. In what follows, the usefulness of the rule is
 discussed.</p>
 <p>The <em>square root staffing rule</em> states that the least number of servers,
 <span class="math inline">\(c^{*}\)</span>, required to meet the criteria, <span class="math inline">\(P_w \leq \alpha\)</span> is given by:
@@ -882,7 +856,7 @@ is the critical input parameter to this analysis.</p>
 depart, and then return is considered. A classic and important example
 of this type of system is the machine interference or operator tending
 problem. A detailed discussion of the analysis and application of this
-model can be found in <span class="citation">(<a href="#ref-stecke1992machine" role="doc-biblioref">Stecke 1992</a>)</span>.</p>
+model can be found in <span class="citation">(Stecke <a href="#ref-stecke1992machine" role="doc-biblioref">1992</a>)</span>.</p>
 <p>In this situation, a set of machines are tended by 1 or more operators.
 The operators must tend to stoppages (breakdowns) of the machines. As
 the machines breakdown, they may have to wait for the operator to
@@ -1104,15 +1078,15 @@ divided by the number of machines:</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Gross2008aa" class="csl-entry">
-Gross, D., J. F. Shortle, J. M. Thompson, and C. M. Harris. 2008. <em>Fundamentals of Queueing Theory</em>. John Wiley &amp; Sons.
+<div id="refs" class="references">
+<div id="ref-Gross2008aa">
+<p>Gross, D., J. F. Shortle, J. M. Thompson, and C. M. Harris. 2008. <em>Fundamentals of Queueing Theory</em>. John Wiley &amp; Sons.</p>
 </div>
-<div id="ref-stecke1992machine" class="csl-entry">
-Stecke, K. E. 1992. <span>“Machine Interference: Assignment of Machines to Operators.”</span> In <em>Handbook of Industrial Engineering</em>, edited by G. Salvendy. John-Wiley &amp; Sons.
+<div id="ref-stecke1992machine">
+<p>Stecke, K. E. 1992. “Machine Interference: Assignment of Machines to Operators.” In <em>Handbook of Industrial Engineering</em>, edited by G. Salvendy. John-Wiley &amp; Sons.</p>
 </div>
-<div id="ref-tijms2003first" class="csl-entry">
-Tijms, H. C. 2003. <em>A First Course in Stochastic Models</em>. John-Wiley &amp; Sons.
+<div id="ref-tijms2003first">
+<p>Tijms, H. C. 2003. <em>A First Course in Stochastic Models</em>. John-Wiley &amp; Sons.</p>
 </div>
 </div>
             </section>
@@ -1144,7 +1118,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

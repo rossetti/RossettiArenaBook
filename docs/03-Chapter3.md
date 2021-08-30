@@ -42,7 +42,7 @@ factors associated with the system. For a simulation model, *all* input
 parameters are controllable; however, in the system being modeled you
 typically have control over only a limited set of parameters. Thus, in
 simulation you have the unique ability to control the random inputs into
-your model. This chapter will also discuss how to take advantage of
+your model. Chapter \@ref(ch4) will discuss how to take advantage of
 controlling the random inputs.
 
 Input parameters can be further classified as decision variables. That
@@ -263,7 +263,7 @@ available each time the entity enters and subsequently exits the state.
 
 With tally data it is natural to compute the sample average as a measure
 of the central tendency of the data. Assume that you can observe $n$
-customers entering and existing the queue, then the average waiting time
+customers entering and exiting the queue, then the average waiting time
 across the $n$ customers is given by:
 
 $$\bar{W}(n) = \frac{1}{n}\sum_{i=1}^{n}W_{i}$$
@@ -1772,7 +1772,7 @@ process.
 \FloatBarrier
 
 \BeginKnitrBlock{rmdnote}
-**Why are we not using the Poisson. distribution in the CREATE module?**
+**Why are we not using the Poisson distribution in the CREATE module?**
 This is a common point of confusion. The CREATE module requires the **time
 between events**, while a Poisson distribution models the *number* of events. While it is theoretically possible that the Poisson distribution could be used to represent the time between events, it would indeed be a rare occurrence if it was. If you *ever* want to use the Poisson distribution in your CREATE module then you are either wrong in your thinking or you better know exactly what you are doing! The
 Poisson distribution models a count of the number of events in a time period. The random variable,
@@ -2523,7 +2523,7 @@ The STATISTIC module is used to define and collect additional statistics that oc
 
 The STATISTC module also allows for the definition of Time Persistent statistical collection on variables defined in the model.  This functionality is the same as checking the “collect statistics” box when defining a variable; however, it also provides additional functionality.  First, the modeler can provide their own name for the time persistent statistic and may choose to save the data into a file.  Secondly, through the STATISTIC module, the modeler can define periods of time over which statistics can be collected on a variable. This is very useful in simulation situations that have time-varying inputs. Finally, the STATISTIC module allows for the definition of FREQUENCIES to provide finer detailed collect of time persisting variables in states or categories.
 
-This chapter has covered almost all of the most useful aspects of collecting statistics from your simulation model. As a final note, there are other statistics that are automatically collected by Arena, some of which do not add much value to the analysis.  For example, when you run your model and view the category reports, the very first item that you see is summary about the number of entities in and out of the model.  I strongly recommend **ignoring** these numbers. They are pretty much useless unless you commit to using Entity Types, for which I have never found a strong use case, except for applications involing activity based costing (See Appendix \@ref(app:ArenaMisc).
+This chapter has covered almost all of the most useful aspects of collecting statistics from your simulation model. As a final note, there are other statistics that are automatically collected by Arena, some of which do not add much value to the analysis.  For example, when you run your model and view the category reports, the very first item that you see is summary about the number of entities in and out of the model.  I strongly recommend **ignoring** these numbers. They are pretty much useless unless you commit to using Entity Types, for which I have never found a strong use case, except for applications involving activity based costing (See Appendix \@ref(app:ArenaMisc)).
 
 Now that you have a solid understanding of how to program and model in Arena
 and how to analyze your results, you are ready to explore the 

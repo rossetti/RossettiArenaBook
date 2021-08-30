@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.5 Elements of Process-Oriented Simulation | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.5 Elements of Process-Oriented Simulation | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="2.5 Elements of Process-Oriented Simulation | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="simulating-a-queueing-system-by-hand.html"/>
 <link rel="next" href="modeling-a-simple-discrete-event-dynamic-system.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -789,7 +763,7 @@ Figure 2.21: CREATE module for Poisson process
 <p>To specify a compound arrival process, use the “Entities per Arrival”
 field. For example, suppose you have a compound Poisson process
 where the distribution for the number created at each arrival is
-governed by a discrete distribution. See <span class="citation">(<a href="#ref-ross1997introduction" role="doc-biblioref">Ross 1997</a>)</span> for more information on the theory of compound Poisson processes.</p>
+governed by a discrete distribution. See <span class="citation">(Ross <a href="#ref-ross1997introduction" role="doc-biblioref">1997</a>)</span> for more information on the theory of compound Poisson processes.</p>
 <p><span class="math display">\[P(X = x) = \left\{ 
    \begin{array}{ll}
      0.2 &amp; \quad \text{x = 1}\\
@@ -860,7 +834,7 @@ computer memory that persists until changed during execution. The naming
 conventions for declaring variables in are quite liberal. This can be
 both a curse and a blessing. Because of this, you should adopt a
 standard naming convention when defining variables. The models in this
-text try to start the name of all variables with the letter “v.” For
+text try to start the name of all variables with the letter “v”. For
 example, in the previously discussed CREATE module examples, the
 variable <em>vLambda</em> was used to represent the arrival rate of the Poisson
 process. This makes it easy to distinguish variables from other
@@ -1006,7 +980,7 @@ object instance. Each row represents a different entity.</p>
 </div>
 <p>Table <a href="ch2-ProcessModeling.html#tab:EntityRecords">2.14</a> presents six entities conceptualized as
 records in a table. You can think of the creation and disposing of entities as
-adding and deleting records within the model’s “entity table.” The column IDENT represents the IDENT attribute, which uniquely identifies each entity (instance). IDENT is a special pre-defined
+adding and deleting records within the model’s “entity table”. The column IDENT represents the IDENT attribute, which uniquely identifies each entity (instance). IDENT is a special pre-defined
 attribute that is used to uniquely track entities currently in the model.
 The IDENT attribute is assigned when the entity is created. When an
 entity is created, memory is allocated for the entity and all of
@@ -1032,7 +1006,7 @@ associated with each of the entities. To find a description of the full
 list of pre-defined entity attributes, do a search on "Attributes and
 Entity-Related Variables" in the Help system.</p>
 <p>When you define a user-defined attribute, you are adding another
-“column” to the “entity table.” The implication of this statement is
+“column” to the “entity table”. The implication of this statement is
 very important. The defining of a user-defined attribute associates that
 attribute with <em>every</em> entity type. This is quite different than what
 you see in object-oriented languages where you can associate specific
@@ -1151,9 +1125,9 @@ module. This also allows the user to define attributes that are arrays. Using th
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-ross1997introduction" class="csl-entry">
-Ross, S. 1997. <em>Introduction to Probability Models</em>. 6th ed. Academic Press.
+<div id="refs" class="references">
+<div id="ref-ross1997introduction">
+<p>Ross, S. 1997. <em>Introduction to Probability Models</em>. 6th ed. Academic Press.</p>
 </div>
 </div>
             </section>
@@ -1185,7 +1159,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

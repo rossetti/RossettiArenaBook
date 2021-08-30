@@ -1333,7 +1333,7 @@ range $I \in \left\{ 1, \ldots, k \right\}$ where
 $P\left\{I=i\right\} = \omega_{i}$ is the probability that the $i^{th}$
 distribution $F_{X_{i}}(x)$ is selected. Then, the procedure for
 generating from $F_{X}(x)$ is to randomly generate $I$ from
-$g(i) = \left\{I=i\right\} = \omega_{i}$ and then generate $X$ from
+$g(i) = P\left\{I=i\right\} = \omega_{i}$ and then generate $X$ from
 $F_{X_{I}}(x)$. The following algorithm presents this procedure.
 
 | 1. Generate $I \sim g(i)$
@@ -1390,7 +1390,7 @@ variate from $F_{X}(x)$.
 
 | 1. Generate $u \sim U(0,1)$ 
 | 2. Generate $v \sim U(0,1)$
-| 3. If $(u \leq 7)$
+| 3. If $(u \leq 0.7)$
 | 4.   $X = F^{-1}_{X_{1}}(v) = -1.5\ln \left(1-v \right)$
 | 5. else
 | 6.   $X = F^{-1}_{X_{2}}(v) = -1.1\ln \left(1-v \right)$ 
