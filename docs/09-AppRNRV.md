@@ -1333,7 +1333,7 @@ range $I \in \left\{ 1, \ldots, k \right\}$ where
 $P\left\{I=i\right\} = \omega_{i}$ is the probability that the $i^{th}$
 distribution $F_{X_{i}}(x)$ is selected. Then, the procedure for
 generating from $F_{X}(x)$ is to randomly generate $I$ from
-$g(i) = \left\{I=i\right\} = \omega_{i}$ and then generate $X$ from
+$g(i) = P\left\{I=i\right\} = \omega_{i}$ and then generate $X$ from
 $F_{X_{I}}(x)$. The following algorithm presents this procedure.
 
 | 1. Generate $I \sim g(i)$
@@ -1390,7 +1390,7 @@ variate from $F_{X}(x)$.
 
 | 1. Generate $u \sim U(0,1)$ 
 | 2. Generate $v \sim U(0,1)$
-| 3. If $(u \leq 7)$
+| 3. If $(u \leq 0.7)$
 | 4.   $X = F^{-1}_{X_{1}}(v) = -1.5\ln \left(1-v \right)$
 | 5. else
 | 6.   $X = F^{-1}_{X_{2}}(v) = -1.1\ln \left(1-v \right)$ 
@@ -1858,7 +1858,7 @@ b. Using 0.943, 0.398 generate two random variates from this distribution with $
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:AppRNRVP23"><strong>(\#exr:AppRNRVP23) </strong></span>Staring with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using the
+<span class="exercise" id="exr:AppRNRVP23"><strong>(\#exr:AppRNRVP23) </strong></span>Starting with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using the
 convolution method.
 \EndKnitrBlock{exercise}
 
@@ -1871,7 +1871,7 @@ convolution method.
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:AppRNRVP24"><strong>(\#exr:AppRNRVP24) </strong></span>Staring with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using a sequence of Bernoulli trials to get 4 successes.
+<span class="exercise" id="exr:AppRNRVP24"><strong>(\#exr:AppRNRVP24) </strong></span>Starting with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters $(r = 4, p =0.4)$ using a sequence of Bernoulli trials to get 4 successes.
 \EndKnitrBlock{exercise}
 
   ------- ------- ------- ------- ------- -------
@@ -1883,7 +1883,7 @@ convolution method.
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:AppRNRVP25"><strong>(\#exr:AppRNRVP25) </strong></span> Suppose that the processing time for a job consists of two distributions. There
+<span class="exercise" id="exr:AppRNRVP25"><strong>(\#exr:AppRNRVP25) </strong></span>Suppose that the processing time for a job consists of two distributions. There
 is a 30% chance that the processing time is lognormally distributed with
 a mean of 20 minutes and a standard deviation of 2 minutes, and a 70%
 chance that the time is uniformly distributed between 10 and 20 minutes.

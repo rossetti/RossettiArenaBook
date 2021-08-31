@@ -945,8 +945,7 @@ you can make one long run and delete the initial portion only once. When
 analyzing an infinite horizon simulation based on one long replication,
 a method is needed to address the correlation present in the within
 replication data. The method of batch means is often used in this case
-and has been automated in . The next section discusses the statistical
-basis for the batch means method and addresses some of the practical
+and has been automated in many simulation packages. The next section discusses the statistical basis for the batch means method and addresses some of the practical
 issues of using it within Arena.
 
 ## The Batch Means Method {#ch5:BatchMeansMethod}

@@ -1323,7 +1323,7 @@ range <span class="math inline">\(I \in \left\{ 1, \ldots, k \right\}\)</span> w
 <span class="math inline">\(P\left\{I=i\right\} = \omega_{i}\)</span> is the probability that the <span class="math inline">\(i^{th}\)</span>
 distribution <span class="math inline">\(F_{X_{i}}(x)\)</span> is selected. Then, the procedure for
 generating from <span class="math inline">\(F_{X}(x)\)</span> is to randomly generate <span class="math inline">\(I\)</span> from
-<span class="math inline">\(g(i) = \left\{I=i\right\} = \omega_{i}\)</span> and then generate <span class="math inline">\(X\)</span> from
+<span class="math inline">\(g(i) = P\left\{I=i\right\} = \omega_{i}\)</span> and then generate <span class="math inline">\(X\)</span> from
 <span class="math inline">\(F_{X_{I}}(x)\)</span>. The following algorithm presents this procedure.</p>
 <div class="line-block">1. Generate <span class="math inline">\(I \sim g(i)\)</span><br />
 2. Generate <span class="math inline">\(X \sim F_{X_{I}}(x)\)</span><br />
@@ -1371,7 +1371,7 @@ variate from <span class="math inline">\(F_{X}(x)\)</span>.
 <p><strong>Solution for Example <a href="app-rnrv-rvs.html#exm:HyperExpRV">A.9</a></strong> In order to generate a payment service time, <span class="math inline">\(X\)</span>, we can use the mixture distribution algorithm.</p>
 <div class="line-block">1. Generate <span class="math inline">\(u \sim U(0,1)\)</span><br />
 2. Generate <span class="math inline">\(v \sim U(0,1)\)</span><br />
-3. If <span class="math inline">\((u \leq 7)\)</span><br />
+3. If <span class="math inline">\((u \leq 0.7)\)</span><br />
 4. <span class="math inline">\(X = F^{-1}_{X_{1}}(v) = -1.5\ln \left(1-v \right)\)</span><br />
 5. else<br />
 6. <span class="math inline">\(X = F^{-1}_{X_{2}}(v) = -1.1\ln \left(1-v \right)\)</span><br />
