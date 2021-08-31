@@ -3205,8 +3205,8 @@ handle the processing for any number of designated stations. To
 accomplish this, sets must be used to their fullest. Generic stations
 allow a series of commonly repeating modules to be replaced by a set of
 modules, sort of like a subroutine. However, the analogy to subroutines
-is not very good because of the way Arena handles variables and attributes.
-The trick to converting a series of modules to using generic stations is to
+is not very good because of the way handles variables and attributes.
+The trick to converting a series of modules to generic stations is to
 properly index into sets. An example is probably the best way to
 demonstrate this idea.
 

@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D.2 SIMAN and the Run Controller | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D.2 SIMAN and the Run Controller | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="D.2 SIMAN and the Run Controller | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-ArenaMisc-GettingHelp.html"/>
 <link rel="next" href="app-ArenaMisc-Prog.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -539,7 +565,7 @@ environment, compiled, and then executed. This section provides an
 overview of SIMAN and Arena’s debugger called the Run Controller.</p>
 <div id="app:ArenaMisc:RunController:modExp" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">D.2.1</span> SIMAN MOD and EXP Files</h3>
-<p>To better understand some of the underlying programming concepts within Arena, it is useful to know that Arena is built on top of the SIMAN simulation programming system. To learn more about SIMAN, I suggest reviewing the following two textbooks 1 and <span class="citation">Banks et al. (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span>.</p>
+<p>To better understand some of the underlying programming concepts within Arena, it is useful to know that Arena is built on top of the SIMAN simulation programming system. To learn more about SIMAN, I suggest reviewing the following two textbooks 1 and <span class="citation"><a href="#ref-banks1995introduction" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span>.</p>
 <p>The section will review the pharmacy model of Chapter <a href="ch2.html#ch2">2</a> in order to provide an overview of SIMAN. You should open up the pharmacy model from Chapter <a href="ch2.html#ch2">2</a> in order to follow along. Using the Run/SIMAN/View menu will generate two files associated with the SIMAN program, the
 <em>mod</em> (model) file and the <em>exp</em> (experiment) file. The files can be
 viewed using the Window menu (Figure <a href="app-ArenaMisc-RunController.html#fig:ch4fig67">D.3</a>, within the Arena Environment.</p>
@@ -573,43 +599,43 @@ certain errors that occur during the model debugging process. It is
 important to understand that these elements are defined during the model
 building process, especially when data modules are filled out within the
 Environment.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb137-1"><a href="app-ArenaMisc-RunController.html#cb137-1" aria-hidden="true"></a>    <span class="ex">PROJECT</span>,      <span class="st">&quot;Unnamed Project&quot;</span>,<span class="st">&quot; &quot;</span>,,,No,Yes,Yes,Yes,No,No,No,No,No,No<span class="kw">;</span></span>
-<span id="cb137-2"><a href="app-ArenaMisc-RunController.html#cb137-2" aria-hidden="true"></a>    <span class="ex">VARIABLES</span>:    Get Medicine.WIP,CLEAR(System),<span class="ex">CATEGORY</span>(<span class="st">&quot;Exclude-Exclude&quot;</span>),<span class="ex">DATATYPE</span>(Real)<span class="bu">:</span></span>
-<span id="cb137-3"><a href="app-ArenaMisc-RunController.html#cb137-3" aria-hidden="true"></a>                  <span class="ex">Dispose</span> 1.NumberOut,CLEAR(Statistics),<span class="ex">CATEGORY</span>(<span class="st">&quot;Exclude&quot;</span>)<span class="bu">:</span></span>
-<span id="cb137-4"><a href="app-ArenaMisc-RunController.html#cb137-4" aria-hidden="true"></a>                  <span class="ex">Create</span> Customers.NumberOut,CLEAR(Statistics),<span class="ex">CATEGORY</span>(<span class="st">&quot;Exclude&quot;</span>)<span class="bu">:</span></span>
-<span id="cb137-5"><a href="app-ArenaMisc-RunController.html#cb137-5" aria-hidden="true"></a>                  <span class="ex">Get</span> Medicine.NumberIn,CLEAR(Statistics),<span class="ex">CATEGORY</span>(<span class="st">&quot;Exclude&quot;</span>)<span class="bu">:</span></span>
-<span id="cb137-6"><a href="app-ArenaMisc-RunController.html#cb137-6" aria-hidden="true"></a>                  <span class="ex">Get</span> Medicine.NumberOut,CLEAR(Statistics),<span class="ex">CATEGORY</span>(<span class="st">&quot;Exclude&quot;</span>);</span>
-<span id="cb137-7"><a href="app-ArenaMisc-RunController.html#cb137-7" aria-hidden="true"></a>                      <span class="ex">QUEUES</span>:       Get Medicine.Queue,FIFO,,AUTOSTATS(Yes,,);</span>
-<span id="cb137-8"><a href="app-ArenaMisc-RunController.html#cb137-8" aria-hidden="true"></a>    <span class="ex">PICTURES</span>:     Picture.Airplane:</span>
-<span id="cb137-9"><a href="app-ArenaMisc-RunController.html#cb137-9" aria-hidden="true"></a>                  <span class="ex">Picture.Green</span> Ball:</span>
-<span id="cb137-10"><a href="app-ArenaMisc-RunController.html#cb137-10" aria-hidden="true"></a>                  <span class="ex">Picture.Blue</span> Page:</span>
-<span id="cb137-11"><a href="app-ArenaMisc-RunController.html#cb137-11" aria-hidden="true"></a>                  <span class="ex">Picture.Telephone</span>:</span>
-<span id="cb137-12"><a href="app-ArenaMisc-RunController.html#cb137-12" aria-hidden="true"></a>                  <span class="ex">Picture.Blue</span> Ball:</span>
-<span id="cb137-13"><a href="app-ArenaMisc-RunController.html#cb137-13" aria-hidden="true"></a>                  <span class="ex">Picture.Yellow</span> Page:</span>
-<span id="cb137-14"><a href="app-ArenaMisc-RunController.html#cb137-14" aria-hidden="true"></a>                  <span class="ex">Picture.EMail</span>:</span>
-<span id="cb137-15"><a href="app-ArenaMisc-RunController.html#cb137-15" aria-hidden="true"></a>                  <span class="ex">Picture.Yellow</span> Ball:</span>
-<span id="cb137-16"><a href="app-ArenaMisc-RunController.html#cb137-16" aria-hidden="true"></a>                  <span class="ex">Picture.Bike</span>:</span>
-<span id="cb137-17"><a href="app-ArenaMisc-RunController.html#cb137-17" aria-hidden="true"></a>                  <span class="ex">Picture.Report</span>:</span>
-<span id="cb137-18"><a href="app-ArenaMisc-RunController.html#cb137-18" aria-hidden="true"></a>                  <span class="ex">Picture.Van</span>:</span>
-<span id="cb137-19"><a href="app-ArenaMisc-RunController.html#cb137-19" aria-hidden="true"></a>                  <span class="ex">Picture.Widgets</span>:</span>
-<span id="cb137-20"><a href="app-ArenaMisc-RunController.html#cb137-20" aria-hidden="true"></a>                  <span class="ex">Picture.Envelope</span>:</span>
-<span id="cb137-21"><a href="app-ArenaMisc-RunController.html#cb137-21" aria-hidden="true"></a>                  <span class="ex">Picture.Fax</span>:</span>
-<span id="cb137-22"><a href="app-ArenaMisc-RunController.html#cb137-22" aria-hidden="true"></a>                  <span class="ex">Picture.Truck</span>:</span>
-<span id="cb137-23"><a href="app-ArenaMisc-RunController.html#cb137-23" aria-hidden="true"></a>                  <span class="ex">Picture.Person</span>:</span>
-<span id="cb137-24"><a href="app-ArenaMisc-RunController.html#cb137-24" aria-hidden="true"></a>                  <span class="ex">Picture.Letter</span>:</span>
-<span id="cb137-25"><a href="app-ArenaMisc-RunController.html#cb137-25" aria-hidden="true"></a>                  <span class="ex">Picture.Box</span>:</span>
-<span id="cb137-26"><a href="app-ArenaMisc-RunController.html#cb137-26" aria-hidden="true"></a>                  <span class="ex">Picture.Woman</span>:</span>
-<span id="cb137-27"><a href="app-ArenaMisc-RunController.html#cb137-27" aria-hidden="true"></a>                  <span class="ex">Picture.Package</span>:</span>
-<span id="cb137-28"><a href="app-ArenaMisc-RunController.html#cb137-28" aria-hidden="true"></a>                  <span class="ex">Picture.Man</span>:</span>
-<span id="cb137-29"><a href="app-ArenaMisc-RunController.html#cb137-29" aria-hidden="true"></a>                  <span class="ex">Picture.Diskette</span>:</span>
-<span id="cb137-30"><a href="app-ArenaMisc-RunController.html#cb137-30" aria-hidden="true"></a>                  <span class="ex">Picture.Boat</span>:</span>
-<span id="cb137-31"><a href="app-ArenaMisc-RunController.html#cb137-31" aria-hidden="true"></a>                  <span class="ex">Picture.Red</span> Page:</span>
-<span id="cb137-32"><a href="app-ArenaMisc-RunController.html#cb137-32" aria-hidden="true"></a>                  <span class="ex">Picture.Ball</span>:</span>
-<span id="cb137-33"><a href="app-ArenaMisc-RunController.html#cb137-33" aria-hidden="true"></a>                  <span class="ex">Picture.Green</span> Page:</span>
-<span id="cb137-34"><a href="app-ArenaMisc-RunController.html#cb137-34" aria-hidden="true"></a>                  <span class="ex">Picture.Red</span> Ball<span class="kw">;</span></span>
-<span id="cb137-35"><a href="app-ArenaMisc-RunController.html#cb137-35" aria-hidden="true"></a>    <span class="ex">RESOURCES</span>:    Pharmacist,Capacity(1),,,<span class="ex">COST</span>(0.0,0.0,0.0),<span class="ex">CATEGORY</span>(Resources),,<span class="ex">AUTOSTATS</span>(Yes,,);</span>
-<span id="cb137-36"><a href="app-ArenaMisc-RunController.html#cb137-36" aria-hidden="true"></a>    <span class="ex">REPLICATE</span>,    1,,HoursToBaseTime(10000),<span class="ex">Yes</span>,Yes,,,,24,Minutes,No,No,,,Yes<span class="kw">;</span></span>
-<span id="cb137-37"><a href="app-ArenaMisc-RunController.html#cb137-37" aria-hidden="true"></a>    <span class="ex">ENTITIES</span>:     Customer,Picture.Van,0.0,0.0,0.0,0.0,0.0,0.0,AUTOSTATS(Yes,,);</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb137-1"><a href="app-ArenaMisc-RunController.html#cb137-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PROJECT,</span>      <span class="st">&quot;Unnamed Project&quot;</span>,<span class="st">&quot; &quot;</span>,,,No,Yes,Yes,Yes,No,No,No,No,No,No<span class="kw">;</span></span>
+<span id="cb137-2"><a href="app-ArenaMisc-RunController.html#cb137-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">VARIABLES:</span>    Get Medicine.WIP,CLEAR<span class="er">(</span><span class="ex">System</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude-Exclude&quot;</span><span class="kw">)</span><span class="ex">,DATATYPE</span><span class="er">(</span><span class="ex">Real</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-3"><a href="app-ArenaMisc-RunController.html#cb137-3" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Dispose</span> 1.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-4"><a href="app-ArenaMisc-RunController.html#cb137-4" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Create</span> Customers.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-5"><a href="app-ArenaMisc-RunController.html#cb137-5" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Get</span> Medicine.NumberIn,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb137-6"><a href="app-ArenaMisc-RunController.html#cb137-6" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Get</span> Medicine.NumberOut,CLEAR<span class="er">(</span><span class="ex">Statistics</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="st">&quot;Exclude&quot;</span><span class="kw">);</span></span>
+<span id="cb137-7"><a href="app-ArenaMisc-RunController.html#cb137-7" aria-hidden="true" tabindex="-1"></a>                      <span class="ex">QUEUES:</span>       Get Medicine.Queue,FIFO,,AUTOSTATS<span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span>
+<span id="cb137-8"><a href="app-ArenaMisc-RunController.html#cb137-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">PICTURES:</span>     Picture.Airplane:</span>
+<span id="cb137-9"><a href="app-ArenaMisc-RunController.html#cb137-9" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Green</span> Ball:</span>
+<span id="cb137-10"><a href="app-ArenaMisc-RunController.html#cb137-10" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Blue</span> Page:</span>
+<span id="cb137-11"><a href="app-ArenaMisc-RunController.html#cb137-11" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Telephone:</span></span>
+<span id="cb137-12"><a href="app-ArenaMisc-RunController.html#cb137-12" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Blue</span> Ball:</span>
+<span id="cb137-13"><a href="app-ArenaMisc-RunController.html#cb137-13" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Yellow</span> Page:</span>
+<span id="cb137-14"><a href="app-ArenaMisc-RunController.html#cb137-14" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.EMail:</span></span>
+<span id="cb137-15"><a href="app-ArenaMisc-RunController.html#cb137-15" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Yellow</span> Ball:</span>
+<span id="cb137-16"><a href="app-ArenaMisc-RunController.html#cb137-16" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Bike:</span></span>
+<span id="cb137-17"><a href="app-ArenaMisc-RunController.html#cb137-17" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Report:</span></span>
+<span id="cb137-18"><a href="app-ArenaMisc-RunController.html#cb137-18" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Van:</span></span>
+<span id="cb137-19"><a href="app-ArenaMisc-RunController.html#cb137-19" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Widgets:</span></span>
+<span id="cb137-20"><a href="app-ArenaMisc-RunController.html#cb137-20" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Envelope:</span></span>
+<span id="cb137-21"><a href="app-ArenaMisc-RunController.html#cb137-21" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Fax:</span></span>
+<span id="cb137-22"><a href="app-ArenaMisc-RunController.html#cb137-22" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Truck:</span></span>
+<span id="cb137-23"><a href="app-ArenaMisc-RunController.html#cb137-23" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Person:</span></span>
+<span id="cb137-24"><a href="app-ArenaMisc-RunController.html#cb137-24" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Letter:</span></span>
+<span id="cb137-25"><a href="app-ArenaMisc-RunController.html#cb137-25" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Box:</span></span>
+<span id="cb137-26"><a href="app-ArenaMisc-RunController.html#cb137-26" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Woman:</span></span>
+<span id="cb137-27"><a href="app-ArenaMisc-RunController.html#cb137-27" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Package:</span></span>
+<span id="cb137-28"><a href="app-ArenaMisc-RunController.html#cb137-28" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Man:</span></span>
+<span id="cb137-29"><a href="app-ArenaMisc-RunController.html#cb137-29" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Diskette:</span></span>
+<span id="cb137-30"><a href="app-ArenaMisc-RunController.html#cb137-30" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Boat:</span></span>
+<span id="cb137-31"><a href="app-ArenaMisc-RunController.html#cb137-31" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Red</span> Page:</span>
+<span id="cb137-32"><a href="app-ArenaMisc-RunController.html#cb137-32" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Ball:</span></span>
+<span id="cb137-33"><a href="app-ArenaMisc-RunController.html#cb137-33" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Green</span> Page:</span>
+<span id="cb137-34"><a href="app-ArenaMisc-RunController.html#cb137-34" aria-hidden="true" tabindex="-1"></a>                  <span class="ex">Picture.Red</span> Ball<span class="kw">;</span></span>
+<span id="cb137-35"><a href="app-ArenaMisc-RunController.html#cb137-35" aria-hidden="true" tabindex="-1"></a>    <span class="ex">RESOURCES:</span>    Pharmacist,Capacity<span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="ex">,,,COST</span><span class="er">(</span><span class="ex">0.0,0.0,0.0</span><span class="kw">)</span><span class="ex">,CATEGORY</span><span class="er">(</span><span class="ex">Resources</span><span class="kw">)</span><span class="ex">,,AUTOSTATS</span><span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span>
+<span id="cb137-36"><a href="app-ArenaMisc-RunController.html#cb137-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">REPLICATE,</span>    1,,HoursToBaseTime<span class="er">(</span><span class="ex">10000</span><span class="kw">)</span><span class="ex">,Yes,Yes,,,,24,Minutes,No,No,,,Yes</span><span class="kw">;</span></span>
+<span id="cb137-37"><a href="app-ArenaMisc-RunController.html#cb137-37" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ENTITIES:</span>     Customer,Picture.Van,0.0,0.0,0.0,0.0,0.0,0.0,AUTOSTATS<span class="er">(</span><span class="ex">Yes,,</span><span class="kw">);</span></span></code></pre></div>
 <p>The following listing presents the contents of the SIMAN model (<em>mod</em>)
 file for the Pharmacy model. The model file is similar in spirit to the
 “.c" or”*.cpp" files in C/C++ programming. It represents the flow
@@ -617,32 +643,32 @@ chart portion of the model. In this code, ";" indicates a comment line.
 The capitalized commands represent special SIMAN language keywords. For
 example, the ASSIGN keyword is used to indicate an assignment statement,
 i.e. <em>variable = expression</em>.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb138-1"><a href="app-ArenaMisc-RunController.html#cb138-1" aria-hidden="true"></a>    ;</span>
-<span id="cb138-2"><a href="app-ArenaMisc-RunController.html#cb138-2" aria-hidden="true"></a>    ;     <span class="ex">Model</span> statements for module:  BasicProcess.Create 1 (Create Customers)</span>
-<span id="cb138-3"><a href="app-ArenaMisc-RunController.html#cb138-3" aria-hidden="true"></a>    ;</span>
-<span id="cb138-4"><a href="app-ArenaMisc-RunController.html#cb138-4" aria-hidden="true"></a>    <span class="ex">2</span>$            CREATE,        1,MinutesToBaseTime(expo(6)),<span class="ex">Customer</span>:MinutesToBaseTime(EXPO(6)):<span class="ex">NEXT</span>(3$);</span>
-<span id="cb138-5"><a href="app-ArenaMisc-RunController.html#cb138-5" aria-hidden="true"></a></span>
-<span id="cb138-6"><a href="app-ArenaMisc-RunController.html#cb138-6" aria-hidden="true"></a>    <span class="ex">3</span>$            ASSIGN:        Create Customers.NumberOut=Create Customers.NumberOut + 1:NEXT(0$);</span>
-<span id="cb138-7"><a href="app-ArenaMisc-RunController.html#cb138-7" aria-hidden="true"></a>    ;</span>
-<span id="cb138-8"><a href="app-ArenaMisc-RunController.html#cb138-8" aria-hidden="true"></a>    ;</span>
-<span id="cb138-9"><a href="app-ArenaMisc-RunController.html#cb138-9" aria-hidden="true"></a>    ;     <span class="ex">Model</span> statements for module:  BasicProcess.Process 1 (Get Medicine)</span>
-<span id="cb138-10"><a href="app-ArenaMisc-RunController.html#cb138-10" aria-hidden="true"></a>    ;</span>
-<span id="cb138-11"><a href="app-ArenaMisc-RunController.html#cb138-11" aria-hidden="true"></a>    <span class="ex">0</span>$            ASSIGN:        Get Medicine.NumberIn=Get Medicine.NumberIn + 1:</span>
-<span id="cb138-12"><a href="app-ArenaMisc-RunController.html#cb138-12" aria-hidden="true"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP+1<span class="kw">;</span></span>
-<span id="cb138-13"><a href="app-ArenaMisc-RunController.html#cb138-13" aria-hidden="true"></a>    <span class="ex">9</span>$            QUEUE,         Get Medicine.Queue<span class="kw">;</span></span>
-<span id="cb138-14"><a href="app-ArenaMisc-RunController.html#cb138-14" aria-hidden="true"></a>    <span class="ex">8</span>$            SEIZE,         2,VA:</span>
-<span id="cb138-15"><a href="app-ArenaMisc-RunController.html#cb138-15" aria-hidden="true"></a>                                 <span class="ex">Pharmacist</span>,1:NEXT(7$);</span>
-<span id="cb138-16"><a href="app-ArenaMisc-RunController.html#cb138-16" aria-hidden="true"></a></span>
-<span id="cb138-17"><a href="app-ArenaMisc-RunController.html#cb138-17" aria-hidden="true"></a>    <span class="ex">7</span>$            DELAY:         expo(3),,<span class="ex">VA</span><span class="kw">;</span></span>
-<span id="cb138-18"><a href="app-ArenaMisc-RunController.html#cb138-18" aria-hidden="true"></a>    <span class="ex">6</span>$            RELEASE:       Pharmacist,1<span class="kw">;</span></span>
-<span id="cb138-19"><a href="app-ArenaMisc-RunController.html#cb138-19" aria-hidden="true"></a>    <span class="ex">54</span>$           ASSIGN:        Get Medicine.NumberOut=Get Medicine.NumberOut + 1:</span>
-<span id="cb138-20"><a href="app-ArenaMisc-RunController.html#cb138-20" aria-hidden="true"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP-1:NEXT(1$);</span>
-<span id="cb138-21"><a href="app-ArenaMisc-RunController.html#cb138-21" aria-hidden="true"></a>    ;</span>
-<span id="cb138-22"><a href="app-ArenaMisc-RunController.html#cb138-22" aria-hidden="true"></a>    ;</span>
-<span id="cb138-23"><a href="app-ArenaMisc-RunController.html#cb138-23" aria-hidden="true"></a>    ;     <span class="ex">Model</span> statements for module:  BasicProcess.Dispose 1 (Dispose 1)</span>
-<span id="cb138-24"><a href="app-ArenaMisc-RunController.html#cb138-24" aria-hidden="true"></a>    ;</span>
-<span id="cb138-25"><a href="app-ArenaMisc-RunController.html#cb138-25" aria-hidden="true"></a>    <span class="ex">1</span>$            ASSIGN:        Dispose 1.NumberOut=Dispose 1.NumberOut + 1<span class="kw">;</span></span>
-<span id="cb138-26"><a href="app-ArenaMisc-RunController.html#cb138-26" aria-hidden="true"></a>    <span class="ex">57</span>$           DISPOSE:       Yes<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb138-1"><a href="app-ArenaMisc-RunController.html#cb138-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-2"><a href="app-ArenaMisc-RunController.html#cb138-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Create 1 <span class="er">(</span><span class="ex">Create</span> Customers<span class="kw">)</span></span>
+<span id="cb138-3"><a href="app-ArenaMisc-RunController.html#cb138-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-4"><a href="app-ArenaMisc-RunController.html#cb138-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">2$</span>            CREATE,        1,MinutesToBaseTime<span class="er">(</span><span class="ex">expo</span><span class="er">(</span><span class="ex">6</span><span class="kw">))</span><span class="ex">,Customer:MinutesToBaseTime</span><span class="er">(</span><span class="ex">EXPO</span><span class="er">(</span><span class="ex">6</span><span class="kw">))</span><span class="ex">:NEXT</span><span class="er">(</span><span class="ex">3$</span><span class="kw">);</span></span>
+<span id="cb138-5"><a href="app-ArenaMisc-RunController.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="app-ArenaMisc-RunController.html#cb138-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">3$</span>            ASSIGN:        Create Customers.NumberOut=Create Customers.NumberOut + 1:NEXT<span class="er">(</span><span class="ex">0$</span><span class="kw">);</span></span>
+<span id="cb138-7"><a href="app-ArenaMisc-RunController.html#cb138-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-8"><a href="app-ArenaMisc-RunController.html#cb138-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-9"><a href="app-ArenaMisc-RunController.html#cb138-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Process 1 <span class="er">(</span><span class="ex">Get</span> Medicine<span class="kw">)</span></span>
+<span id="cb138-10"><a href="app-ArenaMisc-RunController.html#cb138-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-11"><a href="app-ArenaMisc-RunController.html#cb138-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">0$</span>            ASSIGN:        Get Medicine.NumberIn=Get Medicine.NumberIn + 1:</span>
+<span id="cb138-12"><a href="app-ArenaMisc-RunController.html#cb138-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP+1<span class="kw">;</span></span>
+<span id="cb138-13"><a href="app-ArenaMisc-RunController.html#cb138-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">9$</span>            QUEUE,         Get Medicine.Queue<span class="kw">;</span></span>
+<span id="cb138-14"><a href="app-ArenaMisc-RunController.html#cb138-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">8$</span>            SEIZE,         2,VA:</span>
+<span id="cb138-15"><a href="app-ArenaMisc-RunController.html#cb138-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Pharmacist,1:NEXT</span><span class="er">(</span><span class="ex">7$</span><span class="kw">);</span></span>
+<span id="cb138-16"><a href="app-ArenaMisc-RunController.html#cb138-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-17"><a href="app-ArenaMisc-RunController.html#cb138-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">7$</span>            DELAY:         expo<span class="er">(</span><span class="ex">3</span><span class="kw">)</span><span class="ex">,,VA</span><span class="kw">;</span></span>
+<span id="cb138-18"><a href="app-ArenaMisc-RunController.html#cb138-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">6$</span>            RELEASE:       Pharmacist,1<span class="kw">;</span></span>
+<span id="cb138-19"><a href="app-ArenaMisc-RunController.html#cb138-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">54$</span>           ASSIGN:        Get Medicine.NumberOut=Get Medicine.NumberOut + 1:</span>
+<span id="cb138-20"><a href="app-ArenaMisc-RunController.html#cb138-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">Get</span> Medicine.WIP=Get Medicine.WIP-1:NEXT<span class="er">(</span><span class="ex">1$</span><span class="kw">);</span></span>
+<span id="cb138-21"><a href="app-ArenaMisc-RunController.html#cb138-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-22"><a href="app-ArenaMisc-RunController.html#cb138-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-23"><a href="app-ArenaMisc-RunController.html#cb138-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span>     <span class="ex">Model</span> statements for module:  BasicProcess.Dispose 1 <span class="er">(</span><span class="ex">Dispose</span> 1<span class="kw">)</span></span>
+<span id="cb138-24"><a href="app-ArenaMisc-RunController.html#cb138-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">;</span></span>
+<span id="cb138-25"><a href="app-ArenaMisc-RunController.html#cb138-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">1$</span>            ASSIGN:        Dispose 1.NumberOut=Dispose 1.NumberOut + 1<span class="kw">;</span></span>
+<span id="cb138-26"><a href="app-ArenaMisc-RunController.html#cb138-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">57$</span>           DISPOSE:       Yes<span class="kw">;</span></span></code></pre></div>
 <p>There are two keywords that you should
 immediately recognize from the model window, CREATE and DISPOSE. Each
 non-commented line has a line number that identifies the SIMAN
@@ -922,9 +948,9 @@ re-save!</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-banks1995introduction">
-<p>Banks, J., B. Burnette, H. Kozloski, and J. Rose. 1995. <em>Introduction to SIMAN V and CINEMA V</em>. John Wiley &amp; Sons.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks1995introduction" class="csl-entry">
+Banks, J., B. Burnette, H. Kozloski, and J. Rose. 1995. <em>Introduction to <span>SIMAN</span> v and <span>CINEMA</span> v</em>. John Wiley &amp; Sons.
 </div>
 </div>
             </section>
@@ -956,6 +982,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.10 How Arena Manages Entities and Events | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.10 How Arena Manages Entities and Events | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="2.10 How Arena Manages Entities and Events | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch2-AttVariablesIO.html"/>
 <link rel="next" href="ch2-Summary.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -523,7 +549,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.10</span> How Arena Manages Entities and Events</h2>
 <p>This section will provide a conceptual model for how Arena processes the
 entities. The discussion in this section is based in large part on the
-discussion found in <span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span>. To get a more detailed step by step view of Arena’s operation, I recommend using the Arena Run Controller as noted in Appendix <a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController">D.2</a>. The Arena Run Controller facilitates the tracking and tracing of entities as they move through the system. This section should help build a solid conceptual understanding for how entities are processed.</p>
+discussion found in <span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span>. To get a more detailed step by step view of Arena’s operation, I recommend using the Arena Run Controller as noted in Appendix <a href="app-ArenaMisc-RunController.html#app:ArenaMisc:RunController">D.2</a>. The Arena Run Controller facilitates the tracking and tracing of entities as they move through the system. This section should help build a solid conceptual understanding for how entities are processed.</p>
 <p>The processing of entities within Arena is based on a process-oriented view.
 The modeler describes the life of an entity as it moves through the
 system. In some sense, the system processes the entities. The entities
@@ -541,7 +567,7 @@ the calendar and as time passes, the event’s alarm goes off, then the
 event is processed. In discrete event modeling, the clock gets updated
 only when an event happens, causing the system to move through time. The
 movement of entities cause the events to be scheduled and processed.</p>
-<p>According to <span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span> there are two phases for processing
+<p>According to <span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span> there are two phases for processing
 events: the entity movement phase (EMP) and the clock update phase
 (CUP). The clock update phase is straightforward: when all events have
 been processed at the current time, update the simulation time to the
@@ -554,7 +580,7 @@ time. That is, only one entity can be moving at a time. It may seem
 obvious but if only one entity can be moving at a time, then all the
 other entities are not moving. However, the entities that are not moving
 have different reasons, given their current state.</p>
-<p><span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span> divide the life of an entity into five states:</p>
+<p><span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span> divide the life of an entity into five states:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Active State</strong> The active state represents the entity that is
 currently being processed. The entity that is currently moving is in
@@ -596,7 +622,7 @@ the model in order to cause the entity to transition from the
 dormant state to the ready state.</p></li>
 </ol>
 <p>Figure <a href="ch2-howArenaWorks.html#fig:EntityStateTransitions">2.73</a> illustrates how an entity can
-transition between the five states, based on Figure 24.9 of <span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span>. As illustrated in the figure, when an entity is created, it is placed in the Ready state or the Time
+transition between the five states, based on Figure 24.9 of <span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span>. As illustrated in the figure, when an entity is created, it is placed in the Ready state or the Time
 Delayed state. CREATE modules place entities in the Time Delayed state
 and the SEPARATE module place entities in the READY state. An entity
 in the Ready state can only become active. The active entity can
@@ -759,11 +785,11 @@ happening to each entity, then you can better verify that your model is
 working as intended.</p>
 <p>Why does understanding entity processing matter? There are some common
 modeling situations that happen automatically, for which you may need to
-understand the default processing logic. <span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span>
+understand the default processing logic. <span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span>
 discuss three of these modeling situations. Here we will just mention
 one case. Suppose that a customer releases a resource and then
 immediately tries to seize the resource again. What happens? As outlined
-in <span class="citation">(Schriber and Brunner <a href="#ref-Schriber1998aa" role="doc-biblioref">1998</a>)</span> there are three logical possibilities:</p>
+in <span class="citation">(<a href="#ref-Schriber1998aa" role="doc-biblioref">Schriber and Brunner 1998</a>)</span> there are three logical possibilities:</p>
 <ol style="list-style-type: decimal">
 <li><p>Immediately upon the release, the resource is allocated to a waiting
 customer. Since the active entity is not a waiting customer, it
@@ -778,9 +804,9 @@ first option is done automatically in Arena. If this is not the behavior that
 you desire then you may have to implement special logic.</p>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Schriber1998aa">
-<p>Schriber, T. J., and D. T. Brunner. 1998. “How Discrete-Event Simulation Software Works.” In <em>Handbook of Simulation: Principles, Methodology, Advances, Applications, and Practice</em>, edited by J. Banks. New York, New York: John Wiley &amp; Sons.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Schriber1998aa" class="csl-entry">
+Schriber, T. J., and D. T. Brunner. 1998. <span>“How Discrete-Event Simulation Software Works.”</span> In <em>Handbook of Simulation: Principles, Methodology, Advances, Applications, and Practice</em>, edited by J. Banks. New York, New York: John Wiley &amp; Sons.
 </div>
 </div>
             </section>
@@ -812,6 +838,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

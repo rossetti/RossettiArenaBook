@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.5 Fitting Continuous Distributions | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.5 Fitting Continuous Distributions | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="B.5 Fitting Continuous Distributions | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-idm-sec-MCD.html"/>
 <link rel="next" href="app-distfit-testU01.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -526,7 +552,7 @@ distributions. In this section, we will look at modeling a continuous
 distribution using the functionality available in R. This example starts
 with step 3 of the input modeling process. That is, the data has already
 been collected. Additional discussion of this topic can be found in
-Chapter 6 of <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>.</p>
+Chapter 6 of <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>.</p>
 <hr />
 
 <div class="example">
@@ -729,20 +755,20 @@ likely to be independent and identically distributed.</p>
 easily accomplished in R using the <em>summary</em>, <em>mean</em>, <em>var</em>, <em>sd</em>, and
 <em>t.test</em> functions. The <em>summary</em> command summarizes the distributional properties in terms
 of the minimum, maximum, median, and 1st and 3rd quartiles of the data.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="app-idm-sec-fitContinuous.html#cb84-1" aria-hidden="true"></a><span class="kw">summary</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="app-idm-sec-fitContinuous.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   1.300   8.275  11.750  13.412  17.325  31.500</code></pre>
 <p>The <em>mean</em>, <em>var</em>, <em>sd</em> commands compute the sample average, sample
 variance, and sample standard deviation of the data.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="app-idm-sec-fitContinuous.html#cb86-1" aria-hidden="true"></a><span class="kw">mean</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="app-idm-sec-fitContinuous.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
 <pre><code>## [1] 13.412</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="app-idm-sec-fitContinuous.html#cb88-1" aria-hidden="true"></a><span class="kw">var</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="app-idm-sec-fitContinuous.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(y)</span></code></pre></div>
 <pre><code>## [1] 50.44895</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="app-idm-sec-fitContinuous.html#cb90-1" aria-hidden="true"></a><span class="kw">sd</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="app-idm-sec-fitContinuous.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
 <pre><code>## [1] 7.102742</code></pre>
 <p>Finally, the <em>t.test</em> command can be used to form a 95% confidence interval on the
 mean and test if the true mean is significantly different from zero.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="app-idm-sec-fitContinuous.html#cb92-1" aria-hidden="true"></a><span class="kw">t.test</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="app-idm-sec-fitContinuous.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(y)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -756,7 +782,7 @@ mean and test if the true mean is significantly different from zero.</p>
 ##    13.412</code></pre>
 <p>The <em>descdist</em> command of the <em>fitdistrplus</em> package will also provide a
 description of the distribution’s properties.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="app-idm-sec-fitContinuous.html#cb94-1" aria-hidden="true"></a><span class="kw">descdist</span>(y, <span class="dt">graph=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="app-idm-sec-fitContinuous.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descdist</span>(y, <span class="at">graph=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## summary statistics
 ## ------
 ## min:  1.3   max:  31.5 
@@ -854,10 +880,10 @@ The <em>hist()</em> function provides the frequency version of histogram and
 Sturges rule as its default. You can also provide your own breakpoints
 in a vector. The <em>hist()</em> function will automatically compute the counts
 associated with the intervals.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="app-idm-sec-fitContinuous.html#cb96-1" aria-hidden="true"></a><span class="co"># make histogram with no plot</span></span>
-<span id="cb96-2"><a href="app-idm-sec-fitContinuous.html#cb96-2" aria-hidden="true"></a>h =<span class="st"> </span><span class="kw">hist</span>(y, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb96-3"><a href="app-idm-sec-fitContinuous.html#cb96-3" aria-hidden="true"></a><span class="co"># show the histogram object components</span></span>
-<span id="cb96-4"><a href="app-idm-sec-fitContinuous.html#cb96-4" aria-hidden="true"></a>h</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="app-idm-sec-fitContinuous.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make histogram with no plot</span></span>
+<span id="cb96-2"><a href="app-idm-sec-fitContinuous.html#cb96-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb96-3"><a href="app-idm-sec-fitContinuous.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># show the histogram object components</span></span>
+<span id="cb96-4"><a href="app-idm-sec-fitContinuous.html#cb96-4" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
 <pre><code>## $breaks
 ## [1]  0  5 10 15 20 25 30 35
 ## 
@@ -883,7 +909,7 @@ the result object is assigned to the variable <span class="math inline">\(h\)</s
 result object, you can see all the tabulated results. For example the
 variable <em>h$counts</em> shows the tabulation of the counts based on the
 default breakpoints.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="app-idm-sec-fitContinuous.html#cb98-1" aria-hidden="true"></a>h<span class="op">$</span>counts</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="app-idm-sec-fitContinuous.html#cb98-1" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts</span></code></pre></div>
 <pre><code>## [1]  6 34 25 16 11  5  3</code></pre>
 <p>The breakpoints are given by the variable
 <em>h$breaks</em>. Note that by default <em>hist</em> defines the intervals as
@@ -901,14 +927,14 @@ command (for example: <span class="math inline">\(b = c(0,4,8,12,16,20,24,28,32)
 the vector with the <em>breaks</em> option of the <em>hist</em> command if you do not
 want to use the default breakpoints. The following listing illustrates
 how to do this.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="app-idm-sec-fitContinuous.html#cb100-1" aria-hidden="true"></a><span class="co"># set up some new break points</span></span>
-<span id="cb100-2"><a href="app-idm-sec-fitContinuous.html#cb100-2" aria-hidden="true"></a>b =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>,<span class="dv">20</span>,<span class="dv">24</span>,<span class="dv">28</span>,<span class="dv">32</span>)</span>
-<span id="cb100-3"><a href="app-idm-sec-fitContinuous.html#cb100-3" aria-hidden="true"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="app-idm-sec-fitContinuous.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up some new break points</span></span>
+<span id="cb100-2"><a href="app-idm-sec-fitContinuous.html#cb100-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>,<span class="dv">20</span>,<span class="dv">24</span>,<span class="dv">28</span>,<span class="dv">32</span>)</span>
+<span id="cb100-3"><a href="app-idm-sec-fitContinuous.html#cb100-3" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>## [1]  0  4  8 12 16 20 24 28 32</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="app-idm-sec-fitContinuous.html#cb102-1" aria-hidden="true"></a><span class="co"># make histogram with no plot for new breakpoints</span></span>
-<span id="cb102-2"><a href="app-idm-sec-fitContinuous.html#cb102-2" aria-hidden="true"></a>hb =<span class="st"> </span><span class="kw">hist</span>(y, <span class="dt">breaks =</span> b, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb102-3"><a href="app-idm-sec-fitContinuous.html#cb102-3" aria-hidden="true"></a><span class="co"># show the histogram object components</span></span>
-<span id="cb102-4"><a href="app-idm-sec-fitContinuous.html#cb102-4" aria-hidden="true"></a>hb</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="app-idm-sec-fitContinuous.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make histogram with no plot for new breakpoints</span></span>
+<span id="cb102-2"><a href="app-idm-sec-fitContinuous.html#cb102-2" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">breaks =</span> b, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb102-3"><a href="app-idm-sec-fitContinuous.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># show the histogram object components</span></span>
+<span id="cb102-4"><a href="app-idm-sec-fitContinuous.html#cb102-4" aria-hidden="true" tabindex="-1"></a>hb</span></code></pre></div>
 <pre><code>## $breaks
 ## [1]  0  4  8 12 16 20 24 28 32
 ## 
@@ -933,10 +959,10 @@ how to do this.</p>
 tabulate the counts by providing a vector of breaks and tabulate the
 counts using the <em>cut()</em> and the <em>table()</em> commands without using the
 <em>hist</em> command. The following listing illustrates how to do this.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="app-idm-sec-fitContinuous.html#cb104-1" aria-hidden="true"></a><span class="co">#define the intervals</span></span>
-<span id="cb104-2"><a href="app-idm-sec-fitContinuous.html#cb104-2" aria-hidden="true"></a>y.cut =<span class="st"> </span><span class="kw">cut</span>(y, <span class="dt">breaks=</span>b)</span>
-<span id="cb104-3"><a href="app-idm-sec-fitContinuous.html#cb104-3" aria-hidden="true"></a><span class="co"># tabulate the counts in the intervals</span></span>
-<span id="cb104-4"><a href="app-idm-sec-fitContinuous.html#cb104-4" aria-hidden="true"></a><span class="kw">table</span>(y.cut)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="app-idm-sec-fitContinuous.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define the intervals</span></span>
+<span id="cb104-2"><a href="app-idm-sec-fitContinuous.html#cb104-2" aria-hidden="true" tabindex="-1"></a>y.cut <span class="ot">=</span> <span class="fu">cut</span>(y, <span class="at">breaks=</span>b)</span>
+<span id="cb104-3"><a href="app-idm-sec-fitContinuous.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate the counts in the intervals</span></span>
+<span id="cb104-4"><a href="app-idm-sec-fitContinuous.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(y.cut)</span></code></pre></div>
 <pre><code>## y.cut
 ##   (0,4]   (4,8]  (8,12] (12,16] (16,20] (20,24] (24,28] (28,32] 
 ##       6      16      30      17      12       9       5       5</code></pre>
@@ -1115,24 +1141,24 @@ would not reject the hypothesis that the observed data is gamma
 distributed with <span class="math inline">\(\alpha = 3.56562\)</span> and <span class="math inline">\(\beta = 3.761478\)</span>.</p>
 <p>The following listing provides a script that will compute the chi-square
 test statistic and its p-value within R.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="app-idm-sec-fitContinuous.html#cb106-1" aria-hidden="true"></a>a =<span class="st"> </span><span class="kw">mean</span>(y)<span class="op">*</span><span class="kw">mean</span>(y)<span class="op">/</span><span class="kw">var</span>(y) <span class="co">#estimate alpha</span></span>
-<span id="cb106-2"><a href="app-idm-sec-fitContinuous.html#cb106-2" aria-hidden="true"></a>b =<span class="st"> </span><span class="kw">var</span>(y)<span class="op">/</span><span class="kw">mean</span>(y) <span class="co">#estmate beta</span></span>
-<span id="cb106-3"><a href="app-idm-sec-fitContinuous.html#cb106-3" aria-hidden="true"></a>hy =<span class="st"> </span><span class="kw">hist</span>(y, <span class="dt">plot=</span><span class="ot">FALSE</span>) <span class="co"># make histogram</span></span>
-<span id="cb106-4"><a href="app-idm-sec-fitContinuous.html#cb106-4" aria-hidden="true"></a>LL =<span class="st"> </span>hy<span class="op">$</span>breaks <span class="co"># set lower limit of intervals</span></span>
-<span id="cb106-5"><a href="app-idm-sec-fitContinuous.html#cb106-5" aria-hidden="true"></a>UL =<span class="st"> </span><span class="kw">c</span>(LL[<span class="op">-</span><span class="dv">1</span>],<span class="dv">10000</span>) <span class="co"># set upper limit of intervals</span></span>
-<span id="cb106-6"><a href="app-idm-sec-fitContinuous.html#cb106-6" aria-hidden="true"></a>FLL =<span class="st"> </span><span class="kw">pgamma</span>(LL,<span class="dt">shape =</span> a, <span class="dt">scale =</span> b) <span class="co">#compute F(LL)</span></span>
-<span id="cb106-7"><a href="app-idm-sec-fitContinuous.html#cb106-7" aria-hidden="true"></a>FUL =<span class="st"> </span><span class="kw">pgamma</span>(UL,<span class="dt">shape =</span> a, <span class="dt">scale =</span> b)  <span class="co">#compute F(UL)</span></span>
-<span id="cb106-8"><a href="app-idm-sec-fitContinuous.html#cb106-8" aria-hidden="true"></a>pj =<span class="st"> </span>FUL <span class="op">-</span><span class="st"> </span>FLL <span class="co"># compute prob of being in interval</span></span>
-<span id="cb106-9"><a href="app-idm-sec-fitContinuous.html#cb106-9" aria-hidden="true"></a>ej =<span class="st"> </span><span class="kw">length</span>(y)<span class="op">*</span>pj <span class="co"># compute expected number in interval</span></span>
-<span id="cb106-10"><a href="app-idm-sec-fitContinuous.html#cb106-10" aria-hidden="true"></a>e =<span class="st"> </span><span class="kw">c</span>(ej[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="kw">sum</span>(ej[<span class="dv">6</span><span class="op">:</span><span class="dv">8</span>])) <span class="co">#combine last 3 intervals</span></span>
-<span id="cb106-11"><a href="app-idm-sec-fitContinuous.html#cb106-11" aria-hidden="true"></a>cnts =<span class="st"> </span><span class="kw">c</span>(hy<span class="op">$</span>counts[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="kw">sum</span>(hy<span class="op">$</span>counts[<span class="dv">6</span><span class="op">:</span><span class="dv">7</span>])) <span class="co">#combine last 3 intervals</span></span>
-<span id="cb106-12"><a href="app-idm-sec-fitContinuous.html#cb106-12" aria-hidden="true"></a>chissq =<span class="st"> </span>((cnts<span class="op">-</span>e)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>e <span class="co">#compute chi sq values</span></span>
-<span id="cb106-13"><a href="app-idm-sec-fitContinuous.html#cb106-13" aria-hidden="true"></a>sumchisq =<span class="st"> </span><span class="kw">sum</span>(chissq) <span class="co"># compute test statistic</span></span>
-<span id="cb106-14"><a href="app-idm-sec-fitContinuous.html#cb106-14" aria-hidden="true"></a>df =<span class="st"> </span><span class="kw">length</span>(e)<span class="op">-</span><span class="dv">2-1</span> <span class="co">#compute degrees of freedom</span></span>
-<span id="cb106-15"><a href="app-idm-sec-fitContinuous.html#cb106-15" aria-hidden="true"></a>pvalue =<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(sumchisq, df) <span class="co">#compute p-value</span></span>
-<span id="cb106-16"><a href="app-idm-sec-fitContinuous.html#cb106-16" aria-hidden="true"></a><span class="kw">print</span>(sumchisq) <span class="co"># print test statistic</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="app-idm-sec-fitContinuous.html#cb106-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">mean</span>(y)<span class="sc">*</span><span class="fu">mean</span>(y)<span class="sc">/</span><span class="fu">var</span>(y) <span class="co">#estimate alpha</span></span>
+<span id="cb106-2"><a href="app-idm-sec-fitContinuous.html#cb106-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">var</span>(y)<span class="sc">/</span><span class="fu">mean</span>(y) <span class="co">#estmate beta</span></span>
+<span id="cb106-3"><a href="app-idm-sec-fitContinuous.html#cb106-3" aria-hidden="true" tabindex="-1"></a>hy <span class="ot">=</span> <span class="fu">hist</span>(y, <span class="at">plot=</span><span class="cn">FALSE</span>) <span class="co"># make histogram</span></span>
+<span id="cb106-4"><a href="app-idm-sec-fitContinuous.html#cb106-4" aria-hidden="true" tabindex="-1"></a>LL <span class="ot">=</span> hy<span class="sc">$</span>breaks <span class="co"># set lower limit of intervals</span></span>
+<span id="cb106-5"><a href="app-idm-sec-fitContinuous.html#cb106-5" aria-hidden="true" tabindex="-1"></a>UL <span class="ot">=</span> <span class="fu">c</span>(LL[<span class="sc">-</span><span class="dv">1</span>],<span class="dv">10000</span>) <span class="co"># set upper limit of intervals</span></span>
+<span id="cb106-6"><a href="app-idm-sec-fitContinuous.html#cb106-6" aria-hidden="true" tabindex="-1"></a>FLL <span class="ot">=</span> <span class="fu">pgamma</span>(LL,<span class="at">shape =</span> a, <span class="at">scale =</span> b) <span class="co">#compute F(LL)</span></span>
+<span id="cb106-7"><a href="app-idm-sec-fitContinuous.html#cb106-7" aria-hidden="true" tabindex="-1"></a>FUL <span class="ot">=</span> <span class="fu">pgamma</span>(UL,<span class="at">shape =</span> a, <span class="at">scale =</span> b)  <span class="co">#compute F(UL)</span></span>
+<span id="cb106-8"><a href="app-idm-sec-fitContinuous.html#cb106-8" aria-hidden="true" tabindex="-1"></a>pj <span class="ot">=</span> FUL <span class="sc">-</span> FLL <span class="co"># compute prob of being in interval</span></span>
+<span id="cb106-9"><a href="app-idm-sec-fitContinuous.html#cb106-9" aria-hidden="true" tabindex="-1"></a>ej <span class="ot">=</span> <span class="fu">length</span>(y)<span class="sc">*</span>pj <span class="co"># compute expected number in interval</span></span>
+<span id="cb106-10"><a href="app-idm-sec-fitContinuous.html#cb106-10" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">c</span>(ej[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">sum</span>(ej[<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>])) <span class="co">#combine last 3 intervals</span></span>
+<span id="cb106-11"><a href="app-idm-sec-fitContinuous.html#cb106-11" aria-hidden="true" tabindex="-1"></a>cnts <span class="ot">=</span> <span class="fu">c</span>(hy<span class="sc">$</span>counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">sum</span>(hy<span class="sc">$</span>counts[<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>])) <span class="co">#combine last 3 intervals</span></span>
+<span id="cb106-12"><a href="app-idm-sec-fitContinuous.html#cb106-12" aria-hidden="true" tabindex="-1"></a>chissq <span class="ot">=</span> ((cnts<span class="sc">-</span>e)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>e <span class="co">#compute chi sq values</span></span>
+<span id="cb106-13"><a href="app-idm-sec-fitContinuous.html#cb106-13" aria-hidden="true" tabindex="-1"></a>sumchisq <span class="ot">=</span> <span class="fu">sum</span>(chissq) <span class="co"># compute test statistic</span></span>
+<span id="cb106-14"><a href="app-idm-sec-fitContinuous.html#cb106-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">length</span>(e)<span class="sc">-</span><span class="dv">2-1</span> <span class="co">#compute degrees of freedom</span></span>
+<span id="cb106-15"><a href="app-idm-sec-fitContinuous.html#cb106-15" aria-hidden="true" tabindex="-1"></a>pvalue <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(sumchisq, df) <span class="co">#compute p-value</span></span>
+<span id="cb106-16"><a href="app-idm-sec-fitContinuous.html#cb106-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sumchisq) <span class="co"># print test statistic</span></span></code></pre></div>
 <pre><code>## [1] 2.742749</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="app-idm-sec-fitContinuous.html#cb108-1" aria-hidden="true"></a><span class="kw">print</span>(pvalue) <span class="co">#print p-value</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="app-idm-sec-fitContinuous.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pvalue) <span class="co">#print p-value</span></span></code></pre></div>
 <pre><code>## [1] 0.4330114</code></pre>
 <p>Notice that we computed the same <span class="math inline">\(\chi^{2}\)</span> value and p-value as when doing the calculations by hand.</p>
 </div>
@@ -1144,9 +1170,9 @@ depend on specifying intervals for tabulating the test statistic. The
 K-S test compares the theoretical cumulative distribution function (CDF)
 to the empirical CDF by checking the largest absolute deviation between
 the two over the range of the random variable. The K-S Test is described
-in detail in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>, which also includes a discussion of
+in detail in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>, which also includes a discussion of
 the advantages/disadvantages of the test. For example,
-<span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> indicates that the K-S Test is more powerful than
+<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> indicates that the K-S Test is more powerful than
 the Chi-Squared test and has the ability to be used on smaller sample
 sizes.</p>
 <p>To apply the K-S Test, we must be able to compute the empirical
@@ -1223,14 +1249,14 @@ Type I error will be less than specified.</p>
 <p>The following R listing, illustrates how to compute the K-S statistic by
 hand (which is quite unnecessary) because you can simply use the
 <em>ks.test</em> command as illustrated.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="app-idm-sec-fitContinuous.html#cb110-1" aria-hidden="true"></a>j =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(y) <span class="co"># make a vector to count y&#39;s</span></span>
-<span id="cb110-2"><a href="app-idm-sec-fitContinuous.html#cb110-2" aria-hidden="true"></a>yj =<span class="st"> </span><span class="kw">sort</span>(y) <span class="co"># sort the y&#39;s</span></span>
-<span id="cb110-3"><a href="app-idm-sec-fitContinuous.html#cb110-3" aria-hidden="true"></a>Fj =<span class="st"> </span><span class="kw">pgamma</span>(yj, <span class="dt">shape =</span> a, <span class="dt">scale =</span> b)  <span class="co">#compute F(yj)</span></span>
-<span id="cb110-4"><a href="app-idm-sec-fitContinuous.html#cb110-4" aria-hidden="true"></a>n =<span class="st"> </span><span class="kw">length</span>(y)</span>
-<span id="cb110-5"><a href="app-idm-sec-fitContinuous.html#cb110-5" aria-hidden="true"></a>D =<span class="st"> </span><span class="kw">max</span>(<span class="kw">max</span>((j<span class="op">/</span>n)<span class="op">-</span>Fj),<span class="kw">max</span>(Fj <span class="op">-</span><span class="st"> </span>((j<span class="dv">-1</span>)<span class="op">/</span>n))) <span class="co"># compute K-S test statistic</span></span>
-<span id="cb110-6"><a href="app-idm-sec-fitContinuous.html#cb110-6" aria-hidden="true"></a><span class="kw">print</span>(D)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="app-idm-sec-fitContinuous.html#cb110-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y) <span class="co"># make a vector to count y&#39;s</span></span>
+<span id="cb110-2"><a href="app-idm-sec-fitContinuous.html#cb110-2" aria-hidden="true" tabindex="-1"></a>yj <span class="ot">=</span> <span class="fu">sort</span>(y) <span class="co"># sort the y&#39;s</span></span>
+<span id="cb110-3"><a href="app-idm-sec-fitContinuous.html#cb110-3" aria-hidden="true" tabindex="-1"></a>Fj <span class="ot">=</span> <span class="fu">pgamma</span>(yj, <span class="at">shape =</span> a, <span class="at">scale =</span> b)  <span class="co">#compute F(yj)</span></span>
+<span id="cb110-4"><a href="app-idm-sec-fitContinuous.html#cb110-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y)</span>
+<span id="cb110-5"><a href="app-idm-sec-fitContinuous.html#cb110-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">max</span>((j<span class="sc">/</span>n)<span class="sc">-</span>Fj),<span class="fu">max</span>(Fj <span class="sc">-</span> ((j<span class="dv">-1</span>)<span class="sc">/</span>n))) <span class="co"># compute K-S test statistic</span></span>
+<span id="cb110-6"><a href="app-idm-sec-fitContinuous.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(D)</span></code></pre></div>
 <pre><code>## [1] 0.05265431</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="app-idm-sec-fitContinuous.html#cb112-1" aria-hidden="true"></a><span class="kw">ks.test</span>(y, <span class="st">&#39;pgamma&#39;</span>, <span class="dt">shape=</span>a, <span class="dt">scale =</span>b) <span class="co"># compute k-s test</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="app-idm-sec-fitContinuous.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(y, <span class="st">&#39;pgamma&#39;</span>, <span class="at">shape=</span>a, <span class="at">scale =</span>b) <span class="co"># compute k-s test</span></span></code></pre></div>
 <pre><code>## 
 ##  One-sample Kolmogorov-Smirnov test
 ## 
@@ -1245,7 +1271,7 @@ the K-S test. The Chi-Squared test has more general applicability than
 the K-S Test. Specifically, the Chi-Squared test applies to both
 continuous and discrete data; however, it suffers from depending on the
 interval specification. In addition, it has a number of other
-shortcomings which are discussed in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>. While the K-S
+shortcomings which are discussed in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. While the K-S
 Test can also be applied to discrete data, special tables must be used
 for getting the critical values. Additionally, the K-S Test in its
 original form assumes that the parameters of the hypothesized
@@ -1253,10 +1279,10 @@ distribution are known, i.e. given without estimating from the data.
 Research on the effect of using the K-S Test with estimated parameters
 has indicated that it will be conservative in the sense that the actual
 Type I error will be less than specified. Additional advantage and
-disadvantage of the K-S Test are given in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>. There
+disadvantage of the K-S Test are given in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. There
 are other statistical tests that have been devised for testing the
 goodness of fit for distributions. One such test is Anderson-Darling
-Test. <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> describes this test. This test detects tail
+Test. <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> describes this test. This test detects tail
 differences and has a higher power than the K-S Test for many popular
 distributions. It can be found as standard output in commercial
 distribution fitting software.</p>
@@ -1325,7 +1351,7 @@ distribution must be available and in order to make a Q-Q Plot, the
 inverse CDF of the hypothesized distribution must be available. When the
 inverse CDF is not readily available there are other methods to making
 Q-Q plots for many distributions. These methods are outlined in
-<span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>. The following example will illustrate how to make
+<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>. The following example will illustrate how to make
 and interpret the P-P plot and Q-Q plot for the hypothesized gamma
 distribution for the task times.</p>
 <p>The following R listing will make the P-P and Q-Q plots for this
@@ -1335,7 +1361,7 @@ abline(0,1) # add a reference line to the plot
 qqplot(y, qgamma(ppoints(length(y)), shape = a, scale = b)) # make Q-Q Plot
 abline(0,1) # add a reference line to the plot</code></pre>
 <p>The function <em>ppoints()</em> in R will generate <span class="math inline">\(\tilde{F}_n(x_{(i)})\)</span>. Then
-you can easily use the distribution function (with the “p”, as in
+you can easily use the distribution function (with the “p,” as in
 pgamma()) to compute the theoretical probabilities. In R, the quantile
 function can be found by appending a “q” to the name of the available
 distributions. We have already seen qt() for the student-t distribution.
@@ -1365,12 +1391,12 @@ in the right tail.</p>
 Figure B.16: The Q-Q Plot for the Task Times with gamma(shape = 3.56, scale = 3.76)
 </p>
 </div>
-<p>Now, that we have seen how to do the analysis ‘by hand’, let’s see how
+<p>Now, that we have seen how to do the analysis ‘by hand,’ let’s see how
 easy it can be using the <em>fitdistrplus</em> package. Notice that the
 <em>fitdist</em> command will fit the parameters of the distribution.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="app-idm-sec-fitContinuous.html#cb115-1" aria-hidden="true"></a><span class="kw">library</span>(fitdistrplus)</span>
-<span id="cb115-2"><a href="app-idm-sec-fitContinuous.html#cb115-2" aria-hidden="true"></a>fy =<span class="st"> </span><span class="kw">fitdist</span>(y, <span class="st">&quot;gamma&quot;</span>)</span>
-<span id="cb115-3"><a href="app-idm-sec-fitContinuous.html#cb115-3" aria-hidden="true"></a><span class="kw">print</span>(fy)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="app-idm-sec-fitContinuous.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb115-2"><a href="app-idm-sec-fitContinuous.html#cb115-2" aria-hidden="true" tabindex="-1"></a>fy <span class="ot">=</span> <span class="fu">fitdist</span>(y, <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb115-3"><a href="app-idm-sec-fitContinuous.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fy)</span></code></pre></div>
 <pre><code>## Fitting of the distribution &#39; gamma &#39; by maximum likelihood 
 ## Parameters:
 ##        estimate Std. Error
@@ -1380,8 +1406,8 @@ easy it can be using the <em>fitdistrplus</em> package. Notice that the
 of fit, K-S test statistic, as well as other goodness of fit criteria.
 The results lead to the same conclusion that we had before: the gamma
 distribution is a good model for this data.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="app-idm-sec-fitContinuous.html#cb117-1" aria-hidden="true"></a>gfy =<span class="st"> </span><span class="kw">gofstat</span>(fy)</span>
-<span id="cb117-2"><a href="app-idm-sec-fitContinuous.html#cb117-2" aria-hidden="true"></a><span class="kw">print</span>(gfy)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="app-idm-sec-fitContinuous.html#cb117-1" aria-hidden="true" tabindex="-1"></a>gfy <span class="ot">=</span> <span class="fu">gofstat</span>(fy)</span>
+<span id="cb117-2"><a href="app-idm-sec-fitContinuous.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy)</span></code></pre></div>
 <pre><code>## Goodness-of-fit statistics
 ##                              1-mle-gamma
 ## Kolmogorov-Smirnov statistic  0.04930008
@@ -1392,11 +1418,11 @@ distribution is a good model for this data.</p>
 ##                                1-mle-gamma
 ## Akaike&#39;s Information Criterion    663.3157
 ## Bayesian Information Criterion    668.5260</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="app-idm-sec-fitContinuous.html#cb119-1" aria-hidden="true"></a><span class="kw">print</span>(gfy<span class="op">$</span>chisq) <span class="co"># chi-squared test statistic</span></span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="app-idm-sec-fitContinuous.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisq) <span class="co"># chi-squared test statistic</span></span></code></pre></div>
 <pre><code>## [1] 3.544766</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="app-idm-sec-fitContinuous.html#cb121-1" aria-hidden="true"></a><span class="kw">print</span>(gfy<span class="op">$</span>chisqpvalue) <span class="co"># chi-squared p-value</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="app-idm-sec-fitContinuous.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisqpvalue) <span class="co"># chi-squared p-value</span></span></code></pre></div>
 <pre><code>## [1] 0.8956877</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="app-idm-sec-fitContinuous.html#cb123-1" aria-hidden="true"></a><span class="kw">print</span>(gfy<span class="op">$</span>chisqdf)  <span class="co"># chi-squared degrees of freedom</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="app-idm-sec-fitContinuous.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gfy<span class="sc">$</span>chisqdf)  <span class="co"># chi-squared degrees of freedom</span></span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <!-- ``` -->
 <!-- library(fitdistrplus) -->
@@ -1966,9 +1992,9 @@ Figure B.27: Distribution Plot from fitdistrplus for Service Time Data
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
 </div>
             </section>
@@ -2000,6 +2026,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

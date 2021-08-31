@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.4 Modeling Guided Path Transporters | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.4 Modeling Guided Path Transporters | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="7.4 Modeling Guided Path Transporters | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch7-sec-conveyors.html"/>
 <link rel="next" href="ch7-Summary.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -527,14 +553,14 @@ that can be programmed to move between locations along paths. A complete
 discussion of AGV systems is beyond the scope of this text. The
 interested reader should refer to standard texts on material handling or
 manufacturing systems design for a more complete introduction to the
-technology. For example, the texts by <span class="citation">(Askin and Standridge <a href="#ref-askin1993modeling" role="doc-biblioref">1993</a>)</span> and
-<span class="citation">(Singh <a href="#ref-singh1996systems" role="doc-biblioref">1996</a>)</span> have complete chapters dedicated to the modeling of
+technology. For example, the texts by <span class="citation">(<a href="#ref-askin1993modeling" role="doc-biblioref">Askin and Standridge 1993</a>)</span> and
+<span class="citation">(<a href="#ref-singh1996systems" role="doc-biblioref">Singh 1996</a>)</span> have complete chapters dedicated to the modeling of
 AGV systems. For the purposes of this section, the discussion will be
 limited to AGV systems that follow a prescribed path (e.g. tape,
 embedded wires, etc) to make things simpler. There are newer AGVs that
 do not rely on following a path, but rather are capable of navigating
 via sensors within buildings, see for example
-<span class="citation">(Rossetti and Seldanari <a href="#ref-rossetti2001multiobjective" role="doc-biblioref">2001</a>)</span>.</p>
+<span class="citation">(<a href="#ref-rossetti2001multiobjective" role="doc-biblioref">Rossetti and Seldanari 2001</a>)</span>.</p>
 <p>When modeling with guided transporters, the most important issue to
 understand is that the transporters can now compete with each other for
 the space along their paths. The space along the path must be explicitly
@@ -559,7 +585,7 @@ specified in a consistent unit of measure. All zones have the same
 length. The link can also be of a certain type (bidirectional, spur,
 unidirectional). A bidirectional link implies that the transporter is
 allows to traverse in both directions along the link. A spur is used to
-model “dead ends”, and unidirectional links restrict traffic to one
+model “dead ends,” and unidirectional links restrict traffic to one
 direction. A velocity change factor can also be associated with a link
 to indicate a change in the basic velocity of the vehicle while
 traversing the link. For example, for a link going through an area with
@@ -596,7 +622,7 @@ Thus, as indicated in Figure <a href="ch7-sec-AGVs.html#fig:ch7fig44">7.44</a>, 
 a velocity change factor, and link selection rule. For more information
 on the detailed modeling of intersections, you should refer to the
 INTERSECTIONS element from Arena’s Elements template. Also, the books by
-<span class="citation">Banks et al. (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span> and <span class="citation">(Pegden, Shannon, and Sadowski <a href="#ref-pegden1995introduction" role="doc-biblioref">1995</a>)</span> cover the SIMAN
+<span class="citation"><a href="#ref-banks1995introduction" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span> and <span class="citation">(<a href="#ref-pegden1995introduction" role="doc-biblioref">Pegden, Shannon, and Sadowski 1995</a>)</span> cover the SIMAN
 blocks and elements that underlie guided path transporter modeling
 within . Clearly, a fixed path network consists of a set of links and
 the associated intersections. Also from
@@ -787,7 +813,7 @@ send idle vehicles to a staging area or home base that gets them out of
 the way of the main path network.</p>
 <p>To finish up this discussion, let’s briefly discuss the operation of
 spurs and bidirectional links. This discussion is based in part on
-<span class="citation">(Pegden, Shannon, and Sadowski <a href="#ref-pegden1995introduction" role="doc-biblioref">1995</a>)</span> page 394. Notice that the link from <code>I4</code> to <code>I5</code>
+<span class="citation">(<a href="#ref-pegden1995introduction" role="doc-biblioref">Pegden, Shannon, and Sadowski 1995</a>)</span> page 394. Notice that the link from <code>I4</code> to <code>I5</code>
 is a spur in the previous example. A spur is a special type of link
 designed to help prevent some deadlock situations. A spur models a “dead
 end” and is bidirectional. If a vehicle is sent to the intersection at
@@ -873,28 +899,28 @@ discussion of their use can also be found in</p>
 size, redirecting vehicles through portions of the network, and link
 selection rules.</p></li>
 </ol>
-<p>More details on these topics can be found in <span class="citation">Banks et al. (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span> and
+<p>More details on these topics can be found in <span class="citation"><a href="#ref-banks1995introduction" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks1995introduction" role="doc-biblioref">1995</a>)</span> and
 1. Advanced examples are also given in both of
 those texts, including within 1 the possible use
 of guided path constructs for modeling automated storage and retrieval
 systems (AS/RS) and overhead cranes.</p>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-askin1993modeling">
-<p>Askin, R. G., and C. R. Standridge. 1993. <em>Modeling and Analysis of Manufacturing Systems</em>. John Wiley &amp; Sons.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-askin1993modeling" class="csl-entry">
+Askin, R. G., and C. R. Standridge. 1993. <em>Modeling and Analysis of Manufacturing Systems</em>. John Wiley &amp; Sons.
 </div>
-<div id="ref-banks1995introduction">
-<p>Banks, J., B. Burnette, H. Kozloski, and J. Rose. 1995. <em>Introduction to SIMAN V and CINEMA V</em>. John Wiley &amp; Sons.</p>
+<div id="ref-banks1995introduction" class="csl-entry">
+Banks, J., B. Burnette, H. Kozloski, and J. Rose. 1995. <em>Introduction to <span>SIMAN</span> v and <span>CINEMA</span> v</em>. John Wiley &amp; Sons.
 </div>
-<div id="ref-pegden1995introduction">
-<p>Pegden, C. D., R. E. Shannon, and R. P. Sadowski. 1995. <em>Introduction to Simulation Using Siman</em>. 2nd ed. McGraw-Hill.</p>
+<div id="ref-pegden1995introduction" class="csl-entry">
+Pegden, C. D., R. E. Shannon, and R. P. Sadowski. 1995. <em>Introduction to Simulation Using SIMAN</em>. 2nd ed. McGraw-Hill.
 </div>
-<div id="ref-rossetti2001multiobjective">
-<p>Rossetti, M. D., and F. Seldanari. 2001. “Multi-Objective Analysis of Hospital Delivery Systems.” <em>Computers and Industrial Engineering</em> 41: 309–33.</p>
+<div id="ref-rossetti2001multiobjective" class="csl-entry">
+Rossetti, M. D., and F. Seldanari. 2001. <span>“Multi-Objective Analysis of <span>Hospital</span> <span>Delivery</span> <span>Systems</span>.”</span> <em>Computers and Industrial Engineering</em> 41: 309–33.
 </div>
-<div id="ref-singh1996systems">
-<p>Singh, N. 1996. <em>Systems Approach to Computer-Integrated Design and Manufacturing</em>. John Wiley &amp; Sons.</p>
+<div id="ref-singh1996systems" class="csl-entry">
+Singh, N. 1996. <em>Systems Approach to Computer-Integrated Design and Manufacturing</em>. John Wiley &amp; Sons.
 </div>
 </div>
             </section>
@@ -926,6 +952,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
