@@ -1655,7 +1655,7 @@ probability mass function is $p(x)$.
 
 a. Determine the CDF $F(x)$ for the random variable, $X$.
 b. Create a graphical summary of the CDF. See Example \@ref(exm:DiscreteCDF).
-c. Create a look-up table that can be used to determine a sample from the discrete
+c. Create the inverse CDF that can be used to determine a sample from the discrete
 distribution, $p(x)$. See Example \@ref(exm:DiscreteCDF).
 d. Generate 3 values of $X$ using the following pseudo-random numbers $u_1= 0.943, u_2 = 0.398, u_3 = 0.372$
 
