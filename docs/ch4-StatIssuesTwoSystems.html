@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 Statistical Issues When Comparing Two Systems | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 Statistical Issues When Comparing Two Systems | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="4.4 Statistical Issues When Comparing Two Systems | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch4-BatchSeparate.html"/>
 <link rel="next" href="ch4-LOTRExample.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -580,7 +554,7 @@ to sampling error. In other words, you want to be confident that one
 system is statistically better (or worse) than the other system.</p>
 <p>The techniques for comparing two systems via simulation are essentially
 the same as that found in books that cover the statistical analysis of
-two samples (e.g. <span class="citation">(<a href="#ref-montgomery2006applied" role="doc-biblioref">Montgomery and Runger 2006</a>)</span>). This section begins with a
+two samples (e.g. <span class="citation">(Montgomery and Runger <a href="#ref-montgomery2006applied" role="doc-biblioref">2006</a>)</span>). This section begins with a
 review of these methods. Assume that samples from two different
 populations (system configurations) are available:</p>
 <p><span class="math display">\[X_{11}, X_{12},\ldots, X_{1 n_1} \ \ \text{a sample of size $n_1$ from system configuration 1}\]</span></p>
@@ -643,7 +617,7 @@ observations can be pooled when developing an estimate for the variance.
 In fact, rather than just assuming equal or not equal variances, you can
 (and should) use an F-test to test for the equality of variance. The
 F-test can be found in most elementary probability and statistics books
-(see <span class="citation">(<a href="#ref-montgomery2006applied" role="doc-biblioref">Montgomery and Runger 2006</a>)</span>).</p>
+(see <span class="citation">(Montgomery and Runger <a href="#ref-montgomery2006applied" role="doc-biblioref">2006</a>)</span>).</p>
 <p>The decision regarding whether <span class="math inline">\(\theta_1 &lt; \theta_2\)</span> can be addressed by
 forming confidence intervals on <span class="math inline">\(\theta = \theta_1 - \theta_2\)</span>. Let
 <span class="math inline">\(\bar{X}_1\)</span>, <span class="math inline">\(\bar{X}_2\)</span>, <span class="math inline">\(S_1^2\)</span>, and <span class="math inline">\(S_2^2\)</span> be the sample averages
@@ -946,7 +920,7 @@ appreciatively for large degrees of freedom. Notice that the method of
 common random numbers might backfire and cause a variance increase if
 there is negative correlation between the pairs. An overview of the
 conditions under which common random numbers may work is given in
-<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>.</p>
+<span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>.</p>
 <p>This notion of pairing the outputs from each replication for the two
 system configurations makes common sense. When trying to discern a
 difference, you want the two systems to experience the same randomness
@@ -970,12 +944,12 @@ when using common random numbers.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-law2007simulation" class="csl-entry">
-Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
+<div id="refs" class="references">
+<div id="ref-law2007simulation">
+<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
 </div>
-<div id="ref-montgomery2006applied" class="csl-entry">
-Montgomery, D. C., and G. C. Runger. 2006. <em>Applied Statistics and Probability for Engineers</em>. 4th ed. John Wiley &amp; Sons.
+<div id="ref-montgomery2006applied">
+<p>Montgomery, D. C., and G. C. Runger. 2006. <em>Applied Statistics and Probability for Engineers</em>. 4th ed. John Wiley &amp; Sons.</p>
 </div>
 </div>
             </section>
@@ -1007,7 +981,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
