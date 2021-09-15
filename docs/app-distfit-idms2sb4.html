@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.7 Additional Distribution Modeling Concepts | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.7 Additional Distribution Modeling Concepts | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="B.7 Additional Distribution Modeling Concepts | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-distfit-testU01.html"/>
 <link rel="next" href="app-idmSummary.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -676,7 +702,7 @@ correlation. Then, you can proceed with fitting a distribution to the
 random sample; however, you should still model the dependence by trying
 to incorporate it into the random generation process. There are some
 techniques for incorporating correlation into the random variable
-generation process. An introduction to the topic is provided in <span class="citation">(Banks et al. <a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>.</p>
+generation process. An introduction to the topic is provided in <span class="citation">(<a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al. 2005</a>)</span>.</p>
 <p>If the data show non-stationary behavior, then you can attempt to model
 the dependence on time using time series models or other non-stationary
 models. Suffice to say, that these advanced techniques are beyond the
@@ -684,7 +710,7 @@ scope of this text; however, the next section will discuss the modeling
 of a special non-stationary model, the non-homogeneous Poisson process,
 which is very useful for modeling time dependent arrival processes. For
 additional information on these methods, the interested reader is
-referred to <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> and <span class="citation">(Leemis and Park <a href="#ref-leemis2006discreteevent" role="doc-biblioref">2006</a>)</span> or the
+referred to <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> and <span class="citation">(<a href="#ref-leemis2006discreteevent" role="doc-biblioref">L. M. Leemis and Park 2006</a>)</span> or the
 references therein.</p>
 <p>Finally, all of the above assumes that you have data from which you can
 perform an analysis. In many situations, you might have no data
@@ -762,15 +788,15 @@ to support your decision making process. Use the software to justify
 your art.</p>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-banks2005discreteevent">
-<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
 </div>
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
-<div id="ref-leemis2006discreteevent">
-<p>Leemis, L. M., and S. K. Park. 2006. <em>Discrete-Event Simulation: A First Course</em>. Prentice-Hall.</p>
+<div id="ref-leemis2006discreteevent" class="csl-entry">
+Leemis, L. M., and S. K. Park. 2006. <em>Discrete-Event Simulation: A First Course</em>. Prentice-Hall.
 </div>
 </div>
             </section>
@@ -802,6 +828,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

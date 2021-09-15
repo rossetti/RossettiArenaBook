@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-09-05"
+date: "2021-09-15"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:

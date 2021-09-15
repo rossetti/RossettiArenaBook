@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Performing the Method of Replication-Deletion | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Performing the Method of Replication-Deletion | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="5.3 Performing the Method of Replication-Deletion | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="statistical-analysis-techniques-for-warmup-detection.html"/>
 <link rel="next" href="ch5-BatchMeansMethod.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -579,14 +605,14 @@ expression and the time of the observation are written to a file.</p>
 the length of each replication. In general, there is very little
 guidance that can be offered other than to try different run lengths and
 check for the sensitivity of your results. Within the context of
-queueing simulations, the work by <span class="citation">(Whitt <a href="#ref-whitt1989planning" role="doc-biblioref">1989</a>)</span> offers some ideas
+queueing simulations, the work by <span class="citation">(<a href="#ref-whitt1989planning" role="doc-biblioref">Whitt 1989</a>)</span> offers some ideas
 on specifying the run length, but these results are difficult to
 translate to general simulation models.</p>
 <p>Since the purpose here is to determine the length of the warm up period,
 then the run length should be bigger than what you suspect the warm up
 period to be. In this analysis, it is better to be conservative. You
 should make the run length as long as possible given your time and data
-storage constraints. <span class="citation">Banks et al. (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span> offer the rule of thumb
+storage constraints. <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span> offer the rule of thumb
 that the run length should be at least 10 times the amount of data
 deleted. That is, <span class="math inline">\(n \geq 10d\)</span>, where <span class="math inline">\(d\)</span> is the number of observations deleted from the series. In terms of time, <span class="math inline">\(T_e \geq 10T_w\)</span>, where <span class="math inline">\(T_w\)</span> is the length of the warm up period in the time units of the simulation. Of course, this is a “catch 22” situation because you need to specify <span class="math inline">\(n\)</span>
 or equivalently <span class="math inline">\(T_e\)</span> in order to assess <span class="math inline">\(T_w\)</span>. Setting <span class="math inline">\(T_e\)</span> very large
@@ -759,7 +785,7 @@ Figure 5.23: Replication-Deletion settings for the example.
 <p>The process described here for determining the warm up period for steady
 state simulation is tedious and time consuming. Research into automating
 this process is still an active area of investigation. The recent work
-by <span class="citation">(Robinson <a href="#ref-robinson2005automated" role="doc-biblioref">2005</a>)</span> and <span class="citation">Rossetti and Li (<a href="#ref-Rossetti2005aa" role="doc-biblioref">2005</a>)</span> holds some promise in
+by <span class="citation">(<a href="#ref-robinson2005automated" role="doc-biblioref">Robinson 2005</a>)</span> and <span class="citation"><a href="#ref-Rossetti2005aa" role="doc-biblioref">Rossetti and Li</a> (<a href="#ref-Rossetti2005aa" role="doc-biblioref">2005</a>)</span> holds some promise in
 this regard; however, there remains the need to integrate these methods
 into computer simulation software. Even though determining the warm up
 period is tedious, some consideration of the warm up period should be
@@ -792,18 +818,18 @@ issues of using it within Arena.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-banks2005discreteevent">
-<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
 </div>
-<div id="ref-robinson2005automated">
-<p>Robinson, S. 2005. “Automated Analysis of Simulation Output Data.” Edited by M. E. Kuhl, N. M. Steiger, F. B. Armstrong, and J. A. Joines. <em>Proceedings of the 2005 Winter Simulation Conference</em> 763-770.</p>
+<div id="ref-robinson2005automated" class="csl-entry">
+Robinson, S. 2005. <span>“Automated Analysis of Simulation Output Data.”</span> Edited by M. E. Kuhl, N. M. Steiger, F. B. Armstrong, and J. A. Joines. <em>Proceedings of the 2005 Winter Simulation Conference</em> 763-770.
 </div>
-<div id="ref-Rossetti2005aa">
-<p>Rossetti, M. D., and Z. Li. 2005. “Exploring Exponentially Weighted Moving Average Control Charts to Determine the Warm-up Period.” In <em>Proceedings of the 2005 Winter Simulation Conference</em>, edited by M. E. Kuhl, N. M. Steiger, F. B. Armstrong, and J. A. Joines, 771–80. Piscataway, New Jersey: Institute of Electrical; Electronics Engineers.</p>
+<div id="ref-Rossetti2005aa" class="csl-entry">
+Rossetti, M. D., and Z. Li. 2005. <span>“Exploring Exponentially Weighted Moving Average Control Charts to Determine the Warm-up Period.”</span> In <em>Proceedings of the 2005 Winter Simulation Conference</em>, edited by M. E. Kuhl, N. M. Steiger, F. B. Armstrong, and J. A. Joines, 771–80. Piscataway, New Jersey: Institute of Electrical; Electronics Engineers.
 </div>
-<div id="ref-whitt1989planning">
-<p>Whitt, W. 1989. “Planning Queueing Simulations.” <em>Management Science</em> 35 (11): 1341–66.</p>
+<div id="ref-whitt1989planning" class="csl-entry">
+———. 1989. <span>“Planning Queueing Simulations.”</span> <em>Management Science</em> 35 (11): 1341–66.
 </div>
 </div>
             </section>
@@ -835,6 +861,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

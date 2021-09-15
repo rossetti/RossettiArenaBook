@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 Review of Statistical Concepts | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 Review of Statistical Concepts | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="3.3 Review of Statistical Concepts | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch3s1.html"/>
 <link rel="next" href="modeling-a-stem-career-mixer.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -611,13 +637,13 @@ Within the statistical package R, this computation is straight-forward by using 
 <p><span class="math display">\[
 t_{p, n} = qt(p,n)
 \]</span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ch3StatReview.html#cb6-1" aria-hidden="true"></a><span class="co">#&#39;qt(0.975, 5)</span></span>
-<span id="cb6-2"><a href="ch3StatReview.html#cb6-2" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.975</span>,<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ch3StatReview.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;qt(0.975, 5)</span></span>
+<span id="cb6-2"><a href="ch3StatReview.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 2.570582</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ch3StatReview.html#cb8-1" aria-hidden="true"></a><span class="co">#&#39; set alpha</span></span>
-<span id="cb8-2"><a href="ch3StatReview.html#cb8-2" aria-hidden="true"></a>alpha =<span class="st"> </span><span class="fl">0.05</span></span>
-<span id="cb8-3"><a href="ch3StatReview.html#cb8-3" aria-hidden="true"></a><span class="co">#&#39;qt(1-(alpha/2, 5)</span></span>
-<span id="cb8-4"><a href="ch3StatReview.html#cb8-4" aria-hidden="true"></a><span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>(alpha<span class="op">/</span><span class="dv">2</span>),<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ch3StatReview.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; set alpha</span></span>
+<span id="cb8-2"><a href="ch3StatReview.html#cb8-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb8-3"><a href="ch3StatReview.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;qt(1-(alpha/2, 5)</span></span>
+<span id="cb8-4"><a href="ch3StatReview.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>(alpha<span class="sc">/</span><span class="dv">2</span>),<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 2.570582</code></pre>
 </div>
 <div id="sample-size-determination" class="section level3" number="3.3.2">
@@ -728,7 +754,7 @@ Begin RECORD
     (myX &gt; 8) as EstimatedProb
 End RECORD
 DISPOSE</code></pre>
-<p>In the pseudo-code, the RECORD module is recording observations of the quantity <span class="math inline">\((myX &gt; 8)\)</span>. This quantity is actually a logical condition which will evaluate to true (1) or false (0) given the value of <span class="math inline">\(myX\)</span>. Thus, the RECORD module will be recording observations of 1’s and 0’s. Because the RECORD module computes that average of the values that it “records”, we will get an estimate of the probability. Thus, the quantity, <span class="math inline">\((myX &gt; 8)\)</span> is an indicator variable for the desired event. Using a RECORD module to estimate a probability in this manner is quite effective.</p>
+<p>In the pseudo-code, the RECORD module is recording observations of the quantity <span class="math inline">\((myX &gt; 8)\)</span>. This quantity is actually a logical condition which will evaluate to true (1) or false (0) given the value of <span class="math inline">\(myX\)</span>. Thus, the RECORD module will be recording observations of 1’s and 0’s. Because the RECORD module computes that average of the values that it “records,” we will get an estimate of the probability. Thus, the quantity, <span class="math inline">\((myX &gt; 8)\)</span> is an indicator variable for the desired event. Using a RECORD module to estimate a probability in this manner is quite effective.</p>
 <p>Now, in more realistic simulation situations, we would not know the true population mean and variance. Thus, in solving this problem, we will ignore that information. To apply the previously discussed sample size determination methods, we need estimates of <span class="math inline">\(\sigma = \sqrt{Var[X]}\)</span> and <span class="math inline">\(p = P[X&gt;8]\)</span>. In order to get estimates of these quantities, we need to run our simulation experiment; however, in order to run our simulation experiment, we need to know how many observations to make. This is quite a catch-22 situation!</p>
 <p>To proceed, we need to run our simulation model for a pilot experiment. From a small number of samples (called a pilot experiment, pilot run or pilot study), we will estimate <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(p = P[X&gt;8]\)</span> and then use those estimates to determine how many samples we need to meet the desired margins of error. We will then re-run the simulation using the recommended sample size.</p>
 <p>The natural question to ask is how big should your pilot sample be? In general, this depends on how much it costs for you to collect the sample. Within a simulation experiment context, generally, cost translates into how long your simulation model takes to execute. For this small problem, the execution time is trivial, but for large and complex simulation models the execution time may be in hours or even days. A general rule of thumb is between 10 and 30 observations. For this example, we will use an initial pilot sample size, <span class="math inline">\(n_0 = 20\)</span>.</p>
@@ -866,6 +892,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

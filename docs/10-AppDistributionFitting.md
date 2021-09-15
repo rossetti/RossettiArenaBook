@@ -3531,10 +3531,10 @@ Number of Intervals = 10
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:AppDistFitP9"><strong>(\#exr:AppDistFitP9) </strong></span>Consider the following frequency data
-on the number of orders received per day, $x_j$, by a warehouse where $c_j$ is the observed count.
+on the number of orders received per day by a warehouse.
 \EndKnitrBlock{exercise}
 
-   $j$     $x_j$     $c_j$   $np_j$   $\frac{(c_j - np_j)^2}{np_j}$
+   $j$     $c_j$     $c_j$   $np_j$   $\frac{(c_j - np_j)^2}{np_j}$
   ----- ----------- ------- -------- -------------------------------
     1        0        10             
     2        1        42             

@@ -972,7 +972,7 @@ variables and the entity attributes within a table as follows.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 \bottomrule
@@ -1000,7 +1000,7 @@ The table has been updated as follows.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1033,7 +1033,7 @@ follows.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1055,7 +1055,7 @@ can be updated as follows.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1079,7 +1079,7 @@ form. Updating our bookkeeping table, yields:
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1090,9 +1090,7 @@ t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i)
 \end{tabular}
 \end{table}
 
-Notice that in the last table update, we did not update $S_{i}$ and
-$W_{i}$ because customer 3 had to wait in queue and did not start
-service. Customer 3 will start service, when customer 2 departs.
+Customer 3 will start service, when customer 2 departs. When customer 2 departs at time 15, we can go back and update row  5 (t = 13) to indicate that customer 3's value for $S(i)$ is now 15. With $S(i) = 15$, we can compute the waiting time $W(i)$ for customer 3 as $S(i) - A(i) = 15 - 13 = 2$ for row 5.
 Reviewing the pending event set, we see that the next event will be the
 arrival of customer 4 at time 14, which yields the following bookkeeping
 table.
@@ -1106,7 +1104,7 @@ table.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1132,7 +1130,7 @@ customer 2 will finally complete service and depart at time 15.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1163,7 +1161,7 @@ customer 5 at time 17.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\
@@ -1207,7 +1205,7 @@ time 31 is as follows.
 \toprule
 \multicolumn{5}{c}{System Variables} & \multicolumn{7}{c}{Entity Attributes} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){1-5} \cmidrule(l{3pt}r{3pt}){6-12}
-t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & S(i) & ST(i) & D(i) & T(i) & W(i) & Pending E(t)\\
+t & E(t) & N(t) & B(t) & Q(t) & ID(i) & A(i) & ST(i) & S(i) & D(i) & T(i) & W(i) & Pending E(t)\\
 \midrule
 0 & NA & 0 & 0 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
 3 & A & 1 & 1 & 0 & 1 & 3 & 4 & 3 & NA & NA & 0 & E(7) = D(1), E(11) = A(2)\\

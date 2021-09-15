@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.4 Simulating a Queueing System By Hand | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.4 Simulating a Queueing System By Hand | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="2.4 Simulating a Queueing System By Hand | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="HowDEDSClockWorks.html"/>
 <link rel="next" href="ch2-ProcessModeling.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -688,10 +714,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -804,10 +830,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -965,10 +991,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -1155,10 +1181,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -1387,10 +1413,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -1614,9 +1640,7 @@ E(14) = A(4), E(15) = D(2)
 </tr>
 </tbody>
 </table>
-<p>Notice that in the last table update, we did not update <span class="math inline">\(S_{i}\)</span> and
-<span class="math inline">\(W_{i}\)</span> because customer 3 had to wait in queue and did not start
-service. Customer 3 will start service, when customer 2 departs.
+<p>Customer 3 will start service, when customer 2 departs. When customer 2 departs at time 15, we can go back and update row 5 (t = 13) to indicate that customer 3’s value for <span class="math inline">\(S(i)\)</span> is now 15. With <span class="math inline">\(S(i) = 15\)</span>, we can compute the waiting time <span class="math inline">\(W(i)\)</span> for customer 3 as <span class="math inline">\(S(i) - A(i) = 15 - 13 = 2\)</span> for row 5.
 Reviewing the pending event set, we see that the next event will be the
 arrival of customer 4 at time 14, which yields the following bookkeeping
 table.</p>
@@ -1662,10 +1686,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -1975,10 +1999,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -2333,10 +2357,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -2744,10 +2768,10 @@ ID(i)
 A(i)
 </th>
 <th style="text-align:right;">
-S(i)
+ST(i)
 </th>
 <th style="text-align:right;">
-ST(i)
+S(i)
 </th>
 <th style="text-align:right;">
 D(i)
@@ -3556,6 +3580,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
