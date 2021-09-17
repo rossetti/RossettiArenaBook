@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A.1 Pseudo Random Numbers | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A.1 Pseudo Random Numbers | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="A.1 Pseudo Random Numbers | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-15" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-rnrv.html"/>
 <link rel="next" href="app-rnrv-rvs.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -580,7 +554,7 @@ random</em>.</p>
 
 <div class="definition">
 <span id="def:PRN" class="definition"><strong>Definition A.1  (Pseudo-Random Numbers)  </strong></span>A sequence of pseudo-random numbers, <span class="math inline">\(U_{i}\)</span>, is a deterministic sequence of numbers in <span class="math inline">\((0,1)\)</span> having the same relevant statistical properties as a sequence of truly
-random <span class="math inline">\(U(0,1)\)</span> numbers.(<span class="citation">(<a href="#ref-ripley1987stochastic" role="doc-biblioref">Ripley 1987</a>)</span>)
+random <span class="math inline">\(U(0,1)\)</span> numbers.(<span class="citation">(Ripley <a href="#ref-ripley1987stochastic" role="doc-biblioref">1987</a>)</span>)
 </div>
 <hr />
 <p>A set of statistical tests are performed on the pseudo-random numbers
@@ -594,7 +568,7 @@ approach will be practical, with just enough theory to motivate future
 study of this area and to allow you to understand the important
 implications of random number generation. A more rigorous treatment of
 random number and random variable generation can be found such texts as
-<span class="citation">(<a href="#ref-fishman2006first" role="doc-biblioref">Fishman 2006</a>)</span> and <span class="citation">(<a href="#ref-devroye1986nonuniform" role="doc-biblioref">Devroye 1986</a>)</span>.</p>
+<span class="citation">(Fishman <a href="#ref-fishman2006first" role="doc-biblioref">2006</a>)</span> and <span class="citation">(Devroye <a href="#ref-devroye1986nonuniform" role="doc-biblioref">1986</a>)</span>.</p>
 <div id="app:rnrv:rngs" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">A.1.1</span> Random Number Generators</h3>
 <p>Over the history of scientific computing, there have been a wide variety
@@ -699,7 +673,7 @@ complement integer arithmetic. This choice of <span class="math inline">\(m\)</s
 prime number, which leads to special properties.</p>
 <p>A proper choice of the parameters of the LCG will allow desirable pseudo
 random number properties to be obtained. The following result due to
-<span class="citation">(<a href="#ref-hull1962random" role="doc-biblioref">Hull and Dobell 1962</a>)</span>, see also <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>, indicates how to check
+<span class="citation">(Hull and Dobell <a href="#ref-hull1962random" role="doc-biblioref">1962</a>)</span>, see also <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>, indicates how to check
 if a LCG will have the largest possible cycle.</p>
 <hr />
 
@@ -728,7 +702,7 @@ Thus, condition 3 holds.</p></li>
 <div class="rmdnote">
 The theorem only tells us when a specification of <span class="math inline">\((a, c, m)\)</span> will obtain full period. In case (3), it does not tell us anything about what happens if <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, If <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>, and we pick <span class="math inline">\(a\)</span> so that it divides <span class="math inline">\((a-1)\)</span> then the condition will be met. If <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, then the theorem really does not tell us one way or the other whether the LCG obtains full period.
 </div>
-<p>There are some simplifying conditions, see <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>,
+<p>There are some simplifying conditions, see <span class="citation">Banks et al. (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>,
 which allow for easier application of the theorem. For <span class="math inline">\(m = 2^{b}\)</span>, (<span class="math inline">\(m\)</span>
 a power of 2) and <span class="math inline">\(c\)</span> not equal to 0, the longest possible period is <span class="math inline">\(m\)</span>
 and can be achieved provided that <span class="math inline">\(c\)</span> is chosen so that the greatest
@@ -838,11 +812,11 @@ insufficient since it is likely that all the 2 billion or so of the
 random numbers would be used in performing serious simulation studies.
 Thus, a new generation of random number generators was developed that
 have extremely long periods. The random number generator described in
-<span class="citation"><a href="#ref-ecuyer2002an" role="doc-biblioref">L’Ecuyer, Simard, and Kelton</a> (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> is one example of such a generator. It is based on the
+<span class="citation">L’Ecuyer, Simard, and Kelton (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> is one example of such a generator. It is based on the
 combination of two multiple recursive generators resulting in a period
 of approximately <span class="math inline">\(3.1 \times 10^{57}\)</span>. This is the same generator that
 is now used in many commercial simulation packages. The generator as
-defined in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> is:</p>
+defined in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> is:</p>
 <p><span class="math display">\[
 \begin{split}
 R_{1,i}&amp;=(1,403,580 R_{1,i-2} - 810,728 R_{1,i-3})[\bmod (2^{32}-209)]\\
@@ -982,7 +956,7 @@ defined along with sub-streams.</p>
 A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the <em>seed</em>. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams. This facilitates the control of the use of pseudo-random numbers when performing experiments.
 </div>
 <p>The fantastic thing about this generator is the sheer size of the
-period. Based on their analysis, <span class="citation"><a href="#ref-ecuyer2002an" role="doc-biblioref">L’Ecuyer, Simard, and Kelton</a> (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> state that it will be
+period. Based on their analysis, <span class="citation">L’Ecuyer, Simard, and Kelton (<a href="#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> state that it will be
 “approximately 219 years into the future before average desktop
 computers will have the capability to exhaust the cycle of the
 (generator) in a year of continuous computing.” In addition to the
@@ -997,27 +971,27 @@ statistical properties. The subject of modeling and testing different distributi
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-banks2005discreteevent" class="csl-entry">
-Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
+<div id="refs" class="references">
+<div id="ref-banks2005discreteevent">
+<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
 </div>
-<div id="ref-devroye1986nonuniform" class="csl-entry">
-Devroye, L. 1986. <em>Non-Uniform Random Variate Generation</em>. New York: Springer-Verlag.
+<div id="ref-devroye1986nonuniform">
+<p>Devroye, L. 1986. <em>Non-Uniform Random Variate Generation</em>. New York: Springer-Verlag.</p>
 </div>
-<div id="ref-fishman2006first" class="csl-entry">
-———. 2006. <em>A First Course in Monte Carlo</em>. Thomson Brooks/Cole.
+<div id="ref-fishman2006first">
+<p>Fishman, G. 2006. <em>A First Course in Monte Carlo</em>. Thomson Brooks/Cole.</p>
 </div>
-<div id="ref-hull1962random" class="csl-entry">
-Hull, T. E., and A. R. Dobell. 1962. <span>“Random Number Generators.”</span> <em>SIAM Review</em> 4: 230–54.
+<div id="ref-hull1962random">
+<p>Hull, T. E., and A. R. Dobell. 1962. “Random Number Generators.” <em>SIAM Review</em> 4: 230–54.</p>
 </div>
-<div id="ref-ecuyer2002an" class="csl-entry">
-L’Ecuyer, P., R. Simard, and W. D. Kelton. 2002. <span>“An Object-Oriented Random Number Package with Many Long Streams and Substreams.”</span> <em>Operations Research</em> 50: 1073–75.
+<div id="ref-law2007simulation">
+<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
 </div>
-<div id="ref-law2007simulation" class="csl-entry">
-Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
+<div id="ref-ecuyer2002an">
+<p>L’Ecuyer, P., R. Simard, and W. D. Kelton. 2002. “An Object-Oriented Random Number Package with Many Long Streams and Substreams.” <em>Operations Research</em> 50: 1073–5.</p>
 </div>
-<div id="ref-ripley1987stochastic" class="csl-entry">
-Ripley, B. D. 1987. <em>Stochastic Simulation</em>. John Wiley &amp; Sons Inc.
+<div id="ref-ripley1987stochastic">
+<p>Ripley, B. D. 1987. <em>Stochastic Simulation</em>. John Wiley &amp; Sons Inc.</p>
 </div>
 </div>
             </section>
@@ -1049,7 +1023,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

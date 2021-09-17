@@ -2988,7 +2988,7 @@ in Table \@ref(tab:PresData).
   Table: (\#tab:PresData) Prescription related data
 :::
 
-For illustrative purposes, current number of customers having 1, 2, or 3
+For illustrative purposes, the current number of customers having 1, 2, or 3
 prescriptions in system is needed within the animation of the model. In
 addition, the total number of prescriptions in the system should also be
 displayed. Statistics should be collected on the average number of
@@ -4623,7 +4623,7 @@ interested in the total time spent in the system. Run your model for
 ***
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:ch2P35"><strong>(\#exr:ch2P35) </strong></span>Suppose that the customers arriving to the drive through pharmacy can decide to enter the
+<span class="exercise" id="exr:ch2P35"><strong>(\#exr:ch2P35) </strong></span>Referring to the pharmacy model discussed in Section \@ref(ch2:DriveThruPharmacy), suppose that the customers arriving to the drive through pharmacy can decide to enter the
 store instead of entering the drive through lane. Assume a 90% chance
 that the arriving customer decides to use the drive through pharmacy and
 a 10% chance that the customer decides to use the store. Model this

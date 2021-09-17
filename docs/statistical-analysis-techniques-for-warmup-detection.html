@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.2 Statistical Analysis Techniques for Warmup Detection | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.2 Statistical Analysis Techniques for Warmup Detection | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="5.2 Statistical Analysis Techniques for Warmup Detection | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-15" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch5-MM1Spreadsheet.html"/>
 <link rel="next" href="ch5-RepDeletion.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -563,7 +537,7 @@ within-replication data for infinite horizon simulations.</p>
 where <span class="math inline">\(I\)</span> represents the initial conditions used to start the simulation
 at time 0. If <span class="math inline">\(F_i(x|I) \rightarrow F(x)\)</span> when <span class="math inline">\(i \rightarrow \infty\)</span>,
 for all initial conditions <span class="math inline">\(I\)</span>, then <span class="math inline">\(F(x)\)</span> is called the steady state
-distribution of the output process. <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>.</p>
+distribution of the output process. <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>.</p>
 <p>In infinite horizon simulations, estimating parameters of the steady
 state distribution, <span class="math inline">\(F(x)\)</span>, such as the steady state mean, <span class="math inline">\(\theta\)</span>, is
 often the key objective. The fundamental difficulty associated with
@@ -757,10 +731,10 @@ enough, then on average across the replications, you are more likely to
 start collecting data when the system in states that are more
 representative over the long term (rather than just empty and idle).</p>
 <p>Many methods and rules have been proposed to determine the warm up
-period. The interested reader is referred to <span class="citation">(<a href="#ref-wilson1978a" role="doc-biblioref">Wilson and Pritsker 1978</a>)</span>, <span class="citation"><a href="#ref-lada2003a" role="doc-biblioref">Lada, Wilson, and Steiger</a> (<a href="#ref-lada2003a" role="doc-biblioref">2003</a>)</span>,
-<span class="citation">(<a href="#ref-Litton:2002aa" role="doc-biblioref">Litton and Harmonosky 2002</a>)</span>, <span class="citation"><a href="#ref-white2000a" role="doc-biblioref">White, Cobb, and Spratt</a> (<a href="#ref-white2000a" role="doc-biblioref">2000</a>)</span>, <span class="citation"><a href="#ref-cash1992" role="doc-biblioref">Cash et al.</a> (<a href="#ref-cash1992" role="doc-biblioref">1992</a>)</span>, and <span class="citation">(<a href="#ref-rossetti1995control" role="doc-biblioref">Rossetti and Delaney 1995</a>)</span> for
+period. The interested reader is referred to <span class="citation">(Wilson and Pritsker <a href="#ref-wilson1978a" role="doc-biblioref">1978</a>)</span>, <span class="citation">Lada, Wilson, and Steiger (<a href="#ref-lada2003a" role="doc-biblioref">2003</a>)</span>,
+<span class="citation">(Litton and Harmonosky <a href="#ref-Litton:2002aa" role="doc-biblioref">2002</a>)</span>, <span class="citation">White, Cobb, and Spratt (<a href="#ref-white2000a" role="doc-biblioref">2000</a>)</span>, <span class="citation">Cash et al. (<a href="#ref-cash1992" role="doc-biblioref">1992</a>)</span>, and <span class="citation">(Rossetti and Delaney <a href="#ref-rossetti1995control" role="doc-biblioref">1995</a>)</span> for
 an overview of such methods. This discussion will concentrate on the
-visual method proposed in <span class="citation">(<a href="#ref-welch1983a" role="doc-biblioref">Welch 1983</a>)</span> called the Welch Plot.</p>
+visual method proposed in <span class="citation">(Welch <a href="#ref-welch1983a" role="doc-biblioref">1983</a>)</span> called the Welch Plot.</p>
 </div>
 <div id="using-a-welch-plot-to-detect-the-warmup-period" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Using a Welch Plot to Detect the Warmup Period</h3>
@@ -964,30 +938,30 @@ replication-deletion on this simple M/M/1 model.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-cash1992" class="csl-entry">
-Cash, C. R., D. G. Dippold, J. M. Long, B. L. Nelson, and W. P. Pollard. 1992. <span>“Evaluation of Tests for Initial Conditions Bias.”</span> In <em>Proceedings of the 1992 Winter Simulation Conference</em>, edited by J. J. Swain, D. Goldsman, R. C. Crain, and J. R. Wilson, 577–85.
+<div id="refs" class="references">
+<div id="ref-cash1992">
+<p>Cash, C. R., D. G. Dippold, J. M. Long, B. L. Nelson, and W. P. Pollard. 1992. “Evaluation of Tests for Initial Conditions Bias.” In <em>Proceedings of the 1992 Winter Simulation Conference</em>, edited by J. J. Swain, D. Goldsman, R. C. Crain, and J. R. Wilson, 577–85.</p>
 </div>
-<div id="ref-lada2003a" class="csl-entry">
-Lada, E. K., J. R. Wilson, and N. M. Steiger. 2003. <em>A Wavelet-Based Spectral Method for Steady-State Simulation Analysis</em>. Proceedings of the 2003 Winter Simulation Conference.
+<div id="ref-lada2003a">
+<p>Lada, E. K., J. R. Wilson, and N. M. Steiger. 2003. <em>A Wavelet-Based Spectral Method for Steady-State Simulation Analysis</em>. Proceedings of the 2003 Winter Simulation Conference.</p>
 </div>
-<div id="ref-law2007simulation" class="csl-entry">
-Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
+<div id="ref-law2007simulation">
+<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
 </div>
-<div id="ref-Litton:2002aa" class="csl-entry">
-Litton, J. R., and C. H. Harmonosky. 2002. <em>A Comparison of Selective Initialization Bias Elimination Methods</em>. Proceeding of the 2002 Winter Simulation Conference.
+<div id="ref-Litton:2002aa">
+<p>Litton, J. R., and C. H. Harmonosky. 2002. <em>A Comparison of Selective Initialization Bias Elimination Methods</em>. Proceeding of the 2002 Winter Simulation Conference.</p>
 </div>
-<div id="ref-rossetti1995control" class="csl-entry">
-Rossetti, M. D., and P. J. Delaney. 1995. <em>Control of Initialization Bias in Queueing Simulations Using Queueing Approximations</em>. Piscataway, New Jersey: Institute of Electrical; Electronics Engineers.
+<div id="ref-rossetti1995control">
+<p>Rossetti, M. D., and P. J. Delaney. 1995. <em>Control of Initialization Bias in Queueing Simulations Using Queueing Approximations</em>. Piscataway, New Jersey: Institute of Electrical; Electronics Engineers.</p>
 </div>
-<div id="ref-welch1983a" class="csl-entry">
-Welch, P. D. 1983. <span>“A Graphical Approach to the Initial Transient Problem in Steady State Simulation.”</span> In <em>10th <span>IMACS</span> World Congress on System Simulation and Scientific Computation</em>, 219–21.
+<div id="ref-welch1983a">
+<p>Welch, P. D. 1983. “A Graphical Approach to the Initial Transient Problem in Steady State Simulation.” In <em>10th IMACS World Congress on System Simulation and Scientific Computation</em>, 219–21.</p>
 </div>
-<div id="ref-white2000a" class="csl-entry">
-White, K. P., M. J. Cobb, and S. C. Spratt. 2000. <em>A Comparison of Five Steady-State Truncation Heuristics for Simulation</em>. Proceeding of the 2000 Winter Simulation Conference.
+<div id="ref-white2000a">
+<p>White, K. P., M. J. Cobb, and S. C. Spratt. 2000. <em>A Comparison of Five Steady-State Truncation Heuristics for Simulation</em>. Proceeding of the 2000 Winter Simulation Conference.</p>
 </div>
-<div id="ref-wilson1978a" class="csl-entry">
-Wilson, J. R., and A. A. B. Pritsker. 1978. <span>“A Survey of Research on the Simulation Startup Problem.”</span> <em>Simulation</em>.
+<div id="ref-wilson1978a">
+<p>Wilson, J. R., and A. A. B. Pritsker. 1978. “A Survey of Research on the Simulation Startup Problem.” <em>Simulation</em>.</p>
 </div>
 </div>
             </section>
@@ -1019,7 +993,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

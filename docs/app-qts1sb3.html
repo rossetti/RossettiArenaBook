@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C.3 Non-Markovian Queues and Approximations | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C.3 Non-Markovian Queues and Approximations | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="C.3 Non-Markovian Queues and Approximations | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-15" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-qts1sb2.html"/>
 <link rel="next" href="app-qt-sec-formulas.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -61,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,29 +117,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -591,19 +565,19 @@ only the mean and the variance of the service time distribution are
 necessary in this case.</p>
 <p>For the case of the GI/G/c queue a number of approximations have been
 influenced by an approximation for the GI/G/1 queue that first appeared
-in <span class="citation">(<a href="#ref-kingman1964the" role="doc-biblioref">Kingman 1964</a>)</span>. His single-server approximation is shown below:</p>
+in <span class="citation">(Kingman <a href="#ref-kingman1964the" role="doc-biblioref">1964</a>)</span>. His single-server approximation is shown below:</p>
 <p><span class="math display">\[W_q(GI/G/1) \approx \Biggl(\dfrac{c_a^2 + c_s^2}{2}\Biggr) W_q(M/M/1)\]</span></p>
 <p>In this equation, <span class="math inline">\(W_q\)</span>(M/M/1) denotes the expected waiting time in the
 queue for the M/M/1 model <span class="math inline">\(c_a^2\)</span> and <span class="math inline">\(c_s^2\)</span> and represent the squared
 coefficient of variation for the inter-arrival time and service time
 distributions. Recall that for a random variable, <span class="math inline">\(X\)</span>, the squared
 coefficient of variation is given by <span class="math inline">\(c_X^2 = Var[X]/(E[X])^2\)</span>.
-<span class="citation">(<a href="#ref-whitt1983the" role="doc-biblioref">Whitt 1983</a>)</span> used a very similar approximation for the GI/G/c queue
+<span class="citation">(Whitt <a href="#ref-whitt1983the" role="doc-biblioref">1983</a>)</span> used a very similar approximation for the GI/G/c queue
 to compute the traffic congestion at each node in a queueing network for
 his Queueing Network Analyzer:</p>
 <p><span class="math display">\[W_q(GI/G/c) \approx \Biggl(\dfrac{c_a^2 + c_s^2}{2}\Biggr) W_q(M/M/c)\]</span></p>
 <p>A discussion of queuing approximations of this form as well as
-additional references can be found in <span class="citation">(<a href="#ref-whitt1993approximations" role="doc-biblioref">Whitt 1993</a>)</span>.</p>
+additional references can be found in <span class="citation">(Whitt <a href="#ref-whitt1993approximations" role="doc-biblioref">1993</a>)</span>.</p>
 <p>Thus, to approximate the performance of a GI/G/c queue, you need only
 the first two moments of the inter-arrival and service time
 distributions and a way to compute the waiting time in the queue for a
@@ -616,15 +590,15 @@ should be examined.</p>
 <p>The following section summarizes the formulas for the previously mentioned queueing systems. The appendis is finished off with some example exercises that can be used to test your understanding of the application of these formulas.</p>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-kingman1964the" class="csl-entry">
-Kingman, J. F. C. 1964. <em>The Heavy Traffic Approximation in the Theory of Queues</em>. Proceedings of the Symposium On Congestion Theory.
+<div id="refs" class="references">
+<div id="ref-kingman1964the">
+<p>Kingman, J. F. C. 1964. <em>The Heavy Traffic Approximation in the Theory of Queues</em>. Proceedings of the Symposium On Congestion Theory.</p>
 </div>
-<div id="ref-whitt1983the" class="csl-entry">
-Whitt, W. 1983. <span>“The Queueing Network Analyzer.”</span> <em>The Bell System Technical Journal</em> 62 (9): 2779–2815.
+<div id="ref-whitt1983the">
+<p>Whitt, W. 1983. “The Queueing Network Analyzer.” <em>The Bell System Technical Journal</em> 62 (9): 2779–2815.</p>
 </div>
-<div id="ref-whitt1993approximations" class="csl-entry">
-———. 1993. <span>“Approximations for the <span>GI</span>/<span>G</span>/m Queue.”</span> <em>Productions and Operations Management</em> 2 (2): 114–61.
+<div id="ref-whitt1993approximations">
+<p>Whitt, W. 1993. “Approximations for the GI/G/M Queue.” <em>Productions and Operations Management</em> 2 (2): 114–61.</p>
 </div>
 </div>
             </section>
@@ -656,7 +630,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
