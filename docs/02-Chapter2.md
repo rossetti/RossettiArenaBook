@@ -4220,8 +4220,7 @@ C is uniformly distributed with a minimum of 4.98 millimeters and a
 maximum of 5.02 millimeters. Assume all dimensions are independent.
 
 Develop a model to estimate the probability that the gap $D$ is less
-than 10.1 millimeters with 95\% confidence to within plus or minus 0.01
-millimeters.
+than 10.1 millimeters with 95\% confidence to within plus or minus 0.01.
 
 \EndKnitrBlock{exercise}
 
