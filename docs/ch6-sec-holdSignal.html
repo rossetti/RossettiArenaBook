@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.5 Holding and Signaling Entities | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.5 Holding and Signaling Entities | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="6.5 Holding and Signaling Entities | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch6s1sb4sub3.html"/>
 <link rel="next" href="ch6s4.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -1004,10 +1030,10 @@ demand.</p>
 <p>The topic of inventory systems has been well studied. A full exposition of the
 topic of inventory systems is beyond the scope of this text, but the
 reader can consult a number of texts within the area, such as
-<span class="citation">(Hadley and Whitin <a href="#ref-hadley1963analysis" role="doc-biblioref">1963</a>)</span>, <span class="citation">(Axsäter <a href="#ref-2006inventory" role="doc-biblioref">2006</a>)</span>, <span class="citation">Silver, Pyke, and Peterson (<a href="#ref-silver1998inventory" role="doc-biblioref">1998</a>)</span>, or
-<span class="citation">(Zipkin <a href="#ref-zipkin2000foundations" role="doc-biblioref">2000</a>)</span> for more details. The reader interested in
-supply chain modeling might consult <span class="citation">(Nahmias <a href="#ref-nahmias2001production" role="doc-biblioref">2001</a>)</span>,
-<span class="citation">(Askin and Goldberg <a href="#ref-askin2002design" role="doc-biblioref">2002</a>)</span>, <span class="citation">(Chopra and Meindl <a href="#ref-chopra2007supply" role="doc-biblioref">2007</a>)</span>, or <span class="citation">(Ballou <a href="#ref-ballou2004business" role="doc-biblioref">2004</a>)</span>.</p>
+<span class="citation">(<a href="#ref-hadley1963analysis" role="doc-biblioref">Hadley and Whitin 1963</a>)</span>, <span class="citation">(<a href="#ref-2006inventory" role="doc-biblioref">Axsäter 2006</a>)</span>, <span class="citation"><a href="#ref-silver1998inventory" role="doc-biblioref">Silver, Pyke, and Peterson</a> (<a href="#ref-silver1998inventory" role="doc-biblioref">1998</a>)</span>, or
+<span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span> for more details. The reader interested in
+supply chain modeling might consult <span class="citation">(<a href="#ref-nahmias2001production" role="doc-biblioref">Nahmias 2001</a>)</span>,
+<span class="citation">(<a href="#ref-askin2002design" role="doc-biblioref">Askin and Goldberg 2002</a>)</span>, <span class="citation">(<a href="#ref-chopra2007supply" role="doc-biblioref">Chopra and Meindl 2007</a>)</span>, or <span class="citation">(<a href="#ref-ballou2004business" role="doc-biblioref">Ballou 2004</a>)</span>.</p>
 <p>Within this section we will develop a model of a continuous review <span class="math inline">\((r, Q)\)</span> inventory
 system with back-ordering. In a continuous review <span class="math inline">\((r, Q)\)</span> inventory
 control system, demand arrives according to some stochastic process.
@@ -1177,7 +1203,7 @@ the inventory holding cost is high.</p>
 <p>The average total cost per time period can be formulated as follows:</p>
 <p><span class="math display">\[\overline{\mathit{TC}} = k\overline{\mathit{OF}} + h\bar{I} + b\overline{\mathit{BO}}\]</span></p>
 <p>A discussion of the technical issues and analytical results related to
-these variables can be found in Chapter 6 of <span class="citation">(Zipkin <a href="#ref-zipkin2000foundations" role="doc-biblioref">2000</a>)</span>.
+these variables can be found in Chapter 6 of <span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span>.
 Let’s take a look at an example that illustrates an inventory situation.</p>
 <hr />
 
@@ -1278,8 +1304,8 @@ arrivals, it can be shown that the probability of an arriving customer
 being back-ordered will be the same as <span class="math inline">\(\overline{\mathit{SO}}\)</span>, the
 percentage of time that the system is stocked out. This is due to a
 phenomenon called PASTA (Poisson Arrivals See Time Averages) and is
-discussed in <span class="citation">(Zipkin <a href="#ref-zipkin2000foundations" role="doc-biblioref">2000</a>)</span> as well as many texts on
-stochastic processes (e.g. <span class="citation">(Tijms <a href="#ref-tijms2003first" role="doc-biblioref">2003</a>)</span>)</p>
+discussed in <span class="citation">(<a href="#ref-zipkin2000foundations" role="doc-biblioref">Zipkin 2000</a>)</span> as well as many texts on
+stochastic processes (e.g. <span class="citation">(<a href="#ref-tijms2003first" role="doc-biblioref">Tijms 2003</a>)</span>)</p>
 <div class="figure" style="text-align: center"><span id="fig:InventoryRecordFillRate"></span>
 <img src="figures2/ch6/figInventoryRecordFillRate.png" alt="Recording the initial fill indicator variable" width="55%" height="55%" />
 <p class="caption">
@@ -1419,33 +1445,33 @@ becomes useful.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-askin2002design">
-<p>Askin, R. G., and J. B. Goldberg. 2002. <em>Design and Analysis of Lean Production Systems</em>. John Wiley &amp; Sons.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-askin2002design" class="csl-entry">
+Askin, R. G., and J. B. Goldberg. 2002. <em>Design and Analysis of Lean Production Systems</em>. John Wiley &amp; Sons.
 </div>
-<div id="ref-2006inventory">
-<p>Axsäter, S. 2006. <em>Inventory Control</em>. Springer Science + Business Media.</p>
+<div id="ref-2006inventory" class="csl-entry">
+Axsäter, S. 2006. <em>Inventory Control</em>. Springer Science + Business Media.
 </div>
-<div id="ref-ballou2004business">
-<p>Ballou, R. H. 2004. <em>Business Logistics/Supply Chain Management: Planning, Organizing, and Controlling the Supply Chain</em>. 5th ed. Prentice-Hall.</p>
+<div id="ref-ballou2004business" class="csl-entry">
+Ballou, R. H. 2004. <em>Business Logistics/Supply Chain Management: Planning, Organizing, and Controlling the Supply Chain</em>. 5th ed. Prentice-Hall.
 </div>
-<div id="ref-chopra2007supply">
-<p>Chopra, S., and Meindl. 2007. <em>Supply Chain Management: Strategy, Planning, and Operations</em>. 3rd ed. Prentice-Hall.</p>
+<div id="ref-chopra2007supply" class="csl-entry">
+Chopra, S., and Meindl. 2007. <em>Supply Chain Management: Strategy, Planning, and Operations</em>. 3rd ed. Prentice-Hall.
 </div>
-<div id="ref-hadley1963analysis">
-<p>Hadley, G., and T. M. Whitin. 1963. <em>Analysis of Inventory Systems</em>. Prentice Hall.</p>
+<div id="ref-hadley1963analysis" class="csl-entry">
+Hadley, G., and T. M. Whitin. 1963. <em>Analysis of Inventory Systems</em>. Prentice Hall.
 </div>
-<div id="ref-nahmias2001production">
-<p>Nahmias, S. 2001. <em>Production and Operations Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-nahmias2001production" class="csl-entry">
+Nahmias, S. 2001. <em>Production and Operations Analysis</em>. 4th ed. McGraw-Hill.
 </div>
-<div id="ref-silver1998inventory">
-<p>Silver, E. A., D. F. Pyke, and R. Peterson. 1998. <em>Inventory Management and Production Planning and Scheduling</em>. 3rd ed. John Wiley &amp; Sons.</p>
+<div id="ref-silver1998inventory" class="csl-entry">
+Silver, E. A., D. F. Pyke, and R. Peterson. 1998. <em>Inventory Management and Production Planning and Scheduling</em>. 3rd ed. John Wiley &amp; Sons.
 </div>
-<div id="ref-tijms2003first">
-<p>Tijms, H. C. 2003. <em>A First Course in Stochastic Models</em>. John-Wiley &amp; Sons.</p>
+<div id="ref-tijms2003first" class="csl-entry">
+Tijms, H. C. 2003. <em>A First Course in Stochastic Models</em>. John-Wiley &amp; Sons.
 </div>
-<div id="ref-zipkin2000foundations">
-<p>Zipkin, P. H. 2000. <em>Foundations of Inventory Management</em>. McGraw-Hill.</p>
+<div id="ref-zipkin2000foundations" class="csl-entry">
+Zipkin, P. H. 2000. <em>Foundations of Inventory Management</em>. McGraw-Hill.
 </div>
 </div>
             </section>
@@ -1477,6 +1503,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

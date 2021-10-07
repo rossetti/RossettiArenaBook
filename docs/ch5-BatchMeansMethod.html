@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.4 The Batch Means Method | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.4 The Batch Means Method | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="5.4 The Batch Means Method | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch5-RepDeletion.html"/>
 <link rel="next" href="ch5-VandV.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -626,7 +652,7 @@ batch means series:</p>
 <p><span class="math display">\[\bar{Y}(k) \pm t_{\alpha/2, k-1} \dfrac{S_b (k)}{\sqrt{k}}\]</span></p>
 <p>Since the original X’s are covariance stationary, it follows that the
 resulting batch means are also covariance stationary. One can show, see
-<span class="citation">(Alexopoulos and Seila <a href="#ref-alexopoulos1998output" role="doc-biblioref">1998</a>)</span>, that the correlation in the batch means
+<span class="citation">(<a href="#ref-alexopoulos1998output" role="doc-biblioref">Alexopoulos and Seila 1998</a>)</span>, that the correlation in the batch means
 reduces as both the size of the batches, <span class="math inline">\(b\)</span> and the number of data
 points, <span class="math inline">\(n\)</span> increases. In addition, one can show that <span class="math inline">\(S_b^2 (k)/k\)</span>
 approximates <span class="math inline">\(\text{Var}(\bar{X})\)</span> with error that reduces as both <span class="math inline">\(b\)</span>
@@ -634,7 +660,7 @@ and <span class="math inline">\(n\)</span> increase towards infinity.</p>
 <p>The basic difficulty with the batch means method is determining the
 batch size or alternatively the number of batches. Larger batch sizes
 are good for independence but reduce the number of batches, resulting in
-higher variance for the estimator. <span class="citation">(Schmeiser <a href="#ref-schmeiser1982batch" role="doc-biblioref">1982</a>)</span> performed an
+higher variance for the estimator. <span class="citation">(<a href="#ref-schmeiser1982batch" role="doc-biblioref">Schmeiser 1982</a>)</span> performed an
 analysis that suggests that there is little benefit if the number of
 batches is larger than 30 and recommended that the number of batches
 remain in the range from 10 to 30. However, when trying to access
@@ -643,12 +669,12 @@ number of batches (<span class="math inline">\(&gt;\)</span> 100) so that tests 
 better statistical properties.</p>
 <p>There are a variety of procedures that have been developed that will
 automatically batch the data as it is collected, see for example
-<span class="citation">(Fishman and Yarberry <a href="#ref-fishman1997an" role="doc-biblioref">1997</a>)</span>, <span class="citation">(Steiger and Wilson <a href="#ref-steiger2002an" role="doc-biblioref">2002</a>)</span>, and <span class="citation">Banks et al. (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>. has its
+<span class="citation">(<a href="#ref-fishman1997an" role="doc-biblioref">Fishman and Yarberry 1997</a>)</span>, <span class="citation">(<a href="#ref-steiger2002an" role="doc-biblioref">Steiger and Wilson 2002</a>)</span>, and <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>. has its
 own batching algorithm. The batching algorithm is described in
-<span class="citation">Kelton, Sadowski, and Sturrock (<a href="#ref-kelton2004simulation" role="doc-biblioref">2004</a>)</span> page 311. See also <span class="citation">(Fishman <a href="#ref-fishman2001discreteevent" role="doc-biblioref">2001</a>)</span>
+<span class="citation"><a href="#ref-kelton2004simulation" role="doc-biblioref">Kelton, Sadowski, and Sturrock</a> (<a href="#ref-kelton2004simulation" role="doc-biblioref">2004</a>)</span> page 311. See also <span class="citation">(<a href="#ref-fishman2001discreteevent" role="doc-biblioref">Fishman 2001</a>)</span>
 page 254 for an analysis of the effectiveness of the algorithm.</p>
 <p>The discussion here is based on the description in
-<span class="citation">Kelton, Sadowski, and Sturrock (<a href="#ref-kelton2004simulation" role="doc-biblioref">2004</a>)</span>. When the algorithm has recorded a sufficient
+<span class="citation"><a href="#ref-kelton2004simulation" role="doc-biblioref">Kelton, Sadowski, and Sturrock</a> (<a href="#ref-kelton2004simulation" role="doc-biblioref">2004</a>)</span>. When the algorithm has recorded a sufficient
 amount of data, it begins by forming k = 20 batches. As more data is
 collected, additional batches are formed until k = 40 batches are
 collected. When 40 batches are formed, the algorithm collapses the
@@ -664,7 +690,7 @@ times. If there are not enough observations within a run then
 reports. In addition, the algorithm also tests to see if the lag-1
 correlation is significant by testing the hypothesis that the batch
 means are uncorrelated using the following test statistic, see
-<span class="citation">(Alexopoulos and Seila <a href="#ref-alexopoulos1998output" role="doc-biblioref">1998</a>)</span>:</p>
+<span class="citation">(<a href="#ref-alexopoulos1998output" role="doc-biblioref">Alexopoulos and Seila 1998</a>)</span>:</p>
 <p><span class="math display">\[C = \sqrt{\dfrac{k^2 - 1}{k - 2}}\biggl[ \hat{\rho}_1 + \dfrac{[Y_1 - \bar{Y}]^2 + [Y_k - \bar{Y}]^2}{2 \sum_{j=1}^k (Y_j - \bar{Y})^2}\biggr]\]</span></p>
 <p><span class="math display">\[\hat{\rho}_1 = \dfrac{\sum_{j=1}^{k-1} (Y_j - \bar{Y})(Y_{j+1} - \bar{Y})}{\sum _{j=1}^k (Y_j - \bar{Y})^2}\]</span></p>
 <p>The hypothesis is rejected if <span class="math inline">\(C &gt; z_\alpha\)</span> for a given confidence
@@ -809,35 +835,35 @@ longest warm up period found.</p>
 analysis of infinite horizon simulations including the standardized time
 series method, the regenerative method, and spectral methods. An
 overview of these methods and others can be found in
-<span class="citation">(Alexopoulos and Seila <a href="#ref-alexopoulos1998output" role="doc-biblioref">1998</a>)</span> and in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span>.</p>
+<span class="citation">(<a href="#ref-alexopoulos1998output" role="doc-biblioref">Alexopoulos and Seila 1998</a>)</span> and in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span>.</p>
 <p>When performing an infinite horizon simulation analysis, we are most interested in the estimation of long-run (steady state) performance measures. In this situation, it can be useful to apply analytical techniques such as queueing theory to assist with determining whether or not the model is producing credible results. Even in the case of a finite horizon simulation, the steady state performance results from analytical models of queueing and inventory systems can be very helpful in understanding if the results produced by the simulation model make sense. In the next section, we apply the results of analytical queueing models from Appendix <a href="app-qtAndInvT.html#app:qtAndInvT">C</a> to the simulation of a small manufacturing system in order to check the results of a simulation model. Being able to verify and validate a simulation model is a crucial skill to get your simulation models used in practice.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-alexopoulos1998output">
-<p>Alexopoulos, C., and A. F. Seila. 1998. “Output Data Analysis.” In <em>Handbook of Simulation</em>, edited by J. Banks. John Wiley &amp; Sons, New York.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-alexopoulos1998output" class="csl-entry">
+Alexopoulos, C., and A. F. Seila. 1998. <span>“Output Data Analysis.”</span> In <em>Handbook of Simulation</em>, edited by J. Banks. John Wiley &amp; Sons, New York.
 </div>
-<div id="ref-banks2005discreteevent">
-<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
 </div>
-<div id="ref-fishman2001discreteevent">
-<p>Fishman, G. S. 2001. <em>Discrete-Event Simulation: Modeling, Programming, and Analysis</em>. New York: Springer.</p>
+<div id="ref-fishman2001discreteevent" class="csl-entry">
+Fishman, G. S. 2001. <em>Discrete-Event Simulation: Modeling, Programming, and Analysis</em>. New York: Springer.
 </div>
-<div id="ref-fishman1997an">
-<p>Fishman, G. S., and L. S. Yarberry. 1997. “An Implementation of the Batch Means Method.” <em>INFORMS Journal on Computing</em> 9.</p>
+<div id="ref-fishman1997an" class="csl-entry">
+Fishman, G. S., and L. S. Yarberry. 1997. <span>“An Implementation of the Batch Means Method.”</span> <em>INFORMS Journal on Computing</em> 9.
 </div>
-<div id="ref-kelton2004simulation">
-<p>Kelton, W. D., R. P. Sadowski, and D. T. Sturrock. 2004. <em>Simulation with Arena</em>. 3rd ed. McGraw-Hill.</p>
+<div id="ref-kelton2004simulation" class="csl-entry">
+Kelton, W. D., R. P. Sadowski, and D. T. Sturrock. 2004. <em>Simulation with Arena</em>. 3rd ed. McGraw-Hill.
 </div>
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
-<div id="ref-schmeiser1982batch">
-<p>Schmeiser, B. W. 1982. “Batch Size Effects in the Analysis of Simulation Output.” <em>Operations Research</em> 30: 556–68.</p>
+<div id="ref-schmeiser1982batch" class="csl-entry">
+Schmeiser, B. W. 1982. <span>“Batch Size Effects in the Analysis of Simulation Output.”</span> <em>Operations Research</em> 30: 556–68.
 </div>
-<div id="ref-steiger2002an">
-<p>Steiger, N. M., and J. R. Wilson. 2002. “An Improved Batch Means Procedure for Simulation Output Analysis.” <em>Management Science</em> 48.</p>
+<div id="ref-steiger2002an" class="csl-entry">
+Steiger, N. M., and J. R. Wilson. 2002. <span>“An Improved Batch Means Procedure for Simulation Output Analysis.”</span> <em>Management Science</em> 48.
 </div>
 </div>
             </section>
@@ -869,6 +895,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

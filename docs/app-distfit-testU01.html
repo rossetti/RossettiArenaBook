@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.6 Testing Uniform (0,1) Pseudo-Random Numbers | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.6 Testing Uniform (0,1) Pseudo-Random Numbers | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="B.6 Testing Uniform (0,1) Pseudo-Random Numbers | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="app-idm-sec-fitContinuous.html"/>
 <link rel="next" href="app-distfit-idms2sb4.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -528,7 +554,7 @@ appear to be independent and identically distributed (IID) <span class="math inl
 random variables. The hypothesis that a sample from the generator is IID
 <span class="math inline">\(U(0,1)\)</span> must be made. Then, the hypothesis is subjected to various
 statistical tests. There are standard batteries of test, see for example
-<span class="citation">(Soto <a href="#ref-soto1999statistical" role="doc-biblioref">1999</a>)</span>, that are utilized. Typical tests examine:</p>
+<span class="citation">(<a href="#ref-soto1999statistical" role="doc-biblioref">Soto 1999</a>)</span>, that are utilized. Typical tests examine:</p>
 <ul>
 <li><p>Distributional properties: e.g. Chi-Squared and Kolmogorov-Smirnov
 test</p></li>
@@ -834,10 +860,10 @@ Computing the p-value for <span class="math inline">\(k-s-1=10-0-1=9\)</span> de
 would not reject the hypothesis that the observed data is <span class="math inline">\(U(0,1)\)</span>. This process can be readily implemented within a spreadsheet or performed using R. Assuming that the file, u01data.txt, contains the PRNs for this example, then the following R commands will
 perform the test:<br />
 </p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="app-distfit-testU01.html#cb128-1" aria-hidden="true"></a>data =<span class="st"> </span><span class="kw">scan</span>(<span class="dt">file=</span><span class="st">&quot;data/AppDistFitting/u01data.txt&quot;</span>) <span class="co"># read in the file</span></span>
-<span id="cb128-2"><a href="app-distfit-testU01.html#cb128-2" aria-hidden="true"></a>b =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.1</span>) <span class="co"># set up the break points</span></span>
-<span id="cb128-3"><a href="app-distfit-testU01.html#cb128-3" aria-hidden="true"></a>h =<span class="st"> </span><span class="kw">hist</span>(data, b, <span class="dt">right =</span> <span class="ot">FALSE</span>, <span class="dt">plot =</span> <span class="ot">FALSE</span>) <span class="co"># tabulate the counts</span></span>
-<span id="cb128-4"><a href="app-distfit-testU01.html#cb128-4" aria-hidden="true"></a><span class="kw">chisq.test</span>(h<span class="op">$</span>counts) <span class="co"># perform the test</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="app-distfit-testU01.html#cb128-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">scan</span>(<span class="at">file=</span><span class="st">&quot;data/AppDistFitting/u01data.txt&quot;</span>) <span class="co"># read in the file</span></span>
+<span id="cb128-2"><a href="app-distfit-testU01.html#cb128-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>) <span class="co"># set up the break points</span></span>
+<span id="cb128-3"><a href="app-distfit-testU01.html#cb128-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(data, b, <span class="at">right =</span> <span class="cn">FALSE</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co"># tabulate the counts</span></span>
+<span id="cb128-4"><a href="app-distfit-testU01.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(h<span class="sc">$</span>counts) <span class="co"># perform the test</span></span></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -852,7 +878,7 @@ the interval <span class="math inline">\((0,1)\)</span> they should also be unif
 within the unit square,
 <span class="math inline">\(\lbrace (x,y): x\in (0,1), y \in (0,1) \rbrace\)</span>, the unit cube, and so
 forth for higher number of dimensions <span class="math inline">\(d\)</span>.</p>
-<p>The serial test, described in <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> can be used to assess
+<p>The serial test, described in <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> can be used to assess
 the quality of the higher dimensional properties of pseudo-random
 numbers. Suppose the sequence of pseudo-random numbers can be formed
 into non-overlapping vectors each of size <span class="math inline">\(d\)</span>. The vectors should be
@@ -888,7 +914,7 @@ distributed in the d-dimensional unit hyper-cube if
 <span class="math inline">\(\chi^{2}_{0}(d) &gt; \chi^{2}_{\alpha, k^{d}-1}\)</span> or if the p-value
 <span class="math inline">\(P\{\chi^{2}_{k^{d}-1} &gt; \chi^{2}_{0}(d)\}\)</span> is less than <span class="math inline">\(\alpha\)</span>.</li>
 </ol>
-<p><span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> provides an algorithm for computing
+<p><span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> provides an algorithm for computing
 <span class="math inline">\(c_{j_{1}, j_{2}, \cdots, j_{d}}\)</span>. This test examines how uniformly the random numbers
 fill-up the multi-dimensional space. This is a very important property
 when applying simulation to the evaluation of multi-dimensional
@@ -1146,8 +1172,8 @@ statistical software <span class="math inline">\(R\)</span>. Assuming that the f
 contains the data for this example, then the following R commands will
 perform the test:<br />
 </p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="app-distfit-testU01.html#cb132-1" aria-hidden="true"></a>data =<span class="st"> </span><span class="kw">scan</span>(<span class="dt">file=</span><span class="st">&quot;data/AppDistFitting/u01data.txt&quot;</span>) <span class="co"># read in the file</span></span>
-<span id="cb132-2"><a href="app-distfit-testU01.html#cb132-2" aria-hidden="true"></a><span class="kw">ks.test</span>(data,<span class="st">&quot;punif&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># perform the test</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="app-distfit-testU01.html#cb132-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">scan</span>(<span class="at">file=</span><span class="st">&quot;data/AppDistFitting/u01data.txt&quot;</span>) <span class="co"># read in the file</span></span>
+<span id="cb132-2"><a href="app-distfit-testU01.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(data,<span class="st">&quot;punif&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># perform the test</span></span></code></pre></div>
 <pre><code>## 
 ##  One-sample Kolmogorov-Smirnov test
 ## 
@@ -1177,7 +1203,7 @@ band, we can conclude that the data are likely independent observations.</p>
 Figure B.28: Autocorrelation Plot for u01data.txt Data Set
 </p>
 </div>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="app-distfit-testU01.html#cb134-1" aria-hidden="true"></a>rho</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="app-distfit-testU01.html#cb134-1" aria-hidden="true" tabindex="-1"></a>rho</span></code></pre></div>
 <pre><code>## 
 ## Autocorrelations of series &#39;data&#39;, by lag
 ## 
@@ -1252,7 +1278,7 @@ digits that appear between repetitions of a particular digit and uses a
 K-S test statistic to compare with the expected number of gaps. The
 poker test examines for independence based on the frequency with which
 certain digits are repeated in a series of numbers, (e.g. pairs, three
-of a kind, etc.). <span class="citation">Banks et al. (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span> discusses how to perform these
+of a kind, etc.). <span class="citation"><a href="#ref-banks2005discreteevent" role="doc-biblioref">Banks et al.</a> (<a href="#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span> discusses how to perform these
 tests.</p>
 <p>Does all this testing really matter? Yes! You should always know what pseudo-random number
 generator you are using within your simulation models and you should always know if the generator has passed a battery of statistical tests. The
@@ -1262,15 +1288,15 @@ tested software.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-banks2005discreteevent">
-<p>Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-banks2005discreteevent" class="csl-entry">
+Banks, J., J. Carson, B. Nelson, and D. Nicol. 2005. <em>Discrete-Event System Simulation</em>. 4th ed. Prentice Hall.
 </div>
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
-<div id="ref-soto1999statistical">
-<p>Soto, J. 1999. “Statistical Testing of Random Numbers.” In <em>Proceedings of the 22nd National Information Systems Security Conference</em>.</p>
+<div id="ref-soto1999statistical" class="csl-entry">
+Soto, J. 1999. <span>“Statistical Testing of Random Numbers.”</span> In <em>Proceedings of the 22nd National Information Systems Security Conference</em>.
 </div>
 </div>
             </section>
@@ -1302,6 +1328,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

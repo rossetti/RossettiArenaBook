@@ -4745,8 +4745,7 @@ then waits until their order is ready. After receiving the order, the
 customer exits. A cashier may not take any additional orders until the
 current customer has paid. In this system, there are two cooks and two
 cashiers. The time to order and pay is represented by a triangular
-distribution with parameters (0.4, 0.8, 1.2) minutes and (0.2, 0.4, 0.6)
-minutes, respectively. The cooking time depends on the order as follows:
+distribution with parameters (0.4, 0.8, 1.2) minutes and (0.2, 0.4, 0.6) minutes, respectively. The cooking time depends on the order as follows:
 \EndKnitrBlock{exercise}
 
 
@@ -4755,6 +4754,8 @@ minutes, respectively. The cooking time depends on the order as follows:
     1        30%       Uniform(0.3,0.8)
     2        15%       Uniform(0.8,1.1)
     3        55%       Uniform(1.0, 1.4)
+
+Use stream 2 for the ordering distribution, stream 3 for the paying distribution, streams 4, 5 and 6, for the type 1, 2, and 3 cooking distributions, respectively. Use stream 7 for the distribution across the order types.  
 
 Model the system for 8 hours of operation with 30 replications. Make a
 table like the following to summarize your answers for your

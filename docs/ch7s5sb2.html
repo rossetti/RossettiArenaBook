@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.1 Analyzing Multiple Systems | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.1 Analyzing Multiple Systems | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="8.1 Analyzing Multiple Systems | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch8.html"/>
 <link rel="next" href="ch11s1.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -766,7 +792,7 @@ using common random numbers. From the standpoint of the analysis via
 traditional experimental design techniques this poses an extra
 complication. The analysis of experimental designs with common random
 numbers is beyond the scope of this text. The interested reader should
-refer to <span class="citation">(Kleijnen <a href="#ref-kleijnen1988analyzing" role="doc-biblioref">1988</a>)</span> and <span class="citation">(Kleijnen <a href="#ref-kleijnen1998experimental" role="doc-biblioref">1998</a>)</span>.</p>
+refer to <span class="citation">(<a href="#ref-kleijnen1988analyzing" role="doc-biblioref">Kleijnen 1988</a>)</span> and <span class="citation">(<a href="#ref-kleijnen1998experimental" role="doc-biblioref">Kleijnen 1998</a>)</span>.</p>
 <p>To run all the experiments consecutively, select the scenarios that you
 want to run and use the Run menu or the VCR like run button. Each
 scenario will run the number of specified replications and the results
@@ -805,8 +831,8 @@ in the means. Instead, you should be looking at the magnitude and
 direction of the responses. A full discussion of the techniques of
 experimental design is beyond the scope of this chapter. For a more
 detailed presentation of the use of experimental design in simulation,
-you are referred to <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> and
-<span class="citation">(Kleijnen <a href="#ref-kleijnen1998experimental" role="doc-biblioref">1998</a>)</span>.</p>
+you are referred to <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> and
+<span class="citation">(<a href="#ref-kleijnen1998experimental" role="doc-biblioref">Kleijnen 1998</a>)</span>.</p>
 <p>Selecting a particular response cell will cause additional statistical
 information concerning the response to appear in the status bar at the
 left-hand bottom of the Process Analyzer main window. In addition, if
@@ -1059,8 +1085,8 @@ practical situations.</p>
 allow the selection of the best system (or the ranking of the systems)
 and still guarantee an overall pre-specified confidence in the decision.
 The Process Analyzer uses a method based on multiple comparison
-procedures as described in <span class="citation">(Goldsman and Nelson <a href="#ref-goldsman1998comparing" role="doc-biblioref">1998</a>)</span> and the references
-therein. See also <span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> for how these methods relate to
+procedures as described in <span class="citation">(<a href="#ref-goldsman1998comparing" role="doc-biblioref">Goldsman and Nelson 1998</a>)</span> and the references
+therein. See also <span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> for how these methods relate to
 other ranking and selection methods.</p>
 <p>While it is beyond the scope of this textbook to review multiple comparison with the best (MCB) procedures, it is useful to have a basic understanding of the form of the confidence interval constructed by these procedures. To see how MCB procedures avoid part of the issues with having a large number of confidence intervals, we can note that the confidence interval is based on the difference between the best and the best of the rest. Suppose we have <span class="math inline">\(k\)</span> system configurations to compare and suppose that somehow you knew that the <span class="math inline">\(i^{th}\)</span> system <em>is the best</em>. Now, consider a confidence interval system’s <span class="math inline">\(i\)</span> performance metric, <span class="math inline">\(\theta_i\)</span>, of the following form:</p>
 <p><span class="math display">\[
@@ -1147,18 +1173,18 @@ simulation study.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-goldsman1998comparing">
-<p>Goldsman, D., and B. L. Nelson. 1998. “Comparing Systems via Simulation.” In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-goldsman1998comparing" class="csl-entry">
+Goldsman, D., and B. L. Nelson. 1998. <span>“Comparing Systems via Simulation.”</span> In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.
 </div>
-<div id="ref-kleijnen1988analyzing">
-<p>Kleijnen, J. P. C. 1988. “Analyzing Simulation Experiments with Common Random Numbers.” <em>Management Science</em> 34: 65–74.</p>
+<div id="ref-kleijnen1988analyzing" class="csl-entry">
+Kleijnen, J. P. C. 1988. <span>“Analyzing Simulation Experiments with Common Random Numbers.”</span> <em>Management Science</em> 34: 65–74.
 </div>
-<div id="ref-kleijnen1998experimental">
-<p>Kleijnen, J. 1998. “Experimental Design for Sensitivity Analysis, Optimization, and Validation of Simulation Models.” In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.</p>
+<div id="ref-kleijnen1998experimental" class="csl-entry">
+———. 1998. <span>“Experimental Design for Sensitivity Analysis, Optimization, and Validation of Simulation Models.”</span> In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.
 </div>
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
 </div>
             </section>
@@ -1190,6 +1216,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

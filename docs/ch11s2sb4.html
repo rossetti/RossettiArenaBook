@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.7 Final Experimental Analysis and Results | Simulation Modeling and Arena</title>
   <meta name="description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.7 Final Experimental Analysis and Results | Simulation Modeling and Arena" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mdr_arena_book.git-pages.uark.edu/arenabook" />
-  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta property="og:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
   <meta property="og:description" content="An open textbook on discrete-event simulation modeling using Arena" />
   
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="8.7 Final Experimental Analysis and Results | Simulation Modeling and Arena" />
   
   <meta name="twitter:description" content="An open textbook on discrete-event simulation modeling using Arena" />
-  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabookimages/OER-BOOKCOVER-Rossetti.jpg" />
+  <meta name="twitter:image" content="https://mdr_arena_book.git-pages.uark.edu/arenabook/images/OER-BOOKCOVER-Rossetti.jpg" />
 
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="ch11s2sb3.html"/>
 <link rel="next" href="ch11s4.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -59,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -568,9 +594,9 @@ must meet the contract requirements.</p>
 <h3><span class="header-section-number">8.7.1</span> Using the Process Analyzer on the Problem</h3>
 <p>This section uses the Process Analyzer on the problem within an
 experimental design paradigm. Further information on experimental design
-methods can be found in <span class="citation">(Montgomery and Runger <a href="#ref-montgomery2006applied" role="doc-biblioref">2006</a>)</span>. For a discussion of
+methods can be found in <span class="citation">(<a href="#ref-montgomery2006applied" role="doc-biblioref">Montgomery and Runger 2006</a>)</span>. For a discussion of
 experimental design within a simulation context, please see
-<span class="citation">(Law <a href="#ref-law2007simulation" role="doc-biblioref">2007</a>)</span> or <span class="citation">(Kleijnen <a href="#ref-kleijnen1998experimental" role="doc-biblioref">1998</a>)</span>. There are 6 factors
+<span class="citation">(<a href="#ref-law2007simulation" role="doc-biblioref">Law 2007</a>)</span> or <span class="citation">(<a href="#ref-kleijnen1998experimental" role="doc-biblioref">Kleijnen 1998</a>)</span>. There are 6 factors
 (# units for each of the 5 testing cells and the number of sample
 holders). To initiate the analysis, a factorial experiment can be used.
 As shown in Table <a href="ch11s2sb4.html#tab:FirstExpFL">8.16</a>, the previously determined resource
@@ -4000,7 +4026,7 @@ can define a set of constraints that must not be violated by the final
 recommended solution to the optimization model. It is beyond the scope
 of this example to fully describe simulation optimization and all the
 intricacies of this technology. The interested reader should refer to
-<span class="citation">April et al. (<a href="#ref-april2001simulationoptimization" role="doc-biblioref">2001</a>)</span> and <span class="citation">Glover, Kelly, and Laguna (<a href="#ref-glover1999new" role="doc-biblioref">1999</a>)</span> for more information
+<span class="citation"><a href="#ref-april2001simulationoptimization" role="doc-biblioref">April et al.</a> (<a href="#ref-april2001simulationoptimization" role="doc-biblioref">2001</a>)</span> and <span class="citation"><a href="#ref-glover1999new" role="doc-biblioref">Glover, Kelly, and Laguna</a> (<a href="#ref-glover1999new" role="doc-biblioref">1999</a>)</span> for more information
 on this technology. This example will simply illustrate the
 possibilities of using this technology. A tutorial on the use of
 <em>OptQuest</em> is available in the <em>OptQuest</em> help files.</p>
@@ -4533,21 +4559,21 @@ A number of exercises will ask you to explore these issues.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-april2001simulationoptimization">
-<p>April, J., F. Glover, J. Kelly, and M. Laguna. 2001. “Simulation Optimization Using Real-World Applications.” In <em>The Proceedings of the 2001 Winter Simulation Conference</em>, edited by B. A. Peters, J. S. Smith, D. J. Medeiros, and M. W. Rohrer. Piscataway, New Jersey: Institute of Electrical; Electronic Engineers.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-april2001simulationoptimization" class="csl-entry">
+April, J., F. Glover, J. Kelly, and M. Laguna. 2001. <span>“Simulation Optimization Using Real-World Applications.”</span> In <em>The Proceedings of the 2001 Winter Simulation Conference</em>, edited by B. A. Peters, J. S. Smith, D. J. Medeiros, and M. W. Rohrer. Piscataway, New Jersey: Institute of Electrical; Electronic Engineers.
 </div>
-<div id="ref-glover1999new">
-<p>Glover, F., J. P. Kelly, and M. Laguna. 1999. “New Advances for Wedding Optimization and Simulation.” In <em>The Proceedings of the 1999 Winter Simulation Conference</em>, edited by F. Farrington, H. B. Nembhard, D. T. Sturrock, and G. W. Evans. Piscataway, New Jersey: Institute of Electrical; Electronic Engineers.</p>
+<div id="ref-glover1999new" class="csl-entry">
+Glover, F., J. P. Kelly, and M. Laguna. 1999. <span>“New Advances for Wedding Optimization and Simulation.”</span> In <em>The Proceedings of the 1999 Winter Simulation Conference</em>, edited by F. Farrington, H. B. Nembhard, D. T. Sturrock, and G. W. Evans. Piscataway, New Jersey: Institute of Electrical; Electronic Engineers.
 </div>
-<div id="ref-kleijnen1998experimental">
-<p>Kleijnen, J. 1998. “Experimental Design for Sensitivity Analysis, Optimization, and Validation of Simulation Models.” In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.</p>
+<div id="ref-kleijnen1998experimental" class="csl-entry">
+———. 1998. <span>“Experimental Design for Sensitivity Analysis, Optimization, and Validation of Simulation Models.”</span> In <em>Handbook of Simulation</em>, edited by J. Banks. New York: John Wiley &amp; Sons.
 </div>
-<div id="ref-law2007simulation">
-<p>Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.</p>
+<div id="ref-law2007simulation" class="csl-entry">
+Law, A. 2007. <em>Simulation Modeling and Analysis</em>. 4th ed. McGraw-Hill.
 </div>
-<div id="ref-montgomery2006applied">
-<p>Montgomery, D. C., and G. C. Runger. 2006. <em>Applied Statistics and Probability for Engineers</em>. 4th ed. John Wiley &amp; Sons.</p>
+<div id="ref-montgomery2006applied" class="csl-entry">
+Montgomery, D. C., and G. C. Runger. 2006. <em>Applied Statistics and Probability for Engineers</em>. 4th ed. John Wiley &amp; Sons.
 </div>
 </div>
             </section>
@@ -4579,6 +4605,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
