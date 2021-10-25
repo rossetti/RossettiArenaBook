@@ -1,7 +1,7 @@
 --- 
 title: "Simulation Modeling and Arena"
 author: "Manuel D. Rossetti"
-date: "2021-10-07"
+date: "2021-10-25"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 header-includes:
@@ -57,6 +57,18 @@ The example models and related files associated with the textbook are also copyr
 - Welch Plot Application
   + [Mac OS Version](https://uark.box.com/v/RossettiWelchPlotMacVersion)
   + [Windows Version](https://uark.box.com/v/RossettiWelchAppWindowsVersion)
+
+Due to Apple's recent security updates, you may receive a message that the Mac OS Version of the Welch Plot Application is "damaged and can't be opened" or "cannot be opened because the developer cannot be verified". These updates prevent program files that are downloaded from the internet from installing unless they are verified to be from an Apple developer or their App Store.  When such files are downloaded directly on a Mac computer the download process sets the extended attributes of the file.  
+
+There are two workarounds to this situation. The first is to download the files on a Windows computer and then copying the file to your Mac for installation. This process avoides the extended attributes from being set by Mac OS during the download process.  The second method is to download the file directly to your Mac and to change the extended attributes of the file so that it can be executed. The following outlines the procedure for changing the extended attributes of the file so that it can be executed.
+
+1. Use your normal method to download the file to the Downloads directory. Make sure to select the option to save the file rather than open it upon download.
+2. There will now be a file called WelchPlotMacVersion.dmg in your Downloads directory.  You should double click on it to open the dmg file. Copy the file WelchPlotApp.app to your Downloads directory.
+3. Open the [Terminal](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/2.11/mac/11.0)
+4. At the terminal prompt, type in: cd Downloads
+5. At the terminal prompt, type in: xattr -r -d com.apple.quarantine WelchPlotApp.app
+6. Move the file WelchPlotApp.app to the location from which you want to execute it. The program can be executed from anywhere, including the Downloads folder. If you want, you can copy it to your Applications folder.
+7. Double click on the WelchPlotApp.app application file and use it.
 
 A solutions manual is available for formal adopters of the textbook.  Naturally, instructors must prove that they have adopted the book for the course.  The solutions manual and associated files are copyrighted materials and should not be released to students in any form.  Instructors can guess what happens when solutions become readily available to students!  Contact me if you need further details.
 
