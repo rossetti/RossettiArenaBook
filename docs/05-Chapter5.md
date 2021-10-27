@@ -1493,9 +1493,9 @@ Therefore, we can compute the service rate for each of the lines, where
 $\text{ST}_{1}$ and $\text{ST}_{2}$ represent the service time random
 variable for line 1 and 2, respectively, as follows:
 
-$$\mu_{1} = \frac{1}{E\left\lbrack \text{ST}_{1} \right\rbrack} = \frac{(2 + 6 + 8)}{3} = 5.3\overline{3}\ \min \times \frac{60\ \min}{1\ \text{hour}} = 11.25/\text{hour}$$
+$$\mu_{1} = \frac{1}{E\left\lbrack \text{ST}_{1} \right\rbrack} = \frac{1}{\frac{(2 + 6 + 8)}{3}} = \frac{1}{5.3\overline{3}\ \min} \times \frac{60\ \min}{1\ \text{hour}} = 11.25/\text{hour}$$
 
-$$\mu_{2} = \frac{1}{E\left\lbrack \text{ST}_{2} \right\rbrack} = \frac{(3 + 6 + 7)}{3} = 5.3\overline{3}\ \min \times \frac{60\ \min}{1\ \text{hour}} = 11.25/\text{hour}$$
+$$\mu_{2} = \frac{1}{E\left\lbrack \text{ST}_{2} \right\rbrack} = \frac{1}{\frac{(3 + 6 + 7)}{3}} = \frac{1}{5.3\overline{3}\ \min} \times \frac{60\ \min}{1\ \text{hour}} = 11.25/\text{hour}$$
 
 And, then we can compute the utilization for each of the lines.
 
