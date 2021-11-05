@@ -24,7 +24,7 @@
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-10-27" />
+<meta name="date" content="2021-11-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -631,7 +631,7 @@ queue. Each station consists of a queue and a single server. A customer
 completing service at station 1 proceeds to station 2, while a customer
 completing service at station 2 leaves the facility. Assume that the
 inter-arrival times of customers to station 1 are IID exponential random
-variables with a mean of 1 minute. Service times of customers at station
+variables with a mean of 1.25 minutes. Service times of customers at station
 1 are exponential random variables with a mean of 0.7 minute, and at
 station 2 are exponential random variables with mean 0.9 minute.</p>
 <p>Suppose that there is limited space at the second
@@ -642,8 +642,7 @@ leave the service area at the first station unless there is a space
 available for it to wait at the second station. In other words, the
 customer will not release the server at the first station unless it can
 move to the second station.</p>
-Develop a model for this system using the STATION and ROUTE modules.Run the simulation for exactly 20000 minutes and estimate for each station the expected average delay in queue for the customer, the expected time-average number of customers in queue, and the expected utilization. In addition, estimate the average
-number of customers in the system and the average time spent in the
+Develop a model for this system using the STATION and ROUTE modules. Run the simulation for exactly 20000 minutes with a warm up period of 2000 minutes for 20 replications and estimate for each station the expected average delay in queue for the customer, the expected time-average number of customers in queue, and the expected utilization. In addition, estimate the average number of customers in the system and the average time spent in the
 system.
 </div>
 <ol style="list-style-type: lower-alpha">
