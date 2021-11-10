@@ -260,7 +260,7 @@
 
 \title{Simulation Modeling and Arena}
 \author{Manuel D. Rossetti}
-\date{2021-11-05}
+\date{2021-11-10}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -13121,6 +13121,8 @@ Certainly, such a high utilization is troublesome from a human factors
 standpoint, since worker breaks have not even been modeled! These and
 other trade-offs can be examined using simulation.
 
+In this example, the performance measure of interest was the time to make the orders. The value of TNOW at the end of the replication represents the time that all of the rings had been produced. This was observed at the end of each replication by using an OUTPUT statistic, as per Figure \ref{fig:LOTRConfig2CaptureOutput}. In many situations, we may want to compare performance on measures such as the average system time, the average number of jobs in the system, the resource utilization, etc. In these situations, we need to capture the average of a tally variable or a time-persistent variable at the end of the replication. As noted in Section \ref{ch3s1}, the functions, \texttt{TAVG(tally\ ID)} and \texttt{DAVG(dstat\ ID)} will collect the average of the within replication data. Thus, at the end of a replication, these functions hold the average performance of the corresponding tally or time-persistent variable for the current replication. Thus, you can use \texttt{TAVG(tally\ ID)} and \texttt{DAVG(dstat\ ID)} in the expression field of the OUTPUT statistic module, as per Figure \ref{fig:LOTRConfig2CaptureOutput}, to capture the across replication statistics to a file for post processing using the Output Analyzer. This will be useful in some of the exercises associated with this chapter.
+
 In order to try to ensure a stronger variance reduction when using
 common random numbers, there are a number of additional implementation
 techniques that can be applied. For example, to help ensure that the
@@ -18331,7 +18333,7 @@ the ability to compute,
 
 \[\overline{y}\left( t_{b},t_{e} \right) = \frac{\int_{t_{b}}^{t_{e}}{y\left( t \right)\text{dt}}}{t_{e} - t_{b}} = \frac{a\left( t_{e} \right) - a\left( t_{b} \right)}{t_{e} - t_{b}}\]
 
-Again, a strategy of scheduling events for \(t_{e}\) and \(t_{e}\) can allow
+Again, a strategy of scheduling events for \(t_{b}\) and \(t_{e}\) can allow
 you to observe the required quantities at the beginning and end of the
 period and then observe the desired average.
 

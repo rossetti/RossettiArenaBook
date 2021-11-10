@@ -24,7 +24,7 @@
 <meta name="author" content="Manuel D. Rossetti" />
 
 
-<meta name="date" content="2021-11-05" />
+<meta name="date" content="2021-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -889,6 +889,7 @@ rework worker and possibly a bottleneck at the rework station.
 Certainly, such a high utilization is troublesome from a human factors
 standpoint, since worker breaks have not even been modeled! These and
 other trade-offs can be examined using simulation.</p>
+<p>In this example, the performance measure of interest was the time to make the orders. The value of TNOW at the end of the replication represents the time that all of the rings had been produced. This was observed at the end of each replication by using an OUTPUT statistic, as per Figure <a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#fig:LOTRConfig2CaptureOutput">4.87</a>. In many situations, we may want to compare performance on measures such as the average system time, the average number of jobs in the system, the resource utilization, etc. In these situations, we need to capture the average of a tally variable or a time-persistent variable at the end of the replication. As noted in Section <a href="ch3s1.html#ch3s1">3.2</a>, the functions, <code>TAVG(tally ID)</code> and <code>DAVG(dstat ID)</code> will collect the average of the within replication data. Thus, at the end of a replication, these functions hold the average performance of the corresponding tally or time-persistent variable for the current replication. Thus, you can use <code>TAVG(tally ID)</code> and <code>DAVG(dstat ID)</code> in the expression field of the OUTPUT statistic module, as per Figure <a href="comparing-two-alternative-configurations-for-the-lotr-makers.html#fig:LOTRConfig2CaptureOutput">4.87</a>, to capture the across replication statistics to a file for post processing using the Output Analyzer. This will be useful in some of the exercises associated with this chapter.</p>
 <p>In order to try to ensure a stronger variance reduction when using
 common random numbers, there are a number of additional implementation
 techniques that can be applied. For example, to help ensure that the

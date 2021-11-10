@@ -1211,7 +1211,7 @@ the ability to compute,
 
 $$\overline{y}\left( t_{b},t_{e} \right) = \frac{\int_{t_{b}}^{t_{e}}{y\left( t \right)\text{dt}}}{t_{e} - t_{b}} = \frac{a\left( t_{e} \right) - a\left( t_{b} \right)}{t_{e} - t_{b}}$$
 
-Again, a strategy of scheduling events for $t_{e}$ and $t_{e}$ can allow
+Again, a strategy of scheduling events for $t_{b}$ and $t_{e}$ can allow
 you to observe the required quantities at the beginning and end of the
 period and then observe the desired average.
 
