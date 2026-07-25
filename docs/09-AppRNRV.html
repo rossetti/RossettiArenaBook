@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An open textbook on discrete-event simulation modeling using Arena.">
+
+<title>Appendix A — Generating Pseudo-Random Numbers and Random Variates – Simulation Modeling and Arena</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-AppDistributionFitting.html" rel="next">
+<link href="./08-Chapter8.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-10629767a8d3d760d9707fc59134ae44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="mathjax/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./09-AppRNRV.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Simulation Modeling and Arena</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-author.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Simulation and Arena</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical Analysis for Finite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modeling Systems with Processes and Basic Entity Flow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Analysis for Infinite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling Systems with Advanced Process Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modeling Systems with Entity Movement and Material Handling Constructs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Chapter8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-AppRNRV.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-AppDistributionFitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-QueuingTheory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-MiscTopicsInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-FunctionsAndModulesInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-CommonDistributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-StatisticalTables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-rnrv-rn" id="toc-sec-rnrv-rn" class="nav-link active" data-scroll-target="#sec-rnrv-rn"><span class="header-section-number">A.1</span> Pseudo Random Numbers</a>
+  <ul>
+  <li><a href="#sec-rnrv-rngs" id="toc-sec-rnrv-rngs" class="nav-link" data-scroll-target="#sec-rnrv-rngs"><span class="header-section-number">A.1.1</span> Random Number Generators</a></li>
+  </ul></li>
+  <li><a href="#sec-rnrv-rvs" id="toc-sec-rnrv-rvs" class="nav-link" data-scroll-target="#sec-rnrv-rvs"><span class="header-section-number">A.2</span> Generating Random Variates from Distributions</a>
+  <ul>
+  <li><a href="#inverse-transform-method" id="toc-inverse-transform-method" class="nav-link" data-scroll-target="#inverse-transform-method"><span class="header-section-number">A.2.1</span> Inverse Transform Method</a></li>
+  <li><a href="#convolution" id="toc-convolution" class="nav-link" data-scroll-target="#convolution"><span class="header-section-number">A.2.2</span> Convolution</a></li>
+  <li><a href="#acceptancerejection" id="toc-acceptancerejection" class="nav-link" data-scroll-target="#acceptancerejection"><span class="header-section-number">A.2.3</span> Acceptance/Rejection</a></li>
+  <li><a href="#sec-subsec-MTSRV" id="toc-sec-subsec-MTSRV" class="nav-link" data-scroll-target="#sec-subsec-MTSRV"><span class="header-section-number">A.2.4</span> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">A.3</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">A.4</span> Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./09-AppRNRV.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-rnrv" class="quarto-section-identifier">Appendix A — Generating Pseudo-Random Numbers and Random Variates</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong><span class="smallcaps">Learning Objectives</span></strong></p>
+<ul>
+<li><p>To be able to describe and use linear congruential pseudo-random number generation methods</p></li>
+<li><p>To be aware of current state of the art pseudo-random number generation methods</p></li>
+<li><p>To be able to define and use key terms in pseudo-random number generation methods such as streams, seeds, period, etc.</p></li>
+<li><p>To be able to derive and implement an inverse cumulative distribution function based random variate generation algorithm</p></li>
+<li><p>To be able to explain and implement the convolution algorithm for random variate generation</p></li>
+<li><p>To be able to explain and implement the acceptance rejection algorithm for random variate generation</p></li>
+</ul>
+<p>Randomness in simulation is often modeled by using random variables and probability distributions. Thus, simulation languages require the ability to generate random variates. A random variate is an instance (or realization) of a random variable. In this section, you will learn how simulation languages allow for the generation of randomness. Generating randomness requires algorithms that permit sequences of numbers to act as the underlying source of randomness within the model. Then, given a good source of randomness, techniques have been established that permit the sequences to be transformed so that they can represent a wide variety of random variables (e.g.&nbsp;normal, Poisson, etc.). The algorithms that govern these procedures are described in the second part of this chapter.</p>
+<section id="sec-rnrv-rn" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="sec-rnrv-rn"><span class="header-section-number">A.1</span> Pseudo Random Numbers</h2>
+<p>This section indicates how uniformly distributed random numbers over the range from 0 to 1 are obtained within simulation programs. While commercial simulation packages provide substantial capabilities for generating random numbers, we still need to understand how this process works for the following reasons:</p>
+<ol type="1">
+<li><p>The random numbers within a simulation experiment might need to be controlled in order to take advantage of them to improve decision making.</p></li>
+<li><p>In some situations, the commercial package does not have ready made functions for generating the desired random variables. In these situations, you will have to implement an algorithm to generate the random variates.</p></li>
+</ol>
+<p>In addition, simulation is much broader than just using a commercial package. You can perform simulation in any computer language and spreadsheets. The informed modeler should know how the key inputs to simulation models are generated.</p>
+<p>In simulation, large amount of cheap (easily computed) random numbers are required. In general, consider how random numbers might be obtained:</p>
+<ol type="1">
+<li><p>Dice, coins, colored balls</p></li>
+<li><p>Specially designed electronic equipment</p></li>
+<li><p>Algorithms</p></li>
+</ol>
+<p>Clearly, within the context of computer simulation, it might be best to rely on algorithms; however, if an algorithm is used to generate the random numbers then they will not be truly random. For this reason, the random numbers that are used in computer simulation are called <em>pseudo random</em>.</p>
+<hr>
+<div id="def-PRN" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition A.1 (Pseudo-Random Numbers)</strong></span> A sequence of pseudo-random numbers, <span class="math inline">\(U_{i}\)</span>, is a deterministic sequence of numbers in <span class="math inline">\((0,1)\)</span> having the same relevant statistical properties as a sequence of truly random <span class="math inline">\(U(0,1)\)</span> numbers.(<span class="citation" data-cites="ripley1987stochastic">(<a href="references.html#ref-ripley1987stochastic" role="doc-biblioref">Ripley, 1987</a>)</span>)</p>
+</div>
+<hr>
+<p>A set of statistical tests are performed on the pseudo-random numbers generated from algorithms in order to indicate that their properties are not significantly different from a true set of <span class="math inline">\(U(0,1)\)</span> random numbers. The <em>algorithms</em> that produce pseudo-random numbers are called <em>random number generators</em>. In addition to passing a battery of statistical tests, the random number generators need to be fast and they need to be able to reproduce a sequence of numbers if and when necessary.</p>
+<p>The following section discusses random number generation methods. The approach will be practical, with just enough theory to motivate future study of this area and to allow you to understand the important implications of random number generation. A more rigorous treatment of random number and random variable generation can be found such texts as <span class="citation" data-cites="fishman2006first">(<a href="references.html#ref-fishman2006first" role="doc-biblioref">Fishman, 2006</a>)</span> and <span class="citation" data-cites="devroye1986nonuniform">(<a href="references.html#ref-devroye1986nonuniform" role="doc-biblioref">Devroye, 1986</a>)</span>.</p>
+<section id="sec-rnrv-rngs" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="sec-rnrv-rngs"><span class="header-section-number">A.1.1</span> Random Number Generators</h3>
+<p>Over the history of scientific computing, there have been a wide variety of techniques and algorithms proposed and used for generating pseudo-random numbers. A common technique that has been used (and is still in use) within a number of simulation environments is discussed in this text. Some new types of generators that have been recently adopted within many simulation environments, especially the one used within the <a href="https://rossetti.git-pages.uark.edu/jslbookdownbook/">JSL</a> and Arena, will also be briefly discussed.</p>
+<p>A linear congruential generator (LCG) is a recursive algorithm for producing a sequence of pseudo random numbers. Each new pseudo random number from the algorithm depends on the previous pseudo random number. Thus, a starting value called the <em>seed</em> is required. Given the value of the seed, the rest of the sequence of pseudo random numbers can be completely determined by the algorithm. The basic definition of an LCG is as follows</p>
+<hr>
+<div id="def-LCG" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition A.2 (Linear Congruential Generator)</strong></span> A LCG defines a sequence of integers, <span class="math inline">\(R_{0}, R_{1}, \ldots\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(m-1\)</span> according to the following recursive relationship:</p>
+<p><span class="math display">\[
+R_{i+1} = \left(a R_{i} + c\right)\bmod m
+\]</span></p>
+<p>where <span class="math inline">\(R_{0}\)</span> is called the seed of the sequence, <span class="math inline">\(a\)</span> is called the constant multiplier, <span class="math inline">\(c\)</span> is called the increment, and <span class="math inline">\(m\)</span> is called the modulus. <span class="math inline">\(\left(m, a, c, R_{0}\right)\)</span> are integers with <span class="math inline">\(a &gt; 0\)</span>, <span class="math inline">\(c \geq 0\)</span>, <span class="math inline">\(m &gt; a\)</span>, <span class="math inline">\(m &gt; c\)</span>, <span class="math inline">\(m &gt; R_{0}\)</span>, and <span class="math inline">\(0 \leq R_{i} \leq m-1\)</span>.</p>
+<p>To compute a corresponding pseudo-random uniform number, we use</p>
+<p><span class="math display">\[
+U_{i} = \frac{R_{i}}{m}
+\]</span></p>
+</div>
+<hr>
+<p>Notice that an LCG defines a sequence of integers and subsequently a sequence of real (rational) numbers that can be considered pseudo random numbers. Remember that pseudo random numbers are those that can “fool” a battery of statistical tests. The choice of the seed, constant multiplier, increment, and modulus, i.e.&nbsp;the parameters of the LCG, will determine the properties of the sequences produced by the generator. With properly chosen parameters, an LCG can be made to produce pseudo random numbers. To make this concrete, let’s look at a simple example of an LCG.</p>
+<hr>
+<div id="exm-SimpleLCG" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.1 (Simple LCG Example)</strong></span> Consider an LCG with the following parameters <span class="math inline">\((m = 8\)</span>, <span class="math inline">\(a = 5\)</span>, <span class="math inline">\(c = 1\)</span>, <span class="math inline">\(R_{0} = 5)\)</span>. Compute the first nine values for <span class="math inline">\(R_{i}\)</span> and <span class="math inline">\(U_{i}\)</span> from the defined sequence.</p>
+</div>
+<hr>
+<p>Let’s first remember how to compute using the <span class="math inline">\(\text{mod}\)</span> operator. The <span class="math inline">\(\text{mod}\)</span> operator is defined as:</p>
+<p><span class="math display">\[
+z = y \bmod m = y - m \left \lfloor \dfrac{y}{m} \right \rfloor
+\]</span></p>
+<p>where <span class="math inline">\(\lfloor x \rfloor\)</span> is the floor operator, which returns the greatest integer that is less than or equal to <span class="math inline">\(x\)</span>. For example,</p>
+<p><span class="math display">\[
+\begin{split}
+z &amp; = 17 \bmod 3 \\
+  &amp; = 17 - 3 \left \lfloor \frac{17}{3} \right \rfloor \\
+  &amp; = 17 - 3 \lfloor 5.\overline{66} \rfloor \\
+  &amp; = 17 - 3 \times 5 = 2
+\end{split}
+\]</span></p>
+<p>Thus, the <span class="math inline">\(\text{mod}\)</span> operator returns the integer remainder (including zero) when <span class="math inline">\(y \geq m\)</span> and <span class="math inline">\(y\)</span> when <span class="math inline">\(y &lt; m\)</span>. For example, <span class="math inline">\(z = 6 \bmod 9 = 6 - 9 \left\lfloor \frac{6}{9} \right\rfloor = 6 - 9 \times 0 = 6\)</span>.</p>
+<p>Using the parameters of the LCG, the pseudo-random numbers are:</p>
+<p><span class="math display">\[
+\begin{split}
+  {R_1} &amp; = (5{R_0} + 1)\bmod 8 = 26\bmod 8 = 2 \Rightarrow {U_1} = 0.25  \\
+  {R_2} &amp; =  (5{R_1} + 1)\bmod 8 = 11\bmod 8 = 3 \Rightarrow {U_2} = 0.375  \\
+  {R_3} &amp; =  (5{R_2} + 1)\bmod 8 = 16\bmod 8 = 0 \Rightarrow {U_3} = 0.0  \\
+  {R_4} &amp; =  (5{R_3} + 1)\bmod 8 = 1\bmod 8 = 1 \Rightarrow {U_4} = 0.125  \\
+  {R_5} &amp; =  6 \Rightarrow {U_5} = 0.75 \\
+  {R_6} &amp; =  7 \Rightarrow {U_6} = 0.875 \\
+  {R_7} &amp; =  4 \Rightarrow {U_7} = 0.5 \\
+  {R_8} &amp; =  5 \Rightarrow {U_8} = 0.625 \\
+  {R_9} &amp; =  2 \Rightarrow {U_9} = 0.25
+\end{split}
+\]</span></p>
+<p>In the previous example, the <span class="math inline">\(U_{i}\)</span> are simple fractions involving <span class="math inline">\(m = 8\)</span>. Certainly, this sequence does not appear very random. The <span class="math inline">\(U_{i}\)</span> can only take on rational values in the range, <span class="math inline">\(0,\tfrac{1}{m}, \tfrac{2}{m}, \tfrac{3}{m}, \ldots, \tfrac{(m-1)}{m}\)</span> since <span class="math inline">\(0 \leq R_{i} \leq m-1\)</span>. This implies that if <span class="math inline">\(m\)</span> is small there will be gaps on the interval <span class="math inline">\(\left[0,1\right)\)</span>, and if <span class="math inline">\(m\)</span> is large then the <span class="math inline">\(U_{i}\)</span> will be more densely distributed on <span class="math inline">\(\left[0,1\right)\)</span>.</p>
+<p>Notice that if a sequence generates the same value as a previously generated value then the sequence will repeat or cycle. An important property of a LCG is that it has a long cycle, as close to length <span class="math inline">\(m\)</span> as possible. The length of the cycle is called the <em>period</em> of the LCG. Ideally the period of the LCG is equal to <span class="math inline">\(m\)</span>. If this occurs, the LCG is said to achieve its full period. As can be seen in the example, the LCG is full period. Until recently, most computers were 32 bit machines and thus a common value for <span class="math inline">\(m\)</span> is <span class="math inline">\(2^{31} - 1 = 2,147,483,647\)</span>, which represents the largest integer number on a 32 bit computer using 2’s complement integer arithmetic. This choice of <span class="math inline">\(m\)</span> also happens to be a prime number, which leads to special properties.</p>
+<p>A proper choice of the parameters of the LCG will allow desirable pseudo random number properties to be obtained. The following result due to <span class="citation" data-cites="hull1962random">(<a href="references.html#ref-hull1962random" role="doc-biblioref">Hull &amp; Dobell, 1962</a>)</span>, see also <span class="citation" data-cites="law2007simulation">(<a href="references.html#ref-law2007simulation" role="doc-biblioref">Law, 2007</a>)</span>, indicates how to check if a LCG will have the largest possible cycle.</p>
+<hr>
+<div id="thm-LCGThm" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.1 (LCG Theorem)</strong></span> An LCG has full period if and only if the following three conditions hold: (1) The only positive integer that (exactly) divides both <span class="math inline">\(m\)</span> and <span class="math inline">\(c\)</span> is 1 (i.e.&nbsp;<span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> have no common factors other than 1), (2) If <span class="math inline">\(q\)</span> is a prime number that divides <span class="math inline">\(m\)</span> then <span class="math inline">\(q\)</span> should divide <span class="math inline">\((a-1)\)</span>. (i.e.&nbsp;<span class="math inline">\((a-1)\)</span> is a multiple of every prime number that divides <span class="math inline">\(m\)</span>), and (3) If 4 divides <span class="math inline">\(m\)</span>, then 4 should divide <span class="math inline">\((a-1)\)</span>. (i.e.&nbsp;<span class="math inline">\((a-1)\)</span> is a multiple of 4 if <span class="math inline">\(m\)</span> is a multiple of 4)</p>
+</div>
+<hr>
+<p>Now, let’s apply this theorem to the example LCG and check whether or not it should obtain full period. To apply the theorem, you must check if each of the three conditions holds for the generator.</p>
+<ul>
+<li><p>Condition 1: <span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> have no common factors other than 1.<br>
+The factors of <span class="math inline">\(m=8\)</span> are <span class="math inline">\((1, 2, 4, 8)\)</span>, since <span class="math inline">\(c=1\)</span> (with factor 1) condition 1 is true.</p></li>
+<li><p>Condition 2: <span class="math inline">\((a-1)\)</span> is a multiple of every prime number that divides <span class="math inline">\(m\)</span>. The first few prime numbers are (1, 2, 3, 5, 7). The prime numbers, <span class="math inline">\(q\)</span>, that divide <span class="math inline">\(m=8\)</span> are <span class="math inline">\((q =1, 2)\)</span>. Since <span class="math inline">\(a=5\)</span> and <span class="math inline">\((a-1)=4\)</span>, clearly <span class="math inline">\(q = 1\)</span> divides <span class="math inline">\(4\)</span> and <span class="math inline">\(q = 2\)</span> divides <span class="math inline">\(4\)</span>. Thus, condition 2 is true.</p></li>
+<li><p>Condition 3: If <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>, then <span class="math inline">\(4\)</span> should divide <span class="math inline">\((a-1)\)</span>.<br>
+Since <span class="math inline">\(m=8\)</span>, clearly <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>. Also, <span class="math inline">\(4\)</span> divides <span class="math inline">\((a-1)= 4\)</span>. Thus, condition 3 holds.</p></li>
+</ul>
+<p>Since all three conditions hold, the LCG achieves full period.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The theorem only tells us when a specification of <span class="math inline">\((a, c, m)\)</span> will obtain full period. In case (3), it does not tell us anything about what happens if <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, If <span class="math inline">\(4\)</span> divides <span class="math inline">\(m\)</span>, and we pick <span class="math inline">\(a\)</span> so that it divides <span class="math inline">\((a-1)\)</span> then the condition will be met. If <span class="math inline">\(4\)</span> does not divide <span class="math inline">\(m\)</span>, then the theorem really does not tell us one way or the other whether the LCG obtains full period.</p>
+</div>
+</div>
+<p>There are some simplifying conditions, see <span class="citation" data-cites="banks2005discreteevent">Banks et al. (<a href="references.html#ref-banks2005discreteevent" role="doc-biblioref">2005</a>)</span>, which allow for easier application of the theorem. For <span class="math inline">\(m = 2^{b}\)</span>, (<span class="math inline">\(m\)</span> a power of 2) and <span class="math inline">\(c\)</span> not equal to 0, the longest possible period is <span class="math inline">\(m\)</span> and can be achieved provided that <span class="math inline">\(c\)</span> is chosen so that the greatest common factor of <span class="math inline">\(c\)</span> and <span class="math inline">\(m\)</span> is 1 and <span class="math inline">\(a=4k+1\)</span> where <span class="math inline">\(k\)</span> is an integer. The previous example LCG satisfies this situation.</p>
+<p>For <span class="math inline">\(m = 2^{b}\)</span> and <span class="math inline">\(c = 0\)</span>, the longest possible period is <span class="math inline">\((m/4)\)</span> and can be achieved provided that the initial seed, <span class="math inline">\(R_{0}\)</span> is odd and <span class="math inline">\(a=8k + 3\)</span> or <span class="math inline">\(a=8k + 5\)</span> where <span class="math inline">\(k = 0, 1, 2,\cdots\)</span>.</p>
+<p>The case of <span class="math inline">\(m\)</span> a prime number and <span class="math inline">\(c = 0\)</span>, defines a special case of the LCG called a <em>prime modulus multiplicative linear congruential generator</em> (PMMLCG). For this case, the longest possible period is <span class="math inline">\(m-1\)</span> and can be achieved if the smallest integer, <span class="math inline">\(k\)</span>, such that <span class="math inline">\(a^{k} -1\)</span> is divisible by <span class="math inline">\(m\)</span> is <span class="math inline">\(m-1\)</span>.</p>
+<p>Thirty-Two bit computers have been very common for over 20 years. In addition, <span class="math inline">\(2^{31} - 1\)</span> = <span class="math inline">\(2,147,483,647\)</span> is a prime number. Because of this, <span class="math inline">\(2^{31} - 1\)</span> has been the choice for <span class="math inline">\(m\)</span> with <span class="math inline">\(c=0\)</span>. Two common values for the multiplier, <span class="math inline">\(a\)</span>, have been:</p>
+<p><span class="math display">\[
+\begin{split}
+a &amp; = 630,360,016\\
+a &amp; = 16,807\\
+\end{split}
+\]</span></p>
+<p>The latter of which was used within many simulation packages for a number of years. Notice that for PMMLCG’s the full period cannot be achieved (because <span class="math inline">\(c=0\)</span>), but with the proper selection of the multiplier, the next best period length of <span class="math inline">\(m-1\)</span> can be obtained. In addition, for this case <span class="math inline">\(R_{0} \in \lbrace 1, 2,\ldots , m-1\rbrace\)</span> and thus <span class="math inline">\(U_{i} \in (0,1)\)</span>. The limitation of <span class="math inline">\(U_{i} \in (0,1)\)</span> is very useful when generating random variables from various probability distributions, since <span class="math inline">\(0\)</span> cannot be realized. When using an LCG, you must supply a starting seed as an initial value for the algorithm. This seed determines the sequence that will come out of the generator when it is called within software. Since generators cycle, you can think of the sequence as a big circular list as indicated in <a href="#fig-LCGCycle" class="quarto-xref">Figure&nbsp;<span>A.1</span></a>.</p>
+<div id="fig-LCGCycle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LCGCycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppRNRV/LCGCycle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LCGCycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.1: Sequence for Simple LCG Example
+</figcaption>
+</figure>
+</div>
+<p>Starting with seed <span class="math inline">\(R_{0} = 5\)</span>, you get a sequence <span class="math inline">\(\{2, 3, 0, 1, 6, 7, 4, 5\}\)</span>. Starting with seed, <span class="math inline">\(R_{0}=1\)</span>, you get the sequence <span class="math inline">\(\{6, 7, 4, 5, 2, 3, 0, 1\}\)</span>. Notice that these two sequences overlap with each other, but that the first half <span class="math inline">\(\{2, 3, 0, 1\}\)</span> and the second half <span class="math inline">\(\{6, 7, 4, 5\}\)</span> of the sequence do not overlap. If you only use 4 random numbers from each of these two <em>subsequences</em> then the numbers will not overlap. This leads to the definition of a stream:</p>
+<hr>
+<div class="definition" name="Stream">
+<p>The subsequence of random numbers generated from a given seed is called a random number stream.</p>
+</div>
+<hr>
+<p>You can take the sequence produced by the random number generator and divide it up into subsequences by associating certain seeds with streams. You can call the first subsequence stream 1 and the second subsequence stream 2, and so forth. Each stream can be further divided into subsequences or sub-streams of non-overlapping random numbers.</p>
+<p>In this simple example, it is easy to remember that stream 1 is defined by seed, <span class="math inline">\(R_{0} = 5\)</span>, but when <span class="math inline">\(m\)</span> is large, the seeds will be large integer numbers, e.g.&nbsp;<span class="math inline">\(R_{0} = 123098345\)</span>. It is difficult to remember such large numbers. Rather than remember this huge integer, an assignment of stream numbers to seeds is made. Then, the sequence can be reference by its stream number. Naturally, if you are going to associate seeds with streams you would want to divide the entire sequence so that the number of non-overlapping random numbers in each stream is quite large. This ensures that as a particular stream is used that there is very little chance of continuing into the next stream. Clearly, you want <span class="math inline">\(m\)</span> to be as large as possible and to have many streams that contain as large as possible number of non-overlapping random numbers. With today’s modern computers even <span class="math inline">\(m\)</span> is <span class="math inline">\(2^{31} - 1 = 2,147,483,647\)</span> is not very big. For large simulations, you can easily run through all these random numbers.</p>
+<p>Random number generators in computer simulation languages come with a default set of streams that divide the “circle” up into independent sets of random numbers. The streams are only independent if you do not use up all the random numbers within the subsequence. These streams allow the randomness associated with a simulation to be controlled. During the simulation, you can associate a specific stream with specific random processes in the model. This has the advantage of allowing you to check if the random numbers are causing significant differences in the outputs. In addition, this allows the random numbers used across alternative simulations to be better synchronized.</p>
+<p>Now a common question for beginners using random number generators can be answered. That is, <em>If the simulation is using random numbers, why to I get the same results each time I run my program?</em> The corollary to this question is, <em>If I want to get different random results each time I run my program, how do I do it?</em> The answer to the first question is that the underlying random number generator is starting with the same seed each time you run your program. Thus, your program will use the same pseudo random numbers today as it did yesterday and the day before, etc. The answer to the corollary question is that you must tell the random number generator to use a different seed (or alternatively a different stream) if you want different invocations of the program to produce different results. The latter is not necessarily a desirable goal. For example, when developing your simulation programs, it is desirable to have repeatable results so that you can know that your program is working correctly. Unfortunately, many novices have heard about using the computer clock to “randomly” set the seed for a simulation program. This is a <em>bad</em> idea and very much not recommended in our context. This idea is more appropriate within a gaming simulation, in order to allow the human gamer to experience different random sequences.</p>
+<p>Given current computing power, the previously discussed PMMLCGs are insufficient since it is likely that all the 2 billion or so of the random numbers would be used in performing serious simulation studies. Thus, a new generation of random number generators was developed that have extremely long periods. The random number generator described in <span class="citation" data-cites="ecuyer2002an">L’Ecuyer et al. (<a href="references.html#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> is one example of such a generator. It is based on the combination of two multiple recursive generators resulting in a period of approximately <span class="math inline">\(3.1 \times 10^{57}\)</span>. This is the same generator that is now used in many commercial simulation packages. The generator as defined in <span class="citation" data-cites="law2007simulation">(<a href="references.html#ref-law2007simulation" role="doc-biblioref">Law, 2007</a>)</span> is:</p>
+<p><span class="math display">\[
+\begin{split}
+R_{1,i}&amp;=(1,403,580 R_{1,i-2} - 810,728 R_{1,i-3})[\bmod (2^{32}-209)]\\
+R_{2,i}&amp;=(527,612R_{2,i-1} - 1,370,589 R_{2,i-3})[\bmod (2^{32}-22,853)]\\
+Y_i &amp;=(R_{1,i}-R_{2,i})[\bmod(2^{32}-209)]\\
+U_i&amp;=\frac{Y_i}{2^{32}-209}
+\end{split}
+\]</span> The generator takes as its initial seed a vector of six initial values <span class="math inline">\((R_{1,0}, R_{1,1}, R_{1,2}, R_{2,0}, R_{2,1}, R_{2,2})\)</span>. The first initially generated value, <span class="math inline">\(U_{i}\)</span>, will start at index <span class="math inline">\(3\)</span>. To produce five pseudo random numbers using this generator we need an initial seed vector, such as: <span class="math display">\[\lbrace R_{1,0}, R_{1,1}, R_{1,2}, R_{2,0}, R_{2,1}, R_{2,2} \rbrace = \lbrace 12345, 12345, 12345, 12345, 12345, 12345\rbrace\]</span></p>
+<p>Using the recursive equations, the resulting random numbers are as follows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">i=3</th>
+<th style="text-align: center;">i=4</th>
+<th style="text-align: center;">i=5</th>
+<th style="text-align: center;">i=6</th>
+<th style="text-align: center;">i=7</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i-3}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3023790853</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{1,i-2}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3385359573</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i-1}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3385359573</td>
+<td style="text-align: center;">1322208174</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i-3}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">2478282264</td>
+<td style="text-align: center;">1655725443</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{2,i-2}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">2478282264</td>
+<td style="text-align: center;">1655725443</td>
+<td style="text-align: center;">2057415812</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i-1}=\)</span></td>
+<td style="text-align: center;">12345</td>
+<td style="text-align: center;">2478282264</td>
+<td style="text-align: center;">1655725443</td>
+<td style="text-align: center;">2057415812</td>
+<td style="text-align: center;">2070190165</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z_{1,i}=\)</span></td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3023790853</td>
+<td style="text-align: center;">3385359573</td>
+<td style="text-align: center;">1322208174</td>
+<td style="text-align: center;">2930192941</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Z_{2,i}=\)</span></td>
+<td style="text-align: center;">2478282264</td>
+<td style="text-align: center;">1655725443</td>
+<td style="text-align: center;">2057415812</td>
+<td style="text-align: center;">2070190165</td>
+<td style="text-align: center;">1978299747</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_i=\)</span></td>
+<td style="text-align: center;">545508589</td>
+<td style="text-align: center;">1368065410</td>
+<td style="text-align: center;">1327943761</td>
+<td style="text-align: center;">3546985096</td>
+<td style="text-align: center;">951893194</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(U_i=\)</span></td>
+<td style="text-align: center;">0.127011122076</td>
+<td style="text-align: center;">0.318527565471</td>
+<td style="text-align: center;">0.309186015655</td>
+<td style="text-align: center;">0.82584686312</td>
+<td style="text-align: center;">0.221629915834</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>While it is beyond the scope of this text to explore the theoretical underpinnings of this generator, it is important to note that the use of this new generator is conceptually similar to that which has already been described. The generator allows multiple independent streams to be defined along with sub-streams.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A random number stream is a sub-sequence of pseudo-random numbers that start at particular place with a larger sequence of pseudo-random numbers. The starting point of a sequence of pseudo-random numbers is called the <em>seed</em>. A seed allows us to pick a particular stream. Having multiple streams is useful to assign different streams to different sources of randomness within a model. Streams can be further divided into sub-streams. This facilitates the control of the use of pseudo-random numbers when performing experiments.</p>
+</div>
+</div>
+<p>The fantastic thing about this generator is the sheer size of the period. Based on their analysis, <span class="citation" data-cites="ecuyer2002an">L’Ecuyer et al. (<a href="references.html#ref-ecuyer2002an" role="doc-biblioref">2002</a>)</span> state that it will be “approximately 219 years into the future before average desktop computers will have the capability to exhaust the cycle of the (generator) in a year of continuous computing.” In addition to the period length, the generator has an enormous number of streams, approximately <span class="math inline">\(1.8 \times 10^{19}\)</span> with stream lengths of <span class="math inline">\(1.7 \times 10^{38}\)</span> and sub-streams of length <span class="math inline">\(7.6 \times 10^{22}\)</span> numbering at <span class="math inline">\(2.3 \times 10^{15}\)</span> per stream. Clearly, with these properties, you do not have to worry about overlapping random numbers when performing simulation experiments. The generator was subjected to a rigorous battery of statistical tests and is known to have excellent statistical properties. The subject of modeling and testing different distributions is deferred to a separate part of this book.</p>
+</section>
+</section>
+<section id="sec-rnrv-rvs" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="sec-rnrv-rvs"><span class="header-section-number">A.2</span> Generating Random Variates from Distributions</h2>
+<p>In simulation, pseudo random numbers serve as the foundation for generating samples from probability distribution models. We will now assume that the random number generator has been rigorously tested and that it produces sequences of <span class="math inline">\(U_{i} \sim U(0,1)\)</span> numbers. We now want to take the <span class="math inline">\(U_{i} \sim U(0,1)\)</span> and utilize them to generate from probability distributions.</p>
+<p>The realized value from a probability distribution is called a random variate. Simulations use many different probability distributions as inputs. Thus, methods for generating random variates from distributions are required. Different distributions may require different algorithms due to the challenges of efficiently producing the random variables. Therefore, we need to know how to generate samples from probability distributions. In generating random variates the goal is to produce samples <span class="math inline">\(X_{i}\)</span> from a distribution <span class="math inline">\(F(x)\)</span> given a source of random numbers, <span class="math inline">\(U_{i} \sim U(0,1)\)</span>. There are four basic strategies or methods for producing random variates:</p>
+<ol type="1">
+<li>Inverse transform or inverse cumulative distribution function (CDF) method</li>
+<li>Convolution</li>
+<li>Acceptance/Rejection</li>
+<li>Mixture and Truncated Distributions</li>
+</ol>
+<p>The following sections discuss each of these methods.</p>
+<section id="inverse-transform-method" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="inverse-transform-method"><span class="header-section-number">A.2.1</span> Inverse Transform Method</h3>
+<p>The inverse transform method is the preferred method for generating random variates provided that the inverse transform of the cumulative distribution function can be easily derived or computed numerically. The key advantage for the inverse transform method is that for every <span class="math inline">\(U_{i}\)</span> use a corresponding <span class="math inline">\(X_{i}\)</span> will be generated. That is, there is a one-to-one mapping between the pseudo-random number <span class="math inline">\(u_i\)</span> and the generated variate <span class="math inline">\(x_i\)</span>.</p>
+<p>The inverse transform technique utilizes the inverse of the cumulative distribution function as illustrated in <a href="#fig-InvTrans" class="quarto-xref">Figure&nbsp;<span>A.2</span></a>, will illustrates simple cumulative distribution function. First, generate a number, <span class="math inline">\(u_{i}\)</span> between 0 and 1 (along the <span class="math inline">\(U\)</span> axis), then find the corresponding <span class="math inline">\(x_{i}\)</span> coordinate by using <span class="math inline">\(F^{-1}(\cdot)\)</span>. For various values of <span class="math inline">\(u_{i}\)</span>, the <span class="math inline">\(x_{i}\)</span> will be properly ‘distributed’ along the x-axis. The beauty of this method is that there is a one to one mapping between <span class="math inline">\(u_{i}\)</span> and <span class="math inline">\(x_{i}\)</span>. In other words, for each <span class="math inline">\(u_{i}\)</span> there is a unique <span class="math inline">\(x_{i}\)</span> because of the monotone property of the CDF.</p>
+<div id="fig-InvTrans" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-InvTrans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppRNRV/invTransFig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-InvTrans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.2: Inverse Transform Method
+</figcaption>
+</figure>
+</div>
+<p>The idea illustrated in <a href="#fig-InvTrans" class="quarto-xref">Figure&nbsp;<span>A.2</span></a> is based on the following theorem.</p>
+<hr>
+<div id="thm-InvTransThm" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.2 (Inverse Transform)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with <span class="math inline">\(X \sim F(x)\)</span>. Define another random variable <span class="math inline">\(Y\)</span> such that <span class="math inline">\(Y = F(X)\)</span>. That is, Y is determined by evaluating the function <span class="math inline">\(F(\cdot)\)</span> at the value <span class="math inline">\(X\)</span>. If <span class="math inline">\(Y\)</span> is defined in this manner, then <span class="math inline">\(Y \sim U(0,1)\)</span>.</p>
+</div>
+<hr>
+<p>The proof utilizes the definition of the cumulative distribution function to derive the CDF for <span class="math inline">\(Y\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+F(y) &amp; = P\left\{Y \leq y \right\}  \\
+    &amp; = P\left\{F(X) \leq y\right\}  \; \text{substitute for } Y \\
+    &amp; = P\left\{F^{-1}(F(X)) \leq F^{-1}(y)\right\}  \; \text{apply inverse} \\
+    &amp; = P\left\{X \leq F^{-1}(y)\right\}  \; \text{definition of inverse} \\
+    &amp; = F(F^{-1}(y)) \; \text{definition of CDF}\\
+    &amp; = y \; \text{definition of inverse}
+\end{split}
+\]</span> Since <span class="math inline">\(P(Y \leq y) = y\)</span> defines a <span class="math inline">\(U(0,1)\)</span> random variable, the proof is complete.</p>
+<p>This result also works in reverse if you start with a uniformly distributed random variable then you can get a random variable with the distribution of <span class="math inline">\(F(x)\)</span>. The idea is to generate <span class="math inline">\(U_{i} \sim U(0,1)\)</span> and then to use the inverse cumulative distribution function to transform the random number to the appropriately distributed random variate.</p>
+<p>Let’s assume that we have a function, <em>randU01()</em>, that will provide pseudo-random numbers on the range (0,1). Then, the following presents the pseudo-code for the inverse transform algorithm.</p>
+<div class="line-block">1. <span class="math inline">\(u = rand01()\)</span><br>
+2. <span class="math inline">\(x = F^{-1}(u)\)</span><br>
+3. return <span class="math inline">\(x\)</span></div>
+<p>&nbsp;</p>
+<p>Line 1 generates a uniform number. Line 2 takes the inverse of <span class="math inline">\(u\)</span> and line 3 returns the random variate. The following example illustrates the inverse transform method for the exponential distribution.</p>
+<p>The exponential distribution is often used to model the time until and event (e.g.&nbsp;time until failure, time until an arrival etc.) and has the following probability density function:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+0.0 &amp; \text{if} \left\{x &lt; 0\right\}\\
+\lambda e^{-\lambda x} &amp; \text{if} \left\{x \geq 0 \right\} \\
+\end{cases}
+\]</span> with <span class="math display">\[
+\begin{split}
+E\left[X\right] &amp;= \frac{1}{\lambda} \\
+Var\left[X\right] &amp;= \frac{1}{\lambda^2}
+\end{split}
+\]</span></p>
+<hr>
+<div id="exm-ExpInvCDF" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.2 (Generating Exponential Random Variates)</strong></span> Consider a random variable, <span class="math inline">\(X\)</span>, that represents the time until failure for a machine tool. Suppose <span class="math inline">\(X\)</span> is exponentially distributed with an expected value of <span class="math inline">\(1.\overline{33}\)</span>. Generate a random variate for the time until the first failure using a uniformly distributed value of <span class="math inline">\(u = 0.7\)</span>.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-ExpInvCDF" class="quarto-xref">Example&nbsp;<span>A.2</span></a></strong> In order to solve this problem, we must first compute the CDF for the exponential distribution. For any value, <span class="math inline">\(b &lt; 0\)</span>, we have by definition:</p>
+<p><span class="math display">\[
+F(b) = P\left\{X \le b \right\} = \int_{ - \infty }^b f(x)\;dx = \int\limits_{ - \infty }^b {0 dx} = 0
+\]</span> For any value <span class="math inline">\(b \geq 0\)</span>,</p>
+<p><span class="math display">\[
+\begin{split}
+F(b) &amp; =  P\left\{X \le b \right\} = \int_{ - \infty }^b f(x)dx\\
+&amp;  =  \int_{ - \infty }^0 f(x)dx +  \int\limits_0^b f(x)dx \\
+&amp; =  \int\limits_{0}^{b} \lambda e^{\lambda x}dx = - \int\limits_{0}^{b} e^{-\lambda x}(-\lambda)dx\\
+&amp; =  -e^{-\lambda x} \bigg|_{0}^{b} = -e^{-\lambda b} - (-e^{0}) = 1 - e^{-\lambda b}
+\end{split}
+\]</span> Thus, the CDF of the exponential distribution is: <span class="math display">\[
+F(x) =
+\begin{cases}
+0 &amp; \text{if} \left\{x &lt; 0 \right\}\\
+1 - e^{-\lambda x} &amp; \text{if} \left\{x \geq 0\right\}\\
+\end{cases}
+\]</span> Now the inverse of the CDF can be derived by setting <span class="math inline">\(u = F(x)\)</span> and solving for <span class="math inline">\(x = F^{-1}(u)\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+u &amp; = 1 - e^{-\lambda x}\\
+x &amp; = \frac{-1}{\lambda}\ln \left(1-u \right) = F^{-1}(u)
+\end{split}
+\]</span> For <a href="#exm-ExpInvCDF" class="quarto-xref">Example&nbsp;<span>A.2</span></a>, we have that <span class="math inline">\(E[X]= 1.\overline{33}\)</span>. Since <span class="math inline">\(E\left[X\right] = 1/\lambda\)</span> for the exponential distribution, we have that <span class="math inline">\(\lambda = 0.75\)</span>. Since <span class="math inline">\(u=0.7\)</span>, then the generated random variate, <span class="math inline">\(x\)</span>, would be:</p>
+<p><span class="math display">\[x = \frac{-1}{0.75}\ln \left(1-0.7 \right) = 1.6053\]</span> Thus, if we let <span class="math inline">\(\theta = E\left[X\right]\)</span>, the formula for generating an exponential random variate is simply:</p>
+<p><span id="eq-expRV"><span class="math display">\[
+x = \frac{-1}{\lambda}\ln \left(1-u \right) = -\theta \ln{(1-u)}
+\tag{A.1}\]</span></span></p>
+<p>In the following pseudo-code, we assume that <em>randU01()</em> is a function that returns a uniformly distributed random number over the range (0,1).</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01())\)</span><br>
+2. <span class="math inline">\(x = \frac{-1}{\lambda}\ln \left(1-u \right)\)</span><br>
+3. return <span class="math inline">\(x\)</span></div>
+<p>&nbsp;</p>
+<p>Thus, the key to applying the inverse transform technique for generating random variates is to be able to first derive the cumulative distribution function (CDF) and then to derive its inverse function. It turns out that for many common distributions, the CDF and inverse CDF well known.</p>
+<p>The uniform distribution over an interval <span class="math inline">\((a,b)\)</span> is often used to model situations where the analyst does not have much information and can only assume that the outcome is equally likely over a range of values. The uniform distribution has the following characteristics:</p>
+<p><span class="math display">\[X \sim \operatorname{Uniform}(a,b)\]</span> <span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{1}{b-a    } &amp; a \leq x \leq b\\
+0   &amp; \text{otherwise}
+\end{cases}
+\]</span> <span class="math display">\[
+\begin{split}
+E\left[X\right] &amp;= \frac{a+b}{2}\\
+Var\left[X\right] &amp;= \frac{(b-a)^{2}}{12}
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+F(x) =
+\begin{cases}
+0.0 &amp;  x &lt; a\\
+\frac{x-a}{b-a} &amp; a \leq x \leq b\\
+1.0 &amp;  x &gt; b
+\end{cases}
+\]</span></p>
+<hr>
+<div id="exm-UnifInvCDF" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.3 (Inverse CDF for Uniform Distribution)</strong></span> Consider a random variable, <span class="math inline">\(X\)</span>, that represents the amount of grass clippings in a mower bag in pounds. Suppose the random variable is uniformly distributed between 5 and 35 pounds. Generate a random variate for the weight using a pseudo-random number of <span class="math inline">\(u = 0.25\)</span>.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-UnifInvCDF" class="quarto-xref">Example&nbsp;<span>A.3</span></a></strong> To solve this problem, we must determine the inverse CDF algorithm for the <span class="math inline">\(U(a,b)\)</span> distribution. The inverse of the CDF can be derived by setting <span class="math inline">\(u = F(x)\)</span> and solving for <span class="math inline">\(x = F^{-1}(u)\)</span>. <span class="math display">\[
+\begin{split}
+u &amp; = \frac{x-a}{b-a}\\
+u(b-a) &amp;= x-a \\
+x &amp; = a + u(b-a) = F^{-1}(u)
+\end{split}
+\]</span> For the example, we have that <span class="math inline">\(a = 5\)</span> and <span class="math inline">\(b = 35\)</span> and <span class="math inline">\(u=0.25\)</span>, then the generated <span class="math inline">\(x\)</span> would be:</p>
+<p><span class="math display">\[
+F^{-1}(u) = x = 5 + 0.25\times(35 - 5) = 5 + 7.5 = 12.5
+\]</span> Notice how the value of <span class="math inline">\(u\)</span> is first scaled on the range <span class="math inline">\((0,b-a)\)</span> and then shifted to the range <span class="math inline">\((a, b)\)</span>. For the uniform distribution this transformation is linear because of the form of its <span class="math inline">\(F(x)\)</span>.</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br>
+2. <span class="math inline">\(x = a + u(b-a)\)</span><br>
+3. return <span class="math inline">\(x\)</span></div>
+<p>&nbsp;</p>
+<p>For the previous distributions a closed form representation of the cumulative distribution function was available. If the cumulative distribution function can be inverted, then the inverse transform method can be easily used to generate random variates from the distribution. If no closed form analytical formula is available for the inverse cumulative distribution function, then often we can resort to numerical methods to implement the function. For example, the normal distribution is an extremely useful distribution and numerical methods have been devised to provide its inverse cumulative distribution function.</p>
+<p>The inverse CDF method also works for discrete distributions. For a discrete random variable, <span class="math inline">\(X\)</span>, with possible values <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> (<span class="math inline">\(n\)</span> may be infinite), the probability distribution is called the probability mass function (PMF) and denoted:</p>
+<p><span class="math display">\[
+f\left( {{x_i}} \right) = P\left( {X = {x_i}} \right)
+\]</span></p>
+<p>where <span class="math inline">\(f\left( {{x_i}} \right) \ge 0\)</span> for all <span class="math inline">\({x_i}\)</span> and</p>
+<p><span class="math display">\[
+\sum\limits_{i = 1}^n {f\left({{x_i}} \right)}  = 1
+\]</span></p>
+<p>The cumulative distribution function is</p>
+<p><span class="math display">\[
+F(x) = P\left( {X \le x} \right) = \sum\limits_{{x_i} \le x} {f\left( {{x_i}} \right)}
+\]</span> and satisfies, <span class="math inline">\(0 \le F\left( x \right) \le 1\)</span>, and if <span class="math inline">\(x \le y\)</span> then <span class="math inline">\(F(x) \le F(y)\)</span>.</p>
+<p>In order to apply the inverse transform method to discrete distributions, the cumulative distribution function can be searched to find the value of <span class="math inline">\(x\)</span> associated with the given <span class="math inline">\(u\)</span>. This process is illustrated in the following example.</p>
+<hr>
+<div id="exm-DiscreteCDF" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.4 (Discrete Empirical Distribution)</strong></span> Suppose you have a random variable, <span class="math inline">\(X\)</span>, with the following discrete probability mass function and cumulative distribution function.</p>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_{i}\)</span></th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f(x_{i})\)</span></td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>Plot the probability mass function and cumulative distribution function for this random variable. Then, develop an inverse cumulative distribution function for generating from this distribution. Finally, given <span class="math inline">\(u_1 = 0.934\)</span> and <span class="math inline">\(u_2 = 0.1582\)</span> are pseudo-random numbers, generate the two corresponding random variates from this PMF.</p>
+<hr>
+<p><strong>Solution for <a href="#exm-DiscreteCDF" class="quarto-xref">Example&nbsp;<span>A.4</span></a></strong> To solve this example, we must understand the functional form of the PMF and CDF, which are given as follows:</p>
+<p><span class="math display">\[
+P\left\{X=x\right\} =
+\begin{cases}
+    0.4 &amp; \text{x = 1}\\
+    0.3 &amp; \text{x = 2}\\
+    0.2 &amp; \text{x = 3}\\
+    0.1 &amp; \text{x = 4}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+F(x) =
+\begin{cases}
+0.0 &amp; \text{if} \; x &lt; 1\\
+0.4 &amp; \text{if} \; 1 \le x &lt; 2\\
+0.7 &amp; \text{if} \; 2 \le x &lt; 3\\
+0.9 &amp; \text{if} \; 3 \le x &lt; 4\\
+1.0 &amp; \text{if} \; x \geq 4
+\end{cases}
+\]</span></p>
+<p><a href="#fig-EmpiricalCDF" class="quarto-xref">Figure&nbsp;<span>A.3</span></a> illustrates the CDF for this discrete distribution.</p>
+<div id="fig-EmpiricalCDF" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-EmpiricalCDF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppRNRV/EmpiricalCDFFig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-EmpiricalCDF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.3: Example Empirical CDF
+</figcaption>
+</figure>
+</div>
+<p>Examining <a href="#fig-EmpiricalCDF" class="quarto-xref">Figure&nbsp;<span>A.3</span></a> indicates that for any value of <span class="math inline">\(u_{i}\)</span> in the interval, <span class="math inline">\(\left(0.4, 0.7\right]\)</span> you get an <span class="math inline">\(x_{i}\)</span> of 2. Thus, generating random numbers from this distribution can be accomplished by using the inverse of the cumulative distribution function.</p>
+<p><span class="math display">\[
+F^{-1}(u) =
+\begin{cases}
+1 &amp; \text{if} \; 0.0 \leq u \leq 0.4\\
+2 &amp; \text{if} \; 0.4 &lt; u \leq 0.7 \\
+3 &amp; \text{if} \; 0.7 &lt; u \leq 0.9\\
+4 &amp; \text{if} \; 0.9 &lt; u \leq 1.0\\
+\end{cases}
+\]</span></p>
+<p>Suppose <span class="math inline">\(u_1 = 0.934\)</span>, then by <span class="math inline">\(F^{-1}(u)\)</span>, <span class="math inline">\(x = 4\)</span>. If <span class="math inline">\(u_2 = 0.1582\)</span>, then <span class="math inline">\(x = 1\)</span>. Thus, we use the inverse transform function to look up the appropriate <span class="math inline">\(x\)</span> for a given <span class="math inline">\(u\)</span>.</p>
+<p>For a discrete distribution, given a value for <span class="math inline">\(u\)</span>, pick <span class="math inline">\(x_{i}\)</span>, such that <span class="math inline">\(F(x_{i-1}) &lt; u \leq F(x_{i})\)</span> provides the inverse CDF function. Thus, for any given value of <span class="math inline">\(u\)</span> the generation process amounts to a table lookup of the corresponding value for <span class="math inline">\(x_{i}\)</span>. This simply involves searching until the condition <span class="math inline">\(F(x_{i-1}) &lt; u \leq F(x_{i})\)</span> is true. Since <span class="math inline">\(F(x)\)</span> is an increasing function in <span class="math inline">\(x\)</span>, only the upper limit needs to be checked. The following presents these ideas in the form of an algorithm.</p>
+<div class="line-block">1. u = randU01()<br>
+2. i = 1<br>
+3. x = <span class="math inline">\(x_i\)</span><br>
+4. WHILE F(x) ≤ u<br>
+5. i=i+1<br>
+6. x = <span class="math inline">\(x_i\)</span><br>
+7. END WHILE<br>
+8. RETURN x</div>
+<p>&nbsp;</p>
+<p>In the algorithm, if the test <span class="math inline">\(F(x) \leq u\)</span> is true, the while loop moves to the next interval. If the test failed, <span class="math inline">\(u &gt; F(x_{i})\)</span> must be true. The while loop stops and <span class="math inline">\(x\)</span> is the last value checked, which is returned. Thus, only the upper limit in the next interval needs to be tested. Other more complicated and possibly more efficient methods for performing this process are discussed in <span class="citation" data-cites="fishman2006first">(<a href="references.html#ref-fishman2006first" role="doc-biblioref">Fishman, 2006</a>)</span> and <span class="citation" data-cites="ripley1987stochastic">(<a href="references.html#ref-ripley1987stochastic" role="doc-biblioref">Ripley, 1987</a>)</span>.</p>
+<p>Using the inverse transform method, for discrete random variables, a Bernoulli random variate can be easily generated as shown in the following.</p>
+<div class="line-block">1. u = randu01()<br>
+2. IF (<span class="math inline">\(u \leq p\)</span>) THEN<br>
+3. x=1<br>
+4. ELSE<br>
+5. x=0<br>
+6. END IF<br>
+7. RETURN x</div>
+<p>&nbsp;</p>
+<p>To generate <em>discrete uniform</em> random variables, the inverse transform method yields the the following algorithm:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br>
+2. <span class="math inline">\(x = a + \lfloor(b-a+1)u\rfloor\)</span><br>
+3. return <span class="math inline">\(x\)</span></div>
+<p>&nbsp;</p>
+<p>Notice how the discrete uniform distribution inverse transform algorithm is different from the case of the continuous uniform distribution associated with <a href="#exm-DiscreteCDF" class="quarto-xref">Example&nbsp;<span>A.4</span></a>. The inverse transform method also works for generating geometric random variables. Unfortunately, the geometric distribution has multiple definitions. Let <span class="math inline">\(X\)</span> be the number of Bernoulli trials needed to get one success. Thus, <span class="math inline">\(X\)</span> has range <span class="math inline">\(1, 2, \ldots\)</span> and distribution:</p>
+<p><span class="math display">\[
+P \left\{X=k\right\} = (1-p)^{k-1}p
+\]</span></p>
+<p>We will call this the shifted geometric in this text. The algorithm to generate a shifted geometric random variables is as follows:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br>
+2. <span class="math inline">\(x = 1 + \left\lfloor \frac{\ln(1-u)}{\ln(1-p)}\right\rfloor\)</span><br>
+3. return <span class="math inline">\(x\)</span></div>
+<p>&nbsp;</p>
+<p>Notice the use of the floor operator <span class="math inline">\(\lfloor \cdot \rfloor\)</span>. If the geometric is defined as the number of failures <span class="math inline">\(Y = X -1\)</span> before the first success, then <span class="math inline">\(Y\)</span> has range <span class="math inline">\(0, 1, 2, \ldots\)</span> and probability distribution:</p>
+<p><span class="math display">\[P\left\{Y=k\right\} = (1-p)^{k}p\]</span></p>
+<p>We will call this distribution the geometric distribution in this text. The algorithm to generate a geometric random variables is as follows:</p>
+<div class="line-block">1. <span class="math inline">\(u = randU01()\)</span><br>
+2. <span class="math inline">\(y = \left\lfloor \frac{\ln(1-u)}{\ln(1-p)}\right\rfloor\)</span><br>
+3. return <span class="math inline">\(y\)</span></div>
+<p>&nbsp;</p>
+<p>The Poisson distribution is often used to model the number of occurrences within an interval time, space, etc. For example,</p>
+<ul>
+<li><p>the number of phone calls to a doctor’s office in an hour</p></li>
+<li><p>the number of persons arriving to a bank in a day</p></li>
+<li><p>the number of cars arriving to an intersection in an hour</p></li>
+<li><p>the number of defects that occur within a length of item</p></li>
+<li><p>the number of typos in a book</p></li>
+<li><p>the number of pot holes in a mile of road</p></li>
+</ul>
+<p>Assume we have an interval of real numbers, and that incidents occur at random throughout the interval. If the interval can be partitioned into sub-intervals of small enough length such that:</p>
+<ul>
+<li><p>The probability of more than one incident in a sub-intervals is zero</p></li>
+<li><p>The probability of one incident in a sub-intervals is the same for all intervals and proportional to the length of the sub-intervals, and</p></li>
+<li><p>The number of incidents in each sub-intervals is independent of other sub-intervals</p></li>
+</ul>
+<p>Then, we have a Poisson distribution. Let the probability of an incident falling into a subinterval be <span class="math inline">\(p\)</span>. Let there be <span class="math inline">\(n\)</span> subintervals. An incident either falls in a subinterval or it does not. This can be considered a Bernoulli trial. Suppose there are <span class="math inline">\(n\)</span> subintervals, then the number of incidents that fall in the large interval is a binomial random variable with expectation <span class="math inline">\(n*p\)</span>. Let <span class="math inline">\(\lambda = np\)</span> be a constant and keep dividing the main interval into smaller and smaller subintervals such that <span class="math inline">\(\lambda\)</span> remains constant. To keep <span class="math inline">\(\lambda\)</span> constant, increase <span class="math inline">\(n\)</span>, and decrease <span class="math inline">\(p\)</span>. What is the chance that <span class="math inline">\(x\)</span> incidents occur in the <span class="math inline">\(n\)</span> subintervals?</p>
+<p><span class="math display">\[
+\binom{n}{x} \left( \frac{\lambda}{n} \right)^{x} \left(1- \frac{\lambda}{n} \right)^{n-x}
+\]</span> Take the limit as <span class="math inline">\(n\)</span> goes to infinity <span class="math display">\[
+\lim\limits_{n\to\infty} \binom{n}{x} \left( \frac{\lambda}{n} \right)^{x} \left(1- \frac{\lambda}{n} \right)^{n-x}
+\]</span> and we get the Poisson distribution:</p>
+<p><span class="math display">\[
+P\left\{X=x\right\} = \frac{e^{-\lambda}\lambda^{x}}{x!} \quad \lambda &gt; 0, \quad x = 0, 1, \ldots
+\]</span> where <span class="math inline">\(E\left[X\right] = \lambda\)</span> and <span class="math inline">\(Var\left[X\right] = \lambda\)</span>. If a Poisson random variable represents the number of incidents in some interval, then the mean of the random variable must equal the expected number of incidents in the same length of interval. In other words, the units must match. When examining the number of incidents in a unit of time, the Poisson distribution is often written as:</p>
+<p><span class="math display">\[
+P\left\{X(t)=x\right\} = \frac{e^{-\lambda t}\left(\lambda t \right)^{x}}{x!}
+\]</span> where <span class="math inline">\(X(t)\)</span> is number of events that occur in <span class="math inline">\(t\)</span> time units. This leads to an important relationship with the exponential distribution.</p>
+<p>Let <span class="math inline">\(X(t)\)</span> be a Poisson random variable that represents the number of arrivals in <span class="math inline">\(t\)</span> time units with <span class="math inline">\(E\left[X(t)\right] = \lambda t\)</span>. What is the probability of having no events in the interval from <span class="math inline">\(0\)</span> to <span class="math inline">\(t\)</span>?</p>
+<p><span class="math display">\[
+P\left\{X(t) = 0\right\} = \frac{e^{- \lambda t}(\lambda t)^{0}}{0!} = e^{- \lambda t}
+\]</span> This is the probability that no one arrives in the interval <span class="math inline">\((0,t)\)</span>. Let <span class="math inline">\(T\)</span> represent the time until an arrival from any starting point in time. What is the probability that <span class="math inline">\(T &gt; t\)</span>? That is, what is the probability that the time of the arrival is sometime after <span class="math inline">\(t\)</span>? For <span class="math inline">\(T\)</span> to be bigger than <span class="math inline">\(t\)</span>, we must not have anybody arrive before <span class="math inline">\(t\)</span>. Thus, these two events are the same: <span class="math inline">\(\{T &gt; t\} = \{X(t) = 0\}\)</span>. Thus, <span class="math inline">\(P\left\{T &gt; t \right\} =  P\left\{X(t) = 0\right\} = e^{- \lambda t}\)</span>. What is the probability that <span class="math inline">\(T \le t\)</span>?</p>
+<p><span class="math display">\[
+P\left\{T \le t\right\} = 1 - P\left\{T &gt; t\right\} =  1 - e^{-\lambda t}
+\]</span></p>
+<p>This is the CDF of <span class="math inline">\(T\)</span>, which is an exponential distribution. Thus, if <span class="math inline">\(T\)</span> is a random variable that represents the time between events and <span class="math inline">\(T\)</span> is exponential with mean <span class="math inline">\(1/\lambda\)</span>, then, the number of events in <span class="math inline">\(t\)</span> will be a Poisson process with <span class="math inline">\(E\left[X(t)\right] = \lambda t\)</span>. Therefore, a method for generating Poisson random variates with mean <span class="math inline">\(\lambda\)</span> can be derived by counting the number of events that occur before <span class="math inline">\(t\)</span> when the time between events is exponential with mean <span class="math inline">\(1/\lambda\)</span>.</p>
+<hr>
+<div id="exm-GenPoissonRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.5 (Generate Poisson Random Variates)</strong></span> Let <span class="math inline">\(X(t)\)</span> represent the number of customers that arrive to a bank in an interval of length <span class="math inline">\(t\)</span>, where <span class="math inline">\(t\)</span> is measured in hours. Suppose <span class="math inline">\(X(t)\)</span> has a Poisson distribution with mean rate <span class="math inline">\(\lambda = 4\)</span> per hour. Use the the following pseudo-random number (0.971, 0.687, 0.314, 0.752, 0.830) to generate a value of <span class="math inline">\(X(2)\)</span>. That is, generate the number of arrivals in 2 hours.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-GenPoissonRV" class="quarto-xref">Example&nbsp;<span>A.5</span></a></strong> Because of the relationship between the Poisson distribution and the exponential distribution, the time between events <span class="math inline">\(T\)</span> will have an exponential distribution with mean <span class="math inline">\(0.25 = 1/\lambda\)</span>. Thus, we have:</p>
+<p><span class="math display">\[T_i = \frac{-1}{\lambda}\ln (1-u_i) = -0.25\ln (1-u_i)\]</span></p>
+<p><span class="math display">\[A_i = \sum\limits_{k=1}^{i} T_k\]</span></p>
+<p>where <span class="math inline">\(T_i\)</span> represents the time between the <span class="math inline">\(i-1\)</span> and <span class="math inline">\(i\)</span> arrivals and <span class="math inline">\(A_i\)</span> represents the time of the <span class="math inline">\(i^{th}\)</span> arrival. Using the provided <span class="math inline">\(u_i\)</span>, we can compute <span class="math inline">\(T_i\)</span> (via the inverse transform method for the exponential distribution) and <span class="math inline">\(A_i\)</span> until <span class="math inline">\(A_i\)</span> goes over 2 hours.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(u_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(T_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.971</td>
+<td style="text-align: center;">0.881</td>
+<td style="text-align: center;">0.881</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.687</td>
+<td style="text-align: center;">0.290</td>
+<td style="text-align: center;">1.171</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.314</td>
+<td style="text-align: center;">0.094</td>
+<td style="text-align: center;">1.265</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.752</td>
+<td style="text-align: center;">0.349</td>
+<td style="text-align: center;">1.614</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.830</td>
+<td style="text-align: center;">0.443</td>
+<td style="text-align: center;">2.057</td>
+</tr>
+</tbody>
+</table>
+<p>Since the arrival of the fifth customer occurs after time 2 hours, <span class="math inline">\(X(2) = 4\)</span>. That is, there were 4 customers that arrived within the 2 hours. This example is meant to be illustrative of one method for generating Poisson random variates. There are much more efficient methods that have been developed.</p>
+<p>The inverse transform technique is general and is used when <span class="math inline">\(F^{-1}(\cdot)\)</span> is closed form and easy to compute. It also has the advantage of using one <span class="math inline">\(U(0,1)\)</span> for each <span class="math inline">\(X\)</span> generated, which helps when applying certain techniques that are used to improve the estimation process in simulation experiments. Because of this advantage many simulation languages utilize the inverse transform technique even if a closed form solution to <span class="math inline">\(F^{-1}(\cdot)\)</span> does not exist by numerically inverting the function.</p>
+</section>
+<section id="convolution" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="convolution"><span class="header-section-number">A.2.2</span> Convolution</h3>
+<p>Many random variables are related to each other through some functional relationship. One of the most common relationships is the convolution relationship. The distribution of the sum of two or more random variables is called the <em>convolution</em>. Let <span class="math inline">\(Y_{i} \sim G(y)\)</span> be independent and identically distributed random variables. Let <span class="math inline">\(X = \sum\nolimits_{i=1}^{n} Y_{i}\)</span>. Then the distribution of <span class="math inline">\(X\)</span> is said to be the <span class="math inline">\(n\)</span>-fold convolution of <span class="math inline">\(Y\)</span>. Some common random variables that are related through the convolution operation are:</p>
+<ul>
+<li><p>A binomial random variable is the sum of Bernoulli random variables.</p></li>
+<li><p>A negative binomial random variable is the sum of geometric random variables.</p></li>
+<li><p>An Erlang random variable is the sum of exponential random variables.</p></li>
+<li><p>A Normal random variable is the sum of other normal random variables.</p></li>
+<li><p>A chi-squared random variable is the sum of squared normal random variables.</p></li>
+</ul>
+<p>The basic convolution algorithm simply generates <span class="math inline">\(Y_{i} \sim G(y)\)</span> and then sums the generated random variables. Let’s look at a couple of examples. By definition, a negative binomial distribution represents one of the following two random variables:</p>
+<ul>
+<li><p>The number of failures in sequence of Bernoulli trials before the r<sup>th</sup> success, has range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>.</p></li>
+<li><p>The number of trials in a sequence of Bernoulli trials until the r<sup>th</sup> success, it has range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span></p></li>
+</ul>
+<p>The number of failures before the r<sup>th</sup> success, has range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>. This is the sum of geometric random variables with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span> with the same success probability.</p>
+<p>If <span class="math inline">\(Y\ \sim\ NB(r,\ p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \cdots\}\)</span>, then</p>
+<p><span class="math display">\[Y = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>when <span class="math inline">\(X_{i}\sim Geometric(p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>, and <span class="math inline">\(X_{i}\)</span> can be generated via inverse transform with:</p>
+<p><span class="math display">\[X_{i} = \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor\]</span></p>
+<p>Note that <span class="math inline">\(\left\lfloor \cdot \right\rfloor\)</span> is the <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions#:~:text=In%20the%20language%20of%20order,the%20integers%20into%20the%20reals.">floor function</a>.</p>
+<p>If we have a negative binomial distribution that represents the number of trials until the r<sup>th</sup> success, it has range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span>, in this text we call this a shifted negative binomial distribution.</p>
+<p>A random variable from a “shifted” negative binomial distribution is the sum of shifted geometric random variables with range <span class="math inline">\(\{1, 2, 3, \dots\}\)</span>. with same success probability. In this text, we refer to this geometric distribution as the shifted geometric distribution.</p>
+<p>If <span class="math inline">\(T\ \sim\ NB(r,\ p)\)</span> with range <span class="math inline">\(\{r, r+1, r+2, \dots\}\)</span>, then</p>
+<p><span class="math display">\[T = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>when <span class="math inline">\(X_{i}\sim Shifted\ Geometric(p)\)</span> with range <span class="math inline">\(\{1, 2, 3, \dots\}\)</span>, and <span class="math inline">\(X_{i}\)</span> can be generated via inverse transform with:</p>
+<p><span class="math display">\[X_{i} = 1 + \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor\]</span> Notice that the relationship between these random variables as follows:</p>
+<p>Let <span class="math inline">\(Y\)</span> be the number of failures in a sequence of Bernoulli trials before the <span class="math inline">\(r^{th}\)</span> success.</p>
+<p>Let <span class="math inline">\(T\)</span> be the number of trials in a sequence of Bernoulli trials until the <span class="math inline">\(r^{th}\)</span> success,</p>
+<p>Then, clearly, <span class="math inline">\(T = Y + r\)</span>. Notice that we can generate <span class="math inline">\(Y\)</span>, via convolution, as previously explained and just add <span class="math inline">\(r\)</span> to get <span class="math inline">\(T\)</span>.</p>
+<p><span class="math display">\[Y = \sum_{i = 1}^{r}X_{i}\]</span></p>
+<p>Where <span class="math inline">\(X_{i}\sim Geometric(p)\)</span> with range <span class="math inline">\(\{0, 1, 2, \dots\}\)</span>, and <span class="math inline">\(X_{i}\)</span> can be generated via inverse transform with:</p>
+<p><span id="eq-geomrv"><span class="math display">\[
+X_{i} = \left\lfloor \frac{ln(1 - U_{i})}{ln(1 - p)} \right\rfloor
+\tag{A.2}\]</span></span></p>
+<hr>
+<div id="exm-GenNB" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.6 (Generate Negative Binomial Variates via Convolution)</strong></span> Use the following pseudo-random numbers <span class="math inline">\(u_{1} = 0.35\)</span>, <span class="math inline">\(u_{2} = 0.64\)</span>, <span class="math inline">\(u_{2} = 0.14\)</span>, generate a random variate from Negative Binomial distribution having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(p= 0.3\)</span>. Also, using the same pseudo-random numbers, generate a random variate from a <em>shifted</em> Negative Binomial distribution having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(p=0.3\)</span>.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-GenNB" class="quarto-xref">Example&nbsp;<span>A.6</span></a></strong> To solve this example, we need to apply <a href="#eq-geomrv" class="quarto-xref">Equation&nbsp;<span>A.2</span></a> to each provided <span class="math inline">\(u_i\)</span> to compute the three values of <span class="math inline">\(X_i\)</span>.</p>
+<p><span class="math display">\[
+X_{1} = \left\lfloor \frac{ln(1 - 0.35)}{ln(1 - 0.3)} \right\rfloor = 1
+\]</span> <span class="math display">\[
+X_{2} = \left\lfloor \frac{ln(1 - 0.64)}{ln(1 - 0.3)} \right\rfloor = 2
+\]</span> <span class="math display">\[
+X_{3} = \left\lfloor \frac{ln(1 - 0.14)}{ln(1 - 0.3)} \right\rfloor = 0
+\]</span> Thus, we have that <span class="math inline">\(Y= X_1 + X_2 + X_3\)</span> = <span class="math inline">\(1 + 2 + 0 = 3\)</span>. To generate <span class="math inline">\(T\)</span> for the shifted negative binomial, we have that <span class="math inline">\(T = Y + r = Y + 3 = 3 + 3 = 6\)</span>. Notice that this all can be easily done within a spreadsheet or within a computer program.</p>
+<!-- $R$ using the `qgeom()` function. In the following $R$ code, I define a function called `geomrv` to show that it is the same as `qgeom()`.  By the way, if we want to generate random variates in $R$, there is an even easier method by using the `rgeom(n, prob)` and `rnbinom(n, size, prob, mu)` functions. -->
+<!-- ```{r echo=TRUE} -->
+<!-- # define the function to generate a geometric random variable -->
+<!-- geomrv = function(p, u){floor(log(1-u)/log(1-p))} -->
+<!-- geomrv -->
+<!-- u = c(0.35, 0.64, 0.14) -->
+<!-- u -->
+<!-- x = geomrv(0.3, u) -->
+<!-- x -->
+<!-- y= sum(x) -->
+<!-- y -->
+<!-- sum(qgeom(u,0.3)) -->
+<!-- ``` -->
+<p>As another example of using convolution consider the requirement to generate random variables from an Erlang distribution. Suppose that <span class="math inline">\(Y_{i} \sim \text{Exp}(E\left[Y_{i}\right]=1/\lambda)\)</span>. That is, <span class="math inline">\(Y\)</span> is exponentially distributed with rate parameter <span class="math inline">\(\lambda\)</span>. Now, define <span class="math inline">\(X\)</span> as <span class="math inline">\(X = \sum\nolimits_{i=1}^{r} Y_{i}\)</span>. One can show that <span class="math inline">\(X\)</span> will have an Erlang distribution with parameters <span class="math inline">\((r,\lambda)\)</span>, where <span class="math inline">\(E\left[X\right] = r/\lambda\)</span> and <span class="math inline">\(Var\left[X\right] = r/\lambda^2\)</span>. Thus, an Erlang<span class="math inline">\((r,\lambda)\)</span> is an <span class="math inline">\(r\)</span>-fold convolution of <span class="math inline">\(r\)</span> exponentially distributed random variables with common mean <span class="math inline">\(1/\lambda\)</span>.</p>
+<hr>
+<div id="exm-GenErlangRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.7 (Generate Erlang Random Variates via Convolution)</strong></span> Use the following pseudo-random numbers <span class="math inline">\(u_{1} = 0.35\)</span>, <span class="math inline">\(u_{2} = 0.64\)</span>, <span class="math inline">\(u_{2} = 0.14\)</span>, generate a random variate from an Erlang distribution having parameters <span class="math inline">\(r=3\)</span> and <span class="math inline">\(\lambda = 0.5\)</span>.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-GenErlangRV" class="quarto-xref">Example&nbsp;<span>A.7</span></a></strong> This requires generating 3 exponential distributed random variates each with <span class="math inline">\(\lambda = 0.5\)</span> and adding them up.</p>
+<p><span class="math display">\[
+\begin{split}
+y_{1} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{1} \right) = \frac{-1}{0.5}\ln \left(1 - 0.35 \right) = 0.8616\\
+y_{2} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{2} \right) = \frac{-1}{0.5}\ln \left(1 - 0.64 \right) = 2.0433\\
+y_{3} &amp; = \frac{-1}{\lambda}\ln \left(1-u_{3} \right) = \frac{-1}{0.5}\ln \left(1 - 0.14 \right) = 0.3016\\
+x &amp; = y_{1} + y_{2} + y_{3} = 0.8616 + 2.0433 + 0.3016 = 3.2065
+\end{split}
+\]</span> Because of its simplicity, the convolution method is easy to implement; however, in a number of cases (in particular for a large value of <span class="math inline">\(n\)</span>), there are more efficient algorithms available.</p>
+</section>
+<section id="acceptancerejection" class="level3" data-number="A.2.3">
+<h3 data-number="A.2.3" class="anchored" data-anchor-id="acceptancerejection"><span class="header-section-number">A.2.3</span> Acceptance/Rejection</h3>
+<p>In the acceptance-rejection method, the probability density function (PDF) <span class="math inline">\(f(x)\)</span>, from which it is desired to obtain a sample is replaced by a proxy PDF, <span class="math inline">\(w(x)\)</span>, that can be sampled from more easily. The following illustrates how <span class="math inline">\(w(x)\)</span> is defined such that the <em>selected</em> samples from <span class="math inline">\(w(x)\)</span> can be used directly to represent random variates from <span class="math inline">\(f(x)\)</span>. The PDF <span class="math inline">\(w(x)\)</span> is based on the development of a majorizing function for <span class="math inline">\(f(x)\)</span>. A majorizing function, <span class="math inline">\(g(x)\)</span>, for <span class="math inline">\(f(x)\)</span>, is a function such that <span class="math inline">\(g(x) \geq f(x)\)</span> for <span class="math inline">\(-\infty &lt; x &lt; +\infty\)</span>.</p>
+<div id="fig-MajorizingFunc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MajorizingFunc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppRNRV/MajorizingFunc.png" class="quarto-figure quarto-figure-center figure-img" style="width:75.0%;height:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MajorizingFunc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.4: Concept of a Majorizing Function
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-MajorizingFunc" class="quarto-xref">Figure&nbsp;<span>A.4</span></a> illustrates the concept of a majorizing function for <span class="math inline">\(f(x)\)</span>, which simply means a function that is bigger than <span class="math inline">\(f(x)\)</span> everywhere.</p>
+<p>In addition, to being a majorizing function for <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(g(x)\)</span> must have finite area. In other words,</p>
+<p><span class="math display">\[
+c = \int\limits_{-\infty}^{+\infty} g(x) dx
+\]</span></p>
+<p>If <span class="math inline">\(w(x)\)</span> is defined as <span class="math inline">\(w(x) = g(x)/c\)</span> then <span class="math inline">\(w(x)\)</span> will be a probability density function. The acceptance-rejection method starts by obtaining a random variate <span class="math inline">\(W\)</span> from <span class="math inline">\(w(x)\)</span>. Recall that <span class="math inline">\(w(x)\)</span> should be chosen with the stipulation that it can be easily sampled, e.g.&nbsp;via the inverse transform method. Let <span class="math inline">\(U \sim U(0,1)\)</span>. The steps of the procedure are as provided in the following algorithm. The sampling of <span class="math inline">\(U\)</span> and <span class="math inline">\(W\)</span> continue until <span class="math inline">\(U \times g(W) \leq f(W)\)</span> and <span class="math inline">\(W\)</span> is returned. If <span class="math inline">\(U \times g(W) &gt; f(W)\)</span>, then the loop repeats.</p>
+<div class="line-block">1. REPEAT<br>
+2. Generate <span class="math inline">\(W \sim w(x)\)</span><br>
+3. Generate <span class="math inline">\(U \sim U(0,1)\)</span><br>
+4. UNTIL <span class="math inline">\((U \times g(W) \leq f(W))\)</span><br>
+5. RETURN <span class="math inline">\(W\)</span></div>
+<p>&nbsp;</p>
+<p>The validity of the procedure is based on deriving the cumulative distribution function of <span class="math inline">\(W\)</span> given that the <span class="math inline">\(W=w\)</span> was accepted, <span class="math inline">\(P\left\{W \leq x \vert W = w \; \text{is accepted}\right\}\)</span>.</p>
+<p>The efficiency of the acceptance-rejection method is enhanced as the probability of rejection is reduced. This probability depends directly on the choice of the majorizing function <span class="math inline">\(g(x)\)</span>. The acceptance-rejection method has a nice intuitive geometric connotation, which is best illustrated with an example.</p>
+<hr>
+<div id="exm-ARExampleRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.8 (Acceptance-Rejection Example)</strong></span> Consider the following PDF over the range <span class="math inline">\(\left[-1,1\right]\)</span>. Develop an acceptance/rejection based algorithm for <span class="math inline">\(f(x)\)</span>.</p>
+</div>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{3}{4}\left( 1 - x^2 \right) &amp;     -1 \leq x \leq 1\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<div id="fig-ARExampleFig" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ARExampleFig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppRNRV/ARExampleFig.jpg" class="quarto-figure quarto-figure-center figure-img" style="width:65.0%;height:65.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ARExampleFig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.5: Plot of f(x)
+</figcaption>
+</figure>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-ARExampleRV" class="quarto-xref">Example&nbsp;<span>A.8</span></a></strong> The first step in deriving an acceptance/rejection algorithm for the <span class="math inline">\(f(x)\)</span> in <a href="#exm-ARExampleRV" class="quarto-xref">Example&nbsp;<span>A.8</span></a> is to select an appropriate majorizing function. A simple method to choose a majorizing function is to set <span class="math inline">\(g(x)\)</span> equal to the maximum value of <span class="math inline">\(f(x)\)</span>. As can be seen from the plot of <span class="math inline">\(f(x)\)</span> the maximum value of 3/4 occurs at <span class="math inline">\(x\)</span> equal to <span class="math inline">\(0\)</span>. Thus, we can set <span class="math inline">\(g(x) = 3/4\)</span>. In order to proceed, we need to construct the PDF associated with <span class="math inline">\(g(x)\)</span>. Define <span class="math inline">\(w(x) = g(x)/c\)</span> as the PDF. To determine <span class="math inline">\(c\)</span>, we need to determine the area under the majorizing function:</p>
+<p><span class="math display">\[
+c = \int\limits_{-1}^{1} g(x) dx  = \int\limits_{-1}^{1} \frac{3}{4} dx = \frac{3}{2}
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+w(x) =
+\begin{cases}
+\frac{1}{2} &amp;   -1 \leq x \leq 1\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>This implies that <span class="math inline">\(w(x)\)</span> is a uniform distribution over the range from <span class="math inline">\(\left[-1,1\right]\)</span>. Based on the discussion of the continuous uniform distribution, a uniform distribution over the range from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> can be generated with <span class="math inline">\(a + U(b-a)\)</span>. Thus, for this case (<span class="math inline">\(a= -1\)</span> and <span class="math inline">\(b=1\)</span>), with <span class="math inline">\(b-a = 1 - -1 = 2\)</span>. The acceptance rejection algorithm is as follows:</p>
+<div class="line-block">1. Repeat<br>
+1.1 Generate <span class="math inline">\(U_{1} \sim U(0,1)\)</span><br>
+1.2 <span class="math inline">\(W = -1 + 2U_{1}\)</span><br>
+1.3 Generate <span class="math inline">\(U_{2} \sim U(0,1)\)</span><br>
+1.4 <span class="math inline">\(f = \frac{3}{4}(1-W^2)\)</span><br>
+2. Until <span class="math inline">\((U_{2} \times \frac{3}{4} \leq f)\)</span><br>
+3. Return <span class="math inline">\(W\)</span></div>
+<p>&nbsp;</p>
+<p>Steps 1.1 and 1.2 of generate a random variate, <span class="math inline">\(W\)</span>, from <span class="math inline">\(w(x)\)</span>. Note that <span class="math inline">\(W\)</span> is in the range <span class="math inline">\(\left[-1,1\right]\)</span> (the same as the range of <span class="math inline">\(X\)</span>) so that step 1.4 is simply finding the height associated with <span class="math inline">\(W\)</span> in terms of <span class="math inline">\(f\)</span>. Step 1.3 generates <span class="math inline">\(U_{2}\)</span>. What is the range of <span class="math inline">\(U_{2} \times \frac{3}{4}\)</span>? The range is <span class="math inline">\(\left[0,\frac{3}{4}\right]\)</span>. Note that this range corresponds to the range of possible values for <span class="math inline">\(f\)</span>. Thus, in step 2, a point between <span class="math inline">\(\left[0,\frac{3}{4}\right]\)</span> is being compared to the candidate point’s height <span class="math inline">\(f(W)\)</span> along the vertical axis. If the point is under <span class="math inline">\(f(W)\)</span>, the <span class="math inline">\(W\)</span> is accepted; otherwise the <span class="math inline">\(W\)</span> is rejected and another candidate point must be generated. In other words, if a point “under the curve” is generated it will be accepted.</p>
+<p>As illustrated in the previous, the probability of acceptance is related to how close <span class="math inline">\(g(x)\)</span> is to <span class="math inline">\(f(x)\)</span>. The ratio of the area under <span class="math inline">\(f(x)\)</span> to the area under <span class="math inline">\(g(x)\)</span> is the probability of accepting. Since the area under <span class="math inline">\(f(x)\)</span> is 1, the probability of acceptance, <span class="math inline">\(P_{a}\)</span>, is:</p>
+<p><span class="math display">\[
+P_{a} = \frac{1}{\int\limits_{-\infty}^{+\infty} g(x) dx} = \frac{1}{c}
+\]</span></p>
+<p>where <span class="math inline">\(c\)</span> is the area under the majorizing function. For the example, the probability of acceptance is <span class="math inline">\(P_{a} = 2/3\)</span>. Based on this example, it should be clear that the more <span class="math inline">\(g(x)\)</span> is similar to the PDF <span class="math inline">\(f(x)\)</span> the better (higher) the probability of acceptance. The key to efficiently generating random variates using the acceptance-rejection method is finding a suitable majorizing function over the same range as <span class="math inline">\(f(x)\)</span>. In the example, this was easy because <span class="math inline">\(f(x)\)</span> had a finite range. It is more challenging to derive an acceptance rejection algorithm for a probability density function, <span class="math inline">\(f(x)\)</span>, if it has an infinite range because it may be more challenging to find a good majorizing function.</p>
+</section>
+<section id="sec-subsec-MTSRV" class="level3" data-number="A.2.4">
+<h3 data-number="A.2.4" class="anchored" data-anchor-id="sec-subsec-MTSRV"><span class="header-section-number">A.2.4</span> Mixture Distributions, Truncated Distributions, and Shifted Random Variables</h3>
+<p>This section describes three random variate generation methods that build on the previously discussed methods. These methods allow for more flexibility in modeling the underlying randomness. First, let’s consider the definition of a mixture distribution and then consider some examples.</p>
+<hr>
+<div class="definition" name="Mixture Distribution">
+<p>The distribution of a random variable <span class="math inline">\(X\)</span> is a <em>mixture distribution</em> if the CDF of <span class="math inline">\(X\)</span> has the form: <span class="math display">\[
+F_{X}(x) = \sum\limits_{i=1}^{k} \omega_{i}F_{X_{i}}(x)
+\]</span> where <span class="math inline">\(0 &lt; \omega_{i} &lt; 1\)</span>, <span class="math inline">\(\sum\nolimits_{i=1}^{k} \omega_{i} = 1\)</span>, <span class="math inline">\(k \geq 2\)</span> and <span class="math inline">\(F_{X_{i}}(x)\)</span> is the CDF of a continuous or discrete random variable <span class="math inline">\(X_{i}\)</span>, <span class="math inline">\(i=1, \ldots, k\)</span>.</p>
+</div>
+<hr>
+<p>Notice that the <span class="math inline">\(\omega_{i}\)</span> can be interpreted as a discrete probability distribution as follows. Let <span class="math inline">\(I\)</span> be a random variable with range <span class="math inline">\(I \in \left\{ 1, \ldots, k \right\}\)</span> where <span class="math inline">\(P\left\{I=i\right\} = \omega_{i}\)</span> is the probability that the <span class="math inline">\(i^{th}\)</span> distribution <span class="math inline">\(F_{X_{i}}(x)\)</span> is selected. Then, the procedure for generating from <span class="math inline">\(F_{X}(x)\)</span> is to randomly generate <span class="math inline">\(I\)</span> from <span class="math inline">\(g(i) = P\left\{I=i\right\} = \omega_{i}\)</span> and then generate <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X_{I}}(x)\)</span>. The following algorithm presents this procedure.</p>
+<div class="line-block">1. Generate <span class="math inline">\(I \sim g(i)\)</span><br>
+2. Generate <span class="math inline">\(X \sim F_{X_{I}}(x)\)</span><br>
+3. return <span class="math inline">\(X\)</span></div>
+<p>&nbsp;</p>
+<p>Because mixture distributions combine the characteristics of two or more distributions, they provide for more flexibility in modeling. For example, many of the standard distributions that are presented in introductory probability courses, such as the normal, Weibull, lognormal, etc., have a single mode. Mixture distributions are often utilized for the modeling of data sets that have more than one mode.</p>
+<p>As an example of a mixture distribution, we will discuss the hyper-exponential distribution. The hyper-exponential is useful in modeling situations that have a high degree of variability. The coefficient of variation is defined as the ratio of the standard deviation to the expected value for a random variable <span class="math inline">\(X\)</span>. The coefficient of variation is defined as <span class="math inline">\(c_{v} = \sigma/\mu\)</span>, where <span class="math inline">\(\sigma = \sqrt{Var\left[X \right]}\)</span> and <span class="math inline">\(\mu = E\left[X\right]\)</span>. For the hyper-exponential distribution <span class="math inline">\(c_{v} &gt; 1\)</span>. The hyper-exponential distribution is commonly used to model service times that have different (and mutually exclusive) phases. An example of this situation is paying with a credit card or cash at a checkout register. The following example illustrates how to generate from a hyper-exponential distribution.</p>
+<hr>
+<div id="exm-HyperExpRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.9 (Hyper-Exponential Random Variate)</strong></span> Suppose the time that it takes to pay with a credit card, <span class="math inline">\(X_{1}\)</span>, is exponentially distributed with a mean of <span class="math inline">\(1.5\)</span> minutes and the time that it takes to pay with cash, <span class="math inline">\(X_{2}\)</span>, is exponentially distributed with a mean of <span class="math inline">\(1.1\)</span> minutes. In addition, suppose that the chance that a person pays with credit is 70%. Then, the overall distribution representing the payment service time, <span class="math inline">\(X\)</span>, has an hyper-exponential distribution with parameters <span class="math inline">\(\omega_{1} = 0.7\)</span>, <span class="math inline">\(\omega_{2} = 0.3\)</span>, <span class="math inline">\(\lambda_{1} = 1/1.5\)</span>, and <span class="math inline">\(\lambda_{2} = 1/1.1\)</span>.</p>
+<p><span class="math display">\[
+\begin{split}
+F_{X}(x) &amp; = \omega_{1}F_{X_{1}}(x) + \omega_{2}F_{X_{2}}(x)\\
+F_{X_{1}}(x) &amp; = 1 - \exp \left( -\lambda_{1} x \right) \\
+F_{X_{2}}(x) &amp; = 1 - \exp \left( -\lambda_{2} x \right)
+\end{split}
+\]</span> Derive an algorithm for this distribution. Assume that you have two pseudo-random numbers, <span class="math inline">\(u_1 = 0.54\)</span> and <span class="math inline">\(u_2 = 0.12\)</span>, generate a random variate from <span class="math inline">\(F_{X}(x)\)</span>.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-HyperExpRV" class="quarto-xref">Example&nbsp;<span>A.9</span></a></strong> In order to generate a payment service time, <span class="math inline">\(X\)</span>, we can use the mixture distribution algorithm.</p>
+<div class="line-block">1. Generate <span class="math inline">\(u \sim U(0,1)\)</span><br>
+2. Generate <span class="math inline">\(v \sim U(0,1)\)</span><br>
+3. If <span class="math inline">\((u \leq 0.7)\)</span><br>
+4. <span class="math inline">\(X = F^{-1}_{X_{1}}(v) = -1.5\ln \left(1-v \right)\)</span><br>
+5. else<br>
+6. <span class="math inline">\(X = F^{-1}_{X_{2}}(v) = -1.1\ln \left(1-v \right)\)</span><br>
+7. end if<br>
+8. return <span class="math inline">\(X\)</span></div>
+<p>&nbsp;</p>
+<p>Using <span class="math inline">\(u_1 = 0.54\)</span>, because <span class="math inline">\(0.54 \leq 0.7\)</span>, we have that</p>
+<p><span class="math display">\[
+X = F^{-1}_{X_{1}}(0.12) = -1.5\ln \left(1- 0.12 \right) = 0.19175
+\]</span></p>
+<p>In the previous example, generating <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X_{i}}(x)\)</span> utilizes the inverse transform method for generating from the two exponential distribution functions. In general, <span class="math inline">\(F_{X_{i}}(x)\)</span> for a general mixture distribution might be any distribution. For example, we might have a mixture of a Gamma and a Lognormal distribution. To generate from the individual <span class="math inline">\(F_{X_{i}}(x)\)</span> one would use the most appropriate generation technique for that distribution. For example, <span class="math inline">\(F_{X_{1}}(x)\)</span> might use inverse transform, <span class="math inline">\(F_{X_{2}}(x)\)</span> might use acceptance/rejection, <span class="math inline">\(F_{X_{3}}(x)\)</span> might use convolution, etc. This provides great flexibility in modeling and in generation.</p>
+<p>In general, we may have situations where we need to control the domain over which the random variates are generated. For example, when we are modeling situations that involve time (as is often the case within simulation), we need to ensure that we do not generate negative values. Or, for example, it may be physically impossible to perform a task in a time that is shorter than a particular value. The next two generation techniques assist with modeling these situations.</p>
+<p>A <em>truncated distribution</em> is a distribution derived from another distribution for which the range of the random variable is restricted. Truncated distributions can be either discrete or continuous. The presentation here illustrates the continuous case. Suppose we have a random variable, <span class="math inline">\(X\)</span> with PDF, <span class="math inline">\(f(x)\)</span> and CDF <span class="math inline">\(F(x)\)</span>. Suppose that we want to constrain <span class="math inline">\(f(x)\)</span> over interval <span class="math inline">\([a, b]\)</span>, where <span class="math inline">\(a&lt;b\)</span> and the interval <span class="math inline">\([a, b]\)</span> is a subset of the original support of <span class="math inline">\(f(x)\)</span>. Note that it is possible that <span class="math inline">\(a = -\infty\)</span> or <span class="math inline">\(b = +\infty\)</span>. Constraining <span class="math inline">\(f(x)\)</span> in this manner will result in a new random variable, <span class="math inline">\(X \vert a \leq X \leq b\)</span>. That is, the random variable <span class="math inline">\(X\)</span> given that <span class="math inline">\(X\)</span> is contained in <span class="math inline">\([a, b]\)</span>. Random variables have a probability distribution. The question is what is the probability distribution of this new random variable and how can we generate from it.</p>
+<p>This new random variable is governed by the conditional distribution of <span class="math inline">\(X\)</span> given that <span class="math inline">\(a \leq X \leq b\)</span> and has the following form:</p>
+<p><span class="math display">\[
+f(x \vert a \leq X \leq b)  = f^{*}(x) =
+\begin{cases}
+\frac{g(x)}{F(b) - F(a)} &amp;  a \leq x \leq b\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+g(x) =
+\begin{cases}
+f(x) &amp;  a \leq x \leq b\\
+0 &amp; \text{otherwise}\\
+\end{cases}
+\]</span></p>
+<p>Note that <span class="math inline">\(g(x)\)</span> is not a probability density. To convert it to a density, we need to find its area and divide by its area. The area of <span class="math inline">\(g(x)\)</span> is:</p>
+<p><span class="math display">\[
+\begin{split}
+\int\limits_{-\infty}^{+\infty} g(x) dx &amp; = \int\limits_{-\infty}^{a} g(x) dx + \int\limits_{a}^{b} g(x) dx + \int\limits_{b}^{+\infty} g(x) dx \\
+&amp; = \int\limits_{-\infty}^{a} 0 dx + \int\limits_{a}^{b} f(x) dx + \int\limits_{b}^{+\infty} 0) dx \\
+&amp; = \int\limits_{a}^{b} f(x) dx = F(b) - F(a)
+\end{split}
+\]</span></p>
+<p>Thus, <span class="math inline">\(f^{*}(x)\)</span> is simply a “re-weighting” of <span class="math inline">\(f(x)\)</span>. The CDF of <span class="math inline">\(f^{*}(x)\)</span> is:</p>
+<p><span class="math display">\[
+F^{*}(x) =
+\begin{cases}
+0 &amp; \text{if} \; x &lt; a \\
+\frac{F(x) - F(a)}{F(b) - F(a)} &amp;   a \leq x \leq b\\
+0 &amp; \text{if} \; b &lt; x\\
+\end{cases}
+\]</span></p>
+<p>This leads to a straight forward algorithm for generating from <span class="math inline">\(f^{*}(x)\)</span> as follows:</p>
+<div class="line-block">1. Generate <span class="math inline">\(u \sim U(0,1)\)</span><br>
+2. <span class="math inline">\(W = F(a) + (F(b) - F(a))u\)</span><br>
+3. <span class="math inline">\(X = F^{-1}(W)\)</span><br>
+4. return <span class="math inline">\(X\)</span></div>
+<p>&nbsp;</p>
+<p>Lines 1 and 2 of the algorithm generate a random variable <span class="math inline">\(W\)</span> that is uniformly distributed on <span class="math inline">\((F(a), F(b))\)</span>. Then, that value is used within the original distribution’s inverse CDF function, to generate a <span class="math inline">\(X\)</span> given that <span class="math inline">\(a \leq X \leq b\)</span>. Let’s look at an example.</p>
+<hr>
+<div id="exm-TruncatedRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.10 (Generating a Truncated Random Variate)</strong></span> Suppose <span class="math inline">\(X\)</span> represents the distance between two cracks in highway. Suppose that <span class="math inline">\(X\)</span> has an exponential distribution with a mean of 10 meters. Generate a distance restricted between 3 and 6 meters using the pseudo-random number 0.23.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-TruncatedRV" class="quarto-xref">Example&nbsp;<span>A.10</span></a></strong> The CDF of the exponential distribution with mean 10 is:</p>
+<p><span class="math display">\[
+F(x) = 1 - e^{-x/10}
+\]</span></p>
+<p>Therefore <span class="math inline">\(F(3) = 1- \exp(-3/10) = 0.259\)</span> and <span class="math inline">\(F(6) = 0.451\)</span>. The exponential distribution has inverse cumulative distribution function:</p>
+<p><span class="math display">\[
+F^{-1}(u) = \frac{-1}{\lambda}\ln \left(1-u \right)
+\]</span></p>
+<p>First, we generate a random number uniformly distributed between <span class="math inline">\(F(3)\)</span> and <span class="math inline">\(F(6)\)</span> using <span class="math inline">\(u = 0.23\)</span>:</p>
+<p><span class="math display">\[
+W = 0.259 + (0.451 - 0.259)\times 0.23 = 0.3032
+\]</span></p>
+<p>Therefore, in order to generate the distance we have:</p>
+<p><span class="math display">\[
+X = -10 \times \ln \left(1 - 0.3032 \right) = 3.612
+\]</span></p>
+<p>Lastly, we discuss shifted distributions. Suppose <span class="math inline">\(X\)</span> has a given distribution <span class="math inline">\(f(x)\)</span>, then the distribution of <span class="math inline">\(X + \delta\)</span> is termed the shifted distribution and is specified by <span class="math inline">\(g(x)=f(x - \delta)\)</span>. It is easy to generate from a shifted distribution, simply generate <span class="math inline">\(X\)</span> according to <span class="math inline">\(F(x)\)</span> and then add <span class="math inline">\(\delta\)</span>.</p>
+<hr>
+<div id="exm-ShiftedRV" class="theorem example">
+<p><span class="theorem-title"><strong>Example A.11 (Generating a Shifted Weibull Random Variate Example)</strong></span> Suppose <span class="math inline">\(X\)</span> represents the time to setup a machine for production. From past time studies, we know that it cannot take any less than 5.5 minutes to prepare for the setup and that the time after the 5.5 minutes is random with a Weibull distribution with shape parameter <span class="math inline">\(\alpha = 3\)</span> and scale parameter <span class="math inline">\(\beta = 5\)</span>. Using a pseudo-random number of <span class="math inline">\(u= 0.73\)</span> generate a value for the time to perform the setup.</p>
+</div>
+<hr>
+<p><strong>Solution for <a href="#exm-ShiftedRV" class="quarto-xref">Example&nbsp;<span>A.11</span></a></strong> The Weibull distribution has a closed form cumulative distribution function:</p>
+<p><span class="math display">\[
+F(x) = 1- e^{-(x/\beta)^\alpha}
+\]</span></p>
+<p>Thus, the inverse CDF function is:</p>
+<p><span class="math display">\[
+F^{-1}(u) = \beta\left[ -\ln (1-u)\right]^{1/\alpha}
+\]</span></p>
+<p>Therefore to generate the setup time we have:</p>
+<p><span class="math display">\[
+5.5 + 5\left[ -\ln (1-0.73)\right]^{1/3} = 5.5+ 5.47= 10.97
+\]</span> Within this section, we illustrated the four primary methods for generating random variates 1) inverse transform, 2) convolution, 3) acceptance/rejection, and 4) mixture and truncated distributions. These are only a starting point for the study of random variate generation methods.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">A.3</span> Summary</h2>
+<p>This section covered a number of important concepts used within simulation including:</p>
+<ul>
+<li><p>Generating pseudo-random numbers</p></li>
+<li><p>Generating random variates and processes</p></li>
+</ul>
+<p><a href="14-CommonDistributions.html#sec-DiscreteDistributions" class="quarto-xref"><span>Section F.1</span></a> and <a href="14-CommonDistributions.html#sec-ContinuousDistributions" class="quarto-xref"><span>Section F.2</span></a> summarize many of the properties of common discrete and continuous distributions. These topics provide a solid foundation for modeling random components within simulation models. Not only should you now understand how random numbers are generated you also know how to transform those numbers to allow the generation from a wide variety of probability distributions. To further your study of random variate generation, you should study the generation of multi-variate distributions.</p>
+</section>
+<section id="exercises" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">A.4</span> Exercises</h2>
+<hr>
+<div id="exr-AppRNRVP1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.1</strong></span> The sequence of random numbers generated from a given seed is called a random number (a)<span class="math inline">\(\underline{\hspace{3cm}}\)</span>.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.2</strong></span> State three major methods of generating random variables from any distribution. (a)<span class="math inline">\(\underline{\hspace{3cm}}\)</span>. (b)<span class="math inline">\(\underline{\hspace{3cm}}\)</span>.(c)<span class="math inline">\(\underline{\hspace{3cm}}\)</span>.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.3</strong></span> Consider the multiplicative congruential generator with (<span class="math inline">\(a = 13\)</span>, <span class="math inline">\(m = 64\)</span>, <span class="math inline">\(c = 0\)</span>, and seeds <span class="math inline">\(X_0\)</span> = 1,2,3,4). a) Using <a href="#thm-LCGThm" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>, does this generator achieve its maximum period for these parameters? b) Generate one period’s worth of uniform random variables from each of the supplied seeds.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.4</strong></span> Consider the multiplicative congruential generator with (<span class="math inline">\(a = 11\)</span>, <span class="math inline">\(m = 64\)</span>, <span class="math inline">\(c = 0\)</span>, and seeds <span class="math inline">\(X_0\)</span> = 1,2,3,4). a) Using <a href="#thm-LCGThm" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>, does this generator achieve its maximum period for these parameters? b) Generate one period’s worth of uniform random variables from each of the supplied seeds.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.5</strong></span> Consider the linear congruential generator with (<span class="math inline">\(a = 11\)</span>, <span class="math inline">\(m = 16\)</span>, <span class="math inline">\(c = 5\)</span>, and seed <span class="math inline">\(X_0\)</span> = 1). a) Using <a href="#thm-LCGThm" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>, does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.6</strong></span> Consider the linear congruential generator with (<span class="math inline">\(a = 13\)</span>, <span class="math inline">\(m = 16\)</span>, <span class="math inline">\(c = 13\)</span>, and seed <span class="math inline">\(X_0\)</span> = 37). a) Using <a href="#thm-LCGThm" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>, does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.7</strong></span> Consider the linear congruential generator with (<span class="math inline">\(a = 8\)</span>, <span class="math inline">\(m = 10\)</span>, <span class="math inline">\(c = 1\)</span>, and seed <span class="math inline">\(X_0\)</span> = 3). a) Using <a href="#thm-LCGThm" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>, does this generator achieve its maximum period for these parameters? b) Generate 2 pseudo-random uniform numbers for this generator.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.8</strong></span> Consider the following discrete distribution of the random variable <span class="math inline">\(X\)</span> whose probability mass function is <span class="math inline">\(p(x)\)</span>.</p>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(p(x)\)</span></td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.2</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Determine the CDF <span class="math inline">\(F(x)\)</span> for the random variable, <span class="math inline">\(X\)</span>.</li>
+<li>Create a graphical summary of the CDF. See <a href="#exm-DiscreteCDF" class="quarto-xref">Example&nbsp;<span>A.4</span></a>.</li>
+<li>Create the inverse CDF that can be used to determine a sample from the discrete distribution, <span class="math inline">\(p(x)\)</span>. See <a href="#exm-DiscreteCDF" class="quarto-xref">Example&nbsp;<span>A.4</span></a>.</li>
+<li>Generate 3 values of <span class="math inline">\(X\)</span> using the following pseudo-random numbers <span class="math inline">\(u_1= 0.943, u_2 = 0.398, u_3 = 0.372\)</span></li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.9</strong></span> Consider the following uniformly distributed random numbers:</p>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(U_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_4\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_5\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_6\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_7\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_8\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.9396</td>
+<td style="text-align: center;">0.1694</td>
+<td style="text-align: center;">0.7487</td>
+<td style="text-align: center;">0.3830</td>
+<td style="text-align: center;">0.5137</td>
+<td style="text-align: center;">0.0083</td>
+<td style="text-align: center;">0.6028</td>
+<td style="text-align: center;">0.8727</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Generate an exponentially distributed random number with a mean of 10 using the 1st random number.</li>
+<li>Generate a random variate from a (12, 22) discrete uniform distribution using the 2nd random number.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.10</strong></span> Consider the following uniformly distributed random numbers:</p>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(U_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_4\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_5\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_6\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_7\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(U_8\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.9559</td>
+<td style="text-align: center;">0.5814</td>
+<td style="text-align: center;">0.6534</td>
+<td style="text-align: center;">0.5548</td>
+<td style="text-align: center;">0.5330</td>
+<td style="text-align: center;">0.5219</td>
+<td style="text-align: center;">0.2839</td>
+<td style="text-align: center;">0.3734</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Generate a uniformly distributed random number with a minimum of 12 and a maximum of 22 using <span class="math inline">\(U_8\)</span>.</li>
+<li>Generate 1 random variate from an Erlang(<span class="math inline">\(r=2\)</span>, <span class="math inline">\(\beta=3\)</span>) distribution using <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span></li>
+<li>The demand for magazines on a given day follows the following probability mass function:<br>
+</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;">40</th>
+<th style="text-align: center;">50</th>
+<th style="text-align: center;">60</th>
+<th style="text-align: center;">70</th>
+<th style="text-align: center;">80</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(X=x)\)</span></td>
+<td style="text-align: center;">0.44</td>
+<td style="text-align: center;">0.22</td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">0.12</td>
+<td style="text-align: center;">0.06</td>
+</tr>
+</tbody>
+</table>
+<p>Using the supplied random numbers for this problem starting at <span class="math inline">\(U_1\)</span>, generate 4 random variates from the probability mass function.</p>
+<hr>
+<div id="exr-AppRNRVP11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.11</strong></span> Suppose that customers arrive at an ATM via a Poisson process with mean 7 per hour. Determine the arrival time of the first 6 customers using the following pseudo-random numbers via the inverse transformation method. Start with the first row and read across the table.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.12</strong></span> The demand, <span class="math inline">\(D\)</span>, for parts at a repair bench per day can be described by the following discrete probability mass function:</p>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(D\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(p(D)\)</span></td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Generate the demand for the first 4 days using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</p>
+<hr>
+<div id="exr-AppRNRVP13" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.13</strong></span> The service times for a automated storage and retrieval system has a shifted exponential distribution. It is known that it takes a minimum of 15 seconds for any retrieval. The parameter of the exponential distribution is <span class="math inline">\(\lambda = 45\)</span>. Generate two service times for this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP14" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.14</strong></span> The time to failure for a computer printer fan has a Weibull distribution with shape parameter <span class="math inline">\(\alpha = 2\)</span> and scale parameter <span class="math inline">\(\beta = 3\)</span>. Testing has indicated that the distribution is limited to the range from 1.5 to 4.5. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP15" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.15</strong></span> The interest rate for a capital project is unknown. An accountant has estimated that the minimum interest rate will between 2% and 5% within the next year. The accountant believes that any interest rate in this range is equally likely. You are tasked with generating interest rates for a cash flow analysis of the project. Generate two random variates from this distribution using the following sequence of U(0,1) random numbers: 0.943, 0.398, 0.372, 0.943.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP16" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.16</strong></span> Customers arrive at a service location according to a Poisson distribution with mean 10 per hour. The installation has two servers. Experience shows that 60% of the arriving customers prefer the first server. Start with the first row and read across the table determine the arrival times of the first three customers at each server.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP17" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.17</strong></span> Consider the triangular distribution:</p>
+<p><span class="math display">\[F(x) =
+  \begin{cases}
+     0 &amp; x &lt; a\\
+     \dfrac{(x - a)^2}{(b - a)(c - a)} &amp;  a \leq x \leq c\\
+     1 - \dfrac{(b - x)^2}{(b - a)(b - c)} &amp; c &lt; x \leq b\\
+     1 &amp; b &lt; x\\
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398, 0.372, 0.943, 0.204 generate 5 random variates from the triangular distribution with <span class="math inline">\(a = 2\)</span>, <span class="math inline">\(c = 5\)</span>, <span class="math inline">\(b = 10\)</span>.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP18" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.18</strong></span> Consider the following probability density function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     \dfrac{3x^2}{2} &amp; -1 \leq x \leq 1\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398 generate two random variates from this distribution.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP19" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.19</strong></span> Consider the following probability density function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     0.5x - 1 &amp; 2 \leq x \leq 4\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398 generate two random variates from this distribution.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP20" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.20</strong></span> Consider the following probability density function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     \dfrac{2x}{25} &amp; 0 \leq x \leq 5\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398 generate two random variates from this distribution.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP21" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.21</strong></span> Consider the following probability density function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     \dfrac{2}{x^3} &amp; x &gt; 1\\
+     0 &amp; x \leq 1\\
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398 generate two random variates from this distribution.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP22" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.22</strong></span> The times to failure for an automated production process have been found to be randomly distributed according to a Rayleigh distribution:</p>
+<p><span class="math display">\[\ f(x) =
+   \begin{cases}
+     2 \beta^{-2} x e^{(-(x/\beta)^2)} &amp; x &gt; 0\\
+     0 &amp; \text{otherwise}
+  \end{cases}\]</span></p>
+</div>
+<ol type="a">
+<li>Derive an inverse transform algorithm for this distribution.</li>
+<li>Using 0.943, 0.398 generate two random variates from this distribution with <span class="math inline">\(\beta = 2.0\)</span>.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP23" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.23</strong></span> Starting with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters <span class="math inline">\((r = 4, p =0.4)\)</span> using the convolution method.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP24" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.24</strong></span> Starting with the first row, first column and reading by rows use the random numbers from the following table to generate 2 random variates from the negative binomial distribution with parameters <span class="math inline">\((r = 4, p =0.4)\)</span> using a sequence of Bernoulli trials to get 4 successes.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP25" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.25</strong></span> Suppose that the processing time for a job consists of two distributions. There is a 30% chance that the processing time is lognormally distributed with a mean of 20 minutes and a standard deviation of 2 minutes, and a 70% chance that the time is uniformly distributed between 10 and 20 minutes. Using the first row of random numbers the following table generate two job processing times. Hint: <span class="math inline">\(X \sim LN(\mu, \sigma^2)\)</span> if and only if <span class="math inline">\(\ln(X) \sim N(\mu, \sigma^2)\)</span>. Also, note that:</p>
+<p><span class="math display">\[\begin{aligned}
+E[X] &amp; = e^{\mu + \sigma^{2}/2}\\
+Var[X] &amp; = e^{2\mu + \sigma^{2}}\left(e^{\sigma^{2}} - 1\right)\end{aligned}\]</span></p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP26" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.26</strong></span> Suppose that the service time for a patient consists of two distributions. There is a 25% chance that the service time is uniformly distributed with minimum of 20 minutes and a maximum of 25 minutes, and a 75% chance that the time is distributed according to a Weibull distribution with shape of 2 and a scale of 4.5. Using the first row of random numbers from the following table generate the service time for two patients.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP27" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.27</strong></span> If <span class="math inline">\(Z \sim N(0,1)\)</span>, and <span class="math inline">\(Y = \sum_{i=1}^k Z_i^2\)</span> then <span class="math inline">\(Y \sim \chi_k^2\)</span>, where <span class="math inline">\(\chi_k^2\)</span> is a chi-squared random variable with <span class="math inline">\(k\)</span> degrees of freedom. Using the first two rows of random numbers from the following table generate two <span class="math inline">\(\chi_5^2\)</span> random variates.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP28" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.28</strong></span> In the (a)<span class="math inline">\(\underline{\hspace{3cm}}\)</span> technique for generating random variates, you want the (b)<span class="math inline">\(\underline{\hspace{3cm}}\)</span> function to be as close as possible to the distribution function that you want to generate from in order to ensure that the (c)<span class="math inline">\(\underline{\hspace{3cm}}\)</span> is as high as possible, thereby improving the efficiency of the algorithm.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP29" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.29</strong></span> Prove that the acceptance-rejection method for continuous random variables is valid by showing that for any <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[P\lbrace X \leq x \rbrace = \int_{-\infty}^x f(y)dy\]</span></p>
+<p>Hint: Let E be the event that the acceptance occurs and use conditional probability.</p>
+</div>
+<hr>
+<div id="exr-AppRNRVP30" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.30</strong></span> Consider the following probability density function:</p>
+</div>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     \dfrac{3x^2}{2} &amp; -1 \leq x \leq 1\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}\]</span> a. Derive an acceptance-rejection algorithm for this distribution. b. Using the first row of random numbers from the following table generate 2 random variates using your algorithm.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP31" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.31</strong></span> This problem is based on <span class="citation" data-cites="cheng1977the">(<a href="references.html#ref-cheng1977the" role="doc-biblioref">Cheng, 1977</a>)</span>, see also <span class="citation" data-cites="ahrens1972computer">(<a href="references.html#ref-ahrens1972computer" role="doc-biblioref">Ahrens &amp; Dieter, 1972</a>)</span>. Consider the gamma distribution:</p>
+<p><span class="math display">\[f(x) = \beta^{-\alpha} x^{\alpha-1} \dfrac{e^{-x/\beta}}{\Gamma(\alpha)}\]</span></p>
+<p>where x <span class="math inline">\(&gt;\)</span> 0 and <span class="math inline">\(\alpha &gt;\)</span> 0 is the shape parameter and <span class="math inline">\(\beta &gt;\)</span> 0 is the scale parameter. In the case where <span class="math inline">\(\alpha\)</span> is a positive integer, the distribution reduces to the Erlang distribution and <span class="math inline">\(\alpha = 1\)</span> produces the negative exponential distribution.</p>
+<p>Acceptance-rejection techniques can be applied to the cases of <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span> and <span class="math inline">\(\alpha &gt; 1\)</span>. For the case of <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span> see Ahrens and Dieter (1972). For the case of <span class="math inline">\(\alpha &gt; 1\)</span>, Cheng (1977) proposed the following majorizing function:</p>
+<p><span class="math display">\[g(x) = \biggl[\dfrac{4 \alpha^\alpha e^{-\alpha}}{a \Gamma (\alpha)}\biggr] h(x)\]</span></p>
+<p>where <span class="math inline">\(a = \sqrt{(2 \alpha - 1)}\)</span>, <span class="math inline">\(b = \alpha^a\)</span>, and <span class="math inline">\(h(x)\)</span> is the resulting probability distribution function when converting <span class="math inline">\(g(x)\)</span> to a density function:</p>
+<p><span class="math display">\[h(x) = ab \dfrac{x^{a-1}}{(b + x^a)^2} \ \  \text{for} x &gt; 0\]</span></p>
+</div>
+<ol type="a">
+<li><p>Develop an inverse transform algorithm for generating from <span class="math inline">\(h(x)\)</span></p></li>
+<li><p>Using the first two rows of random numbers from the following table, generate two random variates from a gamma distribution with parameters <span class="math inline">\(\alpha =2\)</span> and <span class="math inline">\(\beta = 10\)</span> via the acceptance/rejection method.</p></li>
+</ol>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<div id="exr-AppRNRVP32" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.32</strong></span> Parts arrive to a machine center with three drill presses according to a Poisson distribution with mean <span class="math inline">\(\lambda\)</span>. The arriving customers are assigned to one of the three drill presses randomly according to the respective probabilities <span class="math inline">\(p_1\)</span>, <span class="math inline">\(p_2\)</span>, and <span class="math inline">\(p_3\)</span> where <span class="math inline">\(p_1 + p_2 + p_3 = 1\)</span> and <span class="math inline">\(p_i &gt; 0\)</span> for <span class="math inline">\(i = 1, 2, 3\)</span>. What is the distribution of the inter-arrival times to each drill press? Specify the parameters of the distribution. Suppose that <span class="math inline">\(p_1\)</span>, <span class="math inline">\(p_2\)</span>, and <span class="math inline">\(p_3\)</span> equal to 0.25, 0.45, and 0.3 respectively and that <span class="math inline">\(\lambda\)</span> is equal to 12 per minute.</p>
+</div>
+<p>Using the first row of random numbers from the following table generate the first three arrival times.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.372</td>
+<td style="text-align: center;">0.943</td>
+<td style="text-align: center;">0.204</td>
+<td style="text-align: center;">0.794</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.272</td>
+<td style="text-align: center;">0.899</td>
+<td style="text-align: center;">0.294</td>
+<td style="text-align: center;">0.156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.102</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.409</td>
+<td style="text-align: center;">0.398</td>
+<td style="text-align: center;">0.400</td>
+<td style="text-align: center;">0.997</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div id="exr-AppRNRVP33" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.33</strong></span> Consider the following function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     cx^{2} &amp; a \leq x \leq b\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}
+\]</span></p>
+</div>
+<ol type="a">
+<li>Determine the value of <span class="math inline">\(c\)</span> that will turn <span class="math inline">\(g(x)\)</span> into a probability density function. The resulting probability density function is called a parabolic distribution.</li>
+<li>Denote the probability density function found in part (a), <span class="math inline">\(f(x)\)</span>. Let <span class="math inline">\(X\)</span> be a random variable from <span class="math inline">\(f(x)\)</span>. Derive the inverse cumulative distribution function for <span class="math inline">\(f(x)\)</span>.</li>
+</ol>
+<hr>
+<div id="exr-AppRNRVP34" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise A.34</strong></span> Consider the following probability density function:</p>
+<p><span class="math display">\[f(x) =
+  \begin{cases}
+     \frac{3(c - x)^{2}}{c^{3}} &amp; 0 \leq x \leq c\\
+     0 &amp; \text{otherwise} \\
+  \end{cases}
+\]</span></p>
+<p>Derive an inverse cumulative distribution algorithm for generating from <span class="math inline">\(f(x)\)</span>.</p>
+</div>
+<hr>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-ahrens1972computer" class="csl-entry" role="listitem">
+Ahrens, J., &amp; Dieter, V. (1972). Computer methods for sampling from the exponential and normal distributions. <em>Communications of the Association for Computing Machinery</em>, <em>15</em>, 873–882.
+</div>
+<div id="ref-banks2005discreteevent" class="csl-entry" role="listitem">
+Banks, J., Carson, J., Nelson, B., &amp; Nicol, D. (2005). <em>Discrete-event system simulation</em> (4th ed.). Prentice Hall.
+</div>
+<div id="ref-cheng1977the" class="csl-entry" role="listitem">
+Cheng, R. C. (1977). The generation of gamma variables with nonintegral shape parameters. <em>Applied Statistics</em>, <em>26</em>(1), 71–75.
+</div>
+<div id="ref-devroye1986nonuniform" class="csl-entry" role="listitem">
+Devroye, L. (1986). <em>Non-uniform random variate generation</em>. Springer-Verlag.
+</div>
+<div id="ref-fishman2006first" class="csl-entry" role="listitem">
+Fishman, G. S. (2006). <em>A first course in monte carlo</em>. Thomson Brooks/Cole.
+</div>
+<div id="ref-hull1962random" class="csl-entry" role="listitem">
+Hull, T. E., &amp; Dobell, A. R. (1962). Random number generators. <em>SIAM Review</em>, <em>4</em>, 230–254.
+</div>
+<div id="ref-ecuyer2002an" class="csl-entry" role="listitem">
+L’Ecuyer, P., Simard, R., &amp; Kelton, W. D. (2002). An object-oriented random number package with many long streams and substreams. <em>Operations Research</em>, <em>50</em>, 1073–1075.
+</div>
+<div id="ref-law2007simulation" class="csl-entry" role="listitem">
+Law, A. (2007). <em>Simulation modeling and analysis</em> (4th ed.). McGraw-Hill.
+</div>
+<div id="ref-ripley1987stochastic" class="csl-entry" role="listitem">
+Ripley, B. D. (1987). <em>Stochastic simulation</em>. John Wiley &amp; Sons Inc.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./08-Chapter8.html" class="pagination-link" aria-label="Applications of Simulation Modeling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-AppDistributionFitting.html" class="pagination-link" aria-label="Probability Distribution Modeling">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An open textbook on discrete-event simulation modeling using Arena.">
+
+<title>Appendix E — Arena Operators, Functions, Distributions, and Modules – Simulation Modeling and Arena</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./14-CommonDistributions.html" rel="next">
+<link href="./12-MiscTopicsInArena.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-10629767a8d3d760d9707fc59134ae44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="mathjax/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./13-FunctionsAndModulesInArena.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Simulation Modeling and Arena</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-author.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Simulation and Arena</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical Analysis for Finite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modeling Systems with Processes and Basic Entity Flow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Analysis for Infinite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling Systems with Advanced Process Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modeling Systems with Entity Movement and Material Handling Constructs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Chapter8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-AppRNRV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-AppDistributionFitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-QueuingTheory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-MiscTopicsInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-FunctionsAndModulesInArena.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-CommonDistributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-StatisticalTables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#arena-mathematical-and-logical-operators" id="toc-arena-mathematical-and-logical-operators" class="nav-link active" data-scroll-target="#arena-mathematical-and-logical-operators"><span class="header-section-number">E.1</span> Arena Mathematical and Logical Operators</a></li>
+  <li><a href="#arena-probability-distributions-functions" id="toc-arena-probability-distributions-functions" class="nav-link" data-scroll-target="#arena-probability-distributions-functions"><span class="header-section-number">E.2</span> Arena Probability Distributions Functions</a></li>
+  <li><a href="#basic-process-panel-modules" id="toc-basic-process-panel-modules" class="nav-link" data-scroll-target="#basic-process-panel-modules"><span class="header-section-number">E.3</span> Basic Process Panel Modules</a></li>
+  <li><a href="#advanced-process-panel-modules" id="toc-advanced-process-panel-modules" class="nav-link" data-scroll-target="#advanced-process-panel-modules"><span class="header-section-number">E.4</span> Advanced Process Panel Modules</a></li>
+  <li><a href="#advanced-transfer-panel-modules" id="toc-advanced-transfer-panel-modules" class="nav-link" data-scroll-target="#advanced-transfer-panel-modules"><span class="header-section-number">E.5</span> Advanced Transfer Panel Modules</a></li>
+  <li><a href="#important-siman-blocks-elements-and-pre-defined-attributes-and-variables" id="toc-important-siman-blocks-elements-and-pre-defined-attributes-and-variables" class="nav-link" data-scroll-target="#important-siman-blocks-elements-and-pre-defined-attributes-and-variables"><span class="header-section-number">E.6</span> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./13-FunctionsAndModulesInArena.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-ArenaOFD" class="quarto-section-identifier">Appendix E — Arena Operators, Functions, Distributions, and Modules</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="arena-mathematical-and-logical-operators" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="arena-mathematical-and-logical-operators"><span class="header-section-number">E.1</span> Arena Mathematical and Logical Operators</h2>
+<div id="tbl-MathLogicOperators" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-MathLogicOperators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.1: Mathematical and Logical Operators
+</figcaption>
+<div aria-describedby="tbl-MathLogicOperators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Operator</strong></th>
+<th style="text-align: left;"><strong>Operation</strong></th>
+<th style="text-align: center;"><strong>Priority</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Math Operators</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\ast\ast\)</span></td>
+<td style="text-align: left;">Exponentiation</td>
+<td style="text-align: center;">1(highest)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(/\)</span></td>
+<td style="text-align: left;">Division</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\ast\)</span></td>
+<td style="text-align: left;">Multiplication</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Subtraction</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">+</td>
+<td style="text-align: left;">Addition</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Logical Operators</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">.EQ., ==</td>
+<td style="text-align: left;">Equality comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">.NE.,<span class="math inline">\(&lt;&gt;\)</span></td>
+<td style="text-align: left;">Non-equality comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">.LT.,<span class="math inline">\(&lt;\)</span></td>
+<td style="text-align: left;">Less than comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">.GT.,<span class="math inline">\(&gt;\)</span></td>
+<td style="text-align: left;">Greater than comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">.LT.,<span class="math inline">\(&lt;=\)</span></td>
+<td style="text-align: left;">Less than or equal to comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">.GE.,<span class="math inline">\(&gt;=\)</span></td>
+<td style="text-align: left;">Greater than or equal to comparison</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">.AND.,&amp;&amp;</td>
+<td style="text-align: left;">Conjunction (and)</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">.OR.,<span class="math inline">\(\|\)</span></td>
+<td style="text-align: left;">Inclusive disjunction (or)</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-ArenaMathFunc" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ArenaMathFunc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.2: Arena’s Mathematical Functions
+</figcaption>
+<div aria-describedby="tbl-ArenaMathFunc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Function</strong></th>
+<th style="text-align: center;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ABS(a)</td>
+<td style="text-align: center;">Absolute value</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACOS(a)</td>
+<td style="text-align: center;">Arc cosine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AINT(a)</td>
+<td style="text-align: center;">Truncate</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AMOD(a1, a2)</td>
+<td style="text-align: center;">Real remainder, returns(a1-(AINT(<span class="math inline">\(\frac{a1}{a2}\)</span>)<span class="math inline">\(\times\)</span>a2))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANINT(a)</td>
+<td style="text-align: center;">Round to nearest integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASIN(a)</td>
+<td style="text-align: center;">Arc sine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ATAN(a)</td>
+<td style="text-align: center;">Arc tangent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COS(a)</td>
+<td style="text-align: center;">Cosine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EP(a)</td>
+<td style="text-align: center;">Exponential(<span class="math inline">\(e^a\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HCOS(a)</td>
+<td style="text-align: center;">Hyperbolic cosine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HSIN(a)</td>
+<td style="text-align: center;">Hyperbolic sine</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HTAN(a)</td>
+<td style="text-align: center;">Hyperbolic tangent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MN(a1, a2, <span class="math inline">\(\ldots\)</span>)</td>
+<td style="text-align: center;">Minimum value</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MOD(a1,a2)</td>
+<td style="text-align: center;">same as AMOD(AINT(a1), AINT(a2))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MX(a1, a2, <span class="math inline">\(\ldots\)</span>)</td>
+<td style="text-align: center;">Maximum value</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LN(a)</td>
+<td style="text-align: center;">Natural logarithm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LOG(a)</td>
+<td style="text-align: center;">Common logarithm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SIN(a)</td>
+<td style="text-align: center;">Sine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SQRT(a)</td>
+<td style="text-align: center;">Square root</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TAN(a)</td>
+<td style="text-align: center;">Tangent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="arena-probability-distributions-functions" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="arena-probability-distributions-functions"><span class="header-section-number">E.2</span> Arena Probability Distributions Functions</h2>
+<div id="tbl-ArenaDistributions" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ArenaDistributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.3: Arena’s Distributions
+</figcaption>
+<div aria-describedby="tbl-ArenaDistributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Beta</td>
+<td style="text-align: left;">BETA(Alpha, Alpha2<code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">NORM(Mean,SD<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Empirical Continuous</td>
+<td style="text-align: left;">CONT(Prob1,Value1,Prob2,Value2,<span class="math inline">\(\ldots\)</span><code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NSExpo</td>
+<td style="text-align: left;">Non-homogeneous Poisson process</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Empirical Discrete</td>
+<td style="text-align: left;">DISC(Prob1,Value1,Prob2,Value2,<span class="math inline">\(\ldots\)</span><code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poisson</td>
+<td style="text-align: left;">POIS(Mean<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">K-Erlang</td>
+<td style="text-align: left;">ERLA(Mean,k<code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lognormal</td>
+<td style="text-align: left;">LOGN(LogMean,LogStd<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uniform(0,1)</td>
+<td style="text-align: left;">RA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exponential</td>
+<td style="text-align: left;">EXPO(Mean<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Triangular</td>
+<td style="text-align: left;">TRIA(Min,Mode,Max<code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gamma</td>
+<td style="text-align: left;">GAMM(scale,shape<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uniform</td>
+<td style="text-align: left;">UNIF(Min,Max<code>[,Stream</code>])</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Johnson</td>
+<td style="text-align: left;">JOHN(shape1,shape2,scale,location<code>[,Stream</code>])</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Weibull</td>
+<td style="text-align: left;">WEIB(scale,shape<code>[,Stream</code>])</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="basic-process-panel-modules" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="basic-process-panel-modules"><span class="header-section-number">E.3</span> Basic Process Panel Modules</h2>
+<div id="tbl-ABPPM" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ABPPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.4: Basic Process Panel Modules
+</figcaption>
+<div aria-describedby="tbl-ABPPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CREATE</td>
+<td style="text-align: left;">Used to create and introduce entities into the model according to a pattern.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DISPOSE</td>
+<td style="text-align: left;">Used to dispose of entities once they have completed their activities within the model.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PROCESS</td>
+<td style="text-align: left;">Used to allow an entity to experience an activity with the possible use of a resource.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSIGN</td>
+<td style="text-align: left;">Used to make assignments to variables and attributes within the model</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RECORD</td>
+<td style="text-align: left;">Used to capture and tabulate statistics within the model.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BATCH</td>
+<td style="text-align: left;">Used to combine entities into a permanent or temporary representative entity.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SEPARATE</td>
+<td style="text-align: left;">Used to create duplicates of an existing entity or to split a batched group of entities.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DECIDE</td>
+<td style="text-align: left;">Used to provide alternative flow paths for an entity based on probabilistic or condition based branching.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VARIABLE</td>
+<td style="text-align: left;">Used to define variables for use within the model.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RESOURCE</td>
+<td style="text-align: left;">Used to define a quantity of units of a resource that can be seized and released by entities.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QUEUE</td>
+<td style="text-align: left;">Used to define a waiting line for entities whose flow is currently stopped within the model.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENTITY</td>
+<td style="text-align: left;">Used to define different entity types for use within the model.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SET</td>
+<td style="text-align: left;">Used to define a list of elements within Arena that can be indexed by the location in the list.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCHEDULE</td>
+<td style="text-align: left;">Used to define a staffing schedule for resources or a time-based arrival pattern.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="advanced-process-panel-modules" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="advanced-process-panel-modules"><span class="header-section-number">E.4</span> Advanced Process Panel Modules</h2>
+<div id="tbl-AAPPM" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-AAPPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.5: Advanced Process Panel Modules
+</figcaption>
+<div aria-describedby="tbl-AAPPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SEIZE</td>
+<td style="text-align: left;">Allows an entity to request a number of units of a resource. If the units are not available, the entity waits in a queue.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DELAY</td>
+<td style="text-align: left;">Allows an entity to experience a delay in movement via the scheduling of an event.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RELEASE</td>
+<td style="text-align: left;">Releases the units of a resource seized by an entity.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MATCH</td>
+<td style="text-align: left;">Allows entities to wait in queues until a user specified matching criteria occurs.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HOLD</td>
+<td style="text-align: left;">Holds entities in a queue until a signal is given or until a condition in the model is met.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SIGNAL</td>
+<td style="text-align: left;">Signals entities in a HOLD queue to proceed.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PICKUP</td>
+<td style="text-align: left;">Allows an entity to pick up and place other entities into a group associated with the entity.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DROPOFF</td>
+<td style="text-align: left;">Allows an entity to drop off entities from its entity group.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SEARCH</td>
+<td style="text-align: left;">Allows an entity to search a queue for entities that match search criteria.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">REMOVE</td>
+<td style="text-align: left;">Allows an entity to remove other entities directly from a queue.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STORE</td>
+<td style="text-align: left;">Indicates that the entity is in a STORAGE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UNSTORE</td>
+<td style="text-align: left;">Indicates that the entity is no longer in a STORAGE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ADJUST VARIABLE</td>
+<td style="text-align: left;">Adjusts a variable to a target value at a specified rate.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">READWRITE</td>
+<td style="text-align: left;">Allows input and output to occur within the model.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FILE</td>
+<td style="text-align: left;">Defines the characteristics of the operating system file used within a READWRITE module.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EXPRESSION</td>
+<td style="text-align: left;">Allows the user to define named logical/mathematical expressions that can be used throughout the model.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STORAGE</td>
+<td style="text-align: left;">Demarks a location/concept that may contain entities.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ADVANCED SET</td>
+<td style="text-align: left;">Used to define a list of elements within Arena that can be indexed by the location in the list.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FAILURE</td>
+<td style="text-align: left;">Used to define unscheduled capacity changes for resources according to a time pattern or a usage indicator.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STATISTIC</td>
+<td style="text-align: left;">Used to define and manage time-based, observation based, and replication statistics.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="advanced-transfer-panel-modules" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="advanced-transfer-panel-modules"><span class="header-section-number">E.5</span> Advanced Transfer Panel Modules</h2>
+<div id="tbl-AATPM" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-AATPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.6: Advanced Transfer Panel Modules
+</figcaption>
+<div aria-describedby="tbl-AATPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STATION</td>
+<td style="text-align: left;">Allows the marking in the model for a location to which entities can be directed for processing.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ROUTE</td>
+<td style="text-align: left;">Facilitates the movement between stations with a time delay.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ENTER</td>
+<td style="text-align: left;">Represents STATION, DELAY, and/or EXIT/FREE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LEAVE</td>
+<td style="text-align: left;">Represents ROUTE or TRANSPORT or CONVEY with DELAY option</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PICKSTATION</td>
+<td style="text-align: left;">Allows entity to decide on its next station based on conditions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACCESS</td>
+<td style="text-align: left;">Requests space on a conveyor. Entity waits if no space is available.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CONVEY</td>
+<td style="text-align: left;">After obtaining space on a conveyor, causes the entity to be conveyed to its destination station.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EXIT</td>
+<td style="text-align: left;">Releases space on a conveyor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">START</td>
+<td style="text-align: left;">Causes a stopped conveyor to start transferring entities.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STOP</td>
+<td style="text-align: left;">Causes a conveyor to stop transferring entities.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALLOCATE</td>
+<td style="text-align: left;">Assigns entity a transporter without moving the transporter, entity controls transporter and may wait in queue.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MOVE</td>
+<td style="text-align: left;">Moves an allocated transporter to a station destination.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">REQUEST</td>
+<td style="text-align: left;">Asks transporter for pick up, entity waits until transporter is allocated, and transporter moves to pick up location.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRANSPORT</td>
+<td style="text-align: left;">Same as REQUEST followed by MOVE to the entities desired location.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FREE</td>
+<td style="text-align: left;">Causes the entity to release an allocated transporter.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HALT</td>
+<td style="text-align: left;">Changes the state of the transporter to inactive.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ACTIVATE</td>
+<td style="text-align: left;">Changes the state of the transporter to active.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SEQUENCE</td>
+<td style="text-align: left;">Allows pre-specified routes of stations to be defined and attributes to be assigned when entities are transferred.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CONVEYOR</td>
+<td style="text-align: left;">Defines a conveyor as a list of segments and provides the velocity and space characteristics of the conveyor.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SEGMENT</td>
+<td style="text-align: left;">Defines the distance between two stations as a segment on a conveyor.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRANSPORTER</td>
+<td style="text-align: left;">Defines a mobile resource and its characteristics, capable of free path or guided path movement.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DISTANCE</td>
+<td style="text-align: left;">Defines the from-to distances between stations for free path transporters.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NETWORK</td>
+<td style="text-align: left;">Defines a set of transporter links between intersections that represents a guided path network for transporters.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NETWORKLINK</td>
+<td style="text-align: left;">Defines the characteristics of a space constraining path between intersections within guided path networks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ACTIVITY AREA</td>
+<td style="text-align: left;">Defines stations that are part of an area for the collection of aggregate statistics on the group of stations.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="important-siman-blocks-elements-and-pre-defined-attributes-and-variables" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="important-siman-blocks-elements-and-pre-defined-attributes-and-variables"><span class="header-section-number">E.6</span> Important SIMAN Blocks, Elements, and Pre-Defined Attributes and Variables</h2>
+<div id="tbl-AMUBAV" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-AMUBAV-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;E.7: Miscellaneous Useful Blocks, Attributes, and Variables
+</figcaption>
+<div aria-describedby="tbl-AMUBAV-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IF-ELSEIF-ELSE-ENDIF</td>
+<td style="text-align: left;">(Blocks panel) Allows standard logic based flow of control.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WHILE-ENDWHILE</td>
+<td style="text-align: left;">(Blocks panel) Allows for iterative looping.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BRANCH</td>
+<td style="text-align: left;">(Blocks panel) Allows probabilistic and condition based path determination and cloning of entities.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TNOW</td>
+<td style="text-align: left;">The current simulation time.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NREP</td>
+<td style="text-align: left;">Current replication number.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MREP</td>
+<td style="text-align: left;">Maximum number of replications.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">J</td>
+<td style="text-align: left;">Index in SEARCH module</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NQ(queue name)</td>
+<td style="text-align: left;">Number of entities in the named queue.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MR(resource name)</td>
+<td style="text-align: left;">The current capacity of the named resource</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NR(resource name)</td>
+<td style="text-align: left;">The current number of busy units of the named resource</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity.SerialNumber</td>
+<td style="text-align: left;">A number assigned to an entity upon creation. Duplicates will have this same number.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Enity.Jobstep</td>
+<td style="text-align: left;">The entity’s current position in its squence.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity.Sequence</td>
+<td style="text-align: left;">The entity’s sequence when using a transfer option.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Entity.Station</td>
+<td style="text-align: left;">The entity’s location or destination.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity.CurrentStation</td>
+<td style="text-align: left;">The entity’s location.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Enity.CreateTime</td>
+<td style="text-align: left;">The value of TNOW when the entity was created.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IDENT</td>
+<td style="text-align: left;">A unique number assigned to an entity while in the model. No entities have the same IDENT number.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./12-MiscTopicsInArena.html" class="pagination-link" aria-label="Miscellaneous Topics in Arena">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./14-CommonDistributions.html" class="pagination-link" aria-label="Distributions">
+        <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

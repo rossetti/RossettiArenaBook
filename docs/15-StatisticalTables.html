@@ -1,0 +1,2972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An open textbook on discrete-event simulation modeling using Arena.">
+
+<title>Appendix G — Statistical Tables – Simulation Modeling and Arena</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./14-CommonDistributions.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-10629767a8d3d760d9707fc59134ae44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="mathjax/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./15-StatisticalTables.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Simulation Modeling and Arena</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-author.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Simulation and Arena</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical Analysis for Finite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modeling Systems with Processes and Basic Entity Flow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Analysis for Infinite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling Systems with Advanced Process Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modeling Systems with Entity Movement and Material Handling Constructs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Chapter8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-AppRNRV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-AppDistributionFitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-QueuingTheory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-MiscTopicsInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-FunctionsAndModulesInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-CommonDistributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-StatisticalTables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./15-StatisticalTables.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-StatTables" class="quarto-section-identifier">Appendix G — Statistical Tables</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div id="tbl-ZTableNeg" class="cell quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ZTableNeg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;G.1: Cumulative standard normal distribution, z = -3.49 to 0
+</figcaption>
+<div aria-describedby="tbl-ZTableNeg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.09</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.08</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.07</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.06</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.05</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.04</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.03</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.02</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">-0.01</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">-3.40</td>
+<td style="text-align: right;">0.0002</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-3.30</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0004</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">0.0005</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-3.20</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">0.0007</td>
+<td style="text-align: right;">0.0007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-3.10</td>
+<td style="text-align: right;">0.0007</td>
+<td style="text-align: right;">0.0007</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">0.0009</td>
+<td style="text-align: right;">0.0009</td>
+<td style="text-align: right;">0.0009</td>
+<td style="text-align: right;">0.0010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-3.00</td>
+<td style="text-align: right;">0.0010</td>
+<td style="text-align: right;">0.0010</td>
+<td style="text-align: right;">0.0011</td>
+<td style="text-align: right;">0.0011</td>
+<td style="text-align: right;">0.0011</td>
+<td style="text-align: right;">0.0012</td>
+<td style="text-align: right;">0.0012</td>
+<td style="text-align: right;">0.0013</td>
+<td style="text-align: right;">0.0013</td>
+<td style="text-align: right;">0.0013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-2.90</td>
+<td style="text-align: right;">0.0014</td>
+<td style="text-align: right;">0.0014</td>
+<td style="text-align: right;">0.0015</td>
+<td style="text-align: right;">0.0015</td>
+<td style="text-align: right;">0.0016</td>
+<td style="text-align: right;">0.0016</td>
+<td style="text-align: right;">0.0017</td>
+<td style="text-align: right;">0.0018</td>
+<td style="text-align: right;">0.0018</td>
+<td style="text-align: right;">0.0019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-2.80</td>
+<td style="text-align: right;">0.0019</td>
+<td style="text-align: right;">0.0020</td>
+<td style="text-align: right;">0.0021</td>
+<td style="text-align: right;">0.0021</td>
+<td style="text-align: right;">0.0022</td>
+<td style="text-align: right;">0.0023</td>
+<td style="text-align: right;">0.0023</td>
+<td style="text-align: right;">0.0024</td>
+<td style="text-align: right;">0.0025</td>
+<td style="text-align: right;">0.0026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-2.70</td>
+<td style="text-align: right;">0.0026</td>
+<td style="text-align: right;">0.0027</td>
+<td style="text-align: right;">0.0028</td>
+<td style="text-align: right;">0.0029</td>
+<td style="text-align: right;">0.0030</td>
+<td style="text-align: right;">0.0031</td>
+<td style="text-align: right;">0.0032</td>
+<td style="text-align: right;">0.0033</td>
+<td style="text-align: right;">0.0034</td>
+<td style="text-align: right;">0.0035</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-2.60</td>
+<td style="text-align: right;">0.0036</td>
+<td style="text-align: right;">0.0037</td>
+<td style="text-align: right;">0.0038</td>
+<td style="text-align: right;">0.0039</td>
+<td style="text-align: right;">0.0040</td>
+<td style="text-align: right;">0.0041</td>
+<td style="text-align: right;">0.0043</td>
+<td style="text-align: right;">0.0044</td>
+<td style="text-align: right;">0.0045</td>
+<td style="text-align: right;">0.0047</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-2.50</td>
+<td style="text-align: right;">0.0048</td>
+<td style="text-align: right;">0.0049</td>
+<td style="text-align: right;">0.0051</td>
+<td style="text-align: right;">0.0052</td>
+<td style="text-align: right;">0.0054</td>
+<td style="text-align: right;">0.0055</td>
+<td style="text-align: right;">0.0057</td>
+<td style="text-align: right;">0.0059</td>
+<td style="text-align: right;">0.0060</td>
+<td style="text-align: right;">0.0062</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-2.40</td>
+<td style="text-align: right;">0.0064</td>
+<td style="text-align: right;">0.0066</td>
+<td style="text-align: right;">0.0068</td>
+<td style="text-align: right;">0.0069</td>
+<td style="text-align: right;">0.0071</td>
+<td style="text-align: right;">0.0073</td>
+<td style="text-align: right;">0.0075</td>
+<td style="text-align: right;">0.0078</td>
+<td style="text-align: right;">0.0080</td>
+<td style="text-align: right;">0.0082</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-2.30</td>
+<td style="text-align: right;">0.0084</td>
+<td style="text-align: right;">0.0087</td>
+<td style="text-align: right;">0.0089</td>
+<td style="text-align: right;">0.0091</td>
+<td style="text-align: right;">0.0094</td>
+<td style="text-align: right;">0.0096</td>
+<td style="text-align: right;">0.0099</td>
+<td style="text-align: right;">0.0102</td>
+<td style="text-align: right;">0.0104</td>
+<td style="text-align: right;">0.0107</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-2.20</td>
+<td style="text-align: right;">0.0110</td>
+<td style="text-align: right;">0.0113</td>
+<td style="text-align: right;">0.0116</td>
+<td style="text-align: right;">0.0119</td>
+<td style="text-align: right;">0.0122</td>
+<td style="text-align: right;">0.0125</td>
+<td style="text-align: right;">0.0129</td>
+<td style="text-align: right;">0.0132</td>
+<td style="text-align: right;">0.0136</td>
+<td style="text-align: right;">0.0139</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-2.10</td>
+<td style="text-align: right;">0.0143</td>
+<td style="text-align: right;">0.0146</td>
+<td style="text-align: right;">0.0150</td>
+<td style="text-align: right;">0.0154</td>
+<td style="text-align: right;">0.0158</td>
+<td style="text-align: right;">0.0162</td>
+<td style="text-align: right;">0.0166</td>
+<td style="text-align: right;">0.0170</td>
+<td style="text-align: right;">0.0174</td>
+<td style="text-align: right;">0.0179</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-2.00</td>
+<td style="text-align: right;">0.0183</td>
+<td style="text-align: right;">0.0188</td>
+<td style="text-align: right;">0.0192</td>
+<td style="text-align: right;">0.0197</td>
+<td style="text-align: right;">0.0202</td>
+<td style="text-align: right;">0.0207</td>
+<td style="text-align: right;">0.0212</td>
+<td style="text-align: right;">0.0217</td>
+<td style="text-align: right;">0.0222</td>
+<td style="text-align: right;">0.0228</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-1.90</td>
+<td style="text-align: right;">0.0233</td>
+<td style="text-align: right;">0.0239</td>
+<td style="text-align: right;">0.0244</td>
+<td style="text-align: right;">0.0250</td>
+<td style="text-align: right;">0.0256</td>
+<td style="text-align: right;">0.0262</td>
+<td style="text-align: right;">0.0268</td>
+<td style="text-align: right;">0.0274</td>
+<td style="text-align: right;">0.0281</td>
+<td style="text-align: right;">0.0287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.80</td>
+<td style="text-align: right;">0.0294</td>
+<td style="text-align: right;">0.0301</td>
+<td style="text-align: right;">0.0307</td>
+<td style="text-align: right;">0.0314</td>
+<td style="text-align: right;">0.0322</td>
+<td style="text-align: right;">0.0329</td>
+<td style="text-align: right;">0.0336</td>
+<td style="text-align: right;">0.0344</td>
+<td style="text-align: right;">0.0351</td>
+<td style="text-align: right;">0.0359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-1.70</td>
+<td style="text-align: right;">0.0367</td>
+<td style="text-align: right;">0.0375</td>
+<td style="text-align: right;">0.0384</td>
+<td style="text-align: right;">0.0392</td>
+<td style="text-align: right;">0.0401</td>
+<td style="text-align: right;">0.0409</td>
+<td style="text-align: right;">0.0418</td>
+<td style="text-align: right;">0.0427</td>
+<td style="text-align: right;">0.0436</td>
+<td style="text-align: right;">0.0446</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.60</td>
+<td style="text-align: right;">0.0455</td>
+<td style="text-align: right;">0.0465</td>
+<td style="text-align: right;">0.0475</td>
+<td style="text-align: right;">0.0485</td>
+<td style="text-align: right;">0.0495</td>
+<td style="text-align: right;">0.0505</td>
+<td style="text-align: right;">0.0516</td>
+<td style="text-align: right;">0.0526</td>
+<td style="text-align: right;">0.0537</td>
+<td style="text-align: right;">0.0548</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-1.50</td>
+<td style="text-align: right;">0.0559</td>
+<td style="text-align: right;">0.0571</td>
+<td style="text-align: right;">0.0582</td>
+<td style="text-align: right;">0.0594</td>
+<td style="text-align: right;">0.0606</td>
+<td style="text-align: right;">0.0618</td>
+<td style="text-align: right;">0.0630</td>
+<td style="text-align: right;">0.0643</td>
+<td style="text-align: right;">0.0655</td>
+<td style="text-align: right;">0.0668</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.40</td>
+<td style="text-align: right;">0.0681</td>
+<td style="text-align: right;">0.0694</td>
+<td style="text-align: right;">0.0708</td>
+<td style="text-align: right;">0.0721</td>
+<td style="text-align: right;">0.0735</td>
+<td style="text-align: right;">0.0749</td>
+<td style="text-align: right;">0.0764</td>
+<td style="text-align: right;">0.0778</td>
+<td style="text-align: right;">0.0793</td>
+<td style="text-align: right;">0.0808</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-1.30</td>
+<td style="text-align: right;">0.0823</td>
+<td style="text-align: right;">0.0838</td>
+<td style="text-align: right;">0.0853</td>
+<td style="text-align: right;">0.0869</td>
+<td style="text-align: right;">0.0885</td>
+<td style="text-align: right;">0.0901</td>
+<td style="text-align: right;">0.0918</td>
+<td style="text-align: right;">0.0934</td>
+<td style="text-align: right;">0.0951</td>
+<td style="text-align: right;">0.0968</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.20</td>
+<td style="text-align: right;">0.0985</td>
+<td style="text-align: right;">0.1003</td>
+<td style="text-align: right;">0.1020</td>
+<td style="text-align: right;">0.1038</td>
+<td style="text-align: right;">0.1056</td>
+<td style="text-align: right;">0.1075</td>
+<td style="text-align: right;">0.1093</td>
+<td style="text-align: right;">0.1112</td>
+<td style="text-align: right;">0.1131</td>
+<td style="text-align: right;">0.1151</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-1.10</td>
+<td style="text-align: right;">0.1170</td>
+<td style="text-align: right;">0.1190</td>
+<td style="text-align: right;">0.1210</td>
+<td style="text-align: right;">0.1230</td>
+<td style="text-align: right;">0.1251</td>
+<td style="text-align: right;">0.1271</td>
+<td style="text-align: right;">0.1292</td>
+<td style="text-align: right;">0.1314</td>
+<td style="text-align: right;">0.1335</td>
+<td style="text-align: right;">0.1357</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.00</td>
+<td style="text-align: right;">0.1379</td>
+<td style="text-align: right;">0.1401</td>
+<td style="text-align: right;">0.1423</td>
+<td style="text-align: right;">0.1446</td>
+<td style="text-align: right;">0.1469</td>
+<td style="text-align: right;">0.1492</td>
+<td style="text-align: right;">0.1515</td>
+<td style="text-align: right;">0.1539</td>
+<td style="text-align: right;">0.1562</td>
+<td style="text-align: right;">0.1587</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.90</td>
+<td style="text-align: right;">0.1611</td>
+<td style="text-align: right;">0.1635</td>
+<td style="text-align: right;">0.1660</td>
+<td style="text-align: right;">0.1685</td>
+<td style="text-align: right;">0.1711</td>
+<td style="text-align: right;">0.1736</td>
+<td style="text-align: right;">0.1762</td>
+<td style="text-align: right;">0.1788</td>
+<td style="text-align: right;">0.1814</td>
+<td style="text-align: right;">0.1841</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.80</td>
+<td style="text-align: right;">0.1867</td>
+<td style="text-align: right;">0.1894</td>
+<td style="text-align: right;">0.1922</td>
+<td style="text-align: right;">0.1949</td>
+<td style="text-align: right;">0.1977</td>
+<td style="text-align: right;">0.2005</td>
+<td style="text-align: right;">0.2033</td>
+<td style="text-align: right;">0.2061</td>
+<td style="text-align: right;">0.2090</td>
+<td style="text-align: right;">0.2119</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.70</td>
+<td style="text-align: right;">0.2148</td>
+<td style="text-align: right;">0.2177</td>
+<td style="text-align: right;">0.2206</td>
+<td style="text-align: right;">0.2236</td>
+<td style="text-align: right;">0.2266</td>
+<td style="text-align: right;">0.2296</td>
+<td style="text-align: right;">0.2327</td>
+<td style="text-align: right;">0.2358</td>
+<td style="text-align: right;">0.2389</td>
+<td style="text-align: right;">0.2420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.60</td>
+<td style="text-align: right;">0.2451</td>
+<td style="text-align: right;">0.2483</td>
+<td style="text-align: right;">0.2514</td>
+<td style="text-align: right;">0.2546</td>
+<td style="text-align: right;">0.2578</td>
+<td style="text-align: right;">0.2611</td>
+<td style="text-align: right;">0.2643</td>
+<td style="text-align: right;">0.2676</td>
+<td style="text-align: right;">0.2709</td>
+<td style="text-align: right;">0.2743</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.50</td>
+<td style="text-align: right;">0.2776</td>
+<td style="text-align: right;">0.2810</td>
+<td style="text-align: right;">0.2843</td>
+<td style="text-align: right;">0.2877</td>
+<td style="text-align: right;">0.2912</td>
+<td style="text-align: right;">0.2946</td>
+<td style="text-align: right;">0.2981</td>
+<td style="text-align: right;">0.3015</td>
+<td style="text-align: right;">0.3050</td>
+<td style="text-align: right;">0.3085</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.40</td>
+<td style="text-align: right;">0.3121</td>
+<td style="text-align: right;">0.3156</td>
+<td style="text-align: right;">0.3192</td>
+<td style="text-align: right;">0.3228</td>
+<td style="text-align: right;">0.3264</td>
+<td style="text-align: right;">0.3300</td>
+<td style="text-align: right;">0.3336</td>
+<td style="text-align: right;">0.3372</td>
+<td style="text-align: right;">0.3409</td>
+<td style="text-align: right;">0.3446</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.30</td>
+<td style="text-align: right;">0.3483</td>
+<td style="text-align: right;">0.3520</td>
+<td style="text-align: right;">0.3557</td>
+<td style="text-align: right;">0.3594</td>
+<td style="text-align: right;">0.3632</td>
+<td style="text-align: right;">0.3669</td>
+<td style="text-align: right;">0.3707</td>
+<td style="text-align: right;">0.3745</td>
+<td style="text-align: right;">0.3783</td>
+<td style="text-align: right;">0.3821</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.20</td>
+<td style="text-align: right;">0.3859</td>
+<td style="text-align: right;">0.3897</td>
+<td style="text-align: right;">0.3936</td>
+<td style="text-align: right;">0.3974</td>
+<td style="text-align: right;">0.4013</td>
+<td style="text-align: right;">0.4052</td>
+<td style="text-align: right;">0.4090</td>
+<td style="text-align: right;">0.4129</td>
+<td style="text-align: right;">0.4168</td>
+<td style="text-align: right;">0.4207</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.10</td>
+<td style="text-align: right;">0.4247</td>
+<td style="text-align: right;">0.4286</td>
+<td style="text-align: right;">0.4325</td>
+<td style="text-align: right;">0.4364</td>
+<td style="text-align: right;">0.4404</td>
+<td style="text-align: right;">0.4443</td>
+<td style="text-align: right;">0.4483</td>
+<td style="text-align: right;">0.4522</td>
+<td style="text-align: right;">0.4562</td>
+<td style="text-align: right;">0.4602</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.00</td>
+<td style="text-align: right;">0.4641</td>
+<td style="text-align: right;">0.4681</td>
+<td style="text-align: right;">0.4721</td>
+<td style="text-align: right;">0.4761</td>
+<td style="text-align: right;">0.4801</td>
+<td style="text-align: right;">0.4840</td>
+<td style="text-align: right;">0.4880</td>
+<td style="text-align: right;">0.4920</td>
+<td style="text-align: right;">0.4960</td>
+<td style="text-align: right;">0.5000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div id="tbl-ZTablePos" class="cell quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ZTablePos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;G.2: Cumulative standard normal distribution, z = 0.0 to 3.49
+</figcaption>
+<div aria-describedby="tbl-ZTablePos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.01</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.02</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.03</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.04</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.05</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.06</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.07</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.08</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">0.09</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0.00</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5040</td>
+<td style="text-align: right;">0.5080</td>
+<td style="text-align: right;">0.5120</td>
+<td style="text-align: right;">0.5160</td>
+<td style="text-align: right;">0.5199</td>
+<td style="text-align: right;">0.5239</td>
+<td style="text-align: right;">0.5279</td>
+<td style="text-align: right;">0.5319</td>
+<td style="text-align: right;">0.5359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.10</td>
+<td style="text-align: right;">0.5398</td>
+<td style="text-align: right;">0.5438</td>
+<td style="text-align: right;">0.5478</td>
+<td style="text-align: right;">0.5517</td>
+<td style="text-align: right;">0.5557</td>
+<td style="text-align: right;">0.5596</td>
+<td style="text-align: right;">0.5636</td>
+<td style="text-align: right;">0.5675</td>
+<td style="text-align: right;">0.5714</td>
+<td style="text-align: right;">0.5753</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.20</td>
+<td style="text-align: right;">0.5793</td>
+<td style="text-align: right;">0.5832</td>
+<td style="text-align: right;">0.5871</td>
+<td style="text-align: right;">0.5910</td>
+<td style="text-align: right;">0.5948</td>
+<td style="text-align: right;">0.5987</td>
+<td style="text-align: right;">0.6026</td>
+<td style="text-align: right;">0.6064</td>
+<td style="text-align: right;">0.6103</td>
+<td style="text-align: right;">0.6141</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.30</td>
+<td style="text-align: right;">0.6179</td>
+<td style="text-align: right;">0.6217</td>
+<td style="text-align: right;">0.6255</td>
+<td style="text-align: right;">0.6293</td>
+<td style="text-align: right;">0.6331</td>
+<td style="text-align: right;">0.6368</td>
+<td style="text-align: right;">0.6406</td>
+<td style="text-align: right;">0.6443</td>
+<td style="text-align: right;">0.6480</td>
+<td style="text-align: right;">0.6517</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.40</td>
+<td style="text-align: right;">0.6554</td>
+<td style="text-align: right;">0.6591</td>
+<td style="text-align: right;">0.6628</td>
+<td style="text-align: right;">0.6664</td>
+<td style="text-align: right;">0.6700</td>
+<td style="text-align: right;">0.6736</td>
+<td style="text-align: right;">0.6772</td>
+<td style="text-align: right;">0.6808</td>
+<td style="text-align: right;">0.6844</td>
+<td style="text-align: right;">0.6879</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.50</td>
+<td style="text-align: right;">0.6915</td>
+<td style="text-align: right;">0.6950</td>
+<td style="text-align: right;">0.6985</td>
+<td style="text-align: right;">0.7019</td>
+<td style="text-align: right;">0.7054</td>
+<td style="text-align: right;">0.7088</td>
+<td style="text-align: right;">0.7123</td>
+<td style="text-align: right;">0.7157</td>
+<td style="text-align: right;">0.7190</td>
+<td style="text-align: right;">0.7224</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.60</td>
+<td style="text-align: right;">0.7257</td>
+<td style="text-align: right;">0.7291</td>
+<td style="text-align: right;">0.7324</td>
+<td style="text-align: right;">0.7357</td>
+<td style="text-align: right;">0.7389</td>
+<td style="text-align: right;">0.7422</td>
+<td style="text-align: right;">0.7454</td>
+<td style="text-align: right;">0.7486</td>
+<td style="text-align: right;">0.7517</td>
+<td style="text-align: right;">0.7549</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.70</td>
+<td style="text-align: right;">0.7580</td>
+<td style="text-align: right;">0.7611</td>
+<td style="text-align: right;">0.7642</td>
+<td style="text-align: right;">0.7673</td>
+<td style="text-align: right;">0.7704</td>
+<td style="text-align: right;">0.7734</td>
+<td style="text-align: right;">0.7764</td>
+<td style="text-align: right;">0.7794</td>
+<td style="text-align: right;">0.7823</td>
+<td style="text-align: right;">0.7852</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.80</td>
+<td style="text-align: right;">0.7881</td>
+<td style="text-align: right;">0.7910</td>
+<td style="text-align: right;">0.7939</td>
+<td style="text-align: right;">0.7967</td>
+<td style="text-align: right;">0.7995</td>
+<td style="text-align: right;">0.8023</td>
+<td style="text-align: right;">0.8051</td>
+<td style="text-align: right;">0.8078</td>
+<td style="text-align: right;">0.8106</td>
+<td style="text-align: right;">0.8133</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.90</td>
+<td style="text-align: right;">0.8159</td>
+<td style="text-align: right;">0.8186</td>
+<td style="text-align: right;">0.8212</td>
+<td style="text-align: right;">0.8238</td>
+<td style="text-align: right;">0.8264</td>
+<td style="text-align: right;">0.8289</td>
+<td style="text-align: right;">0.8315</td>
+<td style="text-align: right;">0.8340</td>
+<td style="text-align: right;">0.8365</td>
+<td style="text-align: right;">0.8389</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.00</td>
+<td style="text-align: right;">0.8413</td>
+<td style="text-align: right;">0.8438</td>
+<td style="text-align: right;">0.8461</td>
+<td style="text-align: right;">0.8485</td>
+<td style="text-align: right;">0.8508</td>
+<td style="text-align: right;">0.8531</td>
+<td style="text-align: right;">0.8554</td>
+<td style="text-align: right;">0.8577</td>
+<td style="text-align: right;">0.8599</td>
+<td style="text-align: right;">0.8621</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.10</td>
+<td style="text-align: right;">0.8643</td>
+<td style="text-align: right;">0.8665</td>
+<td style="text-align: right;">0.8686</td>
+<td style="text-align: right;">0.8708</td>
+<td style="text-align: right;">0.8729</td>
+<td style="text-align: right;">0.8749</td>
+<td style="text-align: right;">0.8770</td>
+<td style="text-align: right;">0.8790</td>
+<td style="text-align: right;">0.8810</td>
+<td style="text-align: right;">0.8830</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.20</td>
+<td style="text-align: right;">0.8849</td>
+<td style="text-align: right;">0.8869</td>
+<td style="text-align: right;">0.8888</td>
+<td style="text-align: right;">0.8907</td>
+<td style="text-align: right;">0.8925</td>
+<td style="text-align: right;">0.8944</td>
+<td style="text-align: right;">0.8962</td>
+<td style="text-align: right;">0.8980</td>
+<td style="text-align: right;">0.8997</td>
+<td style="text-align: right;">0.9015</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.30</td>
+<td style="text-align: right;">0.9032</td>
+<td style="text-align: right;">0.9049</td>
+<td style="text-align: right;">0.9066</td>
+<td style="text-align: right;">0.9082</td>
+<td style="text-align: right;">0.9099</td>
+<td style="text-align: right;">0.9115</td>
+<td style="text-align: right;">0.9131</td>
+<td style="text-align: right;">0.9147</td>
+<td style="text-align: right;">0.9162</td>
+<td style="text-align: right;">0.9177</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.40</td>
+<td style="text-align: right;">0.9192</td>
+<td style="text-align: right;">0.9207</td>
+<td style="text-align: right;">0.9222</td>
+<td style="text-align: right;">0.9236</td>
+<td style="text-align: right;">0.9251</td>
+<td style="text-align: right;">0.9265</td>
+<td style="text-align: right;">0.9279</td>
+<td style="text-align: right;">0.9292</td>
+<td style="text-align: right;">0.9306</td>
+<td style="text-align: right;">0.9319</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.50</td>
+<td style="text-align: right;">0.9332</td>
+<td style="text-align: right;">0.9345</td>
+<td style="text-align: right;">0.9357</td>
+<td style="text-align: right;">0.9370</td>
+<td style="text-align: right;">0.9382</td>
+<td style="text-align: right;">0.9394</td>
+<td style="text-align: right;">0.9406</td>
+<td style="text-align: right;">0.9418</td>
+<td style="text-align: right;">0.9429</td>
+<td style="text-align: right;">0.9441</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.60</td>
+<td style="text-align: right;">0.9452</td>
+<td style="text-align: right;">0.9463</td>
+<td style="text-align: right;">0.9474</td>
+<td style="text-align: right;">0.9484</td>
+<td style="text-align: right;">0.9495</td>
+<td style="text-align: right;">0.9505</td>
+<td style="text-align: right;">0.9515</td>
+<td style="text-align: right;">0.9525</td>
+<td style="text-align: right;">0.9535</td>
+<td style="text-align: right;">0.9545</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.70</td>
+<td style="text-align: right;">0.9554</td>
+<td style="text-align: right;">0.9564</td>
+<td style="text-align: right;">0.9573</td>
+<td style="text-align: right;">0.9582</td>
+<td style="text-align: right;">0.9591</td>
+<td style="text-align: right;">0.9599</td>
+<td style="text-align: right;">0.9608</td>
+<td style="text-align: right;">0.9616</td>
+<td style="text-align: right;">0.9625</td>
+<td style="text-align: right;">0.9633</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.80</td>
+<td style="text-align: right;">0.9641</td>
+<td style="text-align: right;">0.9649</td>
+<td style="text-align: right;">0.9656</td>
+<td style="text-align: right;">0.9664</td>
+<td style="text-align: right;">0.9671</td>
+<td style="text-align: right;">0.9678</td>
+<td style="text-align: right;">0.9686</td>
+<td style="text-align: right;">0.9693</td>
+<td style="text-align: right;">0.9699</td>
+<td style="text-align: right;">0.9706</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.90</td>
+<td style="text-align: right;">0.9713</td>
+<td style="text-align: right;">0.9719</td>
+<td style="text-align: right;">0.9726</td>
+<td style="text-align: right;">0.9732</td>
+<td style="text-align: right;">0.9738</td>
+<td style="text-align: right;">0.9744</td>
+<td style="text-align: right;">0.9750</td>
+<td style="text-align: right;">0.9756</td>
+<td style="text-align: right;">0.9761</td>
+<td style="text-align: right;">0.9767</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.00</td>
+<td style="text-align: right;">0.9772</td>
+<td style="text-align: right;">0.9778</td>
+<td style="text-align: right;">0.9783</td>
+<td style="text-align: right;">0.9788</td>
+<td style="text-align: right;">0.9793</td>
+<td style="text-align: right;">0.9798</td>
+<td style="text-align: right;">0.9803</td>
+<td style="text-align: right;">0.9808</td>
+<td style="text-align: right;">0.9812</td>
+<td style="text-align: right;">0.9817</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.10</td>
+<td style="text-align: right;">0.9821</td>
+<td style="text-align: right;">0.9826</td>
+<td style="text-align: right;">0.9830</td>
+<td style="text-align: right;">0.9834</td>
+<td style="text-align: right;">0.9838</td>
+<td style="text-align: right;">0.9842</td>
+<td style="text-align: right;">0.9846</td>
+<td style="text-align: right;">0.9850</td>
+<td style="text-align: right;">0.9854</td>
+<td style="text-align: right;">0.9857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.20</td>
+<td style="text-align: right;">0.9861</td>
+<td style="text-align: right;">0.9864</td>
+<td style="text-align: right;">0.9868</td>
+<td style="text-align: right;">0.9871</td>
+<td style="text-align: right;">0.9875</td>
+<td style="text-align: right;">0.9878</td>
+<td style="text-align: right;">0.9881</td>
+<td style="text-align: right;">0.9884</td>
+<td style="text-align: right;">0.9887</td>
+<td style="text-align: right;">0.9890</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.30</td>
+<td style="text-align: right;">0.9893</td>
+<td style="text-align: right;">0.9896</td>
+<td style="text-align: right;">0.9898</td>
+<td style="text-align: right;">0.9901</td>
+<td style="text-align: right;">0.9904</td>
+<td style="text-align: right;">0.9906</td>
+<td style="text-align: right;">0.9909</td>
+<td style="text-align: right;">0.9911</td>
+<td style="text-align: right;">0.9913</td>
+<td style="text-align: right;">0.9916</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.40</td>
+<td style="text-align: right;">0.9918</td>
+<td style="text-align: right;">0.9920</td>
+<td style="text-align: right;">0.9922</td>
+<td style="text-align: right;">0.9925</td>
+<td style="text-align: right;">0.9927</td>
+<td style="text-align: right;">0.9929</td>
+<td style="text-align: right;">0.9931</td>
+<td style="text-align: right;">0.9932</td>
+<td style="text-align: right;">0.9934</td>
+<td style="text-align: right;">0.9936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.50</td>
+<td style="text-align: right;">0.9938</td>
+<td style="text-align: right;">0.9940</td>
+<td style="text-align: right;">0.9941</td>
+<td style="text-align: right;">0.9943</td>
+<td style="text-align: right;">0.9945</td>
+<td style="text-align: right;">0.9946</td>
+<td style="text-align: right;">0.9948</td>
+<td style="text-align: right;">0.9949</td>
+<td style="text-align: right;">0.9951</td>
+<td style="text-align: right;">0.9952</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.60</td>
+<td style="text-align: right;">0.9953</td>
+<td style="text-align: right;">0.9955</td>
+<td style="text-align: right;">0.9956</td>
+<td style="text-align: right;">0.9957</td>
+<td style="text-align: right;">0.9959</td>
+<td style="text-align: right;">0.9960</td>
+<td style="text-align: right;">0.9961</td>
+<td style="text-align: right;">0.9962</td>
+<td style="text-align: right;">0.9963</td>
+<td style="text-align: right;">0.9964</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.70</td>
+<td style="text-align: right;">0.9965</td>
+<td style="text-align: right;">0.9966</td>
+<td style="text-align: right;">0.9967</td>
+<td style="text-align: right;">0.9968</td>
+<td style="text-align: right;">0.9969</td>
+<td style="text-align: right;">0.9970</td>
+<td style="text-align: right;">0.9971</td>
+<td style="text-align: right;">0.9972</td>
+<td style="text-align: right;">0.9973</td>
+<td style="text-align: right;">0.9974</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.80</td>
+<td style="text-align: right;">0.9974</td>
+<td style="text-align: right;">0.9975</td>
+<td style="text-align: right;">0.9976</td>
+<td style="text-align: right;">0.9977</td>
+<td style="text-align: right;">0.9977</td>
+<td style="text-align: right;">0.9978</td>
+<td style="text-align: right;">0.9979</td>
+<td style="text-align: right;">0.9979</td>
+<td style="text-align: right;">0.9980</td>
+<td style="text-align: right;">0.9981</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.90</td>
+<td style="text-align: right;">0.9981</td>
+<td style="text-align: right;">0.9982</td>
+<td style="text-align: right;">0.9982</td>
+<td style="text-align: right;">0.9983</td>
+<td style="text-align: right;">0.9984</td>
+<td style="text-align: right;">0.9984</td>
+<td style="text-align: right;">0.9985</td>
+<td style="text-align: right;">0.9985</td>
+<td style="text-align: right;">0.9986</td>
+<td style="text-align: right;">0.9986</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.00</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9988</td>
+<td style="text-align: right;">0.9988</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9990</td>
+<td style="text-align: right;">0.9990</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.10</td>
+<td style="text-align: right;">0.9990</td>
+<td style="text-align: right;">0.9991</td>
+<td style="text-align: right;">0.9991</td>
+<td style="text-align: right;">0.9991</td>
+<td style="text-align: right;">0.9992</td>
+<td style="text-align: right;">0.9992</td>
+<td style="text-align: right;">0.9992</td>
+<td style="text-align: right;">0.9992</td>
+<td style="text-align: right;">0.9993</td>
+<td style="text-align: right;">0.9993</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.20</td>
+<td style="text-align: right;">0.9993</td>
+<td style="text-align: right;">0.9993</td>
+<td style="text-align: right;">0.9994</td>
+<td style="text-align: right;">0.9994</td>
+<td style="text-align: right;">0.9994</td>
+<td style="text-align: right;">0.9994</td>
+<td style="text-align: right;">0.9994</td>
+<td style="text-align: right;">0.9995</td>
+<td style="text-align: right;">0.9995</td>
+<td style="text-align: right;">0.9995</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.30</td>
+<td style="text-align: right;">0.9995</td>
+<td style="text-align: right;">0.9995</td>
+<td style="text-align: right;">0.9995</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9996</td>
+<td style="text-align: right;">0.9997</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.40</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9997</td>
+<td style="text-align: right;">0.9998</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div id="tbl-tdist" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;G.3: Percentage Points <span class="math inline">\(t_{\nu,\alpha}\)</span> of the Student-t Distribution
+</figcaption>
+<div aria-describedby="tbl-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\nu \backslash \alpha\)</span></th>
+<th style="text-align: center;">0.1</th>
+<th style="text-align: center;">0.05</th>
+<th style="text-align: center;">0.025</th>
+<th style="text-align: center;">0.01</th>
+<th style="text-align: center;">0.005</th>
+<th style="text-align: center;">0.0025</th>
+<th style="text-align: center;">0.001</th>
+<th style="text-align: center;">0.0005</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">3.078</td>
+<td style="text-align: center;">6.314</td>
+<td style="text-align: center;">12.706</td>
+<td style="text-align: center;">31.821</td>
+<td style="text-align: center;">63.657</td>
+<td style="text-align: center;">127.321</td>
+<td style="text-align: center;">318.309</td>
+<td style="text-align: center;">636.619</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">1.886</td>
+<td style="text-align: center;">2.920</td>
+<td style="text-align: center;">4.303</td>
+<td style="text-align: center;">6.965</td>
+<td style="text-align: center;">9.925</td>
+<td style="text-align: center;">14.089</td>
+<td style="text-align: center;">22.327</td>
+<td style="text-align: center;">31.599</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">1.638</td>
+<td style="text-align: center;">2.353</td>
+<td style="text-align: center;">3.182</td>
+<td style="text-align: center;">4.541</td>
+<td style="text-align: center;">5.841</td>
+<td style="text-align: center;">7.453</td>
+<td style="text-align: center;">10.215</td>
+<td style="text-align: center;">12.924</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">1.533</td>
+<td style="text-align: center;">2.132</td>
+<td style="text-align: center;">2.776</td>
+<td style="text-align: center;">3.747</td>
+<td style="text-align: center;">4.604</td>
+<td style="text-align: center;">5.598</td>
+<td style="text-align: center;">7.173</td>
+<td style="text-align: center;">8.610</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">1.476</td>
+<td style="text-align: center;">2.015</td>
+<td style="text-align: center;">2.571</td>
+<td style="text-align: center;">3.365</td>
+<td style="text-align: center;">4.032</td>
+<td style="text-align: center;">4.773</td>
+<td style="text-align: center;">5.893</td>
+<td style="text-align: center;">6.869</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: center;">1.440</td>
+<td style="text-align: center;">1.943</td>
+<td style="text-align: center;">2.447</td>
+<td style="text-align: center;">3.143</td>
+<td style="text-align: center;">3.707</td>
+<td style="text-align: center;">4.317</td>
+<td style="text-align: center;">5.208</td>
+<td style="text-align: center;">5.959</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">1.415</td>
+<td style="text-align: center;">1.895</td>
+<td style="text-align: center;">2.365</td>
+<td style="text-align: center;">2.998</td>
+<td style="text-align: center;">3.499</td>
+<td style="text-align: center;">4.029</td>
+<td style="text-align: center;">4.785</td>
+<td style="text-align: center;">5.408</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: center;">1.397</td>
+<td style="text-align: center;">1.860</td>
+<td style="text-align: center;">2.306</td>
+<td style="text-align: center;">2.896</td>
+<td style="text-align: center;">3.355</td>
+<td style="text-align: center;">3.833</td>
+<td style="text-align: center;">4.501</td>
+<td style="text-align: center;">5.041</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: center;">1.383</td>
+<td style="text-align: center;">1.833</td>
+<td style="text-align: center;">2.262</td>
+<td style="text-align: center;">2.821</td>
+<td style="text-align: center;">3.250</td>
+<td style="text-align: center;">3.690</td>
+<td style="text-align: center;">4.297</td>
+<td style="text-align: center;">4.781</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: center;">1.372</td>
+<td style="text-align: center;">1.812</td>
+<td style="text-align: center;">2.228</td>
+<td style="text-align: center;">2.764</td>
+<td style="text-align: center;">3.169</td>
+<td style="text-align: center;">3.581</td>
+<td style="text-align: center;">4.144</td>
+<td style="text-align: center;">4.587</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: center;">1.363</td>
+<td style="text-align: center;">1.796</td>
+<td style="text-align: center;">2.201</td>
+<td style="text-align: center;">2.718</td>
+<td style="text-align: center;">3.106</td>
+<td style="text-align: center;">3.497</td>
+<td style="text-align: center;">4.025</td>
+<td style="text-align: center;">4.437</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: center;">1.356</td>
+<td style="text-align: center;">1.782</td>
+<td style="text-align: center;">2.179</td>
+<td style="text-align: center;">2.681</td>
+<td style="text-align: center;">3.055</td>
+<td style="text-align: center;">3.428</td>
+<td style="text-align: center;">3.930</td>
+<td style="text-align: center;">4.318</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: center;">1.350</td>
+<td style="text-align: center;">1.771</td>
+<td style="text-align: center;">2.160</td>
+<td style="text-align: center;">2.650</td>
+<td style="text-align: center;">3.012</td>
+<td style="text-align: center;">3.372</td>
+<td style="text-align: center;">3.852</td>
+<td style="text-align: center;">4.221</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: center;">1.345</td>
+<td style="text-align: center;">1.761</td>
+<td style="text-align: center;">2.145</td>
+<td style="text-align: center;">2.624</td>
+<td style="text-align: center;">2.977</td>
+<td style="text-align: center;">3.326</td>
+<td style="text-align: center;">3.787</td>
+<td style="text-align: center;">4.140</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: center;">1.341</td>
+<td style="text-align: center;">1.753</td>
+<td style="text-align: center;">2.131</td>
+<td style="text-align: center;">2.602</td>
+<td style="text-align: center;">2.947</td>
+<td style="text-align: center;">3.286</td>
+<td style="text-align: center;">3.733</td>
+<td style="text-align: center;">4.073</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: center;">1.337</td>
+<td style="text-align: center;">1.746</td>
+<td style="text-align: center;">2.120</td>
+<td style="text-align: center;">2.583</td>
+<td style="text-align: center;">2.921</td>
+<td style="text-align: center;">3.252</td>
+<td style="text-align: center;">3.686</td>
+<td style="text-align: center;">4.015</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: center;">1.333</td>
+<td style="text-align: center;">1.740</td>
+<td style="text-align: center;">2.110</td>
+<td style="text-align: center;">2.567</td>
+<td style="text-align: center;">2.898</td>
+<td style="text-align: center;">3.222</td>
+<td style="text-align: center;">3.646</td>
+<td style="text-align: center;">3.965</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: center;">1.330</td>
+<td style="text-align: center;">1.734</td>
+<td style="text-align: center;">2.101</td>
+<td style="text-align: center;">2.552</td>
+<td style="text-align: center;">2.878</td>
+<td style="text-align: center;">3.197</td>
+<td style="text-align: center;">3.610</td>
+<td style="text-align: center;">3.922</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: center;">1.328</td>
+<td style="text-align: center;">1.729</td>
+<td style="text-align: center;">2.093</td>
+<td style="text-align: center;">2.539</td>
+<td style="text-align: center;">2.861</td>
+<td style="text-align: center;">3.174</td>
+<td style="text-align: center;">3.579</td>
+<td style="text-align: center;">3.883</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: center;">1.325</td>
+<td style="text-align: center;">1.725</td>
+<td style="text-align: center;">2.086</td>
+<td style="text-align: center;">2.528</td>
+<td style="text-align: center;">2.845</td>
+<td style="text-align: center;">3.153</td>
+<td style="text-align: center;">3.552</td>
+<td style="text-align: center;">3.850</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: center;">1.323</td>
+<td style="text-align: center;">1.721</td>
+<td style="text-align: center;">2.080</td>
+<td style="text-align: center;">2.518</td>
+<td style="text-align: center;">2.831</td>
+<td style="text-align: center;">3.135</td>
+<td style="text-align: center;">3.527</td>
+<td style="text-align: center;">3.819</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: center;">1.321</td>
+<td style="text-align: center;">1.717</td>
+<td style="text-align: center;">2.074</td>
+<td style="text-align: center;">2.508</td>
+<td style="text-align: center;">2.819</td>
+<td style="text-align: center;">3.119</td>
+<td style="text-align: center;">3.505</td>
+<td style="text-align: center;">3.792</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: center;">1.319</td>
+<td style="text-align: center;">1.714</td>
+<td style="text-align: center;">2.069</td>
+<td style="text-align: center;">2.500</td>
+<td style="text-align: center;">2.807</td>
+<td style="text-align: center;">3.104</td>
+<td style="text-align: center;">3.485</td>
+<td style="text-align: center;">3.768</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: center;">1.318</td>
+<td style="text-align: center;">1.711</td>
+<td style="text-align: center;">2.064</td>
+<td style="text-align: center;">2.492</td>
+<td style="text-align: center;">2.797</td>
+<td style="text-align: center;">3.091</td>
+<td style="text-align: center;">3.467</td>
+<td style="text-align: center;">3.745</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">1.316</td>
+<td style="text-align: center;">1.708</td>
+<td style="text-align: center;">2.060</td>
+<td style="text-align: center;">2.485</td>
+<td style="text-align: center;">2.787</td>
+<td style="text-align: center;">3.078</td>
+<td style="text-align: center;">3.450</td>
+<td style="text-align: center;">3.725</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: center;">1.315</td>
+<td style="text-align: center;">1.706</td>
+<td style="text-align: center;">2.056</td>
+<td style="text-align: center;">2.479</td>
+<td style="text-align: center;">2.779</td>
+<td style="text-align: center;">3.067</td>
+<td style="text-align: center;">3.435</td>
+<td style="text-align: center;">3.707</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: center;">1.314</td>
+<td style="text-align: center;">1.703</td>
+<td style="text-align: center;">2.052</td>
+<td style="text-align: center;">2.473</td>
+<td style="text-align: center;">2.771</td>
+<td style="text-align: center;">3.057</td>
+<td style="text-align: center;">3.421</td>
+<td style="text-align: center;">3.690</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: center;">1.313</td>
+<td style="text-align: center;">1.701</td>
+<td style="text-align: center;">2.048</td>
+<td style="text-align: center;">2.467</td>
+<td style="text-align: center;">2.763</td>
+<td style="text-align: center;">3.047</td>
+<td style="text-align: center;">3.408</td>
+<td style="text-align: center;">3.674</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29</td>
+<td style="text-align: center;">1.311</td>
+<td style="text-align: center;">1.699</td>
+<td style="text-align: center;">2.045</td>
+<td style="text-align: center;">2.462</td>
+<td style="text-align: center;">2.756</td>
+<td style="text-align: center;">3.038</td>
+<td style="text-align: center;">3.396</td>
+<td style="text-align: center;">3.659</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: center;">1.310</td>
+<td style="text-align: center;">1.697</td>
+<td style="text-align: center;">2.042</td>
+<td style="text-align: center;">2.457</td>
+<td style="text-align: center;">2.750</td>
+<td style="text-align: center;">3.030</td>
+<td style="text-align: center;">3.385</td>
+<td style="text-align: center;">3.646</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31</td>
+<td style="text-align: center;">1.309</td>
+<td style="text-align: center;">1.696</td>
+<td style="text-align: center;">2.040</td>
+<td style="text-align: center;">2.453</td>
+<td style="text-align: center;">2.744</td>
+<td style="text-align: center;">3.022</td>
+<td style="text-align: center;">3.375</td>
+<td style="text-align: center;">3.633</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td style="text-align: center;">1.309</td>
+<td style="text-align: center;">1.694</td>
+<td style="text-align: center;">2.037</td>
+<td style="text-align: center;">2.449</td>
+<td style="text-align: center;">2.738</td>
+<td style="text-align: center;">3.015</td>
+<td style="text-align: center;">3.365</td>
+<td style="text-align: center;">3.622</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+<td style="text-align: center;">1.308</td>
+<td style="text-align: center;">1.692</td>
+<td style="text-align: center;">2.035</td>
+<td style="text-align: center;">2.445</td>
+<td style="text-align: center;">2.733</td>
+<td style="text-align: center;">3.008</td>
+<td style="text-align: center;">3.356</td>
+<td style="text-align: center;">3.611</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34</td>
+<td style="text-align: center;">1.307</td>
+<td style="text-align: center;">1.691</td>
+<td style="text-align: center;">2.032</td>
+<td style="text-align: center;">2.441</td>
+<td style="text-align: center;">2.728</td>
+<td style="text-align: center;">3.002</td>
+<td style="text-align: center;">3.348</td>
+<td style="text-align: center;">3.601</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35</td>
+<td style="text-align: center;">1.306</td>
+<td style="text-align: center;">1.690</td>
+<td style="text-align: center;">2.030</td>
+<td style="text-align: center;">2.438</td>
+<td style="text-align: center;">2.724</td>
+<td style="text-align: center;">2.996</td>
+<td style="text-align: center;">3.340</td>
+<td style="text-align: center;">3.591</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td style="text-align: center;">1.303</td>
+<td style="text-align: center;">1.684</td>
+<td style="text-align: center;">2.021</td>
+<td style="text-align: center;">2.423</td>
+<td style="text-align: center;">2.704</td>
+<td style="text-align: center;">2.971</td>
+<td style="text-align: center;">3.307</td>
+<td style="text-align: center;">3.551</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45</td>
+<td style="text-align: center;">1.301</td>
+<td style="text-align: center;">1.679</td>
+<td style="text-align: center;">2.014</td>
+<td style="text-align: center;">2.412</td>
+<td style="text-align: center;">2.690</td>
+<td style="text-align: center;">2.952</td>
+<td style="text-align: center;">3.281</td>
+<td style="text-align: center;">3.520</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">1.299</td>
+<td style="text-align: center;">1.676</td>
+<td style="text-align: center;">2.009</td>
+<td style="text-align: center;">2.403</td>
+<td style="text-align: center;">2.678</td>
+<td style="text-align: center;">2.937</td>
+<td style="text-align: center;">3.261</td>
+<td style="text-align: center;">3.496</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;">1.282</td>
+<td style="text-align: center;">1.645</td>
+<td style="text-align: center;">1.960</td>
+<td style="text-align: center;">2.326</td>
+<td style="text-align: center;">2.576</td>
+<td style="text-align: center;">2.807</td>
+<td style="text-align: center;">3.090</td>
+<td style="text-align: center;">3.291</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-chidist" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-chidist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;G.4: Percentage Points <span class="math inline">\(\chi^{2}_{\nu,\alpha}\)</span> of the Chi-Square Distribution (<span class="math inline">\(\nu\)</span>) degrees of freedom
+</figcaption>
+<div aria-describedby="tbl-chidist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\nu \backslash \alpha\)</span></th>
+<th style="text-align: center;">0.1</th>
+<th style="text-align: center;">0.05</th>
+<th style="text-align: center;">0.025</th>
+<th style="text-align: center;">0.01</th>
+<th style="text-align: center;">0.005</th>
+<th style="text-align: center;">0.0025</th>
+<th style="text-align: center;">0.001</th>
+<th style="text-align: center;">0.0005</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">2.706</td>
+<td style="text-align: center;">3.841</td>
+<td style="text-align: center;">5.024</td>
+<td style="text-align: center;">6.635</td>
+<td style="text-align: center;">7.879</td>
+<td style="text-align: center;">9.141</td>
+<td style="text-align: center;">10.828</td>
+<td style="text-align: center;">12.116</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">4.605</td>
+<td style="text-align: center;">5.991</td>
+<td style="text-align: center;">7.378</td>
+<td style="text-align: center;">9.210</td>
+<td style="text-align: center;">10.597</td>
+<td style="text-align: center;">11.983</td>
+<td style="text-align: center;">13.816</td>
+<td style="text-align: center;">15.202</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">6.251</td>
+<td style="text-align: center;">7.815</td>
+<td style="text-align: center;">9.348</td>
+<td style="text-align: center;">11.345</td>
+<td style="text-align: center;">12.838</td>
+<td style="text-align: center;">14.320</td>
+<td style="text-align: center;">16.266</td>
+<td style="text-align: center;">17.730</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">7.779</td>
+<td style="text-align: center;">9.488</td>
+<td style="text-align: center;">11.143</td>
+<td style="text-align: center;">13.277</td>
+<td style="text-align: center;">14.860</td>
+<td style="text-align: center;">16.424</td>
+<td style="text-align: center;">18.467</td>
+<td style="text-align: center;">19.997</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">9.236</td>
+<td style="text-align: center;">11.070</td>
+<td style="text-align: center;">12.833</td>
+<td style="text-align: center;">15.086</td>
+<td style="text-align: center;">16.750</td>
+<td style="text-align: center;">18.386</td>
+<td style="text-align: center;">20.515</td>
+<td style="text-align: center;">22.105</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: center;">10.645</td>
+<td style="text-align: center;">12.592</td>
+<td style="text-align: center;">14.449</td>
+<td style="text-align: center;">16.812</td>
+<td style="text-align: center;">18.548</td>
+<td style="text-align: center;">20.249</td>
+<td style="text-align: center;">22.458</td>
+<td style="text-align: center;">24.103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">12.017</td>
+<td style="text-align: center;">14.067</td>
+<td style="text-align: center;">16.013</td>
+<td style="text-align: center;">18.475</td>
+<td style="text-align: center;">20.278</td>
+<td style="text-align: center;">22.040</td>
+<td style="text-align: center;">24.322</td>
+<td style="text-align: center;">26.018</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: center;">13.362</td>
+<td style="text-align: center;">15.507</td>
+<td style="text-align: center;">17.535</td>
+<td style="text-align: center;">20.090</td>
+<td style="text-align: center;">21.955</td>
+<td style="text-align: center;">23.774</td>
+<td style="text-align: center;">26.124</td>
+<td style="text-align: center;">27.868</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: center;">14.684</td>
+<td style="text-align: center;">16.919</td>
+<td style="text-align: center;">19.023</td>
+<td style="text-align: center;">21.666</td>
+<td style="text-align: center;">23.589</td>
+<td style="text-align: center;">25.462</td>
+<td style="text-align: center;">27.877</td>
+<td style="text-align: center;">29.666</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: center;">15.987</td>
+<td style="text-align: center;">18.307</td>
+<td style="text-align: center;">20.483</td>
+<td style="text-align: center;">23.209</td>
+<td style="text-align: center;">25.188</td>
+<td style="text-align: center;">27.112</td>
+<td style="text-align: center;">29.588</td>
+<td style="text-align: center;">31.420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: center;">17.275</td>
+<td style="text-align: center;">19.675</td>
+<td style="text-align: center;">21.920</td>
+<td style="text-align: center;">24.725</td>
+<td style="text-align: center;">26.757</td>
+<td style="text-align: center;">28.729</td>
+<td style="text-align: center;">31.264</td>
+<td style="text-align: center;">33.137</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: center;">18.549</td>
+<td style="text-align: center;">21.026</td>
+<td style="text-align: center;">23.337</td>
+<td style="text-align: center;">26.217</td>
+<td style="text-align: center;">28.300</td>
+<td style="text-align: center;">30.318</td>
+<td style="text-align: center;">32.909</td>
+<td style="text-align: center;">34.821</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: center;">19.812</td>
+<td style="text-align: center;">22.362</td>
+<td style="text-align: center;">24.736</td>
+<td style="text-align: center;">27.688</td>
+<td style="text-align: center;">29.819</td>
+<td style="text-align: center;">31.883</td>
+<td style="text-align: center;">34.528</td>
+<td style="text-align: center;">36.478</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: center;">21.064</td>
+<td style="text-align: center;">23.685</td>
+<td style="text-align: center;">26.119</td>
+<td style="text-align: center;">29.141</td>
+<td style="text-align: center;">31.319</td>
+<td style="text-align: center;">33.426</td>
+<td style="text-align: center;">36.123</td>
+<td style="text-align: center;">38.109</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: center;">22.307</td>
+<td style="text-align: center;">24.996</td>
+<td style="text-align: center;">27.488</td>
+<td style="text-align: center;">30.578</td>
+<td style="text-align: center;">32.801</td>
+<td style="text-align: center;">34.950</td>
+<td style="text-align: center;">37.697</td>
+<td style="text-align: center;">39.719</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: center;">23.542</td>
+<td style="text-align: center;">26.296</td>
+<td style="text-align: center;">28.845</td>
+<td style="text-align: center;">32.000</td>
+<td style="text-align: center;">34.267</td>
+<td style="text-align: center;">36.456</td>
+<td style="text-align: center;">39.252</td>
+<td style="text-align: center;">41.308</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: center;">24.769</td>
+<td style="text-align: center;">27.587</td>
+<td style="text-align: center;">30.191</td>
+<td style="text-align: center;">33.409</td>
+<td style="text-align: center;">35.718</td>
+<td style="text-align: center;">37.946</td>
+<td style="text-align: center;">40.790</td>
+<td style="text-align: center;">42.879</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: center;">25.989</td>
+<td style="text-align: center;">28.869</td>
+<td style="text-align: center;">31.526</td>
+<td style="text-align: center;">34.805</td>
+<td style="text-align: center;">37.156</td>
+<td style="text-align: center;">39.422</td>
+<td style="text-align: center;">42.312</td>
+<td style="text-align: center;">44.434</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: center;">27.204</td>
+<td style="text-align: center;">30.144</td>
+<td style="text-align: center;">32.852</td>
+<td style="text-align: center;">36.191</td>
+<td style="text-align: center;">38.582</td>
+<td style="text-align: center;">40.885</td>
+<td style="text-align: center;">43.820</td>
+<td style="text-align: center;">45.973</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: center;">28.412</td>
+<td style="text-align: center;">31.410</td>
+<td style="text-align: center;">34.170</td>
+<td style="text-align: center;">37.566</td>
+<td style="text-align: center;">39.997</td>
+<td style="text-align: center;">42.336</td>
+<td style="text-align: center;">45.315</td>
+<td style="text-align: center;">47.498</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: center;">29.615</td>
+<td style="text-align: center;">32.671</td>
+<td style="text-align: center;">35.479</td>
+<td style="text-align: center;">38.932</td>
+<td style="text-align: center;">41.401</td>
+<td style="text-align: center;">43.775</td>
+<td style="text-align: center;">46.797</td>
+<td style="text-align: center;">49.011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: center;">30.813</td>
+<td style="text-align: center;">33.924</td>
+<td style="text-align: center;">36.781</td>
+<td style="text-align: center;">40.289</td>
+<td style="text-align: center;">42.796</td>
+<td style="text-align: center;">45.204</td>
+<td style="text-align: center;">48.268</td>
+<td style="text-align: center;">50.511</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: center;">32.007</td>
+<td style="text-align: center;">35.172</td>
+<td style="text-align: center;">38.076</td>
+<td style="text-align: center;">41.638</td>
+<td style="text-align: center;">44.181</td>
+<td style="text-align: center;">46.623</td>
+<td style="text-align: center;">49.728</td>
+<td style="text-align: center;">52.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: center;">33.196</td>
+<td style="text-align: center;">36.415</td>
+<td style="text-align: center;">39.364</td>
+<td style="text-align: center;">42.980</td>
+<td style="text-align: center;">45.559</td>
+<td style="text-align: center;">48.034</td>
+<td style="text-align: center;">51.179</td>
+<td style="text-align: center;">53.479</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">34.382</td>
+<td style="text-align: center;">37.652</td>
+<td style="text-align: center;">40.646</td>
+<td style="text-align: center;">44.314</td>
+<td style="text-align: center;">46.928</td>
+<td style="text-align: center;">49.435</td>
+<td style="text-align: center;">52.620</td>
+<td style="text-align: center;">54.947</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: center;">35.563</td>
+<td style="text-align: center;">38.885</td>
+<td style="text-align: center;">41.923</td>
+<td style="text-align: center;">45.642</td>
+<td style="text-align: center;">48.290</td>
+<td style="text-align: center;">50.829</td>
+<td style="text-align: center;">54.052</td>
+<td style="text-align: center;">56.407</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: center;">36.741</td>
+<td style="text-align: center;">40.113</td>
+<td style="text-align: center;">43.195</td>
+<td style="text-align: center;">46.963</td>
+<td style="text-align: center;">49.645</td>
+<td style="text-align: center;">52.215</td>
+<td style="text-align: center;">55.476</td>
+<td style="text-align: center;">57.858</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: center;">37.916</td>
+<td style="text-align: center;">41.337</td>
+<td style="text-align: center;">44.461</td>
+<td style="text-align: center;">48.278</td>
+<td style="text-align: center;">50.993</td>
+<td style="text-align: center;">53.594</td>
+<td style="text-align: center;">56.892</td>
+<td style="text-align: center;">59.300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29</td>
+<td style="text-align: center;">39.087</td>
+<td style="text-align: center;">42.557</td>
+<td style="text-align: center;">45.722</td>
+<td style="text-align: center;">49.588</td>
+<td style="text-align: center;">52.336</td>
+<td style="text-align: center;">54.967</td>
+<td style="text-align: center;">58.301</td>
+<td style="text-align: center;">60.735</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: center;">40.256</td>
+<td style="text-align: center;">43.773</td>
+<td style="text-align: center;">46.979</td>
+<td style="text-align: center;">50.892</td>
+<td style="text-align: center;">53.672</td>
+<td style="text-align: center;">56.332</td>
+<td style="text-align: center;">59.703</td>
+<td style="text-align: center;">62.162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31</td>
+<td style="text-align: center;">41.422</td>
+<td style="text-align: center;">44.985</td>
+<td style="text-align: center;">48.232</td>
+<td style="text-align: center;">52.191</td>
+<td style="text-align: center;">55.003</td>
+<td style="text-align: center;">57.692</td>
+<td style="text-align: center;">61.098</td>
+<td style="text-align: center;">63.582</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td style="text-align: center;">42.585</td>
+<td style="text-align: center;">46.194</td>
+<td style="text-align: center;">49.480</td>
+<td style="text-align: center;">53.486</td>
+<td style="text-align: center;">56.328</td>
+<td style="text-align: center;">59.046</td>
+<td style="text-align: center;">62.487</td>
+<td style="text-align: center;">64.995</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+<td style="text-align: center;">43.745</td>
+<td style="text-align: center;">47.400</td>
+<td style="text-align: center;">50.725</td>
+<td style="text-align: center;">54.776</td>
+<td style="text-align: center;">57.648</td>
+<td style="text-align: center;">60.395</td>
+<td style="text-align: center;">63.870</td>
+<td style="text-align: center;">66.403</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34</td>
+<td style="text-align: center;">44.903</td>
+<td style="text-align: center;">48.602</td>
+<td style="text-align: center;">51.966</td>
+<td style="text-align: center;">56.061</td>
+<td style="text-align: center;">58.964</td>
+<td style="text-align: center;">61.738</td>
+<td style="text-align: center;">65.247</td>
+<td style="text-align: center;">67.803</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35</td>
+<td style="text-align: center;">46.059</td>
+<td style="text-align: center;">49.802</td>
+<td style="text-align: center;">53.203</td>
+<td style="text-align: center;">57.342</td>
+<td style="text-align: center;">60.275</td>
+<td style="text-align: center;">63.076</td>
+<td style="text-align: center;">66.619</td>
+<td style="text-align: center;">69.199</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td style="text-align: center;">51.805</td>
+<td style="text-align: center;">55.758</td>
+<td style="text-align: center;">59.342</td>
+<td style="text-align: center;">63.691</td>
+<td style="text-align: center;">66.766</td>
+<td style="text-align: center;">69.699</td>
+<td style="text-align: center;">73.402</td>
+<td style="text-align: center;">76.095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">63.167</td>
+<td style="text-align: center;">67.505</td>
+<td style="text-align: center;">71.420</td>
+<td style="text-align: center;">76.154</td>
+<td style="text-align: center;">79.490</td>
+<td style="text-align: center;">82.664</td>
+<td style="text-align: center;">86.661</td>
+<td style="text-align: center;">89.561</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">60</td>
+<td style="text-align: center;">74.397</td>
+<td style="text-align: center;">79.082</td>
+<td style="text-align: center;">83.298</td>
+<td style="text-align: center;">88.379</td>
+<td style="text-align: center;">91.952</td>
+<td style="text-align: center;">95.344</td>
+<td style="text-align: center;">99.607</td>
+<td style="text-align: center;">102.695</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">70</td>
+<td style="text-align: center;">85.527</td>
+<td style="text-align: center;">90.531</td>
+<td style="text-align: center;">95.023</td>
+<td style="text-align: center;">100.425</td>
+<td style="text-align: center;">104.215</td>
+<td style="text-align: center;">107.808</td>
+<td style="text-align: center;">112.317</td>
+<td style="text-align: center;">115.578</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80</td>
+<td style="text-align: center;">96.578</td>
+<td style="text-align: center;">101.879</td>
+<td style="text-align: center;">106.629</td>
+<td style="text-align: center;">112.329</td>
+<td style="text-align: center;">116.321</td>
+<td style="text-align: center;">120.102</td>
+<td style="text-align: center;">124.839</td>
+<td style="text-align: center;">128.261</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">90</td>
+<td style="text-align: center;">107.565</td>
+<td style="text-align: center;">113.145</td>
+<td style="text-align: center;">118.136</td>
+<td style="text-align: center;">124.116</td>
+<td style="text-align: center;">128.299</td>
+<td style="text-align: center;">132.256</td>
+<td style="text-align: center;">137.208</td>
+<td style="text-align: center;">140.782</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100</td>
+<td style="text-align: center;">118.498</td>
+<td style="text-align: center;">124.342</td>
+<td style="text-align: center;">129.561</td>
+<td style="text-align: center;">135.807</td>
+<td style="text-align: center;">140.169</td>
+<td style="text-align: center;">144.293</td>
+<td style="text-align: center;">149.449</td>
+<td style="text-align: center;">153.167</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-ksValues" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ksValues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;G.5: Kolmogorov-Smirnov Test Critical Values
+</figcaption>
+<div aria-describedby="tbl-ksValues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">n</th>
+<th style="text-align: center;"><span class="math inline">\(D_{0.1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(D_{0.05}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(D_{0.01}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0.36866</td>
+<td style="text-align: center;">0.40925</td>
+<td style="text-align: center;">0.48893</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">0.35242</td>
+<td style="text-align: center;">0.39122</td>
+<td style="text-align: center;">0.46770</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">0.33815</td>
+<td style="text-align: center;">0.37543</td>
+<td style="text-align: center;">0.44905</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">0.32549</td>
+<td style="text-align: center;">0.36143</td>
+<td style="text-align: center;">0.43247</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0.31417</td>
+<td style="text-align: center;">0.34890</td>
+<td style="text-align: center;">0.41762</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">0.30397</td>
+<td style="text-align: center;">0.33760</td>
+<td style="text-align: center;">0.40420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">0.29472</td>
+<td style="text-align: center;">0.32733</td>
+<td style="text-align: center;">0.39201</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">0.28627</td>
+<td style="text-align: center;">0.31796</td>
+<td style="text-align: center;">0.38086</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">0.27851</td>
+<td style="text-align: center;">0.30936</td>
+<td style="text-align: center;">0.37062</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">0.27136</td>
+<td style="text-align: center;">0.30143</td>
+<td style="text-align: center;">0.36117</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">0.26473</td>
+<td style="text-align: center;">0.29408</td>
+<td style="text-align: center;">0.35241</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">0.23768</td>
+<td style="text-align: center;">0.26404</td>
+<td style="text-align: center;">0.31657</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">0.21756</td>
+<td style="text-align: center;">0.24170</td>
+<td style="text-align: center;">0.28987</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">0.20185</td>
+<td style="text-align: center;">0.22425</td>
+<td style="text-align: center;">0.26897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">over 35</td>
+<td style="text-align: center;"><span class="math inline">\(1.22/\sqrt{n}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.36/\sqrt{n}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.63/\sqrt{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><br>
+See <span class="citation" data-cites="Miller1956aa">(<a href="references.html#ref-Miller1956aa" role="doc-biblioref">Miller, 1956</a>)</span>. Additional values can be computed at:<br>
+</p>
+<pre><code>http://www.ciphersbyritter.com/JAVASCRP/NORMCHIK.HTM#KolSmir</code></pre>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Miller1956aa" class="csl-entry" role="listitem">
+Miller, L. H. (1956). Table of percentage points of kolmogorov statistics. <em>Journal of the American Statistical Association</em>, 111–121.
+</div>
+</div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./14-CommonDistributions.html" class="pagination-link" aria-label="Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An open textbook on discrete-event simulation modeling using Arena.">
+
+<title>Appendix F — Distributions – Simulation Modeling and Arena</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./15-StatisticalTables.html" rel="next">
+<link href="./13-FunctionsAndModulesInArena.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-10629767a8d3d760d9707fc59134ae44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="mathjax/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./14-CommonDistributions.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Simulation Modeling and Arena</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-author.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Simulation and Arena</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical Analysis for Finite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modeling Systems with Processes and Basic Entity Flow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Analysis for Infinite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling Systems with Advanced Process Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modeling Systems with Entity Movement and Material Handling Constructs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Chapter8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-AppRNRV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-AppDistributionFitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-QueuingTheory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-MiscTopicsInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-FunctionsAndModulesInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-CommonDistributions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-StatisticalTables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-DiscreteDistributions" id="toc-sec-DiscreteDistributions" class="nav-link active" data-scroll-target="#sec-DiscreteDistributions"><span class="header-section-number">F.1</span> Discrete Distrbutions</a></li>
+  <li><a href="#sec-ContinuousDistributions" id="toc-sec-ContinuousDistributions" class="nav-link" data-scroll-target="#sec-ContinuousDistributions"><span class="header-section-number">F.2</span> Continuous Distrbutions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./14-CommonDistributions.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Appendix F — Distributions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-DiscreteDistributions" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="sec-DiscreteDistributions"><span class="header-section-number">F.1</span> Discrete Distrbutions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Bernoulli</strong></th>
+<th style="text-align: left;"><span class="math inline">\(Ber(p)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(0 &lt; p &lt; 1\)</span>, probability of success</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=1] = p, \; P[X=0] = 1-p\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(u) = \text{if}\  (u &lt; p), 1 \ \text{else} \ 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = p\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = p(1-p)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">DISC(p,1,1.0,0<code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= IF(RAND()<span class="math inline">\(&lt;\)</span> p, 1, 0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of successes in one trial</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Binomial</strong></th>
+<th style="text-align: left;"><span class="math inline">\(Binom(n,p)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(0 &lt; p &lt; 1\)</span>, probability of success, <span class="math inline">\(n\)</span>, number of trials</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=x] = \binom{n}{x}p^{x}(1-p)^{n-x} \quad x=0,1,\ldots,n\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">no closed form available</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = np\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = np(1-p)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">not available, use convolution of Bernoulli</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= BINOM.INV(n,p,RAND())</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of successes in <span class="math inline">\(n\)</span> trials</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Shifted Geometric</strong></th>
+<th style="text-align: left;">Shifted Geo(<span class="math inline">\(p\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(0 &lt; p &lt; 1\)</span>, probability of success</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=x] = p(1-p)^{x-1} \quad x=1,2,\ldots,\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(u) = 1 + \left\lfloor \frac{ln(1 - u)}{ln(1 - p)} \right\rfloor\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = 1/p\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = (1-p)/p^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">1 + AINT(LN(1-UNIF(0,1))/LN(1-p))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= <span class="math inline">\(\text{1 + INT(LN(1-RAND())/LN(1-p))}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of trials until the first success</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Negative Binomial Defn. 1</strong></th>
+<th style="text-align: left;">NB1(<span class="math inline">\(r,p\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(0 &lt; p &lt; 1\)</span>, probability of success, <span class="math inline">\(r^{th}\)</span> success</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=x] = \binom{x-1}{r-1}p^{r}(1-p)^{x-r} \quad x=r,r+1\ldots,\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">no closed form available</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = r/p\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = r(1-p)/p^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">use convolution of shifted geometric</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">use convolution of shifted geometric</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of trials until the <span class="math inline">\(r^{th}\)</span> success</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Negative Binomial Defn. 2</strong></th>
+<th style="text-align: left;">NB2(<span class="math inline">\(r,p\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(0 &lt; p &lt; 1\)</span>, probability of success, <span class="math inline">\(r^{th}\)</span> success</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[Y=y] = \binom{y+r-1}{r-1}p^{r}(1-p)^{y} \quad y=0,1,\ldots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">no closed form available</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[Y] = r(1-p)/p\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[Y] = r(1-p)/p^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">use convolution of geometric</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">use convolution of geometric</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of failures prior to the <span class="math inline">\(r^{th}\)</span> success</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Poisson</strong></th>
+<th style="text-align: left;">Pois(<span class="math inline">\(\lambda\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(\lambda &gt; 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=x] = \frac{e^{-\lambda}\lambda^{x}}{x!} \quad x = 0, 1, \ldots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">no closed form available</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \lambda\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \lambda\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">POIS(<span class="math inline">\(\lambda\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">not available, approximate with lookup table approach</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">the number of occurrences during a period of time</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Discrete Uniform</strong></th>
+<th style="text-align: left;">DU(<span class="math inline">\(a, b\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(a \leq b\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PMF:</td>
+<td style="text-align: left;"><span class="math inline">\(P[X=x] = \frac{1}{b-a+1} \quad x = a, a+1, \ldots, b\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(u) = a + \lfloor(b-a+1)u\rfloor\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = (b+a)/2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \left( \left( b-a+1\right)^2 -1 \right)/12\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">a + AINT((b-a+1)*UNIF(0,1))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">=RANDBETWEEN(a,b)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">equal occurrence over a range of integers</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-ContinuousDistributions" class="level2" data-number="F.2">
+<h2 data-number="F.2" class="anchored" data-anchor-id="sec-ContinuousDistributions"><span class="header-section-number">F.2</span> Continuous Distrbutions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Uniform</strong></th>
+<th style="text-align: left;"><span class="math inline">\(U(a,b)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;">a = minimum, b = maximum, <span class="math inline">\(-\infty &lt; a &lt; b &lt; \infty\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PDF:</td>
+<td style="text-align: left;"><span class="math inline">\(f(x) = \frac{1}{b-a}\)</span> for <span class="math inline">\(a \leq x \leq b\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F(x) = \frac{x-a}{b-a} \; \text{if} \; a \leq x \leq b\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(p) = a + p(b-a) \; \; \text{if} \; 0 &lt; p &lt; 1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X]=\frac{a+b}{2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(V[X] = \frac{(b-a)^2}{12}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">UNIF(a,b<code>[,Stream]</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= a + RAND()*(b-a)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">assumes equally likely across the range,</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">when you have lack of data, task times</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Normal</strong></th>
+<th style="text-align: left;"><span class="math inline">\(N(\mu,\sigma^2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(-\infty &lt; \mu &lt; +\infty\)</span> (mean), <span class="math inline">\(\sigma^2 &gt; 0\)</span> (variance)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \mu\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \sigma^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">NORM(<span class="math inline">\(\mu,\sigma^2\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= NORM.INV(RAND(), <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, errors</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Exponential</strong></th>
+<th style="text-align: left;">EXPO(<span class="math inline">\(1/\lambda\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(\lambda &gt; 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PDF:</td>
+<td style="text-align: left;"><span class="math inline">\(f(x) = \lambda e^{-\lambda x} \; \text{if} \; x \geq 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F(x) =     1 - e^{-\lambda x} \; \text{if} \; x \geq 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(p) = (-1/\lambda)\ln \left(1-p \right)  \; \; \text{if} \; 0 &lt; p &lt; 1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \theta = 1/\lambda\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = 1/\lambda^2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">EXPO(<span class="math inline">\(\theta\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= <span class="math inline">\((-1/\lambda)\)</span>LN(1-RAND())</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">time between arrivals, time to failure</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">highly variable task time</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Weibull</strong></th>
+<th style="text-align: left;">WEIB(<span class="math inline">\(\beta\)</span>, <span class="math inline">\(\alpha\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(\beta &gt; 0\)</span> (scale), <span class="math inline">\(\alpha &gt; 0\)</span> (shape)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F(x) = 1- e^{-(x/\beta)^\alpha} \; \text{if} \; x \geq 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(p) = \beta\left[ -\ln (1-p)\right]^{1/\alpha}  \; \; \text{if} \; 0 &lt; p &lt; 1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \left(\dfrac{\beta}{\alpha}\right)\Gamma\left(\dfrac{1}{\alpha}\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \left(\dfrac{\beta^2}{\alpha}\right)\biggl\lbrace 2\Gamma\left(\dfrac{2}{\alpha}\right) - \left(\dfrac{1}{\alpha}\right)\biggl(\Gamma\left(\dfrac{1}{\alpha}\right)\biggr)^2\biggr\rbrace\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">WEIB(scale, shape<code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= <span class="math inline">\((\beta)(-\text{LN}(1-\text{RAND}())\wedge(1/\alpha)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, time to failure</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Erlang</strong></th>
+<th style="text-align: left;">Erlang(<span class="math inline">\(r\)</span>,<span class="math inline">\(\beta\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(r &gt; 0\)</span>, integer, <span class="math inline">\(\beta &gt; 0\)</span> (scale)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F(x) = 1- e^{(-x/\beta)}\sum\limits_{j=0}^{r-1}\dfrac{(x/\beta)^j}{j} \; \text{if} \; x \geq 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = r\beta\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = r\beta^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">ERLA(<span class="math inline">\(E[X], r\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= GAMMA.INV(RAND(), <span class="math inline">\(r\)</span>, <span class="math inline">\(\beta\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, lead time, time to failure,</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Gamma</strong></th>
+<th style="text-align: left;">Gamma(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(\alpha &gt; 0\)</span>, shape, <span class="math inline">\(\beta &gt; 0\)</span> (scale)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \alpha \beta\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \alpha \beta^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">GAMM(scale, shape<code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">= GAMMA.INV(RAND(), <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, lead time, time to failure,</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Beta</strong></th>
+<th style="text-align: left;">BETA(<span class="math inline">\(\alpha_1\)</span>,<span class="math inline">\(\alpha_2\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;">shape parameters <span class="math inline">\(\alpha_1 &gt;0\)</span>, <span class="math inline">\(\alpha_2 &gt;0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \dfrac{\alpha_1}{\alpha_1 + \alpha_2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \dfrac{\alpha_1\alpha_2}{(\alpha_1 + \alpha_2)^2(\alpha_1 + \alpha_2+1)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">BETA(<span class="math inline">\(\alpha_1\)</span>,<span class="math inline">\(\alpha_2\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">BETA.INV(RAND(), <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\alpha_2\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">activity time when data is limited, probabilities</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Lognormal</strong></th>
+<th style="text-align: left;">LOGN<span class="math inline">\(\left(\mu_l,\sigma_l\right)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;"><span class="math inline">\(\mu = \ln\left(\mu_{l}^{2}/\sqrt{\sigma_{l}^{2} + \mu_{l}^{2}}\right) \quad \sigma^{2} = \ln\left((\sigma_{l}^{2}/\mu_{l}^{2}) + 1\right)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;">No closed form</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = \mu_l = e^{\mu + \sigma^{2}/2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \sigma_{l}^{2}  = e^{2\mu + \sigma^{2}}\left(e^{\sigma^{2}} - 1\right)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">LOGN(<span class="math inline">\(\mu_l,\sigma_l\)</span><code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">LOGNORM.INV(RAND(), <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, time to failure</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Triangular</strong></th>
+<th style="text-align: left;">TRIA(a, m, b)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Parameters:</td>
+<td style="text-align: left;">a = minimum, m = mode, b = maximum</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F(x) =  \dfrac{(x - a)^2}{(b - a)(m - a)} \; \text{for} \; a \leq x \leq m\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(F(x) = 1 - \dfrac{(b - x)^2}{(b - a)(b - m)} \; \text{for} \;m &lt; x \leq b\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inverse CDF:</td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(u) = a + \sqrt{(b-a)(m-a)u} \; \text{for} \;  0 &lt; u &lt; \dfrac{m-a}{b-a}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(F^{-1}(u) = b - \sqrt{(b-a)(b-m)(1-u)} \; \text{for} \; \dfrac{m-a}{b-a} \leq u\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Value:</td>
+<td style="text-align: left;"><span class="math inline">\(E[X] = (a+m+b)/3\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variance:</td>
+<td style="text-align: left;"><span class="math inline">\(Var[X] = \dfrac{a^2 + b^2 + m^2 -ab -am -bm}{18}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arena Generation:</td>
+<td style="text-align: left;">TRIA(min, mode, max<code>[,Stream]</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spreadsheet Generation:</td>
+<td style="text-align: left;">implement <span class="math inline">\(F^{-1}(u)\)</span> as VBA function</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modeling:</td>
+<td style="text-align: left;">task times, activity time when data is limited</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./13-FunctionsAndModulesInArena.html" class="pagination-link" aria-label="Arena Operators, Functions, Distributions, and Modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./15-StatisticalTables.html" class="pagination-link" aria-label="Statistical Tables">
+        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

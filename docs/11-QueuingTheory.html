@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An open textbook on discrete-event simulation modeling using Arena.">
+
+<title>Appendix C — Queueing Theory – Simulation Modeling and Arena</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./12-MiscTopicsInArena.html" rel="next">
+<link href="./10-AppDistributionFitting.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-10629767a8d3d760d9707fc59134ae44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-963416d920756dc736a72a752bf6912f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="mathjax/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./11-QueuingTheory.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Simulation Modeling and Arena</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Simulation-Modeling-and-Arena.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-author.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Simulation and Arena</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical Analysis for Finite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modeling Systems with Processes and Basic Entity Flow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Analysis for Infinite Horizon Simulation Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling Systems with Advanced Process Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modeling Systems with Entity Movement and Material Handling Constructs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Chapter8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Applications of Simulation Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-AppRNRV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Generating Pseudo-Random Numbers and Random Variates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-AppDistributionFitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-QueuingTheory.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-MiscTopicsInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-FunctionsAndModulesInArena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Arena Operators, Functions, Distributions, and Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-CommonDistributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-StatisticalTables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-qts1" id="toc-sec-qts1" class="nav-link active" data-scroll-target="#sec-qts1"><span class="header-section-number">C.1</span> Single Line Queueing Stations</a>
+  <ul>
+  <li><a href="#queueing-notation" id="toc-queueing-notation" class="nav-link" data-scroll-target="#queueing-notation"><span class="header-section-number">C.1.1</span> Queueing Notation</a></li>
+  <li><a href="#littles-formula" id="toc-littles-formula" class="nav-link" data-scroll-target="#littles-formula"><span class="header-section-number">C.1.2</span> Little’s Formula</a></li>
+  <li><a href="#sec-qts1sb1" id="toc-sec-qts1sb1" class="nav-link" data-scroll-target="#sec-qts1sb1"><span class="header-section-number">C.1.3</span> Deriving Formulas for Markovian Single Queue Systems</a></li>
+  </ul></li>
+  <li><a href="#sec-qts1sb2" id="toc-sec-qts1sb2" class="nav-link" data-scroll-target="#sec-qts1sb2"><span class="header-section-number">C.2</span> Examples and Applications of Queueing Analysis</a>
+  <ul>
+  <li><a href="#infinite-queue-examples" id="toc-infinite-queue-examples" class="nav-link" data-scroll-target="#infinite-queue-examples"><span class="header-section-number">C.2.1</span> Infinite Queue Examples</a>
+  <ul class="collapse">
+  <li><a href="#square-root-staffing-rule" id="toc-square-root-staffing-rule" class="nav-link" data-scroll-target="#square-root-staffing-rule"><span class="header-section-number">C.2.1.1</span> Square Root Staffing Rule</a></li>
+  </ul></li>
+  <li><a href="#finite-queue-examples" id="toc-finite-queue-examples" class="nav-link" data-scroll-target="#finite-queue-examples"><span class="header-section-number">C.2.2</span> Finite Queue Examples</a></li>
+  </ul></li>
+  <li><a href="#sec-qts1sb3" id="toc-sec-qts1sb3" class="nav-link" data-scroll-target="#sec-qts1sb3"><span class="header-section-number">C.3</span> Non-Markovian Queues and Approximations</a></li>
+  <li><a href="#sec-qt-sec-formulas" id="toc-sec-qt-sec-formulas" class="nav-link" data-scroll-target="#sec-qt-sec-formulas"><span class="header-section-number">C.4</span> Summary of Queueing Formulas</a>
+  <ul>
+  <li><a href="#mm1-queue" id="toc-mm1-queue" class="nav-link" data-scroll-target="#mm1-queue"><span class="header-section-number">C.4.1</span> M/M/1 Queue</a></li>
+  <li><a href="#mmc-queue" id="toc-mmc-queue" class="nav-link" data-scroll-target="#mmc-queue"><span class="header-section-number">C.4.2</span> M/M/c Queue</a></li>
+  <li><a href="#mmck-queue" id="toc-mmck-queue" class="nav-link" data-scroll-target="#mmck-queue"><span class="header-section-number">C.4.3</span> M/M/c/k Queue</a></li>
+  <li><a href="#mgcc-queue" id="toc-mgcc-queue" class="nav-link" data-scroll-target="#mgcc-queue"><span class="header-section-number">C.4.4</span> M/G/c/c Queue</a></li>
+  <li><a href="#mm1k-queue" id="toc-mm1k-queue" class="nav-link" data-scroll-target="#mm1k-queue"><span class="header-section-number">C.4.5</span> M/M/1/k Queue</a></li>
+  <li><a href="#mmck-queue-1" id="toc-mmck-queue-1" class="nav-link" data-scroll-target="#mmck-queue-1"><span class="header-section-number">C.4.6</span> M/M/c/k Queue</a></li>
+  <li><a href="#mm1kk-queue" id="toc-mm1kk-queue" class="nav-link" data-scroll-target="#mm1kk-queue"><span class="header-section-number">C.4.7</span> M/M/1/k/k Queue</a></li>
+  <li><a href="#mmckk-queue" id="toc-mmckk-queue" class="nav-link" data-scroll-target="#mmckk-queue"><span class="header-section-number">C.4.8</span> M/M/c/k/k Queue</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">C.5</span> Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-AppRNRV.html">Appendices</a></li><li class="breadcrumb-item"><a href="./11-QueuingTheory.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Queueing Theory</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-qtAndInvT" class="quarto-section-identifier">Appendix C — Queueing Theory</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong><span class="smallcaps">Learning Objectives</span></strong></p>
+<ul>
+<li><p>To be able understand basic queueing theory notation</p></li>
+<li><p>To be able to compute queueing results for single queue situations</p></li>
+<li><p>To be able to identify and apply standard queueing models</p></li>
+</ul>
+<p>Many real-life situations involve the possible waiting of entities (e.g.&nbsp;customers, parts, etc.) for resources (e.g.&nbsp;bank tellers, machines, etc.). Systems that involve waiting lines are called queuing systems. This appendix introduces analytical (formula-based) approaches to modeling the performance of these systems.</p>
+<p>Once the performance of the system is modeled, the design of the system to meet operational requirements becomes an important issue. For example, in the simple situation of modeling a drive through pharmacy, you might want to determine the number of waiting spaces that should be available so that arriving customers can have a high chance of entering the line. In these situations, having more of the resource (pharmacist) available at any time will assist in meeting the design criteria; however, an increase in a resource typically comes at some cost. Thus, design questions within queuing systems involve a fundamental trade-off between customer service and the cost of providing that service.</p>
+<p>To begin the analysis of these systems, a brief analytical treatment of the key modeling issues is presented. Analytical results are available only for simplified situations; however, the analytical treatment will serve two purposes. First, it will provide an introduction to the key modeling issues, and second, it can provide approximate models for more complicated situations. The purpose of this appendix is not to provide a comprehensive treatment of queueing theory for which there are many excellent books already. The purpose of this appendix is to provide an introduction to this topic for persons new to simulation so that they can better understand their modeling and analysis of queueing systems. This appendix also serves as a reference for the formulas associated with these models to facilitate their use in verifying and validating simulation models.</p>
+<section id="sec-qts1" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="sec-qts1"><span class="header-section-number">C.1</span> Single Line Queueing Stations</h2>
+<p><a href="02-Chapter2.html" class="quarto-xref"><span>Chapter 2</span></a> presented the pharmacy model and analyzed it with a single server, single queue queueing system called the M/M/1. This section shows how the formulas for the M/M/1 model in <a href="02-Chapter2.html" class="quarto-xref"><span>Chapter 2</span></a> were derived and discusses the key notation and assumptions of analytical models for systems with a single queue. In addition, you will also learn how to simulate variations of these models.</p>
+<p>In a queueing system, there are customers that compete for resources by moving through processes. The competition for resources causes waiting lines (queues) to form and delays to occur within the customer’s process. In these systems, the arrivals and/or service processes are often stochastic. Queueing theory is a branch of mathematical analysis of systems that involve waiting lines in order to predict (and control) their behavior over time. The basic models within queueing theory involve a single line that is served by a set of servers. <a href="#fig-SingleQueue" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> illustrates the major components of a queueing system with a single queue feeding into a set of servers.</p>
+<div id="fig-SingleQueue" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SingleQueue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig1SingleQueue.png" class="quarto-figure quarto-figure-center figure-img" style="width:75.0%;height:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SingleQueue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.1: Example single queue system
+</figcaption>
+</figure>
+</div>
+<p>In queueing theory the term customer is used as a generic term to describe the entities that flow and receive service. A resource is a generic term used to describe the components of the system that are required by a customer as the customer moves through the system. The individual units of the resource are often called servers. In <a href="#fig-SingleQueue" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>, the potential customers can be described as coming from a calling population. The term calling population comes from the historical use of queueing models in the analysis of phone calls to telephone trunk lines. Customers within the calling population may arrive to the system according to an arrival process. In the finite population case, the arrival rate that the system experiences will quite naturally decrease as customers arrive since fewer customers are available to arrive if they are within the system.</p>
+<p>In the infinite calling population case, the rate of arrivals to the system does not depend upon on how many customers have already arrived. In other words, there are so many potential customers in the population that the arrival rate to the system is not affected by the current number of customers within the system. Besides characterizing the arrival process by the rate of arrivals, it is useful to think in terms of the inter-arrival times and in particular the inter-arrival time distribution. In general, the calling population may also have different types of customers that arrive at different rates. In the analytical analysis presented here, there will only be one type of customer.</p>
+<p>The queue is that portion of the system that holds waiting customers. The two main characteristics for the queue are its size or capacity, and its discipline. If the queue has a finite capacity, this indicates that there is only enough space in the queue for a certain number of customers to be waiting at any given time. The queue discipline refers to the rule that will be used to decide the order of the customers within the queue. A first-come, first-served (FCFS) queue discipline orders the queue by the order of arrival, with the most recent arrival always joining the end of the queue. A last-in, first out (LIFO) queue discipline has the most recent arrival joining the beginning of the queue. A last-in, first out queue discipline acts like a stack of dishes. The first dish is at the bottom of the stack, and the last dish added to the stack is at the top of the stack. Thus, when a dish is needed, the next dish to be used is the last one added to the stack. This type of discipline often appears in manufacturing settings when the items are placed in bins, with newly arriving items being placed on top of items that have previously arrived.</p>
+<p>Other disciplines include random and priority. You can think of a random discipline modeling the situation of a server randomly picking the next part to work on (e.g.&nbsp;reaches into a shallow bin and picks the next part). A priority discipline allows the customers to be ordered within the queue by a specified priority or characteristic. For example, the waiting items may be arranged by due-date for a customer order.</p>
+<p>The resource is that portion of the system that holds customers that are receiving service. Each customer that arrives to the system may require a particular number of units of the resource. The resource component of this system can have 1 or more servers. In the analytical treatment, each customer will required only one server and the service time will be governed by a probability distribution called the service time distribution. In addition, for the analytical analysis the service time distribution will be the same for all customers. Thus, the servers are all identical in how they operate and there is no reason to distinguish between them. Queueing systems that contain servers that operate in this fashion are often referred to as parallel server systems. When a customer arrives to the system, the customer will either be placed in the queue or placed in service. After waiting in line, the customer must select one of the (identical) servers to receive service. The following analytical analysis assumes that the only way for the customer to depart the system is to receive service.</p>
+<section id="queueing-notation" class="level3" data-number="C.1.1">
+<h3 data-number="C.1.1" class="anchored" data-anchor-id="queueing-notation"><span class="header-section-number">C.1.1</span> Queueing Notation</h3>
+<p>The specification of how the major components of the system operate gives a basic system configuration. To help in classifying and identifying the appropriate modeling situations, Kendall’s notation (<span class="citation" data-cites="kendall1953stochastic">(<a href="references.html#ref-kendall1953stochastic" role="doc-biblioref">Kendall, 1953</a>)</span>) can be used. The basic format is:</p>
+<blockquote class="blockquote">
+<p>arrival process <strong>/</strong> service process <strong>/</strong> number of servers <strong>/</strong> system capacity <strong>/</strong> size of the calling population <strong>/</strong> queue discipline</p>
+</blockquote>
+<p>For example, the notation M/M/1 specifies that the arrival process is Markovian (M) (exponential time between arrivals), the service process is Markovian (M) (exponentially distributed service times, and that there is 1 server. When the system capacity is not specified it is assumed to be infinite. Thus, in this case, there is a single queue that can hold any customer that arrives. The calling population is also assumed to be infinite if not explicitly specified. Unless otherwise noted the queue discipline is assumed to be FCFS.</p>
+<p>Traditionally, the first letter(s) of the appropriate distribution is used to denote the arrival and service processes. Thus, the case LN/D/2 represents a queue with 2 servers having a lognormally (LN) distributed time between arrivals and deterministic (D) service times. Unless otherwise specified it is typically assumed that the arrival process is a renewal process, i.e.&nbsp;that the time between arrivals are independent and identically distributed and that the service times are also independent and identically distributed.</p>
+<p>Also, the standard models assume that the arrival process is independent of the service process and vice a versa. To denote any distribution, the letter G for general (any) distribution is used. The notation (GI) is often used to indicate a general distribution in which the random variables are independent. Thus, the G/G/5 represents a queue with an arrival process having any general distribution, a general distribution for the service times, and 5 servers. <a href="#fig-CommonQueueing" class="quarto-xref">Figure&nbsp;<span>C.2</span></a> illustrates some of the common queueing systems as denoted by Kendall’s notation.</p>
+<div id="fig-CommonQueueing" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-CommonQueueing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig2CommonQueueing.png" class="quarto-figure quarto-figure-center figure-img" style="width:85.0%;height:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CommonQueueing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.2: Illustrating some common queueing situations
+</figcaption>
+</figure>
+</div>
+<p>There are a number of quantities that form the basis for measuring the performance of queueing systems: - The time that a customer spends waiting in the queue: <span class="math inline">\(T_q\)</span></p>
+<ul>
+<li><p>The time that a customer spends in the system (queue time plus service time): <span class="math inline">\(T\)</span></p></li>
+<li><p>The number of customers in the queue at time <span class="math inline">\(t\)</span>: <span class="math inline">\(N_q(t)\)</span></p></li>
+<li><p>The number of customers that are in the system at time t: <span class="math inline">\(N(t)\)</span></p></li>
+<li><p>The number of customer in service at time <span class="math inline">\(t\)</span>: <span class="math inline">\(N_b(t)\)</span></p></li>
+</ul>
+<p>These quantities will be random variables when the queueing system has stochastic elements. We will assume that the system is work conserving, i.e.&nbsp;that the customers do not exit without received all of their required service and that a customer uses one and only one server to receive service. For a work conserving queue, the following is true:</p>
+<p><span class="math display">\[N(t) = N_q(t) + N_b(t)\]</span></p>
+<p>This indicates that the number of customers in the system must be equal to the number of customers in queue plus the number of customers in service. Since the number of servers is known, the number of busy servers can be determined from the number of customers in the system. Under the assumption that each customer requires 1 server (1 unit of the resource), then <span class="math inline">\(N_b(t)\)</span> is also the current number of busy servers. For example, if the number of servers is 3 and the number of customers in the system is 2, then there must be 2 customers in service (two servers that are busy). Therefore, knowledge of <span class="math inline">\(N(t)\)</span> is sufficient to describe the state of the system. Because <span class="math inline">\(N(t) = N_q(t) + N_b(t)\)</span> is true, the following relationship between expected values is also true:</p>
+<p><span class="math display">\[E[N(t)] = E[N_q(t)] + E[N_b(t)]\]</span></p>
+<p>If <span class="math inline">\(\mathit{ST}\)</span> is the service time of an arbitrary customer, then it should be clear that:</p>
+<p><span class="math display">\[E[T] = E[T_q] + E[\mathit{ST}]\]</span></p>
+<p>That is, the expected system time is equal to the expected waiting time in the queue plus the expected time spent in service.</p>
+</section>
+<section id="littles-formula" class="level3" data-number="C.1.2">
+<h3 data-number="C.1.2" class="anchored" data-anchor-id="littles-formula"><span class="header-section-number">C.1.2</span> Little’s Formula</h3>
+<p><a href="03-Chapter3.html" class="quarto-xref"><span>Chapter 3</span></a> presented time persistent data and computed time-averages. For queueing systems, one can show that relationships exist between such quantities as the expected number in the queue and the expected waiting time in the queue. To understand these relationships, consider <a href="#fig-NumInQPath" class="quarto-xref">Figure&nbsp;<span>C.3</span></a> which illustrates the sample path for the number of customers in the queue over a period of time.</p>
+<div id="fig-NumInQPath" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NumInQPath-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig3NumInQPath.png" class="quarto-figure quarto-figure-center figure-img" style="width:70.0%;height:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NumInQPath-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.3: Sample path for the number of customers in a queue
+</figcaption>
+</figure>
+</div>
+<p>Let <span class="math inline">\(A_i; i = 1 \ldots n\)</span> represent the time that the <span class="math inline">\(i^{th}\)</span> customer enters the queue, <span class="math inline">\(D_i; i = 1 \ldots n\)</span> represent the time that the <span class="math inline">\(i^{th}\)</span> customer exits the queue, and <span class="math inline">\(T_{q_i}\)</span> = <span class="math inline">\(D_i\)</span> - <span class="math inline">\(A_i\)</span> for <span class="math inline">\(i = 1 \ldots n\)</span> represent the time that the <span class="math inline">\(i^{th}\)</span> customer spends in the queue. Recall that the average time spent in the queue was:</p>
+<p><span class="math display">\[\bar{T}_q  = \frac{\sum_{i=1}^n T_{q_i}}{n} =\frac{0 + 11 + 8 + 7 + 2 + 5 + 6 + 0}{8} = \frac{39}{8} = 4.875\]</span></p>
+<p>The average number of customers in the queue was:</p>
+<p><span class="math display">\[\begin{aligned}
+\bar{L}_q &amp; = \frac{0(2-0) + 1(7-2) + 2(10-7) + 3(13-10) + 2(15-13) + 1(16-15)}{25}\\
+&amp; + \frac{4(17-16) + 3(18-17) + 2(21-18) + 1(22-21) + 0(25-22)}{25} \\
+&amp; = \frac{39}{25} = 1.56\end{aligned}\]</span></p>
+<p>By considering the waiting time lengths within the figure, the area under the sample path curve can be computed as:</p>
+<p><span class="math display">\[\sum_{i=1}^n T_{q_i} = 39\]</span></p>
+<p>But, by definition the area should also be:</p>
+<p><span class="math display">\[\int_{t_0}^{t_n} q(t)\mathrm{d}t\]</span></p>
+<p>Thus, it is no coincidence that the computed value for the numerators in <span class="math inline">\(\bar{T}_q\)</span> and <span class="math inline">\(\bar{L}_q\)</span> for the example is 39. Operationally, this <em>must</em> be the case.</p>
+<p>Define <span class="math inline">\(\bar{R}\)</span> as the average rate that customers exit the queue. The average rate of customer exiting the queue can be estimated by counting the number of customers that exit the queue over a period of time. That is,</p>
+<p><span class="math display">\[\bar{R} = \frac{n}{t_n - t_0}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of customers that departed the system during the time <span class="math inline">\(t_n - t_0\)</span>. This quantity is often called the average throughput rate. For this example, <span class="math inline">\(\bar{R}\)</span> = 8/25. By combining these equations, it becomes clear that the following relationship holds:</p>
+<p><span class="math display">\[\bar{L}_q = \frac{\int\limits_{t_0}^{t_n} q(t)\mathrm{d}t}{t_n - t_0} = \frac{n}{t_n - t_0} \times \frac{\sum_{i=1}^n T_{q_i}}{n} = \bar{R} \times \bar{T}_q\]</span></p>
+<p>This relationship is a conservation law and can also be applied to other portions of the queueing system as well. In words the relationship states that:</p>
+<p><em>Average number in queue = average throughput rate <span class="math inline">\(\times\)</span> average waiting time in queue</em></p>
+<p>When the service portion of the system is considered, then the relationship can be translated as:</p>
+<p><em>Average number in service = average throughput rate <span class="math inline">\(\times\)</span> average time in service</em></p>
+<p>When the entire queueing system is considered, the relationship yields:</p>
+<p><em>Average number in the system = average throughput rate <span class="math inline">\(\times\)</span> average time in the system</em></p>
+<p>These relationships hold operationally for these statistical quantities as well as for the expected values of the random variables that underlie the stochastic processes. This relationship is called Little’s formula after the queueing theorist who first formalized the technical conditions of its applicability to the stochastic processes within queues of this nature. The interested reader is referred to <span class="citation" data-cites="little1961a">(<a href="references.html#ref-little1961a" role="doc-biblioref">Little, 1961</a>)</span> and <span class="citation" data-cites="glynn1989extensions">(<a href="references.html#ref-glynn1989extensions" role="doc-biblioref">Glynn &amp; Whitt, 1989</a>)</span> for more on these relationships. In particular, Little’s formula states a relationship between the steady state expected values for these processes.</p>
+<p>To develop these formulas, define <span class="math inline">\(N\)</span>, <span class="math inline">\(N_q\)</span>, <span class="math inline">\(N_b\)</span> as random variables that represent the number of customers in the system, in the queue, and in service at an arbitrary point in time in steady state. Also, let <span class="math inline">\(\lambda\)</span> be the expected arrival rate so that <span class="math inline">\(1/\lambda\)</span> is the mean of the inter-arrival time distribution and let <span class="math inline">\(\mu = 1/E[\mathit{ST}]\)</span> so that <span class="math inline">\(E[\mathit{ST}] = 1/\mu\)</span> is the mean of the service time distribution. The expected values of the quantities of interest can be defined as:</p>
+<p><span class="math display">\[\begin{aligned}
+L &amp; \equiv E[N] \\
+L_q &amp; \equiv E[N_q]\\
+B &amp; \equiv E[N_b]\\
+W &amp; \equiv E[T] \\
+W_q &amp; \equiv E[T_q]\end{aligned}\]</span></p>
+<p>Thus, it should be clear that</p>
+<p><span class="math display">\[\begin{aligned}
+L  &amp; =  L_q + B \\
+W &amp; =  W_q + E[\mathit{ST}]\end{aligned}\]</span></p>
+<p>In steady state, the mean arrival rate to the system should also be equal to the mean through put rate. Thus, from Little’s relationship the following are true:</p>
+<p><span class="math display">\[\begin{aligned}
+L &amp; =  \lambda W \\
+L_q &amp; =  \lambda W_q\\
+B &amp; = \lambda E[\mathit{ST}] = \frac{\lambda}{\mu}\end{aligned}\]</span></p>
+<p>To gain an intuitive understanding of Little’s formulas in this situation, consider that in steady state the mean rate that customers exit the queue must also be equal to the mean rate that customers enter the queue. Suppose that you are a customer that is departing the queue and you look behind yourself to see how many customers are left in the queue. This quantity should be <span class="math inline">\(L_q\)</span> on average. If it took you on average <span class="math inline">\(W_q\)</span> to get through the queue, how many customers would have arrived on average during this time? If the customers arrive at rate <span class="math inline">\(\lambda\)</span> then <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\times\)</span> <span class="math inline">\(W_q\)</span> is the number of customers (on average) that would have arrived during your time in the queue, but these are the customers that you would see (on average) when looking behind you. Thus, <span class="math inline">\(L_q = \lambda W_q\)</span>.</p>
+<p>Notice that <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> must be given and therefore <span class="math inline">\(B\)</span> is known. The quantity <span class="math inline">\(B\)</span> represents the expected number of customers in service in steady state, but since a customer uses only 1 server while in service, <span class="math inline">\(B\)</span> also represents the expected number of busy servers in steady state. If there are <span class="math inline">\(c\)</span> identical servers in the resource, then the quantity, <span class="math inline">\(B/c\)</span> represents the fraction of the servers that are busy. This quantity can be interpreted as the utilization of the resource as a whole or the average utilization of a server, since they are all identical. This quantity is defined as:</p>
+<p><span class="math display">\[\rho = \frac{B}{c} = \frac{\lambda}{c \mu}\]</span></p>
+<p>The quantity, <span class="math inline">\(c\mu\)</span>, represents the maximum rate at which the system can perform work on average. Because of this <span class="math inline">\(c\mu\)</span> can be interpreted as the mean capacity of the system. One of the technical conditions that is required for Little’s formula to be applicable is that <span class="math inline">\(\rho &lt; 1\)</span> or <span class="math inline">\(\lambda &lt; c \mu\)</span>. That is, the mean arrival rate to the system must be less than mean capacity of the system. This also implies that the utilization of the resource must be less than 100%.</p>
+<p>The queueing system can also be characterized in terms of the <em>offered load</em>. The offered load is a dimensionless quantity that gives the average amount of work offered per time unit to the <span class="math inline">\(c\)</span> servers. The offered load is defined as: <span class="math inline">\(r = \lambda/\mu\)</span>. Notice that this can be interpreted as each customer arriving with <span class="math inline">\(1/\mu\)</span> average units of work to be performed. The steady state conditions thus indicate that <span class="math inline">\(r &lt; c\)</span>. In other words, the arriving amount of work to the queue cannot exceed the number of servers. These conditions make sense for steady state results to be applicable, since if the mean arrival rate was greater than the mean capacity of the system, the waiting line would continue to grow over time.</p>
+</section>
+<section id="sec-qts1sb1" class="level3" data-number="C.1.3">
+<h3 data-number="C.1.3" class="anchored" data-anchor-id="sec-qts1sb1"><span class="header-section-number">C.1.3</span> Deriving Formulas for Markovian Single Queue Systems</h3>
+<p>Notice that with <span class="math inline">\(L = \lambda W\)</span> and the other relationships, all of the major performance measures for the queue can be computed if a formula for one of the major performance measures (e.g.&nbsp;<span class="math inline">\(L\)</span>, <span class="math inline">\(L_q\)</span>, <span class="math inline">\(W\)</span>, or <span class="math inline">\(W_q\)</span>) are available. In order to derive formulas for these performance measures, the arrival and service processes must be specified.</p>
+<p>This section shows that for the case of exponential time between arrivals and exponential service times, the necessary formulas can be derived. It is useful to go through the basic derivations in order to better understand the interpretation of the various performance measures, the implications of the assumptions, and the concept of steady state.</p>
+<p>To motivate the development, let’s consider a simple example. Suppose you want to model an old style telephone booth, which can hold only one person while the person uses the phone. Also assume that any people that arrive while the booth is in use immediately leave. In other words, nobody waits to use the booth.</p>
+<p>For this system, it is important to understand the behavior of the stochastic process <span class="math inline">\(N(t); t \geq 0\)</span>, where <span class="math inline">\(N(t)\)</span> represents the number of people that are in the phone booth at any time <span class="math inline">\(t\)</span>. Clearly, the possible values of <span class="math inline">\(N(t)\)</span> are 0 and 1, i.e. <span class="math inline">\(N(t) \in \lbrace 0, 1 \rbrace\)</span>. Developing formulas for the probability that there are 0 or 1 customers in the booth at any time <span class="math inline">\(t\)</span>, i.e. <span class="math inline">\(P_i(t) = P\lbrace N(t) = i\rbrace\)</span> will be the key to modeling this situation.</p>
+<p>Let <span class="math inline">\(\lambda\)</span> be the mean arrival rate of customers to the booth and let <span class="math inline">\(\mathit{ST} = 1/\mu\)</span> be the expected length of a telephone call. For example, if the mean time between arrivals is 12 minutes, then <span class="math inline">\(\lambda\)</span> = 5/hr, and if the mean length of a call is 10 minutes, then <span class="math inline">\(\mu\)</span> = 6/hr. The following reasonable assumptions will be made:</p>
+<ol type="1">
+<li><p>The probability of a customer arriving in a small interval of time, <span class="math inline">\(\Delta t\)</span>, is roughly proportional to the length of the interval, with the proportionality constant equal to the mean rate of arrival, <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>The probability of a customer completing an ongoing phone call during a small interval of time is roughly proportional to the length of the interval and the proportionality constant is equal to the mean service rate, <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>The probability of more than one arrival in an arbitrarily small interval, <span class="math inline">\(\Delta t\)</span>, is negligible. In other words, <span class="math inline">\(\Delta t\)</span>, can be made small enough so that only one arrival can occur in the interval.</p></li>
+<li><p>The probability of more than one service completion in an arbitrarily small interval, <span class="math inline">\(\Delta t\)</span>, is negligible. In other words, <span class="math inline">\(\Delta t\)</span>, can be made small enough so that only one service can occur in the interval.</p></li>
+</ol>
+<p>Let <span class="math inline">\(P_0(t)\)</span> and <span class="math inline">\(P_1(t)\)</span> represent the probability that there is 0 or 1 customer using the booth, respectively. Suppose that you observe the system at time <span class="math inline">\(t\)</span> and you want to derive the probability for 0 customers in the system at some future time, <span class="math inline">\(t + \Delta t\)</span>. Thus, you want, <span class="math inline">\(P_0(t + \Delta t)\)</span>.</p>
+<p>For there to be zero customers in the booth at time <span class="math inline">\(t + \Delta t\)</span>, there are two possible situations that could occur. First, there could have been no customers in the system at time <span class="math inline">\(t\)</span> and no arrivals during the interval <span class="math inline">\(\Delta t\)</span>, or there could have been one customer in the system at time <span class="math inline">\(t\)</span> and the customer completed service during <span class="math inline">\(\Delta t\)</span>. Thus, the following relationship should hold:</p>
+<p><span class="math display">\[\begin{aligned}
+\lbrace N(t + \Delta t) = 0\rbrace  = &amp; \lbrace\lbrace N(t) = 0\rbrace \cap \lbrace \text{no arrivals during} \; \Delta t\rbrace\rbrace \cup \\
+&amp; \lbrace\lbrace N(t) = 1\rbrace \cap \lbrace \text{service completed during} \; \Delta t\rbrace \rbrace\end{aligned}\]</span></p>
+<p>It follows that:</p>
+<p><span class="math display">\[P_0(t + \Delta t) = P_0(t)P\lbrace\text{no arrivals during} \Delta t\rbrace + P_1(t)P\lbrace\text{service completed during} \Delta t\rbrace\]</span></p>
+<p>In addition, at time <span class="math inline">\(t + \Delta t\)</span>, there might be a customer using the booth, <span class="math inline">\(P_1(t + \Delta t)\)</span>. For there to be one customer in the booth at time <span class="math inline">\(t + \Delta t\)</span>, there are two possible situations that could occur. First, there could have been no customers in the system at time <span class="math inline">\(t\)</span> and one arrival during the interval <span class="math inline">\(\Delta t\)</span>, or there could have been one customer in the system at time <span class="math inline">\(t\)</span> and the customer did not complete service during <span class="math inline">\(\Delta t\)</span>. Thus, the following holds:</p>
+<p><span class="math display">\[P_1(t + \Delta t) = P_0(t)P\lbrace\text{1 arrival during} \; \Delta t\rbrace + P_1(t)P\lbrace\text{no service completed during} \; \Delta t\rbrace\]</span></p>
+<p>Because of assumptions (1) and (2), the following probability statements can be used:</p>
+<p><span class="math display">\[\begin{aligned}
+P \lbrace \text{1 arrival during} \; \Delta t \rbrace &amp; \cong \lambda \Delta t\\
+P \lbrace \text{no arrivals during} \; \Delta t \rbrace &amp;\cong 1- \lambda \Delta t \\
+P \lbrace \text{service completed during} \; \Delta t \rbrace &amp; \cong \mu \Delta t \\
+P \lbrace \text{no service completed during} \; \Delta t \rbrace &amp; \cong 1-\mu \Delta t\end{aligned}\]</span></p>
+<p>This results in the following:</p>
+<p><span class="math display">\[\begin{aligned}
+P_0(t + \Delta t) &amp; = P_0(t)[1-\lambda \Delta t] + P_1(t)[\mu \Delta t]\\
+P_1(t + \Delta t) &amp; = P_0(t)[\lambda \Delta t] + P_1(t)[1-\mu \Delta t]\end{aligned}\]</span></p>
+<p>Collecting the terms in the equations, rearranging, dividing by <span class="math inline">\(\Delta t\)</span>, and taking the limit as goes <span class="math inline">\(\Delta t\)</span> to zero, yields the following set of differential equations:</p>
+<p><span class="math display">\[\begin{aligned}
+\frac{dP_0(t)}{dt} &amp; = \lim_{\Delta t \to 0}\frac{P_0(t + \Delta t) - P_0(t)}{\Delta t} = -\lambda P_0(t) + \mu P_1(t) \\
+\frac{dP_1(t)}{dt} &amp; = \lim_{\Delta t \to 0}\frac{P_1(t + \Delta t) - P_1(t)}{\Delta t} = \lambda P_0(t) - \mu P_1(t)\end{aligned}\]</span></p>
+<p>It is also true that <span class="math inline">\(P_0(t) + P_1(t) = 1\)</span>. Assuming that <span class="math inline">\(P_0(0) = 1\)</span> and <span class="math inline">\(P_1(0) = 0\)</span> as the initial conditions, the solutions to these differential equations are:</p>
+<p><span id="eq-qtP0t"><span class="math display">\[
+P_0(t) = \biggl(\frac{\mu}{\lambda + \mu}\biggr) + \biggl(\frac{\lambda}{\lambda + \mu}\biggr)e^{-(\lambda + \mu)t}
+\tag{C.1}\]</span></span></p>
+<p><span id="eq-qtP1t"><span class="math display">\[
+P_1(t) = \biggl(\frac{\lambda}{\lambda + \mu}\biggr) - \biggl(\frac{\lambda}{\lambda + \mu}\biggr)e^{-(\lambda + \mu)t}
+\tag{C.2}\]</span></span></p>
+<p>These equations represent the probability of having either 0 or 1 customer in the booth at any time. If the limit as <span class="math inline">\(t\)</span> goes to infinity is considered, the <em>steady state probabilities</em>, <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span> can be determined:</p>
+<p><span id="eq-qtP0"><span class="math display">\[
+P_0 = \lim_{t \to \infty} P_0(t) = \frac{\mu}{\lambda + \mu}
+\tag{C.3}\]</span></span></p>
+<p><span id="eq-qtP1"><span class="math display">\[
+P_1 = \lim_{t \to \infty} P_1(t) = \frac{\lambda}{\lambda + \mu}
+\tag{C.4}\]</span></span></p>
+<p>These probabilities can be interpreted as the chance that an arbitrary customer finds the booth either empty or busy after an infinitely long period of time has elapsed.</p>
+<p>If only the steady state probabilities are desired, there is an easier method to perform the derivation, both from a conceptual and a mathematical standpoint. The assumptions (1-4) that were made ensure that the arrival and service processes will be Markovian. In other words, that the time between arrivals of the customer is exponentially distributed and that the service times are exponentially distributed. In addition, the concept of steady state can be used.</p>
+<p>Consider the differential equations. These equations govern the rate of change of the <em>probabilities</em> over time. Consider the analogy of water to probability and think of a dam or container that holds an amount of water. The rate of change of the level of water in the container can be thought of as:</p>
+<p><em>Rate of change of level = rate into container – rate out of the container</em></p>
+<p>In steady state, the level of the water should not change, thus the rate into the container must equal the rate out of the container. Using this analogy,</p>
+<p><span class="math display">\[\dfrac{dP_i(t)}{dt} = \text{rate in - rate out}\]</span></p>
+<p>and for steady state: <em>rate in = rate out</em> with the probability <em>flowing</em> between the states. <a href="#fig-TwoStates" class="quarto-xref">Figure&nbsp;<span>C.4</span></a> illustrates this concept via a state transition diagram. If <span class="math inline">\(N\)</span> represents the steady state number of customers in the system (booth), the two possible states that the system can be in are 0 and 1. The rate of transition from state 0 to state 1 is the rate that an arrival occurs and the state of transition from state 1 to state 0 is the service rate.</p>
+<div id="fig-TwoStates" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-TwoStates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig4TwoStates.png" class="quarto-figure quarto-figure-center figure-img" style="width:25.0%;height:25.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-TwoStates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.4: Two state rate transition diagram
+</figcaption>
+</figure>
+</div>
+<p>The rate of transition into state 0 can be thought of as the rate that probability flows from state 1 to state 0 times the chance of being in state 1, i.e.&nbsp;<span class="math inline">\(\mu P_1\)</span>. The rate of transition out of state 0 can be thought of as the rate from state 0 to state 1 times the chance of being in state 0, i.e.&nbsp;<span class="math inline">\(\lambda P_0\)</span>. Using these ideas yields:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><em>State</em></th>
+<th style="text-align: center;"><em>rate in</em></th>
+<th style="text-align: center;"><em>=</em></th>
+<th style="text-align: center;"><em>rate out</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span> <span class="math inline">\(P_1\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span> <span class="math inline">\(P_0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span> <span class="math inline">\(P_0\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span> <span class="math inline">\(P_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that these are identical equations, but with the fact that <span class="math inline">\(P_0 + P_1 = 1\)</span>, we will have two equations and two unknowns (<span class="math inline">\(P_0 , P_1\)</span>). Thus, the equations can be easily solved to yield the same results as in <a href="#eq-qtP0" class="quarto-xref">Equation&nbsp;<span>C.3</span></a> and <a href="#eq-qtP1" class="quarto-xref">Equation&nbsp;<span>C.4</span></a>. Sets of equations derived in this manner are called <em>steady state</em> equations.</p>
+<p>Now, more general situations can be examined. Consider a general queueing system with some given number of servers. An arrival to the system represents an increase in the number of customers and a departure from the system represents a decrease in the number of customers in the system.</p>
+<div id="fig-GeneralStateDiagram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-GeneralStateDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig5GeneralStateDiagram.png" class="quarto-figure quarto-figure-center figure-img" style="width:85.0%;height:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-GeneralStateDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.5: General rate transition diagram for any number of states
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-GeneralStateDiagram" class="quarto-xref">Figure&nbsp;<span>C.5</span></a> illustrates a general state transition diagram for this system. Let <span class="math inline">\(N\)</span> be the number of customers in the system in steady state and define:</p>
+<p><span class="math display">\[P_n = P\lbrace N=n\rbrace = \lim_{t \to \infty}P\lbrace N(t) = n\rbrace\]</span></p>
+<p>as the steady state probability that there are <span class="math inline">\(n\)</span> customers in the system. Let <span class="math inline">\(\lambda_n\)</span> be the mean arrival rate of customers entering the system when there are <span class="math inline">\(n\)</span> customers in the system, <span class="math inline">\(\lambda_n \geq 0\)</span>. Let <span class="math inline">\(\mu_n\)</span> be the mean service rate for the overall system when there are <span class="math inline">\(n\)</span> customers in the system. This is the rate, at which customers depart when there are <span class="math inline">\(n\)</span> customers in the system. In this situation, the number of customers may be infinite, i.e. <span class="math inline">\(N \in \lbrace 0,1,2,\ldots\rbrace\)</span>. The steady state equations for this situation are as follows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><em>State</em></th>
+<th style="text-align: center;"><em>rate in</em></th>
+<th style="text-align: center;"><em>=</em></th>
+<th style="text-align: center;"><em>rate out</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_1 P_1\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_0 P_0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_0 P_0 + \mu_2 P_2\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_1 P_1 + \lambda_1 P_1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_1 P_1 + \mu_3 P_3\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_2 P_2 + \lambda_2 P_2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_{n-1} P_{n-1} + \mu_{n+1} P_{n+1}\)</span></td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_n P_n + \lambda_n P_n\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These equations can be solved recursively starting with state 0. This yields:</p>
+<p><span class="math display">\[
+P_1 =  \frac{\lambda_0}{\mu_1} P_0
+\]</span> <span class="math display">\[
+P_2 = \frac{\lambda_1 \lambda_0}{\mu_2 \mu_1} P_0
+\]</span></p>
+<p><span class="math display">\[
+\vdots
+\]</span> <span class="math display">\[
+P_n =  \frac{\lambda_{n-1} \lambda_{n-2}\cdots \lambda_0}{\mu_n \mu_{n-1} \cdots \mu_1} P_0 = \prod_{j+1}^{n-1}\biggl(\frac{\lambda_j}{\mu_{j+1}}\biggr) P_0
+\]</span></p>
+<p>for <span class="math inline">\(n = 1,2,3, \ldots\)</span>. Provided that <span class="math inline">\(\sum_{n=0}^{\infty} P_n = 1\)</span>, <span class="math inline">\(P_0\)</span> can be computed as:</p>
+<p><span class="math display">\[P_0 = \Biggl[\sum_{n=0}^{\infty} \prod_{j=0}^{n-1}\biggl(\dfrac{\lambda_j}{\mu_{j+1}}\biggr)\Biggr]^{-1}\]</span></p>
+<p>Therefore, for any given set of <span class="math inline">\(\lambda_n\)</span> and <span class="math inline">\(\mu_n\)</span>, one can compute <span class="math inline">\(P_n\)</span>. The <span class="math inline">\(P_n\)</span> represent the steady state probabilities of having <span class="math inline">\(n\)</span> customers in the system. Because <span class="math inline">\(P_n\)</span> is a probability distribution, the expected value of this distribution can be computed. What is the expected value for the <span class="math inline">\(P_n\)</span> distribution? The expected number of customers in the system in steady state. This is <span class="math inline">\(L\)</span>. The expected number of customers in the system and the queue are given by:</p>
+<p><span class="math display">\[\begin{aligned}
+L &amp; = \sum_{n=0}^{\infty} nP_n \\
+L_q &amp; = \sum_{n=c}^{\infty} (n-c)P_n\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(c\)</span> is the number of servers.</p>
+<p>There is one additional formula that is needed before Little’s formula can be applied with other known relationships. For certain systems, e.g. finite system size, not all customers that arrive will enter the queue. Little’s formula is true for the customers that enter the system. Thus, the effective arrival rate must be defined. The effective arrival rate is the mean rate of arrivals that actually enter the system. This is given by computing the expected arrival rate across the states. For infinite system size, we have:</p>
+<p><span class="math display">\[\lambda_e = \sum_{n=0}^{\infty} \lambda_n P_n\]</span></p>
+<p>For finite system size, <span class="math inline">\(k\)</span>, we have:</p>
+<p><span class="math display">\[\lambda_e = \sum_{n=0}^{k-1} \lambda_n P_n\]</span></p>
+<p>since <span class="math inline">\(\lambda_n = 0\)</span> for <span class="math inline">\(n \geq k\)</span>. This is because nobody can enter when the system is full. All these relationships yield:</p>
+<p><span class="math display">\[\begin{aligned}
+L &amp; =  \lambda_e W \\
+L_q &amp; =  \lambda_e W_q\\
+B &amp; = \frac{\lambda_e}{\mu} \\
+\rho &amp; = \frac{\lambda_e}{c\mu}\\
+L &amp; = L_q + B \\
+W &amp; = W_q + \frac{1}{\mu}\end{aligned}\]</span></p>
+<p><a href="#sec-qt-sec-formulas" class="quarto-xref"><span>Section C.4</span></a> presents the results of applying the general solution for <span class="math inline">\(P_n\)</span> to different queueing system configurations. <a href="#tbl-mmcResults" class="quarto-xref">Table&nbsp;<span>C.1</span></a> presents specific results for the M/M/c queuing system for <span class="math inline">\(c = 1,2,3\)</span>. Using these results and those in <a href="#sec-qt-sec-formulas" class="quarto-xref"><span>Section C.4</span></a>, the analysis of a variety of different queueing situations is possible.</p>
+<div id="tbl-mmcResults" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mmcResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.1: Results M/M/c <span class="math inline">\(\rho = \lambda/c \mu\)</span>
+</figcaption>
+<div aria-describedby="tbl-mmcResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(c\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(L_q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(1 - \rho\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{\rho^2}{1 - \rho}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{1 - \rho}{1 + \rho}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{2 \rho^3}{1 - \rho^2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{2(1 - \rho)}{2 + 4 \rho + 3 \rho^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{9 \rho^4}{2 + 2 \rho - \rho^2 - 3 \rho^3}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>This section has only scratched the surface of queueing theory. A vast amount of literature is available on queueing theory and its application. You should examine <span class="citation" data-cites="gross1998fundamentals">(<a href="references.html#ref-gross1998fundamentals" role="doc-biblioref">Gross &amp; Harris, 1998</a>)</span>, <span class="citation" data-cites="cooper1990introduction">(<a href="references.html#ref-cooper1990introduction" role="doc-biblioref">Cooper, 1990</a>)</span>, and <span class="citation" data-cites="kleinrock1975queueing">(<a href="references.html#ref-kleinrock1975queueing" role="doc-biblioref">Kleinrock, 1975</a>)</span> for a more in depth theoretical development of the topic. There are also a number of free on-line resources available on the topic. The interested reader should search on “Queueing Theory Books On Line”. The next section presents some simple examples to illustrate the use of the formulas.</p>
+</section>
+</section>
+<section id="sec-qts1sb2" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="sec-qts1sb2"><span class="header-section-number">C.2</span> Examples and Applications of Queueing Analysis</h2>
+<p>The derivations and formulas in the previous section certainly appear to be intimidating and they can be tedious to apply. Fortunately, there is readily available software that can be used to do the calculations. On line resources for software for queueing analysis can be found at:</p>
+<ul>
+<li><p><a href="https://web2.uwindsor.ca/math/hlynka/qsoft.html">List of queueing theory software resources</a></p></li>
+<li><p><a href="http://mason.gmu.edu/~jshortle/fqt5th.html">QTSPlus</a> Excel based queueing theory software that accompanies <span class="citation" data-cites="Gross2008aa">Gross et al. (<a href="references.html#ref-Gross2008aa" role="doc-biblioref">2008</a>)</span></p></li>
+</ul>
+<p>The most important part of performing a queueing analysis is to identify the most appropriate queueing model for a given situation. Then, software tools can be used to analyze the situation. This section provides a number of examples and discusses the differences between the systems so that you can better apply the results of the previous sections. The solutions to these types of problems involve the following steps:</p>
+<ol type="1">
+<li><p>Identify the arrival and service processes</p></li>
+<li><p>Identify the size of the arriving population and the size of the system</p></li>
+<li><p>Specify the appropriate queueing model and its input parameters</p></li>
+<li><p>Identify the desired performance measures</p></li>
+<li><p>Compute the required performance measures</p></li>
+</ol>
+<section id="infinite-queue-examples" class="level3" data-number="C.2.1">
+<h3 data-number="C.2.1" class="anchored" data-anchor-id="infinite-queue-examples"><span class="header-section-number">C.2.1</span> Infinite Queue Examples</h3>
+<p>In this section, we will explore two queueing systems (M/M/1 and M/M/c) that have an infinite population of arrivals and an infinite size queue. The examples illustrate some of the common questions related to these types of queueing systems.</p>
+<hr>
+<div id="exm-exDTP" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.1</strong></span> Customers arrive at a one window drive through pharmacy according to a Poisson distribution with a mean of 10 per hour. The service time per customer is exponential with a mean of 5 minutes. There are 3 spaces in front of the window, including that for the car being served. Other arriving cars can wait outside these 3 spaces. The pharmacy is interested in answering the following questions:</p>
+</div>
+<ol type="1">
+<li><p>What is the probability that an arriving customer can enter one of the 3 spaces in front of the window?</p></li>
+<li><p>What is the probability that an arriving customer will have to wait outside the 3 spaces?</p></li>
+<li><p>What is the probability that an arriving customer has to wait?</p></li>
+<li><p>How long is an arriving customer expected to wait before starting service?</p></li>
+<li><p>How many car spaces should be provided in front of the window so that an arriving customer has a <span class="math inline">\(\gamma\)</span> = 40% chance of being able to wait in one of the provided spaces?</p></li>
+</ol>
+<hr>
+<p><strong>Solution to <a href="#exm-exDTP" class="quarto-xref">Example&nbsp;<span>C.1</span></a></strong></p>
+<p>The customers arrive according to a Poisson process, which implies that the time between arrivals is exponentially distributed. Thus, the arrival process is Markovian (M). The service process is stated as exponential. Thus, the service process is Markovian (M). There is only 1 window and customers wait in front of this window to receive service. Thus, the number of servers is <span class="math inline">\(c = 1\)</span>. The problem states that customers that arrive when the three spaces are filled, still wait for service outside the 3 spaces. Thus, there does not appear to be a restriction on the size of the waiting line. Therefore, this situation can be considered an infinite size system. The arrival rate is specified for any likely customer and there is no information given concerning the total population of the customers. Thus, it appears that an infinite population of customers can be assumed. We can conclude that this is a M/M/1 queueing situation with an arrival rate <span class="math inline">\(\lambda = 10/hr\)</span> and a service rate of <span class="math inline">\(\mu = 12/hr\)</span>. Notice the input parameters have been converted to a common unit of measure (customers/hour).</p>
+<p>The equations for the M/M/1 can be readily applied. From <a href="#sec-qt-sec-formulas" class="quarto-xref"><span>Section C.4</span></a> the following formulas can be applied:</p>
+<p><span class="math display">\[
+\begin{aligned}
+c &amp; = 1\\
+\lambda_n &amp; = \lambda = 10/hr\\
+\lambda_{e} &amp; = \lambda \\
+\mu_n &amp; =\mu = 12/hr \\
+\rho &amp; = \dfrac{\lambda}{c\mu} = r = 10/12 = 5/6\\
+P_0 &amp; = 1 - \dfrac{\lambda}{\mu} = 1 - r = 1/6 \\
+P_n &amp; = P_0 r^n = \dfrac{1}{6} \left(\dfrac{5}{6}\right)^{n}\\
+L &amp; = \dfrac{r}{1 - r} = \dfrac{(5/6)}{1 - (5/6)} = 5\\
+L_q &amp; = \dfrac{r^2}{1 - r} = \dfrac{(5/6)^2}{1 - (5/6)} = 4.1\bar{6}\\
+W_q &amp; = \frac{L_q}{\lambda} = \frac{r}{\mu(1 - r)} = 0.41\bar{6} \; \text{hours} = 25.02 \; \text{minutes} \\
+W &amp; = \frac{L}{\lambda} = 5/10 = 0.5 \; \text{hours} = 30 \; \text{minutes} \\
+\end{aligned}
+\]</span></p>
+<p>Let’s consider each question from the problem in turn:</p>
+<ol type="1">
+<li><p>Probability statements of this form are related to the underlying state variable for the system. In this case, let <span class="math inline">\(N\)</span> represent the number of customers in the system. To find the probability that an arriving customer can enter one of the 3 spaces in front of the window, you should consider the question: <em>When can a customer enter one of the 3 spaces?</em> A customer can enter one of the three spaces when there are 0 or 1 or 2 customers in the system. This is not <span class="math inline">\(N\)</span> = 0, 1, 2, or 3 because if there are 3 customers in the system, then the <span class="math inline">\(3^{rd}\)</span> space is taken. Therefore, <span class="math inline">\(P\lbrace N \leq 2 \rbrace\)</span> needs to be computed.<br>
+To compute <span class="math inline">\(P[N \leq 2]\)</span> note that:</p>
+<p><span class="math display">\[P[N \geq n] = \sum_{j=n}^{\infty} P_0 r^j = (1 - r)\sum_{j=n}^{\infty} r^{j-n} = (1 - r)\dfrac{r^n}{1 - r} = r^n\]</span></p>
+<p>Therefore, <span class="math inline">\(P[N \leq n]\)</span> is:</p>
+<p><span class="math display">\[P[N \leq n] = 1 - P[N &gt; n] = 1 - P[N \geq n + 1] = 1 - r^{n + 1}\]</span></p>
+<p>Thus, we have that <span class="math inline">\(P[N \leq 2] = 1 - r^3 \cong 0.42\)</span></p></li>
+<li><p>An arriving customer will have to wait outside of the 3 spaces, when there are more than 2 (3 or more) customers in the system. Thus, <span class="math inline">\(P[N &gt; 2]\)</span> needs to be computed to answer question (b). This is the complement event for part (a), <span class="math inline">\(P[N &gt; 2] = 1 - P[N \leq 2] \cong 0.58\)</span></p></li>
+<li><p>An arriving customer has to wait when there are 1 or more customers already at the pharmacy. This is <span class="math inline">\(P[N \geq 1]= 1 - P[N &lt; 1] = 1 - P_0\)</span>.</p>
+<p><span class="math display">\[P[N \geq 1] = 1 - P[N &lt; 1] = 1 - P_0 = 1 - (1 - r) = \rho = \dfrac{5}{6}\]</span></p></li>
+<li><p>The waiting time that does not include service is the queueing time. Thus, <span class="math inline">\(W_q\)</span> needs to be computed to answer question (d).</p>
+<p><span class="math display">\[W_q = 0.41\bar{6} \; \text{hours} = 25.02 \; \text{minutes}\]</span></p></li>
+<li><p>This is a design question for which the probability of waiting in one of the provided spaces is used to determine the number of spaces to provide. Suppose that there are <span class="math inline">\(m\)</span> spaces. An arriving customer can waiting in one of the spaces if there are <span class="math inline">\(m - 1\)</span> or less customers in the system. Thus, <span class="math inline">\(m\)</span> needs to be chosen such that <span class="math inline">\(P\lbrace N \leq m - 1\rbrace = 0.4\)</span>.</p>
+<p><span class="math display">\[P[N \leq m - 1] = \gamma\]</span> <span class="math display">\[1 - r^m = \gamma\]</span> <span class="math display">\[r^m = 1 - \gamma\]</span> <span class="math display">\[m = \dfrac{\ln(1 - \gamma)}{\ln r} = \dfrac{\ln(1 - 0.4)}{\ln(\frac{5}{6})} = 2.8 \cong 3 \; \text{spaces}\]</span></p>
+<p>Rounding up guarantees <span class="math inline">\(P[N \leq m - 1] \geq 0.4)\)</span>.</p></li>
+</ol>
+<p>The following example models self-service copiers.</p>
+<hr>
+<div id="exm-exSSC" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.2</strong></span> The Student Union Copy center is considering the installation of self-service copiers. They predict that the arrivals will be Poisson with a rate of 30 per hour and that the time spent copying is exponentially distributed with a mean of 1.75 minutes. They would like the chance that 4 or more people in the copy center to be less than 5%. How many copiers should they install?</p>
+</div>
+<hr>
+<p><strong>Solution to <a href="#exm-exSSC" class="quarto-xref">Example&nbsp;<span>C.2</span></a></strong></p>
+<p>The Poisson arrivals and exponential service times make this situation an M/M/c where <span class="math inline">\(c\)</span> is the number of copiers to install and <span class="math inline">\(\lambda = 0.5\)</span> and <span class="math inline">\(\mu = 1/1.75\)</span> per minute. To meet the design criteria, <span class="math inline">\(P[N \geq 4] = 1 - P[N \leq 3]\)</span> needs to be computed for systems with <span class="math inline">\(c = 1,2,\ldots\)</span> until <span class="math inline">\(P[N \geq 4]\)</span> is less than 5%. This can be readily achieved with the provided formulas or by utilizing the aforementioned software. In what follows, the <a href="http://mason.gmu.edu/~jshortle/fqt5th.html">QTSPlus</a> software was used.</p>
+<p>The software is very self-explanatory. It is important to remember that when applying the queueing formulas make sure that you keep your time units consistent. Setting up the QTSPlus spreadsheet as shown in <a href="#fig-QTSSpreadsheet" class="quarto-xref">Figure&nbsp;<span>C.6</span></a> with <span class="math inline">\(c=3\)</span> yields the results shown in <a href="#fig-QTSResults" class="quarto-xref">Figure&nbsp;<span>C.7</span></a>. By changing the number of servers, one can find that <span class="math inline">\(c=3\)</span> meets the probability requirement as shown in <a href="#tbl-SSCResults" class="quarto-xref">Table&nbsp;<span>C.2</span></a>.</p>
+<div id="tbl-SSCResults" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-SSCResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.2: Results for <a href="#exm-exSSC" class="quarto-xref">Example&nbsp;<span>C.2</span></a>, <span class="math inline">\(c=1, 2, 3, 4\)</span>
+</figcaption>
+<div aria-describedby="tbl-SSCResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(c\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P[N \geq 4] = 1 - P[N \leq 3]\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.586182</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.050972</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.019034</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.013022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-QTSSpreadsheet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QTSSpreadsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig6QTSSpreadsheet.png" class="quarto-figure quarto-figure-center figure-img" style="width:60.0%;height:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-QTSSpreadsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.6: QTSPlus M/M/c spreadsheet results
+</figcaption>
+</figure>
+</div>
+<div id="fig-QTSResults" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QTSResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig7QTSResults.png" class="quarto-figure quarto-figure-center figure-img" style="width:50.0%;height:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-QTSResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.7: QTSPlus M/M/c state probability results
+</figcaption>
+</figure>
+</div>
+<section id="square-root-staffing-rule" class="level4" data-number="C.2.1.1">
+<h4 data-number="C.2.1.1" class="anchored" data-anchor-id="square-root-staffing-rule"><span class="header-section-number">C.2.1.1</span> Square Root Staffing Rule</h4>
+<p>Often in the case of systems with multiple servers such as the M/M/c, you want to determine the best value of <span class="math inline">\(c\)</span>, as in <a href="#exm-exSSC" class="quarto-xref">Example&nbsp;<span>C.2</span></a>. Another common design situation is to determine the value <span class="math inline">\(c\)</span> of such that there is an acceptable probability that an arriving customer will have to wait. For the case of Poisson arrivals, this is the same as the steady state probability that there are more than <em>c</em> customers in the system. For the M/M/c model, this is called the Erlang delay probability:</p>
+<p><span class="math display">\[P_w = P[N \geq c] = \sum_{n=c}^{\infty} P_n = \dfrac{\dfrac{r^c}{c!}}{\dfrac{r^c}{c!} + (1 - \rho)\sum_{j=0}^{c-1} \dfrac{r^j}{j!}}\]</span></p>
+<p>Even though this is a relatively easy formula to use (especially in view of available spreadsheet software), an interesting and useful approximation has been developed called the square root staffing rule. The derivation of the square root staffing rule is given in <span class="citation" data-cites="tijms2003first">(<a href="references.html#ref-tijms2003first" role="doc-biblioref">Tijms, 2003</a>)</span>. In what follows, the usefulness of the rule is discussed.</p>
+<p>The <em>square root staffing rule</em> states that the least number of servers, <span class="math inline">\(c^{*}\)</span>, required to meet the criteria, <span class="math inline">\(P_w \leq \alpha\)</span> is given by: <span class="math inline">\(c^{*} \cong r+ \gamma_\alpha\sqrt{r}\)</span>, where the factor <span class="math inline">\(\gamma_\alpha\)</span> is the solution to the equation:</p>
+<p><span class="math display">\[\dfrac{\gamma\Phi(\gamma)}{\varphi(\gamma)} = \dfrac{1 - \alpha}{\alpha}\]</span></p>
+<p>The functions, <span class="math inline">\(\Phi(\cdot)\)</span> and <span class="math inline">\(\varphi(\cdot)\)</span> are the cumulative distribution function (CDF) and the probability density function (PDF) of a standard normal random variable. Therefore, given a design criteria, <span class="math inline">\(\alpha\)</span>, in the form a probability tolerance, you can find the number of servers that will result in the probability of waiting being less than <span class="math inline">\(\alpha\)</span>. This has very useful application in the area of call service centers and help support lines.</p>
+<hr>
+<div id="exm-exSQSR" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.3</strong></span> The Student Union Copy center is considering the installation of self-service copiers. They predict that the arrivals will be Poisson with a rate of 30 per hour and that the time spent copying is exponentially distributed with a mean of 1.75 minutes. Find the least number of servers such that the probability that an arriving customer waits is less than or equal to 0.10.</p>
+</div>
+<hr>
+<p><strong>Solution to <a href="#exm-exSQSR" class="quarto-xref">Example&nbsp;<span>C.3</span></a></strong></p>
+<p>For <span class="math inline">\(\lambda = 0.5\)</span> and <span class="math inline">\(\mu = 1/1.75\)</span> per minute, you have that <span class="math inline">\(r = 0.875\)</span>. <a href="#fig-SqrtStaffingRule" class="quarto-xref">Figure&nbsp;<span>C.8</span></a> illustrates the use of the <em>SquareRootStaffingRule.xls</em> spreadsheet that accompanies this chapter. The spreadsheet has text that explains the required inputs. Enter the offered load <span class="math inline">\(r\)</span> in cell B3 and the delay criteria of 0.1 in cell B4. An initial search value is required in cell B5. The value of 1.0 will always work. The spreadsheet uses the goal seek functionality to solve for <span class="math inline">\(\gamma_\alpha\)</span>.</p>
+<p>For this problem, this results in about 3 servers being needed to ensure that the probability of wait will be less than 10%. The square root staffing rule has been shown to be quite a robust approximation and can be useful in many design settings involving staffing.</p>
+<div id="fig-SqrtStaffingRule" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SqrtStaffingRule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig8SqrtStaffingRule.png" class="quarto-figure quarto-figure-center figure-img" style="width:75.0%;height:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SqrtStaffingRule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.8: Spreadsheet for square root staffing rule
+</figcaption>
+</figure>
+</div>
+<p>The previous examples have had infinite system capacity. The next section presents examples of finite capacity queueing systems.</p>
+</section>
+</section>
+<section id="finite-queue-examples" class="level3" data-number="C.2.2">
+<h3 data-number="C.2.2" class="anchored" data-anchor-id="finite-queue-examples"><span class="header-section-number">C.2.2</span> Finite Queue Examples</h3>
+<p>In this section, we will explore three queueing systems that are finite in some manner, either in space or in population. The examples illustrate some of the common questions related to these types of systems.</p>
+<hr>
+<div id="exm-exFBQ" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.4</strong></span> A single machine is connected to a conveyor system. The conveyor causes parts to arrive to the machine at a rate of 1 part per minute according to a Poisson distribution. There is a finite buffer of size 5 in front of the machine. The machine’s processing time is considered to be exponentially distributed with a mean rate of 1.2 parts per minute. Any parts that arrive on the conveyor when the buffer is full are carried to other machines that are not part of this analysis. What are the expected system time and the expected number of parts at the machining center?</p>
+</div>
+<hr>
+<p><strong>Solution to <a href="#exm-exFBQ" class="quarto-xref">Example&nbsp;<span>C.4</span></a></strong></p>
+<p>The finite buffer, Poisson arrivals, and exponential service times make this situation an M/M/1/6 where <span class="math inline">\(k = 6\)</span> is the size of the system (5 in buffer + 1 in service) and <span class="math inline">\(\lambda =1\)</span> and <span class="math inline">\(\mu = 1.2\)</span> per minute. The desired performance measures are <span class="math inline">\(W\)</span> and <span class="math inline">\(L\)</span>. <a href="#fig-MM1KResults" class="quarto-xref">Figure&nbsp;<span>C.9</span></a> presents the results using <em>QTSPlus</em>. Notice that in this case, the effective arrival rate must be computed:</p>
+<p><span class="math display">\[\lambda_e = \sum_{n=0}^{k-1} \lambda_n P_n = \sum_{n=0}^{k-1} \lambda P_n = \lambda\sum_{n=0}^{k-1} P_n = \lambda(1 - P_k)\]</span></p>
+<p>Rearranging this formula, yields, <span class="math inline">\(\lambda = \lambda_e + \lambda_{f}\)</span> where <span class="math inline">\(\lambda_{f} = \lambda P_k\)</span> equals the mean number of customers that are turned away from the system because it is full. According to <a href="#fig-MM1KResults" class="quarto-xref">Figure&nbsp;<span>C.9</span></a>, the expected number of turned away because the system is full is about 0.077 per minute (or about 4.62 per hour).</p>
+<div id="fig-MM1KResults" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MM1KResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig9MM1KResults.png" class="quarto-figure quarto-figure-center figure-img" style="width:70.0%;height:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MM1KResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.9: Results for finite buffer M/M/1/6 queue
+</figcaption>
+</figure>
+</div>
+<p>Let’s take a look at modeling a situation that we experience everyday, parking lots.</p>
+<hr>
+<div id="exm-exPL" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.5</strong></span> The university has a row of 10 parking meter based spaces across from the engineering school. During the peak hours students arrive to the parking lot at a rate of 40 per hour according to a Poisson distribution and the students use the parking space for approximately 60 minutes exponentially distributed. If all the parking spaces are taken, it can be assumed that an arriving student does not wait (goes somewhere else to park). Suppose that the meters cost <span class="math inline">\(w\)</span> = $0.03 per minute, i.e.&nbsp;$2 per hour. How much income does the university potentially lose during peak hours on average because the parking spaces are full?</p>
+</div>
+<hr>
+<p><strong>Solution to <a href="#exm-exPL" class="quarto-xref">Example&nbsp;<span>C.5</span></a></strong></p>
+<p>In this system, the parking spaces are the servers of the system. There are 10 parking spaces so that <span class="math inline">\(c = 10\)</span>. In addition, there is no waiting for one of the meters and thus no queue forms. Therefore, the system size, <span class="math inline">\(k\)</span>, is also 10. Because of the Poisson arrival process and exponential service times, this can be considered an M/M/10/10 queueing system. In other words, the size of the system is same as the number of servers, <span class="math inline">\(c = k = 10\)</span>.</p>
+<p>In the case of a M/M/c/c queueing system, <span class="math inline">\(P_c\)</span> represents the probability that all the servers in the system are busy. Thus, it also represents the probability that an arriving customer will be turned away. The formula for the probability of a lost customer is called the Erlang loss formula:</p>
+<p><span class="math display">\[P_c = \frac{\frac{r^c}{c!}}{\sum_{n=0}^c \frac{r^n}{n!}}\]</span></p>
+<p>Customers arrive at the rate <span class="math inline">\(\lambda = 20/hr\)</span> whether the system is full or not. Thus, the expected number of lost customers per hour is <span class="math inline">\(\lambda P_c\)</span>. Since each customer brings <span class="math inline">\(1/\mu\)</span> service time charged at <span class="math inline">\(w\)</span> = $2 per hour, each arriving customer brings <span class="math inline">\(w/\mu\)</span> of income on average; however, not all arriving customers can park. Thus, the university loses <span class="math inline">\(w  \times  1/\mu   \times  \lambda P_c\)</span> of income per hour. <a href="#fig-MMccResults" class="quarto-xref">Figure&nbsp;<span>C.10</span></a> illustrates the use of the <em>QTSPlus</em> software. In the figure the arrival rate of 40 per hour and the mean service time of 1 hours is entered. The number of parking spaces, 10, is the size of the system.</p>
+<div id="fig-MMccResults" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MMccResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig10MMccResults.png" class="quarto-figure quarto-figure-center figure-img" style="width:70.0%;height:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MMccResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.10: Parking lot results for M/M/10/10 system
+</figcaption>
+</figure>
+</div>
+<p>Thus according to <a href="#fig-MMccResults" class="quarto-xref">Figure&nbsp;<span>C.10</span></a>, the university is losing about $2 <span class="math inline">\(\times\)</span> 30.3 = $60.6 per hour because the metered lot is full during peak hours.</p>
+<p>For this example, the service times are exponentially distributed. It turns out that for the case of <span class="math inline">\(c = k\)</span>, the results for the M/M/c/c model are the same for the M/G/c/c model. In other words, the form of the service time distribution does not matter. The mean of the service distribution is the critical input parameter to this analysis.</p>
+<p>In the next example, a <em>finite population</em> of customers that can arrive, depart, and then return is considered. A classic and important example of this type of system is the machine interference or operator tending problem. A detailed discussion of the analysis and application of this model can be found in <span class="citation" data-cites="stecke1992machine">(<a href="references.html#ref-stecke1992machine" role="doc-biblioref">Stecke, 1992</a>)</span>.</p>
+<p>In this situation, a set of machines are tended by 1 or more operators. The operators must tend to stoppages (breakdowns) of the machines. As the machines breakdown, they may have to wait for the operator to complete the service of other machines. Thus, the machine stoppages cause the machines to <em>interfere</em> with the productivity of the set of machines because of their dependence on a common resource, the operator.</p>
+<p>The situation that we will examine and for which analytical formulas can be derived is called the M/M/c/k/k queueing model where <span class="math inline">\(c\)</span> is the number of servers (operators) and <span class="math inline">\(k\)</span> is the number of machines (size of the population). Notice that the size of the system is the same as the size of the calling population in this particular model. For this system, the arrival rate of an <em>individual machine</em>, <span class="math inline">\(\lambda\)</span>, is specified. This is not the arrival rate of the population as has been previously utilized. The service rate of <span class="math inline">\(\mu\)</span> for each operator is also necessary. The arrival and service rates for this system are:</p>
+<p><span class="math display">\[\lambda_n =
+   \begin{cases}
+     (k - n) \lambda &amp; n=0,1,2, \ldots k\\
+     0 &amp; n \geq k
+  \end{cases}\]</span></p>
+<p><span class="math display">\[\mu_n =
+    \begin{cases}
+     n \mu &amp; n = 1,2,\ldots c\\
+     c \mu &amp; n \geq c
+     \end{cases}\]</span></p>
+<p>These rates are illustrated in the state diagram of <a href="#fig-MachineInterference" class="quarto-xref">Figure&nbsp;<span>C.11</span></a> for the case of 2 operators and 5 machines. Thus, for this system, the arrival rate to the system decreases as more machines breakdown. Notice that in the figure the arrival rate from state 0 to state 1 is <span class="math inline">\(5\lambda\)</span>. This is because there are 5 machines that are not broken down, each with individual rate, <span class="math inline">\(\lambda\)</span>. Thus, the total rate of arrivals to the system is <span class="math inline">\(5\lambda\)</span>. This rate goes down as more machines breakdown. When all the machines are broken down, the arrival rate to the system will be zero.</p>
+<div id="fig-MachineInterference" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MachineInterference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig11MachineInterference.png" class="quarto-figure quarto-figure-center figure-img" style="width:70.0%;height:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MachineInterference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.11: System involving machine interference
+</figcaption>
+</figure>
+</div>
+<p>Notice also that the service rate from state 1 to state 0 is <span class="math inline">\(\mu\)</span>. When one machine is in the system, the operator works at rate <span class="math inline">\(\mu\)</span>. Note also that the rate from state 2 to state 1 is <span class="math inline">\(2\mu\)</span>. This is because when there are 2 broken down machines the 2 operators are working each at rate <span class="math inline">\(\mu\)</span>. Thus, the rate of leaving from state 2 to 1 is <span class="math inline">\(2\mu\)</span>. Because there are only 2 operators in this illustration, the maximum rate is <span class="math inline">\(2\mu\)</span> for state 2-5.</p>
+<p>Notice that the customer in this system is the machine. Even though the machines do not actually move to line up in a queue, they form a virtual queue for the operators to receive their repair. Let’s consider an example of this system.</p>
+<hr>
+<div id="exm-exMIM" class="theorem example">
+<p><span class="theorem-title"><strong>Example C.6</strong></span> Suppose a manufacturing system contains 5 machines, each subject to randomly occurring breakdowns. A machine runs for an amount of time that is an exponential random variable with a mean of 10 hours before breaking down. At present there are 2 operators to fix the broken machines. The amount of time that an operator takes to service the machines is exponential with a mean of 4 hours. An operator repairs only 1 machine at a time. If more machines are broken down than the current number of operators, the machines must wait for the next available operator for repair. They form a FIFO queue to wait for the next available operator. The number of operators required to tend to the machines in order to minimize down time in a cost effective manner is desired. Assume that it costs the system $60 per hour for each machine that is broken down. Each operator is paid $15 per hour regardless of whether they are repairing a machine or not.</p>
+</div>
+<hr>
+<p><strong>Solution to <a href="#exm-exMIM" class="quarto-xref">Example&nbsp;<span>C.6</span></a></strong></p>
+<p>The arrival rate of an <em>individual machine</em> is <span class="math inline">\(\lambda = 1/10\)</span> per hour and the service rate of <span class="math inline">\(\mu = 1/4\)</span> per hour for each operator. In order to decide the most appropriate number of operators to tend the machines, a service criteria or a way to measure the cost of the system is required. Since costs are given, let’s formulate how much a given system configuration costs.</p>
+<p>The easiest way to formulate a cost is to consider what a given system configuration costs on a per time basis, e.g.&nbsp;the cost per hour. Clearly, the system costs <span class="math inline">\(15 \times c\)</span> ($/hour) to employ <span class="math inline">\(c\)</span> operators. The problem also states that it costs $60/hour for each machine that is broken down. A machine is broken down if it is waiting for an operator or if it is being repaired by an operator. Therefore a machine is broken down if it is in the queueing system.</p>
+<p>In terms of queueing performance measures, <span class="math inline">\(L\)</span> machines can be expected to be broken down at any time in steady state. Thus, the expected steady state cost of the broken down machines is <span class="math inline">\(60 \times L\)</span> per hour. The total expected cost per hour, <span class="math inline">\(E[\mathit{TC}]\)</span>, of operating a system configuration in steady state is thus:</p>
+<p><span class="math display">\[E[\mathit{TC}] = 60 \times L + 15 \times c\]</span></p>
+<p>Thus, the total expected cost, <span class="math inline">\(E[\mathit{TC}]\)</span>, can be evaluated for various values of <span class="math inline">\(c\)</span> and the system that has the lowest cost determined.</p>
+<p>Using the <em>QTSPlus</em> software, the necessary performance measures can be calculated and tabulated. Within the <em>QTSPlus</em> software you must choose the model category <em>Multiple Servers</em> and then choose the <em>Markov Multi-Server Finite Source Queue without Spares</em> model. <a href="#fig-MIMResults" class="quarto-xref">Figure&nbsp;<span>C.12</span></a> illustrates the inputs for the case of 1 server with 5 machines. Note that the software requests the time between arrivals, <span class="math inline">\(1/lambda\)</span> and the mean service time, <span class="math inline">\(1/\mu\)</span>, rather than <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span>.</p>
+<div id="fig-MIMResults" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MIMResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures2/AppQueueing/fig12MIMResults.png" class="quarto-figure quarto-figure-center figure-img" style="width:80.0%;height:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MIMResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.12: Modeling the machine interference problem in QTSPlus
+</figcaption>
+</figure>
+</div>
+<div id="tbl-MIMResults" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-MIMResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.3: Tabulated Results for <a href="#exm-exMIM" class="quarto-xref">Example&nbsp;<span>C.6</span></a>
+</figcaption>
+<div aria-describedby="tbl-MIMResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\lambda\)</span></td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(c\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(K\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System</td>
+<td style="text-align: center;">M/M/1/5/5</td>
+<td style="text-align: center;">M/M/2/5/5</td>
+<td style="text-align: center;">M/M/3/5/5</td>
+<td style="text-align: center;">M/M/4/5/5</td>
+<td style="text-align: center;">M/M/5/5/5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(L\)</span></td>
+<td style="text-align: center;">2.674</td>
+<td style="text-align: center;">1.661</td>
+<td style="text-align: center;">1.457</td>
+<td style="text-align: center;">1.430</td>
+<td style="text-align: center;">1.429</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(L_q\)</span></td>
+<td style="text-align: center;">1.744</td>
+<td style="text-align: center;">0.325</td>
+<td style="text-align: center;">0.040</td>
+<td style="text-align: center;">0.002</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(B\)</span></td>
+<td style="text-align: center;">0.930</td>
+<td style="text-align: center;">1.336</td>
+<td style="text-align: center;">1.417</td>
+<td style="text-align: center;">1.428</td>
+<td style="text-align: center;">1.429</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(B/c\)</span></td>
+<td style="text-align: center;">0.930</td>
+<td style="text-align: center;">0.668</td>
+<td style="text-align: center;">0.472</td>
+<td style="text-align: center;">0.357</td>
+<td style="text-align: center;">0.286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(E[\mathit{TC}]\)</span></td>
+<td style="text-align: center;">$175.460</td>
+<td style="text-align: center;">$129.655</td>
+<td style="text-align: center;">$132.419</td>
+<td style="text-align: center;">$145.816</td>
+<td style="text-align: center;">$160.714</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\overline{\mathit{MU}}\)</span></td>
+<td style="text-align: center;">0.465</td>
+<td style="text-align: center;">0.668</td>
+<td style="text-align: center;">0.709</td>
+<td style="text-align: center;">0.714</td>
+<td style="text-align: center;">0.714</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-MIMResults" class="quarto-xref">Table&nbsp;<span>C.3</span></a> shows the results of the analysis. The results indicate that as the number of operators increase, the expected cost reaches its minimum at <span class="math inline">\(c = 2\)</span>. As the number of operators is increased, the machine utilization increases but levels off. The machine utilization is the expected number of machines that are not broken down divided by the number of machines:</p>
+<p><span class="math display">\[\text{Machine Utilization} = \overline{\mathit{MU}} = \dfrac{k - L}{k} = 1 - \dfrac{L}{k}\]</span></p>
+</section>
+</section>
+<section id="sec-qts1sb3" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="sec-qts1sb3"><span class="header-section-number">C.3</span> Non-Markovian Queues and Approximations</h2>
+<p>So far, the queueing models that have been analyzed all assume a Poisson arrival process and exponential service times. For other arrival and service processes only limited or approximate results are readily available. There are two cases worth mentioning here. The first case is the M/G/1 queue and the second case is an approximation for the GI/G/c queueing system. Recall that G represents any general distribution. In other words the results will hold regardless of the distribution. Also, GI refers to an arrival process which has the time between arrivals as independent and identically distributed random variables with any distribution. <a href="#tbl-NMQResults" class="quarto-xref">Table&nbsp;<span>C.4</span></a> presents the basic results for the M/G/1 and M/D/1 queueing systems.</p>
+<div id="tbl-NMQResults" class="quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-NMQResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.4: Results M/G/1 and M/D/1
+</figcaption>
+<div aria-describedby="tbl-NMQResults-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: center;">Parameters</th>
+<th style="text-align: center;"><span class="math inline">\(L_q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M/G/1</td>
+<td style="text-align: center;"><span class="math inline">\(E[ST] = \dfrac{1}{\mu}\)</span>; <span class="math inline">\(Var[ST] = \sigma^2\)</span>; <span class="math inline">\(r = \lambda/\mu\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L_q = \dfrac{\lambda^2 \sigma^2 + r^2}{2(1 - r)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M/D/1</td>
+<td style="text-align: center;"><span class="math inline">\(E[ST] = \dfrac{1}{\mu}\)</span>; <span class="math inline">\(Var[ST] = 0\)</span>; <span class="math inline">\(r = \lambda/\mu\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L_q = \dfrac{r^2}{2(1 - r)}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>For the M/G/1 model with a service distribution having a mean <span class="math inline">\(E[ST] = 1/\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, the expected number in the system is:</p>
+<p><span class="math display">\[L_q = \dfrac{\lambda^2 \sigma^2 + r^2}{2(1 - r)} + r\]</span></p>
+<p>From this formula for the expected number in the system, the other performance measures can be obtained via Little’s formula. Notice that only the mean and the variance of the service time distribution are necessary in this case.</p>
+<p>For the case of the GI/G/c queue a number of approximations have been influenced by an approximation for the GI/G/1 queue that first appeared in <span class="citation" data-cites="kingman1964the">(<a href="references.html#ref-kingman1964the" role="doc-biblioref">Kingman, 1964</a>)</span>. His single-server approximation is shown below:</p>
+<p><span class="math display">\[W_q(GI/G/1) \approx \Biggl(\dfrac{c_a^2 + c_s^2}{2}\Biggr) W_q(M/M/1)\]</span></p>
+<p>In this equation, <span class="math inline">\(W_q\)</span>(M/M/1) denotes the expected waiting time in the queue for the M/M/1 model <span class="math inline">\(c_a^2\)</span> and <span class="math inline">\(c_s^2\)</span> and represent the squared coefficient of variation for the inter-arrival time and service time distributions. Recall that for a random variable, <span class="math inline">\(X\)</span>, the squared coefficient of variation is given by <span class="math inline">\(c_X^2 = Var[X]/(E[X])^2\)</span>. <span class="citation" data-cites="whitt1983the">(<a href="references.html#ref-whitt1983the" role="doc-biblioref">Whitt, 1983</a>)</span> used a very similar approximation for the GI/G/c queue to compute the traffic congestion at each node in a queueing network for his Queueing Network Analyzer:</p>
+<p><span class="math display">\[W_q(GI/G/c) \approx \Biggl(\dfrac{c_a^2 + c_s^2}{2}\Biggr) W_q(M/M/c)\]</span></p>
+<p>A discussion of queuing approximations of this form as well as additional references can be found in <span class="citation" data-cites="whitt1993approximations">(<a href="references.html#ref-whitt1993approximations" role="doc-biblioref">Whitt, 1993</a>)</span>.</p>
+<p>Thus, to approximate the performance of a GI/G/c queue, you need only the first two moments of the inter-arrival and service time distributions and a way to compute the waiting time in the queue for a M/M/c queueing system. These results are useful when trying to verify and validate a simulation model of a queueing system, especially in the case of a system that consists of more than one queueing system organized into a network. Before examining that more complicated case, some of the issues related to using to simulate single queue systems should be examined.</p>
+<p>The following section summarizes the formulas for the previously mentioned queueing systems. The appendis is finished off with some example exercises that can be used to test your understanding of the application of these formulas.</p>
+</section>
+<section id="sec-qt-sec-formulas" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="sec-qt-sec-formulas"><span class="header-section-number">C.4</span> Summary of Queueing Formulas</h2>
+<p>This section provides the formulas for basic single queue stations and is meant simply as a resource where the formulas are readily available for potential applicaiton. The following notation is used within this section.</p>
+<p>Let <span class="math inline">\(N\)</span> represent the steady state number of customers in the system, where <span class="math inline">\(N \in \{0,1,2,...,k\}\)</span> where <span class="math inline">\(k\)</span> is the maximum number of customers in the system and may be infinite (<span class="math inline">\(\infty\)</span>).</p>
+<p>Let <span class="math inline">\(\lambda_{n}\)</span> be the arrival rate when there are <span class="math inline">\(N=n\)</span> customers in the system.</p>
+<p>Let <span class="math inline">\(\mu_{n}\)</span> be the service rate when there are <span class="math inline">\(N=n\)</span> customers in the system.</p>
+<p>Let <span class="math inline">\(P_n = P[N=n]\)</span> be the probability that there are <span class="math inline">\(n\)</span> customers in the system in steady state.</p>
+<p>When <span class="math inline">\(\lambda_{n}\)</span> is constant for all <span class="math inline">\(n\)</span>, we write <span class="math inline">\(\lambda_{n} = \lambda\)</span>.</p>
+<p>When <span class="math inline">\(\mu_{n}\)</span> is constant for all <span class="math inline">\(n\)</span>, we write <span class="math inline">\(\mu_{n} = \mu\)</span>.</p>
+<p>Let <span class="math inline">\(\lambda_e\)</span> be the effective arrival rate for the system, where</p>
+<p><span class="math display">\[\lambda_e = \sum_{n=0}^{\infty} \lambda_n P_n\]</span> Since <span class="math inline">\(\lambda_n = 0\)</span> for <span class="math inline">\(n \geq k\)</span> for a finite system size, <span class="math inline">\(k\)</span>, we have:</p>
+<p><span class="math display">\[\lambda_e = \sum_{n=0}^{k-1} \lambda_n P_n\]</span></p>
+<p>Let <span class="math inline">\(\rho = \frac{\lambda}{c\mu}\)</span> be the utilization.</p>
+<p>Let <span class="math inline">\(r = \frac{\lambda}{\mu}\)</span> be the offered load.</p>
+<section id="mm1-queue" class="level3" data-number="C.4.1">
+<h3 data-number="C.4.1" class="anchored" data-anchor-id="mm1-queue"><span class="header-section-number">C.4.1</span> M/M/1 Queue</h3>
+<p><span class="math display">\[\begin{aligned}
+\lambda_n &amp; =\lambda \\
+\mu_n &amp; = \mu \\
+r &amp; = \lambda/\mu
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[P_0 = 1 - r\]</span> <span class="math display">\[P_n = P_0 r^n\]</span> <span class="math display">\[L_q = \dfrac{r^2}{1 - r}\]</span></p>
+<div id="app:tbl:NMQ">
+<table class="caption-top table">
+<caption>Results M/G/1 and M/D/1</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: center;">Parameters</th>
+<th style="text-align: center;"><span class="math inline">\(L_q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M/G/1</td>
+<td style="text-align: center;"><span class="math inline">\(E[ST] = \dfrac{1}{\mu}\)</span>; <span class="math inline">\(Var[ST] = \sigma^2\)</span>; <span class="math inline">\(r = \lambda/\mu\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L_q = \dfrac{\lambda^2 \sigma^2 + r^2}{2(1 - r)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M/D/1</td>
+<td style="text-align: center;"><span class="math inline">\(E[ST] = \dfrac{1}{\mu}\)</span>; <span class="math inline">\(Var[ST] = 0\)</span>; <span class="math inline">\(r = \lambda/\mu\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L_q = \dfrac{r^2}{2(1 - r)}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mmc-queue" class="level3" data-number="C.4.2">
+<h3 data-number="C.4.2" class="anchored" data-anchor-id="mmc-queue"><span class="header-section-number">C.4.2</span> M/M/c Queue</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_n &amp; =\lambda \\
+\mu_n &amp; = \begin{cases}
+     n \mu &amp; 0 \leq n &lt; c \\
+    c \mu &amp; n \geq c
+  \end{cases} \\
+\rho &amp; = \lambda/c\mu \quad  r = \lambda/\mu
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[P_0 = \biggl[\sum\limits_{n=0}^{c-1} \dfrac{r^n}{n!} + \dfrac{r^c}{c!(1 - \rho)}\biggr]^{-1}
+\]</span> <span class="math display">\[
+L_q = \biggl(\dfrac{r^c \rho}{c!(1 - \rho)^2}\biggl)P_0
+\]</span></p>
+<p><span class="math display">\[
+P_n = \begin{cases}
+    \dfrac{(r^n)^2}{n!} P_0 &amp; 1 \leq n &lt; c \\[1.5ex]
+    \dfrac{r^n}{c!c^{n-c}} P_0 &amp; n \geq c
+\end{cases}
+\]</span></p>
+<div id="app:tbl:mmcResults">
+<table class="caption-top table">
+<caption>Results M/M/c <span class="math inline">\(\rho = \lambda/c \mu\)</span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(c\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(L_q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(1 - \rho\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{\rho^2}{1 - \rho}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{1 - \rho}{1 + \rho}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{2 \rho^3}{1 - \rho^2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{2(1 - \rho)}{2 + 4 \rho + 3 \rho^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{9 \rho^4}{2 + 2 \rho - \rho^2 - 3 \rho^3}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mmck-queue" class="level3" data-number="C.4.3">
+<h3 data-number="C.4.3" class="anchored" data-anchor-id="mmck-queue"><span class="header-section-number">C.4.3</span> M/M/c/k Queue</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     \lambda &amp; n &lt; k \\
+     0 &amp; n \geq k
+  \end{cases} \\
+  \mu_n &amp; = \begin{cases}
+     n \mu &amp; 0 \leq n &lt; c \\
+     c \mu &amp; c \leq n \leq k
+  \end{cases} \\
+  \rho &amp; = \lambda/c\mu \quad r = \lambda/\mu \\
+\lambda_e &amp; = \lambda (1 - P_k)
+\end{aligned}
+\]</span> <span class="math display">\[
+P_0 = \begin{cases}
+     \biggl[\sum\limits_{n=0}^{c-1} \dfrac{r^n}{n!} + \dfrac{r^c}{c!} \dfrac{1-\rho^{k-c+1}}{1 - \rho}\biggr]^{-1} &amp; \rho \neq 1\\[1.5ex]
+    \biggl[\sum\limits_{n=0}^{c-1} \dfrac{r^n}{n!} + \dfrac{r^c}{c!} (k-c+1)\biggl]^{-1} &amp; \rho = 1
+  \end{cases}
+\]</span> <span class="math display">\[
+P_n = \begin{cases}
+     \dfrac{r^n}{n!} P_0 &amp; 1 \leq n &lt; c \\[1.5ex]
+     \dfrac{r^n}{c!c^{n-c}} P_0 &amp; c \leq n \leq k
+  \end{cases}
+\]</span></p>
+</section>
+<section id="mgcc-queue" class="level3" data-number="C.4.4">
+<h3 data-number="C.4.4" class="anchored" data-anchor-id="mgcc-queue"><span class="header-section-number">C.4.4</span> M/G/c/c Queue</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     \lambda &amp; n &lt; c \\
+     0 &amp; n \geq c
+  \end{cases} \\
+\mu_n &amp; = \begin{cases}
+     n \mu &amp; 0 \leq n \leq c \\
+     0 &amp; n &gt; c
+  \end{cases}  \\
+  \rho &amp; = \lambda/c\mu \quad r = \lambda/\mu \\
+\lambda_e &amp; = \lambda (1 - P_k)   
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[P_0 = \biggr[\sum\limits_{n=0}^c \dfrac{r^n}{n!}\biggl]^{-1}\]</span> <span class="math display">\[
+\begin{array}{c}
+P_n = \dfrac{r^n}{n!} P_0  \\
+0 \leq n \leq c
+\end{array}
+\]</span> <span class="math display">\[L_q = 0\]</span></p>
+</section>
+<section id="mm1k-queue" class="level3" data-number="C.4.5">
+<h3 data-number="C.4.5" class="anchored" data-anchor-id="mm1k-queue"><span class="header-section-number">C.4.5</span> M/M/1/k Queue</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n &lt; k \\
+     0 &amp; n \geq k
+  \end{cases} \\
+\mu_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n \leq k \\
+     0 &amp; n &gt; k
+  \end{cases}  \\
+   r &amp; = \lambda/\mu \quad \lambda_e = \lambda(k - L)
+\end{aligned}
+\]</span> <span class="math display">\[
+P_0 = \biggl[\sum\limits_{n=0}^k \prod\limits_{j=0}^{n-1} \biggl(\dfrac{\lambda_j}{\mu_{j+1}}\biggr)\biggr]^{-1}
+\]</span> <span class="math display">\[
+P_n = \binom{k}{n} n! r^n P_0
+\]</span></p>
+<p><span class="math display">\[
+L_q = \begin{cases}
+     \dfrac{\rho}{1 - \rho} - \dfrac{\rho (k \rho^k + 1)}{1 - \rho^{k+1}} &amp; \rho \neq 1 \\
+    \dfrac{k(k - 1)}{2(k + 1)} &amp; \rho = 1
+  \end{cases}
+  \]</span></p>
+</section>
+<section id="mmck-queue-1" class="level3" data-number="C.4.6">
+<h3 data-number="C.4.6" class="anchored" data-anchor-id="mmck-queue-1"><span class="header-section-number">C.4.6</span> M/M/c/k Queue</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n &lt; k \\
+     0 &amp; n \geq k \\
+  \end{cases} \\
+\mu_n &amp; = \begin{cases}
+     n \mu &amp; 0 \leq n &lt; c \\
+     c \mu &amp;  n \geq c \\
+  \end{cases} \\
+   r &amp; = \lambda/\mu \quad \lambda_e = \lambda(k - L)
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[P_0 = \biggl[\sum\limits_{n=0}^k \prod\limits_{j=0}^{n-1} (\dfrac{\lambda_j}{\mu_{j+1}})\biggr]^{-1}\]</span> <span class="math display">\[
+P_n = \begin{cases}
+     \binom{k}{n} r^n P_0 &amp; 1 \leq n &lt; c \\[2ex]
+     \binom{k}{n} \dfrac{n!}{c^{n-c} c!} r^n P_0 &amp; c \leq n \leq k
+  \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+L_q = \begin{cases}
+     \dfrac{P_0 r^c \rho}{c!(1 - \rho)^2}[1 - \rho^{k-c} - (k-c) \rho^{k-c} (1 - \rho)] &amp; \rho &lt; 1 \\[2ex]
+     \dfrac{r^c (k - c)(k - c + 1)}{2c!} P_0 &amp; \rho = 1
+  \end{cases}
+\]</span></p>
+</section>
+<section id="mm1kk-queue" class="level3" data-number="C.4.7">
+<h3 data-number="C.4.7" class="anchored" data-anchor-id="mm1kk-queue"><span class="header-section-number">C.4.7</span> M/M/1/k/k Queue</h3>
+<p><span class="math display">\[\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n &lt; k \\
+     0 &amp; n \geq k \\
+  \end{cases} \\
+\mu_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n \leq k \\
+     0 &amp; n &gt; k \\
+  \end{cases}  \\
+   r &amp; = \lambda/\mu \quad \lambda_e = \lambda(k - L)
+\end{aligned}
+\]</span> <span class="math display">\[P_0 = \biggl[\sum\limits_{n=0}^k \prod\limits_{j=0}^{n-1} \biggl(\dfrac{\lambda_j}{\mu_{j+1}}\biggr)\biggr]^{-1}\]</span> <span class="math display">\[\begin{array}{c}
+P_n = \binom{k}{n} n! r^n P_0 \\[1.5ex]
+0 \leq n \leq k
+\end{array}\]</span></p>
+<p><span class="math display">\[
+L_q = k - \biggl(\dfrac{\lambda + \mu}{\lambda}\biggr)(1 - P_0)
+\]</span></p>
+</section>
+<section id="mmckk-queue" class="level3" data-number="C.4.8">
+<h3 data-number="C.4.8" class="anchored" data-anchor-id="mmckk-queue"><span class="header-section-number">C.4.8</span> M/M/c/k/k Queue</h3>
+<p><span class="math display">\[\begin{aligned}
+\lambda_n &amp; = \begin{cases}
+     (k - n)\lambda &amp; 0 \leq n &lt; k \\
+     0 &amp; n \geq k \\
+  \end{cases} \\
+\mu_n &amp; = \begin{cases}
+     n \mu &amp; 0 \leq n &lt; c \\
+     c \mu &amp;  n \geq c \\
+  \end{cases} \\
+   r &amp; = \lambda/\mu \quad \lambda_e = \lambda(k - L)
+\end{aligned}
+\]</span> <span class="math display">\[
+P_0 = \biggl[\sum\limits_{n=0}^k \prod\limits_{j=0}^{n-1} (\dfrac{\lambda_j}{\mu_{j+1}})\biggr]^{-1}
+\]</span></p>
+<p><span class="math display">\[P_n = \begin{cases}
+     \binom{k}{n} r^n P_0 &amp; 1 \leq n &lt; c \\[2ex]
+     \binom{k}{n} \dfrac{n!}{c^{n-c} c!} r^n P_0 &amp; c \leq n \leq k
+  \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+  L_q = \sum\limits_{n=c}^k (n - c) P_n
+\]</span></p>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">C.5</span> Exercises</h2>
+<p>For the exercises in this section, first start with specifying the appropriate queueing models needed to solve the exercise using Kendall’s notation. Then, specify the parameters of the model, e.g.&nbsp;<span class="math inline">\(\lambda_{e}\)</span>, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(c\)</span>, size of the population, size of the system, etc. Specify how and what you would compute to solve the problem. Be as specific as possible by specifying the equations needed. Then, compute the quantities if requested. You might also try to use to solve the problems via simulation.</p>
+<hr>
+<div id="exr-chQTP1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.1</strong></span> <em>True</em> or <em>False</em>: In a queueing system with random arrivals and random service times, the performance will be best if the arrival rate is equal to the service rate because then there will not be any queueing.</p>
+</div>
+<hr>
+<div id="exr-chQTP2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.2</strong></span> The Burger Joint in the UA food court uses an average of 10,000 pounds of potatoes per week. The average number of pounds of potatoes on hand is 5,000. On average, how long do potatoes stay in the restaurant before being used? What queuing concept is use to solve this problem?</p>
+</div>
+<hr>
+<div id="exr-chQTP3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.3</strong></span> Consider a single pump gas station where the arrival process is Poisson with a mean time between arrivals of 10 minutes. The service time is exponentially distributed with a mean of 6 minutes. Specify the appropriate queueing model needed to solve the problem using Kendall’s notation. Specify the parameters of the model and what you would compute to solve the problem. Be as specific as possible by specifying the equation needed. Then, compute the desired quantities.</p>
+</div>
+<ol type="a">
+<li><p>What is the probability that you have to wait for service?</p></li>
+<li><p>What is the mean number of customer at the station?</p></li>
+<li><p>What is the expected time waiting in the line to get a pump?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.4</strong></span> Suppose an operator has been assigned to the responsibility of maintaining 3 machines. For each machine the probability distribution of the running time before a breakdown is exponentially distributed with a mean of 9 hours. The repair time also has an exponential distribution with a mean of 2 hours. Specify the appropriate queueing model needed to solve the problem using Kendall’s notation. Specify the parameters of the model and what you would compute to solve the problem. Be as specific as possible by specifying the equation needed. Then, compute the desired quantities.</p>
+</div>
+<ol type="a">
+<li><p>What is the probability that the operator is idle?</p></li>
+<li><p>What is the expected number of machines that are running?</p></li>
+<li><p>What is the expected number of machines that are not running?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.5</strong></span> SuperFastCopy wants to install self-service copiers, but cannot decide whether to put in one or two machines. They predict that arrivals will be Poisson with a rate of 30 per hour, and the time spent copying is exponentially distributed with a mean of 1.75 minutes. Because the shop is small they want the probability of 5 or more customers in the shop to be small, say less than 7%. Make a recommendation based on queueing theory to SuperFastCopy.</p>
+</div>
+<hr>
+<div id="exr-chQTP51" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.6</strong></span> Each airline passenger and his or her carry-on baggage must be checked at the security checkpoint. Suppose XNA averages 10 passengers per minute with exponential inter-arrival times. To screen passengers, the airport must have a metal detector and baggage X-ray machines. Whenever a checkpoint is in operation, two employees are required (one operates the metal detector, one operates the X-ray machine). The passenger goes through the metal detector and simultaneously their bag goes through the X-ray machine. A checkpoint can check an average of 12 passengers per minute according to an exponential distribution.</p>
+<p>What is the probability that a passenger will have to wait before being screened? On average, how many passengers are waiting in line to enter the checkpoint? On average, how long will a passenger spend at the checkpoint?</p>
+</div>
+<hr>
+<div id="exr-chQTP6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.7</strong></span> Two machines are being considered for processing a job within a factory. The first machine has an exponentially distributed processing time with a mean of 10 minutes. For the second machine the vendor has indicated that the mean processing time is 10 minutes but with a standard deviation of 6 minutes. Using queueing theory, which machine is better in terms of the average waiting time of the jobs?</p>
+</div>
+<hr>
+<div id="exr-chQTP7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.8</strong></span> Customers arrive at a one-window drive in bank according to a Poisson distribution with a mean of 10 per hour. The service time for each customer is exponentially distributed with a mean of 5 minutes. There are 3 spaces in front of the window including that for the car being served. Other arriving cars can wait outside these 3 spaces. Specify the appropriate queueing model needed to solve the problem using Kendall’s notation. Specify the parameters of the model and what you would compute to solve the problem. Be as specific as possible by specifying the equation needed. Then, compute the desired quantities.</p>
+</div>
+<ol type="a">
+<li><p>What is the probability that an arriving customer can enter one of the 3 spaces in front of the window?</p></li>
+<li><p>What is the probability that an arriving customer will have to wait outside the 3 spaces?</p></li>
+<li><p>How long is an arriving customer expected to wait before starting service?</p></li>
+<li><p>How many spaces should be provided in front of the window so that an arriving customer can wait in front of the window at least 20% of the time? In other words, the probability of at least one open space must be greater than 20%.</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.9</strong></span> Joe Rose is a student at Big State U. He does odd jobs to supplement his income. Job requests come every 5 days on the average, but the time between requests is exponentially distributed. The time for completing a job is also exponentially distributed with a mean of 4 days.</p>
+</div>
+<ol type="a">
+<li><p>What would you compute to find the chance that Joe will not have any jobs to work on?</p></li>
+<li><p>What would you compute to find the average value of the waiting jobs if Joe gets about $25 per job?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.10</strong></span> The manager of a bank must determine how many tellers should be available. For every minute a customer stands in line, the manager believes that a delay cost of 5 cents is incurred. An average of 15 customers per hour arrive at the bank. On the average, it takes a teller 6 minutes to complete the customer’s transaction. It costs the bank $9 per hour to have a teller available. Inter-arrival and service times can be assumed to be exponentially distributed.</p>
+<p>What is the minimum number of tellers that should be available in order for the system to be stable (i.e.&nbsp;not have an infinite queue)? If the system has 3 tellers, what is the probability that there will be no one in the bank? What is the expected total cost of the system per hour, when there are 2 tellers?</p>
+</div>
+<hr>
+<div id="exr-chQTP10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.11</strong></span> You have been hired to analyze the needs for loading dock facilities at a trucking terminal. The present terminal has 4 docks on the main building. Any trucks that arrive when all docks are full are assigned to a secondary terminal, which a short distance away from the main terminal. Assume that the arrival process is Poisson with a rate of 5 trucks each hour. There is no available space at the main terminal for trucks to wait for a dock. At the present time nearly 50% of the arriving trucks are diverted to the secondary terminal. The average service time per truck is two hours on the main terminal and 3 hours on the secondary terminal, both exponentially distributed. Two proposals are being considered. The first proposal is to expand the main terminal by adding docks so that at least 80% of the arriving trucks can be served there with the remainder being diverted to the secondary terminal. The second proposal is to expand the space that can accommodate up to 8 trucks. Then, only when the holding area is full will the trucks be diverted to secondary terminal.</p>
+<p>What queuing model should you use to analyze the first proposal? State the model and its parameters. State what you would do to determine the required number of docks so that at least 80% of the arriving trucks can be served for the first proposal. Note you do not have to compute anything. What model should you use to analyze the 2nd proposal? State the model and its parameters.</p>
+</div>
+<hr>
+<div id="exr-chQTP11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.12</strong></span> Sly’s convenience store operates a two-pump gas station. The lane leading to the pumps can house at most five cars, including those being serviced. Arriving cars go elsewhere if the lane is full. The distribution of the arriving cars is Poisson with a mean of 20 per hour. The time to fill up and pay for the purchase is exponentially distributed with a mean of 6 minutes.</p>
+</div>
+<ol type="a">
+<li><p>Specify using queueing notation, exactly what you would compute to find the percentage of cars that will seek business elsewhere?</p></li>
+<li><p>Specify using queueing notation, exactly what you would compute to find the utilization of the pumps?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.13</strong></span> An airline ticket office has two ticket agents answering incoming phone calls for flight reservations. In addition, two callers can be put on hold until one of the agents is available to take the call. If all four phone lines (both agent lines and the hold lines) are busy, a potential customer gets a busy signal, and it is assumed that the call goes to another ticket office and that the business is lost. The calls and attempted calls occur randomly (i.e. according to Poisson process) at a mean rate of 15 per hour. The length of a telephone conversation has an exponential distribution with a mean of 4 minutes.</p>
+</div>
+<ol type="a">
+<li><p>Specify using queueing notation, exactly what you would compute to find the probability of losing a potential customer?</p></li>
+<li><p>What would you compute to find the probability that an arriving phone call will not start service immediately but will be able to wait on a hold line?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP13" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.14</strong></span> SuperFastCopy has three identical copying machines. When a machine is being used, the time until it breaks down has an exponential distribution with a mean of 2 weeks. A repair person is kept on call to repair the machines. The repair time for a machine has an exponential distribution with a mean of 0.5 week. The downtime cost for each copying machine is $100 per week.</p>
+</div>
+<ol type="a">
+<li><p>Let the state of the system be the number of machines not working, Construct a state transition diagram for this queueing system.</p></li>
+<li><p>Write an expression using queueing performance measures to compute the expected downtime cost per week.</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP14" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.15</strong></span> NWH Cardiac Care Unit (CCU) has 5 beds, which are virtually always occupied by patients who have just undergone major heart surgery. Two registered nurses (RNs) are on duty in the CCU in each of the three 8 hour shifts. About every two hours following an exponential distribution, one of the patients requires a nurse’s attention. The RN will then spend an average of 30 minutes (exponentially distributed) assisting the patient and updating medical records regarding the problem and care provided.</p>
+</div>
+<ol type="a">
+<li><p>What would you compute to find the average number of patients being attended by the nurses?</p></li>
+<li><p>What would you compute to fine the average time that a patient spends waiting for one of the nurses to arrive?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP15" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.16</strong></span> HJ Bunt, Transport Company maintains a large fleet of refrigerated trailers. For the purposes of this problem assume that the number of refrigerated trailers is conceptually infinite. The trailers require service on an irregular basis in the company owned and operated service shop. Assume that the arrival of trailers to the shop is approximated by a Poisson distribution with a mean rate of 3 per week. The length of time needed for servicing a trailer varies according to an exponential distribution with a mean service time of one-half week per trailer. The current policy is to utilize a centralized contracted outsourced service center whenever more than two trailers are in the company shop, so that, at most one trailer is allowed to wait. Assume that there is currently one 1 mechanic in the company shop.</p>
+<p>Specify using Kendall’s notation the correct queueing model for this situation including the appropriate parameters. What would you compute to determine the expected number of repairs that are outsourced per week?</p>
+</div>
+<hr>
+<div id="exr-chQTP16" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.17</strong></span> Rick is a manager of a small barber shop at Big State U. He hires one barber. Rick is also a barber and he works only when he has more than one customer in the shop. Customers arrive randomly at a rate of 3 per hour. Rick takes 15 minutes on the average for a hair cut, but his employee takes 10 minutes. Assume that the cutting time distributions are exponentially distributed. Assume that there are only 2 chairs available with no waiting room in the shop.</p>
+</div>
+<ol type="a">
+<li><p>Let the state of the system be the number of customers in the shop, Construct a state transition diagram for this queueing system.</p></li>
+<li><p>What is the probability that a customer is turned away?</p></li>
+<li><p>What is the probability that the barber shop is idle?</p></li>
+<li><p>What is the steady-state mean number of customers in the shop?</p></li>
+</ol>
+<hr>
+<div id="exr-chQTP17" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise C.18</strong></span> Using the supplied data set, draw the sample path for the state variable, <span class="math inline">\(N(t)\)</span>. Give a formula for estimating the time average number in the system, <span class="math inline">\(N(t)\)</span>, and then use the data to compute the time average number in the system over the range from 0 to 25. Assume that the value of <span class="math inline">\(N(t\)</span> is the value of the state variable just after time <span class="math inline">\(t\)</span>.</p>
+</div>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(t\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(N(t)\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>Give a formula for estimating the time average number in the system, <span class="math inline">\(N(t)\)</span>, and then use the data to compute the time average number in the system over the range from 0 to 25.</p></li>
+<li><p>Give a formula for estimating the mean rate of arrivals over the interval from 0 to 25 and then use the data to estimate the mean arrival rate.</p></li>
+<li><p>Estimate the average time in the system (waiting and in service) for the customers indicated in the diagram.</p></li>
+<li><p>What queueing formula relationship is used in this problem?</p></li>
+</ol>
+<hr>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-cooper1990introduction" class="csl-entry" role="listitem">
+Cooper, R. B. (1990). <em>Introduction to queueing theory</em> (3rd ed.). CEEPress Books.
+</div>
+<div id="ref-glynn1989extensions" class="csl-entry" role="listitem">
+Glynn, P. W., &amp; Whitt, W. (1989). Extensions of the queueing relation and <span class="math inline">\({L}=\lambda {W}\)</span> and <span class="math inline">\({H}=\lambda {G}\)</span>. <em>Operations Research</em>, <em>37</em>, 634–644.
+</div>
+<div id="ref-gross1998fundamentals" class="csl-entry" role="listitem">
+Gross, D., &amp; Harris, C. M. (1998). <em>Fundamentals of queueing theory</em> (3rd ed.). John Wiley &amp; Sons.
+</div>
+<div id="ref-Gross2008aa" class="csl-entry" role="listitem">
+Gross, D., Shortle, J. F., Thompson, J. M., &amp; Harris, C. M. (2008). <em>Fundamentals of queueing theory</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-kendall1953stochastic" class="csl-entry" role="listitem">
+Kendall, D. G. (1953). Stochastic processes occurring in the theory of queues and their analysis by the method of imbedded markov chains. <em>Annals of Mathematical Statistics</em>, <em>24</em>, 338–354.
+</div>
+<div id="ref-kingman1964the" class="csl-entry" role="listitem">
+Kingman, J. F. C. (1964). <em>The heavy traffic approximation in the theory of queues</em> (p. 137). Proceedings of the Symposium On Congestion Theory.
+</div>
+<div id="ref-kleinrock1975queueing" class="csl-entry" role="listitem">
+Kleinrock, L. (1975). <em>Queueing systems</em> (Vol. 1). John Wiley &amp; Sons.
+</div>
+<div id="ref-little1961a" class="csl-entry" role="listitem">
+Little, J. D. C. (1961). A proof for the queuing formula <span class="math inline">\({L}=\lambda {W}\)</span>. <em>Operations Research</em>, <em>9</em>, 383–387.
+</div>
+<div id="ref-stecke1992machine" class="csl-entry" role="listitem">
+Stecke, K. E. (1992). Machine interference: Assignment of machines to operators. In G. Salvendy (Ed.), <em>Handbook of industrial engineering</em> (Chapter 57). John-Wiley &amp; Sons.
+</div>
+<div id="ref-tijms2003first" class="csl-entry" role="listitem">
+Tijms, H. C. (2003). <em>A first course in stochastic models</em>. John-Wiley &amp; Sons.
+</div>
+<div id="ref-whitt1983the" class="csl-entry" role="listitem">
+Whitt, W. (1983). The queueing network analyzer. <em>The Bell System Technical Journal</em>, <em>62</em>(9), 2779–2815.
+</div>
+<div id="ref-whitt1993approximations" class="csl-entry" role="listitem">
+Whitt, W. (1993). Approximations for the <span>GI</span>/<span>G</span>/m queue. <em>Productions and Operations Management</em>, <em>2</em>(2), 114–161.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10-AppDistributionFitting.html" class="pagination-link" aria-label="Probability Distribution Modeling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability Distribution Modeling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./12-MiscTopicsInArena.html" class="pagination-link" aria-label="Miscellaneous Topics in Arena">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Miscellaneous Topics in Arena</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
